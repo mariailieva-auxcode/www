@@ -1,0 +1,27 @@
+p.mainNews {
+    color: black;
+    font-size: 1rem;
+}
+
+#card.main-card {
+    height: 650px;
+}
+
+div#main-news-card {
+    border: 0px;
+    min-height: 500px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+}
+
+img#box-image {
+    border-radius: 1.5rem;
+}
+
+h4.card-title {
+    color: black;
+    font-size: 0.9rem;
+}
