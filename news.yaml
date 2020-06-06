@@ -1,4 +1,10 @@
 # CMS structure
+-   url: https://english.rvo.nl/subsidies-programmes/sde
+    description: Stimulation of Sustainable Energy Production (SDE+) is a subsidy for the production of renewable energy in the Netherlands in 6 categories: biomass, geothermal, water, wind (land, lake and flood defense) and sun.
+    expiry: 2020-07-01
+    categories: 
+      -  subsidy
+
 -   url: https://euobserver.com/environment/147263
     description: The Netherlands is not that advanced in Renewable Energy as one would think.
     expiry: 2020-07-01
