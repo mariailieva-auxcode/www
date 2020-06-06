@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../data.yaml";
+import info from "js-yaml-loader!../../news.yaml";
 // import LinkPrevue from "link-prevue";
 import Search from "./Search";
 import MainNews from "./MainNews";
