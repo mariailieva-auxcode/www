@@ -8,7 +8,6 @@
           <MainNews :data="data[0]" :isMain="true"></MainNews>
         </div>
         <div class="col-6">
-          <!-- <MainNews :data="data[1]"></MainNews> -->
           <SecondaryNews :data="data[1]"></SecondaryNews>
           <div class="row">
             <div class="col-6">
@@ -19,24 +18,24 @@
             </div>
           </div>
         </div>
+        
+        <div class="row">
+          <div v-for="(category, index) in filteredCategories" :key="index" :class="`col-${12/filteredCategories.length}`">
+            <h3>{{category}}</h3>
+            <div
+              v-for="(item, index) in getPostsByCategory(category)"
+              :key="index"
+              v-show="item.isShown"
+              class="mb-2"
+            >
+              <a :href="item.url" target="_blank">
+                <button type="button" class="btn btn-info">{{item.description}}</button>
+              </a>
+            </div>
+          </div>
+        </div>
 
-        <!-- <div v-for="(item, index) in data" :key="index" v-show="item.isShown"> -->
-        <!-- <div v-for="(item, index) in getPostsByCategory(category)" :key="index" v-show="item.isShown"> -->
-        <!-- <link-prevue :url="item.url">
-            <template slot-scope="props">
-              <div id="card" class="card">
-                <img id="box-image" class="card-img-top" :src="props.img" :alt="props.title" />
-                <div class="card-block">
-                  <p>{{ item.description }}</p>
-                  <h4 class="card-title">{{props.title}}</h4>
-                  <div class="card-btn">
-                    <a v-bind:href="props.url" class="card-btn">View More</a>
-                  </div>
-                </div>
-              </div>
-            </template>
-          </link-prevue>
-        </div>-->
+        <Footer></Footer>
       </div>
     </div>
   </div>
@@ -44,35 +43,41 @@
 
 <script>
 import info from "js-yaml-loader!../../news.yaml";
-// import LinkPrevue from "link-prevue";
 import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";
 import TertNews from "./TertieryNews";
+import Footer from "./Footer"
 
 export default {
   name: "News",
   components: {
-    // LinkPrevue,
     Search,
     MainNews,
     SecondaryNews,
-    TertNews
+    TertNews,
+    Footer
   },
   data() {
     return {
       data: [],
-      categories: {}
+      categories: {},
+      filteredCategories: [],
+      filterCriteria: [],
+      // postsByCategory: []
     };
   },
   beforeMount() {
     this.init();
     this.getAllCategories();
+    this.getFilteredCategories();
   },
   methods: {
-    // getPostsByCategory(category) {
-    //   return this.data.filter(e => e.categories.includes(category))
-    // }
+    getPostsByCategory(category) {
+      return this.data
+        .slice(4, this.data.length)
+        .filter(e => e.categories.includes(category) && e.isShown);
+    },
     /**
      * Gets all categories listed in the cms file
      */
@@ -90,11 +95,21 @@ export default {
         {}
       );
     },
+    getFilteredCategories() {
+      this.filteredCategories = [
+        ...new Set(
+          [].concat.apply(
+            [],
+            this.data.slice(4, this.data.length).map(e => e.categories)
+          )
+        )
+      ];
+    },
     /**
      * If the active categories are used in a single news
      */
-    someCategory(filtered, e) {
-      return e.categories.some(x => filtered.includes(x.toLowerCase()));
+    someCategory(e) {
+      return e.categories.some(x => this.filterCriteria.includes(x.toLowerCase()));
     },
     /**
      * Combines the logic of the search input and the categories filter
@@ -102,27 +117,31 @@ export default {
     onSearch(data) {
       let { value, categories } = data;
       this.init();
-      let filtered = Object.keys(categories).filter(k => categories[k]);
+      this.filterCriteria = Object.keys(categories).filter(k => categories[k]);
       this.data = this.data.map(e => {
         if (value) {
           if (
             !e.description.match(new RegExp(value, "i")) ||
-            !this.someCategory(filtered, e)
+            !this.someCategory( e)
           )
             return { ...e, isShown: false };
           else return e;
         } else {
-          if (!this.someCategory(filtered, e)) return { ...e, isShown: false };
+          if (!this.someCategory(e)) return { ...e, isShown: false };
           else return e;
         }
       });
+      this.$forceUpdate()
     },
     /**
      * Prepares the initial data
      * Sets all categories to be shown
      */
     init() {
-      this.data = info.map(e => ({ ...e, isShown: true }));
+      this.data = info
+        .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
+        .filter(e => e.date > new Date())
+        .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
     }
   }
 };
