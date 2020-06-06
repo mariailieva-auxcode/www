@@ -1,4 +1,10 @@
 # CMS structure
+-   url: https://euobserver.com/environment/147263
+    description: The Netherlands is not that advanced in Renewable Energy as one would think.
+    expiry: 2020-07-01
+    categories: 
+      -  innovation
+
 -   url: https://www.energylivenews.com/2020/06/05/vattenfall-gives-green-light-to-worlds-largest-offshore-wind-project/
     description: More from Vattenfall.
     expiry: 2020-07-01
