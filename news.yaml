@@ -42,3 +42,9 @@
     expiry: 2020-06-25
     categories:
       -  subsidy
+      
+-   url: https://www.goodnewsnetwork.org/worlds-first-bios-park-for-cremated-remains/
+    description: Milen Markov News 
+    expiry: 2020-07-10
+    categories: 
+      -  business
