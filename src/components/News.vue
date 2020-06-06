@@ -106,7 +106,7 @@ export default {
       this.data = this.data.map(e => {
         if (value) {
           if (
-            !e.title.match(new RegExp(value, "i")) ||
+            !e.description.match(new RegExp(value, "i")) ||
             !this.someCategory(filtered, e)
           )
             return { ...e, isShown: false };
