@@ -1,4 +1,11 @@
 # CMS structure
+
+-   url: https://www.energylivenews.com/2020/06/05/anesco-to-develop-two-solar-farms-in-the-netherlands/
+    description: 'Anesco will develop the renewable assets in Holland and Friesland after being awarded the contracts by Shell New Energies.'
+    expiry: 2020-07-01
+    categories: 
+      -  subsidy
+
 -   url: https://english.rvo.nl/subsidies-programmes/sde
     description: 'Stimulation of Sustainable Energy Production (SDE+) is a subsidy for the production of renewable energy in the Netherlands in 6 categories: biomass, geothermal, water, wind (land, lake and flood defense) and sun.'
     expiry: 2020-07-01
