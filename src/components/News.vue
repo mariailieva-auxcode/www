@@ -20,7 +20,7 @@
         </div>
         
         <div class="row">
-          <div v-for="(category, index) in filteredCategories" :key="index" v-show="filterCriteria.includes(category)" :class="`col-${12/filteredCategories.length}`">
+          <div v-for="(category, index) in filteredCategories" :key="index" :class="[`col-${12/filteredCategories.length}`, !filterCriteria.includes(category) ? 'hidden' : '']">
             <h3>{{category}}</h3>
             <div
               v-for="(item, index) in getPostsByCategory(category)"
