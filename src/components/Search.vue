@@ -16,14 +16,9 @@
     </div>
     <div class="col-9 d-flex">
       <div class="form-check category" v-for="(val, key, index) in categories" :key="index">
-        <input
-          class="categoriesCheckbox"
-          type="checkbox"
-          :id="'cat'+index"
-          v-model="categories[key]"
-          @change="submit"
-        />
-        <label id="categories" class="form-check-label" :for="'cat'+index">{{key}}</label>
+        <button class="btn" :class="categories[key] ? 'btn-primary' : 'btn-secondary'" @click="filter(key)">
+          {{key}}
+        </button>
       </div>
     </div>
   </div>
@@ -41,6 +36,10 @@ export default {
     };
   },
   methods: {
+    filter(index) {
+      this.categories[index] = !this.categories[index];
+      this.submit();
+    },
     submit() {
       this.$emit("change", { value: this.search, categories: this.categories });
     }

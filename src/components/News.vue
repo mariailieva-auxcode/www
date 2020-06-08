@@ -20,13 +20,13 @@
         </div>
         
         <div class="row">
-          <div v-for="(category, index) in filteredCategories" :key="index" v-show="filterCriteria.includes(category)" :class="`col-${12/filteredCategories.length}`">
+          <div v-for="(category, index) in filteredCategories" :key="index" :class="[`col-${12/filteredCategories.length}`, !filterCriteria.includes(category) ? 'hidden' : '']">
             <h3>{{category}}</h3>
             <div
               v-for="(item, index) in getPostsByCategory(category)"
               :key="index"
-              v-show="item.isShown"
               class="mb-2"
+              :class="{'hidden': !item.isShown}"
             >
               <a :href="item.url" target="_blank">
                 <button type="button" class="btn btn-info">{{item.description}}</button>
@@ -76,7 +76,7 @@ export default {
     getPostsByCategory(category) {
       return this.data
         .slice(4, this.data.length)
-        .filter(e => e.categories.includes(category) && e.isShown);
+        .filter(e => e.categories.includes(category));
     },
     /**
      * Gets all categories listed in the cms file
