@@ -20,13 +20,13 @@
         </div>
         
         <div class="row">
-          <div v-for="(category, index) in filteredCategories" :key="index" :class="[`col-${12/filteredCategories.length}`, !filterCriteria.includes(category) ? 'hidden' : '']">
+          <div v-for="(category, index) in filteredCategories" :key="index" :class="`col-${12/filteredCategories.length}`">
             <h3>{{category}}</h3>
             <div
               v-for="(item, index) in getPostsByCategory(category)"
               :key="index"
               class="mb-2"
-              :class="{'hidden': !item.isShown}"
+              :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
             >
               <a :href="item.url" target="_blank">
                 <button type="button" class="btn btn-info">{{item.description}}</button>
