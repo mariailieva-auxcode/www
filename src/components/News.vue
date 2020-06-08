@@ -25,8 +25,8 @@
             <div
               v-for="(item, index) in getPostsByCategory(category)"
               :key="index"
-              v-show="item.isShown"
               class="mb-2"
+              :class="{'hidden': !item.isShown}"
             >
               <a :href="item.url" target="_blank">
                 <button type="button" class="btn btn-info">{{item.description}}</button>
@@ -76,7 +76,7 @@ export default {
     getPostsByCategory(category) {
       return this.data
         .slice(4, this.data.length)
-        .filter(e => e.categories.includes(category) && e.isShown);
+        .filter(e => e.categories.includes(category));
     },
     /**
      * Gets all categories listed in the cms file
