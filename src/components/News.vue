@@ -1,5 +1,6 @@
 <template>
   <div style="font-family: serif" class="news">
+    <router-link to="/table">Go to Table</router-link>
     <div class="container">
       <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
@@ -18,9 +19,13 @@
             </div>
           </div>
         </div>
-        
+
         <div class="row">
-          <div v-for="(category, index) in filteredCategories" :key="index" :class="`col-${12/filteredCategories.length}`">
+          <div
+            v-for="(category, index) in filteredCategories"
+            :key="index"
+            :class="`col-${12/filteredCategories.length}`"
+          >
             <h3>{{category}}</h3>
             <div
               v-for="(item, index) in getPostsByCategory(category)"
@@ -47,7 +52,7 @@ import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";
 import TertNews from "./TertieryNews";
-import Footer from "./Footer"
+import Footer from "./Footer";
 
 export default {
   name: "News",
@@ -63,7 +68,7 @@ export default {
       data: [],
       categories: {},
       filteredCategories: [],
-      filterCriteria: [],
+      filterCriteria: []
       // postsByCategory: []
     };
   },
@@ -110,7 +115,9 @@ export default {
      * If the active categories are used in a single news
      */
     someCategory(e) {
-      return e.categories.some(x => this.filterCriteria.includes(x.toLowerCase()));
+      return e.categories.some(x =>
+        this.filterCriteria.includes(x.toLowerCase())
+      );
     },
     /**
      * Combines the logic of the search input and the categories filter
@@ -123,7 +130,7 @@ export default {
         if (value) {
           if (
             !e.description.match(new RegExp(value, "i")) ||
-            !this.someCategory( e)
+            !this.someCategory(e)
           )
             return { ...e, isShown: false };
           else return e;
@@ -132,7 +139,7 @@ export default {
           else return e;
         }
       });
-      this.$forceUpdate()
+      this.$forceUpdate();
     },
     /**
      * Prepares the initial data
