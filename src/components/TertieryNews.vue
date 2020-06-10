@@ -1,7 +1,7 @@
 <template>
   <div style="font-family: serif" class="news">
     <div class="row">
-      <div v-show="data.isShown">
+      <div :class="{'hidden' : !data.isShown}">
         <link-prevue :url="data.url" cardWidth="100%">
           <template slot-scope="props">
             <div id="Tert-card" class="card">
