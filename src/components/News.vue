@@ -4,17 +4,17 @@
     <div class="container">
       <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
-      <div class="row">
+      <div class="row news-container">
         <div class="col-6">
           <MainNews :data="data[0]" :isMain="true"></MainNews>
         </div>
-        <div class="col-6">
+        <div class="col-6 secondaryNews">
           <SecondaryNews :data="data[1]"></SecondaryNews>
           <div class="row">
-            <div class="col-6">
+            <div class="col-6 tertNews">
               <TertNews :data="data[2]" :isMain="false"></TertNews>
             </div>
-            <div class="col-6">
+            <div class="col-6 tertNews">
               <TertNews :data="data[3]" :isMain="false"></TertNews>
             </div>
           </div>

@@ -1,6 +1,7 @@
 @import "components/_main_news_box.scss";
 @import "components/_secondary_news_box.scss";
 @import "components/_tertiery_news_box.scss";
+
 div#app {
     margin-top: 3%;
 }
@@ -41,6 +42,19 @@ label#categories {
     align-self: center;
     text-align: center;
 }
+
 div.hidden {
     visibility: hidden;
+}
+
+.news-container>.col-6 {
+    height: 635px;
+}
+
+.news-container>.secondaryNews>.news {
+    height: 320px;
+}
+
+.news-container>.secondaryNews>.row {
+    height: 315px;
 }
