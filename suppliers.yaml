@@ -1,6 +1,20 @@
 -   companyName: 'AuxCode Sofia'
     area: 2000
+    categories: 
+      -  subsidy
 -   companyName: 'AuxCode Montana'
     area: 800
+    categories: 
+      -  subsidy
 -   companyName: 'AuxCode Pravets'
     area: 300
+    categories: 
+      -  subsidy
+-   companyName: 'Jar Comuters Sofia'
+    area: 1400
+    categories:
+        - busines
+-   companyName: 'Jar Comuters Montana'
+    area: 700
+    categories:
+        - innovation
