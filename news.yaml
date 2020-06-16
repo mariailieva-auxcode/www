@@ -1,5 +1,11 @@
 # CMS structure
 
+-   url: https://longreads.cbs.nl/european-scale-2019/renewable-energy/
+    description: 'Something about power.'
+    expiry: 2020-08-01
+    categories: 
+      -  subsidy
+      
 -   url: https://renewablesnow.com/news/round-up-of-renewable-energy-ppa-news-june-2-15-702766/
     description: 'Something about wind.'
     expiry: 2020-07-01
