@@ -1,5 +1,11 @@
 # CMS structure
 
+-   url: https://renewablesnow.com/news/round-up-of-renewable-energy-ppa-news-june-2-15-702766/
+    description: 'Something about wind.'
+    expiry: 2020-07-01
+    categories: 
+      -  win
+      
 -   url: https://www.energylivenews.com/2020/06/05/anesco-to-develop-two-solar-farms-in-the-netherlands/
     description: 'Anesco will develop the renewable assets in Holland and Friesland after being awarded the contracts by Shell New Energies.'
     expiry: 2020-07-01
