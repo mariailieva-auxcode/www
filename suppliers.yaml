@@ -1,0 +1,18 @@
+-   companyName: 'AuxCode Sofia'
+    area: 2000
+    companyid: programming
+-   companyName: 'AuxCode Montana'
+    area: 800
+    companyid: programming
+-   companyName: 'AuxCode Pravets'
+    area: 300
+    companyid: programming
+-   companyName: 'Jar Comuters Sofia'
+    area: 1400
+    companyid: shop
+-   companyName: 'Jar Comuters Montana'
+    area: 700
+    companyid: shop
+-   companyName: 'Bulgaria News'
+    area: 90
+    companyid: news
