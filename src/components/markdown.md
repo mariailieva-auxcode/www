@@ -1,6 +1,4 @@
-<template>
-  <div class="footer">
-    <!-- <h1 class="mainSample">Sample: Our Company Privacy Policy</h1>
+<h1 class="mainSample">Sample: Our Company Privacy Policy</h1>
     <h4>Our Company is part of the Our Company Group which includes Our Company International and Our Company Direct. This privacy policy will explain how our organization uses the personal data we collect from you when you use our website.</h4>
     <h4>Topics:</h4>
     <ul class="points">
@@ -30,71 +28,4 @@
     <h1>How do we store your data?</h1>
     <h4>Our Company securely stores your data at [enter the location and describe security precautions taken].</h4>
     <h4>Our Company will keep your [enter type of data] for [enter time period]. Once this time period has expired, we will delete your data by [enter how you delete users’ data].</h4>
-    <h1>Marketing</h1>-->
-    <div v-html="html"></div>
-  </div>
-</template>
-
-<script>
-import marked from "marked";
-export default {
-  name: "Footer",
-
-  data() {
-    return {
-      topics: [
-        "What data do we collect?",
-        "How do we collect your data?",
-        "How will we use your data?",
-        "How do we store your data?",
-        "Marketing",
-        "What are your data protection rights?",
-        "What are cookies?",
-        "How do we use cookies?",
-        "What types of cookies do we use?",
-        "How to manage your cookies",
-        "Privacy policies of other websites",
-        "Changes to our privacy policy",
-        "How to contact us",
-        "How to contact the appropriate authorities"
-      ],
-      html: "",
-      dataColect: [
-        "Register online or place an order for any of our products or services.",
-        "Voluntarily complete a customer survey or provide feedback on any of our message boards or via email.",
-        "Use or view our website via your browser’s cookies."
-      ],
-      collectData: [
-        "Process your order and manage your account.",
-        "Email you with special offers on other products and services we think you might like."
-      ]
-    };
-  },
-  mounted() {
-    this.html = marked("# Marked in the browser\n\nRendered by **marked**.");
-  }
-};
-</script>
-
-<style lang="scss" scoped>
-.footer {
-  text-align: left;
-  margin: 75px 0;
-  max-width: 1000px;
-}
-div.footer h1.mainSample {
-  margin-left: 100px;
-  margin-bottom: 20px;
-  color: black;
-}
-div.footer h1 {
-  color: black;
-  margin-bottom: 20px;
-}
-div.footer h4 {
-  margin-bottom: 20px;
-}
-ul.points {
-  list-style-position: outside;
-}
-</style>
+    <h1>Marketing</h1>
