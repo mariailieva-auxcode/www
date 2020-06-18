@@ -44,6 +44,17 @@
         </div>
       </div>
     </div>
+    <cookie-law>
+      <div slot-scope="props">
+        <button class="skew" @click="props.accept">
+          <span>I accept</span>
+        </button>
+        <p>This site uses cookies 🍪</p>
+        <button class="skew" @click="props.close">
+          <span>Ignore me</span>
+        </button>
+      </div>
+    </cookie-law>
   </div>
 </template>
 
@@ -53,6 +64,7 @@ import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";
 import TertNews from "./TertieryNews";
+import CookieLaw from "vue-cookie-law";
 
 export default {
   name: "News",
@@ -60,7 +72,8 @@ export default {
     Search,
     MainNews,
     SecondaryNews,
-    TertNews
+    TertNews,
+    CookieLaw
   },
   data() {
     return {
