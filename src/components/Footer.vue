@@ -1,100 +1,34 @@
 <template>
   <div class="footer">
-    <!-- <h1 class="mainSample">Sample: Our Company Privacy Policy</h1>
-    <h4>Our Company is part of the Our Company Group which includes Our Company International and Our Company Direct. This privacy policy will explain how our organization uses the personal data we collect from you when you use our website.</h4>
-    <h4>Topics:</h4>
-    <ul class="points">
-      <li v-for="topics in topics" :key="topics">{{topics}}</li>
-    </ul>
-    <h1>What data do we collect?</h1>
-    <h4>Our Company collects the following data:</h4>
-    <ul>
-      <li>Personal identification information (Name, email address, phone number, etc.)</li>
-    </ul>
-    <h1>How do we collect your data?</h1>
-    <h4>You directly provide Our Company with most of the data we collect. We collect data and process data when you:</h4>
-    <ul>
-      <li v-for="dataColect in dataColect" :key="dataColect">{{dataColect}}</li>
-    </ul>
-    <h4>Our Company may also receive your data indirectly from the following sources:</h4>
-    <ul>
-      <li>[N/A]</li>
-    </ul>
-    <h1>How will we use your data?</h1>
-    <h4>Our Company collects your data so that we can:</h4>
-    <ul>
-      <li v-for="collectData in collectData" :key="collectData">{{collectData}}</li>
-    </ul>
-    <h4>If you agree, Our Company will share your data with our partner companies so that they may offer you their products and services.</h4>
-    <h4>When Our Company processes your order, it may send your data to, and also use the resulting information from, credit reference agencies to prevent fraudulent purchases.</h4>
-    <h1>How do we store your data?</h1>
-    <h4>Our Company securely stores your data at [enter the location and describe security precautions taken].</h4>
-    <h4>Our Company will keep your [enter type of data] for [enter time period]. Once this time period has expired, we will delete your data by [enter how you delete users’ data].</h4>
-    <h1>Marketing</h1>-->
+    <router-link to="/">Go to News</router-link>
     <div v-html="html"></div>
+    <router-link to="/">Go to News</router-link>
   </div>
 </template>
 
 <script>
 import marked from "marked";
+import gdpr from "raw-loader!../../gdpr.md";
 export default {
   name: "Footer",
 
   data() {
     return {
-      topics: [
-        "What data do we collect?",
-        "How do we collect your data?",
-        "How will we use your data?",
-        "How do we store your data?",
-        "Marketing",
-        "What are your data protection rights?",
-        "What are cookies?",
-        "How do we use cookies?",
-        "What types of cookies do we use?",
-        "How to manage your cookies",
-        "Privacy policies of other websites",
-        "Changes to our privacy policy",
-        "How to contact us",
-        "How to contact the appropriate authorities"
-      ],
-      html: "",
-      dataColect: [
-        "Register online or place an order for any of our products or services.",
-        "Voluntarily complete a customer survey or provide feedback on any of our message boards or via email.",
-        "Use or view our website via your browser’s cookies."
-      ],
-      collectData: [
-        "Process your order and manage your account.",
-        "Email you with special offers on other products and services we think you might like."
-      ]
+      html: ""
     };
   },
   mounted() {
-    this.html = marked("# Marked in the browser\n\nRendered by **marked**.");
+    this.html = marked(gdpr);
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .footer {
-  text-align: left;
-  margin: 75px 0;
   max-width: 1000px;
-}
-div.footer h1.mainSample {
-  margin-left: 100px;
-  margin-bottom: 20px;
-  color: black;
-}
-div.footer h1 {
-  color: black;
-  margin-bottom: 20px;
-}
-div.footer h4 {
-  margin-bottom: 20px;
-}
-ul.points {
-  list-style-position: outside;
+  margin-right: auto;
+  margin-left: 200px;
+  margin-bottom: 100px;
+  text-align: left;
 }
 </style>

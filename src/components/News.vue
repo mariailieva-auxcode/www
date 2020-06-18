@@ -1,6 +1,9 @@
 <template>
   <div style="font-family: serif" class="news">
     <router-link to="/table">Go to Table</router-link>
+    <div>
+      <router-link to="/privacy-policy">Our Company Privacy Policy</router-link>
+    </div>
     <div class="container">
       <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
@@ -39,7 +42,6 @@
             </div>
           </div>
         </div>
-        <Footer></Footer>
       </div>
     </div>
   </div>
@@ -51,7 +53,6 @@ import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";
 import TertNews from "./TertieryNews";
-import Footer from "./Footer";
 
 export default {
   name: "News",
@@ -59,8 +60,7 @@ export default {
     Search,
     MainNews,
     SecondaryNews,
-    TertNews,
-    Footer
+    TertNews
   },
   data() {
     return {
