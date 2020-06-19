@@ -31,42 +31,61 @@
         :class="showAll ? 'btn-primary' : 'btn-secondary'"
         @click="toggleAllCompanies()"
       >All</button>
-      <div class="form-check" v-for="(val, key, index) in companyid" :key="index">
+      <div class="form-check" v-for="(val, key, index) in industry" :key="index">
         <button
           class="btn"
-          :class="companyid[key] && !showAll ? 'btn-primary' : 'btn-secondary'"
+          :class="industry[key] && !showAll ? 'btn-primary' : 'btn-secondary'"
           @click="toggleFilter(key)"
         >{{key}}</button>
       </div>
     </div>
     <div>
-      <table class="table" border="2px">
-        <thead>
-          <th>Company Name</th>
-          <th>Area</th>
-          <th>Company ID</th>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(supplier, key, index) in filteredSuppliers"
-            :key="index"
-            v-show="companyid[supplier.companyid]"
-          >
-            <td>{{supplier.companyName}}</td>
-            <td>{{supplier.area}}</td>
-            <td>{{supplier.companyid}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <table class="table" border="2px">
+          <thead>
+            <th>Company Name</th>
+            <th>Area</th>
+            <th>Industry</th>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(supplier, key, index) in filteredSuppliers"
+              :key="index"
+              v-show="industry[supplier.industry]"
+            >
+              <td>{{supplier.companyName}}</td>
+              <td>{{supplier.area}}</td>
+              <td>{{supplier.industry}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="Suppliers">
+        <VueDragResize
+          :isDraggable="false"
+          :w="200"
+          :h="200"
+          v-on:resizing="resize"
+          v-on:dragging="resize"
+        >
+          <h3>Drag/resize Area</h3>
+          <p>{{ top }} х {{ left }}</p>
+          <p>{{ width }} х {{ height }}</p>
+        </VueDragResize>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import info from "js-yaml-loader!../../suppliers.yaml";
+import VueDragResize from "vue-drag-resize";
 export default {
   name: "Suppliers",
-  props: { companyid: Object },
+  props: { industry: Object },
+  components: {
+    VueDragResize
+  },
 
   data() {
     return {
@@ -74,7 +93,11 @@ export default {
       nameSearch: "",
       suppliers: [],
       filteredSuppliers: [],
-      showAll: true
+      showAll: true,
+      width: 200,
+      height: 200,
+      top: 0,
+      left: 0
     };
   },
 
@@ -87,6 +110,12 @@ export default {
       this.suppliers = info;
       this.filteredSuppliers = info;
       this.getAllCategories();
+    },
+    resize(newRect) {
+      this.width = newRect.width;
+      this.height = newRect.height;
+      this.top = newRect.top;
+      this.left = newRect.left;
     },
 
     filterByArea() {
@@ -106,32 +135,32 @@ export default {
     },
 
     toggleAllCompanies(show = true) {
-      Object.keys(this.companyid).forEach(
-        companyId => (this.companyid[companyId] = show)
+      Object.keys(this.industry).forEach(
+        industryId => (this.industry[industryId] = show)
       );
       this.showAll = show;
     },
 
     toggleFilter(index) {
       if (this.showAll) this.toggleAllCompanies(false);
-      this.companyid[index] = !this.companyid[index];
+      this.industry[index] = !this.industry[index];
 
-      const hasSelectedCompanyId = Object.values(this.companyid).some(
-        companyId => companyId == true
+      const hasSelectedIndustryId = Object.values(this.industry).some(
+        industryId => industryId == true
       );
-      if (!hasSelectedCompanyId) this.toggleAllCompanies();
+      if (!hasSelectedIndustryId) this.toggleAllCompanies();
     },
 
     getAllCategories() {
-      let companyid = [
+      let industry = [
         ...new Set(
           [].concat.apply(
             [],
-            this.suppliers.map(e => e.companyid)
+            this.suppliers.map(e => e.industry)
           )
         )
       ];
-      this.companyid = companyid.reduce(
+      this.industry = industry.reduce(
         (a, b) => ((a[b.toLowerCase()] = true), a),
         {}
       );

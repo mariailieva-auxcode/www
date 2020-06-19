@@ -1,18 +1,21 @@
--   companyName: 'AuxCode Sofia'
+-   companyName: 'A2Z Group'
     area: 2000
-    companyid: programming
--   companyName: 'AuxCode Montana'
+    industry: solar thermal
+-   companyName: 'Abengoa S.A.'
     area: 800
-    companyid: programming
--   companyName: 'AuxCode Pravets'
+    industry: solar thermal
+-   companyName: 'Goldwind'
     area: 300
-    companyid: programming
--   companyName: 'Jar Comuters Sofia'
+    industry: wind
+-   companyName: 'First Solar Holding, LLC'
     area: 1400
-    companyid: shop
--   companyName: 'Jar Comuters Montana'
+    industry: photovoltaics
+-   companyName: 'Siemens Gamesa Renewable Energy S.A.'
     area: 700
-    companyid: shop
--   companyName: 'Bulgaria News'
+    industry: wind
+-   companyName: 'Sunrun'
     area: 90
-    companyid: news
+    industry: photovoltaics
+-   companyName: 'Run of River Power Inc.'
+    area: 1100
+    industry: hydro
