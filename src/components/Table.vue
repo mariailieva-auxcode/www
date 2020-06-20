@@ -40,39 +40,38 @@
       </div>
     </div>
     <div>
-      <div>
-        <table class="table" border="2px">
-          <thead>
-            <th>Company Name</th>
-            <th>Area</th>
-            <th>Industry</th>
-          </thead>
-          <tbody>
-            <tr
-              v-for="(supplier, key, index) in filteredSuppliers"
-              :key="index"
-              v-show="industry[supplier.industry]"
-            >
-              <td>{{supplier.companyName}}</td>
-              <td>{{supplier.area}}</td>
-              <td>{{supplier.industry}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div id="Suppliers">
-        <VueDragResize
-          :isDraggable="false"
-          :w="200"
-          :h="200"
-          v-on:resizing="resize"
-          v-on:dragging="resize"
-        >
-          <h3>Drag/resize Area</h3>
-          <p>{{ top }} х {{ left }}</p>
-          <p>{{ width }} х {{ height }}</p>
-        </VueDragResize>
-      </div>
+      <table class="table" border="2px">
+        <thead>
+          <th>Company Name</th>
+          <th>Free Area (m2)</th>
+          <th>Industry</th>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(supplier, key, index) in filteredSuppliers"
+            :key="index"
+            v-show="industry[supplier.industry]"
+          >
+            <td>{{supplier.companyName}}</td>
+            <td @click="resize(supplier.area)">{{supplier.area}}</td>
+            <td>{{supplier.industry}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="freeArea" v-bind:style="{ width: width + 'px', height: height + 'px'}">
+      <VueDragResize
+        class="dragResize"
+        :isDraggable="false"
+        :sticks="['bm', 'mr', 'br']"
+        :w="50"
+        :h="50"
+        v-on:resizing="resize"
+        v-on:dragging="resize"
+      >
+        <h3>Free Area</h3>
+        <p>{{ width }} х {{ height }}</p>
+      </VueDragResize>
     </div>
   </div>
 </template>
@@ -95,9 +94,7 @@ export default {
       filteredSuppliers: [],
       showAll: true,
       width: 200,
-      height: 200,
-      top: 0,
-      left: 0
+      height: 200
     };
   },
 
@@ -111,11 +108,9 @@ export default {
       this.filteredSuppliers = info;
       this.getAllCategories();
     },
-    resize(newRect) {
-      this.width = newRect.width;
-      this.height = newRect.height;
-      this.top = newRect.top;
-      this.left = newRect.left;
+    resize(area) {
+      this.width = area;
+      this.height = area;
     },
 
     filterByArea() {
