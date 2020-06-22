@@ -1,6 +1,9 @@
 <template>
   <div class="suppliers">
     <router-link to="/">Go to News</router-link>
+    <div>
+      <router-link to="resize">Drag/resizing Page</router-link>
+    </div>
     <div class="input-group mb-3 row">
       <div class="input-group-prepend">
         <span class="input-group-text">Max Area Filter</span>
@@ -53,38 +56,20 @@
             v-show="industry[supplier.industry]"
           >
             <td>{{supplier.companyName}}</td>
-            <td @click="resize(supplier.area)">{{supplier.area}}</td>
+            <td>{{supplier.area}}</td>
             <td>{{supplier.industry}}</td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="freeArea" v-bind:style="{ width: width + 'px', height: height + 'px'}">
-      <VueDragResize
-        class="dragResize"
-        :isDraggable="false"
-        :sticks="['bm', 'mr', 'br']"
-        :w="50"
-        :h="50"
-        v-on:resizing="resize"
-        v-on:dragging="resize"
-      >
-        <h3>Free Area</h3>
-        <p>{{ width }} х {{ height }}</p>
-      </VueDragResize>
     </div>
   </div>
 </template>
 
 <script>
 import info from "js-yaml-loader!../../suppliers.yaml";
-import VueDragResize from "vue-drag-resize";
 export default {
   name: "Suppliers",
   props: { industry: Object },
-  components: {
-    VueDragResize
-  },
 
   data() {
     return {
@@ -92,9 +77,7 @@ export default {
       nameSearch: "",
       suppliers: [],
       filteredSuppliers: [],
-      showAll: true,
-      width: 200,
-      height: 200
+      showAll: true
     };
   },
 

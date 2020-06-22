@@ -63,14 +63,4 @@ div.hidden {
     max-width: 1400px;
     margin-right: auto;
     margin-left: auto;
-
-    div.freeArea {
-        background-color: green;
-    }
-
-    div.freeArea>.dragResize {
-        position: relative;
-        background-color: #00FF00;
-        margin-right: auto;
-    }
 }

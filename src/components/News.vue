@@ -4,6 +4,9 @@
     <div>
       <router-link to="/privacy-policy">Our Company Privacy Policy</router-link>
     </div>
+    <div>
+      <router-link to="resize">Drag/resizing Page</router-link>
+    </div>
     <div class="container">
       <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
