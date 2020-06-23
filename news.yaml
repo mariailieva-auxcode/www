@@ -1,5 +1,11 @@
 # CMS structure
 
+-   url: https://nltimes.nl/2020/05/29/netherlands-using-renewable-energy-mostly-biomass/
+    description: 'Demo for Jalal.'
+    expiry: 2020-08-01
+    categories: 
+      -  subsidy
+
 -   url: https://longreads.cbs.nl/european-scale-2019/renewable-energy/
     description: 'Something about power.'
     expiry: 2020-08-01
