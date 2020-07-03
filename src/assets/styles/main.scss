@@ -2,9 +2,7 @@
 @import "components/_secondary_news_box.scss";
 @import "components/_tertiery_news_box.scss";
 
-div#app {
-    margin-top: 3%;
-}
+$color__white: white;
 
 h2#pageTitle {
     font-family: serif;

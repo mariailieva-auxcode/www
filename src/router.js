@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Table from './components/Table'
-import News from "./components/News.vue"
+import MainPage from "./components/MainPage.vue"
 import Footer from "./components/Footer.vue"
 import ResizingBoxes from "./components/ResizingBoxes.vue"
 
@@ -10,8 +10,8 @@ Vue.use(Router);
 export default new Router({
     routes: [{
         path: "/",
-        name: "news",
-        component: News
+        name: "MainPage",
+        component: MainPage
     },
     {
         path: "/table",

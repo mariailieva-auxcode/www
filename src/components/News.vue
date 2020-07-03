@@ -1,63 +1,70 @@
 <template>
   <div style="font-family: serif" class="news">
-    <router-link to="/table">Go to Table</router-link>
-    <div>
-      <router-link to="/privacy-policy">Our Company Privacy Policy</router-link>
-    </div>
-    <div>
-      <router-link to="resize">Drag/resizing Page</router-link>
-    </div>
     <div class="container">
-      <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
-      <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
-      <div class="row news-container">
-        <div class="col-6">
-          <MainNews :data="data[0]" :isMain="true"></MainNews>
+      <div class="row">
+        <!-- <router-link to="/table">Go to Table</router-link>
+        <div>
+          <router-link to="/privacy-policy">Our Company Privacy Policy</router-link>
         </div>
-        <div class="col-6 secondaryNews">
-          <SecondaryNews :data="data[1]"></SecondaryNews>
+        <div>
+          <router-link to="resize">Drag/resizing Page</router-link>
+        </div>-->
+        <div class="container">
           <div class="row">
-            <div class="col-6 tertNews">
-              <TertNews :data="data[2]" :isMain="false"></TertNews>
-            </div>
-            <div class="col-6 tertNews">
-              <TertNews :data="data[3]" :isMain="false"></TertNews>
-            </div>
+            <h1>01</h1>
+            <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
           </div>
-        </div>
+          <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
+          <div class="row news-container">
+            <div class="col-6">
+              <MainNews :data="data[0]" :isMain="true"></MainNews>
+            </div>
+            <div class="col-6 secondaryNews">
+              <SecondaryNews :data="data[1]"></SecondaryNews>
+              <div class="row">
+                <div class="col-6 tertNews">
+                  <TertNews :data="data[2]" :isMain="false"></TertNews>
+                </div>
+                <div class="col-6 tertNews">
+                  <TertNews :data="data[3]" :isMain="false"></TertNews>
+                </div>
+              </div>
+            </div>
 
-        <div class="row">
-          <div
-            v-for="(category, index) in filteredCategories"
-            :key="index"
-            :class="`col-${12/filteredCategories.length}`"
-          >
-            <h3>{{category}}</h3>
-            <div
-              v-for="(item, index) in getPostsByCategory(category)"
-              :key="index"
-              class="mb-2"
-              :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
-            >
-              <a :href="item.url" target="_blank">
-                <button type="button" class="btn btn-info">{{item.description}}</button>
-              </a>
+            <div class="row">
+              <div
+                v-for="(category, index) in filteredCategories"
+                :key="index"
+                :class="`col-${12/filteredCategories.length}`"
+              >
+                <h3>{{category}}</h3>
+                <div
+                  v-for="(item, index) in getPostsByCategory(category)"
+                  :key="index"
+                  class="mb-2"
+                  :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
+                >
+                  <a :href="item.url" target="_blank">
+                    <button type="button" class="btn btn-info">{{item.description}}</button>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <cookie-law>
+          <div slot-scope="props">
+            <button class="skew" @click="props.accept">
+              <span>I accept</span>
+            </button>
+            <p>This site uses cookies 🍪</p>
+            <button class="skew" @click="props.close">
+              <span>Ignore me</span>
+            </button>
+          </div>
+        </cookie-law>
       </div>
     </div>
-    <cookie-law>
-      <div slot-scope="props">
-        <button class="skew" @click="props.accept">
-          <span>I accept</span>
-        </button>
-        <p>This site uses cookies 🍪</p>
-        <button class="skew" @click="props.close">
-          <span>Ignore me</span>
-        </button>
-      </div>
-    </cookie-law>
   </div>
 </template>
 
@@ -172,4 +179,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/main.scss";
+.row {
+  max-width: 80%;
+  .container {
+    h1 {
+      z-index: 0;
+      font-size: 190px;
+      color: #f7f7fa;
+    }
+  }
+}
 </style>
