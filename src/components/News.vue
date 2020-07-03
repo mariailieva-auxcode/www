@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../news.yaml";
+import info from "js-yaml-loader!../../content/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";

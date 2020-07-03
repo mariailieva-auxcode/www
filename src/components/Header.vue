@@ -33,7 +33,12 @@
 </template>
 
 <script>
-export default {};
+import header from "js-yaml-loader!../../content/header.yaml";
+export default {
+  mounted () {
+    console.log(header)
+  }
+};
 </script>
 
 <style scoped lang="scss">
