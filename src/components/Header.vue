@@ -41,8 +41,11 @@ export default {};
 .body {
   display: flex;
   flex-direction: row;
+  height: 100vh;
   width: 100%;
   .menu {
+    background: white;
+    position: fixed;
     width: 100px;
     height: 100vh;
     .logo {
