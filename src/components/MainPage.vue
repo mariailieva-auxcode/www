@@ -5,6 +5,7 @@
     <Database></Database>
     <Tools></Tools>
     <WhatIsGreen></WhatIsGreen>
+    <OnsTeam></OnsTeam>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import News from "./News.vue";
 import Database from "./Database.vue";
 import Tools from "./Tools.vue";
 import WhatIsGreen from "./WhatIsGreen";
+import OnsTeam from "./OnsTeam.vue";
 
 export default {
   components: {
@@ -21,7 +23,8 @@ export default {
     News,
     Database,
     Tools,
-    WhatIsGreen
+    WhatIsGreen,
+    OnsTeam
   }
 };
 </script>
