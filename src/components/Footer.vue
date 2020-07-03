@@ -8,7 +8,7 @@
 
 <script>
 import marked from "marked";
-import gdpr from "raw-loader!../../gdpr.md";
+import gdpr from "raw-loader!../../content/gdpr.md";
 export default {
   name: "Footer",
 
