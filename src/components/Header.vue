@@ -27,6 +27,12 @@
         <h1>Connecting renewable energy!</h1>
         <h3>Greenatlas.earth is hét matchmaking platform voor vraag en aanbod in de zakelijke duurzame energiemarkt.</h3>
         <p>Ik ben</p>
+        <button class="button-choice">
+          <p>Are you a site owner</p>
+        </button>
+        <button class="button-choice">
+          <p>Are you a project developer</p>
+        </button>
       </div>
     </div>
   </div>
@@ -35,8 +41,8 @@
 <script>
 import header from "js-yaml-loader!../../content/header.yaml";
 export default {
-  mounted () {
-    console.log(header)
+  mounted() {
+    console.log(header);
   }
 };
 </script>
@@ -94,6 +100,21 @@ export default {
       p {
         font-size: 14px;
         font-weight: bold;
+        margin-top: 30px;
+      }
+      .button-choice {
+        border-radius: 10px;
+        background-color: #55b364;
+        width: 225px;
+        height: 46px;
+        border: none;
+        margin: 35px 12px 0 12px;
+        p {
+          font-size: 14px;
+          color: white;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
       }
     }
   }
