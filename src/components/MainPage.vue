@@ -8,6 +8,7 @@
     <OnsTeam></OnsTeam>
     <Partners></Partners>
     <OurSurvey></OurSurvey>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import WhatIsGreen from "./WhatIsGreen";
 import OnsTeam from "./OnsTeam.vue";
 import Partners from "./Partners.vue";
 import OurSurvey from "./OurSurvey.vue";
+import Footer from "./Footer.vue";
 
 export default {
   components: {
@@ -30,7 +32,8 @@ export default {
     WhatIsGreen,
     OnsTeam,
     Partners,
-    OurSurvey
+    OurSurvey,
+    Footer
   }
 };
 </script>
