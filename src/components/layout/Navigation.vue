@@ -1,21 +1,23 @@
 <template>
   <div class="menu">
     <div class="col-12 logo">
-      <img src="../../public/assets/logo.png" />
+      <img src="assets/logo.png" />
     </div>
     <div class="row">
       <div class="col-12 home-logo">
-        <button>
-          <img src="../../public/assets/home.png" />
-          <p class="home">Home</p>
-        </button>
+        <router-link to="/">
+          <button>
+            <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
+            <p class="home">Home</p>
+          </button>
+        </router-link>
       </div>
     </div>
     <div class="row">
       <div class="col-12 news-logo">
         <router-link to="/news">
           <button>
-            <img src="../../public/assets/news.png" />
+            <img :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'" />
             <p class="news">News</p>
           </button>
         </router-link>
@@ -24,7 +26,18 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<script>
+export default {
+  name: "Navigation",
+  computed: {
+    currentPage() {
+      return this.$route.path;
+    }
+  }
+}
+</script>
+
+<style lang="scss">
 .menu {
   background: white;
   position: fixed;
@@ -39,16 +52,19 @@
     .news-logo {
       margin-top: 40px;
     }
+    .router-link-exact-active button p {
+      color: #55b364;
+    }
     button {
       border: none;
       background-color: white;
-      .home {
-        color: #55b364;
-      }
-      .news {
+      .news, .home {
         color: #9597ac;
         font-size: 14px;
         margin-top: 5px;
+      }
+      &:focus {
+        outline: none
       }
     }
   }

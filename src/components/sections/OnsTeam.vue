@@ -24,27 +24,26 @@
         </div>
         <div class="row information">
           <div class="col-1">
-            <img src="../../public/assets/envelope.png" />
+            <img src="assets/envelope.png" />
           </div>
           <div class="col-6 email">
             <p>{{team.email}}</p>
           </div>
           <div class="col-5 linkedin">
             <div class="row">
-              <img class="linkedin" src="../../public/assets/linked-in-blue.png" />
+              <img class="linkedin" src="assets/linked-in-blue.png" />
               <router-link to="/" class="email">Visit LinkedIn profile</router-link>
-              <img class="arrow" src="../../public/assets/arrow-right-blue.png" />
+              <img class="arrow" src="assets/arrow-right-blue.png" />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <img :src="'../../public/assets/foto-Thomas-Shaw.png'" /> -->
   </div>
 </template>
 
 <script>
-import team from "js-yaml-loader!../../content/team.yaml";
+import team from "js-yaml-loader!../../../content/team.yaml";
 export default {
   data() {
     return {
@@ -60,7 +59,7 @@ export default {
 
 
 <style scoped lang="scss">
-@import "../assets/styles/main.scss";
+@import "../../assets/styles/main.scss";
 .team {
   max-width: 80%;
   h1 {

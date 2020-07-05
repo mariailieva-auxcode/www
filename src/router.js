@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Table from './components/Table'
+import Table from './components/builder/Table'
 import MainPage from "./components/MainPage.vue"
-import ResizingBoxes from "./components/ResizingBoxes.vue"
-import News from './components/News.vue'
+import ResizingBoxes from "./components/builder/ResizingBoxes.vue"
+import News from './components/news/News.vue'
 import PrivacyPolicy from './components/PrivacyPolicy.vue'
 
 Vue.use(Router);
 
 export default new Router({
+    mode: 'history',
     routes: [{
         path: "/",
         name: "MainPage",
@@ -29,6 +30,5 @@ export default new Router({
     {
         path: "/news",
         component: News
-    }
-    ]
+    }]
 })

@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="navigation">
-      <Navigation></Navigation>
-    </div>
-    <div class="content">
+    <div>
       <Header></Header>
       <News1></News1>
       <News :isPreview="true"></News>
@@ -13,7 +10,6 @@
       <OnsTeam></OnsTeam>
       <Partners></Partners>
       <OurSurvey></OurSurvey>
-      <Footer></Footer>
     </div>
 
     <cookie-law>
@@ -31,17 +27,15 @@
 </template>
 
 <script>
-import Header from "./Header.vue";
-import News1 from "./News1.vue";
-import News from "./News.vue";
-import Database from "./Database.vue";
-import Tools from "./Tools.vue";
-import WhatIsGreen from "./WhatIsGreen";
-import OnsTeam from "./OnsTeam.vue";
-import Partners from "./Partners.vue";
-import OurSurvey from "./OurSurvey.vue";
-import Footer from "./Footer.vue";
-import Navigation from "./Navigation.vue"
+import Header from "./layout/Header";
+import News1 from "./news/News1";
+import News from "./news/News.vue";
+import Database from "./sections/Database.vue";
+import Tools from "./sections/Tools.vue";
+import WhatIsGreen from "./sections/WhatIsGreen";
+import OnsTeam from "./sections/OnsTeam.vue";
+import Partners from "./sections/Partners.vue";
+import OurSurvey from "./sections/OurSurvey.vue";
 
 import CookieLaw from "vue-cookie-law";
 
@@ -56,16 +50,10 @@ export default {
     OnsTeam,
     Partners,
     OurSurvey,
-    Footer,
-    CookieLaw,
-    Navigation
+    CookieLaw
   }
 };
 </script>
 
 <style scoped lang="scss">
-.content {
-  width: calc(100vw - 100px);
-  float: right;
-}
 </style>

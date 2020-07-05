@@ -1,5 +1,5 @@
 <template>
-  <div class="row align-items-baseline">
+  <div class="row row-fluid align-items-baseline">
     <div class="col-3">
       <form @submit.prevent="submit">
         <div class="form-group">
@@ -14,18 +14,18 @@
         </div>
       </form>
     </div>
-    <div class="col-9 d-flex">
-      <button
+    <div class="col-9 d-flex categories">
+      <p
         class="btn"
-        :class="showAll ? 'btn-primary' : 'btn-secondary'"
+        :class="showAll ? 'categories__active' : 'categories__unactive'"
         @click="toggleAllNews()"
-      >All</button>
-      <div class="form-check category" v-for="(val, key, index) in categories" :key="index">
-        <button
+      >All</p>
+      <div class="form-check options" v-for="(val, key, index) in categories" :key="index">
+        <p
           class="btn"
-          :class="categories[key] && !showAll ? 'btn-primary' : 'btn-secondary'"
+          :class="categories[key] && !showAll ? 'categories__active' : 'categories__unactive'"
           @click="filter(key)"
-        >{{key}}</button>
+        >{{key}}</p>
       </div>
     </div>
   </div>
@@ -70,9 +70,23 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-@import "../assets/styles/main.scss";
-.category {
-  margin-right: 10px;
+<style lang="scss" scoped>
+@import "../../assets/styles/main.scss";
+.categories {
+  .options {
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  &__active {
+    font-weight: bold;
+  }
+
+  &__unactive {
+    font-weight: normal;
+  }
 }
 </style>

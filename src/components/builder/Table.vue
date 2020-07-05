@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../content/suppliers.yaml";
+import info from "js-yaml-loader!../../../content/suppliers.yaml";
 export default {
   name: "Suppliers",
   props: { industry: Object },
@@ -148,5 +148,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/main.scss";
+@import "../../assets/styles/main.scss";
 </style>
