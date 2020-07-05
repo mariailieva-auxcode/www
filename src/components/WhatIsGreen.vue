@@ -1,11 +1,10 @@
 <template>
   <div class="row">
-    <div class="col-6">
+    <div class="col-6 image">
       <img src="../../public/assets/greenatlas.earth.png" />
     </div>
     <div class="col-6">
       <div class="col-12">
-        <p class="title">Section Title</p>
         <h1>What Is greenatlas.earth</h1>
       </div>
       <p>
@@ -53,14 +52,17 @@
 
 .row {
   max-width: 95%;
-
-  .title {
-    z-index: 0;
-    font-size: 84px;
-    color: #f7f7fa;
-  }
   h1 {
     margin-bottom: 35px;
+    margin-top: 60px;
+    font-size: 45px;
+    color: #26272e;
+  }
+  .col-6 {
+    margin-top: 150px;
+    text-align: left;
+    color: #9597ac;
+    font-size: 14px;
   }
 }
 </style>
