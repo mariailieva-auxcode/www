@@ -1,41 +1,15 @@
 <template>
-  <div class="body">
-    <div class="menu">
-      <div class="col-12 logo">
-        <img src="../../public/assets/logo.png" />
-      </div>
-      <div class="row">
-        <div class="col-12 home-logo">
-          <button>
-            <img src="../../public/assets/home.png" />
-            <p class="home">Home</p>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 news-logo">
-          <router-link to="/news">
-            <button>
-              <img src="../../public/assets/news.png" />
-              <p class="news">News</p>
-            </button>
-          </router-link>
-        </div>
-      </div>
-    </div>
-
-    <div class="header">
-      <div class="header-content">
-        <h1>{{title}}</h1>
-        <h3>{{description}}</h3>
-        <p>Ik ben</p>
-        <button class="button-choice">
-          <p>{{button1}}</p>
-        </button>
-        <button class="button-choice">
-          <p>{{button2}}</p>
-        </button>
-      </div>
+  <div class="header">
+    <div class="header-content">
+      <h1>{{title}}</h1>
+      <h3>{{description}}</h3>
+      <p>Ik ben</p>
+      <button class="button-choice">
+        <p>{{button1}}</p>
+      </button>
+      <button class="button-choice">
+        <p>{{button2}}</p>
+      </button>
     </div>
   </div>
 </template>
@@ -62,72 +36,39 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/styles/main.scss";
-.body {
+.header {
+  background-image: url("../../public/assets/header-image.png");
+  background-size: cover;
+  flex-grow: 1;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  width: 100%;
-  .menu {
-    background: white;
-    position: fixed;
-    width: 100px;
-    height: 100vh;
-    .logo {
-      margin: 20px auto 60px auto;
+  .header-content {
+    width: 60%;
+    color: $color__white;
+    h1 {
+      font-size: 50px;
+      font-weight: bold;
+      margin-bottom: 15px;
     }
-    .row {
-      text-align: center;
-
-      .news-logo {
-        margin-top: 40px;
-      }
-      button {
-        border: none;
-        background-color: white;
-        .home {
-          color: #55b364;
-        }
-        .news {
-          color: #9597ac;
-          font-size: 14px;
-          margin-top: 5px;
-        }
-      }
+    p {
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 30px;
     }
-  }
-  .header {
-    background-image: url("../../public/assets/header-image.png");
-    background-size: cover;
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .header-content {
-      width: 60%;
-      color: $color__white;
-      h1 {
-        font-size: 50px;
-        font-weight: bold;
-        margin-bottom: 15px;
-      }
+    .button-choice {
+      border-radius: 10px;
+      background-color: #55b364;
+      width: 225px;
+      height: 46px;
+      border: none;
+      margin: 35px 12px 0 12px;
       p {
         font-size: 14px;
-        font-weight: bold;
-        margin-top: 30px;
-      }
-      .button-choice {
-        border-radius: 10px;
-        background-color: #55b364;
-        width: 225px;
-        height: 46px;
-        border: none;
-        margin: 35px 12px 0 12px;
-        p {
-          font-size: 14px;
-          color: white;
-          margin-top: auto;
-          margin-bottom: auto;
-        }
+        color: white;
+        margin-top: auto;
+        margin-bottom: auto;
       }
     }
   }

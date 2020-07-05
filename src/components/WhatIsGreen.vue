@@ -5,47 +5,37 @@
     </div>
     <div class="col-6">
       <div class="col-12">
-        <h1>What Is greenatlas.earth</h1>
+        <h1>{{whatIs.title}}</h1>
       </div>
       <p>
-        Wij matchen perceeleigenaren met projectontwikkelaars, installateurs, adviseurs en
-        inancierders op basis van de meest passende profielen. Door de markt te voorzien van
-        transparante, onpartijdige informatie en hen de tools te geven om elkaar te vinden dragen wij bij aan
-        een efficiëntere markt en snellere energietransitie.
+        {{whatIs.description}}
       </p>
-      <div class="row">
+      <div class="row" v-for="bullet of whatIs.bullets" :key="bullet">
         <div class="col-2 small-logo">
           <img src="../../public/assets/solar power.png" />
         </div>
         <div class="col-10">
-          <p>De markt te voorzien van transparante, betrouwbare, onafhankelijke informatie.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-2 small-logo">
-          <img src="../../public/assets/solar power.png" />
-        </div>
-        <div class="col-10">
-          <p>
-            Complexe stappen in het projectontwikkelingsprocess voor beide kanten van de markt zoals
-            vergunningaanvragen, contracten enz. te digitaliseren en stroomlijnen.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-2 small-logo">
-          <img src="../../public/assets/solar power.png" />
-        </div>
-        <div class="col-10">
-          <p>
-            Tools te bieden waarmee perceeleigenaren op makkelijke en effectieve wijze inzicht kunnen krijgen
-            in de potentie en mogelijkheden van hun locatie;
-          </p>
+          <p>{{bullet}}</p>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import whatIs from "js-yaml-loader!../../content/whatis.yaml";
+export default {
+  name: "WhatIsGreen",
+  data() {
+    return {
+      whatIs: {}
+    };
+  },
+  mounted() {
+    this.whatIs = whatIs;
+  }
+};
+</script>
 
 <style scoped lang="scss">
 @import "../assets/styles/main.scss";

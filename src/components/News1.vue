@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row news-text">
       <div class="col-2">
         <h1>News</h1>
@@ -30,10 +30,11 @@ export default {};
 </script>
 
 <style scoped lang="scss">
-.container {
+.container-fluid {
+  margin-bottom: 75px;
   .news-text {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 160px;
     .col-2 > h1 {
       font-size: 45px;

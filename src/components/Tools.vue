@@ -6,9 +6,7 @@
     <div class="row">
       <div class="col-6 text">
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.
+          {{tools.description}}
         </p>
         <button>
           <p>
@@ -25,7 +23,18 @@
 </template>
 
 <script>
-export default {};
+import tools from "js-yaml-loader!../../content/tools.yaml";
+export default {
+  name: "Tools",
+  data() {
+    return {
+      tools: {}
+    };
+  },
+  mounted() {
+    this.tools = tools;
+  }
+};
 </script>
 
 <style scoped lang="scss">

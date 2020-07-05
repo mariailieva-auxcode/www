@@ -1,20 +1,21 @@
 <template>
   <div class="footer">
-    <!-- <router-link to="/">Go to News</router-link>
-    <div v-html="html"></div>
-    <router-link to="/">Go to News</router-link>-->
     <div class="row">
       <div class="col-3">
-        <p>Privacy Policy</p>
+        <router-link to="/privacy-policy">
+          <p class="footer-title privacy-policy">Privacy Policy</p>
+        </router-link>
       </div>
       <div class="col-3">
-        <p>Contact</p>
-        <p>
-          <img class="icon" src="../../public/assets/envelope-white.png" />jaap@greenatlas.earth
-        </p>
+        <p class="footer-title">Contact</p>
+        <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
+          <p>
+            <img class="icon" src="../../public/assets/envelope-white.png" />{{contact}}
+          </p>
+        </a>
       </div>
       <div class="col-3">
-        <p>Social Links</p>
+        <p class="footer-title">Social Links</p>
         <p>
           <img class="icon" src="../../public/assets/linked-in-white.png" />/greenatlas
         </p>
@@ -27,18 +28,16 @@
 </template>
 
 <script>
-import marked from "marked";
-import gdpr from "raw-loader!../../content/gdpr.md";
+import footer from "js-yaml-loader!../../content/footer.yaml";
 export default {
   name: "Footer",
-
   data() {
     return {
-      html: ""
+      footer: {}
     };
   },
   mounted() {
-    this.html = marked(gdpr);
+    this.footer = footer;
   }
 };
 </script>
@@ -49,7 +48,16 @@ export default {
   height: 200px;
   background-color: #26272e;
   margin-top: 100px;
-  .col-3 {
+  text-align: left;
+  .footer-title {
+    font-weight: bold;
+  }
+
+  .privacy-policy {
+    text-align: center;
+  }
+
+  .col-3, a {
     color: white;
     margin-top: auto;
     margin-bottom: auto;

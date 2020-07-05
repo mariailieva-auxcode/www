@@ -3,13 +3,13 @@
     <div>
       <h1>Ons team</h1>
     </div>
-    <div class="row yaml-links row" v-for="team of team" :key="team">
+    <div class="row yaml-links row" v-for="team of team" :key="team.name">
       <div class="col-3 picture">
         <img :src="team.picture" />
       </div>
-      <div class="col-9">
+      <div class="col-9 team-card">
         <div class="col-12 name">
-          <h3>{{team.name}}</h3>
+          <h3 class="team-name">{{team.name}}</h3>
         </div>
 
         <div class="row">
@@ -48,19 +48,12 @@ import team from "js-yaml-loader!../../content/team.yaml";
 export default {
   data() {
     return {
-      name: "",
-      position: "",
-      about: "",
-      team: team,
-      email: ""
+      team: undefined
     };
   },
 
   mounted() {
-    this.name = team.name;
-    this.position = team.position;
-    this.about = team.about;
-    this.email = team.email;
+    this.team = team;
   }
 };
 </script>
@@ -75,15 +68,23 @@ export default {
     margin-top: 150px;
     margin-left: 200px;
   }
+  .team-card {
+    padding: 25px 25px 0px 0;
+  }
+  h3.team-name {
+    font-size: 20px;
+  }
   .yaml-links {
     margin-left: 250px;
     margin-bottom: 30px;
-    margin-top: 100px;
     box-shadow: 0px 0px 30px #1d226f1a;
     border-radius: 10px;
     text-align: left;
     .picture {
       padding-left: 0;
+      img {
+        width: 100%;
+      }
     }
   }
   .col-9 {
@@ -99,6 +100,7 @@ export default {
     }
     .about {
       font-size: 16px;
+      line-height: 1.0;
       color: #9597ac;
     }
     .email {

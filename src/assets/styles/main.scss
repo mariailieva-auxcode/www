@@ -20,6 +20,10 @@ sans-serif;
 
 $color__white: white;
 
+.row.row-fluid {
+    max-width: 100%;
+}
+
 h2#pageTitle {
     font-family: serif;
     font-weight: 300;
@@ -60,20 +64,3 @@ div.hidden {
     visibility: hidden;
 }
 
-.news-container>.col-6 {
-    height: 635px;
-}
-
-.news-container>.secondaryNews>.news {
-    height: 320px;
-}
-
-.news-container>.secondaryNews>.row {
-    height: 315px;
-}
-
-.suppliers {
-    max-width: 1400px;
-    margin-right: auto;
-    margin-left: auto;
-}

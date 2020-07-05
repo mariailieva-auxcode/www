@@ -1,67 +1,44 @@
 <template>
-  <div style="font-family: serif" class="news">
-    <div class="container">
+  <div style="font-family: serif" :class="{'news-preview': isPreview, 'news': !isPreview}">
+    <div class="container-fluid">
       <div class="row">
-        <!-- <router-link to="/table">Go to Table</router-link>
-        <div>
-          <router-link to="/privacy-policy">Our Company Privacy Policy</router-link>
+        <h2 id="pageTitle" class="d-flex justify-content-start mb-4" v-if="!isPreview">News</h2>
+      </div>
+      <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
+      <div class="row news-container">
+        <div class="col-6">
+          <MainNews :data="data[0]" :isMain="true"></MainNews>
         </div>
-        <div>
-          <router-link to="resize">Drag/resizing Page</router-link>
-        </div>-->
-        <div class="container">
-          <div class="row">
-            <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
-          </div>
-          <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
-          <div class="row news-container">
+        <div class="col-6 secondaryNews">
+          <div class="row row-fluid">
             <div class="col-6">
-              <MainNews :data="data[0]" :isMain="true"></MainNews>
+              <TertNews :data="data[1]"></TertNews>
             </div>
-            <div class="col-6 secondaryNews">
-              <SecondaryNews :data="data[1]"></SecondaryNews>
-              <div class="row">
-                <div class="col-6 tertNews">
-                  <TertNews :data="data[2]" :isMain="false"></TertNews>
-                </div>
-                <div class="col-6 tertNews">
-                  <TertNews :data="data[3]" :isMain="false"></TertNews>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div
-                v-for="(category, index) in filteredCategories"
-                :key="index"
-                :class="`col-${12/filteredCategories.length}`"
-              >
-                <h3>{{category}}</h3>
-                <div
-                  v-for="(item, index) in getPostsByCategory(category)"
-                  :key="index"
-                  class="mb-2"
-                  :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
-                >
-                  <a :href="item.url" target="_blank">
-                    <button type="button" class="btn btn-info">{{item.description}}</button>
-                  </a>
-                </div>
-              </div>
+            <div class="col-6">
+              <TertNews :data="data[2]" :isMain="false"></TertNews>
             </div>
           </div>
         </div>
-        <cookie-law>
-          <div slot-scope="props">
-            <button class="skew" @click="props.accept">
-              <span>I accept</span>
-            </button>
-            <p>This site uses cookies 🍪</p>
-            <button class="skew" @click="props.close">
-              <span>Ignore me</span>
-            </button>
+      </div>
+
+      <div class="row" v-if="!isPreview">
+        <div
+          v-for="(category, index) in filteredCategories"
+          :key="index"
+          :class="`col-${12/filteredCategories.length}`"
+        >
+          <h3>{{category}}</h3>
+          <div
+            v-for="(item, index) in getPostsByCategory(category)"
+            :key="index"
+            class="mb-2"
+            :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
+          >
+            <a :href="item.url" target="_blank">
+              <button type="button" class="btn btn-info">{{item.description}}</button>
+            </a>
           </div>
-        </cookie-law>
+        </div>
       </div>
     </div>
   </div>
@@ -71,18 +48,17 @@
 import info from "js-yaml-loader!../../content/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
-import SecondaryNews from "./SecondaryNews";
 import TertNews from "./TertieryNews";
-import CookieLaw from "vue-cookie-law";
 
 export default {
   name: "News",
   components: {
     Search,
     MainNews,
-    SecondaryNews,
-    TertNews,
-    CookieLaw
+    TertNews
+  },
+  props: {
+    isPreview: { default: false, type: Boolean }
   },
   data() {
     return {
@@ -180,5 +156,25 @@ export default {
 @import "../assets/styles/main.scss";
 .row {
   max-width: 80%;
+}
+
+.news {
+  .news-container>.col-6 {
+      height: 635px;
+  }
+
+  .news-container>.secondaryNews>.news {
+      height: 320px;
+  }
+
+  .news-container>.secondaryNews>.row {
+      height: 315px;
+  }
+
+  .suppliers {
+      max-width: 1400px;
+      margin-right: auto;
+      margin-left: auto;
+  }
 }
 </style>

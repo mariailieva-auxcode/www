@@ -8,11 +8,7 @@
         <img src="../../public/assets/person-writing-on-notebook.png" />
       </div>
       <div class="col-6 text">
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.
-        </p>
+        <p>{{database.description}}</p>
         <button>
           <p>
             Coming soon
@@ -25,7 +21,18 @@
 </template>
 
 <script>
-export default {};
+import database from "js-yaml-loader!../../content/database.yaml";
+export default {
+  name: "Database",
+  data() {
+    return {
+      database: {}
+    };
+  },
+  mounted() {
+    this.database = database;
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -34,7 +41,7 @@ export default {};
   .row {
     max-width: 80%;
     h1 {
-      margin: 150px 0 80px 80px;
+      margin: 0 0 80px 80px;
     }
     .col-6 {
       p {
