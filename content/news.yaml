@@ -5,10 +5,11 @@
     expiry: 2020-08-01
     categories: 
       -  subsidy
+    tag: SITE OWNER
 
 -   url: https://longreads.cbs.nl/european-scale-2019/renewable-energy/
     description: 'Something about power.'
-    expiry: 2020-08-01
+    expiry: 2020-06-01
     categories: 
       -  subsidy
       
@@ -23,12 +24,14 @@
     expiry: 2020-08-01
     categories: 
       -  subsidy
+    tag: PROJECT DEVELOPER
 
 -   url: https://english.rvo.nl/subsidies-programmes/sde
     description: 'Stimulation of Sustainable Energy Production (SDE+) is a subsidy for the production of renewable energy in the Netherlands in 6 categories: biomass, geothermal, water, wind (land, lake and flood defense) and sun.'
     expiry: 2020-08-01
     categories: 
       -  subsidy
+    tag: PROJECT DEVELOPER
 
 -   url: https://euobserver.com/environment/147263
     description: The Netherlands is not that advanced in Renewable Energy as one would think.

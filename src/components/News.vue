@@ -1,21 +1,21 @@
 <template>
-  <div style="font-family: serif" :class="{'news-preview': isPreview, 'news': !isPreview}">
+  <div :class="{'news-preview': isPreview, 'news': !isPreview}">
     <div class="container-fluid">
-      <div class="row">
-        <h2 id="pageTitle" class="d-flex justify-content-start mb-4" v-if="!isPreview">News</h2>
+      <div class="row" v-if="!isPreview">
+        <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
       </div>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
-      <div class="row news-container">
+      <div class="row row-fluid news-container">
         <div class="col-6">
           <MainNews :data="data[0]" :isMain="true"></MainNews>
         </div>
         <div class="col-6 secondaryNews">
           <div class="row row-fluid">
             <div class="col-6">
-              <TertNews :data="data[1]"></TertNews>
+              <MainNews :data="data[1]" :isMain="false"></MainNews>
             </div>
             <div class="col-6">
-              <TertNews :data="data[2]" :isMain="false"></TertNews>
+              <MainNews :data="data[2]" :isMain="false"></MainNews>
             </div>
           </div>
         </div>
@@ -48,14 +48,12 @@
 import info from "js-yaml-loader!../../content/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
-import TertNews from "./TertieryNews";
 
 export default {
   name: "News",
   components: {
     Search,
-    MainNews,
-    TertNews
+    MainNews
   },
   props: {
     isPreview: { default: false, type: Boolean }
@@ -73,6 +71,7 @@ export default {
     this.init();
     this.getAllCategories();
     this.getFilteredCategories();
+    console.log(this.isPreview)
   },
   methods: {
     getPostsByCategory(category) {
