@@ -31,17 +31,17 @@
 </template>
 
 <script>
-import Header from "./Header.vue";
-import News1 from "./News1.vue";
-import News from "./News.vue";
-import Database from "./Database.vue";
-import Tools from "./Tools.vue";
-import WhatIsGreen from "./WhatIsGreen";
-import OnsTeam from "./OnsTeam.vue";
-import Partners from "./Partners.vue";
-import OurSurvey from "./OurSurvey.vue";
-import Footer from "./Footer.vue";
-import Navigation from "./Navigation.vue"
+import Header from "./layout/Header";
+import News1 from "./news/News1";
+import News from "./news/News.vue";
+import Database from "./sections/Database.vue";
+import Tools from "./sections/Tools.vue";
+import WhatIsGreen from "./sections/WhatIsGreen";
+import OnsTeam from "./sections/OnsTeam.vue";
+import Partners from "./sections/Partners.vue";
+import OurSurvey from "./sections/OurSurvey.vue";
+import Footer from "./layout/Footer.vue";
+import Navigation from "./layout/Navigation.vue"
 
 import CookieLaw from "vue-cookie-law";
 

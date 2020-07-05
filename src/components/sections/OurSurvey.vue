@@ -16,7 +16,7 @@
           <button>
             <p class="btn-text">
               Take the survey
-              <img src="../../public/assets/arrow-right-white.png" />
+              <img src="assets/arrow-right-white.png" />
             </p>
           </button>
         </a>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import survey from "js-yaml-loader!../../content/survey.yaml";
+import survey from "js-yaml-loader!../../../content/survey.yaml";
 export default {
   name: "Survey",
   data() {

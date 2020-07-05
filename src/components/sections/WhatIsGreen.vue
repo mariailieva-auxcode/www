@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-6 image">
-      <img src="../../public/assets/greenatlas.earth.png" />
+      <img src="assets/greenatlas.earth.png" />
     </div>
     <div class="col-6">
       <div class="col-12">
@@ -12,7 +12,7 @@
       </p>
       <div class="row" v-for="bullet of whatIs.bullets" :key="bullet">
         <div class="col-2 small-logo">
-          <img src="../../public/assets/solar power.png" />
+          <img src="assets/solar power.png" />
         </div>
         <div class="col-10">
           <p>{{bullet}}</p>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import whatIs from "js-yaml-loader!../../content/whatis.yaml";
+import whatIs from "js-yaml-loader!../../../content/whatis.yaml";
 export default {
   name: "WhatIsGreen",
   data() {
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles/main.scss";
+@import "../../assets/styles/main.scss";
 
 .row {
   max-width: 95%;

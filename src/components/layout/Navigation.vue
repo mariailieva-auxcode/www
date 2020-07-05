@@ -1,12 +1,12 @@
 <template>
   <div class="menu">
     <div class="col-12 logo">
-      <img src="../../public/assets/logo.png" />
+      <img src="assets/logo.png" />
     </div>
     <div class="row">
       <div class="col-12 home-logo">
         <button>
-          <img src="../../public/assets/home.png" />
+          <img src="assets/home.png" />
           <p class="home">Home</p>
         </button>
       </div>
@@ -15,7 +15,7 @@
       <div class="col-12 news-logo">
         <router-link to="/news">
           <button>
-            <img src="../../public/assets/news.png" />
+            <img src="assets/news.png" />
             <p class="news">News</p>
           </button>
         </router-link>

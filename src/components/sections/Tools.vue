@@ -1,47 +1,49 @@
 <template>
-  <div class="database">
+  <div class="tools">
     <div class="row">
-      <h1>Database</h1>
+      <h1>Tools</h1>
     </div>
     <div class="row">
-      <div class="col-6">
-        <img src="../../public/assets/person-writing-on-notebook.png" />
-      </div>
       <div class="col-6 text">
-        <p>{{database.description}}</p>
+        <p>
+          {{tools.description}}
+        </p>
         <button>
           <p>
             Coming soon
-            <img src="../../public/assets/arrow-right-blue.png" />
+            <img src="assets/arrow-right-blue.png" />
           </p>
         </button>
+      </div>
+      <div class="col-6">
+        <img src="assets/solar-panels.png" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import database from "js-yaml-loader!../../content/database.yaml";
+import tools from "js-yaml-loader!../../../content/tools.yaml";
 export default {
-  name: "Database",
+  name: "Tools",
   data() {
     return {
-      database: {}
+      tools: {}
     };
   },
   mounted() {
-    this.database = database;
+    this.tools = tools;
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles/main.scss";
-.database {
+@import "../../assets/styles/main.scss";
+.tools {
   .row {
     max-width: 80%;
     h1 {
-      margin: 0 0 80px 80px;
+      margin: 150px 0 10px 80px;
     }
     .col-6 {
       p {

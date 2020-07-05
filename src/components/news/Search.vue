@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import "../assets/styles/main.scss";
+@import "../../assets/styles/main.scss";
 .category {
   margin-right: 10px;
 }

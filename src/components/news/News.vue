@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../content/news.yaml";
+import info from "js-yaml-loader!../../../content/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
 
@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/main.scss";
+@import "../../assets/styles/main.scss";
 .row {
   max-width: 80%;
 }

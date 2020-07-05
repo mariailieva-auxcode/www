@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../content/header.yaml";
+import header from "js-yaml-loader!../../../content/header.yaml";
 export default {
   data() {
     return {
@@ -35,9 +35,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles/main.scss";
+@import "../../assets/styles/main.scss";
 .header {
-  background-image: url("../../public/assets/header-image.png");
+  background-image: url("../../../public/assets/header-image.png");
   background-size: cover;
   flex-grow: 1;
   display: flex;

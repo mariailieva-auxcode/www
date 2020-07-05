@@ -10,25 +10,25 @@
         <p class="footer-title">Contact</p>
         <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
           <p>
-            <img class="icon" src="../../public/assets/envelope-white.png" />{{contact}}
+            <img class="icon" src="assets/envelope-white.png" />{{contact}}
           </p>
         </a>
       </div>
       <div class="col-3">
         <p class="footer-title">Social Links</p>
         <p>
-          <img class="icon" src="../../public/assets/linked-in-white.png" />/greenatlas
+          <img class="icon" src="assets/linked-in-white.png" />/greenatlas
         </p>
       </div>
       <div class="col-3">
-        <img src="../../public/assets/big-logo.png" />
+        <img src="assets/big-logo.png" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import footer from "js-yaml-loader!../../content/footer.yaml";
+import footer from "js-yaml-loader!../../../content/footer.yaml";
 export default {
   name: "Footer",
   data() {

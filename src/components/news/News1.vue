@@ -16,7 +16,7 @@
           <button>
             <p>
               To News
-              <img src="../../public/assets/arrow-right-blue.png" />
+              <img src="assets/arrow-right-blue.png" />
             </p>
           </button>
         </router-link>
