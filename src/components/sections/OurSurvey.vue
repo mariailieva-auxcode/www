@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h1>Our Survey</h1>
+        <Title v-if="!isPreview" title="Our Survey" sectionTitle="SECTION TITLE" :isHomePage="false"  :isCentered="true"></Title>
       </div>
     </div>
     <div class="row">
@@ -27,8 +27,12 @@
 
 <script>
 import survey from "js-yaml-loader!../../../content/survey.yaml";
+import Title from "../layout/Title"
 export default {
   name: "Survey",
+  components: {
+    Title
+  },
   data() {
     return {
       survey: {}

@@ -1,9 +1,7 @@
 <template>
   <div :class="{'news-preview': isPreview, 'news': !isPreview}">
     <div class="container-fluid">
-      <div class="row row-fluid" v-if="!isPreview">
-        <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
-      </div>
+      <Title v-if="!isPreview" title="News" sectionTitle="SECTION TITLE"></Title>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
       <div class="row row-fluid news-container">
         <div class="col-6">
@@ -56,13 +54,15 @@ import info from "js-yaml-loader!../../../content/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";
+import Title from "../layout/Title";
 
 export default {
   name: "News",
   components: {
     Search,
     MainNews,
-    SecondaryNews
+    SecondaryNews,
+    Title
   },
   props: {
     isPreview: { default: false, type: Boolean }

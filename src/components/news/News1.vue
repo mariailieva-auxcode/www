@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row news-text">
       <div class="col-2">
-        <h1>News</h1>
+        <Title v-if="!isPreview" title="News" sectionTitle="01" :isHomePage="true"></Title>
       </div>
       <div class="col-7">
         <p>
@@ -26,7 +26,12 @@
 </template>
 
 <script>
-export default {};
+import Title from '../layout/Title'
+export default {
+  components: {
+    Title
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -35,7 +40,8 @@ export default {};
   .news-text {
     display: flex;
     justify-content: space-between;
-    margin-top: 160px;
+    align-items: center;
+    margin-top: 100px;
     .col-2 > h1 {
       font-size: 45px;
       color: #393a4d;
