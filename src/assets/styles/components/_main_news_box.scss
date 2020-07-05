@@ -1,4 +1,7 @@
 
+.card-link .card {
+    border: none;
+}
 p.main-news {
     color: #393A4D;
     font-size: 24px;
@@ -17,6 +20,9 @@ p.sec-news {
     height: 650px;
 }
 
+.card-link:hover {
+    text-decoration: none;
+}
 div#main-news-card {
     border: 0px;
     min-height: 500px;

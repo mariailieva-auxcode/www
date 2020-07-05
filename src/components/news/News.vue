@@ -22,21 +22,28 @@
       </div>
 
       <div class="row" v-if="!isPreview">
-        <div
-          v-for="(category, index) in filteredCategories"
-          :key="index"
-          :class="`col-${12/filteredCategories.length}`"
-        >
-          <h3>{{category}}</h3>
+        <hr>
+        <div class="col-6">
+          <h3 class="news-tag-title">Site Owner</h3>
           <div
-            v-for="(item, index) in getPostsByCategory(category)"
+            v-for="(item, index) in getPostsByTag('site-owner')"
             :key="index"
-            class="mb-2"
-            :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
+            class="mb-3"
+            :class="{'hidden': !filterCriteria.some(c => item.categories.includes(c)) || !item.isShown}"
           >
-            <a :href="item.url" target="_blank">
-              <button type="button" class="btn btn-info">{{item.description}}</button>
-            </a>
+            <SecondaryNews :data="item" :isMain="false"></SecondaryNews>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <h3 class="news-tag-title">Project Developer</h3>
+          <div
+            v-for="(item, index) in getPostsByTag('project-developer')"
+            :key="index"
+            class="mb-3"
+            :class="{'hidden': !filterCriteria.some(c => item.categories.includes(c)) || !item.isShown}"
+          >
+            <SecondaryNews :data="item" :isMain="false"></SecondaryNews>
           </div>
         </div>
       </div>
@@ -48,12 +55,14 @@
 import info from "js-yaml-loader!../../../content/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
+import SecondaryNews from "./SecondaryNews";
 
 export default {
   name: "News",
   components: {
     Search,
-    MainNews
+    MainNews,
+    SecondaryNews
   },
   props: {
     isPreview: { default: false, type: Boolean }
@@ -64,20 +73,24 @@ export default {
       categories: {},
       filteredCategories: [],
       filterCriteria: []
-      // postsByCategory: []
     };
   },
   beforeMount() {
     this.init();
     this.getAllCategories();
     this.getFilteredCategories();
-    console.log(this.isPreview)
   },
   methods: {
-    getPostsByCategory(category) {
-      return this.data
-        .slice(4, this.data.length)
-        .filter(e => e.categories.includes(category));
+    getPostsByTag(tag) {
+      if(tag === 'site-owner') {
+        return this.data
+          .slice(3, this.data.length)
+          .filter(e => e.tag === 'SITE OWNER');
+      } else {
+        return this.data
+          .slice(3, this.data.length)
+          .filter(e => e.tag === 'PROJECT DEVELOPER');
+      }
     },
     /**
      * Gets all categories listed in the cms file
@@ -160,6 +173,10 @@ export default {
 .news {
   .news-container>.col-6 {
       height: 635px;
+  }
+
+  .news-tag-title {
+    text-align: left;
   }
 
   .news-container>.secondaryNews>.news {
