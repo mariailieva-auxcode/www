@@ -1,0 +1,21 @@
+-   companyName: 'A2Z Group'
+    area: 2000
+    industry: solar thermal
+-   companyName: 'Abengoa S.A.'
+    area: 800
+    industry: solar thermal
+-   companyName: 'Goldwind'
+    area: 300
+    industry: wind
+-   companyName: 'First Solar Holding, LLC'
+    area: 1400
+    industry: photovoltaics
+-   companyName: 'Siemens Gamesa Renewable Energy S.A.'
+    area: 700
+    industry: wind
+-   companyName: 'Sunrun'
+    area: 90
+    industry: photovoltaics
+-   companyName: 'Run of River Power Inc.'
+    area: 1100
+    industry: hydro

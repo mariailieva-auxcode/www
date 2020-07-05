@@ -1,67 +1,62 @@
 <template>
-  <div style="font-family: serif" class="news">
-    <router-link to="/table">Go to Table</router-link>
-    <div class="container">
-      <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
-      <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
-      <div class="row news-container">
+  <div :class="{'news-preview': isPreview, 'news': !isPreview}">
+    <div class="container-fluid">
+      <div class="row" v-if="!isPreview">
+        <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
+      </div>
+      <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
+      <div class="row row-fluid news-container">
         <div class="col-6">
           <MainNews :data="data[0]" :isMain="true"></MainNews>
         </div>
         <div class="col-6 secondaryNews">
-          <SecondaryNews :data="data[1]"></SecondaryNews>
-          <div class="row">
-            <div class="col-6 tertNews">
-              <TertNews :data="data[2]" :isMain="false"></TertNews>
+          <div class="row row-fluid">
+            <div class="col-6">
+              <MainNews :data="data[1]" :isMain="false"></MainNews>
             </div>
-            <div class="col-6 tertNews">
-              <TertNews :data="data[3]" :isMain="false"></TertNews>
+            <div class="col-6">
+              <MainNews :data="data[2]" :isMain="false"></MainNews>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="row">
+      <div class="row" v-if="!isPreview">
+        <div
+          v-for="(category, index) in filteredCategories"
+          :key="index"
+          :class="`col-${12/filteredCategories.length}`"
+        >
+          <h3>{{category}}</h3>
           <div
-            v-for="(category, index) in filteredCategories"
+            v-for="(item, index) in getPostsByCategory(category)"
             :key="index"
-            :class="`col-${12/filteredCategories.length}`"
+            class="mb-2"
+            :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
           >
-            <h3>{{category}}</h3>
-            <div
-              v-for="(item, index) in getPostsByCategory(category)"
-              :key="index"
-              class="mb-2"
-              :class="{'hidden': !filterCriteria.includes(category) || !item.isShown}"
-            >
-              <a :href="item.url" target="_blank">
-                <button type="button" class="btn btn-info">{{item.description}}</button>
-              </a>
-            </div>
+            <a :href="item.url" target="_blank">
+              <button type="button" class="btn btn-info">{{item.description}}</button>
+            </a>
           </div>
         </div>
-
-        <Footer></Footer>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import info from "js-yaml-loader!../../news.yaml";
+import info from "js-yaml-loader!../../content/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
-import SecondaryNews from "./SecondaryNews";
-import TertNews from "./TertieryNews";
-import Footer from "./Footer";
 
 export default {
   name: "News",
   components: {
     Search,
-    MainNews,
-    SecondaryNews,
-    TertNews,
-    Footer
+    MainNews
+  },
+  props: {
+    isPreview: { default: false, type: Boolean }
   },
   data() {
     return {
@@ -76,6 +71,7 @@ export default {
     this.init();
     this.getAllCategories();
     this.getFilteredCategories();
+    console.log(this.isPreview)
   },
   methods: {
     getPostsByCategory(category) {
@@ -157,4 +153,27 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/main.scss";
+.row {
+  max-width: 80%;
+}
+
+.news {
+  .news-container>.col-6 {
+      height: 635px;
+  }
+
+  .news-container>.secondaryNews>.news {
+      height: 320px;
+  }
+
+  .news-container>.secondaryNews>.row {
+      height: 315px;
+  }
+
+  .suppliers {
+      max-width: 1400px;
+      margin-right: auto;
+      margin-left: auto;
+  }
+}
 </style>

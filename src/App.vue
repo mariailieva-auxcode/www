@@ -1,16 +1,15 @@
 <template>
   <div id="app">
     <!-- <router-link to="/foo">Go to Foo</router-link>
-    <router-link to="/bar">Go to Bar</router-link> -->
-      <router-view></router-view>
+    <router-link to="/bar">Go to Bar</router-link>-->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-}
+  name: "App"
+};
 </script>
 
 <style>
@@ -20,6 +19,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

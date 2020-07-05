@@ -5,10 +5,11 @@
     expiry: 2020-08-01
     categories: 
       -  subsidy
+    tag: SITE OWNER
 
 -   url: https://longreads.cbs.nl/european-scale-2019/renewable-energy/
     description: 'Something about power.'
-    expiry: 2020-08-01
+    expiry: 2020-06-01
     categories: 
       -  subsidy
       
@@ -20,62 +21,64 @@
       
 -   url: https://www.energylivenews.com/2020/06/05/anesco-to-develop-two-solar-farms-in-the-netherlands/
     description: 'Anesco will develop the renewable assets in Holland and Friesland after being awarded the contracts by Shell New Energies.'
-    expiry: 2020-07-01
+    expiry: 2020-08-01
     categories: 
       -  subsidy
+    tag: PROJECT DEVELOPER
 
 -   url: https://english.rvo.nl/subsidies-programmes/sde
     description: 'Stimulation of Sustainable Energy Production (SDE+) is a subsidy for the production of renewable energy in the Netherlands in 6 categories: biomass, geothermal, water, wind (land, lake and flood defense) and sun.'
-    expiry: 2020-07-01
+    expiry: 2020-08-01
     categories: 
       -  subsidy
+    tag: PROJECT DEVELOPER
 
 -   url: https://euobserver.com/environment/147263
     description: The Netherlands is not that advanced in Renewable Energy as one would think.
-    expiry: 2020-07-01
+    expiry: 2020-08-01
     categories: 
       -  innovation
 
 -   url: https://www.energylivenews.com/2020/06/05/vattenfall-gives-green-light-to-worlds-largest-offshore-wind-project/
     description: More from Vattenfall.
-    expiry: 2020-07-01
+    expiry: 2020-08-01
     categories: 
       -  business
       -  social
       
 -   url: https://renews.biz/60389/germany-holland-sign-landmark-energy-mou/
     description: A very useful article.
-    expiry: 2020-06-01
+    expiry: 2020-08-01
     categories: 
       -  business
       -  social
 
 -   url: https://cleantechnica.com/2020/05/27/amazon-going-solar-big-time/
     description: Very interesting, Amazon is doing everything.
-    expiry: 2020-06-10
+    expiry: 2020-08-10
     categories: 
       -  business
 
 -   url: https://renews.biz/60567/vattenfall-kicks-off-dutch-floating-solar-construction/
     description: It is important that we read news and that people can rely on us for news.
-    expiry: 2020-06-15
+    expiry: 2020-08-15
     categories: 
       -  social
  
 -   url: https://renews.biz/60535/belectric-builds-solar-system-for-dutch-hybrid-power-plant/
     description: We should pay attention to the players.
-    expiry: 2020-06-20
+    expiry: 2020-08-20
     categories: 
       -  ecosystem
 
 -   url: https://www.power-technology.com/features/renewable-subsidies-balancing-economy-and-the-environment-in-the-netherlands-and-beyond/
     description: Subsidies are an important helper of the renewable projects.
-    expiry: 2020-06-25
+    expiry: 2020-08-25
     categories:
       -  subsidy
       
 -   url: https://www.goodnewsnetwork.org/worlds-first-bios-park-for-cremated-remains/
     description: Milen Markov News 
-    expiry: 2020-07-10
+    expiry: 2020-08-10
     categories: 
       -  business
