@@ -24,14 +24,14 @@
 
     <div class="header">
       <div class="header-content">
-        <h1>Connecting renewable energy!</h1>
-        <h3>Greenatlas.earth is hét matchmaking platform voor vraag en aanbod in de zakelijke duurzame energiemarkt.</h3>
+        <h1>{{title}}</h1>
+        <h3>{{description}}</h3>
         <p>Ik ben</p>
         <button class="button-choice">
-          <p>Are you a site owner</p>
+          <p>{{button1}}</p>
         </button>
         <button class="button-choice">
-          <p>Are you a project developer</p>
+          <p>{{button2}}</p>
         </button>
       </div>
     </div>
@@ -41,8 +41,19 @@
 <script>
 import header from "js-yaml-loader!../../content/header.yaml";
 export default {
+  data() {
+    return {
+      title: "",
+      description: "",
+      button1: "",
+      button2: ""
+    };
+  },
   mounted() {
-    console.log(header);
+    this.title = header.title;
+    this.description = header.description;
+    this.button1 = header.button1;
+    this.button2 = header.button2;
   }
 };
 </script>
