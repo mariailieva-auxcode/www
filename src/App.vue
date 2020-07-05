@@ -1,14 +1,24 @@
 <template>
   <div id="app">
-    <!-- <router-link to="/foo">Go to Foo</router-link>
-    <router-link to="/bar">Go to Bar</router-link>-->
-    <router-view></router-view>
+    <div class="navigation">
+      <Navigation></Navigation>
+    </div>
+    <div class="content">
+      <router-view></router-view>
+      <Footer></Footer>
+    </div>
   </div>
 </template>
 
 <script>
+import Navigation from "./components/layout/Navigation.vue"
+import Footer from "./components/layout/Footer.vue";
+
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    Navigation, Footer
+  }
 };
 </script>
 
@@ -20,5 +30,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+
+.content {
+  width: calc(100vw - 100px);
+  float: right;
 }
 </style>

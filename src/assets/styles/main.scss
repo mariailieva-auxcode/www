@@ -18,13 +18,16 @@ sans-serif;
 
 $color__white: white;
 
+* {
+    font-family: $font__LatoBlack;
+}
+
 .row.row-fluid {
     max-width: 100%;
 }
 
 h2#pageTitle {
-    font-family: serif;
-    font-weight: 300;
+    font-weight: bold;
     font-size: 3.5rem;
     color: rgba(0, 0, 0, 0.767);
 }

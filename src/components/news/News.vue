@@ -1,7 +1,7 @@
 <template>
   <div :class="{'news-preview': isPreview, 'news': !isPreview}">
     <div class="container-fluid">
-      <div class="row" v-if="!isPreview">
+      <div class="row row-fluid" v-if="!isPreview">
         <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
       </div>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>

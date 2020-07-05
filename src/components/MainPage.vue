@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="navigation">
-      <Navigation></Navigation>
-    </div>
-    <div class="content">
+    <div>
       <Header></Header>
       <News1></News1>
       <News :isPreview="true"></News>
@@ -13,7 +10,6 @@
       <OnsTeam></OnsTeam>
       <Partners></Partners>
       <OurSurvey></OurSurvey>
-      <Footer></Footer>
     </div>
 
     <cookie-law>
@@ -40,8 +36,6 @@ import WhatIsGreen from "./sections/WhatIsGreen";
 import OnsTeam from "./sections/OnsTeam.vue";
 import Partners from "./sections/Partners.vue";
 import OurSurvey from "./sections/OurSurvey.vue";
-import Footer from "./layout/Footer.vue";
-import Navigation from "./layout/Navigation.vue"
 
 import CookieLaw from "vue-cookie-law";
 
@@ -56,16 +50,10 @@ export default {
     OnsTeam,
     Partners,
     OurSurvey,
-    Footer,
-    CookieLaw,
-    Navigation
+    CookieLaw
   }
 };
 </script>
 
 <style scoped lang="scss">
-.content {
-  width: calc(100vw - 100px);
-  float: right;
-}
 </style>

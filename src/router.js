@@ -9,6 +9,7 @@ import PrivacyPolicy from './components/PrivacyPolicy.vue'
 Vue.use(Router);
 
 export default new Router({
+    mode: 'history',
     routes: [{
         path: "/",
         name: "MainPage",
@@ -29,6 +30,5 @@ export default new Router({
     {
         path: "/news",
         component: News
-    }
-    ]
+    }]
 })
