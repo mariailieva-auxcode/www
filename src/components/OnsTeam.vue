@@ -32,7 +32,7 @@
           <div class="col-5 linkedin">
             <div class="row">
               <img class="linkedin" src="../../public/assets/linked-in-blue.png" />
-              <p class="email">Visit LinkedIn profile</p>
+              <router-link to="/" class="email">Visit LinkedIn profile</router-link>
               <img class="arrow" src="../../public/assets/arrow-right-blue.png" />
             </div>
           </div>
