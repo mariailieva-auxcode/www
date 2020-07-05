@@ -11,7 +11,6 @@
         </div>-->
         <div class="container">
           <div class="row">
-            <h1>01</h1>
             <h2 id="pageTitle" class="d-flex justify-content-start mb-4">News</h2>
           </div>
           <Search id="searchBar" :categories="categories" @change="onSearch($event)"></Search>
@@ -181,12 +180,5 @@ export default {
 @import "../assets/styles/main.scss";
 .row {
   max-width: 80%;
-  .container {
-    h1 {
-      z-index: 0;
-      font-size: 190px;
-      color: #f7f7fa;
-    }
-  }
 }
 </style>
