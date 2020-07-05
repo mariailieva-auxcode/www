@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content/team.yaml";
+import team from "js-yaml-loader!../../../content/general/team.yaml";
 import Title from "../layout/Title"
 export default {
   components: {

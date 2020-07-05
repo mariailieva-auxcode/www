@@ -7,17 +7,31 @@
       <router-view></router-view>
       <Footer></Footer>
     </div>
+
+    <cookie-law>
+      <div slot-scope="props">
+        <button class="skew" @click="props.accept">
+          <span>I accept</span>
+        </button>
+        <p>This site uses cookies 🍪</p>
+        <button class="skew" @click="props.close">
+          <span>Ignore me</span>
+        </button>
+      </div>
+    </cookie-law>
   </div>
 </template>
 
 <script>
 import Navigation from "./components/layout/Navigation.vue"
 import Footer from "./components/layout/Footer.vue";
+import CookieLaw from "vue-cookie-law";
+
 
 export default {
   name: "App",
   components: {
-    Navigation, Footer
+    Navigation, Footer, CookieLaw
   }
 };
 </script>

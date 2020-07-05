@@ -21,20 +21,14 @@
 </template>
 
 <script>
-import database from "js-yaml-loader!../../../content/database.yaml";
 import Title from "../layout/Title"
 export default {
   name: "Database",
   components: {
     Title
   },
-  data() {
-    return {
-      database: {}
-    };
-  },
-  mounted() {
-    this.database = database;
+  props: {
+    database: {default: {}}
   }
 };
 </script>

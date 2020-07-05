@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import survey from "js-yaml-loader!../../../content/survey.yaml";
+import survey from "js-yaml-loader!../../../content/general/survey.yaml";
 import Title from "../layout/Title"
 export default {
   name: "Survey",

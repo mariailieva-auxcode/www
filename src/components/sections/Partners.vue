@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content/partners.yaml";
+import partners from "js-yaml-loader!../../../content/general/partners.yaml";
 import Title from "../layout/Title"
 export default {
   name: "Partners",

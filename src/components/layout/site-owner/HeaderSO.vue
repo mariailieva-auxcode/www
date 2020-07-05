@@ -3,23 +3,18 @@
     <div class="header-content">
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
-      <p>Ik ben</p>
-      <router-link to="/site-owner">
+      <p>{{textSurvey}}</p>
+      <a :href="linkSurvey" target="_blank">
         <button class="button-choice">
-          <p>{{button1}}</p>
+          <p>Take the survey</p>
         </button>
-      </router-link>
-      <router-link to="/project-developer">
-        <button class="button-choice">
-          <p>{{button2}}</p>
-        </button>
-      </router-link>
+      </a>
     </div>
   </div>
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../content/general/header.yaml";
+import header from "js-yaml-loader!../../../../content/site-owner/header.yaml";
 export default {
   data() {
     return {
@@ -32,16 +27,16 @@ export default {
   mounted() {
     this.title = header.title;
     this.description = header.description;
-    this.button1 = header.button1;
-    this.button2 = header.button2;
+    this.textSurvey = header.textSurvey;
+    this.linkSurvey = header.linkSurvey;
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
+@import "../../../assets/styles/main.scss";
 .header {
-  background-image: url("../../../public/assets/header-image.png");
+  background-image: url("../../../../public/assets/header-image.png");
   background-size: cover;
   flex-grow: 1;
   display: flex;

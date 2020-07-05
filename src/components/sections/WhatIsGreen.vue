@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import whatIs from "js-yaml-loader!../../../content/whatis.yaml";
+import whatIs from "js-yaml-loader!../../../content/general/whatis.yaml";
 import Title from "../layout/Title"
 export default {
   name: "WhatIsGreen",

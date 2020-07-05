@@ -23,20 +23,14 @@
 </template>
 
 <script>
-import tools from "js-yaml-loader!../../../content/tools.yaml";
 import Title from "../layout/Title"
 export default {
   name: "Tools",
   components: {
     Title
   },
-  data() {
-    return {
-      tools: {}
-    };
-  },
-  mounted() {
-    this.tools = tools;
+  props: {
+    tools: {default: {}}
   }
 };
 </script>
