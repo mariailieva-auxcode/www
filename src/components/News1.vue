@@ -12,12 +12,14 @@
         </p>
       </div>
       <div class="col-2">
-        <button>
-          <p>
-            To News
-            <img src="../../public/assets/arrow-right-blue.png" />
-          </p>
-        </button>
+        <router-link to="/news">
+          <button>
+            <p>
+              To News
+              <img src="../../public/assets/arrow-right-blue.png" />
+            </p>
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -42,7 +44,7 @@ export default {};
       color: #9597ac;
       font-size: 18px;
     }
-    .col-2 > button {
+    .col-2 button {
       width: 140px;
       height: 45px;
       border-radius: 10px;

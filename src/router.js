@@ -4,6 +4,7 @@ import Table from './components/Table'
 import MainPage from "./components/MainPage.vue"
 import Footer from "./components/Footer.vue"
 import ResizingBoxes from "./components/ResizingBoxes.vue"
+import News from './components/News.vue'
 
 Vue.use(Router);
 
@@ -25,5 +26,9 @@ export default new Router({
         path: "/resize",
         component: ResizingBoxes
     },
+    {
+        path: "/news",
+        component: News
+    }
     ]
 })

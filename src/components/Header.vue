@@ -14,10 +14,12 @@
       </div>
       <div class="row">
         <div class="col-12 news-logo">
-          <button>
-            <img src="../../public/assets/news.png" />
-            <p class="news">News</p>
-          </button>
+          <router-link to="/news">
+            <button>
+              <img src="../../public/assets/news.png" />
+              <p class="news">News</p>
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
