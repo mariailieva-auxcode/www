@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h1>Partners</h1>
+        <Title v-if="!isPreview" title="Partners" sectionTitle="SECTION TITLE" :isHomePage="false" :isCentered="true"></Title>
       </div>
     </div>
     <div class="row partners">
@@ -15,9 +15,13 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content/partners.yaml";
+import partners from "js-yaml-loader!../../../content/general/partners.yaml";
+import Title from "../layout/Title"
 export default {
   name: "Partners",
+  components: {
+    Title
+  },
   data() {
     return {
       partners: undefined
@@ -39,6 +43,7 @@ h1 {
 .partners {
   display: flex;
   justify-content: center;
+  margin-bottom: 150px;
   .partner {
     box-shadow: 0px 0px 30px #1d226f1a;
     border-radius: 15px;

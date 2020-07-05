@@ -1,11 +1,11 @@
 <template>
-  <div class="row">
+  <div class="row row-fluid">
     <div class="col-6 image">
       <img src="assets/greenatlas.earth.png" />
     </div>
     <div class="col-6">
       <div class="col-12">
-        <h1>{{whatIs.title}}</h1>
+        <Title v-if="!isPreview" title="What Is greenatlas.earth" sectionTitle="SECTION TITLE" :isHomePage="false" :isWhat="true"></Title>
       </div>
       <p>
         {{whatIs.description}}
@@ -23,9 +23,13 @@
 </template>
 
 <script>
-import whatIs from "js-yaml-loader!../../../content/whatis.yaml";
+import whatIs from "js-yaml-loader!../../../content/general/whatis.yaml";
+import Title from "../layout/Title"
 export default {
   name: "WhatIsGreen",
+  components: {
+    Title
+  },
   data() {
     return {
       whatIs: {}

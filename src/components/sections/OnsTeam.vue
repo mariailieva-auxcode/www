@@ -1,7 +1,7 @@
 <template>
   <div class="team">
     <div>
-      <h1>Ons team</h1>
+      <Title v-if="!isPreview" title="Ons team" sectionTitle="SECTION TITLE" :isHomePage="false"></Title>
     </div>
     <div class="row yaml-links row" v-for="team of team" :key="team.name">
       <div class="col-3 picture">
@@ -43,8 +43,12 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content/team.yaml";
+import team from "js-yaml-loader!../../../content/general/team.yaml";
+import Title from "../layout/Title"
 export default {
+  components: {
+    Title
+  },
   data() {
     return {
       team: undefined
@@ -62,6 +66,7 @@ export default {
 @import "../../assets/styles/main.scss";
 .team {
   max-width: 80%;
+  margin-bottom: 150px;
   h1 {
     text-align: left;
     margin-top: 150px;

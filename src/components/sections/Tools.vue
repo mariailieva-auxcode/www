@@ -1,7 +1,7 @@
 <template>
   <div class="tools">
     <div class="row">
-      <h1>Tools</h1>
+      <Title v-if="!isPreview" title="Tools" sectionTitle="03" :isHomePage="true"></Title>
     </div>
     <div class="row">
       <div class="col-6 text">
@@ -23,16 +23,14 @@
 </template>
 
 <script>
-import tools from "js-yaml-loader!../../../content/tools.yaml";
+import Title from "../layout/Title"
 export default {
   name: "Tools",
-  data() {
-    return {
-      tools: {}
-    };
+  components: {
+    Title
   },
-  mounted() {
-    this.tools = tools;
+  props: {
+    tools: {default: {}}
   }
 };
 </script>

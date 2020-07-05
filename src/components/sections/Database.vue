@@ -1,7 +1,7 @@
 <template>
   <div class="database">
     <div class="row">
-      <h1>Database</h1>
+      <Title v-if="!isPreview" title="Database" sectionTitle="02" :isHomePage="true"></Title>
     </div>
     <div class="row">
       <div class="col-6">
@@ -21,16 +21,14 @@
 </template>
 
 <script>
-import database from "js-yaml-loader!../../../content/database.yaml";
+import Title from "../layout/Title"
 export default {
   name: "Database",
-  data() {
-    return {
-      database: {}
-    };
+  components: {
+    Title
   },
-  mounted() {
-    this.database = database;
+  props: {
+    database: {default: {}}
   }
 };
 </script>
