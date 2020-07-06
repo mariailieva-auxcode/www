@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-3">
         <router-link to="/privacy-policy">
-          <p class="footer-title privacy-policy">Privacy Policy</p>
+          <p class="footer-title privacy-policy">{{footer.titles.privacyPolicy}}</p>
         </router-link>
       </div>
       <div class="col-3">
-        <p class="footer-title">Contact</p>
+        <p class="footer-title">{{footer.titles.contact}}</p>
         <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
           <p>
             <img class="icon" src="assets/envelope-white.png" />{{contact}}
@@ -15,10 +15,10 @@
         </a>
       </div>
       <div class="col-3">
-        <p class="footer-title">Social Links</p>
-        <a :href="footer.linkedin" target="_blank">
+        <p class="footer-title">{{footer.titles.social}}</p>
+        <a :href="footer.linkedin.link" target="_blank">
           <p>
-            <img class="icon" src="assets/linked-in-white.png" />/greenatlas
+            <img class="icon" src="assets/linked-in-white.png" />{{footer.linkedin.name}}
           </p>
         </a>
       </div>
@@ -38,7 +38,7 @@ export default {
       footer: {}
     };
   },
-  mounted() {
+  created() {
     this.footer = footer;
   }
 };

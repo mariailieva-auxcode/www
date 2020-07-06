@@ -1,4 +1,10 @@
 contacts:
   0: jaap@greenatlas.earth
   1: mirthe@greenatlas.earth
-linkedin: https://...
+linkedin: 
+  link: https://...
+  name: /greenatlas
+titles:
+  privacyPolicy: Privacy Policy
+  contact: Contact
+  social: Social Links
