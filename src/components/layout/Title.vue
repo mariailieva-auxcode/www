@@ -4,7 +4,7 @@
       :style="{'font-size': isHomePage ? '195px' : '80px', 'text-align': isCentered ? 'center' : 'left'}"
     >{{sectionTitle}}</h1>
     <h2
-      :style="{'bottom': isHomePage ? '60px' : '10px', 'left': isCentered ? '35%' : isWhat ? '60px' : '120px'}"
+      :style="{'bottom': isHomePage ? '70px' : '10px', 'left': isCentered ? '35%' : isWhat ? '60px' : '160px'}"
     >{{title}}</h2>
   </div>
 </template>
@@ -27,9 +27,11 @@ export default {
 div {
   position: relative;
   h1 {
-    font-size: 80px;
+    font-size: 200px;
     color: #f7f7fa;
     text-align: left;
+    font-family: $font__IBMbold;
+    font-weight: 700;
   }
   h2 {
     font-size: 45px;
