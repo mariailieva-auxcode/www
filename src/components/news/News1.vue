@@ -48,11 +48,15 @@ export default {
       color: #393a4d;
       font-weight: bold;
     }
-    .col-7 > p {
+    .col-7 {
+      max-width: 60%;
+      margin-left: 100px;
+    }
+    p {
       color: #9597ac;
       font-size: 18px;
-      font-family: $font__IBMregular;
-      font-weight: 400;
+      font-family: $font__IBMmedium;
+      font-weight: 500;
     }
     .col-2 button {
       width: 140px;
@@ -63,6 +67,8 @@ export default {
       p {
         margin: auto;
         font-size: 14px;
+        font-family: $font__IBMmedium;
+        font-weight: 500;
         color: #2783ff;
       }
     }
