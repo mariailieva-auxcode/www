@@ -64,7 +64,7 @@ export default {
 
 .cookie {
   width: 340px;
-  height: 170px;
+  height: 171px;
   justify-content: center;
   img {
     margin-right: 20px;
