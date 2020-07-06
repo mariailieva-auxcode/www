@@ -64,8 +64,8 @@ export default {
     }
     p {
       font-size: 14px;
-      font-family: $font__LatoRegular;
-      font-weight: 400;
+      font-family: $font__LatoBold;
+      font-weight: 700;
       margin-top: 30px;
     }
     .button-choice {

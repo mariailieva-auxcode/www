@@ -4,7 +4,7 @@
       :style="{'font-size': isHomePage ? '195px' : '80px', 'text-align': isCentered ? 'center' : 'left'}"
     >{{sectionTitle}}</h1>
     <h2
-      :style="{'bottom': isHomePage ? '45px' : '10px', 'left': isCentered ? '35%' : isWhat ? '60px' : '100px'}"
+      :style="{'bottom': isHomePage ? '60px' : '10px', 'left': isCentered ? '35%' : isWhat ? '60px' : '120px'}"
     >{{title}}</h2>
   </div>
 </template>
@@ -36,8 +36,8 @@ div {
     position: absolute;
     bottom: 10px;
     left: 100px;
-    font-family: $font__LatoBold;
-    font-weight: 700;
+    font-family: $font__LatoBlack;
+    font-weight: 900;
     color: #393a4d;
   }
 }

@@ -32,7 +32,7 @@ export default {
     return {
       database: {},
       tools: {}
-    }
+    };
   },
   mounted() {
     this.database = database;
