@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import Title from "../layout/Title"
+import Title from "../layout/Title";
 export default {
   name: "Database",
   components: {
     Title
   },
   props: {
-    database: {default: {}}
+    database: { default: {} }
   }
 };
 </script>
@@ -38,6 +38,7 @@ export default {
 .database {
   .row {
     max-width: 80%;
+    margin-bottom: 160px;
     h1 {
       margin: 0 0 80px 80px;
     }
@@ -47,6 +48,11 @@ export default {
         font-size: 18px;
         color: #9597ac;
         margin-bottom: 50px;
+        max-height: 130px;
+        overflow: hidden;
+        font-family: $font__IBMmedium;
+        font-weight: 500;
+        margin-left: 40px;
       }
     }
     .text {
@@ -58,6 +64,7 @@ export default {
         border-radius: 10px;
         border: 2px solid #2783ff;
         background-color: white;
+        margin-left: 40px;
         p {
           color: #2783ff;
           font-size: 14px;

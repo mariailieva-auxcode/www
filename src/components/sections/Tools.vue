@@ -5,9 +5,7 @@
     </div>
     <div class="row">
       <div class="col-6 text">
-        <p>
-          {{tools.description}}
-        </p>
+        <p>{{tools.description}}</p>
         <button>
           <p>
             Coming soon
@@ -23,14 +21,14 @@
 </template>
 
 <script>
-import Title from "../layout/Title"
+import Title from "../layout/Title";
 export default {
   name: "Tools",
   components: {
     Title
   },
   props: {
-    tools: {default: {}}
+    tools: { default: {} }
   }
 };
 </script>
@@ -49,6 +47,11 @@ export default {
         font-size: 18px;
         color: #9597ac;
         margin-bottom: 50px;
+        max-height: 130px;
+        overflow: hidden;
+        margin-right: 40px;
+        font-family: $font__IBMmedium;
+        font-weight: 500;
       }
     }
     .text {
@@ -60,6 +63,7 @@ export default {
         border-radius: 10px;
         border: 2px solid #2783ff;
         background-color: white;
+        margin-right: 40px;
         p {
           color: #2783ff;
           font-size: 14px;
