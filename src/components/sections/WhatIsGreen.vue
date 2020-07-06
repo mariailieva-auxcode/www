@@ -5,13 +5,16 @@
     </div>
     <div class="col-6">
       <div class="col-12">
-        <Title title="What Is greenatlas.earth" sectionTitle="SECTION TITLE" :isHomePage="false" :isWhat="true"></Title>
+        <Title
+          title="What Is greenatlas.earth"
+          sectionTitle="SECTION TITLE"
+          :isHomePage="false"
+          :isWhat="true"
+        ></Title>
       </div>
-      <p>
-        {{whatIs.description}}
-      </p>
-      <div class="row" v-for="bullet of whatIs.bullets" :key="bullet">
-        <div class="col-2 small-logo">
+      <p class="description">{{whatIs.description}}</p>
+      <div class="row text" v-for="bullet of whatIs.bullets" :key="bullet">
+        <div class="col-1">
           <img src="assets/solar power.png" />
         </div>
         <div class="col-10">
@@ -24,7 +27,7 @@
 
 <script>
 import whatIs from "js-yaml-loader!../../../content/general/whatis.yaml";
-import Title from "../layout/Title"
+import Title from "../layout/Title";
 export default {
   name: "WhatIsGreen",
   components: {
@@ -57,6 +60,17 @@ export default {
     text-align: left;
     color: #9597ac;
     font-size: 14px;
+    .description {
+      margin-left: 80px;
+      margin-bottom: 70px;
+    }
+    .text {
+      margin-left: 60px;
+      margin-bottom: 20px;
+      .col-1 {
+        margin-right: 30px;
+      }
+    }
   }
 }
 </style>
