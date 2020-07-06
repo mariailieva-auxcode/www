@@ -8,7 +8,7 @@
     tag: SITE OWNER
 
 -   url: http://vlb.nl/grondwaarde-van-zonnepark-bepaalt-rendement/
-    description: Grondwaarde van zonnepark bepaalt rendement.
+    description: 'Grondwaarde van zonnepark bepaalt rendement.'
     expiry: 2020-06-01
     categories: 
       -  business
@@ -26,68 +26,67 @@
     expiry: 2020-08-01
     categories: 
       -  subsidy
-    tag: PROJECT DEVELOPER
+    tag: SITE OWNER
 
 -   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
-    description: Zonne- en windpark, waar en hoeveel?
+    description: 'Zonne- en windpark, waar en hoeveel?'
     expiry: 2020-08-01
     categories: 
       -  business
     tag: PROJECT DEVELOPER
 
--   url: https://euobserver.com/environment/147263
-    description: The Netherlands is not that advanced in Renewable Energy as one would think.
-    expiry: 2020-08-01
-    categories: 
-      -  innovation
-    tag: SITE OWNER
-
--   url: https://www.energylivenews.com/2020/06/05/vattenfall-gives-green-light-to-worlds-largest-offshore-wind-project/
-    description: More from Vattenfall.
+-   url: https://vlb.nl/zonneparken-hoge-opbrengsten-maar-ook-hoge-kosten-2/
+    description: 'Zonneparken; hoge opbrengst, hoge kosten.'
     expiry: 2020-08-01
     categories: 
       -  business
-      -  social
+    tag: SITE OWNER
+
+-   url: http://vlb.nl/duurzame-energie-produceren-als-agrarier-pak-het-slim-aan/
+    description: 'Slim duurzame energie produceren.'
+    expiry: 2020-08-01
+    categories: 
+      -  business
     tag: SITE OWNER
       
--   url: https://renews.biz/60389/germany-holland-sign-landmark-energy-mou/
-    description: A very useful article.
+-   url: http://www.commissiemer.nl/projectdocumenten/00005511.pdf
+    description: 'Voorbeeld factsheet business case windenergie.'
     expiry: 2020-08-01
     categories: 
       -  business
       -  social
     tag: PROJECT DEVELOPER
 
--   url: https://cleantechnica.com/2020/05/27/amazon-going-solar-big-time/
-    description: Very interesting, Amazon is doing everything.
+-   url: https://www.lokaleenergievoorwaarts.nl/friksbeheer/wp-content/uploads/2016/07/170309-Exploitatievarianten-voor-zon-PV-projecten.pdf
+    description: 'Exploitatievarianten voor zon PV projecten.'
     expiry: 2020-08-10
     categories: 
       -  business
-    tag: SITE OWNER
+    tag: PROJECT DEVELOPER
 
 -   url: https://www.windopland.info/wp-content/uploads/2017/09/Workshop-2.-Hoe-ontwikkel-je-een-windpark-Geert-Bosch.pdf
-    description: Hoe ontwikkel je een windpark?
+    description: 'Hoe ontwikkel je een windpark?'
     expiry: 2020-08-15
     categories: 
       -  business
     tag: PROJECT DEVELOPER
  
 -   url: https://www.zonatlas.nl/start/netbelasting/
-    description: Effect van zonneparken op het lokale electriciteitsnet
+    description: 'Effect van zonneparken op het lokale electriciteitsnet'
     expiry: 2020-08-20
     categories: 
       -  ecosystem
     tag: PROJECT DEVELOPER
 
 -   url: http://www.solarscorecard.com/2018-19/2018-19-SVTC-Solar-Scorecard.pdf
-    description: Silicon Valley Toxics Coalition (SVTC): Wat zijn de beste en meest duurzame zonnepanelen?
+    description: 'Wat zijn de beste en meest duurzame zonnepanelen?'
     expiry: 2020-08-25
     categories:
       -  innovation
     tag: SITE OWNER
       
 -   url: https://www.zonnepanelen.net/tier-1-zonnepanelen/
-    description: Tier 1 zonnepanelen, wat betekent dat?
+    description: 'Tier 1 zonnepanelen, wat betekent dat?'
     expiry: 2020-08-10
     categories: 
       -  business
