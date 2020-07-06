@@ -1,14 +1,14 @@
 # CMS structure
 subTitle: SECTION TITLE
 title: Nieuws
-button: naar de nieuwspagina
+button: Naar de nieuwspagina
 homeTitles:
-  subTitle: 01
+  subTitle: 1
   title: Nieuws
 description: Green Atlas biedt een exlusieve selectie aan nieuws rondom het thema duurzame energie.
 news:
--   url: hhttps://www.pv-magazine.com/2020/06/10/another-floating-solar-park-goes-online-in-the-netherlands/ 
-    description: 'Welke vergunningen heb ik nodig?'
+-   url: https://www.zonatlas.nl/start/netbelasting/
+    description: 'Effect van zonneparken op het lokale electriciteitsnet'
     expiry: 2020-08-01
     categories: 
       -  business
@@ -78,8 +78,8 @@ news:
       -  business
     tag: PROJECT DEVELOPER
  
--   url: https://www.zonatlas.nl/start/netbelasting/
-    description: 'Effect van zonneparken op het lokale electriciteitsnet'
+-   url: 
+    description: 
     expiry: 2020-08-20
     categories: 
       -  ecosystem
