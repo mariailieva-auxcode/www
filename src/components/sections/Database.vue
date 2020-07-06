@@ -11,7 +11,7 @@
         <p>{{database.description}}</p>
         <button>
           <p>
-            Coming soon
+            {{database.button}}
             <img src="assets/arrow-right-blue.png" />
           </p>
         </button>

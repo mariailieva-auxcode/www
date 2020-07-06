@@ -15,7 +15,7 @@
         <a :href="survey.link" target="_blank">
           <button>
             <p class="btn-text">
-              Take the survey
+              {{survey.button}}
               <img src="assets/arrow-right-white.png" />
             </p>
           </button>

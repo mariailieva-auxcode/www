@@ -3,23 +3,23 @@
     <div>
       <Title :title="title" :sectionTitle="subTitle" :isHomePage="false"></Title>
     </div>
-    <div class="row yaml-links row" v-for="team of team" :key="team.name">
+    <div class="row yaml-links row" v-for="person of team" :key="person.name">
       <div class="col-3 picture">
-        <img :src="team.picture" />
+        <img :src="person.picture" />
       </div>
       <div class="col-9 team-card">
         <div class="col-12 name">
-          <h3 class="team-name">{{team.name}}</h3>
+          <h3 class="team-name">{{person.name}}</h3>
         </div>
 
         <div class="row">
           <div class="col-12 position">
-            <p>{{team.position}}</p>
+            <p>{{person.position}}</p>
           </div>
         </div>
         <div class="row">
           <div class="col-12 about">
-            <p>{{team.about}}</p>
+            <p>{{person.about}}</p>
           </div>
         </div>
         <div class="row information">
@@ -27,12 +27,12 @@
             <img src="assets/envelope.png" />
           </div>
           <div class="col-6 email">
-            <p>{{team.email}}</p>
+            <p>{{person.email}}</p>
           </div>
           <div class="col-5 linkedin">
             <div class="row">
               <img class="linkedin" src="assets/linked-in-blue.png" />
-              <a :href="team.linkedIn" class="email">Visit LinkedIn profile</a>
+              <a :href="person.linkedIn" target="_blank" class="email">{{button}}</a>
               <img class="arrow" src="assets/arrow-right-blue.png" />
             </div>
           </div>
@@ -53,7 +53,8 @@ export default {
     return {
       team: undefined,
       title: '',
-      subTitle: ''
+      subTitle: '',
+      button: ''
     };
   },
 
@@ -61,6 +62,7 @@ export default {
     this.team = team.team;
     this.title = team.title
     this.subTitle = team.subTitle;
+    this.button = team.button;
   }
 };
 </script>

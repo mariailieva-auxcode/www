@@ -13,7 +13,7 @@
         <router-link to="/news">
           <button>
             <p>
-              To News
+              {{data.button}}
               <img src="assets/arrow-right-blue.png" />
             </p>
           </button>

@@ -8,7 +8,7 @@
         <p>{{tools.description}}</p>
         <button>
           <p>
-            Coming soon
+            {{tools.button}}
             <img src="assets/arrow-right-blue.png" />
           </p>
         </button>

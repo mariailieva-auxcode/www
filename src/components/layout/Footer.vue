@@ -16,7 +16,7 @@
       </div>
       <div class="col-3">
         <p class="footer-title">Social Links</p>
-        <a :href="footer.linkedin">
+        <a :href="footer.linkedin" target="_blank">
           <p>
             <img class="icon" src="assets/linked-in-white.png" />/greenatlas
           </p>
