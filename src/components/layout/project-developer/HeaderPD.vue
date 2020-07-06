@@ -4,11 +4,6 @@
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
       <p>{{textSurvey}}</p>
-      <a :href="linkSurvey" target="_blank">
-        <button class="button-choice">
-          <p>Take the survey</p>
-        </button>
-      </a>
     </div>
   </div>
 </template>
