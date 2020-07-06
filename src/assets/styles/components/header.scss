@@ -1,0 +1,48 @@
+.header {
+    background-image: url("/assets/header-image.png");
+    background-size: cover;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    position: relative;
+    .header-overlay {
+        background-color: #26272E;
+        opacity: 0.3;
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+    .header-content {
+      width: 60%;
+      color: $color__white;
+      z-index: 10;
+      h1 {
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+      p {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+      .button-choice {
+        border-radius: 10px;
+        background-color: #55b364;
+        width: 225px;
+        height: 46px;
+        border: none;
+        margin: 35px 12px 0 12px;
+        p {
+          font-size: 14px;
+          color: white;
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+      }
+    }
+  }

@@ -1,7 +1,7 @@
 <template>
   <div class="database">
     <div class="row">
-      <Title v-if="!isPreview" title="Database" sectionTitle="02" :isHomePage="true"></Title>
+      <Title title="Database" sectionTitle="02" :isHomePage="true"></Title>
     </div>
     <div class="row">
       <div class="col-6">

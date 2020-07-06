@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row news-text">
       <div class="col-2">
-        <Title v-if="!isPreview" title="News" sectionTitle="01" :isHomePage="true"></Title>
+        <Title title="News" sectionTitle="01" :isHomePage="true"></Title>
       </div>
       <div class="col-7">
         <p>

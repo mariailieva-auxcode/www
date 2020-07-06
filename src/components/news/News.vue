@@ -65,7 +65,8 @@ export default {
     Title
   },
   props: {
-    isPreview: { default: false, type: Boolean }
+    isPreview: { default: false, type: Boolean },
+    mode: {default: 'home', type: String}
   },
   data() {
     return {
@@ -155,10 +156,17 @@ export default {
      * Sets all categories to be shown
      */
     init() {
-      this.data = info
-        .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
-        .filter(e => e.date > new Date())
-        .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
+      if(this.mode === 'home') {
+        this.data = info
+          .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
+          .filter(e => e.date > new Date())
+          .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
+      } else {
+        this.data = info
+          .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
+          .filter(e => e.date > new Date() && e.tag === this.mode)
+          .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
+      }
     }
   }
 };

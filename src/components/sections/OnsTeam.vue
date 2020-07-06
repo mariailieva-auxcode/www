@@ -1,7 +1,7 @@
 <template>
   <div class="team">
     <div>
-      <Title v-if="!isPreview" title="Ons team" sectionTitle="SECTION TITLE" :isHomePage="false"></Title>
+      <Title title="Ons team" sectionTitle="SECTION TITLE" :isHomePage="false"></Title>
     </div>
     <div class="row yaml-links row" v-for="team of team" :key="team.name">
       <div class="col-3 picture">
