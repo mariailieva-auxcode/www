@@ -1,7 +1,7 @@
 <template>
   <div class="tools">
     <div class="row">
-      <Title v-if="!isPreview" title="Tools" sectionTitle="03" :isHomePage="true"></Title>
+      <Title title="Tools" sectionTitle="03" :isHomePage="true"></Title>
     </div>
     <div class="row">
       <div class="col-6 text">

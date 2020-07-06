@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <Title v-if="!isPreview" title="Partners" sectionTitle="SECTION TITLE" :isHomePage="false" :isCentered="true"></Title>
+        <Title title="Partners" sectionTitle="SECTION TITLE" :isHomePage="false" :isCentered="true"></Title>
       </div>
     </div>
     <div class="row partners">

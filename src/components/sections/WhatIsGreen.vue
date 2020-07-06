@@ -5,7 +5,7 @@
     </div>
     <div class="col-6">
       <div class="col-12">
-        <Title v-if="!isPreview" title="What Is greenatlas.earth" sectionTitle="SECTION TITLE" :isHomePage="false" :isWhat="true"></Title>
+        <Title title="What Is greenatlas.earth" sectionTitle="SECTION TITLE" :isHomePage="false" :isWhat="true"></Title>
       </div>
       <p>
         {{whatIs.description}}
