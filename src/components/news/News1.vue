@@ -37,7 +37,7 @@ export default {
       data: {}
     }
   },
-  mounted() {
+  created() {
     this.data = info;
   }
 };

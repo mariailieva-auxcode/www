@@ -27,7 +27,7 @@ export default {
       partners: undefined
     }
   },
-  mounted() {
+  created() {
     this.partners = partners
   }
 };
