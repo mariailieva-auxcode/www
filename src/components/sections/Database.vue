@@ -38,7 +38,7 @@ export default {
 .database {
   .row {
     max-width: 80%;
-    margin-bottom: 160px;
+    margin-bottom: 50px;
     h1 {
       margin: 0 0 80px 80px;
     }
