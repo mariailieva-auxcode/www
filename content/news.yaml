@@ -1,5 +1,12 @@
 # CMS structure
-
+subTitle: SECTION TITLE
+title: News
+button: To News
+homeTitles:
+  subTitle: '01'
+  title: News
+description: ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.
+news:
 -   url: https://ekwadraat.com/diensten/zonne-energie/zonnepark/omgevingsvergunning-zonnepark/ 
     description: 'Welke vergunningen heb ik nodig?'
     expiry: 2020-08-01

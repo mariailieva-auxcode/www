@@ -1,6 +1,6 @@
 <template>
   <div class="row row-fluid align-items-baseline">
-    <div class="col-3">
+    <!-- <div class="col-3">
       <form @submit.prevent="submit">
         <div class="form-group">
           <input
@@ -13,8 +13,8 @@
           />
         </div>
       </form>
-    </div>
-    <div class="col-9 d-flex categories">
+    </div>-->
+    <div class="col-12 d-flex categories">
       <p
         class="btn"
         :class="showAll ? 'categories__active' : 'categories__unactive'"

@@ -3,7 +3,7 @@
     <div>
       <HeaderSO></HeaderSO>
       <News1></News1>
-      <News :isPreview="true"></News>
+      <News :isPreview="true" mode="SITE OWNER"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
     </div>
@@ -32,7 +32,7 @@ export default {
     return {
       database: {},
       tools: {}
-    }
+    };
   },
   mounted() {
     this.database = database;

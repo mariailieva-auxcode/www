@@ -1,7 +1,7 @@
 <template>
   <div :class="{'news-preview': isPreview, 'news': !isPreview}">
     <div class="container-fluid">
-      <Title v-if="!isPreview" title="News" sectionTitle="SECTION TITLE"></Title>
+      <Title class="title" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
       <div class="row row-fluid news-container">
         <div class="col-6">
@@ -20,9 +20,9 @@
       </div>
 
       <div class="row" v-if="!isPreview">
-        <hr>
+        <hr />
         <div class="col-6">
-          <h3 class="news-tag-title">Site Owner</h3>
+          <h3 class="news-tag-title">Location Owner</h3>
           <div
             v-for="(item, index) in getPostsByTag('site-owner')"
             :key="index"
@@ -65,14 +65,17 @@ export default {
     Title
   },
   props: {
-    isPreview: { default: false, type: Boolean }
+    isPreview: { default: false, type: Boolean },
+    mode: {default: 'home', type: String}
   },
   data() {
     return {
       data: [],
       categories: {},
       filteredCategories: [],
-      filterCriteria: []
+      filterCriteria: [],
+      subTitle: '',
+      title: ''
     };
   },
   beforeMount() {
@@ -82,14 +85,14 @@ export default {
   },
   methods: {
     getPostsByTag(tag) {
-      if(tag === 'site-owner') {
+      if (tag === "site-owner") {
         return this.data
           .slice(3, this.data.length)
-          .filter(e => e.tag === 'SITE OWNER');
+          .filter(e => e.tag === "SITE OWNER");
       } else {
         return this.data
           .slice(3, this.data.length)
-          .filter(e => e.tag === 'PROJECT DEVELOPER');
+          .filter(e => e.tag === "PROJECT DEVELOPER");
       }
     },
     /**
@@ -155,10 +158,20 @@ export default {
      * Sets all categories to be shown
      */
     init() {
-      this.data = info
-        .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
-        .filter(e => e.date > new Date())
-        .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
+      this.subTitle = info.subTitle;
+      this.title = info.title;
+
+      if(this.mode === 'home') {
+        this.data = info.news
+          .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
+          .filter(e => e.date > new Date())
+          .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
+      } else {
+        this.data = info.news
+          .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
+          .filter(e => e.date > new Date() && e.tag === this.mode)
+          .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
+      }
     }
   }
 };
@@ -166,31 +179,34 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/styles/main.scss";
-.row {
-  max-width: 80%;
+.container-fluid {
+  .title {
+    margin-top: 30px;
+    margin-left: 40px;
+  }
 }
 
 .news {
-  .news-container>.col-6 {
-      height: 635px;
+  .news-container > .col-6 {
+    height: 635px;
   }
 
   .news-tag-title {
     text-align: left;
   }
 
-  .news-container>.secondaryNews>.news {
-      height: 320px;
+  .news-container > .secondaryNews > .news {
+    height: 320px;
   }
 
-  .news-container>.secondaryNews>.row {
-      height: 315px;
+  .news-container > .secondaryNews > .row {
+    height: 315px;
   }
 
   .suppliers {
-      max-width: 1400px;
-      margin-right: auto;
-      margin-left: auto;
+    max-width: 1400px;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 </style>

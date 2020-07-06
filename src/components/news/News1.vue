@@ -2,20 +2,18 @@
   <div class="container-fluid">
     <div class="row news-text">
       <div class="col-2">
-        <Title v-if="!isPreview" title="News" sectionTitle="01" :isHomePage="true"></Title>
+        <Title :title="data.homeTitles.title" :sectionTitle="data.homeTitles.subTitle" :isHomePage="true"></Title>
       </div>
       <div class="col-7">
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.
+          {{data.description}}
         </p>
       </div>
       <div class="col-2">
         <router-link to="/news">
           <button>
             <p>
-              To News
+              {{data.button}}
               <img src="assets/arrow-right-blue.png" />
             </p>
           </button>
@@ -26,15 +24,25 @@
 </template>
 
 <script>
-import Title from '../layout/Title'
+import info from "js-yaml-loader!../../../content/news.yaml";
+import Title from "../layout/Title";
 export default {
   components: {
     Title
+  },
+  data() {
+    return {
+      data: {}
+    }
+  },
+  created() {
+    this.data = info;
   }
 };
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/styles/main.scss";
 .container-fluid {
   margin-bottom: 75px;
   .news-text {
@@ -47,9 +55,15 @@ export default {
       color: #393a4d;
       font-weight: bold;
     }
-    .col-7 > p {
+    .col-7 {
+      max-width: 60%;
+      margin-left: 100px;
+    }
+    p {
       color: #9597ac;
       font-size: 18px;
+      font-family: $font__IBMmedium;
+      font-weight: 500;
     }
     .col-2 button {
       width: 140px;
@@ -60,6 +74,8 @@ export default {
       p {
         margin: auto;
         font-size: 14px;
+        font-family: $font__IBMmedium;
+        font-weight: 500;
         color: #2783ff;
       }
     }

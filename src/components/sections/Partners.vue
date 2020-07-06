@@ -2,11 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <Title v-if="!isPreview" title="Partners" sectionTitle="SECTION TITLE" :isHomePage="false" :isCentered="true"></Title>
+        <Title :title="partners.title" :sectionTitle="partners.subTitle" :isHomePage="false" :isCentered="true"></Title>
       </div>
     </div>
     <div class="row partners">
-      <div class="col-3 partner" v-for="partner of partners" :key="partner.name">
+      <div class="col-3 partner" v-for="partner of partners.partners" :key="partner.name">
         <img :src="partner.logo" />
         <p>{{partner.description}}</p>
       </div>
@@ -27,7 +27,7 @@ export default {
       partners: undefined
     }
   },
-  mounted() {
+  created() {
     this.partners = partners
   }
 };
