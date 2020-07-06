@@ -20,8 +20,8 @@ export default {
     return {
       title: "",
       description: "",
-      button1: "",
-      button2: ""
+      textSurvey: "",
+      linkSurvey: ""
     };
   },
   mounted() {
