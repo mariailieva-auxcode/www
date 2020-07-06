@@ -28,8 +28,8 @@ news:
       -  business
     tag: SITE OWNER
       
--   url: https://ekwadraat.com/diensten/zonne-energie/zonnepark/ 
-    description: 'Het realiseren van een zonnepark, wat komt daarbij kijken?'
+-   url: 
+    description: 
     expiry: 2020-08-01
     categories: 
       -  subsidy
@@ -42,8 +42,8 @@ news:
       -  business
     tag: PROJECT DEVELOPER
 
--   url: https://vlb.nl/zonneparken-hoge-opbrengsten-maar-ook-hoge-kosten-2/
-    description: 'Zonneparken; hoge opbrengst, hoge kosten.'
+-   url: 
+    description: 
     expiry: 2020-08-01
     categories: 
       -  business
@@ -56,23 +56,23 @@ news:
       -  business
     tag: SITE OWNER
       
--   url: http://www.commissiemer.nl/projectdocumenten/00005511.pdf
-    description: 'Voorbeeld factsheet business case windenergie.'
+-   url: 
+    description: 
     expiry: 2020-08-01
     categories: 
       -  business
       -  social
     tag: PROJECT DEVELOPER
 
--   url: https://www.lokaleenergievoorwaarts.nl/friksbeheer/wp-content/uploads/2016/07/170309-Exploitatievarianten-voor-zon-PV-projecten.pdf
-    description: 'Exploitatievarianten voor zon PV projecten.'
+-   url: 
+    description: 
     expiry: 2020-08-10
     categories: 
       -  business
     tag: PROJECT DEVELOPER
 
--   url: https://www.windopland.info/wp-content/uploads/2017/09/Workshop-2.-Hoe-ontwikkel-je-een-windpark-Geert-Bosch.pdf
-    description: 'Hoe ontwikkel je een windpark?'
+-   url: 
+    description: 
     expiry: 2020-08-15
     categories: 
       -  business
@@ -85,8 +85,8 @@ news:
       -  ecosystem
     tag: PROJECT DEVELOPER
 
--   url: http://www.solarscorecard.com/2018-19/2018-19-SVTC-Solar-Scorecard.pdf
-    description: 'Wat zijn de beste en meest duurzame zonnepanelen?'
+-   url: 
+    description: 
     expiry: 2020-08-25
     categories:
       -  innovation
