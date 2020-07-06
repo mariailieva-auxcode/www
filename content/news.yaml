@@ -1,10 +1,10 @@
 # CMS structure
 
--   url: https://nltimes.nl/2020/05/29/netherlands-using-renewable-energy-mostly-biomass/
-    description: 'Demo for Jalal.'
+-   url: https://ekwadraat.com/diensten/zonne-energie/zonnepark/omgevingsvergunning-zonnepark/ 
+    description: 'Welke vergunningen heb ik nodig?'
     expiry: 2020-08-01
     categories: 
-      -  subsidy
+      -  business
     tag: SITE OWNER
 
 -   url: https://longreads.cbs.nl/european-scale-2019/renewable-energy/
