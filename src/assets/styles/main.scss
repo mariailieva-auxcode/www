@@ -19,11 +19,12 @@ sans-serif;
 $color__white: white;
 
 // * {
-    //     font-family: $font__LatoBlack;
-    // }
+//     font-family: $font__LatoBlack;
+// }
 
 .row.row-fluid {
     max-width: 100%;
+    margin-bottom: 200px;
 }
 
 h2#pageTitle {
@@ -64,4 +65,3 @@ label#categories {
 div.hidden {
     visibility: hidden;
 }
-
