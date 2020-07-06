@@ -1,7 +1,7 @@
 <template>
   <div :class="{'news-preview': isPreview, 'news': !isPreview}">
     <div class="container-fluid">
-      <Title class="title" v-if="!isPreview" title="News" sectionTitle="SECTION TITLE"></Title>
+      <Title class="title" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
       <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
       <div class="row row-fluid news-container">
         <div class="col-6">
@@ -73,7 +73,9 @@ export default {
       data: [],
       categories: {},
       filteredCategories: [],
-      filterCriteria: []
+      filterCriteria: [],
+      subTitle: '',
+      title: ''
     };
   },
   beforeMount() {
@@ -156,13 +158,16 @@ export default {
      * Sets all categories to be shown
      */
     init() {
+      this.subTitle = info.subTitle;
+      this.title = info.title;
+
       if(this.mode === 'home') {
-        this.data = info
+        this.data = info.news
           .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
           .filter(e => e.date > new Date())
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
       } else {
-        this.data = info
+        this.data = info.news
           .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
           .filter(e => e.date > new Date() && e.tag === this.mode)
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));

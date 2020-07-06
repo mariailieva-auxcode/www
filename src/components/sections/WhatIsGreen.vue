@@ -1,11 +1,11 @@
 <template>
   <div class="row row-fluid">
     <div class="col-6 image">
-      <img src="assets/greenatlas.earth.png" />
+      <img :src="whatIs.image" />
     </div>
     <div class="col-6">
       <div class="col-12">
-        <Title title="What Is greenatlas.earth" sectionTitle="SECTION TITLE" :isHomePage="false" :isWhat="true"></Title>
+        <Title :title="whatIs.title" :sectionTitle="whatIs.subTitle" :isHomePage="false" :isWhat="true"></Title>
       </div>
       <p>
         {{whatIs.description}}

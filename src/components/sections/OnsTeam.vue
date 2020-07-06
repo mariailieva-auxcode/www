@@ -1,7 +1,7 @@
 <template>
   <div class="team">
     <div>
-      <Title title="Ons team" sectionTitle="SECTION TITLE" :isHomePage="false"></Title>
+      <Title :title="title" :sectionTitle="subTitle" :isHomePage="false"></Title>
     </div>
     <div class="row yaml-links row" v-for="team of team" :key="team.name">
       <div class="col-3 picture">
@@ -32,7 +32,7 @@
           <div class="col-5 linkedin">
             <div class="row">
               <img class="linkedin" src="assets/linked-in-blue.png" />
-              <router-link to="/" class="email">Visit LinkedIn profile</router-link>
+              <a :href="team.linkedIn" class="email">Visit LinkedIn profile</a>
               <img class="arrow" src="assets/arrow-right-blue.png" />
             </div>
           </div>
@@ -51,12 +51,16 @@ export default {
   },
   data() {
     return {
-      team: undefined
+      team: undefined,
+      title: '',
+      subTitle: ''
     };
   },
 
   mounted() {
-    this.team = team;
+    this.team = team.team;
+    this.title = team.title
+    this.subTitle = team.subTitle;
   }
 };
 </script>

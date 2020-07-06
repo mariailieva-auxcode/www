@@ -16,9 +16,11 @@
       </div>
       <div class="col-3">
         <p class="footer-title">Social Links</p>
-        <p>
-          <img class="icon" src="assets/linked-in-white.png" />/greenatlas
-        </p>
+        <a :href="footer.linkedin">
+          <p>
+            <img class="icon" src="assets/linked-in-white.png" />/greenatlas
+          </p>
+        </a>
       </div>
       <div class="col-3">
         <img src="assets/big-logo.png" />

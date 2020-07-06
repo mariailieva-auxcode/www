@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <Title title="Our Survey" sectionTitle="SECTION TITLE" :isHomePage="false"  :isCentered="true"></Title>
+        <Title :title="survey.title" :sectionTitle="survey.subTitle" :isHomePage="false"  :isCentered="true"></Title>
       </div>
     </div>
     <div class="row">

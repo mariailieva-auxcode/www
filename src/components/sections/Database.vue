@@ -1,11 +1,11 @@
 <template>
   <div class="database">
     <div class="row">
-      <Title title="Database" sectionTitle="02" :isHomePage="true"></Title>
+      <Title :title="database.title" :sectionTitle="database.subTitle" :isHomePage="true"></Title>
     </div>
     <div class="row">
       <div class="col-6">
-        <img src="assets/person-writing-on-notebook.png" />
+        <img :src="database.image" />
       </div>
       <div class="col-6 text">
         <p>{{database.description}}</p>

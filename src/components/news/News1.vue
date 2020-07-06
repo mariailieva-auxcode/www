@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row news-text">
       <div class="col-2">
-        <Title title="News" sectionTitle="01" :isHomePage="true"></Title>
+        <Title :title="data.homeTitles.title" :sectionTitle="data.homeTitles.subTitle" :isHomePage="true"></Title>
       </div>
       <div class="col-7">
         <p>
@@ -26,10 +26,19 @@
 </template>
 
 <script>
+import info from "js-yaml-loader!../../../content/news.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
     Title
+  },
+  data() {
+    return {
+      data: {}
+    }
+  },
+  mounted() {
+    this.data = info;
   }
 };
 </script>

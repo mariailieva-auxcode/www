@@ -1,7 +1,7 @@
 <template>
   <div class="tools">
     <div class="row">
-      <Title title="Tools" sectionTitle="03" :isHomePage="true"></Title>
+      <Title :title="tools.title" :sectionTitle="tools.subTitle" :isHomePage="true"></Title>
     </div>
     <div class="row">
       <div class="col-6 text">
@@ -16,7 +16,7 @@
         </button>
       </div>
       <div class="col-6">
-        <img src="assets/solar-panels.png" />
+        <img :src="tools.image" />
       </div>
     </div>
   </div>

@@ -1,5 +1,10 @@
 # CMS structure
-
+subTitle: SECTION TITLE
+title: News
+homeTitles:
+  subTitle: '01'
+  title: News
+news:
 -   url: https://nltimes.nl/2020/05/29/netherlands-using-renewable-energy-mostly-biomass/
     description: 'Demo for Jalal.'
     expiry: 2020-08-01
