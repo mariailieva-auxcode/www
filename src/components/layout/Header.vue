@@ -53,12 +53,19 @@ export default {
     color: $color__white;
     h1 {
       font-size: 50px;
-      font-weight: bold;
+      font-family: $font__IBMbold;
+      font-weight: 700;
       margin-bottom: 15px;
+    }
+    h3 {
+      font-size: 25px;
+      font-family: $font__LatoRegular;
+      font-weight: 400;
     }
     p {
       font-size: 14px;
-      font-weight: bold;
+      font-family: $font__LatoRegular;
+      font-weight: 400;
       margin-top: 30px;
     }
     .button-choice {
@@ -70,7 +77,9 @@ export default {
       margin: 35px 12px 0 12px;
       p {
         font-size: 14px;
-        color: white;
+        color: $color__white;
+        font-family: $font__IBMbold;
+        font-weight: 700;
         margin-top: auto;
         margin-bottom: auto;
       }

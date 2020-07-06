@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Title from '../layout/Title'
+import Title from "../layout/Title";
 export default {
   components: {
     Title
@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/styles/main.scss";
 .container-fluid {
   margin-bottom: 75px;
   .news-text {
@@ -50,6 +51,8 @@ export default {
     .col-7 > p {
       color: #9597ac;
       font-size: 18px;
+      font-family: $font__IBMregular;
+      font-weight: 400;
     }
     .col-2 button {
       width: 140px;
