@@ -11,7 +11,8 @@
           <p class="footer-title">{{footer.titles.contact}}</p>
           <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
             <p>
-              <img class="icon" src="assets/envelope-white.svg" />{{contact}}
+              <img class="icon" src="assets/envelope-white.svg" />
+              {{contact}}
             </p>
           </a>
         </div>
@@ -19,7 +20,8 @@
           <p class="footer-title">{{footer.titles.social}}</p>
           <a :href="footer.linkedin.link" target="_blank">
             <p>
-              <img class="icon" src="assets/linkedin-white.svg" />{{footer.linkedin.name}}
+              <img class="icon" src="assets/linkedin-white.svg" />
+              {{footer.linkedin.name}}
             </p>
           </a>
         </div>
@@ -32,7 +34,7 @@
 </template>
 
 <script>
-import footer from "js-yaml-loader!../../../content/footer.yaml";
+import footer from "js-yaml-loader!../../../content-nl/footer.yaml";
 export default {
   name: "Footer",
   data() {
@@ -53,7 +55,7 @@ export default {
   .row {
     width: 100%;
     height: 200px;
-    
+
     margin-top: 100px;
     text-align: left;
     .footer-link {
@@ -67,7 +69,8 @@ export default {
       text-align: center;
     }
 
-    .col-3, a {
+    .col-3,
+    a {
       color: white;
       margin-top: auto;
       margin-bottom: auto;
@@ -77,5 +80,4 @@ export default {
     }
   }
 }
-
 </style>

@@ -7,10 +7,10 @@
     </div>
     <div class="row">
       <div class="col-12 home-logo">
-        <router-link to="/">
+        <router-link to="/?lang=nl">
           <button>
             <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
-            <p class="home">Home</p>
+            <p class="home" :class="greenHome">Home</p>
           </button>
         </router-link>
       </div>

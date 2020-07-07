@@ -3,7 +3,12 @@
     <div class="row">
       <div class="col-12">
         <div class="partners-title">
-          <Title :title="partners.title" :sectionTitle="partners.subTitle" :isHomePage="false" :isCentered="false"></Title>
+          <Title
+            :title="partners.title"
+            :sectionTitle="partners.subTitle"
+            :isHomePage="false"
+            :isCentered="false"
+          ></Title>
         </div>
       </div>
     </div>
@@ -17,8 +22,8 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content/general/partners.yaml";
-import Title from "../layout/Title"
+import partners from "js-yaml-loader!../../../content-nl/general/partners.yaml";
+import Title from "../layout/Title";
 export default {
   name: "Partners",
   components: {
@@ -27,10 +32,10 @@ export default {
   data() {
     return {
       partners: undefined
-    }
+    };
   },
   created() {
-    this.partners = partners
+    this.partners = partners;
   }
 };
 </script>
@@ -44,8 +49,8 @@ h1 {
   margin-top: 150px;
 }
 .partners-title {
-    margin-left: 20%;
-  }
+  margin-left: 20%;
+}
 .partners {
   display: flex;
   justify-content: center;
@@ -60,7 +65,7 @@ h1 {
     margin-left: 25px;
     margin-right: 25px;
     p {
-      color: #9597AC;
+      color: #9597ac;
       font-size: 18px;
       line-height: 23px;
     }

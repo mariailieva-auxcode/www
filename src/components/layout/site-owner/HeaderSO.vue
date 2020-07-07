@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../../content/site-owner/header.yaml";
+import header from "js-yaml-loader!../../../../content-nl/site-owner/header.yaml";
 export default {
   data() {
     return {
@@ -48,7 +48,7 @@ export default {
 .header {
   p.news-tag {
     background-color: #55b364;
-    font-family: 'IBM Plex Sans Bold', sans-serif;
+    font-family: "IBM Plex Sans Bold", sans-serif;
     padding: 5px 33px;
     color: white;
     width: max-content;

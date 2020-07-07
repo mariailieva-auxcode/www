@@ -17,8 +17,8 @@ import News from "./news/News.vue";
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 
-import tools from "js-yaml-loader!../../content/project-developer/tools.yaml";
-import database from "js-yaml-loader!../../content/project-developer/database.yaml";
+import tools from "js-yaml-loader!../../content-nl/project-developer/tools.yaml";
+import database from "js-yaml-loader!../../content-nl/project-developer/database.yaml";
 
 export default {
   components: {
@@ -32,7 +32,7 @@ export default {
     return {
       database: {},
       tools: {}
-    }
+    };
   },
   mounted() {
     this.database = database;

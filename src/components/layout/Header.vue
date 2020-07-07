@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../content/general/header.yaml";
+import header from "js-yaml-loader!../../../content-nl/general/header.yaml";
 export default {
   data() {
     return {
@@ -45,6 +45,6 @@ export default {
 @import "../../assets/styles/components/header.scss";
 
 .header {
-  height: 100vh
+  height: 100vh;
 }
 </style>

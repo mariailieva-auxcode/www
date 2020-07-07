@@ -17,8 +17,8 @@ import News from "./news/News.vue";
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 
-import tools from "js-yaml-loader!../../content/site-owner/tools.yaml";
-import database from "js-yaml-loader!../../content/site-owner/database.yaml";
+import tools from "js-yaml-loader!../../content-nl/site-owner/tools.yaml";
+import database from "js-yaml-loader!../../content-nl/site-owner/database.yaml";
 
 export default {
   components: {

@@ -9,7 +9,7 @@
       <Footer></Footer>
     </div>
 
-<!-- TODO (Milen) create cookie.yaml for the texts -->
+    <!-- TODO (Milen) create cookie.yaml for the texts -->
     <cookie-law class="cookie">
       <div slot-scope="props">
         <div class="row">
@@ -44,6 +44,12 @@ export default {
     Navigation,
     Footer,
     CookieLaw
+  },
+  mounted() {
+    if (!this.$router.history.current.query.lang) {
+      this.$router.push("?lang=nl");
+    }
+    console.log(this.$router);
   }
 };
 </script>
@@ -66,7 +72,7 @@ export default {
 
 .Cookie--bottom {
   left: 100px;
-  opacity: 0.9
+  opacity: 0.9;
 }
 
 .Cookie--base {
@@ -103,5 +109,4 @@ export default {
     }
   }
 }
-
 </style>

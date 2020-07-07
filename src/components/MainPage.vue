@@ -7,7 +7,7 @@
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
       <WhatIsGreen></WhatIsGreen>
-      <!-- <OnsTeam :lang="lang"></OnsTeam> TODO (Milen)--> 
+      <!-- <OnsTeam :lang="lang"></OnsTeam> TODO (Milen)-->
       <OnsTeam></OnsTeam>
       <Partners></Partners>
       <OurSurvey></OurSurvey>
@@ -26,8 +26,8 @@ import OnsTeam from "./sections/OnsTeam.vue";
 import Partners from "./sections/Partners.vue";
 import OurSurvey from "./sections/OurSurvey.vue";
 
-import tools from "js-yaml-loader!../../content/general/tools.yaml";
-import database from "js-yaml-loader!../../content/general/database.yaml";
+import tools from "js-yaml-loader!../../content-nl/general/tools.yaml";
+import database from "js-yaml-loader!../../content-nl/general/database.yaml";
 
 export default {
   components: {
@@ -45,7 +45,7 @@ export default {
     return {
       database: {},
       tools: {}
-    }
+    };
   },
   mounted() {
     // this.lang = this.$route.path.params.lang || 'en' TODO (Milen)

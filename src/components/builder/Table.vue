@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content/suppliers.yaml";
+import info from "js-yaml-loader!../../../content-nl/suppliers.yaml";
 export default {
   name: "Suppliers",
   props: { industry: Object },

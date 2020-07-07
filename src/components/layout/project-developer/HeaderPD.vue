@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../../content/project-developer/header.yaml";
+import header from "js-yaml-loader!../../../../content-nl/project-developer/header.yaml";
 export default {
   data() {
     return {
@@ -29,7 +29,7 @@ export default {
     this.textSurvey = header.textSurvey;
     this.linkSurvey = header.linkSurvey;
     this.image = header.image;
-    this.tag = header.tag
+    this.tag = header.tag;
   }
 };
 </script>
@@ -39,14 +39,14 @@ export default {
 @import "../../../assets/styles/components/header.scss";
 
 .header p.news-tag {
-    background-color: #2783FF;
-    font-family: 'IBM Plex Sans Bold', sans-serif;
-    padding: 5px 33px;
-    color: white;
-    width: max-content;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0 auto 20px;
+  background-color: #2783ff;
+  font-family: "IBM Plex Sans Bold", sans-serif;
+  padding: 5px 33px;
+  color: white;
+  width: max-content;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 auto 20px;
 }
 </style>

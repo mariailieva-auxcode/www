@@ -2,12 +2,14 @@
   <div class="container-fluid">
     <div class="row news-text">
       <div class="col-2">
-        <Title :title="data.homeTitles.title" :sectionTitle="data.homeTitles.subTitle" :isHomePage="true"></Title>
+        <Title
+          :title="data.homeTitles.title"
+          :sectionTitle="data.homeTitles.subTitle"
+          :isHomePage="true"
+        ></Title>
       </div>
       <div class="col-7">
-        <p>
-          {{data.description}}
-        </p>
+        <p>{{data.description}}</p>
       </div>
       <div class="col-3">
         <router-link to="/news">
@@ -24,7 +26,7 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content/news.yaml";
+import info from "js-yaml-loader!../../../content-nl/news.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
@@ -33,7 +35,7 @@ export default {
   data() {
     return {
       data: {}
-    }
+    };
   },
   created() {
     this.data = info;

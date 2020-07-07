@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content/general/team.yaml";
+import team from "js-yaml-loader!../../../content-nl/general/team.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
@@ -140,7 +140,7 @@ export default {
       width: 50%;
       p {
         margin-bottom: 0;
-        margin-left: 15px
+        margin-left: 15px;
       }
     }
     .linkedin {

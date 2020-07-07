@@ -10,7 +10,7 @@
 
 <script>
 import marked from "marked";
-import gdpr from "raw-loader!../../content/gdpr.md";
+import gdpr from "raw-loader!../../content-nl/gdpr.md";
 export default {
   name: "PrivacyPolicy",
 

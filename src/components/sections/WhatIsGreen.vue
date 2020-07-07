@@ -5,7 +5,12 @@
     </div>
     <div class="col-6">
       <div class="col-12">
-        <Title :title="whatIs.title" :sectionTitle="whatIs.subTitle" :isHomePage="false" :isWhat="true"></Title>
+        <Title
+          :title="whatIs.title"
+          :sectionTitle="whatIs.subTitle"
+          :isHomePage="false"
+          :isWhat="true"
+        ></Title>
       </div>
       <p class="description">{{whatIs.description}}</p>
       <div class="row text" v-for="bullet of whatIs.bullets" :key="bullet">
@@ -21,7 +26,7 @@
 </template>
 
 <script>
-import whatIs from "js-yaml-loader!../../../content/general/whatis.yaml";
+import whatIs from "js-yaml-loader!../../../content-nl/general/whatis.yaml";
 import Title from "../layout/Title";
 export default {
   name: "WhatIsGreen",
