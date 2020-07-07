@@ -1,4 +1,4 @@
-#Greenatlas.earth Privacy Policy
+# Greenatlas.earth Privacy Policy
 
 This privacy policy will explain how our organization uses the personal data we collect from you when you use our website.
 
