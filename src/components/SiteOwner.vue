@@ -3,7 +3,7 @@
     <div>
       <HeaderSO></HeaderSO>
       <News1></News1>
-      <News :isPreview="true" mode="SITE OWNER"></News>
+      <News :isPreview="true" mode="site owner"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
     </div>

@@ -5,7 +5,7 @@
         <div id="main-news-card" class="card" :class="{'main-card': isMain}">
           <img id="box-image" class="card-img-top" :src="props.img" :alt="props.title" />
           
-          <p class="news-tag" :class="{'inverted': data.tag === 'PROJECT DEVELOPER'}">{{data.tag}}</p>
+          <p class="news-tag" :class="{'inverted': data.categories.includes('project developer')}">{{ tag | uppercase}}</p>
           <p :class="{'main-news': isMain, 'sec-news': !isMain}">{{ data.description }}</p>
           <h4 class="card-title">{{props.title}}</h4>
         </div>
@@ -18,12 +18,30 @@
 import LinkPrevue from "link-prevue";
 export default {
   name: "MainNews",
+  filters: {
+    uppercase(text) {
+      if(text)
+        return text.toUpperCase()
+    }
+  },
+  data() {
+    return {
+      tag: ""
+    }
+  },
   components: {
     LinkPrevue
   },
   props: {
     data: Object,
     isMain: Boolean
+  },
+  created() {
+    if(this.data.categories.includes('project developer')) {
+      this.tag = 'PROJECT DEVELOPER'
+    } else if(this.data.categories.includes('site owner')) {
+      this.tag = 'SITE OWNER'
+    }
   }
 };
 </script>
