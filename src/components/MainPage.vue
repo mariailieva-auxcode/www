@@ -7,6 +7,7 @@
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
       <WhatIsGreen></WhatIsGreen>
+      <!-- <OnsTeam :lang="lang"></OnsTeam> TODO (Milen)--> 
       <OnsTeam></OnsTeam>
       <Partners></Partners>
       <OurSurvey></OurSurvey>
@@ -47,6 +48,7 @@ export default {
     }
   },
   mounted() {
+    // this.lang = this.$route.path.params.lang || 'en' TODO (Milen)
     this.database = database;
     this.tools = tools;
   }

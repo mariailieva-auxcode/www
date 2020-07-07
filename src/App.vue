@@ -4,10 +4,12 @@
       <Navigation></Navigation>
     </div>
     <div class="content">
+      <!-- TODO(Milen) check how router props work -->
       <router-view></router-view>
       <Footer></Footer>
     </div>
 
+<!-- TODO (Milen) create cookie.yaml for the texts -->
     <cookie-law class="cookie">
       <div slot-scope="props">
         <div class="row">

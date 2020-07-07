@@ -35,6 +35,7 @@ export default {
     currentPage() {
       return this.$route.path;
     }
+    // ?lang=en TODO (Milen)
   }
 }
 </script>

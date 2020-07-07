@@ -53,8 +53,9 @@ export default {
       button: ""
     };
   },
-
+  // watch: {} TODO (Milen) watch the lang prop
   mounted() {
+    // this.team = team[lang].team; TODO (Milen)
     this.team = team.team;
     this.title = team.title;
     this.subTitle = team.subTitle;
