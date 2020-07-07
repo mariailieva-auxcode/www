@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <Header></Header>
+      <Header :lang="lang"></Header>
       <News1></News1>
       <News :isPreview="true"></News>
       <Database :database="database"></Database>
@@ -47,16 +47,24 @@ export default {
     return {
       database: {},
       tools: {},
-      databaseEn: {},
-      toolsEn: {}
+      lang: ""
     };
   },
-  mounted() {
-    // this.lang = this.$route.path.params.lang || 'en' TODO (Milen)
-    this.database = database;
-    this.tools = tools;
-    this.databaseEn = databaseEn;
-    this.toolsEn = toolsEn;
+  watch: {
+    $route() {
+      this.init();
+    }
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      console.log(this.lang);
+      this.database = this.lang === "en" ? databaseEn : database;
+      this.tools = this.lang === "en" ? toolsEn : tools;
+    }
   }
 };
 </script>

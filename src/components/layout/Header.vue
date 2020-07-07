@@ -31,14 +31,26 @@ export default {
       image: ""
     };
   },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.title = header.title;
-    this.description = header.description;
-    this.button1 = header.button1;
-    this.button2 = header.button2;
-    this.image = header.image;
-
-    this.title = headerEn.title;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? headerEn : header;
+      this.title = data.title;
+      this.description = data.description;
+      this.button1 = data.button1;
+      this.button2 = data.button2;
+      this.image = data.image;
+    }
   }
 };
 </script>
