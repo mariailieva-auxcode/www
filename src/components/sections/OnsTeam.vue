@@ -79,7 +79,7 @@ export default {
     margin-left: 200px;
   }
   .team-card {
-    padding: 25px 25px 0px 0;
+    padding-top: 25px;
   }
   h3.team-name {
     font-size: 20px;
