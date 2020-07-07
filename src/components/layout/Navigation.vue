@@ -3,7 +3,7 @@
     <div class="col-12 logo">
       <router-link to="/">
         <img src="assets/logo.svg" />
-        </router-link>
+      </router-link>
     </div>
     <div class="row">
       <div class="col-12 home-logo">
@@ -19,11 +19,28 @@
       <div class="col-12 news-logo">
         <router-link to="/news">
           <button>
-            <img :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'" />
+            <img
+              :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
+            />
             <p class="news">News</p>
           </button>
         </router-link>
       </div>
+    </div>
+    <div class="row ml">
+      <router-link to="/?lang=nl">
+        <button>
+          <p>NL</p>
+        </button>
+      </router-link>
+
+      <div class="line"></div>
+
+      <router-link to="/?lang=en">
+        <button>
+          <p>EN</p>
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -37,10 +54,11 @@ export default {
     }
     // ?lang=en TODO (Milen)
   }
-}
+};
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/main.scss";
 .menu {
   background: white;
   position: fixed;
@@ -51,7 +69,6 @@ export default {
   }
   .row {
     text-align: center;
-
     .news-logo {
       margin-top: 40px;
     }
@@ -61,15 +78,34 @@ export default {
     button {
       border: none;
       background-color: white;
-      .news, .home {
+      .news,
+      .home {
         color: #9597ac;
         font-size: 14px;
         margin-top: 5px;
         font-weight: bold;
       }
       &:focus {
-        outline: none
+        outline: none;
       }
+    }
+  }
+  .ml {
+    position: absolute;
+    bottom: 30px;
+    margin-left: 15px;
+    p {
+      font-size: 12px;
+      font-family: $font__LatoBold;
+      font-weight: 700;
+      color: #9597ac;
+    }
+    .line {
+      width: 2px;
+      height: 1px;
+      border-bottom: 15px solid #afafaf;
+      border-radius: 10px;
+      margin-top: 5px;
     }
   }
 }
