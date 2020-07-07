@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-12">
         <a :href="survey.link" target="_blank">
-          <button>
+          <button class="survey-button">
             <p class="btn-text">
               {{survey.button}}
               <img src="assets/arrow-right-white.png" />
@@ -65,11 +65,12 @@ p {
   margin-bottom: 50px;
   color: #9597ac;
 }
-button {
+button.survey-button {
   background-color: #55b364;
   border-radius: 15px;
   border: none;
   font-family: $font__IBMmedium;
+  box-shadow: 0px 4px 15px #00000033;
 }
 .survey-description {
   font-family: $font__IBMmedium;

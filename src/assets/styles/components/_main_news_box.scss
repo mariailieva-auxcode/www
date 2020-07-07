@@ -17,6 +17,7 @@ p.sec-news {
     font-weight: bold;
     font-family: 'IBM Plex Sans Bold', sans-serif;
     line-height: 24px;
+    margin-bottom: 5px
 }
 
 #card.main-card {
@@ -71,4 +72,10 @@ p.news-tag {
 
 p.news-tag.inverted {
     background-color: #2783FF;
+}
+
+#secondary-news-card {
+    .card-title {
+        font-family: 'IBM Plex Sans Medium', sans-serif;
+    }
 }

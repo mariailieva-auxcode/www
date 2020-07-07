@@ -62,6 +62,15 @@ export default {
   float: right;
 }
 
+.Cookie--bottom {
+  left: 100px;
+  opacity: 0.9
+}
+
+.Cookie--base {
+  background-color: white;
+}
+
 .cookie {
   width: 340px !important;
   height: 171px;

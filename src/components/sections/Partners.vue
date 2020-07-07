@@ -60,8 +60,9 @@ h1 {
       line-height: 23px;
     }
     img {
-      margin-top: 60px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
+      height: 80px;
+      width: 100%;
     }
   }
 }
