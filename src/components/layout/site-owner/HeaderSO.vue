@@ -5,7 +5,7 @@
       <p class="news-tag">{{ tag}}</p>
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
-      <p>{{textSurvey}}</p>
+      <p class="header-survey">{{textSurvey}}</p>
       <a :href="linkSurvey" target="_blank">
         <button class="button-choice">
           <p>{{button}}</p>
@@ -45,7 +45,8 @@ export default {
 @import "../../../assets/styles/main.scss";
 @import "../../../assets/styles/components/header.scss";
 
-.header p.news-tag {
+.header {
+  p.news-tag {
     background-color: #55b364;
     font-family: 'IBM Plex Sans Bold', sans-serif;
     padding: 5px 33px;
@@ -55,5 +56,15 @@ export default {
     font-size: 14px;
     font-weight: bold;
     margin: 0 auto 14px;
+  }
+  .header-content {
+    p.header-survey {
+      margin-bottom: 0;
+      margin-top: 60px;
+    }
+    .button-choice {
+      margin-top: 15px;
+    }
+  }
 }
 </style>
