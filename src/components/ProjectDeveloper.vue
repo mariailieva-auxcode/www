@@ -3,7 +3,7 @@
     <div>
       <HeaderPD></HeaderPD>
       <News1></News1>
-      <News :isPreview="true" mode="PROJECT DEVELOPER"></News>
+      <News :isPreview="true" mode="project developer"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
     </div>

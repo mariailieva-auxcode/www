@@ -12,89 +12,46 @@ news:
     expiry: 2020-08-01
     categories: 
       -  growth
-    tag: SITE OWNER
+      -  site owner
 
 -   url: http://vlb.nl/grondwaarde-van-zonnepark-bepaalt-rendement/
     description: 'Grondwaarde van zonnepark bepaalt rendement.'
     expiry: 2020-06-01
     categories: 
       -  business
-    tag: SITE OWNER
+      -  site owner
       
 -   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/
     description: Zakelijke voordelen met zonnepanelen.
     expiry: 2020-07-01
     categories: 
       -  business
-    tag: SITE OWNER
+      -  site owner
       
 -   url: https://solarmagazine.nl/nieuws-zonne-energie/i21812/enphase-energy-en-q-cells-introduceren-nieuw-ac-zonnepaneel
     description: 'Introductie nieuw AC zonnepaneel.'
     expiry: 2020-08-01
     categories: 
       -  innovation
-    tag: SITE OWNER
+      -  site owner
 
 -   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
     description: 'Zonne- en windpark, waar en hoeveel?'
     expiry: 2020-08-01
     categories: 
-      -  business
-    tag: PROJECT DEVELOPER
-
--   url: 
-    description: 
-    expiry: 2020-08-01
-    categories: 
-      -  business
-    tag: SITE OWNER
+      - business
+      - project developer
 
 -   url: http://vlb.nl/duurzame-energie-produceren-als-agrarier-pak-het-slim-aan/
     description: 'Slim duurzame energie produceren.'
     expiry: 2020-08-01
     categories: 
       -  business
-    tag: SITE OWNER
-      
--   url: 
-    description: 
-    expiry: 2020-08-01
-    categories: 
-      -  business
-      -  social
-    tag: PROJECT DEVELOPER
-
--   url: 
-    description: 
-    expiry: 2020-08-10
-    categories: 
-      -  business
-    tag: PROJECT DEVELOPER
-
--   url: 
-    description: 
-    expiry: 2020-08-15
-    categories: 
-      -  business
-    tag: PROJECT DEVELOPER
- 
--   url: 
-    description: 
-    expiry: 2020-08-20
-    categories: 
-      -  ecosystem
-    tag: PROJECT DEVELOPER
-
--   url: 
-    description: 
-    expiry: 2020-08-25
-    categories:
-      -  innovation
-    tag: SITE OWNER
+      -  site owner
       
 -   url: https://www.zonnepanelen.net/tier-1-zonnepanelen/
     description: 'Tier 1 zonnepanelen, wat betekent dat?'
     expiry: 2020-08-10
     categories: 
       -  business
-    tag: SITE OWNER
+      -  site owner

@@ -5,15 +5,15 @@
       <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
       <div class="row row-fluid news-container">
         <div class="col-6">
-          <MainNews :data="data[0]" :isMain="true"></MainNews>
+          <MainNews :data="firstThreeNews[0]" :isMain="true"></MainNews>
         </div>
         <div class="col-6 secondaryNews">
           <div class="row row-fluid">
-            <div class="col-6">
-              <MainNews :data="data[1]" :isMain="false"></MainNews>
+            <div class="col-6" v-show="firstThreeNews[1]">
+              <MainNews :data="firstThreeNews[1]" :isMain="false"></MainNews>
             </div>
-            <div class="col-6">
-              <MainNews :data="data[2]" :isMain="false"></MainNews>
+            <div class="col-6" v-show="firstThreeNews[2]">
+              <MainNews :data="firstThreeNews[2]" :isMain="false"></MainNews>
             </div>
           </div>
         </div>
@@ -21,22 +21,14 @@
 
       <div class="row" v-if="!isPreview">
         <hr />
-        <div class="col-6">
-          <h3 class="news-tag-title">Location Owner</h3>
-          <div
-            v-for="(item, index) in getPostsByTag('site-owner')"
-            :key="index"
-            class="mb-3"
-            :class="{'hidden': !filterCriteria.some(c => item.categories.includes(c)) || !item.isShown}"
-          >
-            <SecondaryNews :data="item" :isMain="false"></SecondaryNews>
-          </div>
-        </div>
-
-        <div class="col-6">
-          <h3 class="news-tag-title">Project Developer</h3>
-          <div
-            v-for="(item, index) in getPostsByTag('project-developer')"
+        <div
+          v-for="(category, index) in filteredCategories"
+          :key="index"
+          :class="`col-6`"
+        >
+          <h3 class="news-tag-title">{{category}}</h3>
+          <div 
+            v-for="(item, index) in getPostsByCategory(category)" 
             :key="index"
             class="mb-3"
             :class="{'hidden': !filterCriteria.some(c => item.categories.includes(c)) || !item.isShown}"
@@ -75,7 +67,8 @@ export default {
       filteredCategories: [],
       filterCriteria: [],
       subTitle: '',
-      title: ''
+      title: '',
+      firstThreeNews: []
     };
   },
   beforeMount() {
@@ -84,16 +77,17 @@ export default {
     this.getFilteredCategories();
   },
   methods: {
-    getPostsByTag(tag) {
-      if (tag === "site-owner") {
+    setFirstThreeNews() {
+      this.firstThreeNews = []
+      this.firstThreeNews = this.data.filter(e => e.isShown)
+      let length = this.firstThreeNews < 3 ? this.firstThreeNews : 2;
+      this.firstThreeNews = this.firstThreeNews.slice(0, length)
+
+    },
+    getPostsByCategory(category) {
         return this.data
-          .slice(3, this.data.length)
-          .filter(e => e.tag === "SITE OWNER");
-      } else {
-        return this.data
-          .slice(3, this.data.length)
-          .filter(e => e.tag === "PROJECT DEVELOPER");
-      }
+          .slice(4, this.data.length)
+          .filter(e => e.categories.includes(category));
     },
     /**
      * Gets all categories listed in the cms file
@@ -151,6 +145,7 @@ export default {
           else return e;
         }
       });
+      this.setFirstThreeNews()
       this.$forceUpdate();
     },
     /**
@@ -169,9 +164,10 @@ export default {
       } else {
         this.data = info.news
           .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
-          .filter(e => e.date > new Date() && e.tag === this.mode)
+          .filter(e => e.date > new Date() && e.categories.includes(this.mode))
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
       }
+      this.firstThreeNews = this.data
     }
   }
 };
