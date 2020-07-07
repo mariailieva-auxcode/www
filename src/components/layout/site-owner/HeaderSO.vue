@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :style="{'background-image': `url(${image})`}">
     <div class="header-content">
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
@@ -21,7 +21,9 @@ export default {
       title: "",
       description: "",
       textSurvey: "",
-      linkSurvey: ""
+      linkSurvey: "",
+      image: "",
+      button: ""
     };
   },
   mounted() {
@@ -29,6 +31,8 @@ export default {
     this.description = header.description;
     this.textSurvey = header.textSurvey;
     this.linkSurvey = header.linkSurvey;
+    this.image = header.image;
+    this.button = header.button;
   }
 };
 </script>

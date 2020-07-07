@@ -20,6 +20,14 @@ p.sec-news {
     height: 650px;
 }
 
+.card #box-image {
+    height: 135px;
+}
+
+.card.main-card #box-image {
+    height: 320px;
+}
+
 .card-link:hover {
     text-decoration: none;
 }

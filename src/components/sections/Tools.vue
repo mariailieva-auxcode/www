@@ -14,7 +14,7 @@
         </button>
       </div>
       <div class="col-6">
-        <img :src="tools.image" />
+        <img :src="tools.image" class="tools-image" />
       </div>
     </div>
   </div>
@@ -38,6 +38,10 @@ export default {
 .tools {
   .row {
     max-width: 80%;
+    .tools-image {
+      border-radius: 15px;
+      width: 100%;
+    }
     h1 {
       margin: 150px 0 10px 80px;
     }

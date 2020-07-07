@@ -1,7 +1,7 @@
 <template>
   <link-prevue :url="data.url" cardWidth="100%">
     <template slot-scope="props">
-      <a :href="props.url" class="card-link">
+      <a :href="props.url" class="card-link" target="_blank">
         <div id="secondary-news-card" class="card">
           <img id="box-image" class="card-img-top" :src="props.img" :alt="props.title" />
 

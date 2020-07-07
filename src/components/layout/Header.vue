@@ -1,10 +1,9 @@
 <template>
-  <div class="header">
+  <div class="header" :style="{'background-image': `url(${image})`}">
     <div class="header-overlay"></div>
     <div class="header-content">
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
-      <p>Ik ben</p>
       <router-link to="/site-owner">
         <button class="button-choice">
           <p>{{button1}}</p>
@@ -27,7 +26,8 @@ export default {
       title: "",
       description: "",
       button1: "",
-      button2: ""
+      button2: "",
+      image: ""
     };
   },
   mounted() {
@@ -35,6 +35,7 @@ export default {
     this.description = header.description;
     this.button1 = header.button1;
     this.button2 = header.button2;
+    this.image = header.image;
   }
 };
 </script>
