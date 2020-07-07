@@ -1,7 +1,9 @@
 <template>
   <div class="menu">
     <div class="col-12 logo">
-      <img src="assets/logo.svg" />
+      <router-link to="/">
+        <img src="assets/logo.svg" />
+        </router-link>
     </div>
     <div class="row">
       <div class="col-12 home-logo">
