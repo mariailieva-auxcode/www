@@ -1,4 +1,3 @@
-
 .card-link .card {
     border: none;
 }
@@ -7,6 +6,8 @@ p.main-news {
     font-size: 24px;
     text-align: left;
     font-weight: bold;
+    font-family: 'IBM Plex Sans Bold', sans-serif;
+    margin-bottom: 10px;
 }
 
 p.sec-news {
@@ -14,6 +15,8 @@ p.sec-news {
     font-size: 18px;
     text-align: left;
     font-weight: bold;
+    font-family: 'IBM Plex Sans Bold', sans-serif;
+    line-height: 24px;
 }
 
 #card.main-card {
@@ -50,18 +53,20 @@ h4.card-title {
     font-size: 0.9rem;
     text-align: left;
     font-size: 16px;
+    font-family: 'IBM Plex Sans Bold', sans-serif;
 
 }
 p.news-tag {
     background-color: #55b364;
-    padding: 5px;
+    font-family: 'IBM Plex Sans Bold', sans-serif;
+    padding: 4px 12px;
     color: white;
     width: max-content;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
-    margin-top: 5px;
-    margin-bottom: 0;
+    margin-top: 9px;
+    margin-bottom: 9px;
 }
 
 p.news-tag.inverted {

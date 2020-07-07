@@ -83,6 +83,7 @@ export default {
   }
   h3.team-name {
     font-size: 20px;
+    margin-bottom: 5px;
   }
   .yaml-links {
     margin-left: 250px;
@@ -99,26 +100,34 @@ export default {
       font-size: 18px;
       color: #26272e;
       font-weight: bold;
+      font-family: $font__IBMbold;
     }
     .position {
       font-size: 16px;
       font-weight: bold;
       color: #9597ac;
+      p {
+        margin-bottom: 10px;
+        font-family: $font__IBMbold;
+      }
     }
     .about {
       font-size: 16px;
       line-height: 1.0;
       color: #9597ac;
+      font-family: $font__IBMmedium;
     }
     .email {
       font-size: 14px;
       color: #5694e8;
+      font-family: $font__IBMmedium;
     }
     .col-5 {
       .linkedin {
         width: 20px;
         height: 20px;
         margin-right: 10px;
+        font-family: $font__IBMmedium;
       }
       .arrow {
         width: 12px;

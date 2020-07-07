@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container survey">
     <div class="row">
       <div class="col-12">
         <Title :title="survey.title" :sectionTitle="survey.subTitle" :isHomePage="false"  :isCentered="true"></Title>
@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <p>{{survey.description}}</p>
+        <p class="survey-description">{{survey.description}}</p>
       </div>
     </div>
     <div class="row">
@@ -45,6 +45,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/styles/main.scss";
+.survey {
+  margin-top: 160px;
+}
 h1 {
   text-align: center;
   font-size: 45px;
@@ -65,6 +69,10 @@ button {
   background-color: #55b364;
   border-radius: 15px;
   border: none;
+  font-family: $font__IBMmedium;
+}
+.survey-description {
+  font-family: $font__IBMmedium;
 }
 .btn-text {
   margin: 15px 80px;
