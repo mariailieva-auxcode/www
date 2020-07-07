@@ -10,28 +10,26 @@
         <img :src="person.picture" />
       </div>
       <div class="col-9 team-card">
-        <div class="col-12 name">
-          <h3 class="team-name">{{person.name}}</h3>
-        </div>
+        <div class="team-content">
+          <div class="name">
+            <h3 class="team-name">{{person.name}}</h3>
+          </div>
 
-        <div class="row">
-          <div class="col-12 position">
+          <div class="position">
             <p>{{person.position}}</p>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 about">
+          <div class="about">
             <p>{{person.about}}</p>
           </div>
         </div>
-        <div class="row information">
+        <div class="information">
           <div class="email">
             <img src="assets/envelope.svg" />
             <p>{{person.email}}</p>
           </div>
           <div class="linkedin">
-            <img class="linkedin" src="assets/linkedin.svg" />
-            <a :href="person.linkedIn" target="_blank" class="email">{{button}}</a>
+            <img class="linkedin-image" src="assets/linkedin.svg" />
+            <a :href="person.linkedIn" target="_blank" class="linkedin-link">{{button}}</a>
             <img class="arrow" src="assets/arrow-right-blue.png" />
           </div>
         </div>
@@ -79,6 +77,9 @@ export default {
       margin-left: 100px;
     }
   }
+  .information {
+    display: flex;
+  }
   h1 {
     text-align: left;
     margin-top: 150px;
@@ -86,6 +87,11 @@ export default {
   }
   .team-card {
     padding-top: 25px;
+    padding-left: 22px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   h3.team-name {
     font-size: 20px;
@@ -128,20 +134,37 @@ export default {
       font-size: 14px;
       color: #5694e8;
       font-family: $font__IBMmedium;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      p {
+        margin-bottom: 0;
+        margin-left: 15px
+      }
     }
-    .col-5 {
-      .linkedin {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
+    .linkedin {
+      font-family: $font__IBMmedium;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      justify-content: flex-end;
+      .linkedin-link {
+        font-size: 14px;
+        color: #5694e8;
         font-family: $font__IBMmedium;
       }
-      .arrow {
-        width: 12px;
-        height: 12px;
-        margin-left: 10px;
-        margin-top: 5px;
+      img {
+        margin-right: 15px;
       }
+      p {
+        margin-right: 10px;
+      }
+    }
+    .arrow {
+      width: 12px;
+      height: 12px;
+      margin-left: 10px;
+      margin-top: 5px;
     }
   }
 }
