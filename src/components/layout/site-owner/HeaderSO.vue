@@ -1,6 +1,7 @@
 <template>
   <div class="header" :style="{'background-image': `url(${image})`}">
     <div class="header-content">
+      <p class="news-tag">{{ tag}}</p>
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
       <p>{{textSurvey}}</p>
@@ -23,7 +24,8 @@ export default {
       textSurvey: "",
       linkSurvey: "",
       image: "",
-      button: ""
+      button: "",
+      tag: ""
     };
   },
   mounted() {
@@ -33,6 +35,7 @@ export default {
     this.linkSurvey = header.linkSurvey;
     this.image = header.image;
     this.button = header.button;
+    this.tag = header.tag;
   }
 };
 </script>
@@ -40,4 +43,16 @@ export default {
 <style scoped lang="scss">
 @import "../../../assets/styles/main.scss";
 @import "../../../assets/styles/components/header.scss";
+
+.header p.news-tag {
+    background-color: #55b364;
+    font-family: 'IBM Plex Sans Bold', sans-serif;
+    padding: 5px 33px;
+    color: white;
+    width: max-content;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 auto 14px;
+}
 </style>
