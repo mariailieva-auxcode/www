@@ -23,7 +23,7 @@
         </a>
       </div>
       <div class="col-3">
-        <img src="assets/big-logo.png" />
+        <img src="assets/logo.svg" class="footer-link" />
       </div>
     </div>
   </div>
@@ -53,6 +53,9 @@ export default {
     background-color: #26272e;
     margin-top: 100px;
     text-align: left;
+    .footer-link {
+      width: 130px;
+    }
     .footer-title {
       font-weight: bold;
     }
