@@ -10,6 +10,9 @@ news:
 -   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
     description: 'Zakelijke voordelen met zonnepanelen.'
     expiry: 2020-08-01
+    group: 
+      -  site owner
+      -  project developer
     categories: 
       -  business
       -  site owner
