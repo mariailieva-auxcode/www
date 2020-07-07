@@ -40,6 +40,7 @@
 
 <script>
 import team from "js-yaml-loader!../../../content-nl/general/team.yaml";
+import teamEn from "js-yaml-loader!../../../content-en/general/team.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
@@ -48,6 +49,7 @@ export default {
   data() {
     return {
       team: undefined,
+      teamEn: undefined,
       title: "",
       subTitle: "",
       button: ""
@@ -60,6 +62,11 @@ export default {
     this.title = team.title;
     this.subTitle = team.subTitle;
     this.button = team.button;
+
+    this.teamEn = teamEn.team;
+    this.title = teamEn.title;
+    this.subTitle = teamEn.subTitle;
+    this.button = teamEn.button;
   }
 };
 </script>

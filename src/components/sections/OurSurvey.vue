@@ -32,6 +32,7 @@
 
 <script>
 import survey from "js-yaml-loader!../../../content-nl/general/survey.yaml";
+import surveyEn from "js-yaml-loader!../../../content-en/general/survey.yaml";
 import Title from "../layout/Title";
 export default {
   name: "Survey",
@@ -40,11 +41,13 @@ export default {
   },
   data() {
     return {
-      survey: {}
+      survey: {},
+      surveyEn: {}
     };
   },
   mounted() {
     this.survey = survey;
+    this.surveyEn = surveyEn;
   }
 };
 </script>

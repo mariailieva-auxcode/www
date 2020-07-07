@@ -20,6 +20,7 @@
 
 <script>
 import header from "js-yaml-loader!../../../content-nl/general/header.yaml";
+import headerEn from "js-yaml-loader!../../../content-en/general/header.yaml";
 export default {
   data() {
     return {
@@ -36,6 +37,8 @@ export default {
     this.button1 = header.button1;
     this.button2 = header.button2;
     this.image = header.image;
+
+    this.title = headerEn.title;
   }
 };
 </script>

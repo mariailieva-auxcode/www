@@ -27,6 +27,7 @@
 
 <script>
 import info from "js-yaml-loader!../../../content-nl/news.yaml";
+import infoEn from "js-yaml-loader!../../../content-en/news.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
@@ -39,6 +40,7 @@ export default {
   },
   created() {
     this.data = info;
+    this.data = infoEn;
   }
 };
 </script>

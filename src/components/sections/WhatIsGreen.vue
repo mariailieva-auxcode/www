@@ -27,6 +27,7 @@
 
 <script>
 import whatIs from "js-yaml-loader!../../../content-nl/general/whatis.yaml";
+import whatIsEn from "js-yaml-loader!../../../content-en/general/whatis.yaml";
 import Title from "../layout/Title";
 export default {
   name: "WhatIsGreen",
@@ -35,11 +36,13 @@ export default {
   },
   data() {
     return {
-      whatIs: {}
+      whatIs: {},
+      whatIsEn: {}
     };
   },
   mounted() {
     this.whatIs = whatIs;
+    this.whatIsEn = whatIsEn;
   }
 };
 </script>

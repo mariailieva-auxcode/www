@@ -28,6 +28,8 @@ import OurSurvey from "./sections/OurSurvey.vue";
 
 import tools from "js-yaml-loader!../../content-nl/general/tools.yaml";
 import database from "js-yaml-loader!../../content-nl/general/database.yaml";
+import toolsEn from "js-yaml-loader!../../content-en/general/tools.yaml";
+import databaseEn from "js-yaml-loader!../../content-en/general/database.yaml";
 
 export default {
   components: {
@@ -44,13 +46,17 @@ export default {
   data() {
     return {
       database: {},
-      tools: {}
+      tools: {},
+      databaseEn: {},
+      toolsEn: {}
     };
   },
   mounted() {
     // this.lang = this.$route.path.params.lang || 'en' TODO (Milen)
     this.database = database;
     this.tools = tools;
+    this.databaseEn = databaseEn;
+    this.toolsEn = toolsEn;
   }
 };
 </script>

@@ -35,15 +35,18 @@
 
 <script>
 import footer from "js-yaml-loader!../../../content-nl/footer.yaml";
+import footerEn from "js-yaml-loader!../../../content-en/footer.yaml";
 export default {
   name: "Footer",
   data() {
     return {
-      footer: {}
+      footer: {},
+      footerEn: {}
     };
   },
   created() {
     this.footer = footer;
+    this.footerEn = footerEn;
   }
 };
 </script>

@@ -19,6 +19,8 @@ import Tools from "./sections/Tools.vue";
 
 import tools from "js-yaml-loader!../../content-nl/project-developer/tools.yaml";
 import database from "js-yaml-loader!../../content-nl/project-developer/database.yaml";
+import toolsEn from "js-yaml-loader!../../content-en/project-developer/tools.yaml";
+import databaseEn from "js-yaml-loader!../../content-en/project-developer/database.yaml";
 
 export default {
   components: {
@@ -31,12 +33,16 @@ export default {
   data() {
     return {
       database: {},
-      tools: {}
+      tools: {},
+      databaseEn: {},
+      toolsEn: {}
     };
   },
   mounted() {
     this.database = database;
     this.tools = tools;
+    this.databaseEn = databaseEn;
+    this.toolsEn = toolsEn;
   }
 };
 </script>

@@ -17,6 +17,7 @@
 
 <script>
 import header from "js-yaml-loader!../../../../content-nl/site-owner/header.yaml";
+import headerEn from "js-yaml-loader!../../../../content-en/site-owner/header.yaml";
 export default {
   data() {
     return {
@@ -37,6 +38,8 @@ export default {
     this.image = header.image;
     this.button = header.button;
     this.tag = header.tag;
+
+    this.title = headerEn.title;
   }
 };
 </script>
