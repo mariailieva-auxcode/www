@@ -92,9 +92,6 @@ export default {
     text-align: left;
     .picture {
       padding-left: 0;
-      img {
-        width: 100%;
-      }
     }
   }
   .col-9 {
