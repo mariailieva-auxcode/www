@@ -7,11 +7,11 @@ homeTitles:
   title: Nieuws
 description: Green Atlas biedt een exlusieve selectie aan nieuws rondom het thema duurzame energie.
 news:
--   url: https://www.cbs.nl/en-gb/news/2020/22/renewable-energy-consumption-up-by-16-percent/
-    description: 'In 2019, renewable energy consumption in the Netherlands grew by 16 percent to 181 petajoules (PJ) relative to the previous year. '
+-   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
+    description: 'Zakelijke voordelen met zonnepanelen.'
     expiry: 2020-08-01
     categories: 
-      -  growth
+      -  business
       -  site owner
 
 -   url: http://vlb.nl/grondwaarde-van-zonnepark-bepaalt-rendement/
@@ -21,8 +21,8 @@ news:
       -  business
       -  site owner
       
--   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/
-    description: Zakelijke voordelen met zonnepanelen.
+-   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
+    description: 'Zonne- en windpark, waar en hoeveel?'
     expiry: 2020-08-01
     categories: 
       -  business
@@ -33,13 +33,13 @@ news:
     expiry: 2020-08-01
     categories: 
       -  innovation
-      -  site owner
+      -  project developer
 
--   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
-    description: 'Zonne- en windpark, waar en hoeveel?'
+-   url: https://www.cbs.nl/en-gb/news/2020/22/renewable-energy-consumption-up-by-16-percent/ 
+    description: 'In 2019, renewable energy consumption in the Netherlands grew by 16 percent to 181 petajoules (PJ) relative to the previous year.' 
     expiry: 2020-08-01
     categories: 
-      - business
+      - growth
       - project developer
 
 -   url: http://vlb.nl/duurzame-energie-produceren-als-agrarier-pak-het-slim-aan/
