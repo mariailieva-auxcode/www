@@ -1,39 +1,41 @@
 <template>
-  <div :class="{'news-preview': isPreview, 'news': !isPreview}">
-    <div class="container-fluid">
-      <Title class="title" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
-      <Search id="searchBar" :categories="categories" @change="onSearch($event)" v-if="!isPreview"></Search>
-      <div class="row row-fluid news-container">
-        <div class="col-6">
-          <MainNews :data="firstThreeNews[0]" :isMain="true"></MainNews>
-        </div>
-        <div class="col-6 secondaryNews">
-          <div class="row row-fluid">
-            <div class="col-6" v-show="firstThreeNews[1]">
-              <MainNews :data="firstThreeNews[1]" :isMain="false"></MainNews>
-            </div>
-            <div class="col-6" v-show="firstThreeNews[2]">
-              <MainNews :data="firstThreeNews[2]" :isMain="false"></MainNews>
+  <div class="container">
+    <div :class="{'news-preview': isPreview, 'news': !isPreview}">
+      <div class="container-fluid">
+        <Title class="title" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
+        <Search
+          id="searchBar"
+          :categories="categories"
+          @change="onSearch($event)"
+          v-if="!isPreview"
+        ></Search>
+        <div class="row row-fluid news-container">
+          <div class="col-6">
+            <MainNews :data="firstThreeNews[0]" :isMain="true"></MainNews>
+          </div>
+          <div class="col-6 secondaryNews">
+            <div class="row row-fluid">
+              <div class="col-6" v-show="firstThreeNews[1]">
+                <MainNews :data="firstThreeNews[1]" :isMain="false"></MainNews>
+              </div>
+              <div class="col-6" v-show="firstThreeNews[2]">
+                <MainNews :data="firstThreeNews[2]" :isMain="false"></MainNews>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row" v-if="!isPreview">
-        <hr />
-        <div
-          v-for="(category, index) in filteredCategories"
-          :key="index"
-          :class="`col-6`"
-        >
-          <h3 class="news-tag-title">{{category}}</h3>
-          <div 
-            v-for="(item, index) in getPostsByCategory(category)" 
-            :key="index"
-            class="mb-3"
-            :class="{'hidden': !filterCriteria.some(c => item.categories.includes(c)) || !item.isShown}"
-          >
-            <SecondaryNews :data="item" :isMain="false"></SecondaryNews>
+        <div class="row" v-if="!isPreview">
+          <hr />
+          <div v-for="(category, index) in filteredCategories" :key="index" :class="`col-6`">
+            <h3 class="news-tag-title">{{category}}</h3>
+            <div
+              v-for="(item, index) in getPostsByCategory(category)"
+              :key="index"
+              class="mb-5"
+              :class="{'hidden': !filterCriteria.some(c => item.categories.includes(c)) || !item.isShown}"
+            >
+              <SecondaryNews :data="item" :isMain="false"></SecondaryNews>
+            </div>
           </div>
         </div>
       </div>
@@ -58,7 +60,7 @@ export default {
   },
   props: {
     isPreview: { default: false, type: Boolean },
-    mode: {default: 'home', type: String}
+    mode: { default: "home", type: String }
   },
   data() {
     return {
@@ -66,8 +68,8 @@ export default {
       categories: {},
       filteredCategories: [],
       filterCriteria: [],
-      subTitle: '',
-      title: '',
+      subTitle: "",
+      title: "",
       firstThreeNews: []
     };
   },
@@ -78,16 +80,15 @@ export default {
   },
   methods: {
     setFirstThreeNews() {
-      this.firstThreeNews = []
-      this.firstThreeNews = this.data.filter(e => e.isShown)
+      this.firstThreeNews = [];
+      this.firstThreeNews = this.data.filter(e => e.isShown);
       let length = this.firstThreeNews < 3 ? this.firstThreeNews : 2;
-      this.firstThreeNews = this.firstThreeNews.slice(0, length)
-
+      this.firstThreeNews = this.firstThreeNews.slice(0, length);
     },
     getPostsByCategory(category) {
-        return this.data
-          .slice(4, this.data.length)
-          .filter(e => e.categories.includes(category));
+      return this.data
+        .slice(4, this.data.length)
+        .filter(e => e.categories.includes(category));
     },
     /**
      * Gets all categories listed in the cms file
@@ -145,7 +146,7 @@ export default {
           else return e;
         }
       });
-      this.setFirstThreeNews()
+      this.setFirstThreeNews();
       this.$forceUpdate();
     },
     /**
@@ -156,7 +157,7 @@ export default {
       this.subTitle = info.subTitle;
       this.title = info.title;
 
-      if(this.mode === 'home') {
+      if (this.mode === "home") {
         this.data = info.news
           .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
           .filter(e => e.date > new Date())
@@ -167,7 +168,7 @@ export default {
           .filter(e => e.date > new Date() && e.categories.includes(this.mode))
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
       }
-      this.firstThreeNews = this.data
+      this.firstThreeNews = this.data;
     }
   }
 };
@@ -178,7 +179,6 @@ export default {
 .container-fluid {
   .title {
     margin-top: 30px;
-    margin-left: 40px;
   }
 }
 
@@ -189,6 +189,10 @@ export default {
 
   .news-tag-title {
     text-align: left;
+    font-size: 25;
+    font-family: $font__IBMbold;
+    font-weight: bold;
+    margin-bottom: 30px;
   }
 
   .news-container > .secondaryNews > .news {

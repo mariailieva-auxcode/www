@@ -1,7 +1,9 @@
 <template>
   <div class="team">
-    <div>
-      <Title :title="title" :sectionTitle="subTitle" :isHomePage="false"></Title>
+    <div class="team-container">
+      <div class="team-title">
+        <Title :title="title" :sectionTitle="subTitle" :isHomePage="false"></Title>
+      </div>
     </div>
     <div class="row yaml-links row" v-for="person of team" :key="person.name">
       <div class="col-3 picture">
@@ -23,18 +25,14 @@
           </div>
         </div>
         <div class="row information">
-          <div class="col-1">
-            <img src="assets/envelope.png" />
-          </div>
-          <div class="col-6 email">
+          <div class="email">
+            <img src="assets/envelope.svg" />
             <p>{{person.email}}</p>
           </div>
-          <div class="col-5 linkedin">
-            <div class="row">
-              <img class="linkedin" src="assets/linked-in-blue.png" />
-              <a :href="person.linkedIn" target="_blank" class="email">{{button}}</a>
-              <img class="arrow" src="assets/arrow-right-blue.png" />
-            </div>
+          <div class="linkedin">
+            <img class="linkedin" src="assets/linkedin.svg" />
+            <a :href="person.linkedIn" target="_blank" class="email">{{button}}</a>
+            <img class="arrow" src="assets/arrow-right-blue.png" />
           </div>
         </div>
       </div>
@@ -44,7 +42,7 @@
 
 <script>
 import team from "js-yaml-loader!../../../content/general/team.yaml";
-import Title from "../layout/Title"
+import Title from "../layout/Title";
 export default {
   components: {
     Title
@@ -52,15 +50,15 @@ export default {
   data() {
     return {
       team: undefined,
-      title: '',
-      subTitle: '',
-      button: ''
+      title: "",
+      subTitle: "",
+      button: ""
     };
   },
 
   mounted() {
     this.team = team.team;
-    this.title = team.title
+    this.title = team.title;
     this.subTitle = team.subTitle;
     this.button = team.button;
   }
@@ -73,6 +71,14 @@ export default {
 .team {
   max-width: 80%;
   margin-bottom: 150px;
+  margin-top: 180px;
+  .team-container {
+    margin-bottom: 70px;
+
+    .team-title {
+      margin-left: 100px;
+    }
+  }
   h1 {
     text-align: left;
     margin-top: 150px;
@@ -84,6 +90,7 @@ export default {
   h3.team-name {
     font-size: 20px;
     margin-bottom: 5px;
+    font-weight: bold;
   }
   .yaml-links {
     margin-left: 250px;
@@ -113,7 +120,7 @@ export default {
     }
     .about {
       font-size: 16px;
-      line-height: 1.0;
+      line-height: 20px;
       color: #9597ac;
       font-family: $font__IBMmedium;
     }

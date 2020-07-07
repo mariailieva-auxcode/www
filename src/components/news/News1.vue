@@ -49,7 +49,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
     .col-2 > h1 {
       font-size: 45px;
       color: #393a4d;

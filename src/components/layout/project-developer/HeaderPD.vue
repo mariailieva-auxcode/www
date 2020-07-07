@@ -1,5 +1,6 @@
 <template>
   <div class="header" :style="{'background-image': `url(${image})`}">
+    <div class="header-overlay"></div>
     <div class="header-content">
       <p class="news-tag">{{ tag}}</p>
       <h1>{{title}}</h1>

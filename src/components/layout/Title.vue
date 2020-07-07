@@ -4,7 +4,7 @@
       :style="{'font-size': isHomePage ? '195px' : '80px', 'text-align': isCentered ? 'center' : 'left'}"
     >{{sectionTitle}}</h1>
     <h2
-      :style="{'bottom': isHomePage ? '70px' : '10px', 'left': isCentered ? '35%' : isWhat ? '60px' : '160px'}"
+      :style="{'bottom': isHomePage ? '70px' : '10px', 'left': isCentered ? '35%' : isWhat ? '60px' : '115px'}"
     >{{title}}</h2>
   </div>
 </template>
