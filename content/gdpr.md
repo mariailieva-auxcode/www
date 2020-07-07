@@ -8,45 +8,58 @@ This privacy policy will explain how our organization uses the personal data we 
 * How do we collect your data?
 * How will we use your data?
 * How do we store your data?
-Marketing
-What are your data protection rights?
-What are cookies?
-How do we use cookies?
-What types of cookies do we use?
-How to manage your cookies
-Privacy policies of other websites
-Changes to our privacy policy
-How to contact us
-How to contact the appropriate authorities
+
+# Marketing
+* What are your data protection rights?
+* What are cookies?
+* How do we use cookies?
+* What types of cookies do we use?
+* How to manage your cookies
+* Privacy policies of other websites
+* Changes to our privacy policy
+* How to contact us
+* How to contact the appropriate authorities
 
 # What data do we collect?
 
-greenatlas.earth collects the following data:
-Personal identification information (Name, email address, phone number, etc.)
-Company information (Name, contact details, business activities etc.)
-Site information (Address, size, physical characteristics e.g. soil/ roof-type etc.)
-How do we collect your data?
+Greenatlas.earth collects the following data:
+
+* Personal identification information (Name, email address, phone number, etc.)
+* Company information (Name, contact details, business activities etc.)
+* Site information (Address, size, physical characteristics e.g. soil/ roof-type etc.)
+
+# How do we collect your data?
+
 You directly provide greenatlas.earth with most of the data we collect. We collect data and process data when you:
-Register online or place a query order or register for any of our products or services.
-Voluntarily complete a customer survey, use our platform services or provide feedback on any of our message boards or via email.
-Use or view our website via your browser’s cookies.
+
+* Register online or place a query order or register for any of our products or services.
+* Voluntarily complete a customer survey, use our platform services or provide feedback on any of our message boards or via email.
+* Use or view our website via your browser’s cookies.
+
 Our Company may also receive your data indirectly from the following sources:
-Social media (LinkedIn, Twitter, Facebook etc.
-Newsletters subscriptions
-Partners and affiliates
-How will we use your data?
-greenatlas.earth collects your data so that we can:
-Process your registration, queries and manage your account.
-Email you with special offers and services we think you might like in case you opt in. 
-Put you in contact with partner organizations such as listed on our website and search registry in case you request this.
+
+* Social media (LinkedIn, Twitter, Facebook etc.
+* Newsletters subscriptions
+* Partners and affiliates
+
+# How will we use your data?
+
+Greenatlas.earth collects your data so that we can:
+
+* Process your registration, queries and manage your account.
+* Email you with special offers and services we think you might like in case you opt in. 
+* Put you in contact with partner organizations such as listed on our website and search registry in case you request this.
 
 If you agree, greenatlas.earth will share your data with our partner companies so that they may offer you their products and services.
 When greenatlas.earth processes your registration, it may send your data to, and also use the resulting information from, reference agencies to prevent fraudulent identity and purchases.
-How do we store your data?
-greenatlas.earth does not store any user data at the moment except voluntary responses of our user survey as published on our website.
+
+# How do we store your data?
+
+Greenatlas.earth does not store any user data at the moment except voluntary responses of our user survey as published on our website.
 We store your data in a secure Google forms environment.
 Marketing
-greenatlas.earth would like to send you information about products and services of ours that we think you might like, as well as those of our partner companies listed on our website, search registry or selected through one of our services, in case you opt in.
+
+Greenatlas.earth would like to send you information about products and services of ours that we think you might like, as well as those of our partner companies listed on our website, search registry or selected through one of our services, in case you opt in.
 If you have agreed to receive marketing, you may always opt out at a later date.
 You have the right at any time to stop greenatlas.earth from contacting you for marketing purposes or giving your data to other members of the greenatlas.earth network.
 If you no longer wish to be contacted for marketing purposes, please email: Mirthe@greenatlas.earth
@@ -72,17 +85,18 @@ Functionality – greenatlas.earth uses these cookies so that we recognize you o
 Advertising – greenatlas.earth uses these cookies to collect information about your visit to our website, the content you viewed, the links you followed and information about your browser, device, and your IP address. greenatlas.earth sometimes shares some limited aspects of this data with third parties for advertising purposes. 
 We may also share online data collected through cookies with our advertising partners. This means that when you visit another website, you may be shown advertising based on your browsing patterns on our website.
  
-How to manage cookies
+# How to manage cookies
 You can set your browser not to accept cookies, and the above website tells you how to remove cookies from your browser. However, in a few cases, some of our website features may not function as a result.
-Privacy policies of other websites
+
+# Privacy policies of other websites
 The website of greenatlas.earth contains links to other websites. Our privacy policy applies only to our website, so if you click on a link to another website, you should read their privacy policy.
-Changes to our privacy policy
+# Changes to our privacy policy
 greenatlas.earth keeps its privacy policy under regular review and places any updates on this web page. This privacy policy was last updated on 06/07/2020
-How to contact us
+
+# How to contact us
 If you have any questions about greenatlas.earth privacy policy, the data we hold on you, or you would like to exercise one of your data protection rights, please do not hesitate to contact us.
 Email us at: jaap@greenatlas.earth
- 
- 
-How to contact the appropriate authority
+  
+# How to contact the appropriate authority
 Should you wish to report a complaint or if you feel that greenatlas.earth has not addressed your concern in a satisfactory manner, you may contact the Information Commissioner’s Office.
 Email: t.e.shaw@greenatlas.earth
