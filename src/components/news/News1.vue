@@ -9,7 +9,7 @@
           {{data.description}}
         </p>
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <router-link to="/news">
           <button>
             <p>
@@ -57,16 +57,21 @@ export default {
     }
     .col-7 {
       max-width: 60%;
-      margin-left: 100px;
     }
     p {
       color: #9597ac;
       font-size: 18px;
       font-family: $font__IBMmedium;
       font-weight: 500;
+
+      width: 80%;
+      float: right;
+      text-align: left;
+      margin-top: 30px;
     }
-    .col-2 button {
-      width: 140px;
+    .col-3 button {
+      padding-left: 15px;
+      padding-right: 15px;
       height: 45px;
       border-radius: 10px;
       border: 2px solid #2783ff;
@@ -77,6 +82,7 @@ export default {
         font-family: $font__IBMmedium;
         font-weight: 500;
         color: #2783ff;
+        width: 100%;
       }
     }
   }

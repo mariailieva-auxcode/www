@@ -62,6 +62,7 @@ export default {
         color: #9597ac;
         font-size: 14px;
         margin-top: 5px;
+        font-weight: bold;
       }
       &:focus {
         outline: none
