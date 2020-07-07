@@ -1,7 +1,9 @@
 <template>
   <div class="team">
     <div class="team-container">
-      <Title :title="title" :sectionTitle="subTitle" :isHomePage="false"></Title>
+      <div class="team-title">
+        <Title :title="title" :sectionTitle="subTitle" :isHomePage="false"></Title>
+      </div>
     </div>
     <div class="row yaml-links row" v-for="person of team" :key="person.name">
       <div class="col-3 picture">
@@ -72,6 +74,10 @@ export default {
   margin-top: 180px;
   .team-container {
     margin-bottom: 70px;
+
+    .team-title {
+      margin-left: 100px;
+    }
   }
   h1 {
     text-align: left;

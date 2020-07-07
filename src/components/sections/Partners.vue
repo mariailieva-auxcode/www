@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <Title :title="partners.title" :sectionTitle="partners.subTitle" :isHomePage="false" :isCentered="true"></Title>
+        <div class="partners-title">
+          <Title :title="partners.title" :sectionTitle="partners.subTitle" :isHomePage="false" :isCentered="false"></Title>
+        </div>
       </div>
     </div>
     <div class="row partners">
@@ -41,6 +43,9 @@ h1 {
   text-align: center;
   margin-top: 150px;
 }
+.partners-title {
+    margin-left: 20%;
+  }
 .partners {
   display: flex;
   justify-content: center;
