@@ -91,6 +91,7 @@ You can set your browser not to accept cookies, and the above website tells you 
 
 # Privacy policies of other websites
 The website of greenatlas.earth contains links to other websites. Our privacy policy applies only to our website, so if you click on a link to another website, you should read their privacy policy.
+
 # Changes to our privacy policy
 greenatlas.earth keeps its privacy policy under regular review and places any updates on this web page. This privacy policy was last updated on 06/07/2020
 
