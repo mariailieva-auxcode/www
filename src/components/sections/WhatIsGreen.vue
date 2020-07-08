@@ -3,7 +3,7 @@
     <div class="col-6 image">
       <img :src="whatIs.image" />
     </div>
-    <div class="col-sm-12 col-6">
+    <div class="col-sm-12 col-xl-6 col-6">
       <div class="col-sm-12 col-md-12 col-xl-12 col-12">
         <Title
           :title="whatIs.title"
