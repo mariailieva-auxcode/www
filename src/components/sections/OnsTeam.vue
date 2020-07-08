@@ -23,11 +23,11 @@
           </div>
         </div>
         <div class="information">
-          <div class="email col-sm-6">
+          <div class="email col-xl-6 col-sm-6">
             <img src="assets/envelope.svg" />
             <p>{{person.email}}</p>
           </div>
-          <div class="linkedin col-sm-6">
+          <div class="linkedin col-xl-6 col-sm-6">
             <img class="linkedin-image" src="assets/linkedin.svg" />
             <a :href="person.linkedIn" target="_blank" class="linkedin-link">{{button}}</a>
             <img class="arrow" src="assets/arrow-right-blue.png" />
