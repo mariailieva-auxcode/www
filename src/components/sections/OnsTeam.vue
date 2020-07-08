@@ -49,24 +49,31 @@ export default {
   data() {
     return {
       team: undefined,
-      teamEn: undefined,
       title: "",
       subTitle: "",
       button: ""
     };
   },
   // watch: {} TODO (Milen) watch the lang prop
+  props: {
+    lang: String
+  },
   mounted() {
-    // this.team = team[lang].team; TODO (Milen)
-    this.team = team.team;
-    this.title = team.title;
-    this.subTitle = team.subTitle;
-    this.button = team.button;
-
-    this.teamEn = teamEn.team;
-    this.title = teamEn.title;
-    this.subTitle = teamEn.subTitle;
-    this.button = teamEn.button;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? teamEn : team;
+      this.team = data.team;
+      this.title = data.title;
+      this.subTitle = data.subTitle;
+      this.button = data.button;
+    }
   }
 };
 </script>

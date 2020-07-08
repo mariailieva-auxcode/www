@@ -36,13 +36,29 @@ export default {
   },
   data() {
     return {
-      whatIs: {},
-      whatIsEn: {}
+      whatIs: {}
     };
   },
+  // mounted() {
+  //   this.whatIs = whatIs;
+  //   this.whatIsEn = whatIsEn;
+  // },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.whatIs = whatIs;
-    this.whatIsEn = whatIsEn;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? whatIsEn : whatIs;
+      this.whatIs = data;
+    }
   }
 };
 </script>

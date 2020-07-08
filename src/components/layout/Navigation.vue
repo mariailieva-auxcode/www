@@ -10,7 +10,7 @@
         <router-link to="/?lang=nl">
           <button>
             <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
-            <p class="home" :class="greenHome">Home</p>
+            <p class="home">Home</p>
           </button>
         </router-link>
       </div>
@@ -35,7 +35,6 @@
       </router-link>
 
       <div class="line"></div>
-
       <router-link to="/?lang=en">
         <button>
           <p>EN</p>

@@ -30,16 +30,39 @@ export default {
       tag: ""
     };
   },
-  mounted() {
-    this.title = header.title;
-    this.description = header.description;
-    this.textSurvey = header.textSurvey;
-    this.linkSurvey = header.linkSurvey;
-    this.image = header.image;
-    this.button = header.button;
-    this.tag = header.tag;
+  // mounted() {
+  //   this.title = header.title;
+  //   this.description = header.description;
+  //   this.textSurvey = header.textSurvey;
+  //   this.linkSurvey = header.linkSurvey;
+  //   this.image = header.image;
+  //   this.button = header.button;
+  //   this.tag = header.tag;
 
-    this.title = headerEn.title;
+  //   this.title = headerEn.title;
+  // },
+  props: {
+    lang: String
+  },
+  mounted() {
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? headerEn : header;
+      this.title = data.title;
+      this.description = data.description;
+      this.textSurvey = data.textSurvey;
+      this.linkSurvey = data.linkSurvey;
+      this.image = data.image;
+      this.button = data.button;
+      this.tag = data.tag;
+    }
   }
 };
 </script>

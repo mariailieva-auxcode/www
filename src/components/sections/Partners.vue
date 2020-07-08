@@ -32,13 +32,29 @@ export default {
   },
   data() {
     return {
-      partners: undefined,
-      partnersEn: undefined
+      partners: undefined
     };
   },
-  created() {
-    this.partners = partners;
-    this.partnersEn = partnersEn;
+  // created() {
+  //   this.partners = partners;
+  //   this.partnersEn = partnersEn;
+  // },
+  props: {
+    lang: String
+  },
+  mounted() {
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? partnersEn : partners;
+      this.partners = data;
+    }
   }
 };
 </script>

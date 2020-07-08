@@ -41,13 +41,25 @@ export default {
   },
   data() {
     return {
-      survey: {},
-      surveyEn: {}
+      survey: {}
     };
   },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.survey = survey;
-    this.surveyEn = surveyEn;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? surveyEn : survey;
+      this.survey = data;
+    }
   }
 };
 </script>

@@ -61,7 +61,8 @@ export default {
   },
   props: {
     isPreview: { default: false, type: Boolean },
-    mode: { default: "home", type: String }
+    mode: { default: "home", type: String },
+    lang: String
   },
   data() {
     return {
@@ -78,6 +79,14 @@ export default {
     this.init();
     this.getAllCategories();
     this.getFilteredCategories();
+  },
+  mounted() {
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
   },
   methods: {
     setFirstThreeNews() {
@@ -155,9 +164,15 @@ export default {
      * Sets all categories to be shown
      */
     init() {
-      this.subTitle = info.subTitle;
-      this.title = info.title;
-      this.title = infoEn.title;
+      let data = this.lang === "en" ? infoEn : info;
+      this.data = data;
+      this.categories = data;
+      this.filteredCategories = data;
+      this.filterCriteria = data;
+      this.subTitle = data.subTitle;
+      this.title = data.title;
+      this.firstThreeNews = data;
+      // this.title = infoEn.title;
 
       if (this.mode === "home") {
         this.data = info.news

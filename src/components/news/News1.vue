@@ -38,9 +38,26 @@ export default {
       data: {}
     };
   },
-  created() {
-    this.data = info;
-    this.data = infoEn;
+  // created() {
+  //   this.data = info;
+  //   this.data = infoEn;
+  // },
+  props: {
+    lang: String
+  },
+  mounted() {
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let news1 = this.lang === "en" ? infoEn : info;
+      this.data = news1;
+    }
   }
 };
 </script>

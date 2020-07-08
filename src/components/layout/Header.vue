@@ -4,7 +4,7 @@
     <div class="header-content">
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
-      <router-link to="/site-owner">
+      <router-link to="/site-owner/?lang=nl">
         <button class="button-choice">
           <p>{{button1}}</p>
         </button>

@@ -2,15 +2,15 @@
   <div>
     <div>
       <Header :lang="lang"></Header>
-      <News1></News1>
-      <News :isPreview="true"></News>
+      <News1 :lang="lang"></News1>
+      <News :lang="lang" :isPreview="true"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
-      <WhatIsGreen></WhatIsGreen>
+      <WhatIsGreen :lang="lang"></WhatIsGreen>
       <!-- <OnsTeam :lang="lang"></OnsTeam> TODO (Milen)-->
-      <OnsTeam></OnsTeam>
-      <Partners></Partners>
-      <OurSurvey></OurSurvey>
+      <OnsTeam :lang="lang"></OnsTeam>
+      <Partners :lang="lang"></Partners>
+      <OurSurvey :lang="lang"></OurSurvey>
     </div>
   </div>
 </template>
@@ -61,7 +61,6 @@ export default {
   methods: {
     init() {
       this.lang = this.$router.history.current.query.lang;
-      console.log(this.lang);
       this.database = this.lang === "en" ? databaseEn : database;
       this.tools = this.lang === "en" ? toolsEn : tools;
     }
