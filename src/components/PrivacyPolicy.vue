@@ -17,12 +17,24 @@ export default {
 
   data() {
     return {
-      html: ""
+      html: "",
+      lang: ""
     };
   },
-  mounted() {
-    this.html = marked(gdpr);
-    this.html = marked(gdprEn);
+  created() {
+    this.init();
+  },
+  watch: {
+    $route() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      let data = this.lang === "en" ? gdprEn : gdpr;
+      this.html = marked(data);
+    }
   }
 };
 </script>

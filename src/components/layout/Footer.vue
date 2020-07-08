@@ -34,19 +34,30 @@
 </template>
 
 <script>
-import footer from "js-yaml-loader!../../../content-nl/footer.yaml";
+import footerNl from "js-yaml-loader!../../../content-nl/footer.yaml";
 import footerEn from "js-yaml-loader!../../../content-en/footer.yaml";
 export default {
   name: "Footer",
   data() {
     return {
       footer: {},
-      footerEn: {}
+      lang: ""
     };
   },
+  watch: {
+    $route() {
+      this.init();
+    }
+  },
   created() {
-    this.footer = footer;
-    this.footerEn = footerEn;
+    this.init();
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      let data = this.lang === "en" ? footerEn : footerNl;
+      this.footer = data;
+    }
   }
 };
 </script>
