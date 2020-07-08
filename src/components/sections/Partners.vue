@@ -35,10 +35,6 @@ export default {
       partners: undefined
     };
   },
-  // created() {
-  //   this.partners = partners;
-  //   this.partnersEn = partnersEn;
-  // },
   props: {
     lang: String
   },
@@ -92,6 +88,16 @@ h1 {
       margin-bottom: 40px;
       height: 80px;
       width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .partner {
+    padding: none;
+    p {
+      max-height: 210px;
+      overflow: hidden;
     }
   }
 }
