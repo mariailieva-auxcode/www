@@ -1,17 +1,17 @@
 <template>
   <div class="container-fluid">
     <div class="row news-text">
-      <div class="col-2">
+      <div class="col-sm-12 col-ml-4 col-xl-4 col-2">
         <Title
           :title="data.homeTitles.title"
           :sectionTitle="data.homeTitles.subTitle"
           :isHomePage="true"
         ></Title>
       </div>
-      <div class="col-7">
+      <div class="col-sm-8 col-ml-4 col-xl-4 col-5">
         <p>{{data.description}}</p>
       </div>
-      <div class="col-3">
+      <div class="col-sm-4 col-ml-4 col-xl-4 col-3">
         <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
           <button>
             <p>

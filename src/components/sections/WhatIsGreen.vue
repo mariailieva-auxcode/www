@@ -3,8 +3,8 @@
     <div class="col-6 image">
       <img :src="whatIs.image" />
     </div>
-    <div class="col-6">
-      <div class="col-12">
+    <div class="col-sm-12 col-6">
+      <div class="col-sm-12 col-md-12 col-xl-12 col-12">
         <Title
           :title="whatIs.title"
           :sectionTitle="whatIs.subTitle"
@@ -14,10 +14,10 @@
       </div>
       <p class="description">{{whatIs.description}}</p>
       <div class="row text" v-for="bullet of whatIs.bullets" :key="bullet">
-        <div class="col-1">
+        <div class="col-sm-2 col-md-1 col-xl-1 col-1">
           <img src="assets/solar power.png" />
         </div>
-        <div class="col-10">
+        <div class="col-sm-10 col-10">
           <p>{{bullet}}</p>
         </div>
       </div>
@@ -94,6 +94,12 @@ export default {
         margin-right: 30px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .image {
+    display: none;
   }
 }
 </style>
