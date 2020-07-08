@@ -1,13 +1,13 @@
 <template>
   <div class="menu">
     <div class="col-12 logo">
-      <router-link to="/">
+      <router-link :to="`?lang=${$router.history.current.query.lang}`">
         <img src="assets/logo.svg" />
       </router-link>
     </div>
     <div class="row">
       <div class="col-12 home-logo">
-        <router-link to="/?lang=nl">
+        <router-link :to="`/?lang=${$router.history.current.query.lang}`">
           <button>
             <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
             <p class="home">Home</p>
@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col-12 news-logo">
-        <router-link to="/news">
+        <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
           <button>
             <img
               :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
@@ -28,14 +28,14 @@
       </div>
     </div>
     <div class="row ml">
-      <router-link to="/?lang=nl">
+      <router-link to="?lang=nl">
         <button>
           <p>NL</p>
         </button>
       </router-link>
 
       <div class="line"></div>
-      <router-link to="/?lang=en">
+      <router-link to="?lang=en">
         <button>
           <p>EN</p>
         </button>
@@ -49,6 +49,7 @@ export default {
   name: "Navigation",
   computed: {
     currentPage() {
+      console.log(this.$route.path);
       return this.$route.path;
     }
     // ?lang=en TODO (Milen)

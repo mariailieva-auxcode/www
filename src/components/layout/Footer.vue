@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-3">
-          <router-link to="/privacy-policy">
+          <router-link :to="`/privacy-policy?lang=${$router.history.current.query.lang}`">
             <p class="footer-title privacy-policy">{{footer.titles.privacyPolicy}}</p>
           </router-link>
         </div>

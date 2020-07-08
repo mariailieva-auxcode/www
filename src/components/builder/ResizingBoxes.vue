@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link to="/">Go to News</router-link>
+    <router-link :to="`/news?lang=${$router.history.current.query.lang}`">Go to News</router-link>
     <div>
-      <router-link to="/table">Go to Table</router-link>
+      <router-link :to="`/table?lang=${$router.history.current.query.lang}`">Go to Table</router-link>
     </div>
     <div v-bind:style="{ width: width + 'px', height: height + 'px'}">
       <VueDragResize
