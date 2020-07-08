@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <HeaderPD></HeaderPD>
-      <News1></News1>
+      <HeaderPD :lang="lang"></HeaderPD>
+      <News1 :lang="lang"></News1>
       <News :isPreview="true" mode="project developer"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
@@ -33,16 +33,23 @@ export default {
   data() {
     return {
       database: {},
-      tools: {},
-      databaseEn: {},
-      toolsEn: {}
+      tools: {}
     };
   },
-  mounted() {
-    this.database = database;
-    this.tools = tools;
-    this.databaseEn = databaseEn;
-    this.toolsEn = toolsEn;
+  watch: {
+    $route() {
+      this.init();
+    }
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      this.database = this.lang === "en" ? databaseEn : database;
+      this.tools = this.lang === "en" ? toolsEn : tools;
+    }
   }
 };
 </script>
