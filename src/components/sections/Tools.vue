@@ -3,8 +3,8 @@
     <div class="row">
       <Title :title="tools.title" :sectionTitle="tools.subTitle" :isHomePage="true"></Title>
     </div>
-    <div class="row">
-      <div class="col-6 text">
+    <div class="row iPad">
+      <div class="col-sm-12 col-xl-6 col-6 text">
         <p>{{tools.description}}</p>
         <button>
           <p>
@@ -13,7 +13,7 @@
           </p>
         </button>
       </div>
-      <div class="col-6">
+      <div class="col-sm-12 col-xl-6 col-6">
         <img :src="tools.image" class="tools-image" />
       </div>
     </div>
@@ -74,6 +74,14 @@ export default {
           margin: auto 0;
         }
       }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .iPad {
+    flex-direction: column-reverse;
+    .tools-image {
+      margin-bottom: 50px;
     }
   }
 }

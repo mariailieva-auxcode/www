@@ -2,7 +2,12 @@
   <div class="container survey">
     <div class="row">
       <div class="col-12">
-        <Title :title="survey.title" :sectionTitle="survey.subTitle" :isHomePage="false"  :isCentered="true"></Title>
+        <Title
+          :title="survey.title"
+          :sectionTitle="survey.subTitle"
+          :isHomePage="false"
+          :isCentered="true"
+        ></Title>
       </div>
     </div>
     <div class="row">
@@ -26,8 +31,9 @@
 </template>
 
 <script>
-import survey from "js-yaml-loader!../../../content/general/survey.yaml";
-import Title from "../layout/Title"
+import survey from "js-yaml-loader!../../../content/nl/general/survey.yaml";
+import surveyEn from "js-yaml-loader!../../../content/en/general/survey.yaml";
+import Title from "../layout/Title";
 export default {
   name: "Survey",
   components: {
@@ -38,8 +44,22 @@ export default {
       survey: {}
     };
   },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.survey = survey;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? surveyEn : survey;
+      this.survey = data;
+    }
   }
 };
 </script>

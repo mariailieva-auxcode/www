@@ -1,8 +1,8 @@
 <template>
   <div class="suppliers">
-    <router-link to="/">Go to News</router-link>
+    <router-link :to="`/news?lang=${$router.history.current.query.lang}`">Go to News</router-link>
     <div>
-      <router-link to="resize">Drag/resizing Page</router-link>
+      <router-link :to="`resize?lang=${$router.history.current.query.lang}`">Drag/resizing Page</router-link>
     </div>
     <div class="input-group mb-3 row">
       <div class="input-group-prepend">
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content/suppliers.yaml";
+import info from "js-yaml-loader!../../../content/nl/suppliers.yaml";
 export default {
   name: "Suppliers",
   props: { industry: Object },

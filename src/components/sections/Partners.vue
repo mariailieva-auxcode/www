@@ -3,12 +3,21 @@
     <div class="row">
       <div class="col-12">
         <div class="partners-title">
-          <Title :title="partners.title" :sectionTitle="partners.subTitle" :isHomePage="false" :isCentered="false"></Title>
+          <Title
+            :title="partners.title"
+            :sectionTitle="partners.subTitle"
+            :isHomePage="false"
+            :isCentered="false"
+          ></Title>
         </div>
       </div>
     </div>
     <div class="row partners">
-      <div class="col-3 partner" v-for="partner of partners.partners" :key="partner.name">
+      <div
+        class="col-sm-3 col-xl-3 col-3 partner"
+        v-for="partner of partners.partners"
+        :key="partner.name"
+      >
         <img :src="partner.logo" />
         <p>{{partner.description}}</p>
       </div>
@@ -17,8 +26,9 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content/general/partners.yaml";
-import Title from "../layout/Title"
+import partners from "js-yaml-loader!../../../content/nl/general/partners.yaml";
+import partnersEn from "js-yaml-loader!../../../content/en/general/partners.yaml";
+import Title from "../layout/Title";
 export default {
   name: "Partners",
   components: {
@@ -27,10 +37,24 @@ export default {
   data() {
     return {
       partners: undefined
+    };
+  },
+  props: {
+    lang: String
+  },
+  mounted() {
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
     }
   },
-  created() {
-    this.partners = partners
+  methods: {
+    init() {
+      let data = this.lang === "en" ? partnersEn : partners;
+      this.partners = data;
+    }
   }
 };
 </script>
@@ -44,8 +68,8 @@ h1 {
   margin-top: 150px;
 }
 .partners-title {
-    margin-left: 20%;
-  }
+  margin-left: 20%;
+}
 .partners {
   display: flex;
   justify-content: center;
@@ -60,7 +84,7 @@ h1 {
     margin-left: 25px;
     margin-right: 25px;
     p {
-      color: #9597AC;
+      color: #9597ac;
       font-size: 18px;
       line-height: 23px;
     }
@@ -68,6 +92,19 @@ h1 {
       margin-bottom: 40px;
       height: 80px;
       width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .row {
+    justify-content: space-around;
+    display: flex;
+    .partner {
+      padding: 10px;
+      p {
+        font-size: 14px;
+      }
     }
   }
 }

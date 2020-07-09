@@ -10,10 +10,10 @@
           v-if="!isPreview"
         ></Search>
         <div class="row row-fluid news-container">
-          <div class="col-6">
+          <div class="col-sm-12 col-xl-6 col-6">
             <MainNews :data="firstThreeNews[0]" :isMain="true"></MainNews>
           </div>
-          <div class="col-6 secondaryNews">
+          <div class="col-sm-12 col-xl-6 col-6 secondaryNews">
             <div class="row row-fluid">
               <div class="col-6" v-show="firstThreeNews[1]">
                 <MainNews :data="firstThreeNews[1]" :isMain="false"></MainNews>
@@ -44,7 +44,8 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content/news.yaml";
+import info from "js-yaml-loader!../../../content/nl/news.yaml";
+// import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";

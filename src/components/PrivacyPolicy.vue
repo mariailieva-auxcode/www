@@ -10,17 +10,31 @@
 
 <script>
 import marked from "marked";
-import gdpr from "raw-loader!../../content/gdpr.md";
+import gdpr from "raw-loader!../../content/nl/gdpr.md";
+import gdprEn from "raw-loader!../../content/en/gdpr.md";
 export default {
   name: "PrivacyPolicy",
 
   data() {
     return {
-      html: ""
+      html: "",
+      lang: ""
     };
   },
-  mounted() {
-    this.html = marked(gdpr);
+  created() {
+    this.init();
+  },
+  watch: {
+    $route() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      let data = this.lang === "en" ? gdprEn : gdpr;
+      this.html = marked(data);
+    }
   }
 };
 </script>

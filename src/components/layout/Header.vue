@@ -4,12 +4,12 @@
     <div class="header-content">
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
-      <router-link to="/site-owner">
+      <router-link :to="`/site-owner?lang=${$router.history.current.query.lang}`">
         <button class="button-choice">
           <p>{{button1}}</p>
         </button>
       </router-link>
-      <router-link to="/project-developer">
+      <router-link :to="`/project-developer?lang=${$router.history.current.query.lang}`">
         <button class="button-choice">
           <p>{{button2}}</p>
         </button>
@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../content/general/header.yaml";
+import header from "js-yaml-loader!../../../content/nl/general/header.yaml";
+import headerEn from "js-yaml-loader!../../../content/en/general/header.yaml";
 export default {
   data() {
     return {
@@ -30,12 +31,26 @@ export default {
       image: ""
     };
   },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.title = header.title;
-    this.description = header.description;
-    this.button1 = header.button1;
-    this.button2 = header.button2;
-    this.image = header.image;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? headerEn : header;
+      this.title = data.title;
+      this.description = data.description;
+      this.button1 = data.button1;
+      this.button2 = data.button2;
+      this.image = data.image;
+    }
   }
 };
 </script>
@@ -45,6 +60,6 @@ export default {
 @import "../../assets/styles/components/header.scss";
 
 .header {
-  height: 100vh
+  height: 100vh;
 }
 </style>

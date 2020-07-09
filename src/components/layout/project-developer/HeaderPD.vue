@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../../content/project-developer/header.yaml";
+import header from "js-yaml-loader!../../../../content/nl/project-developer/header.yaml";
+import headerEn from "js-yaml-loader!../../../../content/en/project-developer/header.yaml";
 export default {
   data() {
     return {
@@ -23,13 +24,27 @@ export default {
       tag: ""
     };
   },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.title = header.title;
-    this.description = header.description;
-    this.textSurvey = header.textSurvey;
-    this.linkSurvey = header.linkSurvey;
-    this.image = header.image;
-    this.tag = header.tag
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? headerEn : header;
+      this.title = data.title;
+      this.description = data.description;
+      this.textSurvey = data.textSurvey;
+      this.linkSurvey = data.linkSurvey;
+      this.image = data.image;
+      this.tag = data.tag;
+    }
   }
 };
 </script>
@@ -39,14 +54,14 @@ export default {
 @import "../../../assets/styles/components/header.scss";
 
 .header p.news-tag {
-    background-color: #2783FF;
-    font-family: 'IBM Plex Sans Bold', sans-serif;
-    padding: 5px 33px;
-    color: white;
-    width: max-content;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0 auto 20px;
+  background-color: #2783ff;
+  font-family: "IBM Plex Sans Bold", sans-serif;
+  padding: 5px 33px;
+  color: white;
+  width: max-content;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 auto 20px;
 }
 </style>

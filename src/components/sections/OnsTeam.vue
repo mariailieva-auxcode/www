@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="row yaml-links row" v-for="person of team" :key="person.name">
-      <div class="col-3 picture">
+      <div class="col-sm-4 col-xl-3 col-3 picture">
         <img :src="person.picture" />
       </div>
-      <div class="col-9 team-card">
+      <div class="col-sm-6 col-xl-9 col-9 team-card">
         <div class="team-content">
           <div class="name">
             <h3 class="team-name">{{person.name}}</h3>
@@ -23,11 +23,11 @@
           </div>
         </div>
         <div class="information">
-          <div class="email">
+          <div class="email col-xl-6 col-sm-12">
             <img src="assets/envelope.svg" />
             <p>{{person.email}}</p>
           </div>
-          <div class="linkedin">
+          <div class="linkedin col-xl-6 col-sm-12">
             <img class="linkedin-image" src="assets/linkedin.svg" />
             <a :href="person.linkedIn" target="_blank" class="linkedin-link">{{button}}</a>
             <img class="arrow" src="assets/arrow-right-blue.png" />
@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content/general/team.yaml";
+import team from "js-yaml-loader!../../../content/nl/general/team.yaml";
+import teamEn from "js-yaml-loader!../../../content/en/general/team.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
@@ -53,12 +54,26 @@ export default {
       button: ""
     };
   },
-
+  // watch: {} TODO (Milen) watch the lang prop
+  props: {
+    lang: String
+  },
   mounted() {
-    this.team = team.team;
-    this.title = team.title;
-    this.subTitle = team.subTitle;
-    this.button = team.button;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? teamEn : team;
+      this.team = data.team;
+      this.title = data.title;
+      this.subTitle = data.subTitle;
+      this.button = data.button;
+    }
   }
 };
 </script>
@@ -92,6 +107,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 90%;
   }
   h3.team-name {
     font-size: 20px;
@@ -139,7 +155,7 @@ export default {
       width: 50%;
       p {
         margin-bottom: 0;
-        margin-left: 15px
+        margin-left: 15px;
       }
     }
     .linkedin {
@@ -165,6 +181,30 @@ export default {
       height: 12px;
       margin-left: 10px;
       margin-top: 5px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .team {
+    max-width: 90%;
+    margin-left: 0;
+    .row {
+      margin-left: 0;
+    }
+  }
+
+  .yaml-links {
+    margin: none;
+  }
+
+  .team-card {
+    max-width: 400px !important;
+  }
+  .information {
+    flex-wrap: wrap;
+    .linkedin {
+      margin-top: 20px;
+      margin-left: -17px;
     }
   }
 }

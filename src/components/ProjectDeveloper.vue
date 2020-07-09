@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <HeaderPD></HeaderPD>
-      <News1></News1>
+      <HeaderPD :lang="lang"></HeaderPD>
+      <News1 :lang="lang"></News1>
       <News :isPreview="true" mode="project developer"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
@@ -17,8 +17,10 @@ import News from "./news/News.vue";
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 
-import tools from "js-yaml-loader!../../content/project-developer/tools.yaml";
-import database from "js-yaml-loader!../../content/project-developer/database.yaml";
+import tools from "js-yaml-loader!../../content/nl/project-developer/tools.yaml";
+import database from "js-yaml-loader!../../content/nl/project-developer/database.yaml";
+import toolsEn from "js-yaml-loader!../../content/en/project-developer/tools.yaml";
+import databaseEn from "js-yaml-loader!../../content/en/project-developer/database.yaml";
 
 export default {
   components: {
@@ -32,11 +34,22 @@ export default {
     return {
       database: {},
       tools: {}
+    };
+  },
+  watch: {
+    $route() {
+      this.init();
     }
   },
-  mounted() {
-    this.database = database;
-    this.tools = tools;
+  created() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      this.database = this.lang === "en" ? databaseEn : database;
+      this.tools = this.lang === "en" ? toolsEn : tools;
+    }
   }
 };
 </script>

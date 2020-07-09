@@ -3,16 +3,21 @@
     <div class="col-6 image">
       <img :src="whatIs.image" />
     </div>
-    <div class="col-6">
-      <div class="col-12">
-        <Title :title="whatIs.title" :sectionTitle="whatIs.subTitle" :isHomePage="false" :isWhat="true"></Title>
+    <div class="col-sm-12 col-xl-6 col-6">
+      <div class="col-sm-12 col-md-12 col-xl-12 col-12">
+        <Title
+          :title="whatIs.title"
+          :sectionTitle="whatIs.subTitle"
+          :isHomePage="false"
+          :isWhat="true"
+        ></Title>
       </div>
       <p class="description">{{whatIs.description}}</p>
       <div class="row text" v-for="bullet of whatIs.bullets" :key="bullet">
-        <div class="col-1">
+        <div class="col-sm-2 col-md-1 col-xl-1 col-1">
           <img src="assets/solar power.png" />
         </div>
-        <div class="col-10">
+        <div class="col-sm-10 col-10">
           <p>{{bullet}}</p>
         </div>
       </div>
@@ -21,7 +26,8 @@
 </template>
 
 <script>
-import whatIs from "js-yaml-loader!../../../content/general/whatis.yaml";
+import whatIs from "js-yaml-loader!../../../content/nl/general/whatis.yaml";
+import whatIsEn from "js-yaml-loader!../../../content/en/general/whatis.yaml";
 import Title from "../layout/Title";
 export default {
   name: "WhatIsGreen",
@@ -33,8 +39,26 @@ export default {
       whatIs: {}
     };
   },
+  // mounted() {
+  //   this.whatIs = whatIs;
+  //   this.whatIsEn = whatIsEn;
+  // },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.whatIs = whatIs;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? whatIsEn : whatIs;
+      this.whatIs = data;
+    }
   }
 };
 </script>
@@ -70,6 +94,12 @@ export default {
         margin-right: 30px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .image {
+    display: none;
   }
 }
 </style>

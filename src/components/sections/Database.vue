@@ -4,10 +4,10 @@
       <Title :title="database.title" :sectionTitle="database.subTitle" :isHomePage="true"></Title>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-sm-12 col-xl-6 col-6">
         <img :src="database.image" />
       </div>
-      <div class="col-6 text">
+      <div class="col-sm-12 col-xl-6 col-6 text">
         <p>{{database.description}}</p>
         <button>
           <p>
@@ -71,6 +71,17 @@ export default {
           margin: auto 0;
         }
       }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .col-sm-12 {
+    padding: 0 !important;
+    p {
+      margin-top: 50px;
+    }
+    button {
+      margin-left: 0px !important;
     }
   }
 }

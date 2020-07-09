@@ -1,15 +1,16 @@
 <template>
   <div>
     <div>
-      <Header></Header>
-      <News1></News1>
-      <News :isPreview="true"></News>
+      <Header :lang="lang"></Header>
+      <News1 :lang="lang"></News1>
+      <News :lang="lang" :isPreview="true"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
-      <WhatIsGreen></WhatIsGreen>
-      <OnsTeam></OnsTeam>
-      <Partners></Partners>
-      <OurSurvey></OurSurvey>
+      <WhatIsGreen :lang="lang"></WhatIsGreen>
+      <!-- <OnsTeam :lang="lang"></OnsTeam> TODO (Milen)-->
+      <OnsTeam :lang="lang"></OnsTeam>
+      <Partners :lang="lang"></Partners>
+      <OurSurvey :lang="lang"></OurSurvey>
     </div>
   </div>
 </template>
@@ -25,8 +26,10 @@ import OnsTeam from "./sections/OnsTeam.vue";
 import Partners from "./sections/Partners.vue";
 import OurSurvey from "./sections/OurSurvey.vue";
 
-import tools from "js-yaml-loader!../../content/general/tools.yaml";
-import database from "js-yaml-loader!../../content/general/database.yaml";
+import tools from "js-yaml-loader!../../content/nl/general/tools.yaml";
+import database from "js-yaml-loader!../../content/nl/general/database.yaml";
+import toolsEn from "js-yaml-loader!../../content/en/general/tools.yaml";
+import databaseEn from "js-yaml-loader!../../content/en/general/database.yaml";
 
 export default {
   components: {
@@ -43,12 +46,24 @@ export default {
   data() {
     return {
       database: {},
-      tools: {}
+      tools: {},
+      lang: ""
+    };
+  },
+  watch: {
+    $route() {
+      this.init();
     }
   },
-  mounted() {
-    this.database = database;
-    this.tools = tools;
+  created() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      this.database = this.lang === "en" ? databaseEn : database;
+      this.tools = this.lang === "en" ? toolsEn : tools;
+    }
   }
 };
 </script>

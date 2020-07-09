@@ -5,7 +5,7 @@
       <p class="news-tag">{{ tag}}</p>
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
-      <p>{{textSurvey}}</p>
+      <p class="header-survey">{{textSurvey}}</p>
       <a :href="linkSurvey" target="_blank">
         <button class="button-choice">
           <p>{{button}}</p>
@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../../content/site-owner/header.yaml";
+import header from "js-yaml-loader!../../../../content/nl/site-owner/header.yaml";
+import headerEn from "js-yaml-loader!../../../../content/en/site-owner/header.yaml";
 export default {
   data() {
     return {
@@ -29,14 +30,39 @@ export default {
       tag: ""
     };
   },
+  // mounted() {
+  //   this.title = header.title;
+  //   this.description = header.description;
+  //   this.textSurvey = header.textSurvey;
+  //   this.linkSurvey = header.linkSurvey;
+  //   this.image = header.image;
+  //   this.button = header.button;
+  //   this.tag = header.tag;
+
+  //   this.title = headerEn.title;
+  // },
+  props: {
+    lang: String
+  },
   mounted() {
-    this.title = header.title;
-    this.description = header.description;
-    this.textSurvey = header.textSurvey;
-    this.linkSurvey = header.linkSurvey;
-    this.image = header.image;
-    this.button = header.button;
-    this.tag = header.tag;
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
+      let data = this.lang === "en" ? headerEn : header;
+      this.title = data.title;
+      this.description = data.description;
+      this.textSurvey = data.textSurvey;
+      this.linkSurvey = data.linkSurvey;
+      this.image = data.image;
+      this.button = data.button;
+      this.tag = data.tag;
+    }
   }
 };
 </script>
@@ -45,9 +71,10 @@ export default {
 @import "../../../assets/styles/main.scss";
 @import "../../../assets/styles/components/header.scss";
 
-.header p.news-tag {
+.header {
+  p.news-tag {
     background-color: #55b364;
-    font-family: 'IBM Plex Sans Bold', sans-serif;
+    font-family: "IBM Plex Sans Bold", sans-serif;
     padding: 5px 33px;
     color: white;
     width: max-content;
@@ -55,5 +82,15 @@ export default {
     font-size: 14px;
     font-weight: bold;
     margin: 0 auto 14px;
+  }
+  .header-content {
+    p.header-survey {
+      margin-bottom: 0;
+      margin-top: 60px;
+    }
+    .button-choice {
+      margin-top: 15px;
+    }
+  }
 }
 </style>

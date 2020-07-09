@@ -1,16 +1,18 @@
 <template>
   <div class="container-fluid">
     <div class="row news-text">
-      <div class="col-2">
-        <Title :title="data.homeTitles.title" :sectionTitle="data.homeTitles.subTitle" :isHomePage="true"></Title>
+      <div class="col-sm-12 col-ml-4 col-xl-4 col-2">
+        <Title
+          :title="data.homeTitles.title"
+          :sectionTitle="data.homeTitles.subTitle"
+          :isHomePage="true"
+        ></Title>
       </div>
-      <div class="col-7">
-        <p>
-          {{data.description}}
-        </p>
+      <div class="col-sm-7 col-xl-5 col-5">
+        <p>{{data.description}}</p>
       </div>
-      <div class="col-3">
-        <router-link to="/news">
+      <div class="col-sm-5 col-xl-3 col-3">
+        <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
           <button>
             <p>
               {{data.button}}
@@ -24,7 +26,8 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content/news.yaml";
+import info from "js-yaml-loader!../../../content/nl/news.yaml";
+import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
@@ -33,10 +36,28 @@ export default {
   data() {
     return {
       data: {}
+    };
+  },
+  // created() {
+  //   this.data = info;
+  //   this.data = infoEn;
+  // },
+  props: {
+    lang: String
+  },
+  mounted() {
+    this.init();
+  },
+  watch: {
+    lang() {
+      this.init();
     }
   },
-  created() {
-    this.data = info;
+  methods: {
+    init() {
+      let news1 = this.lang === "en" ? infoEn : info;
+      this.data = news1;
+    }
   }
 };
 </script>

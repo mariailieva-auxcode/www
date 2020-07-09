@@ -1,0 +1,60 @@
+# CMS structure
+subTitle: SECTION TITLE
+title: Nieuws
+button: Naar de nieuwspagina
+homeTitles:
+  subTitle: '01'
+  title: Nieuws 111
+description: 11111 Green Atlas biedt een exclusieve selectie aan nieuws rondom het thema duurzame energie.
+news:
+-   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
+    description: 'Zakelijke voordelen met zonnepanelen. 11111'
+    expiry: 2020-08-01
+    group: 
+      -  site owner
+      -  project developer
+    categories: 
+      -  business
+      -  site owner
+
+-   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
+    description: 'Water, wind en zon gecombineerd in één energiesysteem!'
+    expiry: 2020-08-01
+    categories: 
+      -  innovation
+      -  site owner
+      
+-   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
+    description: 'Zonne- en windpark, waar en hoeveel?'
+    expiry: 2020-08-01
+    categories: 
+      -  business
+      -  site owner
+      
+-   url: https://solarmagazine.nl/nieuws-zonne-energie/i21812/enphase-energy-en-q-cells-introduceren-nieuw-ac-zonnepaneel
+    description: 'Introductie nieuw AC zonnepaneel.'
+    expiry: 2020-08-01
+    categories: 
+      -  innovation
+      -  project developer
+
+-   url: https://www.cbs.nl/nl-nl/nieuws/2020/25/vermogen-zonnepanelen-voor-het-eerst-groter-bij-bedrijven-dan-bij-woningen
+    description: 'Vermogen zonnepanelen voor het eerst groter bij bedrijven dan bij woningen.'
+    expiry: 2020-08-01
+    categories: 
+      - growth
+      - project developer
+
+-   url: https://solarmagazine.nl/nieuws-zonne-energie/i21836/solarfields-levert-in-eemshaven-zonnedijk-van-5-kilometer-op
+    description: 'Eerste grootschalige zonnedijk van Nederland.'
+    expiry: 2020-08-01
+    categories: 
+      -  innovation
+      -  project developer
+      
+-   url: https://solarmagazine.nl/nieuws-zonne-energie/i21833/pbl-nederland-moet-europa-volgen-met-groen-herstelbeleid-coronacrisis
+    description: 'Groen herstelbeleid urgent.'
+    expiry: 2020-08-01
+    categories: 
+      -  business
+      -  site owner
