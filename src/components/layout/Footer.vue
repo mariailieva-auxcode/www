@@ -99,5 +99,10 @@ export default {
   .footer-link {
     display: none;
   }
+  .col-sm-12 {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0 !important;
+  }
 }
 </style>
