@@ -45,7 +45,7 @@
 
 <script>
 import info from "js-yaml-loader!../../../content-nl/news.yaml";
-import infoEn from "js-yaml-loader!../../../content-en/news.yaml";
+// import infoEn from "js-yaml-loader!../../../content-en/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";
@@ -61,8 +61,7 @@ export default {
   },
   props: {
     isPreview: { default: false, type: Boolean },
-    mode: { default: "home", type: String },
-    lang: String
+    mode: { default: "home", type: String }
   },
   data() {
     return {
@@ -79,14 +78,6 @@ export default {
     this.init();
     this.getAllCategories();
     this.getFilteredCategories();
-  },
-  mounted() {
-    this.init();
-  },
-  watch: {
-    lang() {
-      this.init();
-    }
   },
   methods: {
     setFirstThreeNews() {
@@ -164,15 +155,8 @@ export default {
      * Sets all categories to be shown
      */
     init() {
-      let data = this.lang === "en" ? infoEn : info;
-      this.data = data;
-      this.categories = data;
-      this.filteredCategories = data;
-      this.filterCriteria = data;
-      this.subTitle = data.subTitle;
-      this.title = data.title;
-      this.firstThreeNews = data;
-      // this.title = infoEn.title;
+      this.subTitle = info.subTitle;
+      this.title = info.title;
 
       if (this.mode === "home") {
         this.data = info.news
