@@ -97,7 +97,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 768px) {
   .image {
     display: none;
   }

@@ -75,7 +75,8 @@ export default {
   }
 }
 @media only screen and (max-width: 768px) {
-  .text {
+  .col-sm-12 {
+    padding: 0 !important;
     p {
       margin-top: 50px;
     }
