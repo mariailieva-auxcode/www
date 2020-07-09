@@ -13,7 +13,11 @@
       </div>
     </div>
     <div class="row partners">
-      <div class="col-3 partner" v-for="partner of partners.partners" :key="partner.name">
+      <div
+        class="col-sm-3 col-xl-3 col-3 partner"
+        v-for="partner of partners.partners"
+        :key="partner.name"
+      >
         <img :src="partner.logo" />
         <p>{{partner.description}}</p>
       </div>
@@ -96,11 +100,10 @@ h1 {
   .row {
     justify-content: space-around;
     display: flex;
-    .col-3 {
+    .partner {
       padding: 10px;
       p {
-        max-height: 210px;
-        overflow: hidden;
+        font-size: 14px;
       }
     }
   }
