@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content-nl/general/partners.yaml";
-import partnersEn from "js-yaml-loader!../../../content-en/general/partners.yaml";
+import partners from "js-yaml-loader!../../../content/nl/general/partners.yaml";
+import partnersEn from "js-yaml-loader!../../../content/en/general/partners.yaml";
 import Title from "../layout/Title";
 export default {
   name: "Partners",

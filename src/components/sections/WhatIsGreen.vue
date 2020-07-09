@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import whatIs from "js-yaml-loader!../../../content-nl/general/whatis.yaml";
-import whatIsEn from "js-yaml-loader!../../../content-en/general/whatis.yaml";
+import whatIs from "js-yaml-loader!../../../content/nl/general/whatis.yaml";
+import whatIsEn from "js-yaml-loader!../../../content/en/general/whatis.yaml";
 import Title from "../layout/Title";
 export default {
   name: "WhatIsGreen",

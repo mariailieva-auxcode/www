@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import footerNl from "js-yaml-loader!../../../content-nl/footer.yaml";
-import footerEn from "js-yaml-loader!../../../content-en/footer.yaml";
+import footerNl from "js-yaml-loader!../../../content/nl/footer.yaml";
+import footerEn from "js-yaml-loader!../../../content/en/footer.yaml";
 export default {
   name: "Footer",
   data() {

@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content-nl/general/team.yaml";
-import teamEn from "js-yaml-loader!../../../content-en/general/team.yaml";
+import team from "js-yaml-loader!../../../content/nl/general/team.yaml";
+import teamEn from "js-yaml-loader!../../../content/en/general/team.yaml";
 import Title from "../layout/Title";
 export default {
   components: {

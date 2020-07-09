@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import survey from "js-yaml-loader!../../../content-nl/general/survey.yaml";
-import surveyEn from "js-yaml-loader!../../../content-en/general/survey.yaml";
+import survey from "js-yaml-loader!../../../content/nl/general/survey.yaml";
+import surveyEn from "js-yaml-loader!../../../content/en/general/survey.yaml";
 import Title from "../layout/Title";
 export default {
   name: "Survey",

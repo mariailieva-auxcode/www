@@ -26,10 +26,10 @@ import OnsTeam from "./sections/OnsTeam.vue";
 import Partners from "./sections/Partners.vue";
 import OurSurvey from "./sections/OurSurvey.vue";
 
-import tools from "js-yaml-loader!../../content-nl/general/tools.yaml";
-import database from "js-yaml-loader!../../content-nl/general/database.yaml";
-import toolsEn from "js-yaml-loader!../../content-en/general/tools.yaml";
-import databaseEn from "js-yaml-loader!../../content-en/general/database.yaml";
+import tools from "js-yaml-loader!../../content/nl/general/tools.yaml";
+import database from "js-yaml-loader!../../content/nl/general/database.yaml";
+import toolsEn from "js-yaml-loader!../../content/en/general/tools.yaml";
+import databaseEn from "js-yaml-loader!../../content/en/general/database.yaml";
 
 export default {
   components: {

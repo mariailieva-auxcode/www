@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../../content-nl/site-owner/header.yaml";
-import headerEn from "js-yaml-loader!../../../../content-en/site-owner/header.yaml";
+import header from "js-yaml-loader!../../../../content/nl/site-owner/header.yaml";
+import headerEn from "js-yaml-loader!../../../../content/en/site-owner/header.yaml";
 export default {
   data() {
     return {

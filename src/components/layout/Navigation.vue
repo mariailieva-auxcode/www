@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import navigation from "js-yaml-loader!../../../content-nl/navigation.yaml";
-import navigationEn from "js-yaml-loader!../../../content-en/navigation.yaml";
+import navigation from "js-yaml-loader!../../../content/nl/navigation.yaml";
+import navigationEn from "js-yaml-loader!../../../content/en/navigation.yaml";
 
 export default {
   name: "Navigation",

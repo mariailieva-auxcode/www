@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content-nl/news.yaml";
-// import infoEn from "js-yaml-loader!../../../content-en/news.yaml";
+import info from "js-yaml-loader!../../../content/nl/news.yaml";
+// import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";

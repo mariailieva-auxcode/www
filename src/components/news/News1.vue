@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content-nl/news.yaml";
-import infoEn from "js-yaml-loader!../../../content-en/news.yaml";
+import info from "js-yaml-loader!../../../content/nl/news.yaml";
+import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
