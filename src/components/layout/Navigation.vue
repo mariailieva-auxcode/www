@@ -146,7 +146,7 @@ export default {
   height: 1px;
   border-bottom: 70px solid #55b364;
   border-radius: 10px;
-  position: absolute;
+  position: fixed;
   left: 0px;
 }
 </style>
