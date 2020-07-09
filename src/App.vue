@@ -49,7 +49,6 @@ export default {
     if (!this.$router.history.current.query.lang) {
       this.$router.push("?lang=nl");
     }
-    console.log(this.$router);
   }
 };
 </script>

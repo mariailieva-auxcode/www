@@ -6,10 +6,10 @@
       </div>
     </div>
     <div class="row yaml-links row" v-for="person of team" :key="person.name">
-      <div class="col-sm-12 col-xl-3 col-3 picture">
+      <div class="col-sm-4 col-xl-3 col-3 picture">
         <img :src="person.picture" />
       </div>
-      <div class="col-sm-12 col-xl-9 col-9 team-card">
+      <div class="col-sm-6 col-xl-9 col-9 team-card">
         <div class="team-content">
           <div class="name">
             <h3 class="team-name">{{person.name}}</h3>
@@ -23,11 +23,11 @@
           </div>
         </div>
         <div class="information">
-          <div class="email col-xl-6 col-sm-6">
+          <div class="email col-xl-6 col-sm-12">
             <img src="assets/envelope.svg" />
             <p>{{person.email}}</p>
           </div>
-          <div class="linkedin col-xl-6 col-sm-6">
+          <div class="linkedin col-xl-6 col-sm-12">
             <img class="linkedin-image" src="assets/linkedin.svg" />
             <a :href="person.linkedIn" target="_blank" class="linkedin-link">{{button}}</a>
             <img class="arrow" src="assets/arrow-right-blue.png" />
@@ -195,6 +195,17 @@ export default {
 
   .yaml-links {
     margin: none;
+  }
+
+  .team-card {
+    max-width: 400px !important;
+  }
+  .information {
+    flex-wrap: wrap;
+    .linkedin {
+      margin-top: 20px;
+      margin-left: -17px;
+    }
   }
 }
 </style>
