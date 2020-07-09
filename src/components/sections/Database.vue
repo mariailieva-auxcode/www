@@ -79,6 +79,9 @@ export default {
     p {
       margin-top: 50px;
     }
+    button {
+      margin-left: 0px !important;
+    }
   }
 }
 </style>

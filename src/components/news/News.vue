@@ -10,10 +10,10 @@
           v-if="!isPreview"
         ></Search>
         <div class="row row-fluid news-container">
-          <div class="col-6">
+          <div class="col-sm-12 col-xl-6 col-6">
             <MainNews :data="firstThreeNews[0]" :isMain="true"></MainNews>
           </div>
-          <div class="col-6 secondaryNews">
+          <div class="col-sm-12 col-xl-6 col-6 secondaryNews">
             <div class="row row-fluid">
               <div class="col-6" v-show="firstThreeNews[1]">
                 <MainNews :data="firstThreeNews[1]" :isMain="false"></MainNews>
