@@ -184,7 +184,7 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .team {
     max-width: 90%;
     margin-left: 0;

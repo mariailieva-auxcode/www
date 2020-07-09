@@ -2,12 +2,12 @@
   <div class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-3">
+        <div class="col-sm-12 col-xl-3 col-3">
           <router-link :to="`/privacy-policy?lang=${$router.history.current.query.lang}`">
             <p class="footer-title privacy-policy">{{footer.titles.privacyPolicy}}</p>
           </router-link>
         </div>
-        <div class="col-3">
+        <div class="col-sm-6 col-xl-3 col-3">
           <p class="footer-title">{{footer.titles.contact}}</p>
           <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
             <p>
@@ -16,7 +16,7 @@
             </p>
           </a>
         </div>
-        <div class="col-3">
+        <div class="col-sm-6 col-xl-3 col-3">
           <p class="footer-title">{{footer.titles.social}}</p>
           <a :href="footer.linkedin.link" target="_blank">
             <p>
@@ -25,7 +25,7 @@
             </p>
           </a>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3 col-xl-3 col-3">
           <img src="assets/logo.svg" class="footer-link" />
         </div>
       </div>
@@ -92,6 +92,12 @@ export default {
         margin-right: 10px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-link {
+    display: none;
   }
 }
 </style>

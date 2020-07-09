@@ -92,12 +92,16 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 800px) {
-  .partner {
-    padding: none;
-    p {
-      max-height: 210px;
-      overflow: hidden;
+@media only screen and (max-width: 768px) {
+  .row {
+    justify-content: space-around;
+    display: flex;
+    .col-3 {
+      padding: 10px;
+      p {
+        max-height: 210px;
+        overflow: hidden;
+      }
     }
   }
 }

@@ -74,4 +74,11 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 768px) {
+  .text {
+    p {
+      margin-top: 50px;
+    }
+  }
+}
 </style>
