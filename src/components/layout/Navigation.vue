@@ -12,7 +12,7 @@
             <div v-if="currentPage === '/'" class="green-line"></div>
             <button>
               <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
-              <p class="home">Home</p>
+              <p class="home">{{homeName}}</p>
             </button>
           </router-link>
         </div>
@@ -25,7 +25,7 @@
               <img
                 :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
               />
-              <p class="news">News</p>
+              <p class="news">{{newsName}}</p>
             </button>
           </router-link>
         </div>
@@ -49,14 +49,40 @@
 </template>
 
 <script>
+import navigation from "js-yaml-loader!../../../content-nl/navigation.yaml";
+import navigationEn from "js-yaml-loader!../../../content-en/navigation.yaml";
+
 export default {
   name: "Navigation",
   computed: {
     currentPage() {
-      console.log(this.$route.path);
       return this.$route.path;
     }
+
     // ?lang=en TODO (Milen)
+  },
+  data() {
+    return {
+      homeName: "",
+      newsName: "",
+      lang: ""
+    };
+  },
+  watch: {
+    $route() {
+      this.init();
+    }
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.lang = this.$router.history.current.query.lang;
+      let data = this.lang === "en" ? navigationEn : navigation;
+      this.homeName = data.homeName;
+      this.newsName = data.newsName;
+    }
   }
 };
 </script>
@@ -121,6 +147,6 @@ export default {
   border-bottom: 70px solid #55b364;
   border-radius: 10px;
   position: absolute;
-  left: -10px;
+  left: 0px;
 }
 </style>
