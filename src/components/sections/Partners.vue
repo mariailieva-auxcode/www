@@ -14,7 +14,7 @@
     </div>
     <div class="row partners">
       <div
-        class="col-sm-3 col-xl-3 col-3 partner"
+        class="col-sm-6 col-xl-3 col-3 partner"
         v-for="partner of partners.partners"
         :key="partner.name"
       >
@@ -102,6 +102,7 @@ h1 {
     display: flex;
     .partner {
       padding: 10px;
+      max-width: 40%;
       p {
         font-size: 14px;
       }
