@@ -13,12 +13,12 @@
         ></Title>
       </div>
       <p class="description">{{whatIs.description}}</p>
-      <div class="row text" v-for="bullet of whatIs.bullets" :key="bullet">
-        <div class="col-sm-2 col-md-1 col-xl-1 col-1">
-          <img src="assets/solar power.png" />
-        </div>
-        <div class="col-sm-10 col-10">
-          <p>{{bullet}}</p>
+      <div class="row">
+        <div class="col-sm-12 col-xl-12 col-12 text" v-for="bullet of whatIs.bullets" :key="bullet">
+          <div class="row">
+            <img class="col-xl-2 col-sm-2 image" :src="bullet.icon" />
+            <p class="col-xl-10 col-sm-10">{{bullet.text}}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -39,10 +39,6 @@ export default {
       whatIs: {}
     };
   },
-  // mounted() {
-  //   this.whatIs = whatIs;
-  //   this.whatIsEn = whatIsEn;
-  // },
   props: {
     lang: String
   },
@@ -88,10 +84,14 @@ export default {
       margin-bottom: 70px;
     }
     .text {
-      margin-left: 60px;
+      margin-left: 40px;
       margin-bottom: 20px;
-      .col-1 {
-        margin-right: 30px;
+      padding: 0 15px 0 0;
+      .row {
+        padding: 0;
+        p {
+          margin: 0;
+        }
       }
     }
   }
