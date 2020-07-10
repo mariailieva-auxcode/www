@@ -83,6 +83,14 @@ export default {
     .tools-image {
       margin-bottom: 50px;
     }
+    .text {
+      p {
+        margin-right: 0 !important;
+      }
+      button {
+        margin: 0 !important;
+      }
+    }
   }
 }
 </style>

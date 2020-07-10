@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-sm-12 col-xl-12 col-12 text" v-for="bullet of whatIs.bullets" :key="bullet">
           <div class="row">
-            <img class="col-xl-2 col-sm-2 image" :src="bullet.icon" />
+            <img class="col-xl-2 col-sm-2 icon" :src="bullet.icon" />
             <p class="col-xl-10 col-sm-10">{{bullet.text}}</p>
           </div>
         </div>

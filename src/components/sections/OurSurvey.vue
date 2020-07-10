@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 description">
         <p class="survey-description">{{survey.description}}</p>
       </div>
     </div>
@@ -98,5 +98,17 @@ button.survey-button {
 .btn-text {
   margin: 15px 80px;
   color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .survey {
+    .row {
+      .description {
+        p {
+          max-width: 100%;
+        }
+      }
+    }
+  }
 }
 </style>

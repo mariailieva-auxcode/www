@@ -5,7 +5,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 col-xl-6 col-6">
-        <img :src="database.image" />
+        <img class="image" :src="database.image" />
       </div>
       <div class="col-sm-12 col-xl-6 col-6 text">
         <p>{{database.description}}</p>
@@ -76,9 +76,13 @@ export default {
 }
 @media only screen and (max-width: 768px) {
   .col-sm-12 {
+    .image {
+      width: 100%;
+    }
     padding: 0 !important;
     p {
       margin-top: 50px;
+      margin-left: 0 !important;
     }
     button {
       margin-left: 0px !important;
