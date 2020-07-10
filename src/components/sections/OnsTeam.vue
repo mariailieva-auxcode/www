@@ -9,7 +9,7 @@
       <div class="col-sm-4 col-xl-3 col-3 picture">
         <img :src="person.picture" />
       </div>
-      <div class="col-sm-6 col-xl-9 col-9 team-card">
+      <div class="col-sm-8 col-xl-9 col-9 team-card">
         <div class="team-content">
           <div class="name">
             <h3 class="team-name">{{person.name}}</h3>
@@ -205,6 +205,14 @@ export default {
     .linkedin {
       margin-top: 20px;
       margin-left: -17px;
+    }
+  }
+}
+@media only screen and (max-width: 1366px) {
+  .team-card {
+    padding-left: 50px !important;
+    .information > .email {
+      padding: 0 !important;
     }
   }
 }
