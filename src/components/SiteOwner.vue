@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="font">
       <HeaderSO :lang="lang"></HeaderSO>
       <News1 :lang="lang"></News1>
       <News :isPreview="true" mode="site owner"></News>
@@ -62,4 +62,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/styles/main.scss";
+.font {
+  font-family: $font__IBM;
+  font-weight: 700;
+}
 </style>

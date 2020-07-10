@@ -53,16 +53,27 @@ export default {
 @import "../../../assets/styles/main.scss";
 @import "../../../assets/styles/components/header.scss";
 
-.header p.news-tag {
-  background-color: #2783ff;
+.header {
   font-family: $font__IBM;
   font-weight: 700;
-  padding: 5px 33px;
-  color: white;
-  width: max-content;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  margin: 0 auto 20px;
+  p.news-tag {
+    background-color: #2783ff;
+    padding: 5px 33px;
+    color: white;
+    width: max-content;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0 auto 20px;
+  }
+  .header-content {
+    h1 {
+      font-weight: 700;
+    }
+    h3 {
+      font-family: $font__Lato;
+      font-weight: 400;
+      font-size: 25px;
+    }
+  }
 }
 </style>

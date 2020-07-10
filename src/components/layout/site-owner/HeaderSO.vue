@@ -70,16 +70,30 @@ export default {
     width: max-content;
     border-radius: 5px;
     font-size: 14px;
-    font-weight: bold;
     margin: 0 auto 14px;
   }
   .header-content {
+    h1 {
+      font-weight: 700;
+      font-size: 50px;
+    }
+    h3 {
+      font-family: $font__Lato;
+      font-weight: 400;
+      font-size: 25px;
+    }
     p.header-survey {
+      font-weight: 500;
+      font-size: 18px;
       margin-bottom: 0;
       margin-top: 60px;
     }
     .button-choice {
       margin-top: 15px;
+      p {
+        font-weight: 500;
+        font-size: 14px;
+      }
     }
   }
 }

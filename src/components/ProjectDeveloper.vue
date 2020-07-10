@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="font">
       <HeaderPD :lang="lang"></HeaderPD>
       <News1 :lang="lang"></News1>
       <News :isPreview="true" mode="project developer"></News>
@@ -55,4 +55,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/styles/main.scss";
+.font {
+  font-family: $font__IBM;
+  font-weight: 500;
+}
 </style>
