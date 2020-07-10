@@ -110,9 +110,9 @@ export default {
     max-width: 90%;
   }
   h3.team-name {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 5px;
-    font-weight: bold;
+    font-weight: 700;
   }
   .yaml-links {
     margin-left: 250px;
@@ -128,28 +128,24 @@ export default {
     .name {
       font-size: 18px;
       color: #26272e;
-      font-weight: bold;
-      font-family: $font__IBMbold;
+      font-weight: 700;
     }
     .position {
       font-size: 16px;
-      font-weight: bold;
       color: #9597ac;
       p {
         margin-bottom: 10px;
-        font-family: $font__IBMbold;
+        font-weight: 700;
       }
     }
     .about {
       font-size: 16px;
       line-height: 20px;
       color: #9597ac;
-      font-family: $font__IBMmedium;
     }
     .email {
       font-size: 14px;
       color: #5694e8;
-      font-family: $font__IBMmedium;
       display: flex;
       align-items: center;
       width: 50%;
@@ -159,7 +155,6 @@ export default {
       }
     }
     .linkedin {
-      font-family: $font__IBMmedium;
       display: flex;
       align-items: center;
       width: 50%;
@@ -167,7 +162,6 @@ export default {
       .linkedin-link {
         font-size: 14px;
         color: #5694e8;
-        font-family: $font__IBMmedium;
       }
       img {
         margin-right: 15px;

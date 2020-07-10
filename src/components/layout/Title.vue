@@ -30,15 +30,15 @@ div {
     font-size: 200px;
     color: #f7f7fa;
     text-align: left;
-    font-family: $font__IBMbold;
-    font-weight: 700;
+    font-family: $font__Lato;
+    font-weight: 900;
   }
   h2 {
     font-size: 45px;
     position: absolute;
     bottom: 10px;
     left: 100px;
-    font-family: $font__LatoBlack;
+    font-family: $font__Lato;
     font-weight: 900;
     color: #393a4d;
   }

@@ -69,13 +69,6 @@ export default {
 .survey {
   margin-top: 160px;
 }
-h1 {
-  text-align: center;
-  font-size: 45px;
-  font-weight: bold;
-  color: #26272e;
-  margin-top: 180px;
-}
 p {
   max-width: 60%;
   margin-left: auto;
@@ -89,11 +82,7 @@ button.survey-button {
   background-color: #55b364;
   border-radius: 15px;
   border: none;
-  font-family: $font__IBMmedium;
   box-shadow: 0px 4px 15px #00000033;
-}
-.survey-description {
-  font-family: $font__IBMmedium;
 }
 .btn-text {
   margin: 15px 80px;

@@ -62,4 +62,25 @@ export default {
 .header {
   height: 100vh;
 }
+
+.header-content {
+  h1 {
+    font-weight: 700;
+    font-size: 50px;
+    width: 720px;
+  }
+  h3 {
+    font-family: $font__Lato;
+    font-weight: 400;
+    font-size: 25px;
+    width: 660px;
+    margin: 0 auto;
+  }
+  .button-choice {
+    p {
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+}
 </style>

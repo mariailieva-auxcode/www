@@ -82,8 +82,6 @@ export default {
     p {
       color: #9597ac;
       font-size: 18px;
-      font-family: $font__IBMmedium;
-      font-weight: 500;
 
       width: 80%;
       float: right;
@@ -100,8 +98,6 @@ export default {
       p {
         margin: auto;
         font-size: 14px;
-        font-family: $font__IBMmedium;
-        font-weight: 500;
         color: #2783ff;
         width: 100%;
       }

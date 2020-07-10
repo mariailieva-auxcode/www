@@ -55,7 +55,8 @@ export default {
 
 .header p.news-tag {
   background-color: #2783ff;
-  font-family: "IBM Plex Sans Bold", sans-serif;
+  font-family: $font__IBM;
+  font-weight: 700;
   padding: 5px 33px;
   color: white;
   width: max-content;

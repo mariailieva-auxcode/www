@@ -54,8 +54,6 @@ export default {
         max-height: 130px;
         overflow: hidden;
         margin-right: 40px;
-        font-family: $font__IBMmedium;
-        font-weight: 500;
       }
     }
     .text {

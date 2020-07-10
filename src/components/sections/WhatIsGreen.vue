@@ -72,7 +72,6 @@ export default {
   }
   p {
     font-size: 18px;
-    font-family: $font__IBMmedium;
   }
   .col-6 {
     margin-top: 150px;

@@ -128,7 +128,7 @@ export default {
     margin-left: 15px;
     p {
       font-size: 12px;
-      font-family: $font__LatoBold;
+      font-family: $font__Lato;
       font-weight: 700;
       color: #9597ac;
     }

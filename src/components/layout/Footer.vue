@@ -10,7 +10,7 @@
         <div class="col-sm-6 col-xl-3 col-3">
           <p class="footer-title">{{footer.titles.contact}}</p>
           <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
-            <p>
+            <p class="font">
               <img class="icon" src="assets/envelope-white.svg" />
               {{contact}}
             </p>
@@ -19,7 +19,7 @@
         <div class="col-sm-6 col-xl-3 col-3">
           <p class="footer-title">{{footer.titles.social}}</p>
           <a :href="footer.linkedin.link" target="_blank">
-            <p>
+            <p class="font-linkedin">
               <img class="icon" src="assets/linkedin-white.svg" />
               {{footer.linkedin.name}}
             </p>
@@ -63,9 +63,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/styles/main.scss";
 .footer {
   margin-top: 50px;
   background-color: #26272e;
+  font-family: $font__IBM;
+  font-weight: 700;
   .row {
     width: 100%;
     height: 200px;
@@ -76,7 +79,7 @@ export default {
       width: 130px;
     }
     .footer-title {
-      font-weight: bold;
+      font-size: 18px;
     }
 
     .privacy-policy {
@@ -88,6 +91,11 @@ export default {
       color: white;
       margin-top: auto;
       margin-bottom: auto;
+      .font,
+      .font-linkedin {
+        font-weight: 500;
+        font-size: 14px;
+      }
       .icon {
         margin-right: 10px;
       }

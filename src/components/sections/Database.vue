@@ -50,8 +50,6 @@ export default {
         margin-bottom: 50px;
         max-height: 130px;
         overflow: hidden;
-        font-family: $font__IBMmedium;
-        font-weight: 500;
         margin-left: 40px;
       }
     }

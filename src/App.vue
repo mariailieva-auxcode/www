@@ -69,6 +69,12 @@ export default {
   float: right;
 }
 
+@media only screen and (max-width: 1366px) {
+  .content {
+    width: calc(100vw - 110px);
+  }
+}
+
 .Cookie--bottom {
   left: 100px;
   opacity: 0.9;

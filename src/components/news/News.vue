@@ -191,8 +191,8 @@ export default {
   .news-tag-title {
     text-align: left;
     font-size: 25;
-    font-family: $font__IBMbold;
-    font-weight: bold;
+    font-family: $font__IBM;
+    font-weight: 700;
     margin-bottom: 30px;
   }
 

@@ -30,17 +30,6 @@ export default {
       tag: ""
     };
   },
-  // mounted() {
-  //   this.title = header.title;
-  //   this.description = header.description;
-  //   this.textSurvey = header.textSurvey;
-  //   this.linkSurvey = header.linkSurvey;
-  //   this.image = header.image;
-  //   this.button = header.button;
-  //   this.tag = header.tag;
-
-  //   this.title = headerEn.title;
-  // },
   props: {
     lang: String
   },
@@ -74,7 +63,8 @@ export default {
 .header {
   p.news-tag {
     background-color: #55b364;
-    font-family: "IBM Plex Sans Bold", sans-serif;
+    font-family: $font__IBM;
+    font-weight: 700;
     padding: 5px 33px;
     color: white;
     width: max-content;

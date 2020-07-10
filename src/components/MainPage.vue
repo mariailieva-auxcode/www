@@ -1,13 +1,12 @@
 <template>
   <div>
-    <div>
+    <div class="font">
       <Header :lang="lang"></Header>
       <News1 :lang="lang"></News1>
       <News :lang="lang" :isPreview="true"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
       <WhatIsGreen :lang="lang"></WhatIsGreen>
-      <!-- <OnsTeam :lang="lang"></OnsTeam> TODO (Milen)-->
       <OnsTeam :lang="lang"></OnsTeam>
       <Partners :lang="lang"></Partners>
       <OurSurvey :lang="lang"></OurSurvey>
@@ -69,4 +68,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/styles/main.scss";
+.font {
+  font-family: $font__IBM;
+  font-weight: 500;
+  overflow-x: hidden;
+}
 </style>

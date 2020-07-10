@@ -61,12 +61,6 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/main.scss";
-h1 {
-  font-size: 45px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 150px;
-}
 .partners-title {
   margin-left: 20%;
 }
@@ -74,12 +68,12 @@ h1 {
   display: flex;
   justify-content: center;
   margin-bottom: 150px;
+  margin-top: 60px !important;
   .partner {
     box-shadow: 0px 0px 30px #1d226f1a;
     border-radius: 15px;
     max-width: 25%;
     padding: 50px 30px 70px;
-    font-family: $font__IBMmedium;
 
     margin-left: 25px;
     margin-right: 25px;
