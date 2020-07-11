@@ -3,13 +3,3 @@
   from = "http://greenatlas.earth/*"
   to = "https://greenatlas.earth/index.html"
   status = 301!
-# http+www -> https-www 
-[[redirects]]
-  from = "http://www.greenatlas.earth/*"
-  to = "https://greenatlas.earth/index.html"
-  status = 301!
-# https+www -> https-www
-[[redirects]]
-  from = "https://www.greenatlas.earth/*"
-  to = "https://greenatlas.earth/index.html"
-  status = 301!
