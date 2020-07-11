@@ -1,5 +1,5 @@
 # http -> https
 [[redirects]]
-  from = "http://greenatlas.earth/*"
-  to = "https://greenatlas.earth/index.html"
-  status = 301!
+  from = "/*"
+  to = "/index.html"
+  status = 200
