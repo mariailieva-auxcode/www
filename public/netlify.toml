@@ -1,0 +1,4 @@
+#http https and www
+http://greenatlas.earth/* https://greenatlas.earth/:splat 301!
+http://www.greenatlas.earth/* https://greenatlas.earth/:splat 301!
+https://www.greenatlas.earth/* https://greenatlas.earth/:splat 301!
