@@ -1,5 +1,4 @@
 #http https and www
-/* /index.html 200
-http://greenatlas.earth/* https://greenatlas.earth/:splat 301!
-http://www.greenatlas.earth/* https://greenatlas.earth/:splat 301!
-https://www.greenatlas.earth/* https://greenatlas.earth/:splat 301!
+http://greenatlas.earth/* https://greenatlas.earth/:splat/index.html 301!
+http://www.greenatlas.earth/* https://greenatlas.earth/:splat/index.html 301!
+https://www.greenatlas.earth/* https://greenatlas.earth/:splat/index.html 301!
