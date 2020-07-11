@@ -1,4 +1,19 @@
-#http https and www
-http://greenatlas.earth/* https://greenatlas.earth/:splat/index.html 301!
-http://www.greenatlas.earth/* https://greenatlas.earth/:splat/index.html 301!
-https://www.greenatlas.earth/* https://greenatlas.earth/:splat/index.html 301!
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+# http -> https
+[[redirects]]
+  from = "http://greenatlas.earth/*"
+  to = "https://greenatlas.earth/:splat"
+  status = 301!
+# http+www -> https-www 
+[[redirects]]
+  from = "http://www.greenatlas.earth/*"
+  to = "https://greenatlas.earth/:splat"
+  status = 301!
+# https+www -> https-www
+[[redirects]]
+  from = "https://www.greenatlas.earth/*"
+  to = "https://greenatlas.earth/:splat"
+  status = 301!
