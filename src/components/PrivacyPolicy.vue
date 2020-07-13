@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container privacy-policy">
     <div class="row">
       <div class="col-12">
-        <div v-html="html"></div>
+        <div class="design" v-html="html"></div>
       </div>
     </div>
   </div>
@@ -40,4 +40,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/main.scss";
+.container {
+  text-align: left;
+  margin-top: 90px;
+}
 </style>
