@@ -7,8 +7,8 @@ homeTitles:
   title: News
   description: 'Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!'
 news:
--   url: https://www.smartcitiesworld.net/news/news/netherlands-doubles-renewable-energy-subsidies-5143
-    description: 'Netherlands doubles renewable energy subsidies'
+-   url: 'https://www.smartcitiesworld.net/news/news/netherlands-doubles-renewable-energy-subsidies-5143'
+    description: 'Netherlands doubles renewable energy subsidies.'
     expiry: 2020-08-01
     group: 
       -  site owner
