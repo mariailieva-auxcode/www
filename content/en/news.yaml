@@ -1,14 +1,14 @@
 # CMS structure
 subTitle: SECTION TITLE
-title: Nieuws
-button: Naar de nieuwspagina
+title: News
+button: To the newspage
 homeTitles:
   subTitle: '01'
-  title: Nieuws
-description: Green Atlas biedt een exclusieve selectie aan nieuws rondom het thema duurzame energie.
+  title: News
+description:'Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!'
 news:
--   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
-    description: 'Zakelijke voordelen met zonnepanelen. 11111'
+-   url: 'https://www.smartcitiesworld.net/news/news/netherlands-doubles-renewable-energy-subsidies-5143'
+    description: 'Netherlands doubles renewable energy subsidies'
     expiry: 2020-08-01
     group: 
       -  site owner
@@ -24,7 +24,7 @@ news:
       -  innovation
       -  site owner
       
--   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
+-   url: https://euobserver.com/environment/14726
     description: 'Zonne- en windpark, waar en hoeveel?'
     expiry: 2020-08-01
     categories: 
