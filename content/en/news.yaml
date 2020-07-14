@@ -18,28 +18,28 @@ news:
       -  site owner
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
-    description: 'Water, wind en zon gecombineerd in één energiesysteem!'
+    description: 'German firm introducing game-changing solar-wind-wave energy platform'
     expiry: 2020-08-01
     categories: 
       -  innovation
       -  site owner
       
--   url: https://euobserver.com/environment/14726
-    description: 'Zonne- en windpark, waar en hoeveel?'
+-   url: https://www.cbs.nl/en-gb/news/2020/10/sharp-rise-in-green-electricity-production
+    description: 'Sharp rise in green electricity production.'
     expiry: 2020-08-01
     categories: 
       -  business
       -  site owner
       
--   url: https://solarmagazine.nl/nieuws-zonne-energie/i21812/enphase-energy-en-q-cells-introduceren-nieuw-ac-zonnepaneel
-    description: 'Introductie nieuw AC zonnepaneel.'
+-   url: https://www.cbs.nl/en-gb/corporate/2020/27/mapping-the-value-of-our-natural-landscape
+    description: 'Mapping the value of our natural landscape.'
     expiry: 2020-08-01
     categories: 
       -  innovation
       -  project developer
 
--   url: https://www.cbs.nl/nl-nl/nieuws/2020/25/vermogen-zonnepanelen-voor-het-eerst-groter-bij-bedrijven-dan-bij-woningen
-    description: 'Vermogen zonnepanelen voor het eerst groter bij bedrijven dan bij woningen.'
+-   url: https://www.cbs.nl/en-gb/news/2020/22/renewable-energy-consumption-up-by-16-percent
+    description: 'Renewable energy consumption up by 16 percent.'
     expiry: 2020-08-01
     categories: 
       - growth
