@@ -1,25 +1,23 @@
-subTitle: Ons Team
-title: Ons Team
-button: Bezoek LinkedIn profiel
+subTitle: Our Team
+title: Our Team
+button: Visit LinkedIn profile
 team:
 - name: Jaap van Dijk
-  position: Commerciële Co-Founder
   picture: assets/foto Jaap van Dijk.png
-  about: Jaap is de initiator van greenatlas.earth en is te benaderen voor inhoudelijke vragen en samenwerkingsmogelijkheden. In zijn dertien jaar professionele werkervaring als Head of European Power Trading bij Citigroup en Expert Consultant bij BCG, heeft hij diepgaande kennis opgedaan over de duurzame energie waardenketen. Hij is gepassioneerd over de energietransitie als cruciale pijler in de strijd tegen de klimaatverandering. greenatlas.earth is bij hem ontstaan uit de notie dat er nog grotere stappen kunnen worden gemaakt in het verbeteren van de interactie tussen vraag en aanbod.
+  about: 'Jaap is the initiator of greenatlas.earth and can be approached for substantive questions and collaboration opportunities. In his thirteen years of professional work experience as Head of European Power Trading at Citigroup and Expert Consultant at BCG, he has gained in-depth knowledge about the sustainable energy value chain. He is passionate about the energy transition as a crucial pillar in the fight against climate change. Greenatlas.earth was born out of the notion that even greater steps can be taken in improving the interaction between supply and demand.'
   email: jaap@greenatlas.earth
   linkedIn: https://www.linkedin.com/in/jaap-v-dijk/
 - name: T.E. Shaw
   picture: assets/foto-Thomas-Shaw.png
-  about: Thomas is mede-initiator van greenatlas.earth en bereikbaar voor technische, inhoudelijke en praktische vragen over de database en het matchmaking platform. Hij is gepassioneerd over technologische ontwikkelingen en start-ups. Met zijn technische kennis en vaardigheden, brede netwerk en gave om een vertaalslag te maken tussen praktijk en technologie, is hij van grote waarde voor de ontwikkeling van greenatlas.earth. Hij zet zich graag in voor een betere wereld, talentontwikkeling bij jongeren en startende ondernemers.
-  email: teshaw@greenatlas.earth
+  about: 'Thomas is a co-initiator of greenatlas.earth and is available for technical, substantive and practical questions about the database and the matchmaking platform. He is passionate about technological developments and start-ups. With his technical knowledge and skills, broad network and ability to translate practice and technology, he is of great value for the development of greenatlas.earth. He likes to work for a better world, talent development among young people and starting entrepreneurs.'
   linkedIn: https://www.linkedin.com/in/dahoum/
 - name: Mirthe van Gelder
   picture: assets/Foto-mirthe-van-Gelder.png
-  about: Mirthe is te bereiken voor vragen over marketing en communicatie, samenwerkingen en pers en media. Haar missie is het creëren van een eerlijke en meer coöperatieve samenleving door maatschappelijk verantwoord ondernemerschap- een missie die ze met veel passie aangaat. Ze krijgt energie door mensen te verbinden met behulp van effectieve communicatie, evenementen organisatie en educatie, welke zij in verschillende succesvolle ondernemingen al heeft laten zien!
+  about: 'Mirthe can be reached for questions about marketing and communication, collaborations and press and media. Her mission is to create a fair and more cooperative society through socially responsible entrepreneurship - a mission she takes on with great passion. She gets energy by connecting people through effective communication, event organization and education, which she has already shown in several successful start-ups!'
   email: mirthe@greenatlas.earth
   linkedIn: https://www.linkedin.com/in/mirthevangelder/
 - name: Megan Atkins
   picture: assets/foto megan.png
-  about: 'Megan is te bereiken voor technisch inhoudelijk advies en vragen rondom hernieuwbare energie. Haar streven naar technologische oplossingen voor de klimaatcrisis bracht haar bij greenatlas.earth. Als afgestudeerde van de opleiding Sustainable Energy Technology, biedt zij technische kennis en expertise op het gebied van hernieuwbare energie die nodig is om weloverwogen beslissingen te nemen voor het vinden van de juiste oplossingen.'
+  about: 'Megan can be reached for technical substantive advice and questions regarding renewable energy. Her pursuit of technological solutions to the climate crisis brought her to greenatlas.earth. As a graduate of the Sustainable Energy Technology degree program, she provides the technical knowledge and expertise in renewable energy needed to make informed decisions to find the right solutions.'
   email: megan@greenatlas.earth
   linkedIn: https://www.linkedin.com/in/megan-atkins-35a001132/
