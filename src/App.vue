@@ -55,6 +55,7 @@ export default {
 
 <style lang="scss">
 @import "./assets/styles/main.scss";
+@import "./assets/styles/mobile-mode.scss";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
