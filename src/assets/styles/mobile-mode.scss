@@ -1,0 +1,201 @@
+@media only screen and (max-width: 414px) {
+    div.content {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    div.navigation {
+        display: flex;
+        width: 100%;
+        height: 55px;
+
+        .menu {
+            width: 100%;
+            height: 55px;
+            background-color: white;
+            z-index: 100;
+            box-shadow: 0px 3px 10px #00000014;
+
+            .logo {
+                width: 54px;
+                height: 46px;
+                margin: 0 auto;
+
+                .mobile {
+                    display: flex;
+                    position: fixed;
+                    left: 20px;
+                    top: 20px;
+                }
+            }
+
+            .burger-menu {
+                .row {
+                    .news-logo {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        .nav-buttons {
+            display: none;
+        }
+    }
+
+    .mobile-background-image {
+        display: flex;
+    }
+
+    .header {
+        .header-content {
+            h1 {
+                width: 100% !important;
+                font-size: 35px !important;
+            }
+
+            h3 {
+                width: 100% !important;
+                font-size: 18px !important;
+            }
+        }
+    }
+
+    .container-fluid {
+        .categories {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .news-text {
+
+            .col-sm-12,
+            .col-sm-7,
+            .col-sm-5 {
+                min-width: 100%;
+            }
+
+            width: 100%;
+        }
+    }
+
+    .newss {
+        .col-6 {
+            min-width: 100%;
+        }
+
+        .news-container {
+            #main-news-card {
+                min-height: unset;
+            }
+
+            .col-sm-12 {
+                min-width: 100%;
+            }
+        }
+    }
+
+    .database {
+        .phone-resolution {
+            display: flex;
+            flex-direction: column;
+
+            .col-6 {
+                min-width: 100%;
+            }
+        }
+    }
+
+    .tools {
+        .iPad {
+            .col-6 {
+                min-width: 100%;
+            }
+        }
+    }
+
+    .what-is-green-phone {
+        .what-section {
+            min-width: 100%;
+
+            .description {
+                margin-left: 0 !important;
+            }
+
+            .row {
+                .col-sm-12 {
+                    margin-left: 0 !important;
+
+                    .row {
+                        img {
+                            width: 100px;
+                            height: 50px;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .team {
+        .yaml-links {
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px !important;
+
+            .picture {
+                margin-left: 100px;
+                margin-top: 25px;
+            }
+
+            .team-card {
+                text-align: center;
+
+                .information {
+                    display: flex;
+                    flex-direction: column;
+
+                    .email {
+                        min-width: 100%;
+                    }
+
+                    .linkedin {
+                        min-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .partners {
+        .partner {
+            min-width: 100%;
+            margin-bottom: 30px;
+        }
+    }
+
+    .partners-title {
+        margin-left: 0 !important;
+    }
+
+    .footer {
+        .row {
+            padding-top: 40px;
+            height: auto !important;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            .col-3 {
+                min-width: 100%;
+            }
+        }
+    }
+
+    .site-owner {
+        height: auto !important;
+        padding: 20px 0;
+    }
+}

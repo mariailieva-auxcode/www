@@ -2,10 +2,41 @@
   <div class="menu">
     <div class="col-12 logo">
       <router-link :to="`?lang=${$router.history.current.query.lang}`">
+        <img
+          class="mobile"
+          src="assets/mobile-navigation.svg"
+          @click="burgerMenuActive = !burgerMenuActive"
+        />
         <img src="assets/logo.svg" />
       </router-link>
     </div>
-    <div class="row">
+    <div class="burger-menu" :class="{'active': burgerMenuActive}">
+      <div class="row">
+        <div class="col-12 home-logo">
+          <router-link :to="`/?lang=${$router.history.current.query.lang}`">
+            <div v-if="currentPage === '/'" class="green-line"></div>
+            <button>
+              <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
+              <p class="home">{{homeName}}</p>
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 news-logo">
+          <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
+            <div v-if="currentPage === '/news'" class="green-line"></div>
+            <button>
+              <img
+                :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
+              />
+              <p class="news">{{newsName}}</p>
+            </button>
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <div class="row nav-buttons">
       <div class="row">
         <div class="col-12 home-logo">
           <router-link :to="`/?lang=${$router.history.current.query.lang}`">
@@ -65,7 +96,8 @@ export default {
     return {
       homeName: "",
       newsName: "",
-      lang: ""
+      lang: "",
+      burgerMenuActive: false
     };
   },
   watch: {
@@ -96,6 +128,20 @@ export default {
   height: 100vh;
   .logo {
     margin: 20px auto 60px auto;
+    .mobile {
+      display: none;
+    }
+  }
+  .burger-menu {
+    height: auto;
+    width: 100%;
+    display: none;
+    background-color: #fff;
+    @media only screen and (max-width: 414px) {
+      &.active {
+        display: block;
+      }
+    }
   }
   .row {
     text-align: center;

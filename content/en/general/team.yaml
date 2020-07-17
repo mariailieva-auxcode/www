@@ -4,20 +4,24 @@ button: Visit LinkedIn profile
 team:
 - name: Jaap van Dijk
   picture: assets/foto Jaap van Dijk.png
+  phonePicture: assets/jaap-van-dijk-phone.png
   about: 'Jaap is the initiator of greenatlas.earth and can be approached for substantive questions and collaboration opportunities. In his thirteen years of professional work experience as Head of European Power Trading at Citigroup and Expert Consultant at BCG, he has gained in-depth knowledge about the sustainable energy value chain. He is passionate about the energy transition as a crucial pillar in the fight against climate change. Greenatlas.earth was born out of the notion that even greater steps can be taken in improving the interaction between supply and demand.'
   email: jaap@greenatlas.earth
   linkedIn: https://www.linkedin.com/in/jaap-v-dijk/
 - name: T.E. Shaw
   picture: assets/foto-Thomas-Shaw.png
+  phonePicture: assets/thomas-shaw-phone.png
   about: 'Thomas is a co-initiator of greenatlas.earth and is available for technical, substantive and practical questions about the database and the matchmaking platform. He is passionate about technological developments and start-ups. With his technical knowledge and skills, broad network and ability to translate practice and technology, he is of great value for the development of greenatlas.earth. He likes to work for a better world, talent development among young people and starting entrepreneurs.'
   linkedIn: https://www.linkedin.com/in/dahoum/
 - name: Mirthe van Gelder
   picture: assets/Foto-mirthe-van-Gelder.png
+  phonePicture: assets/mirthe-van-gelder.png
   about: 'Mirthe can be reached for questions about marketing and communication, collaborations and press and media. Her mission is to create a fair and more cooperative society through socially responsible entrepreneurship - a mission she takes on with great passion. She gets energy by connecting people through effective communication, event organization and education, which she has already shown in several successful start-ups!'
   email: mirthe@greenatlas.earth
   linkedIn: https://www.linkedin.com/in/mirthevangelder/
 - name: Megan Atkins
   picture: assets/foto megan.png
+  phonePicture: assets/megan-phone.png
   about: 'Megan can be reached for technical substantive advice and questions regarding renewable energy. Her pursuit of technological solutions to the climate crisis brought her to greenatlas.earth. As a graduate of the Sustainable Energy Technology degree program, she provides the technical knowledge and expertise in renewable energy needed to make informed decisions to find the right solutions.'
   email: megan@greenatlas.earth
   linkedIn: https://www.linkedin.com/in/megan-atkins-35a001132/

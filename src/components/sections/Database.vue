@@ -3,7 +3,7 @@
     <div class="row">
       <Title :title="database.title" :sectionTitle="database.subTitle" :isHomePage="true"></Title>
     </div>
-    <div class="row">
+    <div class="row phone-resolution">
       <div class="col-sm-12 col-xl-6 col-6">
         <img class="image" :src="database.image" />
       </div>

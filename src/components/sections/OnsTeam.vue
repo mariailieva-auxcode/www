@@ -7,7 +7,8 @@
     </div>
     <div class="row yaml-links row" v-for="person of team" :key="person.name">
       <div class="col-sm-4 col-xl-3 col-3 picture">
-        <img :src="person.picture" />
+        <img class="pic" :src="person.picture" />
+        <img class="phone-only" :src="person.phonePicture" />
       </div>
       <div class="col-sm-8 col-xl-9 col-9 team-card">
         <div class="team-content">
@@ -122,6 +123,9 @@ export default {
     text-align: left;
     .picture {
       padding-left: 0;
+      .phone-only {
+        display: none;
+      }
     }
   }
   .col-9 {
@@ -207,6 +211,17 @@ export default {
     padding-left: 50px !important;
     .information > .email {
       padding: 0 !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .picture {
+    .pic {
+      display: none;
+    }
+    .phone-only {
+      display: flex !important;
     }
   }
 }

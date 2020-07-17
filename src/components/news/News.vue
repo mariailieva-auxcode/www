@@ -1,9 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container newss">
     <div :class="{'news-preview': isPreview, 'news': !isPreview}">
       <div class="container-fluid">
         <Title class="title" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
         <Search
+          class="categories"
           id="searchBar"
           :categories="categories"
           @change="onSearch($event)"
@@ -24,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div class="row" v-if="!isPreview">
+        <div class="row mobile-resolution" v-if="!isPreview">
           <hr />
           <div v-for="(category, index) in filteredCategories" :key="index" :class="`col-6`">
             <h3 class="news-tag-title">{{category}}</h3>
