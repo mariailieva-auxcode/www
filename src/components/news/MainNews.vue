@@ -10,7 +10,7 @@
             :class="{'inverted': data.categories.includes('project developer')}"
           >{{ tag | uppercase}}</p>
           <p :class="{'main-news': isMain, 'sec-news': !isMain}">{{ data.description }}</p>
-          <!-- <h4 class="card-title">{{props.title}}</h4> -->
+          <h4 class="card-title">{{props.title}}</h4>
         </div>
       </a>
     </template>
