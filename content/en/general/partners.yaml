@@ -2,8 +2,8 @@ title: Partners
 subTitle: Partners
 partners:
 - name: AuxCode
-  logo: assets/auxcode.svg
+  logo: /assets/auxcode.svg
   description: 'Aux the Netherlands is a full service digital product agency with focus on strategic partnerships and collaborations. Greenatlas.earth and Aux Nederland cooperate on the development of the platform and tools.'
 - name: MKB
-  logo: assets/mkbfinl.svg
+  logo: /assets/mkbfinl.svg
   description: 'Mkbfi.nl focuses on helping SMEs find the best financing. Greenatlas.earth and mkbfi.nl are working together to support site owners and project developers in making correct capital decisions.'

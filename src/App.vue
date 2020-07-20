@@ -13,7 +13,7 @@
     <cookie-law class="cookie">
       <div slot-scope="props">
         <div class="row">
-          <img src="../public/assets/cookie.png" />
+          <img src="/assets/cookie.png" />
           <p>
             This site uses
             <span class="undeline">cookies</span>

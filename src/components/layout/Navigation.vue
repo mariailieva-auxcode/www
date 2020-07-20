@@ -1,13 +1,13 @@
 <template>
   <div class="menu">
     <div class="col-12 logo">
-      <router-link :to="`?lang=${$router.history.current.params.lang}`">
+      <router-link :to="`/${$router.history.current.params.lang}`">
         <img
           class="mobile"
-          src="assets/mobile-navigation.svg"
+          src="/assets/mobile-navigation.svg"
           @click="burgerMenuActive = !burgerMenuActive"
         />
-        <img src="assets/logo.svg" />
+        <img src="/assets/logo.svg" />
       </router-link>
     </div>
     <div class="burger-menu" :class="{'active': burgerMenuActive}">
@@ -16,7 +16,7 @@
           <router-link :to="`/${$router.history.current.params.lang}`">
             <div v-if="currentPage === '/'" class="green-line"></div>
             <button>
-              <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
+              <img :src="currentPage === '/' ? '/assets/home.svg' : '/assets/home-alt.svg'" />
               <p class="home">{{homeName}}</p>
             </button>
           </router-link>
@@ -28,7 +28,7 @@
             <div v-if="currentPage === '/news'" class="green-line"></div>
             <button>
               <img
-                :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
+                :src="currentPage === '/news' ? '/assets/newspaper.svg' : '/assets/newspaper-alt.svg'"
               />
               <p class="news">{{newsName}}</p>
             </button>
@@ -64,14 +64,14 @@
         </div>
       </div>
       <div class="row ml">
-        <router-link :to="getURL($router.history.current.params.lang)">
+        <router-link :to="getURL('en')">
           <button>
             <p>NL</p>
           </button>
         </router-link>
 
         <div class="line"></div>
-        <router-link :to="getURL($router.history.current.params.lang)">
+        <router-link :to="getURL('nl')">
           <button>
             <p>EN</p>
           </button>
@@ -91,8 +91,6 @@ export default {
     currentPage() {
       return this.$route.path;
     }
-
-    // ?lang=en TODO (Milen)
   },
   data() {
     return {
@@ -117,8 +115,8 @@ export default {
       this.homeName = data.homeName;
       this.newsName = data.newsName;
     },
-    getURL(language) {
-      return this.currentPage.replace(language, language == "nl" ? "en" : "nl");
+    getURL(prevLanguage) {
+      return this.currentPage.replace(prevLanguage, prevLanguage == "nl" ? "en" : "nl");
     }
   }
 };

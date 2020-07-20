@@ -2,10 +2,10 @@ title: Ons verhaal
 subTitle: 'Ons verhaal'
 description: 'Wij streven naar een efficiëntere markt en snellere energietransitie door:'
 bullets:
-- icon: assets/digital-certificate.svg
+- icon: /assets/digital-certificate.svg
   text: De markt te voorzien van transparante, betrouwbare, onafhankelijke informatie.
-- icon: assets/browser.svg
+- icon: /assets/browser.svg
   text: Het digitaliseren en stroomlijnen van complexe stappen in het projectontwikkelingsproces. 
-- icon: assets/search-engine-optimization.svg
+- icon: /assets/search-engine-optimization.svg
   text: Tools te bieden waarmee perceeleigenaren op makkelijke en effectieve wijze inzicht kunnen krijgen in de potentie en mogelijkheden van hun locatie.
-image: assets/greenatlas.earth.png
+image: /assets/greenatlas.earth.png

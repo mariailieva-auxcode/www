@@ -21,7 +21,7 @@
           <button class="survey-button">
             <p class="btn-text">
               {{survey.button}}
-              <img src="assets/arrow-right-white.png" />
+              <img src="/assets/arrow-right-white.png" />
             </p>
           </button>
         </a>

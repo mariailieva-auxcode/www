@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-xl-3 col-3">
-          <router-link :to="`/privacy-policy/${$router.history.current.params.lang}`">
+          <router-link :to="`/${lang}/privacy-policy`">
             <p class="footer-title privacy-policy">{{footer.titles.privacyPolicy}}</p>
           </router-link>
         </div>
@@ -11,7 +11,7 @@
           <p class="footer-title">{{footer.titles.contact}}</p>
           <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
             <p class="font">
-              <img class="icon" src="assets/envelope-white.svg" />
+              <img class="icon" src="/assets/envelope-white.svg" />
               {{contact}}
             </p>
           </a>
@@ -20,13 +20,13 @@
           <p class="footer-title">{{footer.titles.social}}</p>
           <a :href="footer.linkedin.link" target="_blank">
             <p class="font-linkedin">
-              <img class="icon" src="assets/linkedin-white.svg" />
+              <img class="icon" src="/assets/linkedin-white.svg" />
               {{footer.linkedin.name}}
             </p>
           </a>
         </div>
         <div class="col-sm-3 col-xl-3 col-3">
-          <img src="assets/logo.svg" class="footer-link" />
+          <img src="/assets/logo.svg" class="footer-link" />
         </div>
       </div>
     </div>
