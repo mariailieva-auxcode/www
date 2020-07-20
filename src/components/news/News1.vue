@@ -12,7 +12,7 @@
         <p>{{data.description}}</p>
       </div>
       <div class="col-sm-5 col-xl-3 col-3">
-        <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
+        <router-link :to="`/news?lang=${$router.history.current.params.lang}`">
           <button>
             <p>
               {{data.button}}

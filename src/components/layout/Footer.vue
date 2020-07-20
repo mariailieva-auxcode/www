@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-xl-3 col-3">
-          <router-link :to="`/privacy-policy?lang=${$router.history.current.query.lang}`">
+          <router-link :to="`/privacy-policy/${$router.history.current.params.lang}`">
             <p class="footer-title privacy-policy">{{footer.titles.privacyPolicy}}</p>
           </router-link>
         </div>
@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     init() {
-      this.lang = this.$router.history.current.query.lang;
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? footerEn : footerNl;
       this.footer = data;
     }

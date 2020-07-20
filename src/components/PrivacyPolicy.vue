@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     init() {
-      this.lang = this.$router.history.current.query.lang;
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? gdprEn : gdpr;
       this.html = marked(data);
     }

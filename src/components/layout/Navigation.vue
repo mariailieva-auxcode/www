@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <div class="col-12 logo">
-      <router-link :to="`?lang=${$router.history.current.query.lang}`">
+      <router-link :to="`?lang=${$router.history.current.params.lang}`">
         <img
           class="mobile"
           src="assets/mobile-navigation.svg"
@@ -13,7 +13,7 @@
     <div class="burger-menu" :class="{'active': burgerMenuActive}">
       <div class="row">
         <div class="col-12 home-logo">
-          <router-link :to="`/?lang=${$router.history.current.query.lang}`">
+          <router-link :to="`/${$router.history.current.params.lang}`">
             <div v-if="currentPage === '/'" class="green-line"></div>
             <button>
               <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
@@ -24,7 +24,7 @@
       </div>
       <div class="row">
         <div class="col-12 news-logo">
-          <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
+          <router-link :to="`/news${$router.history.current.params.lang}`">
             <div v-if="currentPage === '/news'" class="green-line"></div>
             <button>
               <img
@@ -39,10 +39,12 @@
     <div class="row nav-buttons">
       <div class="row">
         <div class="col-12 home-logo">
-          <router-link :to="`/?lang=${$router.history.current.query.lang}`">
-            <div v-if="currentPage === '/'" class="green-line"></div>
+          <router-link :to="`/${$router.history.current.params.lang}`">
+            <div v-if="currentPage === '/nl' || currentPage === '/en' " class="green-line"></div>
             <button>
-              <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
+              <img
+                :src="currentPage === '/nl' || currentPage === '/en' ? '../assets/home.svg' : '../assets/home-alt.svg'"
+              />
               <p class="home">{{homeName}}</p>
             </button>
           </router-link>
@@ -50,11 +52,11 @@
       </div>
       <div class="row">
         <div class="col-12 news-logo">
-          <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
-            <div v-if="currentPage === '/news'" class="green-line"></div>
+          <router-link :to="`/${$router.history.current.params.lang}/news`">
+            <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
             <button>
               <img
-                :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
+                :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '../assets/newspaper.svg' : '../assets/newspaper-alt.svg'"
               />
               <p class="news">{{newsName}}</p>
             </button>
@@ -62,14 +64,14 @@
         </div>
       </div>
       <div class="row ml">
-        <router-link to="?lang=nl">
+        <router-link :to="getURL($router.history.current.params.lang)">
           <button>
             <p>NL</p>
           </button>
         </router-link>
 
         <div class="line"></div>
-        <router-link to="?lang=en">
+        <router-link :to="getURL($router.history.current.params.lang)">
           <button>
             <p>EN</p>
           </button>
@@ -110,10 +112,13 @@ export default {
   },
   methods: {
     init() {
-      this.lang = this.$router.history.current.query.lang;
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? navigationEn : navigation;
       this.homeName = data.homeName;
       this.newsName = data.newsName;
+    },
+    getURL(language) {
+      return this.currentPage.replace(language, language == "nl" ? "en" : "nl");
     }
   }
 };

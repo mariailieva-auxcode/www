@@ -4,12 +4,12 @@
     <div class="header-content">
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
-      <router-link :to="`/site-owner?lang=${$router.history.current.query.lang}`">
+      <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
         <button class="button-choice">
           <p>{{button1}}</p>
         </button>
       </router-link>
-      <router-link :to="`/project-developer?lang=${$router.history.current.query.lang}`">
+      <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
         <button class="button-choice">
           <p>{{button2}}</p>
         </button>

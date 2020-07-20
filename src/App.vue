@@ -46,8 +46,8 @@ export default {
     CookieLaw
   },
   mounted() {
-    if (!this.$router.history.current.query.lang) {
-      this.$router.push("?lang=nl");
+    if (!this.$router.history.current.params.lang) {
+      this.$router.push("nl");
     }
   }
 };

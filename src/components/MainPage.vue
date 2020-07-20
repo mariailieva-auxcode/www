@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     init() {
-      this.lang = this.$router.history.current.query.lang;
+      this.lang = this.$router.history.current.params.lang;
       this.database = this.lang === "en" ? databaseEn : database;
       this.tools = this.lang === "en" ? toolsEn : tools;
     }
