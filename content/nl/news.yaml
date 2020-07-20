@@ -12,10 +12,8 @@ news:
     expiry: 2020-08-01
     group: 
       -  site owner
-      -  project developer
     categories: 
-      -  business
-      -  site owner
+      -  subsidies
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'Water, wind en zon gecombineerd in één energiesysteem!'
