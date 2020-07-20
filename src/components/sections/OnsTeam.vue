@@ -123,6 +123,11 @@ export default {
     text-align: left;
     .picture {
       padding-left: 0;
+      .pic {
+        max-width: 212px;
+        max-height: 310px;
+        border-radius: 10px 0 0 10px;
+      }
       .phone-only {
         display: none;
       }
@@ -163,6 +168,7 @@ export default {
       align-items: center;
       width: 50%;
       justify-content: flex-end;
+      padding: 0;
       .linkedin-link {
         font-size: 14px;
         color: #5694e8;
