@@ -1,8 +1,9 @@
 # CMS structure
 button: To News
 homeTitles: 
-subTitle: '01'
-title: News
+  subTitle: '01'
+  title: News
+title: News 
 description: Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!
 news:
 -   url: https://www.smartcitiesworld.net/news/news/netherlands-doubles-renewable-energy-subsidies-5143
