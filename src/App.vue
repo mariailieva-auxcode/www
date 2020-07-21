@@ -89,6 +89,7 @@ export default {
   width: 340px !important;
   height: 171px;
   justify-content: center;
+  left: 90px;
   img {
     margin-right: 20px;
   }
