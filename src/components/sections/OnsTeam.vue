@@ -6,11 +6,11 @@
       </div>
     </div>
     <div class="row yaml-links row" v-for="person of team" :key="person.name">
-      <div class="col-sm-4 col-xl-3 col-3 picture">
+      <div class="col-sm-12 col-md-12 col-xl-3 col-12 picture">
         <img class="pic" :src="person.picture" />
         <img class="phone-only" :src="person.phonePicture" />
       </div>
-      <div class="col-sm-8 col-xl-9 col-9 team-card">
+      <div class="col-sm-12 col-md-12 col-xl-9 col-12 team-card">
         <div class="team-content">
           <div class="name">
             <h3 class="team-name">{{person.name}}</h3>
@@ -24,11 +24,11 @@
           </div>
         </div>
         <div class="information">
-          <div class="email col-xl-6 col-sm-12">
+          <div class="email col-xl-6 col-md-7 col-sm-12 col-12">
             <img src="/assets/envelope.svg" />
-            <p>{{person.email}}</p>
+            <a>{{person.email}}</a>
           </div>
-          <div class="linkedin col-xl-6 col-sm-12">
+          <div class="linkedin col-xl-6 col-md-12 col-sm-12 col-12">
             <img class="linkedin-image" src="/assets/linkedin.svg" />
             <a :href="person.linkedIn" target="_blank" class="linkedin-link">{{button}}</a>
             <img class="arrow" src="/assets/arrow-right-blue.png" />
@@ -116,7 +116,7 @@ export default {
     font-weight: 700;
   }
   .yaml-links {
-    margin-left: 250px;
+    margin-left: 100px;
     margin-bottom: 30px;
     box-shadow: 0px 0px 30px #1d226f1a;
     border-radius: 10px;
@@ -133,7 +133,7 @@ export default {
       }
     }
   }
-  .col-9 {
+  .team-card {
     .name {
       font-size: 18px;
       color: #26272e;
@@ -158,7 +158,7 @@ export default {
       display: flex;
       align-items: center;
       width: 50%;
-      p {
+      a {
         margin-bottom: 0;
         margin-left: 15px;
       }
@@ -193,7 +193,7 @@ export default {
     max-width: 90%;
     margin-left: 0;
     .row {
-      margin-left: 0;
+      margin-left: 20px;
     }
   }
 
@@ -203,31 +203,66 @@ export default {
 
   .team-card {
     max-width: 400px !important;
+    padding-left: 10px !important;
   }
   .information {
     flex-wrap: wrap;
+    .email {
+      padding-left: 0;
+    }
     .linkedin {
       margin-top: 20px;
       margin-left: -17px;
+      justify-content: flex-start !important;
+      margin-left: 0 !important;
     }
   }
 }
-@media only screen and (max-width: 1366px) {
-  .team-card {
-    padding-left: 50px !important;
-    .information > .email {
-      padding: 0 !important;
-    }
-  }
-}
+// @media only screen and (max-width: 1366px) {
+//   .team-card {
+//     padding-left: 50px !important;
+//     .information > .email {
+//       padding: 0 !important;
+//     }
+//   }
+// }
 
 @media only screen and (max-width: 414px) {
   .picture {
+    display: flex;
+    justify-content: center;
+    margin-left: 0 !important;
+    padding-right: 0;
     .pic {
       display: none;
     }
     .phone-only {
       display: flex !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .yaml-links {
+    margin-left: 20px !important;
+  }
+  .team-card {
+    padding-left: 5px !important;
+  }
+  .information {
+    .email {
+      padding-left: 0;
+    }
+    .linkedin {
+      justify-content: flex-start !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .information {
+    .linkedin {
+      justify-content: flex-end !important;
     }
   }
 }

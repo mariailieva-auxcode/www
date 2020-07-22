@@ -4,10 +4,10 @@
       <Title :title="database.title" :sectionTitle="database.subTitle" :isHomePage="true"></Title>
     </div>
     <div class="row phone-resolution">
-      <div class="col-sm-12 col-xl-6 col-6">
+      <div class="col-sm-12 col-xl-6 col-12">
         <img class="image" :src="database.image" />
       </div>
-      <div class="col-sm-12 col-xl-6 col-6 text">
+      <div class="col-sm-12 col-xl-6 col-12 text">
         <p>{{database.description}}</p>
         <button>
           <p>
@@ -42,7 +42,7 @@ export default {
     h1 {
       margin: 0 0 80px 80px;
     }
-    .col-6 {
+    .text {
       p {
         text-align: center;
         font-size: 18px;

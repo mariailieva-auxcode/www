@@ -11,15 +11,15 @@
           v-if="!isPreview"
         ></Search>
         <div class="row row-fluid news-container">
-          <div class="col-sm-12 col-xl-6 col-6">
+          <div class="col-sm-12 col-lg-6 col-xl-6 col-12 news">
             <MainNews :data="firstThreeNews[0]" :isMain="true"></MainNews>
           </div>
-          <div class="col-sm-12 col-xl-6 col-6 secondaryNews">
+          <div class="col-sm-12 col-xl-6 col-lg-6 col-12 secondaryNews">
             <div class="row row-fluid">
-              <div class="col-6" v-show="firstThreeNews[1]">
+              <div class="col-xl-6 col-sm-6 col-lg-6 col-12" v-show="firstThreeNews[1]">
                 <MainNews :data="firstThreeNews[1]" :isMain="false"></MainNews>
               </div>
-              <div class="col-6" v-show="firstThreeNews[2]">
+              <div class="col-xl-6 col-sm-6 col-lg-6 col-12" v-show="firstThreeNews[2]">
                 <MainNews :data="firstThreeNews[2]" :isMain="false"></MainNews>
               </div>
             </div>
@@ -27,7 +27,11 @@
         </div>
         <div class="row mobile-resolution" v-if="!isPreview">
           <hr />
-          <div v-for="(category, index) in filteredCategories" :key="index" :class="`col-6`">
+          <div
+            v-for="(category, index) in filteredCategories"
+            :key="index"
+            :class="`col-xl-6 col-12`"
+          >
             <h3 class="news-tag-title">{{category}}</h3>
             <div
               v-for="(item, index) in getPostsByCategory(category)"
@@ -195,7 +199,7 @@ export default {
 }
 
 .news {
-  .news-container > .col-6 {
+  .news-container > .news {
     height: 635px;
   }
 
@@ -213,6 +217,9 @@ export default {
 
   .news-container > .secondaryNews > .row {
     height: 315px;
+    @media screen and (max-width: 576px) {
+      height: auto;
+    }
   }
 
   .suppliers {

@@ -241,7 +241,6 @@
 
                     .linkedin {
                         min-width: 100%;
-                        left: -12px
                     }
                 }
             }
@@ -267,6 +266,10 @@
             flex-direction: column;
             text-align: center;
 
+            .policy-positioning {
+                justify-content: flex-start !important;
+            }
+
             .col-3 {
                 min-width: 100%;
             }
@@ -282,5 +285,12 @@
         display: flex;
         left: 0 !important;
         min-width: 100% !important;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .categories {
+        flex-direction: column !important;
     }
 }

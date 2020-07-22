@@ -91,12 +91,16 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
+  .partners-title {
+    margin-left: 0;
+  }
   .row {
     justify-content: space-around;
     display: flex;
     .partner {
       padding: 10px;
-      max-width: 40%;
+      min-width: 90%;
+      margin-bottom: 50px;
       p {
         font-size: 14px;
       }

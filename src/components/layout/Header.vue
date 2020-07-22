@@ -2,8 +2,8 @@
   <div class="header" :style="{'background-image': `url(${image})`}">
     <div class="header-overlay"></div>
     <div class="header-content">
-      <h1>{{title}}</h1>
-      <h3>{{description}}</h3>
+      <h1 class="col-sm-12 col-12">{{title}}</h1>
+      <h3 class="col-sm-12 col-12">{{description}}</h3>
       <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
         <button class="button-choice">
           <p>{{button1}}</p>

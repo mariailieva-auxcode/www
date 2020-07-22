@@ -1,17 +1,17 @@
 <template>
   <div class="container-fluid">
     <div class="row news-text">
-      <div class="col-sm-12 col-ml-4 col-xl-4 col-2">
+      <div class="col-sm-12 col-ml-4 col-xl-4 col-12 title">
         <Title
           :title="data.homeTitles.title"
           :sectionTitle="data.homeTitles.subTitle"
           :isHomePage="true"
         ></Title>
       </div>
-      <div class="col-sm-7 col-xl-5 col-5">
+      <div class="col-sm-7 col-xl-5 col-12">
         <p>{{data.description}}</p>
       </div>
-      <div class="col-sm-5 col-xl-3 col-3">
+      <div class="col-sm-5 col-xl-3 col-12 link">
         <router-link :to="`/${$router.history.current.params.lang}/news`">
           <button>
             <p>
@@ -71,7 +71,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin-top: 50px;
-    .col-2 > h1 {
+    .title > h1 {
       font-size: 45px;
       color: #393a4d;
       font-weight: bold;
@@ -88,7 +88,7 @@ export default {
       text-align: left;
       margin-top: 30px;
     }
-    .col-3 button {
+    .link button {
       padding-left: 15px;
       padding-right: 15px;
       height: 45px;
