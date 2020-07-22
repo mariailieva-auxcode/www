@@ -71,7 +71,9 @@ export default {
       filteredCategories: [],
       filterCriteria: [],
       firstThreeNews: [],
-      lang: ""
+      lang: "",
+      subTitle: "",
+      title: ""
     };
   },
   beforeMount() {
@@ -164,7 +166,8 @@ export default {
     init() {
       this.lang = this.$router.history.current.params.lang;
       this.data = this.lang === "en" ? infoEn : info;
-      console.log(this.lang);
+      this.subTitle = this.data.subTitle;
+      this.title = this.data.title;
 
       if (this.mode === "home") {
         this.data = this.data.news
@@ -178,7 +181,6 @@ export default {
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
       }
       this.firstThreeNews = this.data;
-      console.log(this.firstThreeNews);
     }
   }
 };
