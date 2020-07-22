@@ -2,7 +2,12 @@ title: Our Story
 subTitle: 'Our Story'
 description: 'We strive for a more efficient market and faster energy transition by:'
 bullets:
-  0: Providing the market with transparent, reliable, independent information.
-  1: Digitizing and streamlining complex steps in the project development process.
-  2: Providing tools with which site owners can gain insight into the potential and possibilities of their location in an easy and effective way.
-image: /assets/greenatlas.earth.png
+- icon: /assets/digital-certificate.svg
+  text: Providing the market with transparent, reliable, independent information.
+- icon: /assets/browser.svg
+  text: Digitizing and streamlining complex steps in the project development process.
+- icon: /assets/search-engine-optimization.svg
+  text: Providing tools with which site owners can gain insight into the potential and possibilities of their location in an easy and effective way.
+image: /assets/greenatlas.earth.png 
+
+
