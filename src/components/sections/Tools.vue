@@ -9,7 +9,7 @@
         <button>
           <p>
             {{tools.button}}
-            <img src="assets/arrow-right-blue.png" />
+            <img src="/assets/arrow-right-blue.png" />
           </p>
         </button>
       </div>

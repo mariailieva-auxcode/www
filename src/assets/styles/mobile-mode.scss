@@ -20,6 +20,7 @@
                 width: 54px;
                 height: 46px;
                 margin: 0 auto;
+                cursor: pointer;
 
                 .mobile {
                     display: flex;
@@ -29,10 +30,87 @@
                 }
             }
 
+            .ml-mobile {
+                display: flex;
+                position: fixed;
+                right: 20px;
+                top: 20px;
+
+                .flag {
+                    margin-right: 8px;
+                }
+            }
+
+            .burger-menu-ml {
+                border-radius: 5px;
+                border: none;
+                box-shadow: 0px 3px 15px #9597AC4D;
+                padding: 7px;
+                top: 50px;
+                right: 20px;
+
+                button {
+                    margin: 0;
+                    padding: 0;
+
+                    .en {
+                        position: absolute;
+                        right: 7px;
+                    }
+                }
+
+                .row {
+                    align-items: center;
+
+                    img {
+                        margin-right: 7px;
+                    }
+                }
+
+                p {
+                    font-size: 12px;
+                    margin: 0;
+                    color: #9597AC;
+                }
+            }
+
             .burger-menu {
                 .row {
+                    .home-logo {
+                        .green-line {
+                            width: 3px;
+                            margin-top: 10px;
+                            border-bottom: 30px solid #55b364;
+                        }
+
+                        button {
+                            .row {
+                                flex-wrap: nowrap;
+
+                                img {
+                                    margin-right: 10px;
+                                    margin-right: 10px;
+                                }
+                            }
+                        }
+                    }
+
                     .news-logo {
                         margin-top: 0;
+
+                        .green-line {
+                            width: 3px;
+                            margin-top: 10px;
+                            border-bottom: 30px solid #55b364;
+                        }
+
+                        button {
+                            flex-wrap: nowrap;
+
+                            img {
+                                margin-right: 10px;
+                            }
+                        }
                     }
                 }
             }
@@ -163,6 +241,7 @@
 
                     .linkedin {
                         min-width: 100%;
+                        left: -12px
                     }
                 }
             }
@@ -197,5 +276,11 @@
     .site-owner {
         height: auto !important;
         padding: 20px 0;
+    }
+
+    .cookie {
+        display: flex;
+        left: 0 !important;
+        min-width: 100% !important;
     }
 }

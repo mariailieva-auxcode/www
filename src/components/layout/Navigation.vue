@@ -1,48 +1,81 @@
 <template>
   <div class="menu">
     <div class="col-12 logo">
-      <router-link :to="`?lang=${$router.history.current.query.lang}`">
+      <img
+        class="mobile"
+        src="/assets/mobile-navigation.svg"
+        @click="burgerMenuActive = !burgerMenuActive"
+      />
+      <img src="/assets/logo.svg" />
+      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
         <img
-          class="mobile"
-          src="assets/mobile-navigation.svg"
-          @click="burgerMenuActive = !burgerMenuActive"
+          class="flag"
+          :src="currentPage.includes('/en') ? '/assets/united-kingdom.svg' : '/assets/netherlands.svg'"
         />
-        <img src="assets/logo.svg" />
-      </router-link>
+        <img src="/assets/angle-down.svg" />
+      </div>
     </div>
     <div class="burger-menu" :class="{'active': burgerMenuActive}">
       <div class="row">
         <div class="col-12 home-logo">
-          <router-link :to="`/?lang=${$router.history.current.query.lang}`">
-            <div v-if="currentPage === '/'" class="green-line"></div>
+          <router-link :to="`/${$router.history.current.params.lang}`">
+            <div v-if="currentPage === '/nl' || currentPage === '/en'" class="green-line"></div>
             <button>
-              <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
-              <p class="home">{{homeName}}</p>
+              <div class="row">
+                <img
+                  :src="currentPage === '/nl' || currentPage === '/en' ? '/assets/home.svg' : '/assets/home-alt.svg'"
+                />
+                <p class="home">{{homeName}}</p>
+              </div>
             </button>
           </router-link>
         </div>
       </div>
       <div class="row">
         <div class="col-12 news-logo">
-          <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
-            <div v-if="currentPage === '/news'" class="green-line"></div>
+          <router-link :to="`/${$router.history.current.params.lang}/news`">
+            <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
             <button>
-              <img
-                :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
-              />
-              <p class="news">{{newsName}}</p>
+              <div class="row">
+                <img
+                  :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '/assets/newspaper.svg' : '/assets/newspaper-alt.svg'"
+                />
+                <p class="news">{{newsName}}</p>
+              </div>
             </button>
           </router-link>
         </div>
+      </div>
+    </div>
+    <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
+      <div class="row mobile-ml">
+        <router-link :to="getURL('en')">
+          <button>
+            <div class="row">
+              <img src="/assets/netherlands.svg" />
+              <p>NL</p>
+            </div>
+          </button>
+        </router-link>
+        <router-link :to="getURL('nl')">
+          <button>
+            <div class="row">
+              <img src="/assets/united-kingdom.svg" />
+              <p class="en">EN</p>
+            </div>
+          </button>
+        </router-link>
       </div>
     </div>
     <div class="row nav-buttons">
       <div class="row">
         <div class="col-12 home-logo">
-          <router-link :to="`/?lang=${$router.history.current.query.lang}`">
-            <div v-if="currentPage === '/'" class="green-line"></div>
+          <router-link :to="`/${$router.history.current.params.lang}`">
+            <div v-if="currentPage === '/nl' || currentPage === '/en' " class="green-line"></div>
             <button>
-              <img :src="currentPage === '/' ? 'assets/home.svg' : 'assets/home-alt.svg'" />
+              <img
+                :src="currentPage === '/nl' || currentPage === '/en' ? '../assets/home.svg' : '../assets/home-alt.svg'"
+              />
               <p class="home">{{homeName}}</p>
             </button>
           </router-link>
@@ -50,11 +83,11 @@
       </div>
       <div class="row">
         <div class="col-12 news-logo">
-          <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
-            <div v-if="currentPage === '/news'" class="green-line"></div>
+          <router-link :to="`/${$router.history.current.params.lang}/news`">
+            <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
             <button>
               <img
-                :src="currentPage === '/news' ? 'assets/newspaper.svg' : 'assets/newspaper-alt.svg'"
+                :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '../assets/newspaper.svg' : '../assets/newspaper-alt.svg'"
               />
               <p class="news">{{newsName}}</p>
             </button>
@@ -62,14 +95,14 @@
         </div>
       </div>
       <div class="row ml">
-        <router-link to="?lang=nl">
+        <router-link :to="getURL('en')">
           <button>
             <p>NL</p>
           </button>
         </router-link>
 
         <div class="line"></div>
-        <router-link to="?lang=en">
+        <router-link :to="getURL('nl')">
           <button>
             <p>EN</p>
           </button>
@@ -89,15 +122,14 @@ export default {
     currentPage() {
       return this.$route.path;
     }
-
-    // ?lang=en TODO (Milen)
   },
   data() {
     return {
       homeName: "",
       newsName: "",
       lang: "",
-      burgerMenuActive: false
+      burgerMenuActive: false,
+      burgerMenuMLActive: false
     };
   },
   watch: {
@@ -110,10 +142,16 @@ export default {
   },
   methods: {
     init() {
-      this.lang = this.$router.history.current.query.lang;
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? navigationEn : navigation;
       this.homeName = data.homeName;
       this.newsName = data.newsName;
+    },
+    getURL(prevLanguage) {
+      return this.currentPage.replace(
+        prevLanguage,
+        prevLanguage == "nl" ? "en" : "nl"
+      );
     }
   }
 };
@@ -131,12 +169,28 @@ export default {
     .mobile {
       display: none;
     }
+    .ml-mobile {
+      display: none;
+    }
   }
   .burger-menu {
     height: auto;
     width: 100%;
     display: none;
     background-color: #fff;
+    @media only screen and (max-width: 414px) {
+      &.active {
+        display: block;
+      }
+    }
+  }
+  .burger-menu-ml {
+    height: auto;
+    display: none;
+    position: fixed;
+    right: 20px;
+    width: 55px;
+    background-color: white;
     @media only screen and (max-width: 414px) {
       &.active {
         display: block;

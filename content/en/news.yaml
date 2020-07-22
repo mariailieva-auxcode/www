@@ -1,9 +1,11 @@
 # CMS structure
-button: To News
-homeTitles: 
-subTitle: '01'
 title: News
-description: 'Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!'
+subTitle: 'Section Title'
+homeTitles: 
+  subTitle: '01'
+  title: News
+description: Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!
+button: To News
 news:
 -   url: https://www.smartcitiesworld.net/news/news/netherlands-doubles-renewable-energy-subsidies-5143
     description: 'Netherlands doubles renewable energy subsidies.'

@@ -13,7 +13,7 @@
     <cookie-law class="cookie">
       <div slot-scope="props">
         <div class="row">
-          <img src="../public/assets/cookie.png" />
+          <img src="/assets/cookie.png" />
           <p>
             This site uses
             <span class="undeline">cookies</span>
@@ -46,8 +46,8 @@ export default {
     CookieLaw
   },
   mounted() {
-    if (!this.$router.history.current.query.lang) {
-      this.$router.push("?lang=nl");
+    if (!this.$router.history.current.params.lang) {
+      this.$router.push("nl");
     }
   }
 };
@@ -89,6 +89,7 @@ export default {
   width: 340px !important;
   height: 171px;
   justify-content: center;
+  left: 90px;
   img {
     margin-right: 20px;
   }

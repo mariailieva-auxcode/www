@@ -1,11 +1,11 @@
 # CMS structure
-subTitle: SECTION TITLE
 title: Nieuws
-button: Naar de nieuwspagina
+subTitle: 'Section Title'
 homeTitles:
   subTitle: '01'
   title: Nieuws
 description: Greenatlas.earth biedt een exclusieve selectie aan nieuws rondom het thema duurzame energie.
+button: Naar de nieuwspagina
 news:
 -   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
     description: 'Zakelijke voordelen met zonnepanelen.'
@@ -14,6 +14,7 @@ news:
       -  site owner
     categories: 
       -  subsidies
+      -  site owner
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'Water, wind en zon gecombineerd in één energiesysteem!'

@@ -12,11 +12,11 @@
         <p>{{data.description}}</p>
       </div>
       <div class="col-sm-5 col-xl-3 col-3">
-        <router-link :to="`/news?lang=${$router.history.current.query.lang}`">
+        <router-link :to="`/${$router.history.current.params.lang}/news`">
           <button>
             <p>
               {{data.button}}
-              <img src="assets/arrow-right-blue.png" />
+              <img src="/assets/arrow-right-blue.png" />
             </p>
           </button>
         </router-link>

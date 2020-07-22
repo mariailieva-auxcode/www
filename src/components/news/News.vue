@@ -46,7 +46,7 @@
 
 <script>
 import info from "js-yaml-loader!../../../content/nl/news.yaml";
-// import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
+import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
 import Search from "./Search";
 import MainNews from "./MainNews";
 import SecondaryNews from "./SecondaryNews";
@@ -70,15 +70,23 @@ export default {
       categories: {},
       filteredCategories: [],
       filterCriteria: [],
+      firstThreeNews: [],
+      lang: "",
       subTitle: "",
-      title: "",
-      firstThreeNews: []
+      title: ""
     };
   },
   beforeMount() {
     this.init();
     this.getAllCategories();
     this.getFilteredCategories();
+  },
+  watch: {
+    $route() {
+      this.init();
+      this.getAllCategories();
+      this.getFilteredCategories();
+    }
   },
   methods: {
     setFirstThreeNews() {
@@ -156,16 +164,18 @@ export default {
      * Sets all categories to be shown
      */
     init() {
-      this.subTitle = info.subTitle;
-      this.title = info.title;
+      this.lang = this.$router.history.current.params.lang;
+      this.data = this.lang === "en" ? infoEn : info;
+      this.subTitle = this.data.subTitle;
+      this.title = this.data.title;
 
       if (this.mode === "home") {
-        this.data = info.news
+        this.data = this.data.news
           .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
           .filter(e => e.date > new Date())
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
       } else {
-        this.data = info.news
+        this.data = this.data.news
           .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
           .filter(e => e.date > new Date() && e.categories.includes(this.mode))
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));

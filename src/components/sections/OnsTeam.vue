@@ -25,13 +25,13 @@
         </div>
         <div class="information">
           <div class="email col-xl-6 col-sm-12">
-            <img src="assets/envelope.svg" />
+            <img src="/assets/envelope.svg" />
             <p>{{person.email}}</p>
           </div>
           <div class="linkedin col-xl-6 col-sm-12">
-            <img class="linkedin-image" src="assets/linkedin.svg" />
+            <img class="linkedin-image" src="/assets/linkedin.svg" />
             <a :href="person.linkedIn" target="_blank" class="linkedin-link">{{button}}</a>
-            <img class="arrow" src="assets/arrow-right-blue.png" />
+            <img class="arrow" src="/assets/arrow-right-blue.png" />
           </div>
         </div>
       </div>

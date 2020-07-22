@@ -14,34 +14,34 @@ export default new Router({
     mode: 'history',
     routes: [
         {
-            path: "/",
+            path: "/:lang",
             name: "MainPage",
             component: MainPage
         },
         {
-            path: "/site-owner",
+            path: "/:lang/site-owner",
             name: "SiteOwner",
             component: SiteOwner
         },
         {
-            path: "/project-developer",
+            path: "/:lang/project-developer",
             name: "ProjectDeveloper",
             component: ProjectDeveloper
         },
         {
-            path: "/table",
+            path: "/:lang/table",
             component: Table
         },
         {
-            path: "/privacy-policy",
+            path: "/:lang/privacy-policy",
             component: PrivacyPolicy
         },
         {
-            path: "/resize",
+            path: "/:lang/resize",
             component: ResizingBoxes
         },
         {
-            path: "/news",
+            path: "/:lang/news",
             component: News
         }]
 })
