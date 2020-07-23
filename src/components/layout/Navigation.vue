@@ -237,7 +237,7 @@ export default {
       height: 1px;
       border-bottom: 15px solid #afafaf;
       border-radius: 10px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
   }
 }
