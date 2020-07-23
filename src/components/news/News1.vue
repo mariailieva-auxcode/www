@@ -8,7 +8,7 @@
           :isHomePage="true"
         ></Title>
       </div>
-      <div class="col-sm-7 col-xl-5 col-12">
+      <div class="col-sm-7 col-xl-5 col-12 description-size">
         <p>{{data.description}}</p>
       </div>
       <div class="col-sm-5 col-xl-3 col-12 link">

@@ -10,7 +10,7 @@
         </button>
       </router-link>
       <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
-        <button class="button-choice">
+        <button class="button-choice mobile">
           <p>{{button2}}</p>
         </button>
       </router-link>

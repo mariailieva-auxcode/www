@@ -199,10 +199,6 @@ export default {
 }
 
 .news {
-  .news-container > .news {
-    height: 635px;
-  }
-
   .news-tag-title {
     text-align: left;
     font-size: 25;

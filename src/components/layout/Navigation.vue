@@ -20,7 +20,7 @@
         <div class="col-12 home-logo">
           <router-link :to="`/${$router.history.current.params.lang}`">
             <div v-if="currentPage === '/nl' || currentPage === '/en'" class="green-line"></div>
-            <button>
+            <button @click="burgerMenuActive=false">
               <div class="row">
                 <img
                   :src="currentPage === '/nl' || currentPage === '/en' ? '/assets/home.svg' : '/assets/home-alt.svg'"
@@ -35,7 +35,7 @@
         <div class="col-12 news-logo">
           <router-link :to="`/${$router.history.current.params.lang}/news`">
             <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
-            <button>
+            <button @click="burgerMenuActive=false">
               <div class="row">
                 <img
                   :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '/assets/newspaper.svg' : '/assets/newspaper-alt.svg'"
@@ -50,7 +50,7 @@
     <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
       <div class="row mobile-ml">
         <router-link :to="getURL('en')">
-          <button>
+          <button @click="burgerMenuMLActive= false">
             <div class="row">
               <img src="/assets/netherlands.svg" />
               <p>NL</p>
@@ -58,7 +58,7 @@
           </button>
         </router-link>
         <router-link :to="getURL('nl')">
-          <button>
+          <button @click="burgerMenuMLActive= false">
             <div class="row">
               <img src="/assets/united-kingdom.svg" />
               <p class="en">EN</p>
@@ -178,7 +178,7 @@ export default {
     width: 100%;
     display: none;
     background-color: #fff;
-    @media only screen and (max-width: 414px) {
+    @media only screen and (max-width: 768px) {
       &.active {
         display: block;
       }
@@ -191,7 +191,7 @@ export default {
     right: 20px;
     width: 55px;
     background-color: white;
-    @media only screen and (max-width: 414px) {
+    @media only screen and (max-width: 768px) {
       &.active {
         display: block;
       }
