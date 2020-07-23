@@ -1,4 +1,4 @@
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 768px) {
     div.content {
         overflow-x: hidden;
         width: 100%;
@@ -136,6 +136,12 @@
                 width: 100% !important;
                 font-size: 18px !important;
             }
+
+
+            .mobile {
+                margin-top: 15px !important;
+            }
+
         }
     }
 
@@ -147,12 +153,23 @@
         }
 
         .news-text {
+            .title {
+                h1 {
+                    font-size: 195px !important;
+                }
 
-            .col-sm-12,
-            .col-sm-7,
-            .col-sm-5 {
-                min-width: 100%;
+                h2 {
+                    font-size: 45px;
+                    top: 110px;
+                    left: 150px !important;
+                }
             }
+
+            // .col-sm-12,
+            // .col-sm-7,
+            // .col-sm-5 {
+            //     min-width: 100%;
+            // }
 
             width: 100%;
         }
@@ -175,6 +192,18 @@
     }
 
     .database {
+        .row {
+            h1 {
+                font-size: 195px !important;
+            }
+
+            h2 {
+                font-size: 45px !important;
+                top: 110px;
+                left: 120px !important;
+            }
+        }
+
         .phone-resolution {
             display: flex;
             flex-direction: column;
@@ -186,6 +215,18 @@
     }
 
     .tools {
+        .row {
+            h1 {
+                font-size: 195px !important;
+            }
+
+            h2 {
+                font-size: 45px !important;
+                top: 100px;
+                left: 170px !important;
+            }
+        }
+
         .iPad {
             .col-6 {
                 min-width: 100%;
@@ -194,10 +235,20 @@
     }
 
     .what-is-green-phone {
+        .image {
+            padding: 0;
+            left: -55px;
+
+            img {
+                width: 100%;
+            }
+        }
+
         .what-section {
             min-width: 100%;
 
             .description {
+
                 margin-left: 0 !important;
             }
 
@@ -234,6 +285,7 @@
                 .information {
                     display: flex;
                     flex-direction: column;
+                    margin: 0 auto;
 
                     .email {
                         min-width: 100%;
