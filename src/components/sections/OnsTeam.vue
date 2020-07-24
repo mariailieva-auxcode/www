@@ -47,19 +47,18 @@ import teamEn from "js-yaml-loader!../../../content/en/general/team.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
-    Title
+    Title,
   },
   data() {
     return {
       team: undefined,
       title: "",
       subTitle: "",
-      button: ""
+      button: "",
     };
   },
-  // watch: {} TODO (Milen) watch the lang prop
   props: {
-    lang: String
+    lang: String,
   },
   mounted() {
     this.init();
@@ -67,7 +66,7 @@ export default {
   watch: {
     lang() {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
@@ -76,8 +75,8 @@ export default {
       this.title = data.title;
       this.subTitle = data.subTitle;
       this.button = data.button;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -126,7 +125,6 @@ export default {
     margin-bottom: 35px;
     box-shadow: 0px 0px 30px #1d226f1a;
     border-radius: 10px;
-    // text-align: left;
     .picture {
       max-width: 212px;
       padding: 0;
@@ -228,10 +226,6 @@ export default {
   }
 }
 
-// .yaml-links {
-//   margin: none;
-// }
-
 .team-card {
   padding: 15px !important;
   max-width: 100% !important;
@@ -247,15 +241,6 @@ export default {
     margin-left: 0 !important;
   }
 }
-
-// @media only screen and (max-width: 1366px) {
-//   .team-card {
-//     padding-left: 50px !important;
-//     .information > .email {
-//       padding: 0 !important;
-//     }
-//   }
-// }
 
 @media only screen and (max-width: 414px) {
   .team .yaml-links .picture {

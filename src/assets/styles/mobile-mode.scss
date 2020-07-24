@@ -30,6 +30,11 @@
                 }
             }
 
+            .ml>p {
+                display: none;
+            }
+
+
             .ml-mobile {
                 display: flex;
                 position: fixed;
@@ -49,9 +54,18 @@
                 top: 50px;
                 right: 20px;
 
+                &.active {
+                    display: flex;
+                }
+
                 button {
                     margin: 0;
                     padding: 0;
+
+                    .nl {
+                        position: unset;
+                        margin-top: 0;
+                    }
 
                     .en {
                         position: absolute;

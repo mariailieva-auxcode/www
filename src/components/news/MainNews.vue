@@ -1,5 +1,5 @@
 <template>
-  <link-prevue :url="data.url" cardWidth="100%">
+  <link-prevue v-if="!!data" :url="data.url" cardWidth="100%">
     <template slot-scope="props">
       <a :href="props.url" class="card-link" target="_blank">
         <div id="main-news-card" class="card" :class="{'main-card': isMain}">
@@ -24,19 +24,19 @@ export default {
   filters: {
     uppercase(text) {
       if (text) return text.toUpperCase();
-    }
+    },
   },
   data() {
     return {
-      tag: ""
+      tag: "",
     };
   },
   components: {
-    LinkPrevue
+    LinkPrevue,
   },
   props: {
     data: Object,
-    isMain: Boolean
+    isMain: Boolean,
   },
   created() {
     if (this.data.categories.includes("project developer")) {
@@ -44,6 +44,6 @@ export default {
     } else if (this.data.categories.includes("site owner")) {
       this.tag = "SITE OWNER";
     }
-  }
+  },
 };
 </script>

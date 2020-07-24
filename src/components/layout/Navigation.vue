@@ -7,13 +7,6 @@
         @click="burgerMenuActive = !burgerMenuActive"
       />
       <img src="/assets/logo.svg" />
-      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
-        <img
-          class="flag"
-          :src="currentPage.includes('/en') ? '/assets/united-kingdom.svg' : '/assets/netherlands.svg'"
-        />
-        <img src="/assets/angle-down.svg" />
-      </div>
     </div>
     <div class="burger-menu" :class="{'active': burgerMenuActive}">
       <div class="row">
@@ -47,26 +40,6 @@
         </div>
       </div>
     </div>
-    <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
-      <div class="row mobile-ml">
-        <router-link :to="getURL('en')">
-          <button @click="burgerMenuMLActive= false">
-            <div class="row">
-              <img src="/assets/netherlands.svg" />
-              <p>NL</p>
-            </div>
-          </button>
-        </router-link>
-        <router-link :to="getURL('nl')">
-          <button @click="burgerMenuMLActive= false">
-            <div class="row">
-              <img src="/assets/united-kingdom.svg" />
-              <p class="en">EN</p>
-            </div>
-          </button>
-        </router-link>
-      </div>
-    </div>
     <div class="row nav-buttons">
       <div class="row">
         <div class="col-12 home-logo">
@@ -94,19 +67,35 @@
           </router-link>
         </div>
       </div>
-      <div class="row ml">
-        <router-link :to="getURL('en')">
-          <button>
-            <p>NL</p>
-          </button>
-        </router-link>
-
-        <div class="line"></div>
-        <router-link :to="getURL('nl')">
-          <button>
-            <p>EN</p>
-          </button>
-        </router-link>
+    </div>
+    <div class="ml">
+      <p>{{language}}</p>
+      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
+        <img
+          class="flag"
+          :src="currentPage.includes('/en') ? '/assets/united-kingdom.svg' : '/assets/netherlands.svg'"
+        />
+        <img src="/assets/angle-down.svg" />
+      </div>
+      <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
+        <div class="row language-display">
+          <router-link :to="getURL('en')">
+            <button @click="burgerMenuMLActive= false">
+              <div class="row">
+                <img src="/assets/netherlands.svg" />
+                <p class="nl">NL</p>
+              </div>
+            </button>
+          </router-link>
+          <router-link :to="getURL('nl')">
+            <button @click="burgerMenuMLActive= false">
+              <div class="row">
+                <img src="/assets/united-kingdom.svg" />
+                <p class="en">EN</p>
+              </div>
+            </button>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -121,21 +110,22 @@ export default {
   computed: {
     currentPage() {
       return this.$route.path;
-    }
+    },
   },
   data() {
     return {
       homeName: "",
       newsName: "",
+      language: "",
       lang: "",
       burgerMenuActive: false,
-      burgerMenuMLActive: false
+      burgerMenuMLActive: false,
     };
   },
   watch: {
     $route() {
       this.init();
-    }
+    },
   },
   created() {
     this.init();
@@ -146,14 +136,15 @@ export default {
       let data = this.lang === "en" ? navigationEn : navigation;
       this.homeName = data.homeName;
       this.newsName = data.newsName;
+      this.language = data.language;
     },
     getURL(prevLanguage) {
       return this.currentPage.replace(
         prevLanguage,
         prevLanguage == "nl" ? "en" : "nl"
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -191,9 +182,20 @@ export default {
     right: 20px;
     width: 55px;
     background-color: white;
-    @media only screen and (max-width: 768px) {
-      &.active {
-        display: block;
+    &.active {
+      display: block;
+    }
+    @media screen and (min-width: 769px) {
+      left: 10px;
+      bottom: 10px;
+    }
+    .language-display {
+      width: 120px;
+      button {
+        .nl {
+          position: absolute;
+          margin-top: 12px;
+        }
       }
     }
   }
@@ -226,6 +228,12 @@ export default {
     position: absolute;
     bottom: 30px;
     margin-left: 15px;
+    .ml-mobile {
+      cursor: pointer;
+      .flag {
+        margin-right: 5px;
+      }
+    }
     p {
       font-size: 12px;
       font-family: $font__Lato;

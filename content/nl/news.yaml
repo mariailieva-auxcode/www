@@ -1,4 +1,7 @@
 # CMS structure
+headerImage: /assets/globe-image.png
+headerTitle: Everything you need to know in one place NL
+headerDescription: Here we should have text that explains what articles are included and how that helps users NL
 title: Nieuws
 subTitle: 'Section Title'
 homeTitles:
