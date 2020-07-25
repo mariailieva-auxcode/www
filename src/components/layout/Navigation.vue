@@ -94,6 +94,52 @@
           </router-link>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-12 owner-logo">
+          <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
+            <div
+              v-if="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner'"
+              class="green-line"
+            ></div>
+            <button>
+              <img
+                :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '../assets/siteowner-navigation-icon.svg' : '../assets/siteowner-navigation-icon.svg'"
+              />
+              <p class="owner">{{siteownerName}}</p>
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 specialist-logo">
+          <router-link :to="`/${$router.history.current.params.lang}`">
+            <div v-if="currentPage === '/nl/' || currentPage === '/en/'" class="green-line"></div>
+            <button>
+              <img
+                :src="currentPage === '/nl/' || currentPage === '/en/' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+              />
+              <p class="specialist">{{specialistName}}</p>
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 project-logo">
+          <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
+            <div
+              v-if="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer'"
+              class="green-line"
+            ></div>
+            <button>
+              <img
+                :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-navigation-icon.svg' : '../assets/project-navigation-icon.svg'"
+              />
+              <p class="project">{{projectName}}</p>
+            </button>
+          </router-link>
+        </div>
+      </div>
       <div class="row ml">
         <router-link :to="getURL('en')">
           <button>
@@ -121,21 +167,24 @@ export default {
   computed: {
     currentPage() {
       return this.$route.path;
-    }
+    },
   },
   data() {
     return {
       homeName: "",
       newsName: "",
+      siteownerName: "",
+      specialistName: "",
+      projectName:"",
       lang: "",
       burgerMenuActive: false,
-      burgerMenuMLActive: false
+      burgerMenuMLActive: false,
     };
   },
   watch: {
     $route() {
       this.init();
-    }
+    },
   },
   created() {
     this.init();
@@ -146,14 +195,17 @@ export default {
       let data = this.lang === "en" ? navigationEn : navigation;
       this.homeName = data.homeName;
       this.newsName = data.newsName;
+      this.specialistName = data.specialistName;
+      this.siteownerName = data.siteownerName;
+      this.projectName=data.projectName;
     },
     getURL(prevLanguage) {
       return this.currentPage.replace(
         prevLanguage,
         prevLanguage == "nl" ? "en" : "nl"
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -199,8 +251,11 @@ export default {
   }
   .row {
     text-align: center;
-    .news-logo {
-      margin-top: 40px;
+    .news-logo,
+    .owner-logo,
+    .specialist-logo,
+    .project-logo {
+      margin-top: 25px;
     }
     .router-link-exact-active button p {
       color: #55b364;
@@ -210,10 +265,13 @@ export default {
       margin-top: 10px;
       background-color: white;
       .news,
-      .home {
+      .home,
+      .owner,
+      .specialist,
+      .project{
         color: #9597ac;
         font-size: 14px;
-        margin-top: 5px;
+        margin-top: 10px;
         margin-bottom: 0;
         font-weight: bold;
       }
@@ -237,14 +295,15 @@ export default {
       height: 1px;
       border-bottom: 15px solid #afafaf;
       border-radius: 10px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
   }
 }
 .green-line {
   width: 5px;
   height: 1px;
-  border-bottom: 70px solid #55b364;
+  margin-top: 5px;
+  border-bottom: 80px solid #55b364;
   border-radius: 10px;
   position: fixed;
   left: 0px;

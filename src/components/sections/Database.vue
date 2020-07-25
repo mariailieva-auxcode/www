@@ -25,11 +25,11 @@ import Title from "../layout/Title";
 export default {
   name: "Database",
   components: {
-    Title
+    Title,
   },
   props: {
-    database: { default: {} }
-  }
+    database: { default: {} },
+  },
 };
 </script>
 
@@ -84,6 +84,21 @@ export default {
     }
     button {
       margin-left: 0px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  p {
+    margin-top: 50px;
+    margin-bottom: 35px !important;
+  }
+  .image{
+    width:100%
+  }
+  button{
+    p{
+      margin:auto !important;
     }
   }
 }
