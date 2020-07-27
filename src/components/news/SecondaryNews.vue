@@ -30,14 +30,14 @@ export default {
 
 <style lang="scss" scoped>
 #secondary-news-card.card {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    img {
-        width: 150px;
-        margin-right: 15px;
-        height: 150px;
-        object-fit: cover;
-    }
+  img {
+    width: 150px;
+    margin-right: 15px;
+    height: 150px;
+    object-fit: cover;
+  }
 }
 </style>

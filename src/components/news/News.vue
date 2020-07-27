@@ -2,7 +2,19 @@
   <div class="container newss">
     <div :class="{'news-preview': isPreview, 'news': !isPreview}">
       <div class="container-fluid">
-        <Title class="title" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
+        <div class="row">
+          <Title class="title col-xl-6" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
+          <div class="row col-xl-6 articles">
+            <div class="row col-xl-12 header-paragraph">
+              <p>Specified articles for:</p>
+            </div>
+            <div class="row col-xl-12 header-buttons">
+              <button class="button1" @click="filterByGroup('site owner')">Site owner</button>
+              <button class="button2" @click="filterByGroup('specialist')">Specialist</button>
+              <button class="button3" @click="filterByGroup('project developer')">project developer</button>
+            </div>
+          </div>
+        </div>
         <Search
           class="categories"
           id="searchBar"
@@ -11,15 +23,15 @@
           v-if="!isPreview"
         ></Search>
         <div class="row row-fluid news-container">
-          <div class="col-sm-12 col-xl-6 col-6">
+          <div class="col-sm-12 col-lg-6 col-xl-6 col-12 news">
             <MainNews :data="firstThreeNews[0]" :isMain="true"></MainNews>
           </div>
-          <div class="col-sm-12 col-xl-6 col-6 secondaryNews">
+          <div class="col-sm-12 col-xl-6 col-lg-6 col-12 secondaryNews">
             <div class="row row-fluid">
-              <div class="col-6" v-show="firstThreeNews[1]">
+              <div class="col-xl-6 col-sm-6 col-lg-6 col-12" v-show="firstThreeNews[1]">
                 <MainNews :data="firstThreeNews[1]" :isMain="false"></MainNews>
               </div>
-              <div class="col-6" v-show="firstThreeNews[2]">
+              <div class="col-xl-6 col-sm-6 col-lg-6 col-12" v-show="firstThreeNews[2]">
                 <MainNews :data="firstThreeNews[2]" :isMain="false"></MainNews>
               </div>
             </div>
@@ -27,7 +39,11 @@
         </div>
         <div class="row mobile-resolution" v-if="!isPreview">
           <hr />
-          <div v-for="(category, index) in filteredCategories" :key="index" :class="`col-6`">
+          <div
+            v-for="(category, index) in filteredCategories"
+            :key="index"
+            :class="`col-xl-6 col-12`"
+          >
             <h3 class="news-tag-title">{{category}}</h3>
             <div
               v-for="(item, index) in getPostsByCategory(category)"
@@ -58,11 +74,11 @@ export default {
     Search,
     MainNews,
     SecondaryNews,
-    Title
+    Title,
   },
   props: {
     isPreview: { default: false, type: Boolean },
-    mode: { default: "home", type: String }
+    mode: { default: "home", type: String },
   },
   data() {
     return {
@@ -71,9 +87,10 @@ export default {
       filteredCategories: [],
       filterCriteria: [],
       firstThreeNews: [],
+      filteredGroup: "",
       lang: "",
       subTitle: "",
-      title: ""
+      title: "",
     };
   },
   beforeMount() {
@@ -86,19 +103,32 @@ export default {
       this.init();
       this.getAllCategories();
       this.getFilteredCategories();
-    }
+    },
   },
   methods: {
     setFirstThreeNews() {
       this.firstThreeNews = [];
-      this.firstThreeNews = this.data.filter(e => e.isShown);
-      let length = this.firstThreeNews < 3 ? this.firstThreeNews : 2;
+      this.firstThreeNews = this.data.filter((e) => e.isShown);
+      let length =
+        this.firstThreeNews.length <= 3 ? this.firstThreeNews.length : 3;
       this.firstThreeNews = this.firstThreeNews.slice(0, length);
     },
     getPostsByCategory(category) {
       return this.data
         .slice(4, this.data.length)
-        .filter(e => e.categories.includes(category));
+        .filter((e) => e.categories.includes(category));
+    },
+    filterByGroup(group) {
+      if (this.filteredGroup == group) {
+        this.data.forEach((x) => (x.isShown = true));
+        this.filteredGroup = "";
+      } else {
+        this.data.forEach(
+          (newItem) => (newItem.isShown = newItem.group?.includes(group))
+        );
+        this.filteredGroup = group;
+      }
+      this.setFirstThreeNews();
     },
     /**
      * Gets all categories listed in the cms file
@@ -108,9 +138,9 @@ export default {
         ...new Set(
           [].concat.apply(
             [],
-            this.data.map(e => e.categories)
+            this.data.map((e) => e.categories)
           )
-        )
+        ),
       ];
       this.filterCriteria = distinctCategories;
       this.categories = distinctCategories.reduce(
@@ -123,16 +153,16 @@ export default {
         ...new Set(
           [].concat.apply(
             [],
-            this.data.slice(4, this.data.length).map(e => e.categories)
+            this.data.slice(4, this.data.length).map((e) => e.categories)
           )
-        )
+        ),
       ];
     },
     /**
      * If the active categories are used in a single news
      */
     someCategory(e) {
-      return e.categories.some(x =>
+      return e.categories.some((x) =>
         this.filterCriteria.includes(x.toLowerCase())
       );
     },
@@ -142,8 +172,10 @@ export default {
     onSearch(data) {
       let { value, categories } = data;
       this.init();
-      this.filterCriteria = Object.keys(categories).filter(k => categories[k]);
-      this.data = this.data.map(e => {
+      this.filterCriteria = Object.keys(categories).filter(
+        (k) => categories[k]
+      );
+      this.data = this.data.map((e) => {
         if (value) {
           if (
             !e.description.match(new RegExp(value, "i")) ||
@@ -171,34 +203,65 @@ export default {
 
       if (this.mode === "home") {
         this.data = this.data.news
-          .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
-          .filter(e => e.date > new Date())
+          .map((e) => ({ ...e, isShown: true, date: new Date(e.expiry) }))
+          .filter((e) => e.date > new Date())
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
       } else {
         this.data = this.data.news
-          .map(e => ({ ...e, isShown: true, date: new Date(e.expiry) }))
-          .filter(e => e.date > new Date() && e.categories.includes(this.mode))
+          .map((e) => ({ ...e, isShown: true, date: new Date(e.expiry) }))
+          .filter(
+            (e) => e.date > new Date() && e.categories.includes(this.mode)
+          )
           .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0));
       }
       this.firstThreeNews = this.data;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/styles/main.scss";
+div.container {
+  padding-right: 0;
+  padding-left: 0;
+}
 .container-fluid {
+  .row {
+    .articles {
+      font-family: $font__Source_Sans;
+      font-size: 15px;
+      display: grid;
+      justify-content: flex-end;
+      p {
+        margin-left: 20px;
+        color: #9597ac;
+      }
+      .button1 {
+        background-color: #55b364;
+      }
+      .button2 {
+        background-color: #1d226f;
+      }
+      .button3 {
+        background-color: #2783ff;
+      }
+      button {
+        outline: none;
+        padding: 3px 12px;
+        margin-left: 20px;
+        color: #f7f7fa;
+        border-radius: 5px;
+        border: none;
+      }
+    }
+  }
   .title {
     margin-top: 30px;
   }
 }
 
 .news {
-  .news-container > .col-6 {
-    height: 635px;
-  }
-
   .news-tag-title {
     text-align: left;
     font-size: 25;
@@ -213,6 +276,9 @@ export default {
 
   .news-container > .secondaryNews > .row {
     height: 315px;
+    @media screen and (max-width: 576px) {
+      height: auto;
+    }
   }
 
   .suppliers {

@@ -88,16 +88,4 @@ button.survey-button {
   margin: 15px 80px;
   color: white;
 }
-
-@media only screen and (max-width: 768px) {
-  .survey {
-    .row {
-      .description {
-        p {
-          max-width: 100%;
-        }
-      }
-    }
-  }
-}
 </style>

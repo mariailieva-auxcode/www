@@ -1,9 +1,9 @@
 <template>
   <div class="row row-fluid what-is-green-phone">
-    <div class="col-6 image">
+    <div class="col-12 col-lg-6 col-xl-6 image">
       <img :src="whatIs.image" />
     </div>
-    <div class="col-sm-12 col-xl-6 col-6 what-section">
+    <div class="col-sm-12 col-lg-6 col-xl-6 col-12 what-section">
       <div class="col-sm-12 col-md-12 col-xl-12 col-12">
         <Title
           :title="whatIs.title"
@@ -12,11 +12,12 @@
           :isWhat="true"
         ></Title>
       </div>
+      <img :src="whatIs.image" class="image-for-mobile" />
       <p class="description">{{whatIs.description}}</p>
       <div class="row">
         <div class="col-sm-12 col-xl-12 col-12 text" v-for="bullet of whatIs.bullets" :key="bullet">
           <div class="row">
-            <img class="col-xl-2 col-sm-2 icon" :src="bullet.icon" />
+            <img class="col-xl-2 col-sm-2 col-4 icon" :src="bullet.icon" />
             <p class="col-xl-10 col-sm-10">{{bullet.text}}</p>
           </div>
         </div>
@@ -73,11 +74,14 @@ export default {
   p {
     font-size: 18px;
   }
-  .col-6 {
-    margin-top: 150px;
+  .what-section {
+    margin-top: 50px;
     text-align: left;
     color: #9597ac;
     font-size: 14px;
+    .image-for-mobile {
+      display: none;
+    }
     .description {
       margin-left: 80px;
       margin-bottom: 70px;
@@ -96,9 +100,31 @@ export default {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .row {
+    .text {
+      .icon {
+        max-width: 100px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
   .image {
     display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .what-is-green-phone {
+    .image {
+      left: -50px;
+      margin-top: 180px;
+      img {
+        max-width: 115%;
+      }
+    }
   }
 }
 </style>

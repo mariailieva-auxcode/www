@@ -1,4 +1,4 @@
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 768px) {
     div.content {
         overflow-x: hidden;
         width: 100%;
@@ -30,6 +30,11 @@
                 }
             }
 
+            .ml>p {
+                display: none;
+            }
+
+
             .ml-mobile {
                 display: flex;
                 position: fixed;
@@ -49,9 +54,18 @@
                 top: 50px;
                 right: 20px;
 
+                &.active {
+                    display: flex;
+                }
+
                 button {
                     margin: 0;
                     padding: 0;
+
+                    .nl {
+                        position: unset;
+                        margin-top: 0;
+                    }
 
                     .en {
                         position: absolute;
@@ -121,12 +135,24 @@
         }
     }
 
+    .content {
+        .font {
+            .container-fluid {
+                margin-bottom: 50px;
+            }
+        }
+    }
+
     .mobile-background-image {
         display: flex;
     }
 
     .header {
         .header-content {
+            width: 100% !important;
+            margin-left: 20px;
+            margin-right: 20px;
+
             h1 {
                 width: 100% !important;
                 font-size: 35px !important;
@@ -136,25 +162,50 @@
                 width: 100% !important;
                 font-size: 18px !important;
             }
+
+
+            .mobile {
+                margin-top: 15px !important;
+            }
+
         }
     }
 
     .container-fluid {
         .categories {
-            display: flex;
-            flex-direction: column;
+            display: none;
 
         }
 
         .news-text {
+            .title {
+                h1 {
+                    font-size: 195px !important;
+                }
 
-            .col-sm-12,
-            .col-sm-7,
-            .col-sm-5 {
-                min-width: 100%;
+                h2 {
+                    font-size: 45px;
+                    top: 110px;
+                    left: 150px !important;
+                }
+            }
+
+            div.description-size {
+                p {
+                    font-weight: 500;
+                    font-size: 16px;
+                }
             }
 
             width: 100%;
+        }
+    }
+
+    .news {
+        .container-fluid {
+            .news-container {
+                margin-top: 50px;
+            }
         }
     }
 
@@ -175,34 +226,89 @@
     }
 
     .database {
+        .row {
+            h1 {
+                font-size: 195px !important;
+            }
+
+            h2 {
+                font-size: 45px !important;
+                top: 110px;
+                left: 120px !important;
+            }
+        }
+
         .phone-resolution {
             display: flex;
             flex-direction: column;
 
-            .col-6 {
-                min-width: 100%;
+            div.text {
+                p {
+                    font-size: 15px !important;
+                    font-weight: 500;
+                }
+
+                button {
+                    p {
+                        font-size: 14px !important;
+                    }
+                }
             }
+
+            // .col-6 {
+            //     min-width: 100%;
+            // }
         }
     }
 
     .tools {
-        .iPad {
-            .col-6 {
-                min-width: 100%;
+        .row {
+            h1 {
+                font-size: 195px !important;
+            }
+
+            h2 {
+                font-size: 45px !important;
+                top: 100px;
+                left: 170px !important;
+            }
+
+            &.iPad {
+                div.text {
+                    p {
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+                }
             }
         }
+
     }
 
     .what-is-green-phone {
+        .image {
+            display: none;
+        }
+
         .what-section {
             min-width: 100%;
+            padding: 0 !important;
+
+            .image-for-mobile {
+                position: relative;
+                display: flex !important;
+                left: -95px;
+                width: 115%;
+            }
 
             .description {
-                margin-left: 0 !important;
+                margin: 0 40px 80px 40px !important;
+                // margin-bottom: 80px !important;
+                font-size: 15px;
             }
 
             .row {
-                .col-sm-12 {
+                .text {
                     margin-left: 0 !important;
 
                     .row {
@@ -211,6 +317,11 @@
                             height: 50px;
                             margin: 0 auto;
                         }
+
+                        p {
+                            font-size: 15px;
+                            margin-top: 30px !important;
+                        }
                     }
                 }
             }
@@ -218,30 +329,40 @@
     }
 
     .team {
+        .team-container {
+            .team-title {
+                margin-left: 0 !important;
+            }
+        }
+
+
         .yaml-links {
             display: flex;
-            flex-direction: column;
-            margin-left: 40px !important;
-
-            .picture {
-                margin-left: 100px;
-                margin-top: 25px;
-            }
+            margin: 0;
 
             .team-card {
-                text-align: center;
+                text-align: center !important;
+
+                .team-content {
+                    .about {
+                        p {
+                            font-size: 15px;
+                        }
+                    }
+                }
 
                 .information {
                     display: flex;
                     flex-direction: column;
+                    margin: 0 auto;
 
                     .email {
                         min-width: 100%;
+                        margin-bottom: 15px;
                     }
 
                     .linkedin {
                         min-width: 100%;
-                        left: -12px
                     }
                 }
             }
@@ -259,6 +380,17 @@
         margin-left: 0 !important;
     }
 
+    .survey {
+        .row {
+            .description {
+                p {
+                    max-width: 100%;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
     .footer {
         .row {
             padding-top: 40px;
@@ -266,6 +398,10 @@
             display: flex;
             flex-direction: column;
             text-align: center;
+
+            .policy-positioning {
+                justify-content: flex-start !important;
+            }
 
             .col-3 {
                 min-width: 100%;
@@ -282,5 +418,16 @@
         display: flex;
         left: 0 !important;
         min-width: 100% !important;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .news {
+        .container-fluid {
+            .categories {
+                display: none;
+            }
+        }
     }
 }
