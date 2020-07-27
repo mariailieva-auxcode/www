@@ -68,6 +68,51 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12 owner-logo">
+        <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
+          <div
+            v-if="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner'"
+            class="green-line"
+          ></div>
+          <button>
+            <img
+              :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '../assets/siteowner-navigation-icon.svg' : '../assets/siteowner-navigation-icon.svg'"
+            />
+            <p class="owner">{{siteownerName}}</p>
+          </button>
+        </router-link>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 specialist-logo">
+        <router-link :to="`/${$router.history.current.params.lang}`">
+          <div v-if="currentPage === '/nl/' || currentPage === '/en/'" class="green-line"></div>
+          <button>
+            <img
+              :src="currentPage === '/nl/' || currentPage === '/en/' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+            />
+            <p class="specialist">{{specialistName}}</p>
+          </button>
+        </router-link>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 project-logo">
+        <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
+          <div
+            v-if="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer'"
+            class="green-line"
+          ></div>
+          <button>
+            <img
+              :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-navigation-icon.svg' : '../assets/project-navigation-icon.svg'"
+            />
+            <p class="project">{{projectName}}</p>
+          </button>
+        </router-link>
+      </div>
+    </div>
     <div class="ml">
       <p>{{language}}</p>
       <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
