@@ -72,12 +72,12 @@ export default {
 
 @media only screen and (max-width: 1366px) {
   .content {
-    width: calc(100vw - 110px);
+    width: calc(100vw - 100px);
   }
 }
 
 .Cookie--bottom {
-  left: 100px;
+  left: 100px !important;
   opacity: 0.9;
 }
 
