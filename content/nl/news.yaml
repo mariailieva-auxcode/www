@@ -1,9 +1,9 @@
 # CMS structure
 headerImage: /assets/globe-image.png
-headerTitle: Everything you need to know in one place NL
+headerTitle: Al het nieuws op gebied van duurzame energie projecten op één plek 
 headerDescription: Here we should have text that explains what articles are included and how that helps users NL
 title: Nieuws
-subTitle: 'Section Title'
+subTitle: 'Nieuws'
 homeTitles:
   subTitle: '01'
   title: Nieuws
@@ -33,12 +33,11 @@ news:
       -  business
       -  site owner
       
--   url: https://solarmagazine.nl/nieuws-zonne-energie/i21812/enphase-energy-en-q-cells-introduceren-nieuw-ac-zonnepaneel
-    description: 'Introductie nieuw AC zonnepaneel.'
-    expiry: 2020-08-01
-    categories: 
-      -  innovation
-      -  project developer
+-   url: https://www.zonnestroomnederland.nl/kennisbank/zonneveld-of-zonneweide-aanleggen-hoe-zit-het-met-de-vergunning/
+    description: 'zonneweide aanleggen: hoe zit het met de vergunning?'
+    expiry: 2020-09-01
+    categories:
+      -  site owner
 
 -   url: https://www.cbs.nl/nl-nl/nieuws/2020/25/vermogen-zonnepanelen-voor-het-eerst-groter-bij-bedrijven-dan-bij-woningen
     description: 'Vermogen zonnepanelen voor het eerst groter bij bedrijven dan bij woningen.'
