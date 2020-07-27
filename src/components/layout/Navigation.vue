@@ -165,6 +165,7 @@ export default {
       specialistName: "",
       projectName: "",
       lang: "",
+      language: "",
       burgerMenuActive: false,
       burgerMenuMLActive: false,
     };
@@ -186,6 +187,7 @@ export default {
       this.specialistName = data.specialistName;
       this.siteownerName = data.siteownerName;
       this.projectName = data.projectName;
+      this.language = data.language;
     },
     getURL(prevLanguage) {
       return this.currentPage.replace(
@@ -235,7 +237,7 @@ export default {
       display: block;
     }
     @media screen and (min-width: 769px) {
-      left: 10px;
+      left: 27px;
       bottom: 10px;
     }
     .language-display {
@@ -279,10 +281,13 @@ export default {
       }
     }
   }
+  .ml > p {
+    margin-bottom: 0;
+  }
   .ml {
     position: absolute;
-    bottom: 30px;
-    margin-left: 15px;
+    bottom: 20px;
+    margin-left: 30px;
     .ml-mobile {
       cursor: pointer;
       .flag {
