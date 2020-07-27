@@ -32,15 +32,15 @@ import Title from "../layout/Title";
 export default {
   name: "Partners",
   components: {
-    Title
+    Title,
   },
   data() {
     return {
-      partners: undefined
+      partners: undefined,
     };
   },
   props: {
-    lang: String
+    lang: String,
   },
   mounted() {
     this.init();
@@ -48,14 +48,14 @@ export default {
   watch: {
     lang() {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
       let data = this.lang === "en" ? partnersEn : partners;
       this.partners = data;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -72,11 +72,8 @@ export default {
   .partner {
     box-shadow: 0px 0px 30px #1d226f1a;
     border-radius: 15px;
-    max-width: 25%;
+    max-width: 34%;
     padding: 50px 30px 70px;
-
-    margin-left: 25px;
-    margin-right: 25px;
     p {
       color: #9597ac;
       font-size: 18px;
@@ -105,6 +102,11 @@ export default {
         font-size: 14px;
       }
     }
+  }
+}
+@media only screen and(min-width:768px) {
+  .partner {
+    margin-right: 65px;
   }
 }
 </style>

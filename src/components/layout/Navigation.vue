@@ -116,7 +116,9 @@ export default {
     return {
       homeName: "",
       newsName: "",
-      language: "",
+      siteownerName: "",
+      specialistName: "",
+      projectName: "",
       lang: "",
       burgerMenuActive: false,
       burgerMenuMLActive: false,
@@ -136,7 +138,9 @@ export default {
       let data = this.lang === "en" ? navigationEn : navigation;
       this.homeName = data.homeName;
       this.newsName = data.newsName;
-      this.language = data.language;
+      this.specialistName = data.specialistName;
+      this.siteownerName = data.siteownerName;
+      this.projectName = data.projectName;
     },
     getURL(prevLanguage) {
       return this.currentPage.replace(
@@ -201,8 +205,11 @@ export default {
   }
   .row {
     text-align: center;
-    .news-logo {
-      margin-top: 40px;
+    .news-logo,
+    .owner-logo,
+    .specialist-logo,
+    .project-logo {
+      margin-top: 25px;
     }
     .router-link-exact-active button p {
       color: #55b364;
@@ -212,10 +219,13 @@ export default {
       margin-top: 10px;
       background-color: white;
       .news,
-      .home {
+      .home,
+      .owner,
+      .specialist,
+      .project {
         color: #9597ac;
         font-size: 14px;
-        margin-top: 5px;
+        margin-top: 10px;
         margin-bottom: 0;
         font-weight: bold;
       }
@@ -245,14 +255,15 @@ export default {
       height: 1px;
       border-bottom: 15px solid #afafaf;
       border-radius: 10px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
   }
 }
 .green-line {
   width: 5px;
   height: 1px;
-  border-bottom: 70px solid #55b364;
+  margin-top: 5px;
+  border-bottom: 80px solid #55b364;
   border-radius: 10px;
   position: fixed;
   left: 0px;
