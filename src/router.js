@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Table from './components/builder/Table'
 import MainPage from "./components/MainPage.vue"
 import ResizingBoxes from "./components/builder/ResizingBoxes.vue"
-import News from './components/news/News.vue'
+import NewsPage from './components/news/NewsPage.vue'
 import PrivacyPolicy from './components/PrivacyPolicy.vue'
 import SiteOwner from './components/SiteOwner.vue'
 import ProjectDeveloper from './components/ProjectDeveloper.vue'
@@ -42,6 +42,6 @@ export default new Router({
         },
         {
             path: "/:lang/news",
-            component: News
+            component: NewsPage
         }]
 })

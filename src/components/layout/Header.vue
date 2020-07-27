@@ -2,16 +2,30 @@
   <div class="header" :style="{'background-image': `url(${image})`}">
     <div class="header-overlay"></div>
     <div class="header-content">
-      <h1>{{title}}</h1>
-      <h3>{{description}}</h3>
+      <h1 class="col-sm-12 col-12">{{title}}</h1>
+      <h3 class="col-sm-12 col-12">{{description}}</h3>
       <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
         <button class="button-choice">
-          <p>{{button1}}</p>
+          <p>
+            <img src="/assets/site-owner-header-icon.svg" />
+            {{button1}}
+          </p>
+        </button>
+      </router-link>
+      <router-link :to="`/${$router.history.current.params.lang}`">
+        <button class="button-choice mobile">
+          <p>
+            <img src="/assets/specialist-header-icon.svg" />
+            {{button2}}
+          </p>
         </button>
       </router-link>
       <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
-        <button class="button-choice">
-          <p>{{button2}}</p>
+        <button class="button-choice mobile">
+          <p>
+            <img src="/assets/project-dev-header-icon.svg" />
+            {{button3}}
+          </p>
         </button>
       </router-link>
     </div>
@@ -28,11 +42,12 @@ export default {
       description: "",
       button1: "",
       button2: "",
-      image: ""
+      button3: "",
+      image: "",
     };
   },
   props: {
-    lang: String
+    lang: String,
   },
   mounted() {
     this.init();
@@ -40,7 +55,7 @@ export default {
   watch: {
     lang() {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
@@ -49,9 +64,10 @@ export default {
       this.description = data.description;
       this.button1 = data.button1;
       this.button2 = data.button2;
+      this.button3 = data.button3;
       this.image = data.image;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -80,6 +96,9 @@ export default {
     p {
       font-size: 14px;
       font-weight: 700;
+      img {
+        margin-right: 12px;
+      }
     }
   }
 }

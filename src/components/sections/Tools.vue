@@ -4,7 +4,7 @@
       <Title :title="tools.title" :sectionTitle="tools.subTitle" :isHomePage="true"></Title>
     </div>
     <div class="row iPad">
-      <div class="col-sm-12 col-xl-6 col-6 text">
+      <div class="col-sm-12 col-xl-6 col-12 text">
         <p>{{tools.description}}</p>
         <button>
           <p>
@@ -13,7 +13,7 @@
           </p>
         </button>
       </div>
-      <div class="col-sm-12 col-xl-6 col-6">
+      <div class="col-sm-12 col-xl-6 col-12">
         <img :src="tools.image" class="tools-image" />
       </div>
     </div>
@@ -36,6 +36,7 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/main.scss";
 .tools {
+  margin-bottom: 190px;
   .row {
     max-width: 80%;
     .tools-image {
@@ -45,7 +46,7 @@ export default {
     h1 {
       margin: 150px 0 10px 80px;
     }
-    .col-6 {
+    .text {
       p {
         text-align: center;
         font-size: 18px;
@@ -75,7 +76,7 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .iPad {
     flex-direction: column-reverse;
     .tools-image {

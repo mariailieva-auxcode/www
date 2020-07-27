@@ -43,4 +43,16 @@ div {
     color: #393a4d;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  div {
+    h1 {
+      font-size: 65px !important;
+    }
+    h2 {
+      left: 90px !important;
+      top: 40px;
+    }
+  }
+}
 </style>

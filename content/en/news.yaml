@@ -1,4 +1,7 @@
 # CMS structure
+headerImage: /assets/globe-image.png
+headerTitle: Everything you need to know in one place EN
+headerDescription: Here we should have text that explains what articles are included and how that helps users EN
 title: News
 subTitle: 'Section Title'
 homeTitles: 
@@ -23,6 +26,8 @@ news:
     categories: 
       -  innovation
       -  site owner
+    group:
+      -  site owner
       
 -   url: https://www.cbs.nl/en-gb/news/2020/10/sharp-rise-in-green-electricity-production
     description: 'Sharp rise in green electricity production.'
@@ -30,6 +35,8 @@ news:
     categories: 
       -  business
       -  site owner
+    group:
+      -  project developer
       
 -   url: https://www.cbs.nl/en-gb/corporate/2020/27/mapping-the-value-of-our-natural-landscape
     description: 'Mapping the value of our natural landscape.'
@@ -37,6 +44,8 @@ news:
     categories: 
       -  innovation
       -  project developer
+    group:
+      -  specialist
 
 -   url: https://www.cbs.nl/en-gb/news/2020/22/renewable-energy-consumption-up-by-16-percent
     description: 'Renewable energy consumption up by 16 percent.'
@@ -44,6 +53,7 @@ news:
     categories: 
       - growth
       - project developer
+    group:
 
 -   url: https://reneweconomy.com.au/huge-3-6gw-solar-plus-battery-hydrogen-project-proposed-for-queensland-93492/
     description: 'Huge 36gw solar plus battery hydrogen project proposed for queensland.'
@@ -51,6 +61,7 @@ news:
     categories: 
       -  innovation
       -  project developer
+    group:
       
 -   url: https://dutchreview.com/news/solar-island-that-rotates-with-the-sun-opened-in-rotterdam/
     description: 'Solar island that rotates with the sun opened in Rotterdam.'
@@ -58,3 +69,4 @@ news:
     categories: 
       -  innovation
       -  site owner
+    group:
