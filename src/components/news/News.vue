@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row">
           <Title class="title col-xl-6" v-if="!isPreview" :title="title" :sectionTitle="subTitle"></Title>
-          <div class="row col-xl-6 articles">
+          <div class="row col-xl-6 articles" v-if="!isPreview">
             <div class="row col-xl-12 header-paragraph">
               <p>Specified articles for:</p>
             </div>
