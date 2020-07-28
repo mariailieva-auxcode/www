@@ -4,6 +4,7 @@
       <Header :lang="lang"></Header>
       <News1 :lang="lang"></News1>
       <News :lang="lang" :isPreview="true"></News>
+      <Matchmaking :lang="lang"></Matchmaking>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
       <WhatIsGreen :lang="lang"></WhatIsGreen>
@@ -18,6 +19,7 @@
 import Header from "./layout/Header";
 import News1 from "./news/News1";
 import News from "./news/News.vue";
+import Matchmaking from './sections/Matchmaking.vue'
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 import WhatIsGreen from "./sections/WhatIsGreen";
@@ -35,6 +37,7 @@ export default {
     Header,
     News1,
     News,
+    Matchmaking,
     Database,
     Tools,
     WhatIsGreen,
