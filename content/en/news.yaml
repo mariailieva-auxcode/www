@@ -10,6 +10,15 @@ homeTitles:
 description: Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!
 button: To News
 news:
+-   url: https://www.bbc.com/future/article/20200713-the-most-powerful-renewable-energy
+    description: 'Can we harness the extraordinary power of rivers in a way that replenishes ecosystems, rather than harming wildlife?'
+    expiry: 2020-21-01
+    group: 
+      -  site owner
+      -  project developer
+    categories: 
+      -  innovation
+
 -   url: https://www.smartcitiesworld.net/news/news/netherlands-doubles-renewable-energy-subsidies-5143
     description: 'Netherlands doubles renewable energy subsidies.'
     expiry: 2020-08-01
