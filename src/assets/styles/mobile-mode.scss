@@ -126,6 +126,14 @@
                             }
                         }
                     }
+
+                    .owner-logo {
+                        display: none;
+                    }
+
+                    .owner-logo.mobile {
+                        display: flex;
+                    }
                 }
             }
         }

@@ -39,6 +39,23 @@
           </router-link>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12 owner-logo mobile">
+          <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
+            <div
+              v-if="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner'"
+              class="green-line"
+            ></div>
+            <button>
+              <img
+                src="/assets/siteowner-navigation-icon.svg"
+                :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
+              />
+              <p class="owner">{{siteownerName}}</p>
+            </button>
+          </router-link>
+        </div>
+      </div>
     </div>
     <div class="row nav-buttons">
       <div class="row">
@@ -77,7 +94,8 @@
           ></div>
           <button>
             <img
-              :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '../assets/siteowner-navigation-icon.svg' : '../assets/siteowner-navigation-icon.svg'"
+              src="/assets/siteowner-navigation-icon.svg"
+              :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
             />
             <p class="owner">{{siteownerName}}</p>
           </button>
@@ -86,11 +104,14 @@
     </div>
     <div class="row">
       <div class="col-12 specialist-logo">
-        <router-link :to="`/${$router.history.current.params.lang}`">
-          <div v-if="currentPage === '/nl/' || currentPage === '/en/'" class="green-line"></div>
+        <router-link :to="`/${$router.history.current.params.lang}/specialists`">
+          <div
+            v-if="currentPage === '/nl/specialists' || currentPage === '/en/specialists'"
+            class="green-line"
+          ></div>
           <button>
             <img
-              :src="currentPage === '/nl/' || currentPage === '/en/' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+              :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
             />
             <p class="specialist">{{specialistName}}</p>
           </button>
@@ -257,6 +278,19 @@ export default {
     .specialist-logo,
     .project-logo {
       margin-top: 25px;
+      button > .active {
+        fill: green;
+      }
+    }
+    .owner-logo,
+    .specialist-logo,
+    .project-logo {
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+    .owner-logo.mobile {
+      display: none;
     }
     .router-link-exact-active button p {
       color: #55b364;

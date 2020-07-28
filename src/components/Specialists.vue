@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="font">
-      <HeaderPD :lang="lang"></HeaderPD>
+      <HeaderSpecialists :lang="lang"></HeaderSpecialists>
       <News1 :lang="lang"></News1>
-      <News :isPreview="true" mode="project developer"></News>
+      <News :isPreview="true" mode="specialists"></News>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
     </div>
@@ -11,20 +11,20 @@
 </template>
 
 <script>
-import HeaderPD from "./layout/project-developer/HeaderPD";
+import HeaderSpecialists from "./layout/specialists/HeaderSpecialists";
 import News1 from "./news/News1";
 import News from "./news/News.vue";
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 
-import tools from "js-yaml-loader!../../content/nl/project-developer/tools.yaml";
-import database from "js-yaml-loader!../../content/nl/project-developer/database.yaml";
-import toolsEn from "js-yaml-loader!../../content/en/project-developer/tools.yaml";
-import databaseEn from "js-yaml-loader!../../content/en/project-developer/database.yaml";
+import tools from "js-yaml-loader!../../content/nl/specialists/tools.yaml";
+import database from "js-yaml-loader!../../content/nl/specialists/database.yaml";
+import toolsEn from "js-yaml-loader!../../content/en/specialists/tools.yaml";
+import databaseEn from "js-yaml-loader!../../content/en/specialists/database.yaml";
 
 export default {
   components: {
-    HeaderPD,
+    HeaderSpecialists,
     News1,
     News,
     Database,
@@ -34,8 +34,15 @@ export default {
     return {
       database: {},
       tools: {},
+      lang: "",
     };
   },
+  // mounted() {
+  //   this.database = database;
+  //   this.tools = tools;
+  //   this.databaseEn = databaseEn;
+  //   this.toolsEn = toolsEn;
+  // },
   watch: {
     $route() {
       this.init();
@@ -58,6 +65,6 @@ export default {
 @import "../assets/styles/main.scss";
 .font {
   font-family: $font__IBM;
-  font-weight: 500;
+  font-weight: 700;
 }
 </style>

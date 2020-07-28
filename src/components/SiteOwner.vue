@@ -28,13 +28,13 @@ export default {
     News1,
     News,
     Database,
-    Tools
+    Tools,
   },
   data() {
     return {
       database: {},
       tools: {},
-      lang: ""
+      lang: "",
     };
   },
   // mounted() {
@@ -46,7 +46,7 @@ export default {
   watch: {
     $route() {
       this.init();
-    }
+    },
   },
   created() {
     this.init();
@@ -56,8 +56,8 @@ export default {
       this.lang = this.$router.history.current.params.lang;
       this.database = this.lang === "en" ? databaseEn : database;
       this.tools = this.lang === "en" ? toolsEn : tools;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -12,7 +12,7 @@
           </p>
         </button>
       </router-link>
-      <router-link :to="`/${$router.history.current.params.lang}`">
+      <router-link :to="`/${$router.history.current.params.lang}/specialists`">
         <button class="button-choice mobile">
           <p>
             <img src="/assets/specialist-header-icon.svg" />

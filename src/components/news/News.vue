@@ -84,6 +84,7 @@ export default {
     return {
       data: [],
       categories: {},
+      group: "",
       filteredCategories: [],
       filterCriteria: [],
       firstThreeNews: [],
