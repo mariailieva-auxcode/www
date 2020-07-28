@@ -4,15 +4,15 @@
       <Title :title="matchmaking.title" :sectionTitle="matchmaking.subTitle" :isHomePage="true"></Title>
     </div>
     <div class="row col-xl-12 match-info-card">
-        <div class="col-xl-6">
-        <img :src="matchmaking.image" />
-      </div>
       <div class="col-xl-6">
         <p>{{matchmaking.description}}</p>
         <button>
           {{matchmaking.button}}
           <img src="/assets/arrow-right-blue.png" />
         </button>
+      </div>
+      <div class="col-xl-6">
+        <img :src="matchmaking.image" />
       </div>
     </div>
   </div>
@@ -88,7 +88,7 @@ export default {
     p {
       margin-top: 50px;
       margin-left: 0 !important;
-      font-size:15px ;
+      font-size: 15px;
     }
     button {
       margin-left: 0px !important;
