@@ -46,12 +46,51 @@
               v-if="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner'"
               class="green-line"
             ></div>
-            <button>
-              <img
-                src="/assets/siteowner-navigation-icon.svg"
-                :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
-              />
-              <p class="owner">{{siteownerName}}</p>
+
+            <button @click="burgerMenuActive=false">
+              <div class="row">
+                <img
+                  src="/assets/siteowner-navigation-icon.svg"
+                  :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
+                />
+                <p class="owner">{{siteownerName}}</p>
+              </div>
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 specialist-logo mobile">
+          <router-link :to="`/${$router.history.current.params.lang}/specialists`">
+            <div
+              v-if="currentPage === '/nl/specialists' || currentPage === '/en/specialists'"
+              class="green-line"
+            ></div>
+            <button @click="burgerMenuActive=false">
+              <div class="row">
+                <img
+                  :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+                />
+                <p class="specialist">{{specialistName}}</p>
+              </div>
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 project-logo mobile">
+          <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
+            <div
+              v-if="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer'"
+              class="green-line"
+            ></div>
+            <button @click="burgerMenuActive=false">
+              <div class="row">
+                <img
+                  :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-navigation-icon.svg' : '../assets/project-navigation-icon.svg'"
+                />
+                <p class="project">{{projectName}}</p>
+              </div>
             </button>
           </router-link>
         </div>
@@ -289,7 +328,9 @@ export default {
         display: none;
       }
     }
-    .owner-logo.mobile {
+    .owner-logo.mobile,
+    .project-logo.mobile,
+    .specialists.mobile {
       display: none;
     }
     .router-link-exact-active button p {
