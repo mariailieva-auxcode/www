@@ -72,6 +72,6 @@ export default {
 @import "../assets/styles/main.scss";
 .font {
   font-family: $font__IBM;
-  font-weight: 700;
+  font-weight: 500;
 }
 </style>

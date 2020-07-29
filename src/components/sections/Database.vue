@@ -91,7 +91,7 @@ export default {
 @media only screen and (max-width: 1200px) {
   p {
     margin-top: 50px;
-    margin-bottom: 35px !important;
+    margin-bottom: 50px !important;
   }
   .image{
     width:100%
