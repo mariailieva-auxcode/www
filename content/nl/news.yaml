@@ -1,7 +1,7 @@
 # CMS structure
 headerImage: /assets/globe-image.png
-headerTitle: Al uw nieuws en praktische informatie op gebied van duurzame energie op één plek 
-headerDescription: Here we should have text that explains what articles are included and how that helps users NL
+headerTitle: De laatste ontwikkelingen en praktische informatie op gebied van duurzame energie op één plek 
+headerDescription: Op onze nieuwspagina vind u een assortiment van doelgerichte prakische informatie, links en nieuws ter ondersteuning van uw kennisbehoeften  
 title: Nieuws
 subTitle: 'Nieuws'
 homeTitles:
@@ -12,7 +12,7 @@ button: Naar de nieuwspagina
 news:
 -   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
     description: 'Zakelijke voordelen met zonnepanelen.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
     group: 
       -  site owner
     categories: 
@@ -20,7 +20,7 @@ news:
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'Water, wind en zon gecombineerd in één energiesysteem!'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
     group: 
     -  site owner
     -  project developer
@@ -30,7 +30,7 @@ news:
       
 -   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
     description: 'Zonne- en windpark, waar en hoeveel?'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
     group: 
     -  site owner
     -  project developer
@@ -48,7 +48,7 @@ news:
 
 -   url: https://www.cbs.nl/nl-nl/nieuws/2020/25/vermogen-zonnepanelen-voor-het-eerst-groter-bij-bedrijven-dan-bij-woningen
     description: 'Vermogen zonnepanelen voor het eerst groter bij bedrijven dan bij woningen.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
     group: 
     -  site owner
     -  specialist
@@ -63,16 +63,24 @@ news:
     -  project developer
     -  specialist
     categories: 
-      -  innovatie
+      -  Innovatie
       
 -   url: https://solarmagazine.nl/nieuws-zonne-energie/i21833/pbl-nederland-moet-europa-volgen-met-groen-herstelbeleid-coronacrisis
     description: 'Groen herstelbeleid urgent.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
+    group: 
+    -  site owner
+    -  project developer
+    -  specialist
     categories: 
       -  Beleid
-      
--   url: https://www.solarcare.eu/nl/bedrijfsprofiel/32-gemiddelde-zon-pv-opbrengst-in-nederland-in-2019.html
-    description: 'Groen herstelbeleid urgent.'
-    expiry: 2020-08-01
+
+-   url: https://solarmagazine.nl/nieuws-zonne-energie/i21833/pbl-nederland-moet-europa-volgen-met-groen-herstelbeleid-coronacrisis
+    description: 'Zijn zonnepanelen boven aardappelen de toekomst?'
+    expiry: 2020-09-01
+    group: 
+    -  site owner
+    -  project developer
+    -  specialist
     categories: 
-      -  Beleid
+      -  Marktontwikkeling
