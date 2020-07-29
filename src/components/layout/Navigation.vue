@@ -174,33 +174,26 @@
       </div>
     </div>
     <div class="ml">
-      <p>{{language}}</p>
-      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
-        <img
-          class="flag"
-          :src="currentPage.includes('/en') ? '/assets/united-kingdom.svg' : '/assets/netherlands.svg'"
-        />
-        <img src="/assets/angle-down.svg" />
-      </div>
-      <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
-        <div class="row language-display">
-          <router-link :to="getURL('en')">
-            <button @click="burgerMenuMLActive= false">
-              <div class="row">
-                <img src="/assets/netherlands.svg" />
-                <p class="nl">NL</p>
+      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive"></div>
+      <div class="row language-display">
+        <router-link :to="getURL('en')">
+          <button @click="burgerMenuMLActive= true">
+            <div class="row">
+              <div id="underline">
+                <p>NL</p>
               </div>
-            </button>
-          </router-link>
-          <router-link :to="getURL('nl')">
-            <button @click="burgerMenuMLActive= false">
-              <div class="row">
-                <img src="/assets/united-kingdom.svg" />
+            </div>
+          </button>
+        </router-link>
+        <router-link :to="getURL('nl')">
+          <button @click="burgerMenuMLActive= false">
+            <div class="row">
+              <div id="underline">
                 <p class="en">EN</p>
               </div>
-            </button>
-          </router-link>
-        </div>
+            </div>
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -302,12 +295,6 @@ export default {
     }
     .language-display {
       width: 120px;
-      button {
-        .nl {
-          position: absolute;
-          margin-top: 12px;
-        }
-      }
     }
   }
   .row {
@@ -335,6 +322,11 @@ export default {
     }
     .router-link-exact-active button p {
       color: #55b364;
+    }
+    .router-link-exact-active #underline {
+      border-bottom: 3px solid #55b364;
+      padding-bottom: 3px;
+      border-radius: 2px;
     }
     button {
       border: none;
@@ -365,15 +357,13 @@ export default {
     margin-left: 30px;
     .ml-mobile {
       cursor: pointer;
-      .flag {
-        margin-right: 5px;
-      }
     }
     p {
       font-size: 12px;
       font-family: $font__Lato;
       font-weight: 700;
       color: #9597ac;
+      margin-bottom: 0px;
     }
     .line {
       width: 2px;
