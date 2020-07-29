@@ -67,15 +67,16 @@ export default {
 
 body {
   overflow-y: overlay;
+  overflow-x:hidden;
 }
 .content {
   width: calc(100vw - 100px);
   float: right;
 }
 
-@media only screen and (max-width: 1366px) {
+@media only screen and (min-width: 769px) {
   .content {
-    width: calc(100vw - 100px);
+    width: calc(100vw - 115px);
   }
 }
 
