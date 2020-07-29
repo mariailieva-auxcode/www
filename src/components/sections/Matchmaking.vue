@@ -1,15 +1,20 @@
 <template>
   <div class="container matchmaking">
     <div class="row title">
-      <Title :title="matchmaking.title" :sectionTitle="matchmaking.subTitle" :isHomePage="true"></Title>
+      <Title :title="match.title" :sectionTitle="match.subTitle" :isHomePage="true"></Title>
     </div>
-    <div class="row col-xl-12 match-info-card">
-      <div class="col-xl-6">
-        <p>{{matchmaking.description}}</p>
-        <button>
-          {{matchmaking.button}}
-          <img src="/assets/arrow-right-blue.png" />
-        </button>
+    <div class="row">
+      <div class="row col-xl-12 match-info-card">
+        <div class="col-xl-6">
+          <p>{{match.description}}</p>
+          <button>
+            {{match.button}}
+            <img src="/assets/arrow-right-blue.png" />
+          </button>
+        </div>
+        <div class="col-xl-6">
+          <img :src="match.image" class="img" />
+        </div>
       </div>
       <div class="col-xl-6">
         <img :src="matchmaking.image" />
@@ -19,35 +24,14 @@
 </template>
 
 <script>
-import matchmaking from "js-yaml-loader!../../../content/nl/general/matchmaking.yaml";
-import matchmakingEn from "js-yaml-loader!../../../content/en/general/matchmaking.yaml";
 import Title from "../layout/Title";
 export default {
-  name: "Matchmaking",
+  name: "Database",
   components: {
     Title,
   },
-  data() {
-    return {
-      matchmaking: {},
-    };
-  },
   props: {
-    lang: String,
-  },
-  created() {
-    this.init();
-  },
-  watch: {
-    lang() {
-      this.init();
-    },
-  },
-  methods: {
-    init() {
-      let data = this.lang === "en" ? matchmakingEn : matchmaking;
-      this.matchmaking = data;
-    },
+    match: { default: {} },
   },
 };
 </script>
@@ -96,17 +80,21 @@ export default {
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  p {
-    margin-top: 50px;
-    margin-bottom: 35px !important;
-  }
-  .image {
-    width: 100%;
-  }
-  button {
+@media only screen and (max-width: 1365px) {
+  .match-info-card {
+    display: flex;
+    flex-direction: column-reverse;
     p {
-      margin: auto !important;
+      margin-top: 50px;
+      margin-bottom: 35px !important;
+    }
+    .img {
+      width: 100% !important;
+    }
+    button {
+      p {
+        margin: auto !important;
+      }
     }
   }
 }

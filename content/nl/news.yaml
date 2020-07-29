@@ -1,9 +1,9 @@
 # CMS structure
 headerImage: /assets/globe-image.png
-headerTitle: Everything you need to know in one place NL
+headerTitle: Al uw nieuws en praktische informatie op gebied van duurzame energie op één plek 
 headerDescription: Here we should have text that explains what articles are included and how that helps users NL
 title: Nieuws
-subTitle: 'Section Title'
+subTitle: 'Nieuws'
 homeTitles:
   subTitle: '01'
   title: Nieuws
@@ -16,47 +16,63 @@ news:
     group: 
       -  site owner
     categories: 
-      -  subsidies
-      -  site owner
+      -  Subsidies
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'Water, wind en zon gecombineerd in één energiesysteem!'
     expiry: 2020-08-01
+    group: 
+    -  site owner
+    -  project developer
+    -  specialist
     categories: 
-      -  innovation
-      -  site owner
+      -  Innovatie
       
 -   url: https://www.boerenbusiness.nl/financieel/artikel/10886236/zonne-en-windpark-waar-en-hoeveel
     description: 'Zonne- en windpark, waar en hoeveel?'
     expiry: 2020-08-01
+    group: 
+    -  site owner
+    -  project developer
+    -  specialist
     categories: 
-      -  business
-      -  site owner
+      -  Marktontwikkeling
       
--   url: https://solarmagazine.nl/nieuws-zonne-energie/i21812/enphase-energy-en-q-cells-introduceren-nieuw-ac-zonnepaneel
-    description: 'Introductie nieuw AC zonnepaneel.'
-    expiry: 2020-08-01
-    categories: 
-      -  innovation
-      -  project developer
+-   url: https://www.zonnestroomnederland.nl/kennisbank/zonneveld-of-zonneweide-aanleggen-hoe-zit-het-met-de-vergunning/
+    description: 'zonneweide aanleggen: hoe zit het met de vergunning?'
+    expiry: 2020-09-01
+    group: 
+    -  site owner
+    categories:
+      -  Vergunningen
 
 -   url: https://www.cbs.nl/nl-nl/nieuws/2020/25/vermogen-zonnepanelen-voor-het-eerst-groter-bij-bedrijven-dan-bij-woningen
     description: 'Vermogen zonnepanelen voor het eerst groter bij bedrijven dan bij woningen.'
     expiry: 2020-08-01
+    group: 
+    -  site owner
+    -  specialist
     categories: 
-      - growth
-      - project developer
+      - Marktontwikkeling
 
 -   url: https://solarmagazine.nl/nieuws-zonne-energie/i21836/solarfields-levert-in-eemshaven-zonnedijk-van-5-kilometer-op
     description: 'Eerste grootschalige zonnedijk van Nederland.'
     expiry: 2020-08-01
+    group: 
+    -  site owner
+    -  project developer
+    -  specialist
     categories: 
-      -  innovation
-      -  project developer
+      -  innovatie
       
 -   url: https://solarmagazine.nl/nieuws-zonne-energie/i21833/pbl-nederland-moet-europa-volgen-met-groen-herstelbeleid-coronacrisis
     description: 'Groen herstelbeleid urgent.'
     expiry: 2020-08-01
     categories: 
-      -  business
-      -  site owner
+      -  Beleid
+      
+-   url: https://www.solarcare.eu/nl/bedrijfsprofiel/32-gemiddelde-zon-pv-opbrengst-in-nederland-in-2019.html
+    description: 'Groen herstelbeleid urgent.'
+    expiry: 2020-08-01
+    categories: 
+      -  Beleid

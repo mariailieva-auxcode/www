@@ -6,8 +6,8 @@
           <img id="box-image" class="card-img-top" :src="props.img" :alt="props.title" />
 
           <div>
-            <p class="sec-news">{{ data.description }}</p>
-            <h4 class="card-title">{{props.title}}</h4>
+            <p class="sec-news">{{ props.title }}</p>
+            <h4 class="card-title">{{data.description}}</h4>
           </div>
         </div>
       </a>
@@ -20,11 +20,11 @@ import LinkPrevue from "link-prevue";
 export default {
   name: "SecondaryNews",
   components: {
-    LinkPrevue
+    LinkPrevue,
   },
   props: {
-    data: Object
-  }
+    data: Object,
+  },
 };
 </script>
 

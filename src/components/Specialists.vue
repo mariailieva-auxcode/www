@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="font">
-      <HeaderSO :lang="lang"></HeaderSO>
+      <HeaderSpecialists :lang="lang"></HeaderSpecialists>
       <News1 :lang="lang"></News1>
-      <News :isPreview="true" mode="site owner"></News>
+      <News :isPreview="true" mode="specialists"></News>
       <Matchmaking :match="match"></Matchmaking>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
@@ -12,23 +12,23 @@
 </template>
 
 <script>
-import HeaderSO from "./layout/site-owner/HeaderSO";
+import HeaderSpecialists from "./layout/specialists/HeaderSpecialists";
 import News1 from "./news/News1";
 import News from "./news/News.vue";
 import Matchmaking from "./sections/Matchmaking.vue";
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 
-import matchmaking from "js-yaml-loader!../../content/nl/site-owner/matchmaking.yaml";
-import tools from "js-yaml-loader!../../content/nl/site-owner/tools.yaml";
-import database from "js-yaml-loader!../../content/nl/site-owner/database.yaml";
-import matchmakingEn from "js-yaml-loader!../../content/en/site-owner/matchmaking.yaml";
-import toolsEn from "js-yaml-loader!../../content/en/site-owner/tools.yaml";
-import databaseEn from "js-yaml-loader!../../content/en/site-owner/database.yaml";
+import matchmaking from "js-yaml-loader!../../content/nl/specialists/matchmaking.yaml";
+import tools from "js-yaml-loader!../../content/nl/specialists/tools.yaml";
+import database from "js-yaml-loader!../../content/nl/specialists/database.yaml";
+import matchmakingEn from "js-yaml-loader!../../content/en/specialists/matchmaking.yaml";
+import toolsEn from "js-yaml-loader!../../content/en/specialists/tools.yaml";
+import databaseEn from "js-yaml-loader!../../content/en/specialists/database.yaml";
 
 export default {
   components: {
-    HeaderSO,
+    HeaderSpecialists,
     News1,
     News,
     Matchmaking,

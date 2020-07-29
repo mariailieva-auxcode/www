@@ -43,13 +43,13 @@ export default {
   components: {
     Navigation,
     Footer,
-    CookieLaw
+    CookieLaw,
   },
   mounted() {
     if (!this.$router.history.current.params.lang) {
       this.$router.push("nl");
     }
-  }
+  },
 };
 </script>
 
@@ -65,6 +65,9 @@ export default {
   color: #2c3e50;
 }
 
+body {
+  overflow-y: overlay;
+}
 .content {
   width: calc(100vw - 100px);
   float: right;
@@ -72,12 +75,12 @@ export default {
 
 @media only screen and (max-width: 1366px) {
   .content {
-    width: calc(100vw - 110px);
+    width: calc(100vw - 100px);
   }
 }
 
 .Cookie--bottom {
-  left: 100px;
+  left: 100px !important;
   opacity: 0.9;
 }
 
