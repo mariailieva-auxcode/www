@@ -4,6 +4,7 @@
       <HeaderSpecialists :lang="lang"></HeaderSpecialists>
       <News1 :lang="lang"></News1>
       <News :isPreview="true" mode="specialists"></News>
+      <Matchmaking :match="match"></Matchmaking>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
     </div>
@@ -14,11 +15,14 @@
 import HeaderSpecialists from "./layout/specialists/HeaderSpecialists";
 import News1 from "./news/News1";
 import News from "./news/News.vue";
+import Matchmaking from "./sections/Matchmaking.vue";
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 
+import matchmaking from "js-yaml-loader!../../content/nl/specialists/matchmaking.yaml";
 import tools from "js-yaml-loader!../../content/nl/specialists/tools.yaml";
 import database from "js-yaml-loader!../../content/nl/specialists/database.yaml";
+import matchmakingEn from "js-yaml-loader!../../content/en/specialists/matchmaking.yaml";
 import toolsEn from "js-yaml-loader!../../content/en/specialists/tools.yaml";
 import databaseEn from "js-yaml-loader!../../content/en/specialists/database.yaml";
 
@@ -27,11 +31,13 @@ export default {
     HeaderSpecialists,
     News1,
     News,
+    Matchmaking,
     Database,
     Tools,
   },
   data() {
     return {
+      match: {},
       database: {},
       tools: {},
       lang: "",
@@ -56,6 +62,7 @@ export default {
       this.lang = this.$router.history.current.params.lang;
       this.database = this.lang === "en" ? databaseEn : database;
       this.tools = this.lang === "en" ? toolsEn : tools;
+      this.match = this.lang === "en" ? matchmakingEn : matchmaking;
     },
   },
 };

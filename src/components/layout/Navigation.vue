@@ -174,10 +174,9 @@
       </div>
     </div>
     <div class="ml">
-      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive"></div>
       <div class="row language-display">
         <router-link :to="getURL('en')">
-          <button @click="burgerMenuMLActive= true">
+          <button>
             <div class="row">
               <div id="underline">
                 <p>NL</p>
@@ -186,7 +185,7 @@
           </button>
         </router-link>
         <router-link :to="getURL('nl')">
-          <button @click="burgerMenuMLActive= false">
+          <button>
             <div class="row">
               <div id="underline">
                 <p class="en">EN</p>
@@ -194,6 +193,36 @@
             </div>
           </button>
         </router-link>
+      </div>
+    </div>
+
+    <div class="ml-responsive">
+      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
+        <img
+          class="flag"
+          :src="currentPage.includes('/en') ? '/assets/united-kingdom.svg' : '/assets/netherlands.svg'"
+        />
+        <img src="/assets/angle-down.svg" />
+      </div>
+      <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
+        <div class="row language-display mobile">
+          <router-link :to="getURL('en')">
+            <button @click="burgerMenuMLActive= false">
+              <div class="row">
+                <img src="/assets/netherlands.svg" />
+                <p class="nl">NL</p>
+              </div>
+            </button>
+          </router-link>
+          <router-link :to="getURL('nl')">
+            <button @click="burgerMenuMLActive= false">
+              <div class="row">
+                <img src="/assets/united-kingdom.svg" />
+                <p class="en">EN</p>
+              </div>
+            </button>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -259,6 +288,9 @@ export default {
   position: fixed;
   width: 100px;
   height: 100vh;
+  .ml-responsive {
+    display: none;
+  }
   .logo {
     margin: 20px auto 60px auto;
     .mobile {
@@ -352,6 +384,9 @@ export default {
     margin-bottom: 0;
   }
   .ml {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
     position: absolute;
     bottom: 20px;
     margin-left: 30px;
