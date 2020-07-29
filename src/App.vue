@@ -43,13 +43,13 @@ export default {
   components: {
     Navigation,
     Footer,
-    CookieLaw
+    CookieLaw,
   },
   mounted() {
     if (!this.$router.history.current.params.lang) {
       this.$router.push("nl");
     }
-  }
+  },
 };
 </script>
 
@@ -65,6 +65,9 @@ export default {
   color: #2c3e50;
 }
 
+body {
+  overflow-y: overlay;
+}
 .content {
   width: calc(100vw - 100px);
   float: right;

@@ -7,6 +7,7 @@ import NewsPage from './components/news/NewsPage.vue'
 import PrivacyPolicy from './components/PrivacyPolicy.vue'
 import SiteOwner from './components/SiteOwner.vue'
 import ProjectDeveloper from './components/ProjectDeveloper.vue'
+import Specialists from './components/Specialists'
 
 Vue.use(Router);
 
@@ -43,5 +44,9 @@ export default new Router({
         {
             path: "/:lang/news",
             component: NewsPage
+        },
+        {
+            path: "/:lang/specialists",
+            component: Specialists
         }]
 })

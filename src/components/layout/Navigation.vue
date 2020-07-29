@@ -39,6 +39,62 @@
           </router-link>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12 owner-logo mobile">
+          <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
+            <div
+              v-if="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner'"
+              class="green-line"
+            ></div>
+
+            <button @click="burgerMenuActive=false">
+              <div class="row">
+                <img
+                  src="/assets/siteowner-navigation-icon.svg"
+                  :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
+                />
+                <p class="owner">{{siteownerName}}</p>
+              </div>
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 specialist-logo mobile">
+          <router-link :to="`/${$router.history.current.params.lang}/specialists`">
+            <div
+              v-if="currentPage === '/nl/specialists' || currentPage === '/en/specialists'"
+              class="green-line"
+            ></div>
+            <button @click="burgerMenuActive=false">
+              <div class="row">
+                <img
+                  :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+                />
+                <p class="specialist">{{specialistName}}</p>
+              </div>
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 project-logo mobile">
+          <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
+            <div
+              v-if="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer'"
+              class="green-line"
+            ></div>
+            <button @click="burgerMenuActive=false">
+              <div class="row">
+                <img
+                  :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-navigation-icon.svg' : '../assets/project-navigation-icon.svg'"
+                />
+                <p class="project">{{projectName}}</p>
+              </div>
+            </button>
+          </router-link>
+        </div>
+      </div>
     </div>
     <div class="row nav-buttons">
       <div class="row">
@@ -77,7 +133,8 @@
           ></div>
           <button>
             <img
-              :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '../assets/siteowner-navigation-icon.svg' : '../assets/siteowner-navigation-icon.svg'"
+              src="/assets/siteowner-navigation-icon.svg"
+              :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
             />
             <p class="owner">{{siteownerName}}</p>
           </button>
@@ -86,11 +143,14 @@
     </div>
     <div class="row">
       <div class="col-12 specialist-logo">
-        <router-link :to="`/${$router.history.current.params.lang}`">
-          <div v-if="currentPage === '/nl/' || currentPage === '/en/'" class="green-line"></div>
+        <router-link :to="`/${$router.history.current.params.lang}/specialists`">
+          <div
+            v-if="currentPage === '/nl/specialists' || currentPage === '/en/specialists'"
+            class="green-line"
+          ></div>
           <button>
             <img
-              :src="currentPage === '/nl/' || currentPage === '/en/' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+              :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
             />
             <p class="specialist">{{specialistName}}</p>
           </button>
@@ -114,7 +174,29 @@
       </div>
     </div>
     <div class="ml">
-      <p>{{language}}</p>
+      <div class="row language-display">
+        <router-link :to="getURL('en')">
+          <button>
+            <div class="row">
+              <div id="underline">
+                <p>NL</p>
+              </div>
+            </div>
+          </button>
+        </router-link>
+        <router-link :to="getURL('nl')">
+          <button>
+            <div class="row">
+              <div id="underline">
+                <p class="en">EN</p>
+              </div>
+            </div>
+          </button>
+        </router-link>
+      </div>
+    </div>
+
+    <div class="ml-responsive">
       <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
         <img
           class="flag"
@@ -123,7 +205,7 @@
         <img src="/assets/angle-down.svg" />
       </div>
       <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
-        <div class="row language-display">
+        <div class="row language-display mobile">
           <router-link :to="getURL('en')">
             <button @click="burgerMenuMLActive= false">
               <div class="row">
@@ -206,6 +288,9 @@ export default {
   position: fixed;
   width: 100px;
   height: 100vh;
+  .ml-responsive {
+    display: none;
+  }
   .logo {
     margin: 20px auto 60px auto;
     .mobile {
@@ -242,12 +327,6 @@ export default {
     }
     .language-display {
       width: 120px;
-      button {
-        .nl {
-          position: absolute;
-          margin-top: 12px;
-        }
-      }
     }
   }
   .row {
@@ -257,9 +336,29 @@ export default {
     .specialist-logo,
     .project-logo {
       margin-top: 25px;
+      button > .active {
+        fill: green;
+      }
+    }
+    .owner-logo,
+    .specialist-logo,
+    .project-logo {
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+    .owner-logo.mobile,
+    .project-logo.mobile,
+    .specialists.mobile {
+      display: none;
     }
     .router-link-exact-active button p {
       color: #55b364;
+    }
+    .router-link-exact-active #underline {
+      border-bottom: 3px solid #55b364;
+      padding-bottom: 3px;
+      border-radius: 2px;
     }
     button {
       border: none;
@@ -285,20 +384,21 @@ export default {
     margin-bottom: 0;
   }
   .ml {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
     position: absolute;
     bottom: 20px;
     margin-left: 30px;
     .ml-mobile {
       cursor: pointer;
-      .flag {
-        margin-right: 5px;
-      }
     }
     p {
       font-size: 12px;
       font-family: $font__Lato;
       font-weight: 700;
       color: #9597ac;
+      margin-bottom: 0px;
     }
     .line {
       width: 2px;

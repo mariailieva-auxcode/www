@@ -4,6 +4,7 @@
       <Header :lang="lang"></Header>
       <News1 :lang="lang"></News1>
       <News :lang="lang" :isPreview="true"></News>
+      <Matchmaking :match="match"></Matchmaking>
       <Database :database="database"></Database>
       <Tools :tools="tools"></Tools>
       <WhatIsGreen :lang="lang"></WhatIsGreen>
@@ -18,6 +19,7 @@
 import Header from "./layout/Header";
 import News1 from "./news/News1";
 import News from "./news/News.vue";
+import Matchmaking from "./sections/Matchmaking.vue";
 import Database from "./sections/Database.vue";
 import Tools from "./sections/Tools.vue";
 import WhatIsGreen from "./sections/WhatIsGreen";
@@ -25,8 +27,10 @@ import OnsTeam from "./sections/OnsTeam.vue";
 import Partners from "./sections/Partners.vue";
 import OurSurvey from "./sections/OurSurvey.vue";
 
+import matchmaking from "js-yaml-loader!../../content/nl/general/matchmaking.yaml";
 import tools from "js-yaml-loader!../../content/nl/general/tools.yaml";
 import database from "js-yaml-loader!../../content/nl/general/database.yaml";
+import matchmakingEn from "js-yaml-loader!../../content/en/general/matchmaking.yaml";
 import toolsEn from "js-yaml-loader!../../content/en/general/tools.yaml";
 import databaseEn from "js-yaml-loader!../../content/en/general/database.yaml";
 
@@ -35,24 +39,26 @@ export default {
     Header,
     News1,
     News,
+    Matchmaking,
     Database,
     Tools,
     WhatIsGreen,
     OnsTeam,
     Partners,
-    OurSurvey
+    OurSurvey,
   },
   data() {
     return {
+      match: {},
       database: {},
       tools: {},
-      lang: ""
+      lang: "",
     };
   },
   watch: {
     $route() {
       this.init();
-    }
+    },
   },
   created() {
     this.init();
@@ -62,8 +68,9 @@ export default {
       this.lang = this.$router.history.current.params.lang;
       this.database = this.lang === "en" ? databaseEn : database;
       this.tools = this.lang === "en" ? toolsEn : tools;
-    }
-  }
+      this.match = this.lang === "en" ? matchmakingEn : matchmaking;
+    },
+  },
 };
 </script>
 

@@ -7,7 +7,7 @@
 
           <p
             class="news-tag"
-            :class="{'inverted': data.categories.includes('project developer')}"
+            :class="{'inverted': data.group.includes('project developer')}"
           >{{ tag | uppercase}}</p>
           <p :class="{'main-news': isMain, 'sec-news': !isMain}">{{ props.title }}</p>
           <h4 class="card-title">{{data.description}}</h4>
@@ -39,10 +39,12 @@ export default {
     isMain: Boolean,
   },
   created() {
-    if (this.data.categories.includes("project developer")) {
+    if (this.data.group.includes("project developer")) {
       this.tag = "PROJECT DEVELOPER";
-    } else if (this.data.categories.includes("site owner")) {
+    } else if (this.data.group.includes("site owner")) {
       this.tag = "SITE OWNER";
+    } else if (this.data.group.includes("specialists")) {
+      this.tag = "SPECIALISTS";
     }
   },
 };
