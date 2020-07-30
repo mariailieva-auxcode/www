@@ -83,7 +83,7 @@ export default {
     flex-direction: column-reverse;
     p {
       margin-top: 50px;
-      margin-bottom: 35px !important;
+      margin-bottom: 50px !important;
     }
     .img {
       width: 100% !important;
