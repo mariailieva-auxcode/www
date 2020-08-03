@@ -102,3 +102,13 @@ news:
     -  specialist
     categories: 
       -  Marktontwikkeling
+      
+ -   url: https://www.fluxenergie.nl/acm-energiedata-maken-innovatie-diensten-mogelijk/?gdpr=accept
+     description: ´ACM: energiedata maken innovatieve diensten mogelijk´
+     expiry: 2020-09-01 
+     group: 
+    -  site owner
+    -  project developer
+    -  specialist
+    categories: 
+      -  Marktontwikkeling
