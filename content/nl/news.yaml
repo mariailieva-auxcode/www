@@ -14,7 +14,7 @@ news:
     description: 'Zakelijke voordelen met zonnepanelen.'
     expiry: 2020-09-01
     group: 
-      -  site owner
+      -  perceeleigenaar
     categories: 
       -  Subsidies
 
@@ -22,8 +22,8 @@ news:
     description: 'Water, wind en zon gecombineerd in één energiesysteem!'
     expiry: 2020-09-01
     group: 
-    -  site owner
-    -  project developer
+    -  perceeleigenaar
+    -  projectontwikkelaar
     -  specialist
     categories: 
       -  Innovatie
@@ -42,7 +42,7 @@ news:
     description: 'zonneweide aanleggen: hoe zit het met de vergunning?'
     expiry: 2020-09-01
     group: 
-    -  site owner
+    -  perceeleigenaar
     categories:
       -  Vergunningen
 
@@ -50,7 +50,7 @@ news:
     description: 'Vermogen zonnepanelen voor het eerst groter bij bedrijven dan bij woningen.'
     expiry: 2020-09-01
     group: 
-    -  site owner
+    -  perceeleigenaar
     -  specialist
     categories: 
       - Marktontwikkeling
@@ -59,8 +59,8 @@ news:
     description: 'Eerste grootschalige zonnedijk van Nederland.'
     expiry: 2020-08-01
     group: 
-    -  site owner
-    -  project developer
+    -  perceeleigenaar
+    -  projectontwikkelaar
     -  specialist
     categories: 
       -  Innovatie
@@ -69,8 +69,8 @@ news:
     description: 'Groen herstelbeleid urgent.'
     expiry: 2020-09-01
     group: 
-    -  site owner
-    -  project developer
+    -  perceeleigenaar
+    -  projectontwikkelaar
     -  specialist
     categories: 
       -  Beleid
@@ -79,8 +79,8 @@ news:
     description: 'Zijn zonnepanelen boven aardappelen de toekomst?'
     expiry: 2020-09-01
     group: 
-    -  site owner
-    -  project developer
+    -  perceeleigenaar
+    -  projectontwikkelaar
     -  specialist
     categories: 
       -  Marktontwikkeling
@@ -89,8 +89,8 @@ news:
     description: 'Hoe lang blijven subsidies voor wind- en zonneparken nog nodig?'
     expiry: 2020-09-01
     group: 
-    -  site owner
-    -  project developer
+    -  perceeleigenaar
+    -  projectontwikkelaar
     -  specialist
     categories: 
       -  Marktontwikkeling
