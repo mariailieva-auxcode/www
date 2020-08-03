@@ -1,7 +1,7 @@
 # CMS structure
 headerImage: /assets/globe-image.png
-headerTitle: The latest renewable energy news and practical information in one place!
-headerDescription: Our news page contains a selection of user-specific practical information, links and news to help you stay up to date with the lastest developments
+headerTitle: The latest news and practical information in one place!
+headerDescription: Our news page contains a selection of user-specific practical information, links and news to help you stay up to date with the lastest developments in the renewable energy space
 subTitle: 'News'
 homeTitles: 
   subTitle: '01'
