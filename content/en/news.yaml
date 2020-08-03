@@ -1,18 +1,17 @@
 # CMS structure
 headerImage: /assets/globe-image.png
-headerTitle: Everything you need to know in one place EN
-headerDescription: Here we should have text that explains what articles are included and how that helps users EN
-title: News
-subTitle: 'Section Title'
+headerTitle: The latest news and practical information in one place!
+headerDescription: Our news page contains a selection of user-specific practical information, links and news to help you stay up to date with the lastest developments in the renewable energy space
+subTitle: 'News'
 homeTitles: 
   subTitle: '01'
   title: News
-description: Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!
+description: Greenatlas.earth offers an exclusive selection of renewable energy news and practical information 
 button: To News
 news:
 -   url: https://www.bbc.com/future/article/20200713-the-most-powerful-renewable-energy
     description: 'Can we harness the extraordinary power of rivers in a way that replenishes ecosystems, rather than harming wildlife?'
-    expiry: 2020-21-01
+    expiry: 2020-10-01
     group: 
       -  site owner
       -  project developer
@@ -21,61 +20,67 @@ news:
 
 -   url: https://www.smartcitiesworld.net/news/news/netherlands-doubles-renewable-energy-subsidies-5143
     description: 'Netherlands doubles renewable energy subsidies.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
     group: 
       -  site owner
       -  project developer
+      -  specialist
     categories: 
-      -  business
-      -  site owner
+      -  subsidies
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'German firm introducing game-changing solar-wind-wave energy platform.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
+    group:
+      -  site owner
+      -  specialist
     categories: 
       -  innovation
-      -  site owner
-    group:
-      -  site owner
-      
+
 -   url: https://www.cbs.nl/en-gb/news/2020/10/sharp-rise-in-green-electricity-production
     description: 'Sharp rise in green electricity production.'
-    expiry: 2020-08-01
-    categories: 
-      -  business
-      -  site owner
+    expiry: 2020-09-01
     group:
       -  project developer
+      -  specialist
+      -  site owner
+    categories: 
+      -  market developments
       
 -   url: https://www.cbs.nl/en-gb/corporate/2020/27/mapping-the-value-of-our-natural-landscape
     description: 'Mapping the value of our natural landscape.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
+    group:
+      -  project developer
+      -  specialist
     categories: 
       -  innovation
-      -  project developer
-    group:
-      -  specialist
 
 -   url: https://www.cbs.nl/en-gb/news/2020/22/renewable-energy-consumption-up-by-16-percent
     description: 'Renewable energy consumption up by 16 percent.'
-    expiry: 2020-08-01
-    categories: 
-      - growth
-      - project developer
+    expiry: 2020-09-01
     group:
+     -  site owner
+     -  specialist
+     -  project developer
+    categories: 
+      - market develompents
 
 -   url: https://reneweconomy.com.au/huge-3-6gw-solar-plus-battery-hydrogen-project-proposed-for-queensland-93492/
     description: 'Huge 36gw solar plus battery hydrogen project proposed for queensland.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
+    group:
+      -  project developer
     categories: 
       -  innovation
-      -  project developer
-    group:
-      
+
 -   url: https://dutchreview.com/news/solar-island-that-rotates-with-the-sun-opened-in-rotterdam/
     description: 'Solar island that rotates with the sun opened in Rotterdam.'
-    expiry: 2020-08-01
+    expiry: 2020-09-01
+    group:
+      -  site owner
+      -  project developer
+      -  specialist
     categories: 
       -  innovation
-      -  site owner
-    group:
+
