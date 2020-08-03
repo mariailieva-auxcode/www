@@ -75,8 +75,18 @@ news:
     categories: 
       -  Beleid
 
--   url: https://solarmagazine.nl/nieuws-zonne-energie/i21833/pbl-nederland-moet-europa-volgen-met-groen-herstelbeleid-coronacrisis
+-   url: https://www.boerenbusiness.nl/akkerbouw/artikel/10883891/zijn-zonnepanelen-boven-aardappelen-de-toekomst#:~:text=Zijn%20zonnepanelen%20boven%20aardappelen%20de%20toekomst%3F,-AddThis%20Sharing%20Buttons&text=Volgens%20de%20universiteit%20zijn%20zonnepanelen,in%20het%20West%2DVlaamse%20Beernem.
     description: 'Zijn zonnepanelen boven aardappelen de toekomst?'
+    expiry: 2020-09-01
+    group: 
+    -  site owner
+    -  project developer
+    -  specialist
+    categories: 
+      -  Marktontwikkeling
+
+-   url: https://www.rtvnoord.nl/nieuws/728294/Hoe-lang-blijven-subsidies-voor-wind-en-zonneparken-nog-nodig
+    description: 'Hoe lang blijven subsidies voor wind- en zonneparken nog nodig?'
     expiry: 2020-09-01
     group: 
     -  site owner
