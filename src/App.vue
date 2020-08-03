@@ -67,7 +67,7 @@ export default {
 
 body {
   overflow-y: overlay;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 .content {
   width: calc(100vw - 100px);
@@ -92,7 +92,7 @@ body {
 .cookie {
   width: 340px !important;
   height: 171px;
-  justify-content: center;
+  justify-content: center !important;
   left: 90px;
   img {
     margin-right: 20px;
