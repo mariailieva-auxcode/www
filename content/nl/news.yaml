@@ -16,7 +16,7 @@ news:
     group: 
       -  site owner
     categories: 
-      -  Exploitatie
+        -  Marktontwikkeling
 
 -   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
     description: 'Zakelijke voordelen met zonnepanelen.'
@@ -24,7 +24,7 @@ news:
     group: 
       -  site owner
     categories: 
-      -  Subsidies
+        -  Subsidies
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'Water, wind en zon gecombineerd in één energiesysteem!'
