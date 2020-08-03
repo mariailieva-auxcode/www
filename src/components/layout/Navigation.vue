@@ -331,11 +331,14 @@ export default {
   }
   .row {
     text-align: center;
+    .home-logo,
     .news-logo,
     .owner-logo,
     .specialist-logo,
     .project-logo {
       margin-top: 25px;
+      padding-right: 0;
+      overflow-wrap: anywhere;
       button > .active {
         fill: green;
       }
