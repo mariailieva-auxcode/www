@@ -1,13 +1,15 @@
 title: Our Story
 subTitle: 'Our Story'
-description: 'We strive for a more efficient market and faster energy transition by:'
+description: 'Our mission is to accelerate the energy transition by creating a more efficient and transparent market by:'
 bullets:
 - icon: /assets/digital-certificate.svg
-  text: Providing the market with transparent, reliable, independent information.
+  text: Providing the market with transparent, reliable, independent information
+- icon: /assets/digital-certificate.svg
+  text: Creating the best matches between site owners, project developers and specialists based on their specific profiles and objectives
 - icon: /assets/browser.svg
-  text: Digitizing and streamlining complex steps in the project development process.
+  text: Digitizing and streamlining complex steps in the project development process
 - icon: /assets/search-engine-optimization.svg
-  text: Providing tools with which site owners can gain insight into the potential and possibilities of their location in an easy and effective way.
+  text: Providing tools with which site owners can gain insight into the potential and possibilities of their location in an easy and effective way
 image: /assets/greenatlas.earth.png 
 
 

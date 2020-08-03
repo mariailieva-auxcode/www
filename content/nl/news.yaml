@@ -10,13 +10,21 @@ homeTitles:
 description: Greenatlas.earth biedt een exclusieve selectie aan nieuws en praktische informatie rondom het thema duurzame energie
 button: Naar de nieuwspagina
 news:
+-   url: https://www.gfactueel.nl/Vollegrond/Achtergrond/2019/12/Ieder-jaar-10000-per-hectare-voor-zon-en-wind-516604E/
+    description: 'Ieder jaar € 10.000 per hectare voor zon en wind'
+    expiry: 2020-09-01
+    group: 
+      -  site owner
+    categories: 
+        -  Marktontwikkeling
+
 -   url: https://www.wattisduurzaam.nl/22415/energie-beleid/duurzaam-ondernemen/tijd-voor-meer-zonnepanelen-op-nederlandse-bedrijfsdaken/ 
     description: 'Zakelijke voordelen met zonnepanelen.'
     expiry: 2020-09-01
     group: 
       -  site owner
     categories: 
-      -  Subsidies
+        -  Subsidies
 
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'Water, wind en zon gecombineerd in één energiesysteem!'
@@ -89,6 +97,16 @@ news:
     description: 'Hoe lang blijven subsidies voor wind- en zonneparken nog nodig?'
     expiry: 2020-09-01
     group: 
+    -  site owner
+    -  project developer
+    -  specialist
+    categories: 
+      -  Marktontwikkeling
+      
+ -   url: https://www.fluxenergie.nl/acm-energiedata-maken-innovatie-diensten-mogelijk/?gdpr=accept
+     description: ´ACM: energiedata maken innovatieve diensten mogelijk´
+     expiry: 2020-09-01 
+     group: 
     -  site owner
     -  project developer
     -  specialist
