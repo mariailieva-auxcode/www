@@ -1,13 +1,12 @@
 # CMS structure
 headerImage: /assets/globe-image.png
-headerTitle: All the latest news and practical information in one place!
-headerDescription: Here we should have text that explains what articles are included and how that helps users EN
-title: News
-subTitle: 'Section Title'
+headerTitle: The latest renewable energy news and practical information in one place!
+headerDescription: Our news page contains a selection of user-specific practical information, links and news to help you stay up to date with the lastest developments
+subTitle: 'News'
 homeTitles: 
   subTitle: '01'
   title: News
-description: Greenatlas.earth offers an exclusive selection of news related to the topic sustainable energy!
+description: Greenatlas.earth offers an exclusive selection of renewable energy news and practical information 
 button: To News
 news:
 -   url: https://www.bbc.com/future/article/20200713-the-most-powerful-renewable-energy
