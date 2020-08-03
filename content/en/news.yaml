@@ -32,56 +32,56 @@ news:
 -   url: https://techxplore-com.cdn.ampproject.org/c/s/techxplore.com/news/2020-05-german-firm-game-changing-solar-wind-wave-energy.amp
     description: 'German firm introducing game-changing solar-wind-wave energy platform.'
     expiry: 2020-09-01
-    categories: 
-      -  innovation
     group:
       -  site owner
       -  specialist
-      
+    categories: 
+      -  innovation
+
 -   url: https://www.cbs.nl/en-gb/news/2020/10/sharp-rise-in-green-electricity-production
     description: 'Sharp rise in green electricity production.'
     expiry: 2020-09-01
-    categories: 
-      -  market developments
     group:
       -  project developer
       -  specialist
       -  site owner
-    
+    categories: 
+      -  market developments
       
 -   url: https://www.cbs.nl/en-gb/corporate/2020/27/mapping-the-value-of-our-natural-landscape
     description: 'Mapping the value of our natural landscape.'
     expiry: 2020-09-01
-    categories: 
-      -  innovation
     group:
       -  project developer
       -  specialist
+    categories: 
+      -  innovation
 
 -   url: https://www.cbs.nl/en-gb/news/2020/22/renewable-energy-consumption-up-by-16-percent
     description: 'Renewable energy consumption up by 16 percent.'
     expiry: 2020-09-01
+    group:
+     -  site owner
+     -  specialist
+     -  project developer
     categories: 
       - market develompents
-    group:
-     - site owner
-     - specialist
-     - project developer
 
 -   url: https://reneweconomy.com.au/huge-3-6gw-solar-plus-battery-hydrogen-project-proposed-for-queensland-93492/
     description: 'Huge 36gw solar plus battery hydrogen project proposed for queensland.'
     expiry: 2020-09-01
-    categories: 
-      -  innovation
     group:
       -  project developer
-      
+    categories: 
+      -  innovation
+
 -   url: https://dutchreview.com/news/solar-island-that-rotates-with-the-sun-opened-in-rotterdam/
     description: 'Solar island that rotates with the sun opened in Rotterdam.'
     expiry: 2020-09-01
-    categories: 
-      -  innovation
     group:
       -  site owner
       -  project developer
       -  specialist
+    categories: 
+      -  innovation
+
