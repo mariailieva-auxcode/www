@@ -338,7 +338,7 @@ export default {
     .project-logo {
       margin-top: 25px;
       padding-right: 0;
-      overflow-wrap: anywhere;
+      word-break: break-word;
       button > .active {
         fill: green;
       }
