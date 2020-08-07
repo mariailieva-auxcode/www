@@ -1,6 +1,7 @@
 <template>
   <div class="header" :style="{'background-image': `url(${image})`}">
     <div class="header-overlay"></div>
+    <Login></Login>
     <div class="header-content">
       <h1 class="col-sm-12 col-12">{{title}}</h1>
       <h3 class="col-sm-12 col-12">{{description}}</h3>
@@ -33,9 +34,13 @@
 </template>
 
 <script>
+import Login from "../sections/Login";
 import header from "js-yaml-loader!../../../content/nl/general/header.yaml";
 import headerEn from "js-yaml-loader!../../../content/en/general/header.yaml";
 export default {
+  components: {
+    Login,
+  },
   data() {
     return {
       title: "",
