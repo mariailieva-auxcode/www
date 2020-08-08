@@ -4,7 +4,8 @@
   "description": "",
   "main": "out/interface.js",
   "scripts": {
-    "go" : "node out/interface.js",
+    "build": "tsc -p .",
+    "go" : "npm run build && node out/interface.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
