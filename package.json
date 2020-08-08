@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "functions": "netlify-lambda serve src-functions",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && netlify-lambda src-functions",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
