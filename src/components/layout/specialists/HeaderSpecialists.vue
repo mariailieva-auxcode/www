@@ -6,6 +6,9 @@
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
       <p>{{textSurvey}}</p>
+      <router-link :to="`/${$router.history.current.params.lang}/specialists/questionnaire`">
+        <button>To the survey</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -37,6 +40,7 @@ export default {
   },
   methods: {
     init() {
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? headerEn : header;
       this.title = data.title;
       this.description = data.description;

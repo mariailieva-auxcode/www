@@ -6,11 +6,11 @@
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
       <p class="header-survey">{{textSurvey}}</p>
-      <a :href="linkSurvey" target="_blank">
+      <router-link :to="`/${$router.history.current.params.lang}/site-owner/questionnaire`">
         <button class="button-choice">
           <p>{{button}}</p>
         </button>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
@@ -27,11 +27,11 @@ export default {
       linkSurvey: "",
       image: "",
       button: "",
-      tag: ""
+      tag: "",
     };
   },
   props: {
-    lang: String
+    lang: String,
   },
   mounted() {
     this.init();
@@ -39,7 +39,7 @@ export default {
   watch: {
     lang() {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
@@ -51,8 +51,8 @@ export default {
       this.image = data.image;
       this.button = data.button;
       this.tag = data.tag;
-    }
-  }
+    },
+  },
 };
 </script>
 
