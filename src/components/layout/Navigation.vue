@@ -331,6 +331,9 @@ export default {
   }
   .row {
     text-align: center;
+    div.home-logo {
+      margin-top: 0;
+    }
     .home-logo,
     .news-logo,
     .owner-logo,
@@ -373,10 +376,11 @@ export default {
       .specialist,
       .project {
         color: #9597ac;
-        font-size: 14px;
-        margin-top: 10px;
+        font-size: 12px;
+        margin-top: 5px;
         margin-bottom: 0;
-        font-weight: bold;
+        font-weight: 700;
+        font-family: $font__IBM;
       }
       &:focus {
         outline: none;
