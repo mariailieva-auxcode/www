@@ -1,8 +1,8 @@
-import { Archetype } from "./functions/archetypes";
+import { Archetype } from "./models/archetypes";
 import {
     Input,
     getConditionsFromInput
-} from "./functions/conditions";
+} from "./models/conditions";
 
 import * as sdeTariffsData from "./data/SDETariffsCategory.json";
 
