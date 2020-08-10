@@ -1,0 +1,16 @@
+{
+    "category1" : {
+        "MaximumBaseAmount" : 0.08,
+        "BaseEnergyPriceGridDelivery": 0.029,
+        "BaseEnergyPriceOwnUse": 0.06,
+        "ProvisionalCorrectionAmountGridDelivery": 0.047,
+        "ProvisionalCorrectionAmountOwnConsumption": 0.078
+    },
+    "category2" : {
+        "MaximumBaseAmount" : 0.074,
+        "BaseEnergyPriceGridDelivery": 0.029,
+        "BaseEnergyPriceOwnUse": 0.051,
+        "ProvisionalCorrectionAmountGridDelivery": 0.047,
+        "ProvisionalCorrectionAmountOwnConsumption": 0.069
+    }
+}
