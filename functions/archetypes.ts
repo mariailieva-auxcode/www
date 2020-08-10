@@ -4,7 +4,7 @@ export enum Archetype {
     GroundMountedProducer,
 }
 
-export function LandCostsIncluded(archetype : Archetype) : boolean {
+export function landCostsIncluded(archetype : Archetype) : boolean {
     switch (archetype) {
         case Archetype.RoofMountedProsumer: return false;
         case Archetype.RoofMountedProducer: return false;
@@ -12,7 +12,7 @@ export function LandCostsIncluded(archetype : Archetype) : boolean {
     }
 }
 
-export function OwnConsumption(archetype : Archetype) : boolean {
+export function ownConsumption(archetype : Archetype) : boolean {
     switch (archetype) {
         case Archetype.RoofMountedProsumer: return true;
         case Archetype.RoofMountedProducer: return false;
@@ -20,7 +20,7 @@ export function OwnConsumption(archetype : Archetype) : boolean {
     }
 }
 
-export function GridConnectionCosts(archetype : Archetype) : boolean {
+export function gridConnectionCosts(archetype : Archetype) : boolean {
     switch (archetype) {
         case Archetype.RoofMountedProsumer: return false;
         case Archetype.RoofMountedProducer: return false;
