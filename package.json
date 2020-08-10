@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc -p .",
     "go" : "npm run build && node out/interface.js",
+    "go1": "node out/interface.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
