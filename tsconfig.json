@@ -3,7 +3,8 @@
     "target": "es5",
     "module": "commonjs",
     "outDir": "out",
-    "sourceMap": true
+    "sourceMap": true,
+    "resolveJsonModule": true,
   },
-  "include": ["functions/*", "interface.ts"],
+  "include": ["functions/*", "intro.ts"],
 }
