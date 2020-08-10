@@ -5,8 +5,10 @@
   "main": "out/interface.js",
   "scripts": {
     "build": "tsc -p .",
-    "go" : "npm run build && node out/interface.js",
-    "go1": "node out/interface.js",
+    "intro" : "npm run build && node out/intro.js",
+    "intro1": "node out/intro.js",
+    "calculations" : "npm run build && node out/calculations.js",
+    "calculations1" : "node out/calculations.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
