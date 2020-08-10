@@ -29,7 +29,18 @@ let investmentCostsTable = generateInvestmentCostTable(
     investmentCosts.ReferenceYear
 );
 
+// Other Metrics | no need for a model here
+const energyPotential = INPUT.Yield * INPUT.Capacity;
+const CO2Saved = 173.6 * energyPotential / 1000;
+const electricityPrice = 0.2;
+const costsSaved // Method 2 (euro)
+    = electricityPrice
+    * energyPotential
+    * INPUT.DirectOwnConsumption;
 
+console.log(energyPotential);
+console.log(CO2Saved);
+console.log(costsSaved);
 
 
 
