@@ -30,6 +30,7 @@ export interface PVConditions {
 }
 
 interface SDETariffsCategoryData {
+    description: string,
     MaximumBaseAmount : number,
     BaseEnergyPriceGridDelivery: number,
     BaseEnergyPriceOwnUse: number,
