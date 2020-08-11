@@ -6,80 +6,140 @@
         <img src="/assets/hello-hand.svg" />
       </div>
       <div class="user-wizard">
-        <div class="row questions-header">
+        <div class="row questions-header" v-if="step !==6">
           <p>COMPLETE YOUR PROFILE</p>
         </div>
         <div class="user-questions">
           <div class="step" v-if="step === 1">
-            <div class="row">
-              <label>Comapny Name:</label>
-            </div>
-            <div class="row">
-              <input id="companyName" type="text" placeholder="Company..." v-model="companyName" />
+            <div class="first-step">
+              <div class="row">
+                <label>{{welcomeLabel}}</label>
+              </div>
+              <button @click="step++" v-if="step === 1">
+                <p>Start</p>
+              </button>
             </div>
           </div>
           <div class="step" v-if="step === 2">
-            <label>Energy type:</label>
-            <div class="row" id="powerType">
-              <input type="checkbox" id="wind" value="Wind" v-model="powerType" />
-              <p class="choice">Wind</p>
-              <input type="checkbox" id="sun" value="Sun" v-model="powerType" />
-              <p class="choice">Sun</p>
-              <input type="checkbox" id="water" value="Water" v-model="powerType" />
-              <p class="choice">Water</p>
+            <div class="row">
+              <label>{{firstQuestion}}</label>
+            </div>
+            <div class="row solar-and-wind">
+              <button class="solar" :class="{'active': solar}" @click="solar =!solar">
+                <img src="/assets/solar.svg" />Solar
+              </button>
+              <button class="wind" :class="{'active': wind}" @click="wind =!wind">
+                <img src="/assets/wind.svg" />Wind
+              </button>
             </div>
           </div>
           <div class="step" v-if="step === 3">
+            <label>{{secondQuestion}}</label>
             <div class="row">
-              <label for="phoneNumber">Phone Number:</label>
-            </div>
-            <div class="row">
-              <input id="phoneNumber" placeholder="Number..." type="number" v-model="phoneNumber" />
+              <button class="solar" :class="{'active': roof}" @click="roof =!roof">
+                <img src="/assets/roof.svg" />Roof
+              </button>
+              <button class="wind" :class="{'active': land}" @click="land =!land">
+                <img src="/assets/land.svg" />Land
+              </button>
+              <button class="wind" :class="{'active': water}" @click="water =!water">
+                <img src="/assets/water.svg" />Water
+              </button>
             </div>
           </div>
           <div class="step" v-if="step === 4">
             <div class="row">
-              <label>How much does the service cost?</label>
+              <label for="phoneNumber">{{thirdQuestion}}</label>
             </div>
+            <div class="row number">
+              <input id="phoneNumber" placeholder="0" type="number" v-model="phoneNumber" />
+            </div>
+          </div>
+          <div class="step map" v-if="step === 5">
             <div class="row">
-              <input id="serviceValue" type="number" v-model="phoneNumber" />
+              <div class="col-6 map-codes">
+                <label>{{fourthQuestion}}</label>
+                <div class="row row-codes">
+                  <input id="postal" placeholder="Postal Code" type="number" />
+                  <input id="street" placeholder="Street Number" type="number" />
+                </div>
+              </div>
+              <div class="col-6">
+                <img src="/assets/map.png" />
+              </div>
+            </div>
+          </div>
+          <div class="step" v-if="step === 6">
+            <div class="comlete">
+              <div class="row">
+                <img src="/assets/correct.svg" />
+              </div>
+              <div class="row">
+                <label for="phoneNumber">{{completeLabel}}</label>
+              </div>
             </div>
           </div>
         </div>
+        <!-- buttons -->
         <div class="buttons">
+          <div class="row" v-if="step === 2">
+            <p>1 of 4</p>
+          </div>
+          <div class="row" v-if="step === 3">
+            <p>2 of 4</p>
+          </div>
+          <div class="row" v-if="step === 4">
+            <p>3 of 4</p>
+          </div>
+          <div class="row" v-if="step === 5">
+            <p>4 of 4</p>
+          </div>
           <div class="row">
-            <button class="back-button" @click="step--" v-if="step !== 1">
+            <a
+              class="back-button"
+              :class="step == 2 ? 'invisible' : ''"
+              @click="step--"
+              v-if="step !== 1 && step !==6"
+            >
+              <img src="/assets/arrow-left-white.svg" />
               <p>Back</p>
-            </button>
-            <button class="next-button" @click="step++" v-if="step !== 4">
+            </a>
+            <a class="back-button" @click="step--" v-if="step === 6">
+              <img src="/assets/arrow-left-white.svg" />
+              <p>Edit</p>
+            </a>
+            <div class="percent-line" v-if="step === 2">
+              <div class="green1-line"></div>
+              <div class="other-line"></div>
+            </div>
+            <div class="percent-line" v-if="step === 3">
+              <div class="green-line2"></div>
+              <div class="other-line2"></div>
+            </div>
+            <div class="percent-line" v-if="step === 4">
+              <div class="green-line3"></div>
+              <div class="other-line3"></div>
+            </div>
+            <div class="percent-line" v-if="step === 5">
+              <div class="green-line4"></div>
+              <div class="other-line4"></div>
+            </div>
+            <a class="next-button" @click="step++" v-if="step !== 5 && step !== 1 && step !== 6">
               <p>Continue</p>
-            </button>
-            <button class="next-button" v-else>
-              <p>Submit</p>
-            </button>
+              <img src="/assets/arrow-right-green.svg" />
+            </a>
+            <a class="next-button" v-if="step === 6">
+              <p>Review</p>
+              <img src="/assets/arrow-right-green.svg" />
+            </a>
+            <a class="next-button" @click="step++" v-else-if="step === 5">
+              <p>Finish</p>
+              <img src="/assets/arrow-right-green.svg" />
+            </a>
           </div>
         </div>
       </div>
-      <!-- <div>
-      <label for="companyName">Company Name:</label>
-      <input id="companyName" type="text" v-model="companyName" />
-      </div>-->
-      <!-- <div class="questionnaire">
-      <p>What kind of energy do you suggest ?</p>
-      <input type="checkbox" id="wind" value="Wind" v-model="energy" />
-      <label class="wind">Wind</label>
-      <input type="checkbox" id="sun" value="Sun" v-model="energy" />
-      <label class="sun">Sun</label>
-      <input type="checkbox" id="water" value="Water" v-model="energy" />
-      <label class="water">Water</label>
-      </div>-->
-      <!-- <div>
-      <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" type="number" v-model="phoneNumber" />
-    </div>
-    <div class="row button">
-      <button @click="siteOwner()">Submit</button>
-      </div>-->
+      <!-- table -->
       <div class="table-wizard">
         <div class="row search-bar">
           <div class="col-6 table-header-input">
@@ -123,22 +183,52 @@
 </template>
 
 <script>
+import questionnaire from "js-yaml-loader!../../../../content/nl/site-owner/questionnaire.yaml";
+import questionnaireEn from "js-yaml-loader!../../../../content/en/site-owner/questionnaire.yaml";
 import axios from "../../../axios";
 export default {
   data() {
     return {
+      lang: "",
+      welcomeLabel: "",
+      firstQuestion: "",
+      secondQuestion: "",
+      thirdQuestion: "",
+      fourthQuestion: "",
+      completeLabel: "",
       companyName: "",
       powerType: [],
       phoneNumber: "",
       position: "Site owner",
       projectDev: [],
       step: 1,
+      solar: false,
+      wind: false,
+      roof: false,
+      land: false,
+      water: false,
     };
   },
   created() {
     this.getProjectDev();
+    this.init();
+  },
+  watch: {
+    $route() {
+      this.init();
+    },
   },
   methods: {
+    init() {
+      this.lang = this.$router.history.current.params.lang;
+      let data = this.lang === "en" ? questionnaireEn : questionnaire;
+      this.welcomeLabel = data["welcome-label"];
+      this.firstQuestion = data["first-question"];
+      this.secondQuestion = data["second-question"];
+      this.thirdQuestion = data["third-question"];
+      this.fourthQuestion = data["fourth-question"];
+      this.completeLabel = data["complete-label"];
+    },
     siteOwner() {
       axios
         .post("siteOwner", {
@@ -198,6 +288,51 @@ export default {
       display: flex;
       justify-content: center;
       flex-direction: column;
+      &.map {
+        display: flex;
+        align-items: center;
+        .row {
+          .map-codes {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .row-codes {
+              margin: 0 auto;
+              #street {
+                width: 140px;
+              }
+              #postal {
+                width: 140px;
+                margin-right: 25px;
+              }
+            }
+          }
+        }
+      }
+      .first-step {
+        width: 60%;
+        margin: 0 auto;
+        button {
+          border-radius: 10px;
+          width: 150px;
+          height: 45px;
+          background-color: #55b364;
+          outline: none;
+          border: none;
+          p {
+            font-family: $font__IBM;
+            font-weight: 700;
+            font-size: 14;
+            color: white;
+            margin: auto;
+          }
+        }
+      }
+      .number {
+        input {
+          text-align: center;
+        }
+      }
       label {
         font-family: $font__IBM;
         font-weight: 700;
@@ -222,6 +357,26 @@ export default {
         margin-right: 20px;
         margin-left: 5px;
       }
+      .comlete {
+        display: flex;
+        flex-direction: column;
+        margin-top: 100px;
+        img {
+          margin-bottom: 30px;
+        }
+      }
+    }
+    .buttons > .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        color: #d3d5e3;
+        font-family: $font__IBM;
+        font-weight: 700;
+        font-size: 14px;
+        margin: 0;
+      }
     }
     .buttons {
       margin-top: auto;
@@ -231,29 +386,71 @@ export default {
         margin-left: auto;
         margin-right: 45px;
         height: 35px;
-        width: 150px;
-        border-radius: 10px;
-        background-color: #55b364;
-        border: none;
         outline: none;
+        cursor: pointer;
+        img {
+          margin-left: 12px;
+        }
         p {
-          color: #f7f7fa;
+          color: #55b364;
           font-family: $font__IBM;
           font-weight: 700;
           font-size: 14px;
           margin: auto;
         }
       }
+      .percent-line {
+        display: flex;
+        .green1-line {
+          border-right: 90px solid #55b364;
+          height: 10px;
+          border-radius: 10px 0 0 10px;
+        }
+        .other-line {
+          border-right: 270px solid #e6e7f4;
+          height: 10px;
+          border-radius: 0 10px 10px 0;
+        }
+        .green-line2 {
+          border-right: 180px solid #55b364;
+          height: 10px;
+          border-radius: 10px 0 0 10px;
+        }
+        .other-line2 {
+          border-right: 180px solid #e6e7f4;
+          height: 10px;
+          border-radius: 0 10px 10px 0;
+        }
+        .green-line3 {
+          border-right: 270px solid #55b364;
+          height: 10px;
+          border-radius: 10px 0 0 10px;
+        }
+        .other-line3 {
+          border-right: 90px solid #e6e7f4;
+          height: 10px;
+          border-radius: 0 10px 10px 0;
+        }
+        .green-line4 {
+          border-right: 360px solid #55b364;
+          height: 10px;
+          border-radius: 10px;
+        }
+        // .other-line4 {
+        //   border-right: 180px solid #e6e7f4;
+        //   height: 10px;
+        //   border-radius: 0 10px 10px 0;
+        // }
+      }
       .back-button {
         display: flex;
         margin-right: auto;
         margin-left: 55px;
-        height: 35px;
-        width: 150px;
-        border: 2px solid #d3d5e3;
-        background-color: white;
-        border-radius: 10px;
         outline: none;
+        cursor: pointer;
+        img {
+          margin-right: 12px;
+        }
         p {
           color: #9597ac;
           font-family: $font__IBM;
@@ -314,6 +511,24 @@ export default {
   }
   td {
     border: none;
+  }
+}
+.solar,
+.wind {
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid #d3d5e3;
+  background-color: white;
+  outline: none;
+  margin-right: 25px;
+  color: #9597ac;
+  img {
+    margin-right: 8px;
+  }
+  &.active {
+    border: 2px solid #55b364;
+    color: #65687e;
   }
 }
 </style>
