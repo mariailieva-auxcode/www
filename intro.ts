@@ -20,13 +20,7 @@ const INPUT: Input = {
 
 let conditions = getConditionsFromInput(INPUT, sdeTariffsData);
 
-let investmentCostsTable = generateInvestmentCostTable(
-    214,
-    30,
-    investmentCosts,
-    2015,
-    2030,
-);
+let investmentCostsTable = generateInvestmentCostTable(214, 30, investmentCosts, 2015, 2030);
 
 // Other Metrics | no need for a model here
 const energyPotential = INPUT.Yield * INPUT.Capacity;
