@@ -52,19 +52,19 @@
               <label for="phoneNumber">{{thirdQuestion}}</label>
             </div>
             <div class="row number">
-              <input id="phoneNumber" placeholder="0" type="number" v-model="phoneNumber" />
+              <input id="phoneNumber" placeholder="0" type="text" v-model="phoneNumber" />
             </div>
           </div>
           <div class="step map" v-if="step === 5">
             <div class="row">
-              <div class="col-6 map-codes">
+              <div class="map-codes">
                 <label>{{fourthQuestion}}</label>
                 <div class="row row-codes">
-                  <input id="postal" placeholder="Postal Code" type="number" />
-                  <input id="street" placeholder="Street Number" type="number" />
+                  <input id="postal" placeholder="Postal Code" type="text" />
+                  <input id="street" placeholder="Street Number" type="text" />
                 </div>
               </div>
-              <div class="col-6">
+              <div>
                 <img src="/assets/map.png" />
               </div>
             </div>
@@ -291,18 +291,26 @@ export default {
       &.map {
         display: flex;
         align-items: center;
+        margin-bottom: 20px;
         .row {
           .map-codes {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-right: 70px;
             .row-codes {
               margin: 0 auto;
-              #street {
+              input {
+                border-radius: 5px;
+                border: 1px solid #d3d5e3;
+                padding-left: 20px;
+                font-size: 14px;
+                font-family: $font__IBM;
+                font-weight: 400;
+                height: 45px;
                 width: 140px;
               }
               #postal {
-                width: 140px;
                 margin-right: 25px;
               }
             }
