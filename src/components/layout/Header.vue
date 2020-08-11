@@ -1,35 +1,37 @@
 <template>
-  <div class="header" :style="{'background-image': `url(${image})`}">
-    <div class="header-overlay"></div>
-    <div class="header-content">
-      <h1 class="col-sm-12 col-12">{{title}}</h1>
-      <h3 class="col-sm-12 col-12">{{description}}</h3>
-      <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
-        <button class="button-choice">
-          <p>
-            <img src="/assets/site-owner-header-icon.svg" />
-            {{button1}}
-          </p>
-        </button>
-      </router-link>
-      <router-link :to="`/${$router.history.current.params.lang}/specialists`">
-        <button class="button-choice mobile">
-          <p>
-            <img src="/assets/specialist-header-icon.svg" />
-            {{button2}}
-          </p>
-        </button>
-      </router-link>
-      <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
-        <button class="button-choice mobile">
-          <p>
-            <img src="/assets/project-dev-header-icon.svg" />
-            {{button3}}
-          </p>
-        </button>
-      </router-link>
+  <lazy-background :src="image" placeholder="https://placeholder.pics/svg/1300x800" :blur="30">
+    <div slot="content" class="header">
+      <div class="header-overlay"></div>
+      <div class="header-content">
+        <h1 class="col-sm-12 col-12">{{title}}</h1>
+        <h3 class="col-sm-12 col-12">{{description}}</h3>
+        <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
+          <button class="button-choice">
+            <p>
+              <img src="/assets/site-owner-header-icon.svg" />
+              {{button1}}
+            </p>
+          </button>
+        </router-link>
+        <router-link :to="`/${$router.history.current.params.lang}/specialists`">
+          <button class="button-choice mobile">
+            <p>
+              <img src="/assets/specialist-header-icon.svg" />
+              {{button2}}
+            </p>
+          </button>
+        </router-link>
+        <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
+          <button class="button-choice mobile">
+            <p>
+              <img src="/assets/project-dev-header-icon.svg" />
+              {{button3}}
+            </p>
+          </button>
+        </router-link>
+      </div>
     </div>
-  </div>
+  </lazy-background>
 </template>
 
 <script>
