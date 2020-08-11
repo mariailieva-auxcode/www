@@ -1,7 +1,7 @@
 import { Archetype } from "./models/archetypes";
 import { Input, getConditionsFromInput } from "./models/conditions";
 import { generateInvestmentCostTable } from "./functions/investmentCosts";
-import { generateExpenditures, generateSDESubsidies, generatePaybackCashFlow } from "./functions/calculations";
+import { generateExpenditures, generateSDESubsidies, generatePaybackCashFlow, calculateInvestmentCost } from "./functions/calculations";
 
 import * as sdeTariffsData from "./data/SDETariffsCategory.json";
 import * as investmentCosts from "./data/InvestmentCosts.json";
@@ -9,7 +9,7 @@ import * as gridConnectionCosts from "./data/GridConnectionCosts.json";
 import * as gridConnectionInformation from "./data/GridConnectionInformation.json";
 import * as dayAheadPrices from "./data/DayAhedPrice.json";
 
-const INPUT: Input = {
+const input: Input = {
     InvestmentYear: 2020,
     YearOfProduction: 2021,
     Capacity: 1000,
@@ -22,7 +22,7 @@ const INPUT: Input = {
     archetype: Archetype.GroundMountedProducer,
 };
 
-let conditions = getConditionsFromInput(INPUT, sdeTariffsData);
+let conditions = getConditionsFromInput(input, sdeTariffsData);
 
 let investmentCostsTable = generateInvestmentCostTable(214, 30, investmentCosts, 2015, 2030);
 
@@ -41,9 +41,9 @@ const feeInfo
 const investmentInfo
     = investmentCostsTable
         .find(v =>
-            v.installationSize === INPUT.Capacity
-            && v.beginYear <= INPUT.InvestmentYear
-            && v.endYear >= INPUT.InvestmentYear
+            v.installationSize === input.Capacity
+            && v.beginYear <= input.InvestmentYear
+            && v.endYear >= input.InvestmentYear
         );
 
 // where does this come from ?
@@ -59,24 +59,19 @@ const oneOffConnectionInfo
 if (feeInfo && investmentInfo && oneOffConnectionInfo) {
     const periodicConnectionFee = feeInfo.PeriodicConnectionFee;
     const installationCostsPerKWp
-        = investmentInfo.yearlyCashFlow[INPUT.InvestmentYear - investmentInfo.beginYear];
+        = investmentInfo.yearlyCashFlow[input.InvestmentYear - investmentInfo.beginYear];
     const oneOffConnection
         = conditions.GridConnectionCosts
             ? oneOffConnectionInfo.ConnectionRate + oneOffConnectionInfo.CablingTariff * gridConnectionInformation.DistanceToGrid
             : 0;
 
-    const investmentCost
-        = INPUT.RentingTheLand
-            ? installationCostsPerKWp * INPUT.Capacity + oneOffConnection
-            : conditions.LandCostsIncluded
-                ? (installationCostsPerKWp * INPUT.Capacity + INPUT.LandCosts * INPUT.LandArea / 1000 + oneOffConnection)
-                : installationCostsPerKWp * INPUT.Capacity + oneOffConnection;
+    const investmentCost = calculateInvestmentCost(input, conditions, installationCostsPerKWp, oneOffConnection);
 
 
-    const sdeSubsidies = generateSDESubsidies(31, dayAheadPrices, 1.027, INPUT, conditions);
-    const expenditures = generateExpenditures(31, periodicConnectionFee, INPUT);
+    const sdeSubsidies = generateSDESubsidies(31, dayAheadPrices, 1.027, input, conditions);
+    const expenditures = generateExpenditures(31, periodicConnectionFee, input);
 
-    const paybackCashFlow = generatePaybackCashFlow(investmentCost, INPUT, sdeSubsidies, expenditures);
+    const paybackCashFlow = generatePaybackCashFlow(investmentCost, input, sdeSubsidies, expenditures);
 
     console.log(paybackCashFlow);
 
@@ -99,13 +94,13 @@ if (feeInfo && investmentInfo && oneOffConnectionInfo) {
 
 
 // Other Metrics | no need for a model here
-const energyPotential = INPUT.Yield * INPUT.Capacity;
+const energyPotential = input.Yield * input.Capacity;
 const CO2Saved = 173.6 * energyPotential / 1000;
 const electricityPrice = 0.2;
 const costsSaved // Method 2 (euro)
     = electricityPrice
     * energyPotential
-    * INPUT.DirectOwnConsumption;
+    * input.DirectOwnConsumption;
 
 console.log(energyPotential);
 console.log(CO2Saved);

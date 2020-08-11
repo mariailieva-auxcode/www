@@ -59,10 +59,10 @@ export interface InvestmentCostTableRow {
 }
 
 interface InvestmentCostInput {
-    "ReferenceYear" :number,
-    "AnnualExpectedCostReduction" :number,
-    "AnnualPastCostReduction" :number,
-    "GridConnection" :number,
+    ReferenceYear: number,
+    AnnualExpectedCostReduction: number,
+    AnnualPastCostReduction: number,
+    GridConnection: number,
 }
 
 export function generateInvestmentCostTable(
@@ -71,7 +71,7 @@ export function generateInvestmentCostTable(
     investmentCostInput: InvestmentCostInput,
     beginYear: number,
     endYear: number,
-    ): InvestmentCostTableRow[] {
+): InvestmentCostTableRow[] {
     let solarPanelICs = generateSolarPanelICs(size, range, investmentCostInput.GridConnection);
     let installationSizes = generateInstallationSizes(size);
 

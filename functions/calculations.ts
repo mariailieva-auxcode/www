@@ -125,7 +125,7 @@ function generatePayback(
             ? 0
             : input.Yield * input.Capacity;
 
-    let costSavingsAndIncome
+    const costSavingsAndIncome
         = currentYear <= input.YearOfProduction + 15 // Where does this 15 come from ?
             ? (1 - sdeSubsidy.PercentageOfDirectOwnUse)
             * annualElectricityProduction
@@ -186,6 +186,14 @@ export function generatePaybackCashFlow(
     }
 
     return paybackCashFlow;
+}
+
+export function calculateInvestmentCost(input: Input, conditions: PVConditions, installationCostsPerKWp:number, oneOffConnection:number) {
+    return input.RentingTheLand
+    ? installationCostsPerKWp * input.Capacity + oneOffConnection
+    : conditions.LandCostsIncluded
+        ? (installationCostsPerKWp * input.Capacity + input.LandCosts * input.LandArea / 1000 + oneOffConnection)
+        : installationCostsPerKWp * input.Capacity + oneOffConnection;
 }
 
 
