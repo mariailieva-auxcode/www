@@ -84,7 +84,7 @@ function generateSDESubsidy(price: DayAheadPrice, input: Input, conditions: PVCo
 
 export function generateSDESubsidies(periodLength: number, dayAheadPrices: DayAheadPrice[], dayAheadPriceMaturity: number, input: Input, conditions: PVConditions): SDESubsidy[] {
     let sdeSubsidies = [];
-    let len = dayAheadPrices.length;
+    const len = dayAheadPrices.length;
     let prevPrice = dayAheadPrices[0];
     for (let i = 0; i < periodLength; i++) {
         const price
