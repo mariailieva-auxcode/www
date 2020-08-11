@@ -1,4 +1,4 @@
-export function generateInstallationSizes(size: number = 214): number[] {
+function generateInstallationSizes(size: number = 214): number[] {
     let installationSizes = [15]; // init as a param?
     for (let i = 1; i < size; i++) {
         installationSizes.push(i * 50); // also parametrize?
@@ -6,7 +6,7 @@ export function generateInstallationSizes(size: number = 214): number[] {
     return installationSizes;
 }
 
-export function generateSolarPanelICs(
+function generateSolarPanelICs(
     size: number,
     range: number,
     gridConnection: number): number[] {
@@ -27,7 +27,7 @@ export function generateSolarPanelICs(
     return solarPanelICs;
 }
 
-export function investmentCost(
+function investmentCost(
     year: number,
     solarPanelCost: number,
     aeCostReduction: number,
@@ -36,7 +36,7 @@ export function investmentCost(
     return solarPanelCost * Math.pow((1 - aeCostReduction), (year - refYear));
 }
 
-export function generateYearlyCashFlow(
+function generateYearlyCashFlow(
     beginYear: number,
     endYear: number,
     solarPanelIC: number,
@@ -58,15 +58,21 @@ export interface InvestmentCostTableRow {
     yearlyCashFlow: number[]
 }
 
+interface InvestmentCostInput {
+    "ReferenceYear" :number,
+    "AnnualExpectedCostReduction" :number,
+    "AnnualPastCostReduction" :number,
+    "GridConnection" :number,
+}
+
 export function generateInvestmentCostTable(
     size: number,
     range: number,
-    gridConnection: number,
+    investmentCostInput: InvestmentCostInput,
     beginYear: number,
     endYear: number,
-    aeCostReduction: number,
-    refYear: number): InvestmentCostTableRow[] {
-    let solarPanelICs = generateSolarPanelICs(size, range, gridConnection);
+    ): InvestmentCostTableRow[] {
+    let solarPanelICs = generateSolarPanelICs(size, range, investmentCostInput.GridConnection);
     let installationSizes = generateInstallationSizes(size);
 
     return solarPanelICs.map((v, i) => {
@@ -79,8 +85,8 @@ export function generateInvestmentCostTable(
                 beginYear,
                 endYear,
                 v,
-                aeCostReduction,
-                refYear
+                investmentCostInput.AnnualExpectedCostReduction,
+                investmentCostInput.ReferenceYear
             )
         };
     });

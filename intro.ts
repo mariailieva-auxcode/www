@@ -23,10 +23,9 @@ let conditions = getConditionsFromInput(INPUT, sdeTariffsData);
 let investmentCostsTable = generateInvestmentCostTable(
     214,
     30,
-    investmentCosts.GridConnection, INPUT.InvestmentYear - 5,
-    INPUT.InvestmentYear + 10,
-    investmentCosts.AnnualExpectedCostReduction,
-    investmentCosts.ReferenceYear
+    investmentCosts,
+    2015,
+    2030,
 );
 
 // Other Metrics | no need for a model here
