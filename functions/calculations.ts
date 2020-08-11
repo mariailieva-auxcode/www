@@ -102,5 +102,90 @@ export function generateSDESubsidies(periodLength: number, dayAheadPrices: DayAh
     return sdeSubsidies;
 }
 
+interface PaybackInfo {
+    year: number,
+    partOfYearForRepayment: number,
+    unrecoupedPartOfInvestment: number,
+    cumulativeCostSavingsAndIncome: number,
+    costSavingsAndIncome: number,
+    annualElectricityProduction: number,
+}
+
+function generatePayback(
+    currentYear: number,
+    investmentCost: number,
+    prevYearCumulativeCostSavingsAndIncome: number,
+    input: Input,
+    sdeSubsidy: SDESubsidy,
+    expenditure: Expenditure
+): PaybackInfo {
+
+    const annualElectricityProduction
+        = currentYear < input.YearOfProduction
+            ? 0
+            : input.Yield * input.Capacity;
+
+    let costSavingsAndIncome
+        = currentYear <= input.YearOfProduction + 15 // Where does this 15 come from ?
+            ? (1 - sdeSubsidy.PercentageOfDirectOwnUse)
+            * annualElectricityProduction
+            * sdeSubsidy.SDEPriceForGridDelivery
+            + sdeSubsidy.SDEContributionForOwnUse
+            * sdeSubsidy.PercentageOfDirectOwnUse
+            * annualElectricityProduction
+            - expenditure.gridConnectionCost
+            - expenditure.LandRental
+            : (1 - sdeSubsidy.PercentageOfDirectOwnUse)
+            * annualElectricityProduction
+            * sdeSubsidy.dayAheadPrice
+            - expenditure.gridConnectionCost
+            - expenditure.LandRental;
+
+    const cumulativeCostSavingsAndIncome
+        = prevYearCumulativeCostSavingsAndIncome + costSavingsAndIncome;
+
+    const unrecoupedPartOfInvestment
+        = investmentCost < cumulativeCostSavingsAndIncome
+            ? 0
+            : investmentCost - cumulativeCostSavingsAndIncome;
+
+    const partOfYearForRepayment
+        = unrecoupedPartOfInvestment > 0
+            ? 1
+            : unrecoupedPartOfInvestment / costSavingsAndIncome;
+
+    return {
+        year: currentYear,
+        partOfYearForRepayment,
+        unrecoupedPartOfInvestment,
+        cumulativeCostSavingsAndIncome,
+        costSavingsAndIncome,
+        annualElectricityProduction,
+    }
+}
+
+export function generatePaybackCashFlow(
+    investmentCost: number,
+    input: Input,
+    sdeSubsidies: SDESubsidy[],
+    expenditures: Expenditure[],
+): PaybackInfo[] {
+
+    let paybackCashFlow = [];
+    const len = sdeSubsidies.length;
+
+    let prevYearIncome = 0;
+    for (let i = 0; i < len; i++) {
+        const year = i + input.InvestmentYear;
+        const sdeSubsidy = sdeSubsidies[i];
+        const expenditure = expenditures[i];
+
+        let result = generatePayback(year, investmentCost, prevYearIncome, input, sdeSubsidy, expenditure);
+        prevYearIncome = result.cumulativeCostSavingsAndIncome;
+        paybackCashFlow.push(result);
+    }
+
+    return paybackCashFlow;
+}
 
 

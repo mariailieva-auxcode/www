@@ -1,7 +1,7 @@
 import { Archetype } from "./models/archetypes";
 import { Input, getConditionsFromInput } from "./models/conditions";
 import { generateInvestmentCostTable } from "./functions/investmentCosts";
-import { generateExpenditures, generateSDESubsidies } from "./functions/calculations";
+import { generateExpenditures, generateSDESubsidies, generatePaybackCashFlow } from "./functions/calculations";
 
 import * as sdeTariffsData from "./data/SDETariffsCategory.json";
 import * as investmentCosts from "./data/InvestmentCosts.json";
@@ -30,26 +30,67 @@ let investmentCostsTable = generateInvestmentCostTable(214, 30, investmentCosts,
 
 
 
-
 // Calculations
-const feeInfo =
-    gridConnectionCosts
+const feeInfo
+    = gridConnectionCosts
         .find(i =>
             i.Company === gridConnectionInformation.GridConnectionCompany
             && i.ConnectionType === gridConnectionInformation.ConnectionType
         );
-if (feeInfo) {
-    const PeriodicConnectionFee = feeInfo.PeriodicConnectionFee;
 
-    const price = dayAheadPrices[1];
+const investmentInfo
+    = investmentCostsTable
+        .find(v =>
+            v.installationSize === INPUT.Capacity
+            && v.beginYear <= INPUT.InvestmentYear
+            && v.endYear >= INPUT.InvestmentYear
+        );
+
+// where does this come from ?
+// is it the wrong table ?
+const oneOffConnectionInfo
+    = gridConnectionCosts
+        .find(v =>
+            v.ConnectionType === "2000kVA - 5000kVA"
+            && v.Company === "Liander"
+        );
+
+
+if (feeInfo && investmentInfo && oneOffConnectionInfo) {
+    const periodicConnectionFee = feeInfo.PeriodicConnectionFee;
+    const installationCostsPerKWp
+        = investmentInfo.yearlyCashFlow[INPUT.InvestmentYear - investmentInfo.beginYear];
+    const oneOffConnection
+        = conditions.GridConnectionCosts
+            ? oneOffConnectionInfo.ConnectionRate + oneOffConnectionInfo.CablingTariff * gridConnectionInformation.DistanceToGrid
+            : 0;
+
+    const investmentCost
+        = INPUT.RentingTheLand
+            ? installationCostsPerKWp * INPUT.Capacity + oneOffConnection
+            : conditions.LandCostsIncluded
+                ? (installationCostsPerKWp * INPUT.Capacity + INPUT.LandCosts * INPUT.LandArea / 1000 + oneOffConnection)
+                : installationCostsPerKWp * INPUT.Capacity + oneOffConnection;
+
+
     const sdeSubsidies = generateSDESubsidies(31, dayAheadPrices, 1.027, INPUT, conditions);
-    const expenditures = generateExpenditures(31, PeriodicConnectionFee, INPUT);
+    const expenditures = generateExpenditures(31, periodicConnectionFee, INPUT);
 
-    console.log(sdeSubsidies);
-    console.log(expenditures);
+    const paybackCashFlow = generatePaybackCashFlow(investmentCost, INPUT, sdeSubsidies, expenditures);
+
+    console.log(paybackCashFlow);
+
+    console.log(paybackCashFlow.map(
+        v => { return { repay: v.partOfYearForRepayment, year: v.year } })
+    );
+
+    // Payback time (years)
+    console.log(paybackCashFlow.reduce((a, i) => a + i.partOfYearForRepayment , 0));
+    
+
 
 } else {
-    console.log("No Info about the Periodic Connection Fee");
+    console.log("error: data missing");
 }
 
 
