@@ -22,42 +22,59 @@ const input: Input = {
     archetype: Archetype.GroundMountedProducer,
 };
 
-let conditions = getConditionsFromInput(input, sdeTariffsData);
+const conditions = getConditionsFromInput(input, sdeTariffsData);
 
-let investmentCostsTable = generateInvestmentCostTable(214, 30, investmentCosts, 2015, 2030);
-
-
-
-
+const investmentCostsTable = generateInvestmentCostTable(214, 30, investmentCosts, 2015, 2030);
 
 // Calculations
-const feeInfo
-    = gridConnectionCosts
-        .find(i =>
-            i.Company === gridConnectionInformation.GridConnectionCompany
-            && i.ConnectionType === gridConnectionInformation.ConnectionType
-        );
+const sdeSubsidies = generateSDESubsidies(31, dayAheadPrices, 1.027, input, conditions);
+const expenditures = getExpenditures(31);
+const paybackCashFlow = getPaybackCashFlow();
 
-const investmentInfo
-    = investmentCostsTable
-        .find(v =>
-            v.installationSize === input.Capacity
-            && v.beginYear <= input.InvestmentYear
-            && v.endYear >= input.InvestmentYear
-        );
+const paybackTime = paybackCashFlow.reduce((a, i) => a + i.partOfYearForRepayment, 0);
 
-// where does this come from ?
-// is it the wrong table ?
-const oneOffConnectionInfo
-    = gridConnectionCosts
-        .find(v =>
-            v.ConnectionType === "2000kVA - 5000kVA"
-            && v.Company === "Liander"
-        );
+console.log(`The time it'll take for your investment to repay is ${paybackTime} years!`);
 
 
-if (feeInfo && investmentInfo && oneOffConnectionInfo) {
+
+function getExpenditures(periodLength: number) {
+    const feeInfo
+        = gridConnectionCosts
+            .find(i =>
+                i.Company === gridConnectionInformation.GridConnectionCompany
+                && i.ConnectionType === gridConnectionInformation.ConnectionType
+            );
+
     const periodicConnectionFee = feeInfo.PeriodicConnectionFee;
+    return generateExpenditures(periodLength, periodicConnectionFee, input);
+}
+
+function getPaybackCashFlow() {
+    const investmentInfo
+        = investmentCostsTable
+            .find(v =>
+                v.installationSize === input.Capacity
+                && v.beginYear <= input.InvestmentYear
+                && v.endYear >= input.InvestmentYear
+            );
+
+    // where does this come from ?
+    // is it the wrong table ?
+    const oneOffConnectionInfo
+        = gridConnectionCosts
+            .find(v =>
+                v.ConnectionType === "2000kVA - 5000kVA"
+                && v.Company === "Liander"
+            );
+
+    if (!investmentInfo) {
+        console.error("investmentInfo Data Missing");
+    }
+
+    if (!oneOffConnectionInfo) {
+        console.error("oneOffConnectionInfo Data Missing");
+    }
+
     const installationCostsPerKWp
         = investmentInfo.yearlyCashFlow[input.InvestmentYear - investmentInfo.beginYear];
     const oneOffConnection
@@ -67,29 +84,8 @@ if (feeInfo && investmentInfo && oneOffConnectionInfo) {
 
     const investmentCost = calculateInvestmentCost(input, conditions, installationCostsPerKWp, oneOffConnection);
 
-
-    const sdeSubsidies = generateSDESubsidies(31, dayAheadPrices, 1.027, input, conditions);
-    const expenditures = generateExpenditures(31, periodicConnectionFee, input);
-
-    const paybackCashFlow = generatePaybackCashFlow(investmentCost, input, sdeSubsidies, expenditures);
-
-    console.log(paybackCashFlow);
-
-    console.log(paybackCashFlow.map(
-        v => { return { repay: v.partOfYearForRepayment, year: v.year } })
-    );
-
-    // Payback time (years)
-    console.log(paybackCashFlow.reduce((a, i) => a + i.partOfYearForRepayment , 0));
-    
-
-
-} else {
-    console.log("error: data missing");
+    return generatePaybackCashFlow(investmentCost, input, sdeSubsidies, expenditures);
 }
-
-
-
 
 
 
@@ -102,9 +98,9 @@ const costsSaved // Method 2 (euro)
     * energyPotential
     * input.DirectOwnConsumption;
 
-console.log(energyPotential);
-console.log(CO2Saved);
-console.log(costsSaved);
+// console.log(energyPotential);
+// console.log(CO2Saved);
+// console.log(costsSaved);
 
 
 
