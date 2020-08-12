@@ -7,7 +7,7 @@
       </div>
       <div class="user-wizard">
         <div class="row questions-header" v-if="step !==6">
-          <p>COMPLETE YOUR PROFILE</p>
+          <p>COMPLETE ONBOARDING</p>
         </div>
         <div class="user-questions">
           <div class="step" v-if="step === 1">
@@ -86,7 +86,7 @@
             <div class="row">
               <div class="map-codes">
                 <label>{{fourthQuestion}}</label>
-                <div class="row row-codes">
+                <div class="row form-inputs">
                   <input id="postal" placeholder="Postal Code" type="text" />
                   <input id="street" placeholder="Street Number" type="text" />
                 </div>
@@ -97,13 +97,11 @@
             </div>
           </div>
           <div class="step" v-if="step === 6">
-            <div class="comlete">
-              <div class="row">
-                <img src="/assets/correct.svg" />
-              </div>
-              <div class="row">
-                <label for="phoneNumber">{{completeLabel}}</label>
-              </div>
+            <label>{{completeLabel}}</label>
+            <div class="form-inputs">
+              <input type="email" placeholder="Company Name" />
+              <input type="text" placeholder="Name" />
+              <input type="text" placeholder="Phone Number" />
             </div>
           </div>
         </div>
@@ -133,7 +131,7 @@
             </a>
             <a class="back-button" @click="step--" v-if="step === 6">
               <img src="/assets/arrow-left-white.svg" />
-              <p>Edit</p>
+              <p>Back</p>
             </a>
             <div class="percent-line" v-if="step === 2">
               <div class="green1-line"></div>
@@ -159,10 +157,7 @@
               <p>Continue</p>
               <img src="/assets/arrow-right-green.svg" />
             </a>
-            <a class="next-button" v-if="step === 6">
-              <p>Review</p>
-              <img src="/assets/arrow-right-green.svg" />
-            </a>
+
             <a class="next-button" @click="step++" v-else-if="step === 5">
               <p>Finish</p>
               <img src="/assets/arrow-right-green.svg" />
@@ -172,7 +167,7 @@
       </div>
       <!-- table -->
       <div class="table-wizard">
-        <!-- <div class="row search-bar">
+        <div class="row search-bar">
           <div class="col-5 table-header-input">
             <img src="/assets/table-filter.svg" />
             <input
@@ -192,7 +187,7 @@
             <p>Size</p>
             <img src="/assets/arrow-down.svg" />
           </div>
-        </div>-->
+        </div>
         <div>
           <table class="table">
             <thead>
@@ -332,6 +327,22 @@ export default {
 .SOquestionnaire {
   width: 80%;
   margin: 0 auto;
+  .form-inputs {
+    margin: 0 auto;
+    input {
+      border-radius: 5px;
+      border: 1px solid #d3d5e3;
+      padding-left: 20px;
+      font-size: 14px;
+      font-family: $font__IBM;
+      font-weight: 400;
+      height: 45px;
+      width: 140px;
+    }
+    #postal {
+      margin-right: 25px;
+    }
+  }
   .header {
     margin-top: 45px;
     margin-bottom: 50px;
@@ -377,22 +388,6 @@ export default {
             flex-direction: column;
             justify-content: center;
             margin-right: 70px;
-            .row-codes {
-              margin: 0 auto;
-              input {
-                border-radius: 5px;
-                border: 1px solid #d3d5e3;
-                padding-left: 20px;
-                font-size: 14px;
-                font-family: $font__IBM;
-                font-weight: 400;
-                height: 45px;
-                width: 140px;
-              }
-              #postal {
-                margin-right: 25px;
-              }
-            }
           }
         }
       }
@@ -448,9 +443,20 @@ export default {
         display: flex;
         flex-direction: column;
         margin-top: 100px;
-        img {
-          margin-bottom: 30px;
+        justify-content: center;
+        input {
+          margin-bottom: 16px;
+          margin-left: 160px;
+          outline-color: none;
+          border: 1px solid #55b364;
+          border-radius: 10px;
+          width: 305px;
+          height: 46px;
+          color: #26272e;
         }
+        // img {
+        //   margin-bottom: 30px;
+        // }
       }
     }
     .buttons > .row {
