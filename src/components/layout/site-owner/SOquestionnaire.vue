@@ -186,6 +186,7 @@
       <!-- table -->
       <div class="table-wizard">
         <div class="row search-bar">
+          <!-- TODO (Misho) remove the search bar -->
           <div class="col-5 table-header-input">
             <img src="/assets/table-filter.svg" />
             <input
