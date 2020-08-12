@@ -49,7 +49,6 @@ export default {
     };
   },
   created() {
-    this.getCompanies();
     this.init();
   },
   watch: {
