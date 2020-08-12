@@ -36,7 +36,7 @@ const paybackTime = paybackCashFlow.reduce((a, i) => a + i.partOfYearForRepaymen
 console.log(`The time it'll take for your investment to repay is ${paybackTime} years!`);
 
 
-
+// ----------------------------------------------------------------------------------------
 function getExpenditures(periodLength: number) {
     const feeInfo
         = gridConnectionCosts

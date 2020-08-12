@@ -53,7 +53,11 @@ interface SDESubsidy {
     TotalForSubsidy: number,
 }
 
-function generateSDESubsidy(price: DayAheadPrice, input: Input, conditions: PVConditions): SDESubsidy {
+function generateSDESubsidy(
+    price: DayAheadPrice,
+    input: Input,
+    conditions: PVConditions
+): SDESubsidy {
     const SDEPriceForGridDelivery = conditions.MaximumBaseAmount < price.dayAheadPrice
         ? price.dayAheadPrice
         : (price.dayAheadPrice > conditions.ProvisionalCorrectionAmountGridDelivery)
@@ -82,7 +86,13 @@ function generateSDESubsidy(price: DayAheadPrice, input: Input, conditions: PVCo
     }
 }
 
-export function generateSDESubsidies(periodLength: number, dayAheadPrices: DayAheadPrice[], dayAheadPriceMaturity: number, input: Input, conditions: PVConditions): SDESubsidy[] {
+export function generateSDESubsidies(
+    periodLength: number,
+    dayAheadPrices: DayAheadPrice[],
+    dayAheadPriceMaturity: number,
+    input: Input,
+    conditions: PVConditions
+): SDESubsidy[] {
     let sdeSubsidies = [];
     const len = dayAheadPrices.length;
     let prevPrice = dayAheadPrices[0];
@@ -188,12 +198,17 @@ export function generatePaybackCashFlow(
     return paybackCashFlow;
 }
 
-export function calculateInvestmentCost(input: Input, conditions: PVConditions, installationCostsPerKWp:number, oneOffConnection:number) {
+export function calculateInvestmentCost(
+    input: Input,
+    conditions: PVConditions,
+    installationCostsPerKWp: number,
+    oneOffConnection: number
+) {
     return input.RentingTheLand
-    ? installationCostsPerKWp * input.Capacity + oneOffConnection
-    : conditions.LandCostsIncluded
-        ? (installationCostsPerKWp * input.Capacity + input.LandCosts * input.LandArea / 1000 + oneOffConnection)
-        : installationCostsPerKWp * input.Capacity + oneOffConnection;
+        ? installationCostsPerKWp * input.Capacity + oneOffConnection
+        : conditions.LandCostsIncluded
+            ? (installationCostsPerKWp * input.Capacity + input.LandCosts * input.LandArea / 1000 + oneOffConnection)
+            : installationCostsPerKWp * input.Capacity + oneOffConnection;
 }
 
 
