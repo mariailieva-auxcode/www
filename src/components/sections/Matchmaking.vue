@@ -13,7 +13,7 @@
           </button>
         </div>
         <div class="col-xl-6">
-          <img :src="match.image" class="img" />
+          <lazy-img :src="match.image" :blur="30" class="img" />
         </div>
       </div>
     </div>

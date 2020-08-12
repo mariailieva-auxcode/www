@@ -38,6 +38,10 @@ div.container {
     box-sizing: border-box;
 }
 
+.lazy-background span > div, .lazy-background div {
+    padding: unset !important;
+}
+
 input#searchField {
     border-radius: 5%;
 }

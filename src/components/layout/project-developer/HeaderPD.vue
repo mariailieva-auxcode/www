@@ -6,6 +6,11 @@
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
       <p>{{textSurvey}}</p>
+      <router-link :to="`/${$router.history.current.params.lang}/project-developer/questionnaire`">
+        <button class="button-choice">
+          <p>{{button}}</p>
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -21,11 +26,12 @@ export default {
       textSurvey: "",
       linkSurvey: "",
       image: "",
-      tag: ""
+      tag: "",
+      button: "",
     };
   },
   props: {
-    lang: String
+    lang: String,
   },
   mounted() {
     this.init();
@@ -33,10 +39,11 @@ export default {
   watch: {
     lang() {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? headerEn : header;
       this.title = data.title;
       this.description = data.description;
@@ -44,8 +51,9 @@ export default {
       this.linkSurvey = data.linkSurvey;
       this.image = data.image;
       this.tag = data.tag;
-    }
-  }
+      this.button = data.button;
+    },
+  },
 };
 </script>
 
@@ -73,6 +81,13 @@ export default {
       font-family: $font__Lato;
       font-weight: 400;
       font-size: 25px;
+    }
+    .button-choice {
+      margin-top: 15px;
+      p {
+        font-weight: 500;
+        font-size: 14px;
+      }
     }
   }
 }

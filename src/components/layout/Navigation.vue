@@ -103,7 +103,7 @@
             <div v-if="currentPage === '/nl' || currentPage === '/en' " class="green-line"></div>
             <button>
               <img
-                :src="currentPage === '/nl' || currentPage === '/en' ? '../assets/home.svg' : '../assets/home-alt.svg'"
+                :src="currentPage === '/nl' || currentPage === '/en' ? '/assets/home.svg' : '/assets/home-alt.svg'"
               />
               <p class="home">{{homeName}}</p>
             </button>
@@ -116,7 +116,7 @@
             <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
             <button>
               <img
-                :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '../assets/newspaper.svg' : '../assets/newspaper-alt.svg'"
+                :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '/assets/newspaper.svg' : '/assets/newspaper-alt.svg'"
               />
               <p class="news">{{newsName}}</p>
             </button>
@@ -150,7 +150,7 @@
           ></div>
           <button>
             <img
-              :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+              :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '/assets/specialist-navigation-icon.svg' : '/assets/specialist-navigation-icon.svg'"
             />
             <p class="specialist">{{specialistName}}</p>
           </button>
@@ -166,7 +166,7 @@
           ></div>
           <button>
             <img
-              :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-navigation-icon.svg' : '../assets/project-navigation-icon.svg'"
+              :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '/assets/project-navigation-icon.svg' : '/assets/project-navigation-icon.svg'"
             />
             <p class="project">{{projectName}}</p>
           </button>
@@ -331,6 +331,9 @@ export default {
   }
   .row {
     text-align: center;
+    div.home-logo {
+      margin-top: 0;
+    }
     .home-logo,
     .news-logo,
     .owner-logo,
@@ -373,10 +376,11 @@ export default {
       .specialist,
       .project {
         color: #9597ac;
-        font-size: 14px;
-        margin-top: 10px;
+        font-size: 12px;
+        margin-top: 5px;
         margin-bottom: 0;
-        font-weight: bold;
+        font-weight: 700;
+        font-family: $font__IBM;
       }
       &:focus {
         outline: none;
