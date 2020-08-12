@@ -6,16 +6,23 @@
     </div>
     <div class="questionnaire">
       <p>What kind of energy do you suggest ?</p>
-      <input type="checkbox" id="wind" value="Wind" v-model="energy" />
-      <label class="wind">Wind</label>
-      <input type="checkbox" id="sun" value="Sun" v-model="energy" />
-      <label class="sun">Sun</label>
-      <input type="checkbox" id="water" value="Water" v-model="energy" />
+      <input type="checkbox" id="wind" value="Solar" v-model="energy" />
+      <label class="wind">Solar</label>
+      <input type="checkbox" id="sun" value="Wind" v-model="energy" />
+      <label class="sun">Wind</label>
+    </div>
+    <div class="questionnaire">
+      <p>What type of site do you have?</p>
+      <input type="checkbox" id="wind" value="Roof" v-model="material" />
+      <label class="wind">Roof</label>
+      <input type="checkbox" id="sun" value="Land" v-model="material" />
+      <label class="sun">Land</label>
+      <input type="checkbox" id="water" value="Water" v-model="material" />
       <label class="water">Water</label>
     </div>
     <div>
-      <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" type="number" v-model="phoneNumber" />
+      <label for="phoneNumber">What is the size of the site?</label>
+      <input id="phoneNumber" type="text" v-model="size" />
     </div>
     <div class="row button">
       <button @click="projectDev()">Submit</button>
@@ -30,8 +37,8 @@ export default {
     return {
       companyName: "",
       energy: [],
-      phoneNumber: "",
-      position: "Project developer",
+      size: "",
+      material: [],
     };
   },
   methods: {
@@ -39,9 +46,9 @@ export default {
       axios
         .post("projectDev", {
           companyName: this.companyName,
-          phoneNumber: this.phoneNumber,
+          size: this.size,
           energy: this.energy,
-          position: this.position,
+          material: this.material,
         })
         .then((data) => (console.log(data), this.projectDev.push(data.data)));
     },

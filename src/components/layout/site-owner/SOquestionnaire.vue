@@ -25,10 +25,18 @@
               <label>{{firstQuestion}}</label>
             </div>
             <div class="row solar-and-wind">
-              <button class="solar" :class="{'active': solar}" @click="solar =!solar">
+              <button
+                class="solar"
+                :class="{'active': solar}"
+                @click="solar =!solar;  filterCompanies()"
+              >
                 <img src="/assets/solar.svg" />Solar
               </button>
-              <button class="wind" :class="{'active': wind}" @click="wind =!wind">
+              <button
+                class="wind"
+                :class="{'active': wind}"
+                @click="wind =!wind; filterCompanies()"
+              >
                 <img src="/assets/wind.svg" />Wind
               </button>
             </div>
@@ -36,23 +44,42 @@
           <div class="step" v-if="step === 3">
             <label>{{secondQuestion}}</label>
             <div class="row">
-              <button class="solar" :class="{'active': roof}" @click="roof =!roof">
+              <button
+                class="solar"
+                :class="{'active': roof}"
+                @click="roof =!roof; filterCompanies()"
+              >
                 <img src="/assets/roof.svg" />Roof
               </button>
-              <button class="wind" :class="{'active': land}" @click="land =!land">
+              <button
+                class="wind"
+                :class="{'active': land}"
+                @click="land =!land; filterCompanies()"
+              >
                 <img src="/assets/land.svg" />Land
               </button>
-              <button class="wind" :class="{'active': water}" @click="water =!water">
+              <button
+                class="wind"
+                :class="{'active': water}"
+                @click="water =!water; filterCompanies()"
+              >
                 <img src="/assets/water.svg" />Water
               </button>
             </div>
           </div>
           <div class="step" v-if="step === 4">
             <div class="row">
-              <label for="phoneNumber">{{thirdQuestion}}</label>
+              <label for="size">{{thirdQuestion}}</label>
             </div>
             <div class="row number">
-              <input id="phoneNumber" placeholder="0" type="text" v-model="phoneNumber" />
+              <input
+                id="phoneNumber"
+                class="size-input"
+                placeholder="0"
+                type="number"
+                v-model="size"
+                @input="filterCompanies"
+              />
             </div>
           </div>
           <div class="step map" v-if="step === 5">
@@ -124,7 +151,11 @@
               <div class="green-line4"></div>
               <div class="other-line4"></div>
             </div>
-            <a class="next-button" @click="step++" v-if="step !== 5 && step !== 1 && step !== 6">
+            <a
+              class="next-button"
+              @click="nextStep()"
+              v-if="step !== 5 && step !== 1 && step !== 6"
+            >
               <p>Continue</p>
               <img src="/assets/arrow-right-green.svg" />
             </a>
@@ -142,18 +173,23 @@
       <!-- table -->
       <div class="table-wizard">
         <div class="row search-bar">
-          <div class="col-6 table-header-input">
+          <div class="col-5 table-header-input">
             <img src="/assets/table-filter.svg" />
-            <input type="text" placeholder="Search..." />
+            <input
+              type="text"
+              placeholder="Search..."
+              v-model="companyNameSearch"
+              @input="filterCompanies"
+            />
           </div>
-          <div class="col-6 table-header-menu">
-            <p>Owner</p>
+          <div class="col-7 table-header-menu">
+            <p>Company name</p>
             <img src="/assets/arrow-down.svg" />
             <p>Energy Type</p>
             <img src="/assets/arrow-down.svg" />
-            <p>Location</p>
+            <p>Material Type</p>
             <img src="/assets/arrow-down.svg" />
-            <p>Cost</p>
+            <p>Size</p>
             <img src="/assets/arrow-down.svg" />
           </div>
         </div>
@@ -162,17 +198,28 @@
             <thead>
               <tr>
                 <th>Company Name</th>
-                <th>Phone Number</th>
-                <th>Energy</th>
-                <th>Position</th>
+                <th>Energy Type</th>
+                <th>Material Type</th>
+                <th>Size</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="user in projectDev" :key="user">
-                <td>{{user.data.companyName}}</td>
-                <td>{{user.data.phoneNumber}}</td>
-                <td>{{user.data.energy}}</td>
-                <td>{{user.data.position}}</td>
+              <tr v-for="user in filteredCompanies" :key="user">
+                <td>
+                  <p>{{user.data.companyName}}</p>
+                </td>
+                <td>
+                  <img src="/assets/wind.svg" v-if="user.data.energy.includes('Wind')" />
+                  <img src="/assets/solar.svg" v-if="user.data.energy.includes('Solar')" />
+                </td>
+                <td>
+                  <img src="/assets/roof.svg" v-if="user.data.material.includes('Roof')" />
+                  <img src="/assets/land.svg" v-if="user.data.material.includes('Land')" />
+                  <img src="/assets/water.svg" v-if="user.data.material.includes('Water')" />
+                </td>
+                <td>
+                  <p>{{user.data.size}}</p>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -197,10 +244,12 @@ export default {
       fourthQuestion: "",
       completeLabel: "",
       companyName: "",
+      companyNameSearch: "",
       powerType: [],
-      phoneNumber: "",
-      position: "Site owner",
-      projectDev: [],
+      size: undefined,
+      material: [],
+      companies: [],
+      filteredCompanies: [],
       step: 1,
       solar: false,
       wind: false,
@@ -210,7 +259,7 @@ export default {
     };
   },
   created() {
-    this.getProjectDev();
+    this.getCompanies();
     this.init();
   },
   watch: {
@@ -229,19 +278,43 @@ export default {
       this.fourthQuestion = data["fourth-question"];
       this.completeLabel = data["complete-label"];
     },
+    filterCompanies() {
+      this.filteredCompanies = this.companies.filter(
+        (comp) =>
+          comp.data.companyName
+            .toLowerCase()
+            .includes(this.companyNameSearch.toLowerCase()) &&
+          (!this.wind || comp.data.energy.includes("Wind")) &&
+          (!this.solar || comp.data.energy.includes("Solar")) &&
+          (!this.roof || comp.data.material.includes("Roof")) &&
+          (!this.land || comp.data.material.includes("Land")) &&
+          (!this.water || comp.data.material.includes("Water")) &&
+          (!this.size || parseInt(comp.data.size) <= this.size)
+      );
+      console.log(this.filteredCompanies);
+
+      if (this.wind) this.filteredCompanies;
+    },
+    nextStep() {
+      if (this.step == 2 && !this.wind && !this.solar) return;
+      if (this.step == 3 && !this.roof && !this.water && !this.land) return;
+      if (this.step == 4 && !this.size) return;
+      this.step++;
+    },
     siteOwner() {
       axios
         .post("siteOwner", {
           companyName: this.companyName,
-          phoneNumber: this.phoneNumber,
+          size: this.size,
           energy: this.energy,
-          position: this.position,
+          material: this.material,
         })
         .then((data) => (console.log(data), this.siteOwner.push(data.data)));
     },
-    getProjectDev() {
+    getCompanies() {
       axios.get(`siteOwner`).then((data) => {
-        this.projectDev = data.data.data;
+        this.companies = data.data.data;
+        this.filteredCompanies = this.companies;
       });
     },
   },
@@ -250,6 +323,14 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../assets/styles/main.scss";
+.size-input {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  -moz-appearance: textfield;
+}
 .SOquestionnaire {
   width: 80%;
   margin: 0 auto;
@@ -516,9 +597,22 @@ export default {
   th {
     border-top: none;
     border-bottom: 1px solid #f4f4f4;
+    font-family: $font__IBM;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333333;
   }
   td {
     border: none;
+    p {
+      font-family: $font__IBM;
+      font-weight: 700;
+      font-size: 12px;
+      color: #9597ac;
+    }
+    img {
+      margin-right: 10px;
+    }
   }
 }
 .solar,
