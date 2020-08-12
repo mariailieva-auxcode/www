@@ -6,9 +6,9 @@
       <h1>{{title}}</h1>
       <h3>{{description}}</h3>
       <p>{{textSurvey}}</p>
-      <router-link :to="`/${$router.history.current.params.lang}/specialists/questionnaire`">
+      <!-- <router-link :to="`/${$router.history.current.params.lang}/specialists/questionnaire`">
         <button>To the survey</button>
-      </router-link>
+      </router-link>-->
     </div>
   </div>
 </template>

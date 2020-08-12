@@ -7,7 +7,9 @@
       <h3>{{description}}</h3>
       <p>{{textSurvey}}</p>
       <router-link :to="`/${$router.history.current.params.lang}/project-developer/questionnaire`">
-        <button>To the survey</button>
+        <button class="button-choice">
+          <p>{{button}}</p>
+        </button>
       </router-link>
     </div>
   </div>
@@ -25,6 +27,7 @@ export default {
       linkSurvey: "",
       image: "",
       tag: "",
+      button: "",
     };
   },
   props: {
@@ -48,6 +51,7 @@ export default {
       this.linkSurvey = data.linkSurvey;
       this.image = data.image;
       this.tag = data.tag;
+      this.button = data.button;
     },
   },
 };
@@ -77,6 +81,13 @@ export default {
       font-family: $font__Lato;
       font-weight: 400;
       font-size: 25px;
+    }
+    .button-choice {
+      margin-top: 15px;
+      p {
+        font-weight: 500;
+        font-size: 14px;
+      }
     }
   }
 }

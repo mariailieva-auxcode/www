@@ -172,7 +172,7 @@
       </div>
       <!-- table -->
       <div class="table-wizard">
-        <div class="row search-bar">
+        <!-- <div class="row search-bar">
           <div class="col-5 table-header-input">
             <img src="/assets/table-filter.svg" />
             <input
@@ -192,7 +192,7 @@
             <p>Size</p>
             <img src="/assets/arrow-down.svg" />
           </div>
-        </div>
+        </div>-->
         <div>
           <table class="table">
             <thead>
