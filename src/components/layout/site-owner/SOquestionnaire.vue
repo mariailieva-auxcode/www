@@ -291,8 +291,6 @@ export default {
           (!this.water || comp.data.material.includes("Water")) &&
           (!this.size || parseInt(comp.data.size) <= this.size)
       );
-      console.log(this.filteredCompanies);
-
       if (this.wind) this.filteredCompanies;
     },
     nextStep() {
