@@ -6,20 +6,23 @@
         <img src="/assets/hello-hand.svg" />
       </div>
       <div class="user-wizard">
-        <div class="row questions-header" v-if="step !==6">
+        <div class="row questions-header" v-if="step !== 6">
           <p>COMPLETE ONBOARDING</p>
         </div>
         <div class="user-questions">
           <div class="step" v-if="step === 1">
-            <div class="first-step">
+            <div class="first-step container">
               <div class="row">
-                <label>{{welcomeLabel}}</label>
+                <div class="col-12">
+                  <label>{{welcomeLabel}}</label>
+                  <button @click="step++" v-if="step === 1">
+                    <p>Start</p>
+                  </button>
+                </div>
               </div>
-              <button @click="step++" v-if="step === 1">
-                <p>Start</p>
-              </button>
             </div>
           </div>
+          <!-- TODO (Misho) to make the rest of the steps with grid -->
           <div class="step" v-if="step === 2">
             <div class="row">
               <label>{{firstQuestion}}</label>
@@ -72,6 +75,7 @@
               <label for="size">{{thirdQuestion}}</label>
             </div>
             <div class="row number">
+              <!-- TODO (Misho) make the input begin typing from the left -->
               <input
                 id="phoneNumber"
                 class="size-input"
@@ -86,7 +90,8 @@
             <div class="row">
               <div class="map-codes">
                 <label>{{fourthQuestion}}</label>
-                <div class="row form-inputs">
+                <div class="row form-inputs form-inline">
+                  <!-- TODO (Misho) these buttons must not have width when they are part of the grid -->
                   <input id="postal" placeholder="Postal Code" type="text" />
                   <input id="street" placeholder="Street Number" type="text" />
                 </div>
@@ -97,11 +102,24 @@
             </div>
           </div>
           <div class="step" v-if="step === 6">
-            <label>{{completeLabel}}</label>
-            <div class="form-inputs">
-              <input type="email" placeholder="Company Name" />
-              <input type="text" placeholder="Name" />
-              <input type="text" placeholder="Phone Number" />
+            <!-- TODO (Misho) make the container smaller on steps where you have other than col-12 -->
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <!-- TODO (Misho) replace all <label> with the right heading, <label> is used on forms where it describes the input -->
+                  <label>{{completeLabel}}</label>
+                </div>
+                <div class="col-6">
+                  <div class="form-inputs">
+                    <input type="email" placeholder="Company Name" />
+                    <input type="text" placeholder="Name" />
+                    <input type="text" placeholder="Phone Number" />
+                  </div>
+                </div>
+                <div class="col-6">
+                  Register 
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -330,6 +348,7 @@ export default {
   .form-inputs {
     margin: 0 auto;
     input {
+      display: block;
       border-radius: 5px;
       border: 1px solid #d3d5e3;
       padding-left: 20px;
@@ -337,10 +356,14 @@ export default {
       font-family: $font__IBM;
       font-weight: 400;
       height: 45px;
-      width: 140px;
     }
     #postal {
       margin-right: 25px;
+    }
+    &.form-inline {
+      input {
+        display: inline-block;
+      }
     }
   }
   .header {
@@ -439,25 +462,6 @@ export default {
         margin-right: 20px;
         margin-left: 5px;
       }
-      .comlete {
-        display: flex;
-        flex-direction: column;
-        margin-top: 100px;
-        justify-content: center;
-        input {
-          margin-bottom: 16px;
-          margin-left: 160px;
-          outline-color: none;
-          border: 1px solid #55b364;
-          border-radius: 10px;
-          width: 305px;
-          height: 46px;
-          color: #26272e;
-        }
-        // img {
-        //   margin-bottom: 30px;
-        // }
-      }
     }
     .buttons > .row {
       display: flex;
@@ -529,11 +533,6 @@ export default {
           height: 10px;
           border-radius: 10px;
         }
-        // .other-line4 {
-        //   border-right: 180px solid #e6e7f4;
-        //   height: 10px;
-        //   border-radius: 0 10px 10px 0;
-        // }
       }
       .back-button {
         display: flex;
