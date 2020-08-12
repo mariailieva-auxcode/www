@@ -13,8 +13,7 @@ Vue.use(Router);
 
 export default new Router({
     mode: 'history',
-    routes: [
-        {
+    routes: [{
             path: "/:lang",
             name: "MainPage",
             component: MainPage
@@ -48,5 +47,6 @@ export default new Router({
         {
             path: "/:lang/specialists",
             component: Specialists
-        }]
+        },
+    ]
 })
