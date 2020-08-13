@@ -2,7 +2,7 @@
   <div class="background-color">
     <div class="SOquestionnaire">
       <div class="header">
-        <Authorization v-if="showAuth" @close="showAuth=false" :isLogin="false"></Authorization>
+        <Authorization v-if="showAuth" @close="showAuth=false" :isLogin="false" :data="siteOwnerData"></Authorization>
         <p>Welcome to greenatlas.earth!</p>
         <img src="/assets/hello-hand.svg" />
       </div>
@@ -108,8 +108,8 @@
                     <h2>{{fourthQuestion}}</h2>
                   </div>
                   <div class="form-inputs form-inline">
-                    <input id="postal" placeholder="Postal Code" type="text" />
-                    <input id="street" placeholder="Street Number" type="text" />
+                    <input id="postal" placeholder="Postal Code" v-model="postCode" type="text" />
+                    <input id="street" placeholder="Street Number" v-model="streetNumber" type="text" />
                   </div>
                 </div>
                 <div class="col-6">
@@ -139,9 +139,9 @@
                 <div class="col-6">
                   <div class="form-inputs">
                     <div class="complete">
-                      <input type="email" placeholder="Company Name" />
-                      <input type="text" placeholder="Name" />
-                      <input type="text" placeholder="Phone Number" />
+                      <input type="email" placeholder="Company Name" v-model="companyName" />
+                      <input type="text" placeholder="Name" v-model="name" />
+                      <input type="text" placeholder="Phone Number" v-model="phoneNumber" />
                     </div>
                   </div>
                 </div>
@@ -276,7 +276,12 @@ export default {
       completeLabel: "",
       companyName: "",
       powerType: [],
+      postCode: '',
+      streetNumber: '',
       size: undefined,
+      name: '',
+      companyName: '',
+      phoneNumber: '',
       material: [],
       companies: [],
       filteredCompanies: [],
@@ -297,6 +302,27 @@ export default {
     $route() {
       this.init();
     },
+  },
+  computed: {
+    siteOwnerData() {
+      return {
+        energyType: {
+          wind: this.wind,
+          solar: this.solar
+        },
+        siteType: {
+          roof: this.roof,
+          land: this.land,
+          water: this.water
+        },
+        size: this.size,
+        postCode: this.postCode,
+        streetNumber: this.streetNumber,
+        companyName: this.companyName,
+        name: this.name,
+        phoneNumber: this.phoneNumber
+      }
+    }
   },
   methods: {
     init() {

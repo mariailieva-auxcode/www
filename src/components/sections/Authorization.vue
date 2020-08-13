@@ -43,23 +43,29 @@ export default {
     Login,
     SignUp,
   },
+  /**
+   * 3 UserTypes
+   * 
+   * 1 = siteOwners
+   * 2 = projectDevelopers
+   * 3 = specialists
+   */
   props: {
     isLogin: { type: Boolean, default: true },
+    data: { type: Object },
+    userType: { type: Number}
   },
   methods: {
-    submit(data) {
+    submit(credentials) {
       axios
-        .post("siteOwner", {
-          companyName: this.companyName,
-          size: this.size,
-          energy: this.energy,
-          material: this.material,
-        })
-        .then((data) => console.log(data));
+        .post("register", {...credentials, ...this.data})
+        .then((data) => {
+          this.$emit('close')
+        });
     },
-    register(data) {
+    register(credentials) {
       // to be modified when we have regiter for specialist
-      this.submit(data);
+      this.submit(credentials);
     },
   },
 };
