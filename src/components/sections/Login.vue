@@ -111,6 +111,7 @@ export default {
       color: #9597ac;
       text-align: left;
       font-weight: 400;
+      margin-left: 25px;
       label {
         line-height: 24px;
         align-items: baseline;
@@ -124,7 +125,7 @@ export default {
         text-align: right;
         margin: auto;
         top: 15px;
-        margin-left: 110px;
+        margin-left: 100px;
         align-items: baseline;
       }
     }

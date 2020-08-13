@@ -90,8 +90,7 @@ export default {
           border-bottom: 3px solid #fee224;
         }
       }
-      .Login,
-      .SignUp {
+      .Login {
         display: flex;
       }
     }

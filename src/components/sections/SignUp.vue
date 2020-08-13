@@ -120,7 +120,8 @@ export default {
         font-family: $font__IBM;
         margin-bottom: 0;
         color: #9597ac;
-        text-align: left;
+        justify-content: left;
+        margin-left: 20px;
         label {
           margin-left: 6px;
           margin-bottom: 0;
