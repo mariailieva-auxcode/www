@@ -1,28 +1,24 @@
 <template>
   <div class="authorization">
-    <div class="row login-buttons">
-      <p>Already having an account?</p>
-      <button @click="active = true">Log in</button>
-    </div>
-    <div class="card" :class="{'active' : active}">
+    <div class="card">
       <div class="row">
         <div class="col-5 image">
           <img src="/assets/login-image.png" />
         </div>
         <div class="col-6">
-          <div class="Login" :class="{'active1' : active1}">
-            <Login></Login>
+          <div class="Login">
+            <Login v-if="isLogin"></Login>
           </div>
-          <div class="SignUp" :class="{'active1' : active1}">
-            <SignUp></SignUp>
+          <div class="SignUp">
+            <SignUp v-if="!isLogin" @sign-up="register($event)"></SignUp>
           </div>
-          <button class="switch" @click="active1 = !active1">
+          <button v-if="isLogin" @click="isLogin=false" class="switch">
             <p>
               Don’t have an account?
               <span class="yellow-line">Sign up</span>
             </p>
           </button>
-          <button class="switch" @click="active1 = !active1">
+          <button v-if="!isLogin" @click="isLogin=true" class="switch">
             <p>
               <span class="yellow-line">Log in</span>
               instead
@@ -30,7 +26,7 @@
           </button>
         </div>
         <div class="col-1">
-          <button @click="active = false">
+          <button @click="$emit('close')">
             <img src="/assets/X-image.svg" />
           </button>
         </div>
@@ -41,16 +37,30 @@
 <script>
 import Login from "../sections/Login";
 import SignUp from "../sections/SignUp";
+import axios from "../../axios";
 export default {
   components: {
     Login,
     SignUp,
   },
-  data() {
-    return {
-      active: false,
-      active1: false,
-    };
+  props: {
+    isLogin: { type: Boolean, default: true },
+  },
+  methods: {
+    submit(data) {
+      axios
+        .post("siteOwner", {
+          companyName: this.companyName,
+          size: this.size,
+          energy: this.energy,
+          material: this.material,
+        })
+        .then((data) => console.log(data));
+    },
+    register(data) {
+      // to be modified when we have regiter for specialist
+      this.submit(data);
+    },
   },
 };
 </script>
@@ -58,6 +68,14 @@ export default {
 @import "../../assets/styles/main.scss";
 .authorization {
   .card {
+    display: flex;
+    position: absolute;
+    left: 35px;
+    right: 130px;
+    top: 60px;
+    width: auto;
+    height: auto;
+    z-index: 11;
     .col-6 {
       button.switch {
         border: none;
@@ -72,17 +90,9 @@ export default {
           border-bottom: 3px solid #fee224;
         }
       }
-      .Login {
-        display: flex;
-        &.active1 {
-          display: none;
-        }
-      }
+      .Login,
       .SignUp {
-        display: none;
-        &.active1 {
-          display: flex;
-        }
+        display: flex;
       }
     }
     .col-1 {
@@ -96,17 +106,7 @@ export default {
       top: 20px;
       right: -15px;
     }
-    display: none;
-    &.active {
-      display: flex;
-      position: absolute;
-      left: 35px;
-      right: 130px;
-      top: 60px;
-      width: auto;
-      height: auto;
-      z-index: 11;
-    }
+
     .row {
       margin: unset;
     }
@@ -117,29 +117,6 @@ export default {
         height: 650px;
         float: left;
       }
-    }
-  }
-  .login-buttons {
-    position: absolute;
-    top: 20px;
-    right: 55px;
-    font-family: $font__IBM;
-    align-items: baseline;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 700;
-    button {
-      background-color: transparent;
-      border: 2px solid #ffffff;
-      border-radius: 10px;
-      margin-left: 20px;
-      font-size: 14px;
-      justify-content: center;
-      color: #ffffff;
-      font-weight: 700;
-      width: 148px;
-      height: 46px;
-      align-items: baseline;
     }
   }
 }

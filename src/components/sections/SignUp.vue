@@ -4,7 +4,7 @@
       <img class="logo" src="/assets/logo.svg" />
       <p class="header">Sign up for greenatlas.earth</p>
       <div class="inputs">
-        <input type="email" id="email" placeholder="Email address" />
+        <input type="email" id="email" placeholder="Email address " v-model="email" />
         <div class="input-group mb-3">
           <input
             id="pass"
@@ -38,7 +38,7 @@
             <span class="black">Terms & Conditions</span>
           </label>
         </div>
-        <button class="sign-up">Sign up</button>
+        <button class="sign-up" @click="$emit('sign-up',{email, password})">Sign up</button>
       </div>
     </div>
   </div>
@@ -51,6 +51,7 @@ export default {
       showPassword: false,
       active: false,
       checkbox: false,
+      email: "",
     };
   },
 };

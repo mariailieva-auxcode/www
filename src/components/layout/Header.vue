@@ -2,6 +2,11 @@
   <lazy-background :src="image" placeholder="https://placeholder.pics/svg/1300x800" :blur="30">
     <div slot="content" class="header">
       <div class="header-overlay"></div>
+      <div class="row login-buttons">
+        <p>Already having an account?</p>
+        <button @click="showAuth = true">Log in</button>
+      </div>
+      <Authorization v-if="showAuth" @close="showAuth=false"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
         <h3 class="col-sm-12 col-12">{{description}}</h3>
@@ -50,6 +55,7 @@ export default {
       button2: "",
       button3: "",
       image: "",
+      showAuth: false,
     };
   },
   props: {
@@ -83,6 +89,29 @@ export default {
 
 .header {
   height: 100vh;
+  .login-buttons {
+    position: absolute;
+    top: 20px;
+    right: 55px;
+    font-family: $font__IBM;
+    align-items: baseline;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    button {
+      background-color: transparent;
+      border: 2px solid #ffffff;
+      border-radius: 10px;
+      margin-left: 20px;
+      font-size: 14px;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      width: 148px;
+      height: 46px;
+      align-items: baseline;
+    }
+  }
 }
 
 .header-content {
