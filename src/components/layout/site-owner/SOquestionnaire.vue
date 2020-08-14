@@ -2,7 +2,16 @@
   <div class="background-color">
     <div class="SOquestionnaire">
       <div class="header">
-        <Authorization v-if="showAuth" @close="showAuth=false" :isLogin="false" :data="siteOwnerData"></Authorization>
+<<<<<<< HEAD
+        <Authorization
+          v-if="showAuth"
+          @close="showAuth=false"
+          :isLogin="false"
+          :data="siteOwnerData"
+        ></Authorization>
+=======
+        <Authorization v-if="showAuth" @close="close()" :isLogin="false" :data="siteOwnerData"></Authorization>
+>>>>>>> 2e8c66749668ab41915dde8c235c8155bbfc3231
         <p>Welcome to greenatlas.earth!</p>
         <img src="/assets/hello-hand.svg" />
       </div>
@@ -94,12 +103,12 @@
                       v-model="size"
                       @input="filterCompanies"
                     />
+                    <p>sq.m.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- TODO (Misho) these buttons must not have width when they are part of the grid -->
           <div class="step map" v-if="step === 5">
             <div class="container">
               <div class="row">
@@ -109,7 +118,12 @@
                   </div>
                   <div class="form-inputs form-inline">
                     <input id="postal" placeholder="Postal Code" v-model="postCode" type="text" />
-                    <input id="street" placeholder="Street Number" v-model="streetNumber" type="text" />
+                    <input
+                      id="street"
+                      placeholder="Street Number"
+                      v-model="streetNumber"
+                      type="text"
+                    />
                   </div>
                 </div>
                 <div class="col-6">
@@ -129,11 +143,9 @@
             </div>
           </div>
           <div class="step step-6" v-if="step === 6">
-            <!-- TODO (Misho) make the container smaller on steps where you have other than col-12 // DONE // -->
             <div class="container">
               <div class="row">
                 <div class="col-12">
-                  <!-- TODO (Misho) replace all <label> with the right heading, <label> is used on forms where it describes the input // DONE //  -->
                   <h2>{{completeLabel}}</h2>
                 </div>
                 <div class="col-6">
@@ -141,7 +153,7 @@
                     <div class="complete">
                       <input type="email" placeholder="Company Name" v-model="companyName" />
                       <input type="text" placeholder="Name" v-model="name" />
-                      <input type="text" placeholder="Phone Number" v-model="phoneNumber" />
+                      <input type="number" placeholder="Phone Number" v-model="phoneNumber" />
                     </div>
                   </div>
                 </div>
@@ -149,7 +161,11 @@
                   <div class="account">
                     <button class="white">Submit without creating account</button>
                     <p>You will receive an email confirmation which you can use later to create an account</p>
-                    <button @click="showAuth=true" class="green">Create account</button>
+                    <button
+                      @click="signUp()"
+                      :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
+                      class="green"
+                    >Create account</button>
                     <p>Creating account will allow you to receive further assistance</p>
                   </div>
                 </div>
@@ -204,13 +220,19 @@
             <a
               class="next-button"
               @click="nextStep()"
-              v-if="step !== 5 && step !== 1 && step !== 6"
+              :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
+              v-if="step !== 5 && step !== 1 && step !== 6 "
             >
               <p>Continue</p>
               <img src="/assets/arrow-right-green.svg" />
             </a>
 
-            <a class="next-button" @click="step++" v-else-if="step === 5">
+            <a
+              class="next-button"
+              @click="nextStep()"
+              :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
+              v-else-if="step === 5"
+            >
               <p>Finish</p>
               <img src="/assets/arrow-right-green.svg" />
             </a>
@@ -218,7 +240,6 @@
         </div>
       </div>
       <!-- table -->
-      <!-- TODO (Misho) remove the search bar // DONE // -->
       <div class="table-wizard">
         <div>
           <table class="table">
@@ -274,14 +295,13 @@ export default {
       thirdQuestion: "",
       fourthQuestion: "",
       completeLabel: "",
-      companyName: "",
       powerType: [],
-      postCode: '',
-      streetNumber: '',
+      postCode: "",
+      streetNumber: "",
       size: undefined,
-      name: '',
-      companyName: '',
-      phoneNumber: '',
+      name: "",
+      companyName: "",
+      phoneNumber: "",
       material: [],
       companies: [],
       filteredCompanies: [],
@@ -308,21 +328,38 @@ export default {
       return {
         energyType: {
           wind: this.wind,
-          solar: this.solar
+          solar: this.solar,
         },
         siteType: {
           roof: this.roof,
           land: this.land,
-          water: this.water
+          water: this.water,
         },
         size: this.size,
         postCode: this.postCode,
         streetNumber: this.streetNumber,
         companyName: this.companyName,
         name: this.name,
-        phoneNumber: this.phoneNumber
-      }
-    }
+        phoneNumber: this.phoneNumber,
+      };
+    },
+    isNextAllowed() {
+      if (this.step == 2 && !this.wind && !this.solar) return false;
+      if (this.step == 3 && !this.roof && !this.water && !this.land)
+        return false;
+      if (this.step == 4 && !this.size) return false;
+      if (
+        (this.step == 5 && !this.postCode) ||
+        (this.step == 5 && !this.streetNumber)
+      )
+        return false;
+      if (
+        this.step == 6 &&
+        (!this.companyName || !this.name || !this.phoneNumber)
+      )
+        return false;
+      return true;
+    },
   },
   methods: {
     init() {
@@ -351,10 +388,10 @@ export default {
       if (this.wind) this.filteredCompanies;
     },
     nextStep() {
-      if (this.step == 2 && !this.wind && !this.solar) return;
-      if (this.step == 3 && !this.roof && !this.water && !this.land) return;
-      if (this.step == 4 && !this.size) return;
-      this.step++;
+      if (this.isNextAllowed) this.step++;
+    },
+    signUp() {
+      if (this.isNextAllowed) this.showAuth = true;
     },
     siteOwner() {
       axios
@@ -372,6 +409,10 @@ export default {
         this.filteredCompanies = this.companies;
       });
     },
+    close() {
+      this.showAuth = false;
+      this.$router.push(`/${this.$router.history.current.params.lang}/site-owner`)
+    }
   },
 };
 </script>
@@ -425,6 +466,11 @@ export default {
   }
   .form-inputs {
     margin: auto;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
     input {
       display: block;
       border-radius: 10px;
@@ -525,6 +571,14 @@ export default {
       .number {
         input {
           text-align: left;
+        }
+        p {
+          color: #55b364;
+          font-family: $font__IBM;
+          font-weight: 700;
+          position: absolute;
+          right: 350px;
+          top: 90px;
         }
       }
       h2 {
