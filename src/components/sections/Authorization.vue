@@ -1,5 +1,6 @@
 <template>
   <div class="authorization">
+    <div class="card-overlay"></div>
     <div class="card">
       <div class="row">
         <div class="col-5 image">
@@ -45,7 +46,7 @@ export default {
   },
   /**
    * 3 UserTypes
-   * 
+   *
    * 1 = siteOwners
    * 2 = projectDevelopers
    * 3 = specialists
@@ -53,15 +54,13 @@ export default {
   props: {
     isLogin: { type: Boolean, default: true },
     data: { type: Object },
-    userType: { type: Number}
+    userType: { type: Number },
   },
   methods: {
     submit(credentials) {
-      axios
-        .post("register", {...credentials, ...this.data})
-        .then((data) => {
-          this.$emit('close')
-        });
+      axios.post("register", { ...credentials, ...this.data }).then((data) => {
+        this.$emit("close");
+      });
     },
     register(credentials) {
       // to be modified when we have regiter for specialist
@@ -73,10 +72,20 @@ export default {
 <style lang="scss">
 @import "../../assets/styles/main.scss";
 .authorization {
+  .card-overlay {
+    background: #000000 0% 0% no-repeat padding-box;
+    opacity: 0.2;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
   .card {
     display: flex;
     position: absolute;
-    left: 35px;
+    border-radius: 15px;
+    left: 130px;
     right: 130px;
     top: 60px;
     width: auto;
@@ -121,6 +130,7 @@ export default {
         width: 470px;
         height: 650px;
         float: left;
+        border-radius: 15px;
       }
     }
   }
