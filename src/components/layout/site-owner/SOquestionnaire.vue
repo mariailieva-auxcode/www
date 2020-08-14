@@ -2,107 +2,157 @@
   <div class="background-color">
     <div class="SOquestionnaire">
       <div class="header">
+        <Authorization v-if="showAuth" @close="showAuth=false" :isLogin="false" :data="siteOwnerData"></Authorization>
         <p>Welcome to greenatlas.earth!</p>
         <img src="/assets/hello-hand.svg" />
       </div>
       <div class="user-wizard">
-        <div class="row questions-header" v-if="step !==6">
-          <p>COMPLETE YOUR PROFILE</p>
+        <div class="row questions-header" v-if="step !== 6">
+          <p>COMPLETE ONBOARDING</p>
         </div>
         <div class="user-questions">
           <div class="step" v-if="step === 1">
-            <div class="first-step">
+            <div class="first-step container">
               <div class="row">
-                <label>{{welcomeLabel}}</label>
+                <div class="col-12">
+                  <h2>{{welcomeLabel}}</h2>
+                  <button @click="step++" v-if="step === 1">
+                    <span>Start</span>
+                  </button>
+                </div>
               </div>
-              <button @click="step++" v-if="step === 1">
-                <p>Start</p>
-              </button>
             </div>
           </div>
+          <!-- TODO (Misho) to make the rest of the steps with grid // DONE // -->
           <div class="step" v-if="step === 2">
-            <div class="row">
-              <label>{{firstQuestion}}</label>
-            </div>
-            <div class="row solar-and-wind">
-              <button
-                class="solar"
-                :class="{'active': solar}"
-                @click="solar =!solar;  filterCompanies()"
-              >
-                <img src="/assets/solar.svg" />Solar
-              </button>
-              <button
-                class="wind"
-                :class="{'active': wind}"
-                @click="wind =!wind; filterCompanies()"
-              >
-                <img src="/assets/wind.svg" />Wind
-              </button>
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <h2>{{firstQuestion}}</h2>
+                  <div class="solar-and-wind">
+                    <button
+                      class="solar"
+                      :class="{'active': solar}"
+                      @click="solar =!solar;  filterCompanies()"
+                    >
+                      <img src="/assets/solar.svg" />Solar
+                    </button>
+                    <button
+                      class="wind"
+                      :class="{'active': wind}"
+                      @click="wind =!wind; filterCompanies()"
+                    >
+                      <img src="/assets/wind.svg" />Wind
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="step" v-if="step === 3">
-            <label>{{secondQuestion}}</label>
-            <div class="row">
-              <button
-                class="solar"
-                :class="{'active': roof}"
-                @click="roof =!roof; filterCompanies()"
-              >
-                <img src="/assets/roof.svg" />Roof
-              </button>
-              <button
-                class="wind"
-                :class="{'active': land}"
-                @click="land =!land; filterCompanies()"
-              >
-                <img src="/assets/land.svg" />Land
-              </button>
-              <button
-                class="wind"
-                :class="{'active': water}"
-                @click="water =!water; filterCompanies()"
-              >
-                <img src="/assets/water.svg" />Water
-              </button>
+            <div class="container">
+              <h2>{{secondQuestion}}</h2>
+              <div class="row">
+                <div class="col-12">
+                  <button
+                    class="solar"
+                    :class="{'active': roof}"
+                    @click="roof =!roof; filterCompanies()"
+                  >
+                    <img src="/assets/roof.svg" />Roof
+                  </button>
+                  <button
+                    class="wind"
+                    :class="{'active': land}"
+                    @click="land =!land; filterCompanies()"
+                  >
+                    <img src="/assets/land.svg" />Land
+                  </button>
+                  <button
+                    class="wind"
+                    :class="{'active': water}"
+                    @click="water =!water; filterCompanies()"
+                  >
+                    <img src="/assets/water.svg" />Water
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="step" v-if="step === 4">
-            <div class="row">
-              <label for="size">{{thirdQuestion}}</label>
-            </div>
-            <div class="row number">
-              <input
-                id="phoneNumber"
-                class="size-input"
-                placeholder="0"
-                type="number"
-                v-model="size"
-                @input="filterCompanies"
-              />
-            </div>
-          </div>
-          <div class="step map" v-if="step === 5">
-            <div class="row">
-              <div class="map-codes">
-                <label>{{fourthQuestion}}</label>
-                <div class="row row-codes">
-                  <input id="postal" placeholder="Postal Code" type="text" />
-                  <input id="street" placeholder="Street Number" type="text" />
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <h2 for="size">{{thirdQuestion}}</h2>
+                  <div class="number">
+                    <!-- TODO (Misho) make the input begin typing from the left // DONE //-->
+                    <input
+                      id="phoneNumber"
+                      class="size-input"
+                      placeholder="0"
+                      type="number"
+                      v-model="size"
+                      @input="filterCompanies"
+                    />
+                  </div>
                 </div>
               </div>
-              <div>
-                <img src="/assets/map.png" />
+            </div>
+          </div>
+          <!-- TODO (Misho) these buttons must not have width when they are part of the grid -->
+          <div class="step map" v-if="step === 5">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <div class="col-12">
+                    <h2>{{fourthQuestion}}</h2>
+                  </div>
+                  <div class="form-inputs form-inline">
+                    <input id="postal" placeholder="Postal Code" v-model="postCode" type="text" />
+                    <input id="street" placeholder="Street Number" v-model="streetNumber" type="text" />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div style="width: 100%">
+                    <iframe
+                      width="445px"
+                      height="215px"
+                      frameborder="0"
+                      scrolling="no"
+                      marginheight="0"
+                      marginwidth="0"
+                      src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Amsterdam+(GreenAtlas)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                    ></iframe>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="step" v-if="step === 6">
-            <div class="comlete">
+          <div class="step step-6" v-if="step === 6">
+            <!-- TODO (Misho) make the container smaller on steps where you have other than col-12 // DONE // -->
+            <div class="container">
               <div class="row">
-                <img src="/assets/correct.svg" />
-              </div>
-              <div class="row">
-                <label for="phoneNumber">{{completeLabel}}</label>
+                <div class="col-12">
+                  <!-- TODO (Misho) replace all <label> with the right heading, <label> is used on forms where it describes the input // DONE //  -->
+                  <h2>{{completeLabel}}</h2>
+                </div>
+                <div class="col-6">
+                  <div class="form-inputs">
+                    <div class="complete">
+                      <input type="email" placeholder="Company Name" v-model="companyName" />
+                      <input type="text" placeholder="Name" v-model="name" />
+                      <input type="text" placeholder="Phone Number" v-model="phoneNumber" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="account">
+                    <button class="white">Submit without creating account</button>
+                    <p>You will receive an email confirmation which you can use later to create an account</p>
+                    <button @click="showAuth=true" class="green">Create account</button>
+                    <p>Creating account will allow you to receive further assistance</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -133,7 +183,7 @@
             </a>
             <a class="back-button" @click="step--" v-if="step === 6">
               <img src="/assets/arrow-left-white.svg" />
-              <p>Edit</p>
+              <p>Back</p>
             </a>
             <div class="percent-line" v-if="step === 2">
               <div class="green1-line"></div>
@@ -159,10 +209,7 @@
               <p>Continue</p>
               <img src="/assets/arrow-right-green.svg" />
             </a>
-            <a class="next-button" v-if="step === 6">
-              <p>Review</p>
-              <img src="/assets/arrow-right-green.svg" />
-            </a>
+
             <a class="next-button" @click="step++" v-else-if="step === 5">
               <p>Finish</p>
               <img src="/assets/arrow-right-green.svg" />
@@ -171,28 +218,8 @@
         </div>
       </div>
       <!-- table -->
+      <!-- TODO (Misho) remove the search bar // DONE // -->
       <div class="table-wizard">
-        <!-- <div class="row search-bar">
-          <div class="col-5 table-header-input">
-            <img src="/assets/table-filter.svg" />
-            <input
-              type="text"
-              placeholder="Search..."
-              v-model="companyNameSearch"
-              @input="filterCompanies"
-            />
-          </div>
-          <div class="col-7 table-header-menu">
-            <p>Company name</p>
-            <img src="/assets/arrow-down.svg" />
-            <p>Energy Type</p>
-            <img src="/assets/arrow-down.svg" />
-            <p>Material Type</p>
-            <img src="/assets/arrow-down.svg" />
-            <p>Size</p>
-            <img src="/assets/arrow-down.svg" />
-          </div>
-        </div>-->
         <div>
           <table class="table">
             <thead>
@@ -230,10 +257,14 @@
 </template>
 
 <script>
+import Authorization from "../../sections/Authorization";
 import questionnaire from "js-yaml-loader!../../../../content/nl/site-owner/questionnaire.yaml";
 import questionnaireEn from "js-yaml-loader!../../../../content/en/site-owner/questionnaire.yaml";
 import axios from "../../../axios";
 export default {
+  components: {
+    Authorization,
+  },
   data() {
     return {
       lang: "",
@@ -244,9 +275,13 @@ export default {
       fourthQuestion: "",
       completeLabel: "",
       companyName: "",
-      companyNameSearch: "",
       powerType: [],
+      postCode: '',
+      streetNumber: '',
       size: undefined,
+      name: '',
+      companyName: '',
+      phoneNumber: '',
       material: [],
       companies: [],
       filteredCompanies: [],
@@ -256,6 +291,7 @@ export default {
       roof: false,
       land: false,
       water: false,
+      showAuth: false,
     };
   },
   created() {
@@ -266,6 +302,27 @@ export default {
     $route() {
       this.init();
     },
+  },
+  computed: {
+    siteOwnerData() {
+      return {
+        energyType: {
+          wind: this.wind,
+          solar: this.solar
+        },
+        siteType: {
+          roof: this.roof,
+          land: this.land,
+          water: this.water
+        },
+        size: this.size,
+        postCode: this.postCode,
+        streetNumber: this.streetNumber,
+        companyName: this.companyName,
+        name: this.name,
+        phoneNumber: this.phoneNumber
+      }
+    }
   },
   methods: {
     init() {
@@ -283,7 +340,7 @@ export default {
         (comp) =>
           comp.data.companyName
             .toLowerCase()
-            .includes(this.companyNameSearch.toLowerCase()) &&
+            .includes(this.companyName.toLowerCase()) &&
           (!this.wind || comp.data.energy.includes("Wind")) &&
           (!this.solar || comp.data.energy.includes("Solar")) &&
           (!this.roof || comp.data.material.includes("Roof")) &&
@@ -332,11 +389,78 @@ export default {
 .SOquestionnaire {
   width: 80%;
   margin: 0 auto;
+  .container {
+    max-width: 992px;
+  }
+  .step-6 {
+    .container {
+      max-width: 768px;
+    }
+  }
+  .account {
+    max-width: 420px;
+    align-items: center;
+    p {
+      font: 12px;
+      color: #9597ac;
+    }
+    button {
+      outline: none;
+      border: 1px solid #55b364;
+      border-radius: 10px;
+      width: 305px;
+      height: 46px;
+      font-size: 14px;
+      font-family: $font__IBM;
+      font-weight: 700;
+    }
+    .white {
+      background-color: transparent;
+      color: #55b364;
+    }
+    .green {
+      background-color: #55b364;
+      color: #ffffff;
+    }
+  }
+  .form-inputs {
+    margin: auto;
+    input {
+      display: block;
+      border-radius: 10px;
+      border: 1px solid #d3d5e3;
+      padding-left: 20px;
+      font-size: 14px;
+      font-family: $font__IBM;
+      font-weight: 400;
+      height: 45px;
+      margin-bottom: 16px;
+    }
+    .complete {
+      flex-direction: column;
+      input {
+        width: 305px;
+      }
+    }
+
+    #postal {
+      margin-right: 25px;
+    }
+
+    &.form-inline {
+      justify-content: center;
+      input {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
   .header {
     margin-top: 45px;
     margin-bottom: 50px;
     display: flex;
     justify-content: flex-start;
+
     p {
       font-family: $font__IBM;
       font-weight: 700;
@@ -376,23 +500,6 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin-right: 70px;
-            .row-codes {
-              margin: 0 auto;
-              input {
-                border-radius: 5px;
-                border: 1px solid #d3d5e3;
-                padding-left: 20px;
-                font-size: 14px;
-                font-family: $font__IBM;
-                font-weight: 400;
-                height: 45px;
-                width: 140px;
-              }
-              #postal {
-                margin-right: 25px;
-              }
-            }
           }
         }
       }
@@ -406,7 +513,7 @@ export default {
           background-color: #55b364;
           outline: none;
           border: none;
-          p {
+          span {
             font-family: $font__IBM;
             font-weight: 700;
             font-size: 14;
@@ -417,10 +524,10 @@ export default {
       }
       .number {
         input {
-          text-align: center;
+          text-align: left;
         }
       }
-      label {
+      h2 {
         font-family: $font__IBM;
         font-weight: 700;
         font-size: 25px;
@@ -443,14 +550,6 @@ export default {
         margin: 0;
         margin-right: 20px;
         margin-left: 5px;
-      }
-      .comlete {
-        display: flex;
-        flex-direction: column;
-        margin-top: 100px;
-        img {
-          margin-bottom: 30px;
-        }
       }
     }
     .buttons > .row {
@@ -523,11 +622,6 @@ export default {
           height: 10px;
           border-radius: 10px;
         }
-        // .other-line4 {
-        //   border-right: 180px solid #e6e7f4;
-        //   height: 10px;
-        //   border-radius: 0 10px 10px 0;
-        // }
       }
       .back-button {
         display: flex;
@@ -552,37 +646,6 @@ export default {
     box-shadow: 0px 6px 30px #1d226f0d;
     padding: 15px 45px 30px;
     border-radius: 15px;
-    .search-bar {
-      display: flex;
-      background-color: #fafafd;
-      border-radius: 8px;
-      height: 40px;
-      margin-bottom: 25px;
-      .table-header-input {
-        padding: 0;
-        display: flex;
-        img {
-          margin: auto 15px;
-        }
-        input {
-          background-color: #fafafd;
-          border: none;
-          outline: none;
-        }
-      }
-      .table-header-menu {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        p {
-          margin: 0;
-          margin-left: 25px;
-        }
-        img {
-          margin-left: 6px;
-        }
-      }
-    }
   }
 }
 .button {
