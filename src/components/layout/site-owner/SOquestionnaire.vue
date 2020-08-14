@@ -2,7 +2,7 @@
   <div class="background-color">
     <div class="SOquestionnaire">
       <div class="header">
-        <Authorization v-if="showAuth" @close="showAuth=false" :isLogin="false" :data="siteOwnerData"></Authorization>
+        <Authorization v-if="showAuth" @close="close()" :isLogin="false" :data="siteOwnerData"></Authorization>
         <p>Welcome to greenatlas.earth!</p>
         <img src="/assets/hello-hand.svg" />
       </div>
@@ -372,6 +372,10 @@ export default {
         this.filteredCompanies = this.companies;
       });
     },
+    close() {
+      this.showAuth = false;
+      this.$router.push(`/${this.$router.history.current.params.lang}/site-owner`)
+    }
   },
 };
 </script>
