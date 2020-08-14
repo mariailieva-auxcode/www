@@ -45,7 +45,7 @@ export default {
   },
   /**
    * 3 UserTypes
-   * 
+   *
    * 1 = siteOwners
    * 2 = projectDevelopers
    * 3 = specialists
@@ -53,15 +53,13 @@ export default {
   props: {
     isLogin: { type: Boolean, default: true },
     data: { type: Object },
-    userType: { type: Number}
+    userType: { type: Number },
   },
   methods: {
     submit(credentials) {
-      axios
-        .post("register", {...credentials, ...this.data})
-        .then((data) => {
-          this.$emit('close')
-        });
+      axios.post("register", { ...credentials, ...this.data }).then((_) => {
+        this.$emit("close", _);
+      });
     },
     register(credentials) {
       // to be modified when we have regiter for specialist
