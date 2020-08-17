@@ -15,7 +15,11 @@
       <img :src="whatIs.image" class="image-for-mobile" />
       <p class="description">{{whatIs.description}}</p>
       <div class="row">
-        <div class="col-sm-12 col-xl-12 col-12 text" v-for="bullet of whatIs.bullets" :key="bullet">
+        <div
+          class="col-sm-12 col-xl-12 col-12 text"
+          v-for="bullet of whatIs.bullets"
+          :key="bullet.text"
+        >
           <div class="row">
             <img class="col-xl-2 col-sm-2 col-4 icon" :src="bullet.icon" />
             <p class="col-xl-10 col-sm-10">{{bullet.text}}</p>
@@ -27,21 +31,21 @@
 </template>
 
 <script>
-import whatIs from "js-yaml-loader!../../../content/nl/general/whatis.yaml";
+import whatIsNl from "js-yaml-loader!../../../content/nl/general/whatis.yaml";
 import whatIsEn from "js-yaml-loader!../../../content/en/general/whatis.yaml";
 import Title from "../layout/Title";
 export default {
   name: "WhatIsGreen",
   components: {
-    Title
+    Title,
   },
   data() {
     return {
-      whatIs: {}
+      whatIs: {},
     };
   },
   props: {
-    lang: String
+    lang: String,
   },
   mounted() {
     this.init();
@@ -49,14 +53,14 @@ export default {
   watch: {
     lang() {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
-      let data = this.lang === "en" ? whatIsEn : whatIs;
+      let data = this.lang === "en" ? whatIsEn : whatIsNl;
       this.whatIs = data;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -2,20 +2,16 @@
   <div class="container-fluid">
     <div class="row news-text">
       <div class="col-sm-12 col-ml-4 col-xl-4 col-12 title">
-        <Title
-          :title="data.homeTitles.title"
-          :sectionTitle="data.homeTitles.subTitle"
-          :isHomePage="true"
-        ></Title>
+        <Title :title="homeTitles.title" :sectionTitle="homeTitles.subTitle" :isHomePage="true"></Title>
       </div>
       <div class="col-sm-7 col-xl-5 col-12 description-size">
-        <p>{{data.description}}</p>
+        <p>{{description}}</p>
       </div>
       <div class="col-sm-5 col-xl-3 col-12 link">
         <router-link :to="`/${$router.history.current.params.lang}/news`">
           <button>
             <p>
-              {{data.button}}
+              {{button}}
               <img src="/assets/arrow-right-blue.png" />
             </p>
           </button>
@@ -31,19 +27,17 @@ import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
 import Title from "../layout/Title";
 export default {
   components: {
-    Title
+    Title,
   },
   data() {
     return {
-      data: {}
+      homeTitles: {},
+      description: "",
+      button: "",
     };
   },
-  // created() {
-  //   this.data = info;
-  //   this.data = infoEn;
-  // },
   props: {
-    lang: String
+    lang: String,
   },
   mounted() {
     this.init();
@@ -51,14 +45,16 @@ export default {
   watch: {
     lang() {
       this.init();
-    }
+    },
   },
   methods: {
     init() {
       let news1 = this.lang === "en" ? infoEn : info;
-      this.data = news1;
-    }
-  }
+      this.homeTitles = news1.homeTitles;
+      this.description = news1.description;
+      this.button = news1.button;
+    },
+  },
 };
 </script>
 
