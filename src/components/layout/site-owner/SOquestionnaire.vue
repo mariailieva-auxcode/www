@@ -1,6 +1,6 @@
 <template>
   <div class="background-color">
-    <div class="SOquestionnaire">
+    <div class="so-questionnaire">
       <div class="header">
         <Authorization v-if="showAuth" @close="close()" :isLogin="false" :data="siteOwnerData"></Authorization>
         <p>Welcome to greenatlas.earth!</p>
@@ -23,7 +23,6 @@
               </div>
             </div>
           </div>
-          <!-- TODO (Misho) to make the rest of the steps with grid // DONE // -->
           <div class="step" v-if="step === 2">
             <div class="container">
               <div class="row">
@@ -84,17 +83,17 @@
               <div class="row">
                 <div class="col-12">
                   <h2 for="size">{{thirdQuestion}}</h2>
-                  <div class="number">
-                    <!-- TODO (Misho) make the input begin typing from the left // DONE //-->
-                    <input
-                      id="phoneNumber"
-                      class="size-input"
-                      placeholder="0"
-                      type="number"
-                      v-model="size"
-                      @input="filterCompanies"
-                    />
-                    <p>sq.m.</p>
+                  <div class="form-inputs form-inline">
+                    <div class="size">
+                      <input
+                        id="phoneNumber"
+                        placeholder="0"
+                        type="number"
+                        v-model="size"
+                        @input="filterCompanies"
+                      />
+                      <p>sq.m.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -164,7 +163,6 @@
             </div>
           </div>
         </div>
-        <!-- buttons -->
         <div class="buttons">
           <div class="row" v-if="step === 2">
             <p>1 of 4</p>
@@ -230,7 +228,6 @@
           </div>
         </div>
       </div>
-      <!-- table -->
       <div class="table-wizard">
         <div>
           <table class="table">
@@ -402,23 +399,17 @@ export default {
     },
     close() {
       this.showAuth = false;
-      this.$router.push(`/${this.$router.history.current.params.lang}/site-owner`)
-    }
+      this.$router.push(
+        `/${this.$router.history.current.params.lang}/site-owner`
+      );
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
 @import "../../../assets/styles/main.scss";
-.size-input {
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  -moz-appearance: textfield;
-}
-.SOquestionnaire {
+.so-questionnaire {
   width: 80%;
   margin: 0 auto;
   .container {
@@ -456,13 +447,29 @@ export default {
     }
   }
   .form-inputs {
+    justify-content: center;
     margin: auto;
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+    .size {
+      p {
+        color: #55b364;
+        font-family: $font__IBM;
+        font-weight: 700;
+        position: absolute;
+        right: 350px;
+        top: 90px;
+      }
+      input {
+        height: 45px;
+        width: 300px;
+      }
+    }
     input {
+      outline: none;
       display: block;
       border-radius: 10px;
       border: 1px solid #d3d5e3;
@@ -472,6 +479,8 @@ export default {
       font-weight: 400;
       height: 45px;
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
     }
     .complete {
       flex-direction: column;
@@ -479,17 +488,8 @@ export default {
         width: 305px;
       }
     }
-
     #postal {
       margin-right: 25px;
-    }
-
-    &.form-inline {
-      justify-content: center;
-      input {
-        display: flex;
-        align-items: center;
-      }
     }
   }
   .header {
@@ -559,33 +559,12 @@ export default {
           }
         }
       }
-      .number {
-        input {
-          text-align: left;
-        }
-        p {
-          color: #55b364;
-          font-family: $font__IBM;
-          font-weight: 700;
-          position: absolute;
-          right: 350px;
-          top: 90px;
-        }
-      }
       h2 {
         font-family: $font__IBM;
         font-weight: 700;
         font-size: 25px;
         color: #65687e;
         margin-bottom: 50px;
-      }
-      #companyName,
-      #phoneNumber,
-      #serviceValue {
-        border-radius: 5px;
-        border: 1px solid #d3d5e3;
-        height: 45px;
-        width: 300px;
       }
       #powerType {
         display: flex;
