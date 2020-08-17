@@ -476,11 +476,19 @@ export default {
       padding-left: 20px;
       font-size: 14px;
       font-family: $font__IBM;
-      font-weight: 400;
+      font-weight: 500;
       height: 45px;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
+      color: #26272e;
+      &::placeholder {
+        color: #9597ac;
+        font-weight: 400;
+      }
+      &:focus {
+        border: 1px solid #55b364;
+      }
     }
     .complete {
       flex-direction: column;
