@@ -1,11 +1,17 @@
 <template>
-  <div class="header news-header" :style="{'background-image': `url(${headerImage})`}">
-    <div class="header-overlay"></div>
-    <div class="header-content">
-      <h1>{{headerTitle}}</h1>
-      <h3>{{headerDescription}}</h3>
+  <lazy-background
+    :src="headerImage"
+    placeholder="https://placeholder.pics/svg/1300x800"
+    :blur="30"
+  >
+    <div slot="content" class="header">
+      <div class="header-overlay"></div>
+      <div class="header-content">
+        <h1>{{headerTitle}}</h1>
+        <h3>{{headerDescription}}</h3>
+      </div>
     </div>
-  </div>
+  </lazy-background>
 </template>
 
 <script>

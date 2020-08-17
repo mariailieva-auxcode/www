@@ -1,7 +1,7 @@
 <template>
   <div class="row row-fluid what-is-green-phone">
     <div class="col-12 col-lg-6 col-xl-6 image">
-      <img :src="whatIs.image" />
+      <lazy-img :src="whatIs.image" :blur="30" />
     </div>
     <div class="col-sm-12 col-lg-6 col-xl-6 col-12 what-section">
       <div class="col-sm-12 col-md-12 col-xl-12 col-12">
@@ -12,7 +12,7 @@
           :isWhat="true"
         ></Title>
       </div>
-      <img :src="whatIs.image" class="image-for-mobile" />
+      <lazy-img :src="whatIs.image" class="image-for-mobile" :blur="30" />
       <p class="description">{{whatIs.description}}</p>
       <div class="row">
         <div
@@ -21,7 +21,7 @@
           :key="bullet.text"
         >
           <div class="row">
-            <img class="col-xl-2 col-sm-2 col-4 icon" :src="bullet.icon" />
+            <lazy-img class="col-xl-2 col-sm-2 col-4 icon" :src="bullet.icon" :blur="30" />
             <p class="col-xl-10 col-sm-10">{{bullet.text}}</p>
           </div>
         </div>
@@ -66,6 +66,16 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/main.scss";
+.what-is-green-phone {
+  display: flex;
+  align-items: center;
+  .image {
+    .lazy-image {
+      max-width: 570px;
+      border-radius: 0px 15px 15px 0px;
+    }
+  }
+}
 
 .row {
   max-width: 95%;
@@ -87,11 +97,10 @@ export default {
       display: none;
     }
     .description {
-      margin-left: 80px;
+      margin-left: 30px;
       margin-bottom: 70px;
     }
     .text {
-      margin-left: 40px;
       margin-bottom: 20px;
       padding: 0 15px 0 0;
       .row {
@@ -114,7 +123,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and(min-width: 769px) and (max-width: 992px) {
   .image {
     display: none;
   }

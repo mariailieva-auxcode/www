@@ -14,7 +14,7 @@
         </button>
       </div>
       <div class="col-sm-12 col-xl-6 col-12">
-        <img :src="tools.image" class="tools-image" />
+        <lazy-img :src="tools.image" class="tools-image" :blur="30" />
       </div>
     </div>
   </div>
@@ -25,11 +25,11 @@ import Title from "../layout/Title";
 export default {
   name: "Tools",
   components: {
-    Title
+    Title,
   },
   props: {
-    tools: { default: {} }
-  }
+    tools: { default: {} },
+  },
 };
 </script>
 

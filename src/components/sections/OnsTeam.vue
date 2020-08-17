@@ -8,7 +8,7 @@
     <div class="row">
       <div class="yaml-links" v-for="person of team" :key="person.name">
         <div class="col-sm-12 col-md-5 col-lg-4 col-xl-3 col-12 picture">
-          <img class="pic" :src="person.picture" />
+          <lazy-img class="pic" :src="person.picture" :blur="30" />
           <img class="phone-only" :src="person.phonePicture" />
         </div>
         <div class="col-sm-12 col-lg-8 col-md-7 col-xl-9 col-12 team-card">

@@ -95,108 +95,39 @@
 
             .burger-menu {
                 .row {
-                    .home-logo {
-                        .green-line {
-                            width: 3px;
-                            margin-top: 10px;
-                            border-bottom: 30px solid #55b364;
-                        }
+                    margin-left: 20px;
 
-                        button {
-                            .row {
-                                flex-wrap: nowrap;
-
-                                img {
-                                    margin-right: 10px;
-                                    margin-right: 10px;
-                                }
-                            }
-                        }
-                    }
-
-                    .news-logo {
+                    .home-logo,
+                    .news-logo,
+                    .owner-logo.mobile,
+                    .specialist-logo.mobile,
+                    .project-logo.mobile {
+                        display: flex;
+                        justify-content: flex-start;
+                        padding: 0;
                         margin-top: 0;
 
                         .green-line {
-                            width: 3px;
-                            margin-top: 10px;
+                            width: 5px;
                             border-bottom: 30px solid #55b364;
+                            margin-left: 25px;
+                            margin-top: 5px;
                         }
 
                         button {
                             flex-wrap: nowrap;
+                            margin-top: 10px;
 
                             img {
                                 margin-right: 10px;
+                                width: 20px;
+                                height: 20px;
                             }
                         }
                     }
 
                     .owner-logo {
                         display: none;
-                    }
-
-                    .owner-logo.mobile {
-                        display: flex;
-                        margin-top: 0;
-                        justify-content: center;
-
-                        .green-line {
-                            width: 3px;
-                            margin-top: 10px;
-                            border-bottom: 30px solid #55b364;
-                        }
-
-                        button {
-                            flex-wrap: nowrap;
-
-                            img {
-                                margin-right: 10px;
-                                width: 20px;
-                            }
-                        }
-                    }
-
-                    .specialist-logo.mobile {
-                        display: flex;
-                        margin-top: 0;
-                        justify-content: center;
-
-                        .green-line {
-                            width: 3px;
-                            margin-top: 10px;
-                            border-bottom: 30px solid #55b364;
-                        }
-
-                        button {
-                            flex-wrap: nowrap;
-
-                            img {
-                                margin-right: 10px;
-                                width: 20px;
-                            }
-                        }
-                    }
-
-                    .project-logo.mobile {
-                        display: flex;
-                        margin-top: 0;
-                        justify-content: center;
-
-                        .green-line {
-                            width: 3px;
-                            margin-top: 10px;
-                            border-bottom: 30px solid #55b364;
-                        }
-
-                        button {
-                            flex-wrap: nowrap;
-
-                            img {
-                                margin-right: 10px;
-                                width: 20px;
-                            }
-                        }
                     }
                 }
             }
@@ -359,7 +290,9 @@
 
     .what-is-green-phone {
         .image {
-            display: none;
+            display: flex;
+            padding-right: 20px;
+            padding-left: 0;
         }
 
         .what-section {
@@ -370,7 +303,11 @@
                 position: relative;
                 display: flex !important;
                 left: -95px;
-                width: 115%;
+                width: 110%;
+                border-radius: 0px 15px 15px 0px;
+                box-shadow: 0px 0px 30px #1D226F1A;
+                margin-top: 50px;
+                margin-bottom: 35px;
             }
 
             .description {
@@ -384,7 +321,7 @@
                     margin-left: 0 !important;
 
                     .row {
-                        img {
+                        .icon {
                             width: 100px;
                             height: 50px;
                             margin: 0 auto;

@@ -368,7 +368,7 @@ export default {
     }
     button {
       border: none;
-      margin-top: 10px;
+      margin-top: 15px;
       background-color: white;
       .news,
       .home,
@@ -418,8 +418,6 @@ export default {
 }
 .green-line {
   width: 5px;
-  height: 1px;
-  margin-top: 5px;
   border-bottom: 80px solid #55b364;
   border-radius: 10px;
   position: fixed;

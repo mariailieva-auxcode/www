@@ -5,7 +5,7 @@
     </div>
     <div class="row phone-resolution">
       <div class="col-sm-12 col-xl-6 col-12">
-        <img class="image" :src="database.image" />
+        <lazy-img class="image" :src="database.image" :blur="30" />
       </div>
       <div class="col-sm-12 col-xl-6 col-12 text">
         <p>{{database.description}}</p>
@@ -93,12 +93,12 @@ export default {
     margin-top: 50px;
     margin-bottom: 50px !important;
   }
-  .image{
-    width:100%
+  .image {
+    width: 100%;
   }
-  button{
-    p{
-      margin:auto !important;
+  button {
+    p {
+      margin: auto !important;
     }
   }
 }

@@ -18,7 +18,7 @@
         v-for="partner of partners.partners"
         :key="partner.name"
       >
-        <img :src="partner.logo" />
+        <lazy-img class="image" :src="partner.logo" :blur="30" />
         <p>{{partner.description}}</p>
       </div>
     </div>
@@ -79,9 +79,8 @@ export default {
       font-size: 18px;
       line-height: 23px;
     }
-    img {
+    .image {
       margin-bottom: 40px;
-      height: 80px;
       width: 100%;
     }
   }

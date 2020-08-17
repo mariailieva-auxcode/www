@@ -1,18 +1,22 @@
 <template>
-  <div class="header" :style="{'background-image': `url(${image})`}">
-    <div class="header-overlay"></div>
-    <div class="header-content">
-      <p class="news-tag">{{ tag}}</p>
-      <h1>{{title}}</h1>
-      <h3>{{description}}</h3>
-      <p>{{textSurvey}}</p>
-      <router-link :to="`/${$router.history.current.params.lang}/project-developer/questionnaire`">
-        <button class="button-choice">
-          <p>{{button}}</p>
-        </button>
-      </router-link>
+  <lazy-background :src="image" placeholder="https://placeholder.pics/svg/1300x800" :blur="30">
+    <div slot="content" class="header">
+      <div class="header-overlay"></div>
+      <div class="header-content">
+        <p class="news-tag">{{ tag}}</p>
+        <h1>{{title}}</h1>
+        <h3>{{description}}</h3>
+        <p>{{textSurvey}}</p>
+        <router-link
+          :to="`/${$router.history.current.params.lang}/project-developer/questionnaire`"
+        >
+          <button class="button-choice">
+            <p>{{button}}</p>
+          </button>
+        </router-link>
+      </div>
     </div>
-  </div>
+  </lazy-background>
 </template>
 
 <script>
