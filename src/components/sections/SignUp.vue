@@ -42,8 +42,8 @@
             type="checkbox"
             class="custom-control-input"
             id="termsAndConditions"
-            v-model="checked"
-            @click="!checked; signUp()"
+            v-model="checkbox"
+            @change="!checkbox"
           />
           <label class="custom-control-label" for="termsAndConditions">
             I agree to the
@@ -70,7 +70,6 @@ export default {
       checkbox: false,
       email: "",
       confirmPassword: "",
-      checked: false,
     };
   },
   computed: {
