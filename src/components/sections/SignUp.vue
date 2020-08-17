@@ -30,15 +30,32 @@
             <li>Uppercase and lowercase letter</li>
           </ul>
         </div>
-        <input type="password" id="confirm" name="password" placeholder="Confirm Password" />
+        <input
+          type="password"
+          id="confirm"
+          name="password"
+          placeholder="Confirm Password"
+          v-model="confirmPassword"
+        />
         <div class="checkbox custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="termsAndConditions" />
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="termsAndConditions"
+            v-model="checked"
+            @click="!checked; signUp()"
+          />
           <label class="custom-control-label" for="termsAndConditions">
             I agree to the
             <span class="black">Terms & Conditions</span>
           </label>
         </div>
-        <button class="sign-up" @click="$emit('sign-up',{email, password})">Sign up</button>
+        <!-- , $emit('sign-up',{email, password}) -->
+        <button
+          class="sign-up"
+          @click="signUp()"
+          :style="{'cursor':signupAllow ? 'pointer':'not-allowed'}"
+        >Sign up</button>
       </div>
     </div>
   </div>
@@ -52,7 +69,22 @@ export default {
       active: false,
       checkbox: false,
       email: "",
+      confirmPassword: "",
+      checked: false,
     };
+  },
+  computed: {
+    signupAllow() {
+      if (!this.email || !this.password || !this.confirmPassword) return false;
+      if (this.password != this.confirmPassword) return false;
+      if (this.checkbox == false) return false;
+      return true;
+    },
+  },
+  methods: {
+    signUp() {
+      if (this.signupAllow) return true;
+    },
   },
 };
 </script>
@@ -91,6 +123,7 @@ export default {
         outline-color: none;
         width: 305px;
         height: 46px;
+        outline: none;
       }
 
       .custom-checkbox

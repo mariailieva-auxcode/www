@@ -482,6 +482,9 @@ export default {
       display: flex;
       align-items: center;
     }
+    &.active {
+      border: 1px solid green;
+    }
     .complete {
       flex-direction: column;
       input {

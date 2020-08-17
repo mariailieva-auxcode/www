@@ -14,13 +14,16 @@ exports.handler = async (event, context, callback) => {
             /* configure faunaDB Client with our secret */
             console.log("CONNECTING TO DB")
             const client = new faunadb.Client({
-                secret: process.env.FAUNA_SECRET
+                secret: "fnADyA8i33ACBQBWqANDyOGHwSDLxZ22vMZyIoaJ"
+                // secret: process.env.FAUNA_SECRET
             })
 
             const data = JSON.parse(event.body)
             data.password = passwordHash.generate(data.password);
 
-            return client.query(q.Create(q.Collection('users'), { data }))
+            return client.query(q.Create(q.Collection('users'), {
+                    data
+                }))
                 .then((response) => {
                     console.log('success', response)
                     callback(null, {
@@ -36,8 +39,7 @@ exports.handler = async (event, context, callback) => {
                         headers
                     })
                 })
-        }
-        else {
+        } else {
             callback(null, {
                 statusCode: 204,
                 body: JSON.stringify({}),
@@ -47,7 +49,9 @@ exports.handler = async (event, context, callback) => {
     } catch (error) {
         callback(null, {
             statusCode: 500,
-            body: JSON.stringify({ status: `error` }),
+            body: JSON.stringify({
+                status: `error`
+            }),
         });
     }
 };
