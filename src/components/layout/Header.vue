@@ -6,7 +6,7 @@
         <p>Already having an account?</p>
         <button @click="showAuth = true">Log in</button>
       </div>
-      <Authorization v-if="showAuth" @close="showAuth=false"></Authorization>
+      <Authorization v-if="showAuth" @close="showAuth=false" class="body-scroll-none"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
         <h3 class="col-sm-12 col-12">{{description}}</h3>

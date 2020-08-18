@@ -141,6 +141,7 @@
         </router-link>
       </div>
     </div>
+    <svg-icon class="custom" icon="/assets/siteowner-navigation-icon.svg"></svg-icon>
     <div class="row">
       <div class="col-12 specialist-logo">
         <router-link :to="`/${$router.history.current.params.lang}/specialists`">
@@ -231,9 +232,13 @@
 <script>
 import navigation from "js-yaml-loader!../../../content/nl/navigation.yaml";
 import navigationEn from "js-yaml-loader!../../../content/en/navigation.yaml";
+import SvgIcon from "../builder/Svg-icon.vue";
 
 export default {
   name: "Navigation",
+  components: {
+    SvgIcon,
+  },
   computed: {
     currentPage() {
       return this.$route.path;
