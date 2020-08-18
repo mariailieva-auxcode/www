@@ -1,6 +1,24 @@
+welcome-header-text: Welcome to greenatlas.earth!
+welcome-icon: /assets/hello-hand.svg
 welcome-label: Here we have text that explains how we can help you find the best solution.
+start-button: Start
+
+## Questions
+header-card-text: COMPLETE ONBOARDING
 first-question: What type of renewable energy are you interested in?
 second-question: What type of site do you have?
 third-question: What is the size of the site?
 fourth-question: Where is located?
+
+##Last card
 complete-label: One final step to continue!
+first-button: Submit without creating account
+first-description: You will receive an email confirmation which you can use later to create an account
+second-button: Create account
+second-description: Creating account will allow you to receive further assistance
+
+##Table
+company-name: Comany Name
+energy-type: Energy Type
+material-type: Material Type
+size: Size

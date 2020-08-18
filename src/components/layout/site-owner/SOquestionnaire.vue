@@ -3,12 +3,12 @@
     <div class="so-questionnaire">
       <div class="header">
         <Authorization v-if="showAuth" @close="close()" :isLogin="false" :data="siteOwnerData"></Authorization>
-        <p>Welcome to greenatlas.earth!</p>
-        <img src="/assets/hello-hand.svg" />
+        <p>{{welcomeText}}</p>
+        <lazy-img class="img" :src="welcomeIcon" :blur="30" />
       </div>
       <div class="user-wizard">
         <div class="row questions-header" v-if="step !== 6">
-          <p>COMPLETE ONBOARDING</p>
+          <p>{{headerCardText}}</p>
         </div>
         <div class="user-questions">
           <div class="step" v-if="step === 1">
@@ -17,7 +17,7 @@
                 <div class="col-12">
                   <h2>{{welcomeLabel}}</h2>
                   <button @click="step++" v-if="step === 1">
-                    <span>Start</span>
+                    <span>{{startButton}}</span>
                   </button>
                 </div>
               </div>
@@ -149,14 +149,14 @@
                 </div>
                 <div class="col-6">
                   <div class="account">
-                    <button class="white">Submit without creating account</button>
-                    <p>You will receive an email confirmation which you can use later to create an account</p>
+                    <button class="white">{{firstButton}}</button>
+                    <p>{{firstDescription}}</p>
                     <button
                       @click="signUp()"
                       :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
                       class="green"
-                    >Create account</button>
-                    <p>Creating account will allow you to receive further assistance</p>
+                    >{{secondButton}}</button>
+                    <p>{{secondDescription}}</p>
                   </div>
                 </div>
               </div>
@@ -229,37 +229,60 @@
         </div>
       </div>
       <div class="table-wizard">
-        <div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Company Name</th>
-                <th>Energy Type</th>
-                <th>Material Type</th>
-                <th>Size</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="user in filteredCompanies" :key="user">
-                <td>
-                  <p>{{user.data.companyName}}</p>
-                </td>
-                <td>
-                  <img src="/assets/wind.svg" v-if="user.data.energy.includes('Wind')" />
-                  <img src="/assets/solar.svg" v-if="user.data.energy.includes('Solar')" />
-                </td>
-                <td>
-                  <img src="/assets/roof.svg" v-if="user.data.material.includes('Roof')" />
-                  <img src="/assets/land.svg" v-if="user.data.material.includes('Land')" />
-                  <img src="/assets/water.svg" v-if="user.data.material.includes('Water')" />
-                </td>
-                <td>
-                  <p>{{user.data.size}}</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{{tableCompany}}</th>
+              <th>{{tableEnergy}}</th>
+              <th>{{tableMaterial}}</th>
+              <th>{{tableSize}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in filteredCompanies" :key="user">
+              <td>
+                <p>{{user.data.companyName}}</p>
+              </td>
+              <td>
+                <lazy-img
+                  class="image"
+                  :blur="30"
+                  src="/assets/wind.svg"
+                  v-if="user.data.energy.includes('Wind')"
+                />
+                <lazy-img
+                  class="image"
+                  :blur="30"
+                  src="/assets/solar.svg"
+                  v-if="user.data.energy.includes('Solar')"
+                />
+              </td>
+              <td>
+                <lazy-img
+                  class="image"
+                  :blur="30"
+                  src="/assets/roof.svg"
+                  v-if="user.data.material.includes('Roof')"
+                />
+                <lazy-img
+                  class="image"
+                  :blur="30"
+                  src="/assets/land.svg"
+                  v-if="user.data.material.includes('Land')"
+                />
+                <lazy-img
+                  class="image"
+                  :blur="30"
+                  src="/assets/water.svg"
+                  v-if="user.data.material.includes('Water')"
+                />
+              </td>
+              <td>
+                <p>{{user.data.size}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -278,11 +301,23 @@ export default {
     return {
       lang: "",
       welcomeLabel: "",
+      welcomeText: "",
+      welcomeIcon: "",
+      startButton: "",
+      headerCardText: "",
       firstQuestion: "",
       secondQuestion: "",
       thirdQuestion: "",
       fourthQuestion: "",
       completeLabel: "",
+      firstButton: "",
+      firstDescription: "",
+      secondButton: "",
+      secondDescription: "",
+      tableCompany: "",
+      tableEnergy: "",
+      tableMaterial: "",
+      tableSize: "",
       powerType: [],
       postCode: "",
       streetNumber: "",
@@ -353,12 +388,24 @@ export default {
     init() {
       this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? questionnaireEn : questionnaire;
+      this.welcomeText = data["welcome-header-text"];
+      this.welcomeIcon = data["welcome-icon"];
       this.welcomeLabel = data["welcome-label"];
+      this.startButton = data["start-button"];
+      this.headerCardText = data["header-card-text"];
       this.firstQuestion = data["first-question"];
       this.secondQuestion = data["second-question"];
       this.thirdQuestion = data["third-question"];
       this.fourthQuestion = data["fourth-question"];
       this.completeLabel = data["complete-label"];
+      this.firstButton = data["first-button"];
+      this.firstDescription = data["first-description"];
+      this.secondButton = data["second-button"];
+      this.secondDescription = data["second-description"];
+      this.tableCompany = data["company-name"];
+      this.tableEnergy = data["energy-type"];
+      this.tableMaterial = data["material-type"];
+      this.tableSize = data["size"];
     },
     filterCompanies() {
       this.filteredCompanies = this.companies.filter(
@@ -512,7 +559,7 @@ export default {
       font-size: 40px;
       color: #26272e;
     }
-    img {
+    .img {
       height: 47.5px;
       margin-left: 25px;
     }
@@ -703,7 +750,7 @@ export default {
       font-size: 12px;
       color: #9597ac;
     }
-    img {
+    .image {
       margin-right: 10px;
     }
   }
