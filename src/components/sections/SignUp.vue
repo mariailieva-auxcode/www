@@ -5,53 +5,55 @@
       <p class="header">Sign up for greenatlas.earth</p>
       <div class="inputs">
         <input type="email" id="email" placeholder="Email address " v-model="email" />
-        <div class="input-group mb-3">
+        <div class="row">
           <input
-            id="pass"
+            class="pass"
             :type="showPassword ? 'text' : 'password'"
-            class="form-control"
             placeholder="Password"
             v-model="password"
           />
-          <div class="input-group-append">
-            <b-img
-              id="eye"
-              src="/assets/eye.svg"
-              class="btn secondary"
-              type="button"
-              @click="showPassword = !showPassword"
-            ></b-img>
-          </div>
+          <b-img
+            class="eye"
+            src="/assets/eye.svg"
+            type="button"
+            @click="showPassword = !showPassword"
+          ></b-img>
         </div>
-        <div class="col-12">
+        <div class="col-12" v-if="passMatch">
           <ul>
             <li>At least 6 symbols</li>
             <li>Numeric character (0-9)</li>
             <li>Uppercase and lowercase letter</li>
           </ul>
         </div>
-        <input
-          type="password"
-          id="confirm"
-          name="password"
-          placeholder="Confirm Password"
-          v-model="confirmPassword"
-          :class="{ 'active': confirmError }"
-        />
-        <div class="checkbox custom-control custom-checkbox">
+        <div class="confirm">
           <input
-            type="checkbox"
-            class="custom-control-input"
-            id="termsAndConditions"
-            v-model="checkbox"
-            @change="!checkbox"
+            type="password"
+            name="password"
+            placeholder="Confirm Password"
+            v-model="confirmPassword"
+            :class="{ 'error': !passMatch }"
           />
-          <label class="custom-control-label" for="termsAndConditions">
-            I agree to the
-            <span class="black">Terms & Conditions</span>
-          </label>
         </div>
-        <!-- , $emit('sign-up',{email, password}) -->
+        <div v-if="!passMatch" class="confirm">
+          <img src="/assets/warning.svg" />
+          <p>Please, confirm your password.</p>
+        </div>
+        <div>
+          <div class="checkbox custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              id="termsAndConditions"
+              v-model="checkbox"
+              @change="!checkbox"
+            />
+            <label class="custom-control-label" for="termsAndConditions">
+              I agree to the
+              <span class="black">Terms & Conditions</span>
+            </label>
+          </div>
+        </div>
         <button
           class="sign-up"
           @click="signUp()"
@@ -71,33 +73,35 @@ export default {
       checkbox: false,
       email: "",
       confirmPassword: "",
-      confirmError: false,
+      isError: false,
     };
   },
   computed: {
     signupAllow() {
       if (!this.email || !this.password || !this.confirmPassword) return false;
-      if (this.password != this.confirmPassword) {
-        this.confirmError = true;
-        console.log(this.confirmError);
-        return false;
-      } else {
-        this.confirmError = false;
-        console.log(this.confirmError);
-      }
       if (this.checkbox == false) return false;
       return true;
+    },
+    passMatch() {
+      return this.password == this.confirmPassword ? true : false;
     },
   },
   methods: {
     signUp() {
-      if (this.signupAllow) return true;
+      if (this.signupAllow && this.passMatch) {
+        this.isError = false;
+        this.$emit("sign-up", { email: this.email, password: this.password });
+        return true;
+      } else {
+        this.isError = true;
+      }
     },
   },
 };
 </script>
 <style lang="scss">
 @import "../../assets/styles/main.scss";
+@import "../../assets/styles/_inputs.scss";
 .signup {
   .components {
     display: flex;
@@ -111,121 +115,112 @@ export default {
     p.header {
       font-size: 40px;
       font-weight: 700;
-      margin-bottom: 0;
+      margin-bottom: 30px;
     }
-    .inputs {
-      display: flex;
-      flex-direction: column;
-      margin-left: auto;
-      margin-right: auto;
+    button.sign-up {
+      background: #55b364;
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: $font__IBM;
+      padding: 14px 130px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border: none;
+      outline-color: none;
       outline: none;
       width: 305px;
       height: 46px;
-      border-radius: 5px;
-      button.sign-up {
-        background: #55b364;
-        border-radius: 10px;
-        color: #ffffff;
-        font-family: $font__IBM;
-        padding: 14px 130px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        border: none;
-        outline-color: none;
-        outline: none;
-        width: 305px;
-        height: 46px;
-      }
+    }
+    .custom-checkbox
+      .custom-control-input:checked
+      ~ .custom-control-label::before {
+      background-color: #55b364 !important;
+    }
 
-      .custom-checkbox
-        .custom-control-input:checked
-        ~ .custom-control-label::before {
-        background-color: #55b364 !important;
-      }
-
-      .custom-checkbox
-        .custom-control-input:checked:focus
-        ~ .custom-control-label::before {
-        box-shadow: none;
-      }
-      .custom-checkbox
-        .custom-control-input:focus
-        ~ .custom-control-label::before {
-        box-shadow: none;
-      }
-      .custom-checkbox
-        .custom-control-input:active
-        ~ .custom-control-label::before {
-        background-color: #c8ffc8;
-      }
-      .checkbox {
-        margin-top: 15px;
-        font-size: 12px;
-        font-family: $font__IBM;
+    .custom-checkbox
+      .custom-control-input:checked:focus
+      ~ .custom-control-label::before {
+      box-shadow: none;
+    }
+    .custom-checkbox
+      .custom-control-input:focus
+      ~ .custom-control-label::before {
+      box-shadow: none;
+    }
+    .custom-checkbox
+      .custom-control-input:active
+      ~ .custom-control-label::before {
+      background-color: #c8ffc8;
+    }
+    .checkbox {
+      margin-top: 15px;
+      font-size: 12px;
+      font-family: $font__IBM;
+      margin-bottom: 0;
+      color: #9597ac;
+      justify-content: left;
+      margin-left: 20px;
+      label {
+        margin-left: 6px;
         margin-bottom: 0;
-        color: #9597ac;
-        justify-content: left;
-        margin-left: 20px;
-        label {
-          margin-left: 6px;
+        line-height: 24px;
+        span.black {
+          margin-left: 3px;
           margin-bottom: 0;
-          line-height: 24px;
-          span.black {
-            margin-left: 3px;
-            margin-bottom: 0;
-            color: black;
-          }
+          color: black;
         }
       }
-      #email {
-        margin-top: 30px;
-        margin-bottom: 16px;
-        border: 1px solid #d3d5e3;
-        padding: 14px 20px;
-        outline: none;
+    }
+    .pass {
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    .eye {
+      border: none;
+      background-color: none;
+      position: absolute;
+      z-index: 11;
+      right: 180px;
+      top: 320px;
+    }
+    .eye:hover {
+      border: none;
+      background-color: none;
+    }
+    ul {
+      text-align: left;
+      margin-top: 0px;
+      margin-left: 15px;
+      margin-bottom: 15px;
+      padding: 0;
+      font-family: $font__IBM;
+      list-style-type: circle;
+      font-size: 12px;
+      color: #65687e;
+    }
+    .confirm {
+      .error {
+        border: 1px solid #d84949;
+        margin-top: 8px;
       }
-      #pass {
-        border: 1px solid #d3d5e3;
-        padding: 14px 20px;
-        outline: none;
-        box-shadow: none;
-      }
-      #eye {
-        border: none;
-        background-color: none;
-        right: 0;
-        top: 6px;
-        position: absolute;
-        z-index: 11;
-      }
-      #eye:hover {
-        border: none;
-        background-color: none;
-      }
-      .input {
-        margin-top: 15px;
-        border: 1px solid #d3d5e3;
-        padding: 14px 20px;
+      p {
+        margin-top: 5px;
+        padding-top: 10px;
+        padding-left: 20px;
+        color: #d84949;
         margin-bottom: 0;
-      }
-      #confirm {
-        outline: none;
-        border: 1px solid #d3d5e3;
-        padding: 14px 20px;
-      }
-      &.active {
-        border-color: red;
-      }
-      ul {
-        text-align: left;
-        margin-top: 0px;
-        margin-left: 15px;
-        margin-bottom: 15px;
-        padding: 0;
-        font-family: $font__IBM;
-        list-style-type: circle;
+        background: pink;
+        border-radius: 5px;
         font-size: 12px;
-        color: #65687e;
+        font-family: $font__IBM;
+        width: 305px;
+        height: 36px;
+        text-align: left;
+      }
+      img {
+        position: absolute;
+        right: 180px;
+        top: 383px;
       }
     }
   }
