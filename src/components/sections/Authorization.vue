@@ -89,7 +89,7 @@ export default {
     top: 60px;
     left: 130px;
     width: calc(100vw - 260px);
-    height: calc(100vh - 120px);
+    height: 90vh;
     z-index: 11;
     .col-6 {
       button.switch {
