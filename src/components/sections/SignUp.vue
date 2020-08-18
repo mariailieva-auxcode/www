@@ -36,6 +36,7 @@
           name="password"
           placeholder="Confirm Password"
           v-model="confirmPassword"
+          :class="{ 'active': confirmError }"
         />
         <div class="checkbox custom-control custom-checkbox">
           <input
@@ -70,12 +71,20 @@ export default {
       checkbox: false,
       email: "",
       confirmPassword: "",
+      confirmError: false,
     };
   },
   computed: {
     signupAllow() {
       if (!this.email || !this.password || !this.confirmPassword) return false;
-      if (this.password != this.confirmPassword) return false;
+      if (this.password != this.confirmPassword) {
+        this.confirmError = true;
+        console.log(this.confirmError);
+        return false;
+      } else {
+        this.confirmError = false;
+        console.log(this.confirmError);
+      }
       if (this.checkbox == false) return false;
       return true;
     },
@@ -109,7 +118,10 @@ export default {
       flex-direction: column;
       margin-left: auto;
       margin-right: auto;
-
+      outline: none;
+      width: 305px;
+      height: 46px;
+      border-radius: 5px;
       button.sign-up {
         background: #55b364;
         border-radius: 10px;
@@ -120,9 +132,9 @@ export default {
         margin-bottom: 15px;
         border: none;
         outline-color: none;
+        outline: none;
         width: 305px;
         height: 46px;
-        outline: none;
       }
 
       .custom-checkbox
@@ -168,18 +180,15 @@ export default {
       #email {
         margin-top: 30px;
         margin-bottom: 16px;
-        width: 305px;
-        height: 46px;
         border: 1px solid #d3d5e3;
-        border-radius: 5px;
         padding: 14px 20px;
+        outline: none;
       }
       #pass {
-        width: 305px;
-        height: 46px;
         border: 1px solid #d3d5e3;
-        border-radius: 5px;
         padding: 14px 20px;
+        outline: none;
+        box-shadow: none;
       }
       #eye {
         border: none;
@@ -195,19 +204,17 @@ export default {
       }
       .input {
         margin-top: 15px;
-        width: 305px;
-        height: 46px;
         border: 1px solid #d3d5e3;
-        border-radius: 5px;
         padding: 14px 20px;
         margin-bottom: 0;
       }
       #confirm {
-        width: 305px;
-        height: 46px;
+        outline: none;
         border: 1px solid #d3d5e3;
-        border-radius: 5px;
         padding: 14px 20px;
+      }
+      &.active {
+        border-color: red;
       }
       ul {
         text-align: left;
