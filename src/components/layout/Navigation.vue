@@ -15,8 +15,9 @@
             <div v-if="currentPage === '/nl' || currentPage === '/en'" class="green-line"></div>
             <button @click="burgerMenuActive=false">
               <div class="row">
-                <img
-                  :src="currentPage === '/nl' || currentPage === '/en' ? '/assets/home.svg' : '/assets/home-alt.svg'"
+                <svg-icon
+                  icon="/assets/home-alt.svg"
+                  :class="currentPage === '/nl' || currentPage === '/en' ? 'custom' : ''"
                 />
                 <p class="home">{{homeName}}</p>
               </div>
@@ -30,8 +31,9 @@
             <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
             <button @click="burgerMenuActive=false">
               <div class="row">
-                <img
-                  :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '/assets/newspaper.svg' : '/assets/newspaper-alt.svg'"
+                <svg-icon
+                  icon="/assets/newspaper-alt.svg"
+                  :class="currentPage === '/nl/news' || currentPage === '/en/news' ? 'custom' : ''"
                 />
                 <p class="news">{{newsName}}</p>
               </div>
@@ -49,9 +51,9 @@
 
             <button @click="burgerMenuActive=false">
               <div class="row">
-                <img
-                  src="/assets/siteowner-navigation-icon.svg"
-                  :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
+                <svg-icon
+                  icon="/assets/siteowner-navigation-icon.svg"
+                  :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'custom' : ''"
                 />
                 <p class="owner">{{siteownerName}}</p>
               </div>
@@ -68,8 +70,9 @@
             ></div>
             <button @click="burgerMenuActive=false">
               <div class="row">
-                <img
-                  :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialist-navigation-icon.svg' : '../assets/specialist-navigation-icon.svg'"
+                <svg-icon
+                  icon="/assets/specialist-navigation-icon.svg"
+                  :class="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? 'custom' : ''"
                 />
                 <p class="specialist">{{specialistName}}</p>
               </div>
@@ -86,8 +89,9 @@
             ></div>
             <button @click="burgerMenuActive=false">
               <div class="row">
-                <img
-                  :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-navigation-icon.svg' : '../assets/project-navigation-icon.svg'"
+                <svg-icon
+                  icon="/assets/project-navigation-icon.svg"
+                  :class="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? 'custom' : ''"
                 />
                 <p class="project">{{projectName}}</p>
               </div>
@@ -102,8 +106,10 @@
           <router-link :to="`/${$router.history.current.params.lang}`">
             <div v-if="currentPage === '/nl' || currentPage === '/en' " class="green-line"></div>
             <button>
-              <img
-                :src="currentPage === '/nl' || currentPage === '/en' ? '/assets/home.svg' : '/assets/home-alt.svg'"
+              <svg-icon
+                class="home-news-sizes"
+                icon="/assets/home-alt.svg"
+                :class="currentPage === '/nl' || currentPage === '/en' ? 'custom' : ''"
               />
               <p class="home">{{homeName}}</p>
             </button>
@@ -115,8 +121,10 @@
           <router-link :to="`/${$router.history.current.params.lang}/news`">
             <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
             <button>
-              <img
-                :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '/assets/newspaper.svg' : '/assets/newspaper-alt.svg'"
+              <svg-icon
+                class="home-news-sizes"
+                icon="/assets/newspaper-alt.svg"
+                :class="currentPage === '/nl/news' || currentPage === '/en/news' ? 'custom' : ''"
               />
               <p class="news">{{newsName}}</p>
             </button>
@@ -132,16 +140,22 @@
             class="green-line"
           ></div>
           <button>
-            <img
-              src="/assets/siteowner-navigation-icon.svg"
-              :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'active' : ''"
+            <svg-icon
+              class="navigation-svg-button"
+              icon="/assets/siteowner-navigation-icon.svg"
+              :class="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? 'custom' : ''"
             />
             <p class="owner">{{siteownerName}}</p>
           </button>
         </router-link>
       </div>
     </div>
-    <svg-icon class="custom" icon="/assets/siteowner-navigation-icon.svg"></svg-icon>
+    <!-- <svg-icon
+      class="custom"
+      icon="/assets/siteowner-navigation-icon.svg"
+      @click="activeSvg = true"
+      :class="{'color' :activeSvg}"
+    ></svg-icon>-->
     <div class="row">
       <div class="col-12 specialist-logo">
         <router-link :to="`/${$router.history.current.params.lang}/specialists`">
@@ -150,8 +164,10 @@
             class="green-line"
           ></div>
           <button>
-            <img
-              :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '/assets/specialist-navigation-icon.svg' : '/assets/specialist-navigation-icon.svg'"
+            <svg-icon
+              class="navigation-svg-button"
+              icon="/assets/specialist-navigation-icon.svg"
+              :class="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? 'custom' : ''"
             />
             <p class="specialist">{{specialistName}}</p>
           </button>
@@ -166,8 +182,10 @@
             class="green-line"
           ></div>
           <button>
-            <img
-              :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '/assets/project-navigation-icon.svg' : '/assets/project-navigation-icon.svg'"
+            <svg-icon
+              class="navigation-svg-button"
+              icon="/assets/project-navigation-icon.svg"
+              :class="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? 'custom' : ''"
             />
             <p class="project">{{projectName}}</p>
           </button>
@@ -297,7 +315,7 @@ export default {
     display: none;
   }
   .logo {
-    margin: 20px auto 60px auto;
+    margin: 20px auto 45px auto;
     .mobile {
       display: none;
     }
@@ -344,12 +362,9 @@ export default {
     .owner-logo,
     .specialist-logo,
     .project-logo {
-      margin-top: 25px;
+      margin-top: 20px;
       padding-right: 0;
       word-break: break-word;
-      button > .active {
-        fill: green;
-      }
     }
     .owner-logo,
     .specialist-logo,
@@ -382,7 +397,6 @@ export default {
       .project {
         color: #9597ac;
         font-size: 12px;
-        margin-top: 5px;
         margin-bottom: 0;
         font-weight: 700;
         font-family: $font__IBM;
@@ -427,5 +441,22 @@ export default {
   border-radius: 10px;
   position: fixed;
   left: 0px;
+}
+.custom {
+  .a {
+    fill: #55b364;
+  }
+}
+.navigation-svg-button {
+  .svg-class {
+    width: 30px;
+    height: 30px;
+  }
+}
+.home-news-sizes {
+  .svg-class {
+    width: 20px;
+    height: 20px;
+  }
 }
 </style>
