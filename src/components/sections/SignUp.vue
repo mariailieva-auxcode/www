@@ -12,6 +12,7 @@
             :type="showPassword ? 'text' : 'password'"
             placeholder="Password"
             v-model="password"
+            @change="passRules"
           />
           <b-img
             class="eye"
@@ -94,30 +95,7 @@ export default {
     },
     passMatch() {
       return this.password == this.confirmPassword ? true : false;
-    },
-    passRules() {
-      let lowerCaseLetters = /[a-z]/g;
-      let upperCaseLetters = /[A-Z]/g;
-      let numbers = /[0-9]/g;
-      let result = false;
-      if (this.password.match(lowerCaseLetters)) {
-        this.hasLowerCase = true;
-        result = true;
-      }
-      if (this.password.match(upperCaseLetters)) {
-        this.hasUpperCase = true;
-        result = true;
-      }
-      if (this.password.match(numbers)) {
-        this.hasNumber = true;
-        result = true;
-      }
-      if (this.password.length >= 8) {
-        this.isLongEnough = true;
-        result = true;
-      }
-      return result;
-    },
+    }
   },
   methods: {
     signUp() {
@@ -128,6 +106,45 @@ export default {
       } else {
         this.isError = true;
       }
+    },
+    checkForLowerLetters() {
+      let result = false
+      if (this.password.match(/[a-z]/g))
+        result = true;
+
+      this.hasLowerCase = result;
+      return result;
+    },
+    checkForUpperLetters() {
+      let result = false;
+      if (this.password.match(/[A-Z]/g))
+        result = true;
+
+      this.hasUpperCase = result;
+      return result;
+    },
+    checkForNumbers() {
+      let result = false;
+      if (this.password.match(/[0-9]/g))
+        result = true;
+
+      this.hasNumber = result;
+      return result;
+    },
+    checkForLength() {
+      let result = false;
+      if (this.password.length >= 8)
+        result = true;
+
+      this.isLongEnough = result;
+      return result;
+    },
+    passRules() {
+      let isLengthCorrect = this.checkForLength();
+      let areLettersCorrect = this.checkForLowerLetters() && this.checkForUpperLetters();
+      let hasNumbers = this.checkForNumbers();
+      return isLengthCorrect && areLettersCorrect && hasNumbers;
+        
     },
   },
 };
