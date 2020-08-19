@@ -91,7 +91,7 @@ export default {
     },
     passMatch() {
       return this.password == this.confirmPassword ? true : false;
-    }
+    },
   },
   methods: {
     signUp() {
@@ -104,43 +104,39 @@ export default {
       }
     },
     checkForLowerLetters() {
-      let result = false
-      if (this.password.match(/[a-z]/g))
-        result = true;
+      let result = false;
+      if (this.password.match(/[a-z]/g)) result = true;
 
       this.hasLowerCase = result;
       return result;
     },
     checkForUpperLetters() {
       let result = false;
-      if (this.password.match(/[A-Z]/g))
-        result = true;
+      if (this.password.match(/[A-Z]/g)) result = true;
 
       this.hasUpperCase = result;
       return result;
     },
     checkForNumbers() {
       let result = false;
-      if (this.password.match(/[0-9]/g))
-        result = true;
+      if (this.password.match(/[0-9]/g)) result = true;
 
       this.hasNumber = result;
       return result;
     },
     checkForLength() {
       let result = false;
-      if (this.password.length >= 8)
-        result = true;
+      if (this.password.length >= 6) result = true;
 
       this.isLongEnough = result;
       return result;
     },
     passRules() {
       let isLengthCorrect = this.checkForLength();
-      let areLettersCorrect = this.checkForLowerLetters() && this.checkForUpperLetters();
+      let areLettersCorrect =
+        this.checkForLowerLetters() && this.checkForUpperLetters();
       let hasNumbers = this.checkForNumbers();
       return isLengthCorrect && areLettersCorrect && hasNumbers;
-        
     },
   },
 };
