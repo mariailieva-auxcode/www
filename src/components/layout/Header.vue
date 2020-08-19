@@ -6,7 +6,7 @@
         <p>Already having an account?</p>
         <button @click="showAuth = true">Log in</button>
       </div>
-      <Authorization v-if="showAuth" @close="showAuth=false" class="body-scroll-none"></Authorization>
+      <Authorization v-if="showAuth" @close="showAuth=false"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
         <h3 class="col-sm-12 col-12">{{description}}</h3>
@@ -86,7 +86,6 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/main.scss";
 @import "../../assets/styles/components/header.scss";
-
 .header {
   height: 100vh;
   .login-buttons {

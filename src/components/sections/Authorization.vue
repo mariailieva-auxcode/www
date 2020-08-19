@@ -51,6 +51,12 @@ export default {
    * 2 = projectDevelopers
    * 3 = specialists
    */
+  mounted() {
+    document.body.classList.add("no-scroll");
+  },
+  destroyed() {
+    document.body.classList.remove("no-scroll");
+  },
   props: {
     isLogin: { type: Boolean, default: true },
     data: { type: Object },
