@@ -28,10 +28,6 @@
             <li :class="{'valid' : hasLowerCase && hasUpperCase}">Uppercase and lowercase letter</li>
           </ul>
         </div>
-        {{isLongEnough}}
-        {{hasUpperCase}}
-        {{hasLowerCase}}
-        {{hasNumber}}
         <div class="confirm">
           <input
             type="password"
