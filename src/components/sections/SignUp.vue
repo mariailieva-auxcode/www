@@ -7,6 +7,7 @@
         <input type="email" id="email" placeholder="Email address " v-model="email" />
         <div class="row">
           <input
+            id="pass"
             class="pass"
             :type="showPassword ? 'text' : 'password'"
             placeholder="Password"
@@ -19,7 +20,7 @@
             @click="showPassword = !showPassword"
           ></b-img>
         </div>
-        <div class="col-12" v-if="passMatch">
+        <div class="col-12" v-if="!isError">
           <ul>
             <li>At least 6 symbols</li>
             <li>Numeric character (0-9)</li>
@@ -32,10 +33,10 @@
             name="password"
             placeholder="Confirm Password"
             v-model="confirmPassword"
-            :class="{ 'error': !passMatch }"
+            :class="{ 'error': isError }"
           />
         </div>
-        <div v-if="!passMatch" class="confirm">
+        <div v-if="isError" class="confirm">
           <img src="/assets/warning.svg" />
           <p>Please, confirm your password.</p>
         </div>
@@ -54,6 +55,7 @@
             </label>
           </div>
         </div>
+        <!-- , $emit('sign-up',{email, password}) -->
         <button
           class="sign-up"
           @click="signUp()"
@@ -84,6 +86,17 @@ export default {
     },
     passMatch() {
       return this.password == this.confirmPassword ? true : false;
+    },
+    passRules() {
+      var pass = document.getElementById("pass");
+      var lowerCaseLetters = /[a-z]/g;
+      var upperCaseLetters = /[A-Z]/g;
+      var numbers = /[0-9]/g;
+      if (pass.value.match(lowerCaseLetters)) return true;
+      if (pass.value.match(upperCaseLetters)) return true;
+      if (pass.value.match(numbers)) return true;
+      if (pass.value.length >= 8) return true;
+      return false;
     },
   },
   methods: {
