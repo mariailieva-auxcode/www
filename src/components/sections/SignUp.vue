@@ -22,11 +22,15 @@
         </div>
         <div class="col-12" v-if="!isError">
           <ul>
-            <li>At least 6 symbols</li>
-            <li>Numeric character (0-9)</li>
-            <li>Uppercase and lowercase letter</li>
+            <li :class="{'valid' : isLongEnough}">At least 6 symbols</li>
+            <li :class="{'valid' : hasNumber}">Numeric character (0-9)</li>
+            <li :class="{'valid' : hasLowerCase && hasUpperCase}">Uppercase and lowercase letter</li>
           </ul>
         </div>
+        {{isLongEnough}}
+        {{hasUpperCase}}
+        {{hasLowerCase}}
+        {{hasNumber}}
         <div class="confirm">
           <input
             type="password"
@@ -76,6 +80,10 @@ export default {
       email: "",
       confirmPassword: "",
       isError: false,
+      hasUpperCase: false,
+      hasLowerCase: false,
+      hasNumber: false,
+      isLongEnough: false,
     };
   },
   computed: {
@@ -88,15 +96,27 @@ export default {
       return this.password == this.confirmPassword ? true : false;
     },
     passRules() {
-      var pass = document.getElementById("pass");
-      var lowerCaseLetters = /[a-z]/g;
-      var upperCaseLetters = /[A-Z]/g;
-      var numbers = /[0-9]/g;
-      if (pass.value.match(lowerCaseLetters)) return true;
-      if (pass.value.match(upperCaseLetters)) return true;
-      if (pass.value.match(numbers)) return true;
-      if (pass.value.length >= 8) return true;
-      return false;
+      let lowerCaseLetters = /[a-z]/g;
+      let upperCaseLetters = /[A-Z]/g;
+      let numbers = /[0-9]/g;
+      let result = false;
+      if (this.password.match(lowerCaseLetters)) {
+        this.hasLowerCase = true;
+        result = true;
+      }
+      if (this.password.match(upperCaseLetters)) {
+        this.hasUpperCase = true;
+        result = true;
+      }
+      if (this.password.match(numbers)) {
+        this.hasNumber = true;
+        result = true;
+      }
+      if (this.password.length >= 8) {
+        this.isLongEnough = true;
+        result = true;
+      }
+      return result;
     },
   },
   methods: {
@@ -210,6 +230,9 @@ export default {
       list-style-type: circle;
       font-size: 12px;
       color: #65687e;
+    }
+    .valid {
+      color: green;
     }
     .confirm {
       .error {
