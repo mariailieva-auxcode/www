@@ -143,7 +143,7 @@ export default {
 </script>
 <style lang="scss">
 @import "../../assets/styles/main.scss";
-@import "../../assets/styles/_inputs.scss";
+@import "../../assets/styles/components/_inputs.scss";
 .signup {
   .components {
     display: flex;
