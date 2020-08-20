@@ -12,3 +12,62 @@ input {
     border-radius: 10px;
     background-color: #FFFFFF;
 }
+
+.input-with-eye {
+    position: relative;
+}
+
+.input-group {
+    position: relative;
+
+    input {
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 300px;
+        border: none;
+        border-bottom: 1px solid #757575;
+        width: 130px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    label {
+        color: #9597AC;
+        font-size: 14px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+        padding-left: 15px;
+    }
+
+    input:focus~label,
+    input:valid~label {
+        top: 0;
+        font-size: 10px;
+        color: #55B364;
+    }
+
+    .highlight {
+        position: absolute;
+        height: 60%;
+        width: 100px;
+        top: 25%;
+        left: 0;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    input:focus~.highlight {
+        -webkit-animation: inputHighlighter 0.3s ease;
+        -moz-animation: inputHighlighter 0.3s ease;
+        animation: inputHighlighter 0.3s ease;
+    }
+}

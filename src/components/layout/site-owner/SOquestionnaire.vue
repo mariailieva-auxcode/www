@@ -107,13 +107,16 @@
                     <h2>{{fourthQuestion}}</h2>
                   </div>
                   <div class="form-inputs form-inline">
-                    <input id="postal" placeholder="Postal Code" v-model="postCode" type="text" />
-                    <input
-                      id="street"
-                      placeholder="Street Number"
-                      v-model="streetNumber"
-                      type="text"
-                    />
+                    <div class="input-group">
+                      <input id="postal" v-model="postCode" type="text" required />
+                      <span class="highlight"></span>
+                      <label>Postal Code</label>
+                    </div>
+                    <div class="input-group">
+                      <input id="street" v-model="streetNumber" type="text" required />
+                      <span class="highlight"></span>
+                      <label>Street Number</label>
+                    </div>
                   </div>
                 </div>
                 <div class="col-6">
@@ -141,9 +144,21 @@
                 <div class="col-6">
                   <div class="form-inputs">
                     <div class="complete">
-                      <input type="email" placeholder="Company Name" v-model="companyName" />
-                      <input type="text" placeholder="Name" v-model="name" />
-                      <input type="number" placeholder="Phone Number" v-model="phoneNumber" />
+                      <div class="input-group">
+                        <input type="email" v-model="companyName" />
+                        <span class="highlight"></span>
+                        <label>Company Name</label>
+                      </div>
+                      <div class="input-group">
+                        <input type="text" v-model="name" />
+                        <span class="highlight"></span>
+                        <label>Name</label>
+                      </div>
+                      <div class="input-group">
+                        <input type="number" v-model="phoneNumber" />
+                        <span class="highlight"></span>
+                        <label>Phone Number</label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -529,16 +544,9 @@ export default {
       display: flex;
       align-items: center;
       color: #26272e;
-      &::placeholder {
-        color: #9597ac;
-        font-weight: 400;
-      }
       &:focus {
         border: 1px solid #55b364;
       }
-    }
-    &.active {
-      border: 1px solid green;
     }
     .complete {
       flex-direction: column;

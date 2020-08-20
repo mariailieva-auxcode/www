@@ -61,6 +61,15 @@
 
                 &.active {
                     display: flex;
+
+                    .router-link-exact-active button p {
+                        color: #55b364;
+                    }
+
+                    .language-display.mobile {
+                        position: static;
+                        flex-direction: column;
+                    }
                 }
 
                 button {
@@ -70,11 +79,6 @@
                     .nl {
                         position: unset;
                         margin-top: 0;
-                    }
-
-                    .en {
-                        position: absolute;
-                        right: 7px;
                     }
                 }
 
