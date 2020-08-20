@@ -20,7 +20,9 @@ exports.handler = async (event, context, callback) => {
             const data = JSON.parse(event.body)
             data.password = passwordHash.generate(data.password);
 
-            return client.query(q.Create(q.Collection('users'), { data }))
+            return client.query(q.Create(q.Collection('users'), {
+                    data
+                }))
                 .then((response) => {
                     console.log('success', response)
                     callback(null, {
@@ -36,8 +38,7 @@ exports.handler = async (event, context, callback) => {
                         headers
                     })
                 })
-        }
-        else {
+        } else {
             callback(null, {
                 statusCode: 204,
                 body: JSON.stringify({}),
@@ -47,7 +48,9 @@ exports.handler = async (event, context, callback) => {
     } catch (error) {
         callback(null, {
             statusCode: 500,
-            body: JSON.stringify({ status: `error` }),
+            body: JSON.stringify({
+                status: `error`
+            }),
         });
     }
 };
