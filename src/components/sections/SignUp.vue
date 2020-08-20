@@ -6,20 +6,22 @@
       <div class="inputs">
         <input type="email" id="email" placeholder="Email address " v-model="email" />
         <div class="row">
-          <input
-            id="pass"
-            class="pass"
-            :type="showPassword ? 'text' : 'password'"
-            placeholder="Password"
-            v-model="password"
-            @change="passRules"
-          />
-          <b-img
-            class="eye"
-            src="/assets/eye.svg"
-            type="button"
-            @click="showPassword = !showPassword"
-          ></b-img>
+          <div class="input-with-eye">
+            <input
+              id="pass"
+              class="pass"
+              :type="showPassword ? 'text' : 'password'"
+              placeholder="Password"
+              v-model="password"
+              @change="passRules"
+            />
+            <b-img
+              class="eye"
+              src="/assets/eye.svg"
+              type="button"
+              @click="showPassword = !showPassword"
+            ></b-img>
+          </div>
         </div>
         <div class="col-12" v-if="!isError">
           <ul>
@@ -222,8 +224,8 @@ export default {
       background-color: none;
       position: absolute;
       z-index: 11;
-      right: 180px;
-      top: 320px;
+      right: 20px;
+      top: 28px;
     }
     .eye:hover {
       border: none;
