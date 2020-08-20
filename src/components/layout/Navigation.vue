@@ -197,18 +197,16 @@
         <router-link :to="getURL('en')">
           <button>
             <div class="row">
-              <div id="underline">
-                <p>NL</p>
-              </div>
+              <div id="underline"></div>
+              <p>{{nlLang}}</p>
             </div>
           </button>
         </router-link>
         <router-link :to="getURL('nl')">
           <button>
             <div class="row">
-              <div id="underline">
-                <p class="en">EN</p>
-              </div>
+              <div id="underline"></div>
+              <p class="en">{{enLang}}</p>
             </div>
           </button>
         </router-link>
@@ -227,18 +225,12 @@
         <div class="row language-display mobile">
           <router-link :to="getURL('en')">
             <button @click="burgerMenuMLActive= false">
-              <div class="row">
-                <img src="/assets/netherlands.svg" />
-                <p class="nl">NL</p>
-              </div>
+              <p class="nl">NL</p>
             </button>
           </router-link>
           <router-link :to="getURL('nl')">
             <button @click="burgerMenuMLActive= false">
-              <div class="row">
-                <img src="/assets/united-kingdom.svg" />
-                <p class="en">EN</p>
-              </div>
+              <p class="en">EN</p>
             </button>
           </router-link>
         </div>
@@ -269,6 +261,8 @@ export default {
       siteownerName: "",
       specialistName: "",
       projectName: "",
+      nlLang: "",
+      enLang: "",
       lang: "",
       language: "",
       burgerMenuActive: false,
@@ -292,6 +286,8 @@ export default {
       this.specialistName = data.specialistName;
       this.siteownerName = data.siteownerName;
       this.projectName = data.projectName;
+      this.nlLang = data["nl-language"];
+      this.enLang = data["en-language"];
       this.language = data.language;
     },
     getURL(prevLanguage) {
@@ -382,8 +378,8 @@ export default {
       color: #55b364;
     }
     .router-link-exact-active #underline {
-      border-bottom: 3px solid #55b364;
-      padding-bottom: 3px;
+      border-bottom: 18px solid #55b364;
+      width: 3px;
       border-radius: 2px;
     }
     button {
@@ -408,6 +404,20 @@ export default {
   }
   .ml > p {
     margin-bottom: 0;
+  }
+  .language-display {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 5px;
+    bottom: 10px;
+    text-align: left;
+    button {
+      margin: 0;
+      p {
+        margin-left: 3.5px;
+      }
+    }
   }
   .ml {
     @media only screen and (max-width: 768px) {
