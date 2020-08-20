@@ -38,13 +38,15 @@ export default {
     data: Object,
     isMain: Boolean,
   },
-  created() {
-    if (this.data.group.includes("project developer")) {
-      this.tag = "PROJECT DEVELOPER";
-    } else if (this.data.group.includes("site owner")) {
-      this.tag = "SITE OWNER";
-    } else if (this.data.group.includes("specialists")) {
-      this.tag = "SPECIALISTS";
+  mounted() {
+    if (this.data) {
+      if (this.data.group.includes("project developer")) {
+        this.tag = "PROJECT DEVELOPER";
+      } else if (this.data.group.includes("site owner")) {
+        this.tag = "SITE OWNER";
+      } else if (this.data.group.includes("specialists")) {
+        this.tag = "SPECIALISTS";
+      }
     }
   },
 };
