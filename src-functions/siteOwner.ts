@@ -1,10 +1,5 @@
-const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-}
-
-const faunadb = require('faunadb');
+import { headers } from './constants/headers.constant';
+import faunadb from 'faunadb'
 const q = faunadb.query;
 
 exports.handler = async (event, context, callback) => {

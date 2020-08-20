@@ -1,10 +1,6 @@
-const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-}
+import { headers } from './constants/headers.constant';
+import faunadb from 'faunadb'
 
-const faunadb = require('faunadb');
 const q = faunadb.query;
 
 exports.handler = async (event, context, callback) => {
@@ -18,16 +14,8 @@ exports.handler = async (event, context, callback) => {
             })
 
             const data = JSON.parse(event.body)
-            /* construct the fauna query */
-            // serverClient.query(
-            //     q.Create(
-            //         q.Ref(q.Collection('posts'), '1'),
-            //         { data: { title: 'The first post' } },
-            //     )
-            // )
-            //     .then((ret) => console.log(ret))
 
-            return client.query(q.Create(q.Collection('specialists'), { data }))
+            return client.query(q.Create(q.Collection('projectDev'), { data }))
                 .then((response) => {
                     console.log('success', response)
                     callback(null, {

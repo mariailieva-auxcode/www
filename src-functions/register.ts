@@ -1,8 +1,33 @@
 import { headers } from './constants/headers.constant';
+import faunadb from 'faunadb'
+import passwordHash from 'password-hash';
 
-const faunadb = require('faunadb');
-const passwordHash = require('password-hash');
 const q = faunadb.query;
+
+type UserInput = {
+    email: string,
+    password: string
+}
+
+type SiteOwnerInput = {
+    email: string,
+    password: string,
+    energyType: {
+        wind: boolean,
+        solar: boolean,
+      },
+      siteType: {
+        roof: boolean,
+        land: boolean,
+        water: boolean,
+      },
+      size: string,
+      postCode: string,
+      streetNumber: string,
+      companyName: string,
+      name: string,
+      phoneNumber: string,
+}
 
 export async function handler(event, _) {
     try {
@@ -13,7 +38,7 @@ export async function handler(event, _) {
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
 
-            const data = JSON.parse(event.body)
+            const data: UserInput | SiteOwnerInput = JSON.parse(event.body);
             data.password = passwordHash.generate(data.password);
 
             let response = await client.query(q.Create(q.Collection('users'), {

@@ -89,7 +89,7 @@
                         id="phoneNumber"
                         placeholder="0"
                         type="number"
-                        v-model="size"
+                        v-model.number="size"
                         @input="filterCompanies"
                       />
                       <p>sq.m.</p>
