@@ -14,8 +14,7 @@ exports.handler = async (event, context, callback) => {
             /* configure faunaDB Client with our secret */
             console.log("CONNECTING TO DB")
             const client = new faunadb.Client({
-                secret: "fnADyA8i33ACBQBWqANDyOGHwSDLxZ22vMZyIoaJ"
-                // secret: process.env.FAUNA_SECRET
+                secret: process.env.FAUNA_SECRET
             })
 
             const data = JSON.parse(event.body)
