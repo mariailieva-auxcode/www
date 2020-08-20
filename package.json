@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "functions": "netlify-lambda serve src-functions",
+    "functions": "netlify-lambda serve src-functions --config ./webpack.functions.js",
     "build": "netlify-lambda build src-functions && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -13,6 +13,7 @@
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.5",
+    "dotenv-webpack": "^2.0.0",
     "encoding": "^0.1.13",
     "fauna-shell": "^0.11.4",
     "html-loader": "^1.2.0",
