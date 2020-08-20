@@ -5,6 +5,7 @@
       <div class="modal--content">
         <div class="col-5 image">
           <img src="/assets/login-image.png" />
+          <p>Connecting renewable energy!</p>
         </div>
         <div class="col-6">
           <div class="Login">
@@ -130,13 +131,23 @@ export default {
     .modal--content {
       display: flex;
       width: 100%;
-    }
-    .image {
-      padding: 0;
-      img {
-        width: 470px;
-        height: 101%;
-        float: left;
+      .image {
+        padding: 0;
+        img {
+          width: 470px;
+          height: 101%;
+          float: left;
+        }
+        p {
+          position: absolute;
+          top: 210px;
+          left: 100px;
+          font-family: $font__IBM;
+          font-size: 30px;
+          color: #ffffff;
+          font-weight: 700;
+          width: 270px;
+        }
       }
     }
   }

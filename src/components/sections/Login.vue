@@ -71,14 +71,14 @@ export default {
       width: 305px;
       height: 46px;
       border: 1px solid #d3d5e3;
-      border-radius: 5px;
+      border-radius: 10px;
       padding: 14px 20px;
     }
     #pass {
       width: 305px;
       height: 46px;
       border: 1px solid #d3d5e3;
-      border-radius: 5px;
+      border-radius: 10px;
       padding: 14px 20px;
       margin-right: 0;
     }

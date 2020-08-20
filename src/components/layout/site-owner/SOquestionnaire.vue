@@ -537,6 +537,9 @@ export default {
         border: 1px solid #55b364;
       }
     }
+    &.active {
+      border: 1px solid green;
+    }
     .complete {
       flex-direction: column;
       input {
