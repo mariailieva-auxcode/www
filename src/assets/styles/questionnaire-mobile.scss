@@ -1,0 +1,106 @@
+@media only screen and (max-width: 860px) {
+    .so-questionnaire {
+        div.header {
+            margin-bottom: 20px;
+
+            p {
+                text-align: left;
+                font-size: 30px;
+            }
+        }
+
+        .user-wizard {
+            div.questions-header {
+                margin-bottom: 20px;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            .user-questions {
+                .step {
+                    .first-step {
+                        width: 100%;
+                    }
+
+                    .second-step {
+                        h2 {
+                            margin-bottom: 20px;
+                        }
+                    }
+
+                    .solar-and-wind,
+                    .roof-land-water {
+                        display: flex;
+                        flex-direction: column;
+
+                        button {
+                            margin: 5px auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .user-wizard>.buttons>.row>.percent-line {
+        div.green1-line {
+            border-right: 60px solid #55b364;
+        }
+
+        div.other-line {
+            border-right: 180px solid #e6e7f4;
+        }
+
+        div.green-line2 {
+            border-right: 120px solid #55b364;
+        }
+
+        div.other-line2 {
+            border-right: 120px solid #e6e7f4;
+        }
+
+        div.green-line3 {
+            border-right: 180px solid #55b364;
+        }
+
+        div.other-line3 {
+            border-right: 60px solid #e6e7f4;
+        }
+
+        div.green-line4 {
+            border-right: 240px solid #55b364;
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .user-wizard>.buttons>.row {
+        margin-bottom: 30px;
+
+        .back-button {
+            position: absolute;
+            margin-left: 0 !important;
+            left: 20px;
+            top: 32px;
+        }
+
+        .next-button {
+            position: absolute;
+            margin-right: 0 !important;
+            right: 20px;
+            top: 25px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .user-wizard>.user-questions>.map {
+        div.google-map {
+            display: none;
+        }
+    }
+}
