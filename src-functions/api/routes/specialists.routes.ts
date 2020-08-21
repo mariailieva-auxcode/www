@@ -1,6 +1,5 @@
-import { headers } from './constants/headers.constant';
+import { RESPONSE_HEADERS } from '../constants/response-headers.constant';
 import faunadb from 'faunadb'
-
 const q = faunadb.query;
 
 exports.handler = async (event, context, callback) => {
@@ -15,20 +14,20 @@ exports.handler = async (event, context, callback) => {
 
             const data = JSON.parse(event.body)
 
-            return client.query(q.Create(q.Collection('projectDev'), { data }))
+            return client.query(q.Create(q.Collection('specialists'), { data }))
                 .then((response) => {
                     console.log('success', response)
                     callback(null, {
                         statusCode: 200,
                         body: JSON.stringify(response),
-                        headers
+                        RESPONSE_HEADERS
                     })
                 }).catch((error) => {
                     console.log('error', error)
                     callback(null, {
                         statusCode: 400,
                         body: JSON.stringify(error),
-                        headers
+                        RESPONSE_HEADERS
                     })
                 })
         }
@@ -36,7 +35,7 @@ exports.handler = async (event, context, callback) => {
             callback(null, {
                 statusCode: 204,
                 body: JSON.stringify({}),
-                headers
+                RESPONSE_HEADERS
             })
         }
     } catch (error) {

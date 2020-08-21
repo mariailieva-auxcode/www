@@ -1,33 +1,10 @@
-import { headers } from './constants/headers.constant';
+import { RESPONSE_HEADERS } from '../constants/response-headers.constant';
 import faunadb from 'faunadb'
 import passwordHash from 'password-hash';
+import { User } from '../interfaces/user.interface';
+import { SiteOwner } from '../interfaces/site-owner.interface';
 
 const q = faunadb.query;
-
-type UserInput = {
-    email: string,
-    password: string
-}
-
-type SiteOwnerInput = {
-    email: string,
-    password: string,
-    energyType: {
-        wind: boolean,
-        solar: boolean,
-      },
-      siteType: {
-        roof: boolean,
-        land: boolean,
-        water: boolean,
-      },
-      size: string,
-      postCode: string,
-      streetNumber: string,
-      companyName: string,
-      name: string,
-      phoneNumber: string,
-}
 
 export async function handler(event, _) {
     try {
@@ -38,7 +15,7 @@ export async function handler(event, _) {
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
 
-            const data: UserInput | SiteOwnerInput = JSON.parse(event.body);
+            const data: User | SiteOwner = JSON.parse(event.body);
             data.password = passwordHash.generate(data.password);
 
             let response = await client.query(q.Create(q.Collection('users'), {
@@ -47,13 +24,13 @@ export async function handler(event, _) {
             return {
                 statusCode: 200,
                 body: JSON.stringify(response),
-                headers
+                RESPONSE_HEADERS
             }
         } else {
             return {
                 statusCode: 204,
                 body: JSON.stringify({}),
-                headers
+                RESPONSE_HEADERS
             }
         }
     } catch (error) {

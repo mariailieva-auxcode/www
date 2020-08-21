@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "functions": "netlify-lambda serve src-functions --config ./webpack.functions.js",
+    "functions": "netlify-lambda serve src-functions/api/routes --config ./webpack.functions.js",
     "build": "netlify-lambda build src-functions && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
