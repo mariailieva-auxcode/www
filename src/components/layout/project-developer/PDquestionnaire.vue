@@ -68,7 +68,7 @@ export default {
     },
     projectDev() {
       axios
-        .post("projectDev", {
+        .post("project-developer", {
           companyName: this.companyName,
           size: this.size,
           energy: this.energy,

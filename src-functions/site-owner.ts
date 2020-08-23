@@ -1,15 +1,15 @@
-import { RESPONSE_HEADERS } from '../constants/response-headers.constant';
+import { RESPONSE_HEADERS } from './api/constants/response-headers.constant';
 import faunadb from 'faunadb'
 const q = faunadb.query;
 
-exports.handler = async (event, context, callback) => {
+export async function handler(event, _) {
     try {
         console.log(event);
         if (event.httpMethod == "POST") {
             /* configure faunaDB Client with our secret */
             console.log("CONNECTING TO DB")
             const client = new faunadb.Client({
-                secret: process.env.FAUNA_SECRET
+                secret: process.env.VUE_APP_FAUNA_SECRET
             })
 
             const data = JSON.parse(event.body)
@@ -17,55 +17,55 @@ exports.handler = async (event, context, callback) => {
             return client.query(q.Create(q.Collection('siteOwner'), { data }))
                 .then((response) => {
                     console.log('success', response)
-                    callback(null, {
+                    return {
                         statusCode: 200,
                         body: JSON.stringify(response),
-                        RESPONSE_HEADERS
-                    })
+                        headers: RESPONSE_HEADERS
+                    }
                 }).catch((error) => {
                     console.log('error', error)
-                    callback(null, {
+                    return {
                         statusCode: 400,
                         body: JSON.stringify(error),
-                        RESPONSE_HEADERS
-                    })
+                        headers: RESPONSE_HEADERS
+                    }
                 })
         }
         else if (event.httpMethod == "GET") {
             const client = new faunadb.Client({
-                secret: process.env.FAUNA_SECRET
+                secret: process.env.VUE_APP_FAUNA_SECRET
             })
-            console.log(event, context);
+            console.log(RESPONSE_HEADERS)
             return client.query(q.Map(
                 q.Paginate(q.Documents(q.Collection('projectDev'))),
                 q.Lambda(x => q.Get(x))
-            )).then((response) => {
-                console.log("success", response);
-                callback(null, {
-                    statusCode: 200,
-                    body: JSON.stringify(response),
-                    RESPONSE_HEADERS,
+                )).then((response) => {
+                    console.log("success", JSON.stringify(response));
+                    return {
+                        statusCode: 200,
+                        body: JSON.stringify(response),
+                        headers: RESPONSE_HEADERS
+                    }
+                }).catch((error) => {
+                    console.log("error", error);
+                    return {
+                        statusCode: 400,
+                        body: JSON.stringify(error),
+                        headers: RESPONSE_HEADERS
+                    }
                 })
-            }).catch((error) => {
-                console.log("error", error);
-                callback(null, {
-                    statusCode: 400,
-                    body: JSON.stringify(error),
-                    RESPONSE_HEADERS,
-                })
-            })
         }
         else {
-            callback(null, {
+            return {
                 statusCode: 204,
                 body: JSON.stringify({}),
-                RESPONSE_HEADERS
-            })
+                headers: RESPONSE_HEADERS
+            }
         }
     } catch (error) {
-        callback(null, {
+        return {
             statusCode: 500,
             body: JSON.stringify({ status: `error` }),
-        });
+        }
     }
 };

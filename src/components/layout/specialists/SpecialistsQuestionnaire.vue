@@ -37,7 +37,7 @@ export default {
   methods: {
     specialists() {
       axios
-        .post("specialists", {
+        .post("specialist", {
           companyName: this.companyName,
           phoneNumber: this.phoneNumber,
           energy: this.energy,

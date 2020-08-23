@@ -1,8 +1,8 @@
-import { RESPONSE_HEADERS } from '../constants/response-headers.constant';
+import { RESPONSE_HEADERS } from './api/constants/response-headers.constant';
 import faunadb from 'faunadb'
 import passwordHash from 'password-hash';
-import { User } from '../interfaces/user.interface';
-import { SiteOwner } from '../interfaces/site-owner.interface';
+import { User } from './api/interfaces/user.interface';
+import { SiteOwner } from './api/interfaces/site-owner.interface';
 
 const q = faunadb.query;
 
@@ -16,21 +16,24 @@ export async function handler(event, _) {
             })
 
             const data: User | SiteOwner = JSON.parse(event.body);
-            data.password = passwordHash.generate(data.password);
+            console.log(1)
 
+            data.password = passwordHash.generate(data.password);
+            console.log(data)
             let response = await client.query(q.Create(q.Collection('users'), {
                 data
             }))
+            console.log(response)
             return {
                 statusCode: 200,
                 body: JSON.stringify(response),
-                RESPONSE_HEADERS
+                headers: RESPONSE_HEADERS
             }
         } else {
             return {
                 statusCode: 204,
                 body: JSON.stringify({}),
-                RESPONSE_HEADERS
+                headers: RESPONSE_HEADERS
             }
         }
     } catch (error) {
