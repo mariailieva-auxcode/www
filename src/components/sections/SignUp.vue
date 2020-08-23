@@ -30,18 +30,20 @@
             <li :class="{'valid' : hasLowerCase && hasUpperCase}">Uppercase and lowercase letter</li>
           </ul>
         </div>
-        <div class="confirm">
-          <input
-            type="password"
-            name="password"
-            placeholder="Confirm Password"
-            v-model="confirmPassword"
-            :class="{ 'error': isError }"
-          />
-        </div>
-        <div v-if="isError" class="confirm">
-          <img src="/assets/warning.svg" />
-          <p>Please, confirm your password.</p>
+        <div class="password-error-icon">
+          <div class="confirm">
+            <input
+              type="password"
+              name="password"
+              placeholder="Confirm Password"
+              v-model="confirmPassword"
+              :class="{ 'error': isError }"
+            />
+          </div>
+          <div v-if="isError" class="confirm">
+            <img src="/assets/warning.svg" />
+            <p>Please, confirm your password.</p>
+          </div>
         </div>
         <div>
           <div class="checkbox custom-control custom-checkbox">
@@ -266,8 +268,8 @@ export default {
       }
       img {
         position: absolute;
-        right: 180px;
-        top: 383px;
+        right: 20px;
+        top: 20px;
       }
     }
   }
