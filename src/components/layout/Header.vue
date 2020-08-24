@@ -3,9 +3,11 @@
     <div slot="content" class="header">
       <div class="header-overlay"></div>
       <div class="row login-buttons">
+        <button @click="showUploadFile = true">Upload File</button>
         <p>Already having an account?</p>
         <button @click="showAuth = true">Log in</button>
       </div>
+      <Assets v-if="showUploadFile" @close="showUploadFile=false"></Assets>
       <Authorization v-if="showAuth" @close="showAuth=false"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
@@ -41,11 +43,13 @@
 
 <script>
 import Authorization from "../sections/Authorization";
+import Assets from "../Assets";
 import header from "js-yaml-loader!../../../content/nl/general/header.yaml";
 import headerEn from "js-yaml-loader!../../../content/en/general/header.yaml";
 export default {
   components: {
     Authorization,
+    Assets,
   },
   data() {
     return {
@@ -56,6 +60,7 @@ export default {
       button3: "",
       image: "",
       showAuth: false,
+      showUploadFile: false,
     };
   },
   props: {

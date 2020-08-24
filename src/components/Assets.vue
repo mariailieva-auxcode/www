@@ -1,6 +1,11 @@
 <template>
-  <div id="app">
-    <input type="file" @change="fileChange($event.target.files[0])" />
+  <div class="positioning">
+    <div id="app">
+      <input type="file" @change="fileChange($event.target.files[0])" />
+      <button @click="$emit('close')">
+        <img src="/assets/X-image.svg" />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -13,8 +18,8 @@ export default {
   methods: {
     async fileChange(file) {
       let timestamp = Math.round(new Date().getTime() / 1000);
-      let filename = encodeURI(file.name)
-      let props = `eager=w_400,h_300,c_pad|w_260,h_200,c_crop&public_id=${filename}&timestamp=${timestamp}${process.env.VUE_APP_CLOUDINARY_API_SECRET}`; 
+      let filename = encodeURI(file.name);
+      let props = `eager=w_400,h_300,c_pad|w_260,h_200,c_crop&public_id=${filename}&timestamp=${timestamp}${process.env.VUE_APP_CLOUDINARY_API_SECRET}`;
       sha1(props);
       let hash = sha1.create();
       hash.update(props);
@@ -29,7 +34,7 @@ export default {
           }
         )
         .then((res) => {
-            console.log(res)
+          console.log(res);
         });
     },
     async fileToBase64(file) {
@@ -52,3 +57,25 @@ export default {
 };
 </script>
 
+<style scoped lang="scss">
+.positioning {
+  position: absolute;
+  top: 80px;
+  left: 400px;
+  #app {
+    z-index: 11;
+    position: relative;
+    input {
+      width: 385px;
+      height: 80px;
+    }
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: none;
+      border: none;
+    }
+  }
+}
+</style>
