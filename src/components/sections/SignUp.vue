@@ -95,10 +95,9 @@ export default {
       return true;
     },
     passMatch() {
-      if(this.confirmPassword.length > 0)
+      if (this.confirmPassword.length > 0)
         return this.password == this.confirmPassword ? true : false;
-      else 
-        return true
+      else return true;
     },
   },
   methods: {
@@ -273,7 +272,7 @@ export default {
       img {
         position: absolute;
         right: 20px;
-        top: 20px;
+        top: 13px;
       }
     }
   }
