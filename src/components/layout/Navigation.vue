@@ -50,7 +50,7 @@
             <button @click="burgerMenuActive=false">
               <div class="row">
                 <img
-                  :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '../assets/site-owner-green.svg' : '../assets/siteowner-navigation-icon.svg'"
+                  :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '/assets/site-owner-green.svg' : '/assets/siteowner-navigation-icon.svg'"
                 />
                 <p class="owner">{{siteownerName}}</p>
               </div>
@@ -68,7 +68,7 @@
             <button @click="burgerMenuActive=false">
               <div class="row">
                 <img
-                  :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialists-green.svg' : '../assets/specialist-navigation-icon.svg'"
+                  :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '/assets/specialists-green.svg' : '/assets/specialist-navigation-icon.svg'"
                 />
                 <p class="specialist">{{specialistName}}</p>
               </div>
@@ -86,7 +86,7 @@
             <button @click="burgerMenuActive=false">
               <div class="row">
                 <img
-                  :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-developer-green.svg' : '../assets/project-navigation-icon.svg'"
+                  :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '/assets/project-developer-green.svg' : '/assets/project-navigation-icon.svg'"
                 />
                 <p class="project">{{projectName}}</p>
               </div>
@@ -102,7 +102,7 @@
             <div v-if="currentPage === '/nl' || currentPage === '/en' " class="green-line"></div>
             <button>
               <img
-                :src="currentPage === '/nl' || currentPage === '/en' ? '../assets/home.svg' : '../assets/home-alt.svg'"
+                :src="currentPage === '/nl' || currentPage === '/en' ? '/assets/home.svg' : '/assets/home-alt.svg'"
               />
               <p class="home">{{homeName}}</p>
             </button>
@@ -115,7 +115,7 @@
             <div v-if="currentPage === '/nl/news' || currentPage === '/en/news'" class="green-line"></div>
             <button>
               <img
-                :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '../assets/newspaper.svg' : '../assets/newspaper-alt.svg'"
+                :src="currentPage === '/nl/news' || currentPage === '/en/news' ? '/assets/newspaper.svg' : '/assets/newspaper-alt.svg'"
               />
               <p class="news">{{newsName}}</p>
             </button>
@@ -132,7 +132,7 @@
           ></div>
           <button>
             <img
-              :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '../assets/site-owner-green.svg' : '../assets/siteowner-navigation-icon.svg'"
+              :src="currentPage === '/nl/site-owner' || currentPage === '/en/site-owner' ? '/assets/site-owner-green.svg' : '/assets/siteowner-navigation-icon.svg'"
             />
             <p class="owner">{{siteownerName}}</p>
           </button>
@@ -154,7 +154,7 @@
           ></div>
           <button>
             <img
-              :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '../assets/specialists-green.svg' : '../assets/specialist-navigation-icon.svg'"
+              :src="currentPage === '/nl/specialists' || currentPage === '/en/specialists' ? '/assets/specialists-green.svg' : '/assets/specialist-navigation-icon.svg'"
             />
             <p class="specialist">{{specialistName}}</p>
           </button>
@@ -170,7 +170,7 @@
           ></div>
           <button>
             <img
-              :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '../assets/project-developer-green.svg' : '../assets/project-navigation-icon.svg'"
+              :src="currentPage === '/nl/project-developer' || currentPage === '/en/project-developer' ? '/assets/project-developer-green.svg' : '/assets/project-navigation-icon.svg'"
             />
             <p class="project">{{projectName}}</p>
           </button>
