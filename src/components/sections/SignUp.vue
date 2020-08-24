@@ -40,7 +40,7 @@
               :class="{ 'error': isError }"
             />
           </div>
-          <div v-if="!passMatch" class="confirm">
+          <div v-if="isError" class="confirm">
             <img src="/assets/warning.svg" />
             <p>Please, confirm your password.</p>
           </div>
@@ -95,10 +95,9 @@ export default {
       return true;
     },
     passMatch() {
-      if(this.confirmPassword.length > 0)
+      if (this.confirmPassword.length > 0)
         return this.password == this.confirmPassword ? true : false;
-      else 
-        return true
+      else return true;
     },
   },
   methods: {

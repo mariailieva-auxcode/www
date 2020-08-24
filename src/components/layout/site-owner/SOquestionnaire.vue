@@ -1,12 +1,13 @@
 <template>
   <div class="background-color">
     <div class="so-questionnaire">
-      <div class="header">
+      <!-- <div class="header">
         <Authorization v-if="showAuth" @close="close()" :isLogin="false" :data="siteOwnerData"></Authorization>
         <p>{{welcomeText}}</p>
         <lazy-img class="img" :src="welcomeIcon" :blur="30" />
-      </div>
-      <div class="user-wizard">
+      </div>-->
+      <UserWizard></UserWizard>
+      <!-- <div class="user-wizard">
         <div class="row questions-header" v-if="step !== 6">
           <p>{{headerCardText}}</p>
         </div>
@@ -242,8 +243,8 @@
             </a>
           </div>
         </div>
-      </div>
-      <div class="table-wizard">
+      </div>-->
+      <!-- <div class="table-wizard">
         <table class="table">
           <thead>
             <tr>
@@ -298,19 +299,24 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div>-->
+      <TableWizard></TableWizard>
     </div>
   </div>
 </template>
 
 <script>
-import Authorization from "../../sections/Authorization";
+// import Authorization from "../../sections/Authorization";
+import UserWizard from "../../sections/UserWizard";
+import TableWizard from "../../sections/TableWizard";
 import questionnaire from "js-yaml-loader!../../../../content/nl/site-owner/questionnaire.yaml";
 import questionnaireEn from "js-yaml-loader!../../../../content/en/site-owner/questionnaire.yaml";
 import axios from "../../../axios";
 export default {
   components: {
-    Authorization,
+    // Authorization,
+    UserWizard,
+    TableWizard,
   },
   data() {
     return {
@@ -577,200 +583,200 @@ export default {
       margin-left: 25px;
     }
   }
-  .user-wizard {
-    margin-bottom: 25px;
-    min-height: 385px;
-    height: auto;
-    box-shadow: 0px 6px 30px #1d226f0d;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    .questions-header {
-      color: #55b364;
-      font-family: $font__IBM;
-      font-weight: 500;
-      font-size: 14px;
-      margin: 10px auto 60px;
-    }
-    .step {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      &.map {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        .row {
-          .map-codes {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-        }
-      }
-      .first-step {
-        width: 60%;
-        margin: 0 auto;
-        button {
-          border-radius: 10px;
-          width: 150px;
-          height: 45px;
-          background-color: #55b364;
-          outline: none;
-          border: none;
-          span {
-            font-family: $font__IBM;
-            font-weight: 700;
-            font-size: 14;
-            color: white;
-            margin: auto;
-          }
-        }
-      }
-      h2 {
-        font-family: $font__IBM;
-        font-weight: 700;
-        font-size: 25px;
-        color: #65687e;
-        margin-bottom: 50px;
-      }
-      #powerType {
-        display: flex;
-        align-items: center;
-      }
-      .choice {
-        margin: 0;
-        margin-right: 20px;
-        margin-left: 5px;
-      }
-    }
-    .buttons > .row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      p {
-        color: #d3d5e3;
-        font-family: $font__IBM;
-        font-weight: 700;
-        font-size: 14px;
-        margin: 0;
-      }
-    }
-    .buttons {
-      margin-top: auto;
-      margin-bottom: 30px;
-      > .row {
-        position: relative;
-      }
-      .next-button {
-        display: flex;
-        margin-left: auto;
-        margin-right: 45px;
-        height: 35px;
-        outline: none;
-        cursor: pointer;
-        img {
-          margin-left: 12px;
-        }
-        p {
-          color: #55b364;
-          font-family: $font__IBM;
-          font-weight: 700;
-          font-size: 14px;
-          margin: auto;
-        }
-      }
-      .percent-line {
-        display: flex;
-        .green1-line {
-          border-right: 90px solid #55b364;
-          height: 10px;
-          border-radius: 10px 0 0 10px;
-        }
-        .other-line {
-          border-right: 270px solid #e6e7f4;
-          height: 10px;
-          border-radius: 0 10px 10px 0;
-        }
-        .green-line2 {
-          border-right: 180px solid #55b364;
-          height: 10px;
-          border-radius: 10px 0 0 10px;
-        }
-        .other-line2 {
-          border-right: 180px solid #e6e7f4;
-          height: 10px;
-          border-radius: 0 10px 10px 0;
-        }
-        .green-line3 {
-          border-right: 270px solid #55b364;
-          height: 10px;
-          border-radius: 10px 0 0 10px;
-        }
-        .other-line3 {
-          border-right: 90px solid #e6e7f4;
-          height: 10px;
-          border-radius: 0 10px 10px 0;
-        }
-        .green-line4 {
-          border-right: 360px solid #55b364;
-          height: 10px;
-          border-radius: 10px;
-        }
-      }
-      .back-button {
-        display: flex;
-        margin-right: auto;
-        margin-left: 55px;
-        outline: none;
-        cursor: pointer;
-        img {
-          margin-right: 12px;
-        }
-        p {
-          color: #9597ac;
-          font-family: $font__IBM;
-          font-weight: 700;
-          font-size: 14px;
-          margin: auto;
-        }
-      }
-    }
-  }
-  .table-wizard {
-    box-shadow: 0px 6px 30px #1d226f0d;
-    padding: 15px 45px 30px;
-    border-radius: 15px;
-  }
+  // .user-wizard {
+  //   margin-bottom: 25px;
+  //   min-height: 385px;
+  //   height: auto;
+  //   box-shadow: 0px 6px 30px #1d226f0d;
+  //   border-radius: 15px;
+  //   display: flex;
+  //   flex-direction: column;
+  //   .questions-header {
+  //     color: #55b364;
+  //     font-family: $font__IBM;
+  //     font-weight: 500;
+  //     font-size: 14px;
+  //     margin: 10px auto 60px;
+  //   }
+  //   .step {
+  //     display: flex;
+  //     justify-content: center;
+  //     flex-direction: column;
+  //     &.map {
+  //       display: flex;
+  //       align-items: center;
+  //       margin-bottom: 20px;
+  //       .row {
+  //         .map-codes {
+  //           display: flex;
+  //           flex-direction: column;
+  //           justify-content: center;
+  //         }
+  //       }
+  //     }
+  //     .first-step {
+  //       width: 60%;
+  //       margin: 0 auto;
+  //       button {
+  //         border-radius: 10px;
+  //         width: 150px;
+  //         height: 45px;
+  //         background-color: #55b364;
+  //         outline: none;
+  //         border: none;
+  //         span {
+  //           font-family: $font__IBM;
+  //           font-weight: 700;
+  //           font-size: 14;
+  //           color: white;
+  //           margin: auto;
+  //         }
+  //       }
+  //     }
+  //     h2 {
+  //       font-family: $font__IBM;
+  //       font-weight: 700;
+  //       font-size: 25px;
+  //       color: #65687e;
+  //       margin-bottom: 50px;
+  //     }
+  //     #powerType {
+  //       display: flex;
+  //       align-items: center;
+  //     }
+  //     .choice {
+  //       margin: 0;
+  //       margin-right: 20px;
+  //       margin-left: 5px;
+  //     }
+  //   }
+  //   .buttons > .row {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     p {
+  //       color: #d3d5e3;
+  //       font-family: $font__IBM;
+  //       font-weight: 700;
+  //       font-size: 14px;
+  //       margin: 0;
+  //     }
+  //   }
+  //   .buttons {
+  //     margin-top: auto;
+  //     margin-bottom: 30px;
+  //     > .row {
+  //       position: relative;
+  //     }
+  //     .next-button {
+  //       display: flex;
+  //       margin-left: auto;
+  //       margin-right: 45px;
+  //       height: 35px;
+  //       outline: none;
+  //       cursor: pointer;
+  //       img {
+  //         margin-left: 12px;
+  //       }
+  //       p {
+  //         color: #55b364;
+  //         font-family: $font__IBM;
+  //         font-weight: 700;
+  //         font-size: 14px;
+  //         margin: auto;
+  //       }
+  //     }
+  //     .percent-line {
+  //       display: flex;
+  //       .green1-line {
+  //         border-right: 90px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px 0 0 10px;
+  //       }
+  //       .other-line {
+  //         border-right: 270px solid #e6e7f4;
+  //         height: 10px;
+  //         border-radius: 0 10px 10px 0;
+  //       }
+  //       .green-line2 {
+  //         border-right: 180px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px 0 0 10px;
+  //       }
+  //       .other-line2 {
+  //         border-right: 180px solid #e6e7f4;
+  //         height: 10px;
+  //         border-radius: 0 10px 10px 0;
+  //       }
+  //       .green-line3 {
+  //         border-right: 270px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px 0 0 10px;
+  //       }
+  //       .other-line3 {
+  //         border-right: 90px solid #e6e7f4;
+  //         height: 10px;
+  //         border-radius: 0 10px 10px 0;
+  //       }
+  //       .green-line4 {
+  //         border-right: 360px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px;
+  //       }
+  //     }
+  //     .back-button {
+  //       display: flex;
+  //       margin-right: auto;
+  //       margin-left: 55px;
+  //       outline: none;
+  //       cursor: pointer;
+  //       img {
+  //         margin-right: 12px;
+  //       }
+  //       p {
+  //         color: #9597ac;
+  //         font-family: $font__IBM;
+  //         font-weight: 700;
+  //         font-size: 14px;
+  //         margin: auto;
+  //       }
+  //     }
+  //   }
+  // }
+  // .table-wizard {
+  //   box-shadow: 0px 6px 30px #1d226f0d;
+  //   padding: 15px 45px 30px;
+  //   border-radius: 15px;
+  // }
 }
 .button {
   display: flex;
   justify-content: center;
 }
-.table {
-  margin: 0 auto;
-  width: 100%;
-  th {
-    border-top: none;
-    border-bottom: 1px solid #f4f4f4;
-    font-family: $font__IBM;
-    font-weight: 700;
-    font-size: 14px;
-    color: #333333;
-  }
-  td {
-    border: none;
-    p {
-      font-family: $font__IBM;
-      font-weight: 700;
-      font-size: 12px;
-      color: #9597ac;
-    }
-    .image {
-      margin-right: 10px;
-    }
-  }
-}
+// .table {
+//   margin: 0 auto;
+//   width: 100%;
+//   th {
+//     border-top: none;
+//     border-bottom: 1px solid #f4f4f4;
+//     font-family: $font__IBM;
+//     font-weight: 700;
+//     font-size: 14px;
+//     color: #333333;
+//   }
+//   td {
+//     border: none;
+//     p {
+//       font-family: $font__IBM;
+//       font-weight: 700;
+//       font-size: 12px;
+//       color: #9597ac;
+//     }
+//     .image {
+//       margin-right: 10px;
+//     }
+//   }
+// }
 .solar,
 .wind {
   width: 150px;
