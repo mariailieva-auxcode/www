@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Table from './components/builder/Table'
 import MainPage from "./components/MainPage.vue"
+import Assets from "./components/Assets.vue"
 import ResizingBoxes from "./components/builder/ResizingBoxes.vue"
 import NewsPage from './components/news/NewsPage.vue'
 import PrivacyPolicy from './components/PrivacyPolicy.vue'
@@ -62,6 +63,10 @@ export default new Router({
         {
             path: "/:lang/specialists/questionnaire",
             component: SpecialistsQuestionnaire
+        },
+        {
+            path: "/:lang/assets",
+            component: Assets
         },
     ]
 })
