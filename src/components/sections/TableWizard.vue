@@ -10,22 +10,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in filteredCompanies" :key="user">
+        <tr v-for="company in companies" :key="company.data.companyName">
           <td>
-            <p>{{user.data.companyName}}</p>
+            <p>{{company.data.companyName}}</p>
           </td>
           <td>
             <lazy-img
               class="image"
               :blur="30"
               src="/assets/wind.svg"
-              v-if="user.data.energy.includes('Wind')"
+              v-if="company.data.energy.includes('Wind')"
             />
             <lazy-img
               class="image"
               :blur="30"
               src="/assets/solar.svg"
-              v-if="user.data.energy.includes('Solar')"
+              v-if="company.data.energy.includes('Solar')"
             />
           </td>
           <td>
@@ -33,23 +33,23 @@
               class="image"
               :blur="30"
               src="/assets/roof.svg"
-              v-if="user.data.material.includes('Roof')"
+              v-if="company.data.material.includes('Roof')"
             />
             <lazy-img
               class="image"
               :blur="30"
               src="/assets/land.svg"
-              v-if="user.data.material.includes('Land')"
+              v-if="company.data.material.includes('Land')"
             />
             <lazy-img
               class="image"
               :blur="30"
               src="/assets/water.svg"
-              v-if="user.data.material.includes('Water')"
+              v-if="company.data.material.includes('Water')"
             />
           </td>
           <td>
-            <p>{{user.data.size}}</p>
+            <p>{{company.data.size}}</p>
           </td>
         </tr>
       </tbody>
@@ -57,7 +57,6 @@
   </div>
 </template>
 <script>
-import axios from "../../axios";
 import questionnaire from "js-yaml-loader!../../../content/nl/site-owner/questionnaire.yaml";
 import questionnaireEn from "js-yaml-loader!../../../content/en/site-owner/questionnaire.yaml";
 export default {
@@ -70,9 +69,12 @@ export default {
       companyName: "",
     };
   },
+  props: {
+    companies: { type: Array },
+  },
   created() {
-    this.getCompanies();
     this.init();
+    console.log(this.companies);
   },
   watch: {
     $route() {
@@ -83,30 +85,10 @@ export default {
     init() {
       this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? questionnaireEn : questionnaire;
-      this.welcomeText = data["welcome-header-text"];
-      this.welcomeIcon = data["welcome-icon"];
-      this.welcomeLabel = data["welcome-label"];
-      this.startButton = data["start-button"];
-      this.headerCardText = data["header-card-text"];
-      this.firstQuestion = data["first-question"];
-      this.secondQuestion = data["second-question"];
-      this.thirdQuestion = data["third-question"];
-      this.fourthQuestion = data["fourth-question"];
-      this.completeLabel = data["complete-label"];
-      this.firstButton = data["first-button"];
-      this.firstDescription = data["first-description"];
-      this.secondButton = data["second-button"];
-      this.secondDescription = data["second-description"];
       this.tableCompany = data["company-name"];
       this.tableEnergy = data["energy-type"];
       this.tableMaterial = data["material-type"];
       this.tableSize = data["size"];
-    },
-    getCompanies() {
-      axios.get(`site-owner`).then((data) => {
-        this.companies = data.data.data;
-        this.filteredCompanies = this.companies;
-      });
     },
   },
 };
