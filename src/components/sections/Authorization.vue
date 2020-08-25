@@ -9,7 +9,7 @@
         </div>
         <div class="col-6">
           <div class="Login">
-            <Login v-if="isLogin"></Login>
+            <Login v-if="isLogin" @login="login($event)"></Login>
           </div>
           <div class="SignUp">
             <SignUp v-if="!isLogin" @sign-up="register($event)"></SignUp>
@@ -64,14 +64,16 @@ export default {
     userType: { type: Number },
   },
   methods: {
-    submit(credentials) {
+    register(credentials) {
       axios.post("register", { ...credentials, ...this.data }).then((_) => {
         this.$emit("close", _);
       });
     },
-    register(credentials) {
-      // to be modified when we have regiter for specialist
-      this.submit(credentials);
+    login(credentials) {
+      axios.post("login", { ...credentials, ...this.data }).then((data) => {
+        localStorage.token = data.data.token;
+        this.$emit("close");
+      });
     },
   },
 };

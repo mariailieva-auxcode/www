@@ -3,7 +3,7 @@
     <img class="logo" src="/assets/logo.svg" />
     <p class="header">Log In to greenatlas.earth</p>
     <div class="inputs">
-      <input type="email" class="email" placeholder="Email address" />
+      <input type="email" class="email" placeholder="Email address" v-model="email" />
       <input
         id="pass"
         :type="showPassword ? 'text' : 'password'"
@@ -15,7 +15,7 @@
         <label class="custom-control-label" for="termsAndConditions">Remember me</label>
         <label class="green">Forgot password?</label>
       </div>
-      <button class="login">Log in</button>
+      <button @click="loginUser()" class="login">Log in</button>
     </div>
   </div>
 </template>
@@ -24,10 +24,19 @@ export default {
   data() {
     return {
       password: "",
+      email: "",
       showPassword: false,
       checkbox: false,
       active: false,
     };
+  },
+  methods: {
+    loginUser() {
+      this.$emit("login", { email: this.email, password: this.password });
+    },
+    logout() {
+      delete localStorage.token;
+    },
   },
 };
 </script>
