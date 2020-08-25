@@ -270,10 +270,6 @@ export default {
       firstDescription: "",
       secondButton: "",
       secondDescription: "",
-      tableCompany: "",
-      tableEnergy: "",
-      tableMaterial: "",
-      tableSize: "",
       powerType: [],
       postCode: "",
       streetNumber: "",
@@ -282,8 +278,6 @@ export default {
       companyName: "",
       phoneNumber: "",
       material: [],
-      companies: [],
-      filteredCompanies: [],
       step: 1,
       solar: false,
       wind: false,
@@ -358,10 +352,6 @@ export default {
       this.firstDescription = data["first-description"];
       this.secondButton = data["second-button"];
       this.secondDescription = data["second-description"];
-      this.tableCompany = data["company-name"];
-      this.tableEnergy = data["energy-type"];
-      this.tableMaterial = data["material-type"];
-      this.tableSize = data["size"];
     },
     filterCompanies() {
       this.filteredCompanies = this.companies.filter(
