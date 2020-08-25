@@ -3,7 +3,7 @@
     <img class="logo" src="/assets/logo.svg" />
     <p class="header">Log In to greenatlas.earth</p>
     <div class="inputs">
-      <input type="email" class="email" placeholder="Email address" />
+      <input type="email" class="email" placeholder="Email address" v-model="email" />
       <input
         id="pass"
         :type="showPassword ? 'text' : 'password'"
@@ -11,11 +11,20 @@
         v-model="password"
       />
       <div class="col-12 checkbox custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="termsAndConditions" />
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="termsAndConditions"
+          v-model="checkbox"
+        />
         <label class="custom-control-label" for="termsAndConditions">Remember me</label>
         <label class="green">Forgot password?</label>
       </div>
-      <button class="login">Log in</button>
+      <button
+        class="login"
+        :disabled="!LoginAllowed"
+        :style="{'cursor':LoginAllowed ? 'pointer':'not-allowed'}"
+      >Log in</button>
     </div>
   </div>
 </template>
@@ -24,10 +33,25 @@ export default {
   data() {
     return {
       password: "",
+      email: "",
       showPassword: false,
       checkbox: false,
       active: false,
+      reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
     };
+  },
+  computed: {
+    LoginAllowed() {
+      console.log(this.EmailCheck);
+      if (!this.email || !this.password) return false;
+      if (!this.checkbox) return false;
+      if (!this.EmailCheck) return false;
+      return true;
+    },
+    EmailCheck() {
+      if (this.reg.test(this.email)) return true;
+      return false;
+    },
   },
 };
 </script>

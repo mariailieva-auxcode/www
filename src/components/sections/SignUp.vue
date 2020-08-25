@@ -37,7 +37,7 @@
               name="password"
               placeholder="Confirm Password"
               v-model="confirmPassword"
-              :class="{ 'error': isError }"
+              :class="{'error': isError}"
             />
           </div>
           <div v-if="isError" class="confirm">
@@ -86,18 +86,25 @@ export default {
       hasLowerCase: false,
       hasNumber: false,
       isLongEnough: false,
+      reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
     };
   },
   computed: {
     signupAllow() {
+      console.log(this.EmailCheck);
       if (!this.email || !this.password || !this.confirmPassword) return false;
       if (this.checkbox == false) return false;
+      if (this.EmailCheck == false) return false;
       return true;
     },
     passMatch() {
       if (this.confirmPassword.length > 0)
         return this.password == this.confirmPassword ? true : false;
       else return true;
+    },
+    EmailCheck() {
+      if (this.reg.test(this.email)) return true;
+      return false;
     },
   },
   methods: {
