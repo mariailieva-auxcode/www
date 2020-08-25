@@ -6,6 +6,7 @@
         <button @click="showUploadFile = true">Upload File</button>
         <p>Already having an account?</p>
         <button @click="showAuth = true">Log in</button>
+        <button @click="logout()">Logout</button>
       </div>
       <Assets v-if="showUploadFile" @close="showUploadFile=false"></Assets>
       <Authorization v-if="showAuth" @close="showAuth=false"></Authorization>
@@ -83,6 +84,9 @@ export default {
       this.button2 = data.button2;
       this.button3 = data.button3;
       this.image = data.image;
+    },
+    logout() {
+      delete localStorage.token;
     },
   },
 };
