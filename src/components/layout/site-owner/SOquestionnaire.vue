@@ -1,317 +1,26 @@
 <template>
   <div class="background-color">
     <div class="so-questionnaire">
-      <div class="header">
-        <Authorization v-if="showAuth" @close="close()" :isLogin="false" :data="siteOwnerData"></Authorization>
-        <p>{{welcomeText}}</p>
-        <lazy-img class="img" :src="welcomeIcon" :blur="30" />
-      </div>
-      <div class="user-wizard">
-        <div class="row questions-header" v-if="step !== 6">
-          <p>{{headerCardText}}</p>
-        </div>
-        <div class="user-questions">
-          <div class="step" v-if="step === 1">
-            <div class="first-step container">
-              <div class="row">
-                <div class="col-12">
-                  <h2>{{welcomeLabel}}</h2>
-                  <button @click="step++" v-if="step === 1">
-                    <span>{{startButton}}</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="step" v-if="step === 2">
-            <div class="container second-step">
-              <div class="row">
-                <div class="col-12">
-                  <h2>{{firstQuestion}}</h2>
-                  <div class="solar-and-wind">
-                    <button
-                      class="solar"
-                      :class="{'active': solar}"
-                      @click="solar =!solar;  filterCompanies()"
-                    >
-                      <img src="/assets/solar.svg" />Solar
-                    </button>
-                    <button
-                      class="wind"
-                      :class="{'active': wind}"
-                      @click="wind =!wind; filterCompanies()"
-                    >
-                      <img src="/assets/wind.svg" />Wind
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="step" v-if="step === 3">
-            <div class="container">
-              <h2>{{secondQuestion}}</h2>
-              <div class="row">
-                <div class="col-12 roof-land-water">
-                  <button
-                    class="solar"
-                    :class="{'active': roof}"
-                    @click="roof =!roof; filterCompanies()"
-                  >
-                    <img src="/assets/roof.svg" />Roof
-                  </button>
-                  <button
-                    class="wind"
-                    :class="{'active': land}"
-                    @click="land =!land; filterCompanies()"
-                  >
-                    <img src="/assets/land.svg" />Land
-                  </button>
-                  <button
-                    class="wind"
-                    :class="{'active': water}"
-                    @click="water =!water; filterCompanies()"
-                  >
-                    <img src="/assets/water.svg" />Water
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="step" v-if="step === 4">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <h2 for="size">{{thirdQuestion}}</h2>
-                  <div class="form-inputs form-inline">
-                    <div class="size">
-                      <input
-                        id="phoneNumber"
-                        placeholder="0"
-                        type="number"
-                        v-model.number="size"
-                        @input="filterCompanies"
-                      />
-                      <p>sq.m.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="step map" v-if="step === 5">
-            <div class="container">
-              <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-xl-6">
-                  <div class="col-12">
-                    <h2>{{fourthQuestion}}</h2>
-                  </div>
-                  <div class="form-inputs form-inline">
-                    <div class="input-group">
-                      <input id="postal" v-model="postCode" type="text" required />
-                      <span class="highlight"></span>
-                      <label>Postal Code</label>
-                    </div>
-                    <div class="input-group">
-                      <input id="street" v-model="streetNumber" type="text" required />
-                      <span class="highlight"></span>
-                      <label>Street Number</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-xl-6 google-map">
-                  <div style="width: 100%">
-                    <iframe
-                      width="445px"
-                      height="215px"
-                      frameborder="0"
-                      scrolling="no"
-                      marginheight="0"
-                      marginwidth="0"
-                      src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Amsterdam+(GreenAtlas)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                    ></iframe>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="step step-6" v-if="step === 6">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <h2>{{completeLabel}}</h2>
-                </div>
-                <div class="col-6">
-                  <div class="form-inputs">
-                    <div class="complete">
-                      <div class="input-group">
-                        <input type="email" v-model="companyName" />
-                        <span class="highlight"></span>
-                        <label>Company Name</label>
-                      </div>
-                      <div class="input-group">
-                        <input type="text" v-model="name" />
-                        <span class="highlight"></span>
-                        <label>Name</label>
-                      </div>
-                      <div class="input-group">
-                        <input type="number" v-model="phoneNumber" />
-                        <span class="highlight"></span>
-                        <label>Phone Number</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="account">
-                    <button class="white">{{firstButton}}</button>
-                    <p>{{firstDescription}}</p>
-                    <button
-                      @click="signUp()"
-                      :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
-                      class="green"
-                    >{{secondButton}}</button>
-                    <p>{{secondDescription}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="buttons">
-          <div class="row" v-if="step === 2">
-            <p>1 of 4</p>
-          </div>
-          <div class="row" v-if="step === 3">
-            <p>2 of 4</p>
-          </div>
-          <div class="row" v-if="step === 4">
-            <p>3 of 4</p>
-          </div>
-          <div class="row" v-if="step === 5">
-            <p>4 of 4</p>
-          </div>
-          <div class="row">
-            <a
-              class="back-button"
-              :class="step == 2 ? 'invisible' : ''"
-              @click="step--"
-              v-if="step !== 1 && step !==6"
-            >
-              <img src="/assets/arrow-left-white.svg" />
-              <p>Back</p>
-            </a>
-            <a class="back-button" @click="step--" v-if="step === 6">
-              <img src="/assets/arrow-left-white.svg" />
-              <p>Back</p>
-            </a>
-            <div class="percent-line" v-if="step === 2">
-              <div class="green1-line"></div>
-              <div class="other-line"></div>
-            </div>
-            <div class="percent-line" v-if="step === 3">
-              <div class="green-line2"></div>
-              <div class="other-line2"></div>
-            </div>
-            <div class="percent-line" v-if="step === 4">
-              <div class="green-line3"></div>
-              <div class="other-line3"></div>
-            </div>
-            <div class="percent-line" v-if="step === 5">
-              <div class="green-line4"></div>
-              <div class="other-line4"></div>
-            </div>
-            <a
-              class="next-button"
-              @click="nextStep()"
-              :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
-              v-if="step !== 5 && step !== 1 && step !== 6 "
-            >
-              <p>Continue</p>
-              <img src="/assets/arrow-right-green.svg" />
-            </a>
-
-            <a
-              class="next-button"
-              @click="nextStep()"
-              :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
-              v-else-if="step === 5"
-            >
-              <p>Finish</p>
-              <img src="/assets/arrow-right-green.svg" />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="table-wizard">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>{{tableCompany}}</th>
-              <th>{{tableEnergy}}</th>
-              <th>{{tableMaterial}}</th>
-              <th>{{tableSize}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="user in filteredCompanies" :key="user">
-              <td>
-                <p>{{user.data.companyName}}</p>
-              </td>
-              <td>
-                <lazy-img
-                  class="image"
-                  :blur="30"
-                  src="/assets/wind.svg"
-                  v-if="user.data.energy.includes('Wind')"
-                />
-                <lazy-img
-                  class="image"
-                  :blur="30"
-                  src="/assets/solar.svg"
-                  v-if="user.data.energy.includes('Solar')"
-                />
-              </td>
-              <td>
-                <lazy-img
-                  class="image"
-                  :blur="30"
-                  src="/assets/roof.svg"
-                  v-if="user.data.material.includes('Roof')"
-                />
-                <lazy-img
-                  class="image"
-                  :blur="30"
-                  src="/assets/land.svg"
-                  v-if="user.data.material.includes('Land')"
-                />
-                <lazy-img
-                  class="image"
-                  :blur="30"
-                  src="/assets/water.svg"
-                  v-if="user.data.material.includes('Water')"
-                />
-              </td>
-              <td>
-                <p>{{user.data.size}}</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <UserWizard></UserWizard>
+      <TableWizard :companies="filteredCompanies"></TableWizard>
     </div>
   </div>
 </template>
 
 <script>
-import Authorization from "../../sections/Authorization";
+// import Authorization from "../../sections/Authorization";
+import UserWizard from "../../sections/UserWizard";
+import TableWizard from "../../sections/TableWizard";
 import questionnaire from "js-yaml-loader!../../../../content/nl/site-owner/questionnaire.yaml";
 import questionnaireEn from "js-yaml-loader!../../../../content/en/site-owner/questionnaire.yaml";
 import axios from "../../../axios";
 export default {
   components: {
-    Authorization,
+    // Authorization,
+    UserWizard,
+    TableWizard,
   },
+
   data() {
     return {
       lang: "",
@@ -577,200 +286,200 @@ export default {
       margin-left: 25px;
     }
   }
-  .user-wizard {
-    margin-bottom: 25px;
-    min-height: 385px;
-    height: auto;
-    box-shadow: 0px 6px 30px #1d226f0d;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    .questions-header {
-      color: #55b364;
-      font-family: $font__IBM;
-      font-weight: 500;
-      font-size: 14px;
-      margin: 10px auto 60px;
-    }
-    .step {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      &.map {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        .row {
-          .map-codes {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-        }
-      }
-      .first-step {
-        width: 60%;
-        margin: 0 auto;
-        button {
-          border-radius: 10px;
-          width: 150px;
-          height: 45px;
-          background-color: #55b364;
-          outline: none;
-          border: none;
-          span {
-            font-family: $font__IBM;
-            font-weight: 700;
-            font-size: 14;
-            color: white;
-            margin: auto;
-          }
-        }
-      }
-      h2 {
-        font-family: $font__IBM;
-        font-weight: 700;
-        font-size: 25px;
-        color: #65687e;
-        margin-bottom: 50px;
-      }
-      #powerType {
-        display: flex;
-        align-items: center;
-      }
-      .choice {
-        margin: 0;
-        margin-right: 20px;
-        margin-left: 5px;
-      }
-    }
-    .buttons > .row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      p {
-        color: #d3d5e3;
-        font-family: $font__IBM;
-        font-weight: 700;
-        font-size: 14px;
-        margin: 0;
-      }
-    }
-    .buttons {
-      margin-top: auto;
-      margin-bottom: 30px;
-      > .row {
-        position: relative;
-      }
-      .next-button {
-        display: flex;
-        margin-left: auto;
-        margin-right: 45px;
-        height: 35px;
-        outline: none;
-        cursor: pointer;
-        img {
-          margin-left: 12px;
-        }
-        p {
-          color: #55b364;
-          font-family: $font__IBM;
-          font-weight: 700;
-          font-size: 14px;
-          margin: auto;
-        }
-      }
-      .percent-line {
-        display: flex;
-        .green1-line {
-          border-right: 90px solid #55b364;
-          height: 10px;
-          border-radius: 10px 0 0 10px;
-        }
-        .other-line {
-          border-right: 270px solid #e6e7f4;
-          height: 10px;
-          border-radius: 0 10px 10px 0;
-        }
-        .green-line2 {
-          border-right: 180px solid #55b364;
-          height: 10px;
-          border-radius: 10px 0 0 10px;
-        }
-        .other-line2 {
-          border-right: 180px solid #e6e7f4;
-          height: 10px;
-          border-radius: 0 10px 10px 0;
-        }
-        .green-line3 {
-          border-right: 270px solid #55b364;
-          height: 10px;
-          border-radius: 10px 0 0 10px;
-        }
-        .other-line3 {
-          border-right: 90px solid #e6e7f4;
-          height: 10px;
-          border-radius: 0 10px 10px 0;
-        }
-        .green-line4 {
-          border-right: 360px solid #55b364;
-          height: 10px;
-          border-radius: 10px;
-        }
-      }
-      .back-button {
-        display: flex;
-        margin-right: auto;
-        margin-left: 55px;
-        outline: none;
-        cursor: pointer;
-        img {
-          margin-right: 12px;
-        }
-        p {
-          color: #9597ac;
-          font-family: $font__IBM;
-          font-weight: 700;
-          font-size: 14px;
-          margin: auto;
-        }
-      }
-    }
-  }
-  .table-wizard {
-    box-shadow: 0px 6px 30px #1d226f0d;
-    padding: 15px 45px 30px;
-    border-radius: 15px;
-  }
+  // .user-wizard {
+  //   margin-bottom: 25px;
+  //   min-height: 385px;
+  //   height: auto;
+  //   box-shadow: 0px 6px 30px #1d226f0d;
+  //   border-radius: 15px;
+  //   display: flex;
+  //   flex-direction: column;
+  //   .questions-header {
+  //     color: #55b364;
+  //     font-family: $font__IBM;
+  //     font-weight: 500;
+  //     font-size: 14px;
+  //     margin: 10px auto 60px;
+  //   }
+  //   .step {
+  //     display: flex;
+  //     justify-content: center;
+  //     flex-direction: column;
+  //     &.map {
+  //       display: flex;
+  //       align-items: center;
+  //       margin-bottom: 20px;
+  //       .row {
+  //         .map-codes {
+  //           display: flex;
+  //           flex-direction: column;
+  //           justify-content: center;
+  //         }
+  //       }
+  //     }
+  //     .first-step {
+  //       width: 60%;
+  //       margin: 0 auto;
+  //       button {
+  //         border-radius: 10px;
+  //         width: 150px;
+  //         height: 45px;
+  //         background-color: #55b364;
+  //         outline: none;
+  //         border: none;
+  //         span {
+  //           font-family: $font__IBM;
+  //           font-weight: 700;
+  //           font-size: 14;
+  //           color: white;
+  //           margin: auto;
+  //         }
+  //       }
+  //     }
+  //     h2 {
+  //       font-family: $font__IBM;
+  //       font-weight: 700;
+  //       font-size: 25px;
+  //       color: #65687e;
+  //       margin-bottom: 50px;
+  //     }
+  //     #powerType {
+  //       display: flex;
+  //       align-items: center;
+  //     }
+  //     .choice {
+  //       margin: 0;
+  //       margin-right: 20px;
+  //       margin-left: 5px;
+  //     }
+  //   }
+  //   .buttons > .row {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     p {
+  //       color: #d3d5e3;
+  //       font-family: $font__IBM;
+  //       font-weight: 700;
+  //       font-size: 14px;
+  //       margin: 0;
+  //     }
+  //   }
+  //   .buttons {
+  //     margin-top: auto;
+  //     margin-bottom: 30px;
+  //     > .row {
+  //       position: relative;
+  //     }
+  //     .next-button {
+  //       display: flex;
+  //       margin-left: auto;
+  //       margin-right: 45px;
+  //       height: 35px;
+  //       outline: none;
+  //       cursor: pointer;
+  //       img {
+  //         margin-left: 12px;
+  //       }
+  //       p {
+  //         color: #55b364;
+  //         font-family: $font__IBM;
+  //         font-weight: 700;
+  //         font-size: 14px;
+  //         margin: auto;
+  //       }
+  //     }
+  //     .percent-line {
+  //       display: flex;
+  //       .green1-line {
+  //         border-right: 90px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px 0 0 10px;
+  //       }
+  //       .other-line {
+  //         border-right: 270px solid #e6e7f4;
+  //         height: 10px;
+  //         border-radius: 0 10px 10px 0;
+  //       }
+  //       .green-line2 {
+  //         border-right: 180px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px 0 0 10px;
+  //       }
+  //       .other-line2 {
+  //         border-right: 180px solid #e6e7f4;
+  //         height: 10px;
+  //         border-radius: 0 10px 10px 0;
+  //       }
+  //       .green-line3 {
+  //         border-right: 270px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px 0 0 10px;
+  //       }
+  //       .other-line3 {
+  //         border-right: 90px solid #e6e7f4;
+  //         height: 10px;
+  //         border-radius: 0 10px 10px 0;
+  //       }
+  //       .green-line4 {
+  //         border-right: 360px solid #55b364;
+  //         height: 10px;
+  //         border-radius: 10px;
+  //       }
+  //     }
+  //     .back-button {
+  //       display: flex;
+  //       margin-right: auto;
+  //       margin-left: 55px;
+  //       outline: none;
+  //       cursor: pointer;
+  //       img {
+  //         margin-right: 12px;
+  //       }
+  //       p {
+  //         color: #9597ac;
+  //         font-family: $font__IBM;
+  //         font-weight: 700;
+  //         font-size: 14px;
+  //         margin: auto;
+  //       }
+  //     }
+  //   }
+  // }
+  // .table-wizard {
+  //   box-shadow: 0px 6px 30px #1d226f0d;
+  //   padding: 15px 45px 30px;
+  //   border-radius: 15px;
+  // }
 }
 .button {
   display: flex;
   justify-content: center;
 }
-.table {
-  margin: 0 auto;
-  width: 100%;
-  th {
-    border-top: none;
-    border-bottom: 1px solid #f4f4f4;
-    font-family: $font__IBM;
-    font-weight: 700;
-    font-size: 14px;
-    color: #333333;
-  }
-  td {
-    border: none;
-    p {
-      font-family: $font__IBM;
-      font-weight: 700;
-      font-size: 12px;
-      color: #9597ac;
-    }
-    .image {
-      margin-right: 10px;
-    }
-  }
-}
+// .table {
+//   margin: 0 auto;
+//   width: 100%;
+//   th {
+//     border-top: none;
+//     border-bottom: 1px solid #f4f4f4;
+//     font-family: $font__IBM;
+//     font-weight: 700;
+//     font-size: 14px;
+//     color: #333333;
+//   }
+//   td {
+//     border: none;
+//     p {
+//       font-family: $font__IBM;
+//       font-weight: 700;
+//       font-size: 12px;
+//       color: #9597ac;
+//     }
+//     .image {
+//       margin-right: 10px;
+//     }
+//   }
+// }
 .solar,
 .wind {
   width: 150px;

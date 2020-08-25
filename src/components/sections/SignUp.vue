@@ -40,7 +40,7 @@
               :class="{ 'error': isError }"
             />
           </div>
-          <div v-if="!passMatch" class="confirm">
+          <div v-if="isError" class="confirm">
             <img src="/assets/warning.svg" />
             <p>Please, confirm your password.</p>
           </div>

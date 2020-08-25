@@ -42,6 +42,7 @@ export default {
 </script>
 <style lang="scss">
 @import "../../assets/styles/main.scss";
+@import "../../assets/styles/components/_inputs.scss";
 .components {
   display: flex;
   flex-direction: column;
@@ -69,7 +70,7 @@ export default {
       color: #ffffff;
       font-family: $font__IBM;
       border: none;
-      outline-color: none;
+      outline-color: transparent;
       width: 305px;
       height: 46px;
       text-align: center;
@@ -77,19 +78,6 @@ export default {
     .email {
       margin-top: 30px;
       margin-bottom: 16px;
-      width: 305px;
-      height: 46px;
-      border: 1px solid #d3d5e3;
-      border-radius: 10px;
-      padding: 14px 20px;
-    }
-    #pass {
-      width: 305px;
-      height: 46px;
-      border: 1px solid #d3d5e3;
-      border-radius: 10px;
-      padding: 14px 20px;
-      margin-right: 0;
     }
     .custom-checkbox
       .custom-control-input:checked
