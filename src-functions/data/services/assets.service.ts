@@ -1,8 +1,9 @@
 import cloudinary from 'cloudinary';
+import { BlobProviders } from '../enums/blob-providers.enum';
 
 
 export default class AssetsService {
-    init() {
+    init() { // move to the cloudinary service
         cloudinary.v2.config({ 
             cloud_name: process.env.VUE_APP_CLOUDINARY_API_CLOUDNAME, 
             api_key: process.env.VUE_APP_CLOUDINARY_API_KEY, 
@@ -11,6 +12,13 @@ export default class AssetsService {
     }
 
     uploadFile(fileInBase64: string, filename: string) {
+        let blobProvider = BlobProviders.AMAZON
+        if(blobProvider === BlobProviders.AMAZON) {
+            // await s3Service.upload()
+        } else if (blobProvider === BlobProviders.CLOUDINARY) {
+            // await cloudinary.upload();
+        }
+        // all code bellow should go to cloudinary service
         this.init();
         var timestamp = Math.round((new Date).getTime()/1000);
         
