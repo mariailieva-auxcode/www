@@ -1,6 +1,11 @@
 <template>
-  <div id="app">
-    <input type="file" @change="fileChange($event.target.files[0])" />
+  <div class="positioning">
+    <div id="app">
+      <input type="file" @change="fileChange($event.target.files[0])" />
+      <button @click="$emit('close')">
+        <img src="/assets/X-image.svg" />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -24,7 +29,7 @@ export default {
           }
         )
         .then((res) => {
-            console.log(res)
+          console.log(res);
         });
     },
     async fileToBase64(file) {
@@ -47,3 +52,25 @@ export default {
 };
 </script>
 
+<style scoped lang="scss">
+.positioning {
+  position: absolute;
+  top: 80px;
+  left: 400px;
+  #app {
+    z-index: 11;
+    position: relative;
+    input {
+      width: 385px;
+      height: 80px;
+    }
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: none;
+      border: none;
+    }
+  }
+}
+</style>
