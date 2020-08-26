@@ -25,6 +25,8 @@
         :disabled="!LoginAllowed"
         :style="{'cursor':LoginAllowed ? 'pointer':'not-allowed'}"
       >Log in</button>
+
+      <button @click="loginUser()" class="login">Log in</button>
     </div>
   </div>
 </template>
@@ -51,6 +53,14 @@ export default {
     EmailCheck() {
       if (this.reg.test(this.email)) return true;
       return false;
+    },
+    methods: {
+      loginUser() {
+        this.$emit("login", { email: this.email, password: this.password });
+      },
+      logout() {
+        delete localStorage.token;
+      },
     },
   },
 };

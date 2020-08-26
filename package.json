@@ -16,7 +16,7 @@
     "dotenv-webpack": "^2.0.0",
     "encoding": "^0.1.13",
     "fauna-shell": "^0.11.4",
-    "html-loader": "^1.2.0",
+    "js-sha1": "^0.6.0",
     "js-yaml-loader": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
     "link-prevue": "^1.1.3",
