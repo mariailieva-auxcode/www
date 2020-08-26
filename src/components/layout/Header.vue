@@ -5,11 +5,11 @@
       <div class="row login-buttons">
         <button @click="showUploadFile = true">Upload File</button>
         <p>Already having an account?</p>
-        <button @click="showAuth = true">Log in</button>
-        <button @click="logout()">Logout</button>
+        <button @click="showAuth = true" v-if="!isLogged">Log in</button>
+        <button v-if="isLogged" @click="logout()">Logout</button>
       </div>
       <Assets v-if="showUploadFile" @close="showUploadFile=false"></Assets>
-      <Authorization v-if="showAuth" @close="showAuth=false"></Authorization>
+      <Authorization v-if="showAuth" @close="onAuthorizationClose($event)"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
         <h3 class="col-sm-12 col-12">{{description}}</h3>
@@ -62,6 +62,7 @@ export default {
       image: "",
       showAuth: false,
       showUploadFile: false,
+      isLogged: false,
     };
   },
   props: {
@@ -85,8 +86,13 @@ export default {
       this.button3 = data.button3;
       this.image = data.image;
     },
+    onAuthorizationClose(isLogged) {
+      this.showAuth = false;
+      if (isLogged) this.isLogged = true;
+    },
     logout() {
       delete localStorage.token;
+      this.isLogged = false;
     },
   },
 };

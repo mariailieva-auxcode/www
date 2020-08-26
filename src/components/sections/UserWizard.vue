@@ -352,6 +352,7 @@ export default {
       this.firstDescription = data["first-description"];
       this.secondButton = data["second-button"];
       this.secondDescription = data["second-description"];
+      this.submit();
     },
     filterCompanies() {
       this.filteredCompanies = this.companies.filter(
@@ -366,7 +367,7 @@ export default {
           (!this.water || comp.data.material.includes("Water")) &&
           (!this.size || parseInt(comp.data.size) <= this.size)
       );
-      if (this.wind) this.filteredCompanies;
+      this.submit();
     },
     nextStep() {
       if (this.isNextAllowed) this.step++;
@@ -388,6 +389,7 @@ export default {
       axios.get(`site-owner`).then((data) => {
         this.companies = data.data.data;
         this.filteredCompanies = this.companies;
+        this.submit();
       });
     },
     close() {
@@ -395,6 +397,9 @@ export default {
       this.$router.push(
         `/${this.$router.history.current.params.lang}/site-owner`
       );
+    },
+    submit() {
+      this.$emit("change", this.filteredCompanies);
     },
   },
 };
