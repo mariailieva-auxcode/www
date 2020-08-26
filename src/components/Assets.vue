@@ -17,17 +17,14 @@ export default {
   name: "Assets",
   methods: {
     async fileChange(file) {
-      let filename = encodeURI(file.name)
+      let filename = encodeURI(file.name);
 
       let byteArray = await this.fileToBase64(file);
       // add filename to the request body
       axios
-        .post(
-          `assets`,
-          {
-            file: byteArray,
-          }
-        )
+        .post(`assets`, {
+          file: byteArray,
+        })
         .then((res) => {
           console.log(res);
         });

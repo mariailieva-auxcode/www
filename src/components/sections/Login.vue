@@ -24,13 +24,13 @@
         class="login"
         :disabled="!LoginAllowed"
         :style="{'cursor':LoginAllowed ? 'pointer':'not-allowed'}"
+        @click="loginUser()"
       >Log in</button>
-
-      <button @click="loginUser()" class="login">Log in</button>
     </div>
   </div>
 </template>
 <script>
+import { EMAIL_REGEX } from "../../helpers/email-regex.helper";
 export default {
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
       showPassword: false,
       checkbox: false,
       active: false,
-      reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+      reg: EMAIL_REGEX,
     };
   },
   computed: {
@@ -89,7 +89,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     .login {
-      margin: 30px 0 16px;
+      margin: 15px 0 16px;
       background: #55b364;
       border-radius: 10px;
       color: #ffffff;

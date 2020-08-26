@@ -72,6 +72,7 @@
   </div>
 </template>
 <script>
+import { EMAIL_REGEX } from "../../helpers/email-regex.helper";
 export default {
   data() {
     return {
@@ -86,15 +87,15 @@ export default {
       hasLowerCase: false,
       hasNumber: false,
       isLongEnough: false,
-      reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+      reg: EMAIL_REGEX,
     };
   },
   computed: {
     signupAllow() {
-      console.log(this.EmailCheck);
       if (!this.email || !this.password || !this.confirmPassword) return false;
       if (this.checkbox == false) return false;
       if (this.EmailCheck == false) return false;
+      if (this.passRules() == false) return false;
       return true;
     },
     passMatch() {
@@ -216,14 +217,16 @@ export default {
       color: #9597ac;
       justify-content: left;
       margin-left: 20px;
+      align-items: baseline;
       label {
         margin-left: 6px;
         margin-bottom: 0;
         line-height: 24px;
         span.black {
-          margin-left: 3px;
           margin-bottom: 0;
           color: black;
+          font-weight: 500;
+          font-size: 13px;
         }
       }
     }
@@ -246,7 +249,7 @@ export default {
     ul {
       text-align: left;
       margin-top: 0px;
-      margin-left: 15px;
+      margin-left: 25px;
       margin-bottom: 15px;
       padding: 0;
       font-family: $font__IBM;
@@ -279,7 +282,7 @@ export default {
       img {
         position: absolute;
         right: 20px;
-        top: 13px;
+        top: 20px;
       }
     }
   }
