@@ -72,7 +72,7 @@ export default {
     login(credentials) {
       axios.post("login", { ...credentials, ...this.data }).then((data) => {
         localStorage.token = data.data.token;
-        this.$emit("close");
+        this.$emit("close", data.data.token);
       });
     },
   },
