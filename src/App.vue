@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="navigation">
-      <Navigation></Navigation>
+      <NewNavigation></NewNavigation>
+      <!-- <Navigation></Navigation> -->
     </div>
     <div class="content">
-      <!-- TODO(Milen) check how router props work -->
       <router-view></router-view>
       <Footer></Footer>
     </div>
@@ -34,14 +34,16 @@
 </template>
 
 <script>
-import Navigation from "./components/layout/Navigation.vue";
+// import Navigation from "./components/layout/Navigation.vue";
+import NewNavigation from "./components/layout/New-Navigation";
 import Footer from "./components/layout/Footer.vue";
 import CookieLaw from "vue-cookie-law";
 
 export default {
   name: "App",
   components: {
-    Navigation,
+    // Navigation,
+    NewNavigation,
     Footer,
     CookieLaw,
   },
@@ -63,6 +65,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #fafbff;
+  font-family: $font__IBM;
 }
 
 body.no-scroll {
@@ -72,16 +76,16 @@ body {
   overflow-y: overlay;
   overflow-x: hidden;
 }
-.content {
-  width: calc(100vw - 100px);
-  float: right;
-}
+// .content {
+//   width: calc(100vw - 100px);
+//   float: right;
+// }
 
-@media only screen and (min-width: 769px) {
-  .content {
-    width: calc(100vw - 115px);
-  }
-}
+// @media only screen and (min-width: 769px) {
+//   .content {
+//     width: calc(100vw - 115px);
+//   }
+// }
 
 .Cookie--bottom {
   left: 100px !important;

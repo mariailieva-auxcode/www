@@ -1,0 +1,14 @@
+title: Articles
+articles:
+  - image: /assets/first-image.png
+    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
+    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
+    link: READ THE POST
+  - image: /assets/second-image.png
+    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
+    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
+    link: READ THE POST
+  - image: /assets/third-image.png
+    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
+    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
+    link: READ THE POST

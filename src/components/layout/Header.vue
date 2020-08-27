@@ -1,9 +1,14 @@
 <template>
-  <lazy-background :src="image" placeholder="https://placeholder.pics/svg/1300x800" :blur="30">
-    <div slot="content" class="header">
+  <lazy-background
+    class="background-image"
+    :src="backgroundImage"
+    placeholder="https://placeholder.pics/svg/1300x800"
+    :blur="30"
+  >
+    <div slot="content" class="header" id="header">
       <div class="header-overlay"></div>
       <div class="row login-buttons">
-        <button @click="showUploadFile = true">Upload File</button>
+        <button v-if="hidden" @click="showUploadFile = true">Upload File</button>
         <p>Already having an account?</p>
         <button @click="showAuth = true" v-if="!isLogged">Log in</button>
         <button v-if="isLogged" @click="logout()">Logout</button>
@@ -12,7 +17,9 @@
       <Authorization v-if="showAuth" @close="onAuthorizationClose($event)"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
-        <h3 class="col-sm-12 col-12">{{description}}</h3>
+        <!-- <lazy-img :src="image" :blur="30" /> -->
+        <img :src="image" />
+        <!-- <h3 class="col-sm-12 col-12">{{description}}</h3>
         <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
           <button class="button-choice">
             <p>
@@ -36,7 +43,7 @@
               {{button3}}
             </p>
           </button>
-        </router-link>
+        </router-link>-->
       </div>
     </div>
   </lazy-background>
@@ -59,10 +66,12 @@ export default {
       button1: "",
       button2: "",
       button3: "",
+      backgroundImage: "",
       image: "",
       showAuth: false,
       showUploadFile: false,
       isLogged: false,
+      hidden: false,
     };
   },
   props: {
@@ -78,6 +87,7 @@ export default {
   },
   methods: {
     init() {
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? headerEn : header;
       this.title = data.title;
       this.description = data.description;
@@ -85,6 +95,7 @@ export default {
       this.button2 = data.button2;
       this.button3 = data.button3;
       this.image = data.image;
+      this.backgroundImage = data["background-image"];
     },
     onAuthorizationClose(isLogged) {
       this.showAuth = false;
@@ -101,8 +112,12 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/main.scss";
 @import "../../assets/styles/components/header.scss";
+// .background-image {
+//   height: 60vh;
+// }
 .header {
   height: 100vh;
+  width: 100vw;
   .login-buttons {
     position: absolute;
     top: 20px;
@@ -133,6 +148,11 @@ export default {
     font-weight: 700;
     font-size: 50px;
     width: 720px;
+  }
+  .lazy-image {
+    .lazy-image-main {
+      position: relative;
+    }
   }
   h3 {
     font-family: $font__Lato;
