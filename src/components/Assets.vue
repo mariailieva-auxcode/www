@@ -10,24 +10,21 @@
 </template>
 
 <script>
-import axios from "axios";
-import sha1 from "js-sha1"; // sha 256
+import axios from "../axios";
 
 export default {
   name: "Assets",
   methods: {
     async fileChange(file) {
-      let filename = encodeURI(file.name)
+      let filename = encodeURI(file.name);
 
-      let byteArray = await this.fileToBase64(file);
+      let fileInBase64 = await this.fileToBase64(file);
       // add filename to the request body
       axios
-        .post(
-          `assets`,
-          {
-            file: byteArray,
-          }
-        )
+        .post(`assets`, {
+          file: fileInBase64,
+          filename,
+        })
         .then((res) => {
           console.log(res);
         });

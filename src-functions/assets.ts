@@ -3,9 +3,11 @@ import AssetsService from "./data/services/assets.service"
 
 export async function handler(event, _) {
     try {
+        console.log(event)
         if (event.httpMethod == "POST") {
             let assetsService = new AssetsService();
-            assetsService.uploadFile(); // put the base64 file as parameter + filename
+            let body = JSON.parse(event.body)
+            assetsService.uploadFile(body.file, body.filename); // put the base64 file as parameter + filename
             return {
                 statusCode: 200,
                 body: JSON.stringify({}),
