@@ -37,7 +37,7 @@
               name="password"
               placeholder="Confirm Password"
               v-model="confirmPassword"
-              :class="{ 'error': isError }"
+              :class="{'error': isError}"
             />
           </div>
           <div v-if="isError" class="confirm">
@@ -72,6 +72,7 @@
   </div>
 </template>
 <script>
+import { EMAIL_REGEX } from "../../helpers/email-regex.helper";
 export default {
   data() {
     return {
@@ -86,18 +87,25 @@ export default {
       hasLowerCase: false,
       hasNumber: false,
       isLongEnough: false,
+      reg: EMAIL_REGEX,
     };
   },
   computed: {
     signupAllow() {
       if (!this.email || !this.password || !this.confirmPassword) return false;
       if (this.checkbox == false) return false;
+      if (this.EmailCheck == false) return false;
+      if (this.passRules() == false) return false;
       return true;
     },
     passMatch() {
       if (this.confirmPassword.length > 0)
         return this.password == this.confirmPassword ? true : false;
       else return true;
+    },
+    EmailCheck() {
+      if (this.reg.test(this.email)) return true;
+      return false;
     },
   },
   methods: {
@@ -209,14 +217,16 @@ export default {
       color: #9597ac;
       justify-content: left;
       margin-left: 20px;
+      align-items: baseline;
       label {
         margin-left: 6px;
         margin-bottom: 0;
         line-height: 24px;
         span.black {
-          margin-left: 3px;
           margin-bottom: 0;
           color: black;
+          font-weight: 500;
+          font-size: 13px;
         }
       }
     }
@@ -239,7 +249,7 @@ export default {
     ul {
       text-align: left;
       margin-top: 0px;
-      margin-left: 15px;
+      margin-left: 25px;
       margin-bottom: 15px;
       padding: 0;
       font-family: $font__IBM;
@@ -272,7 +282,7 @@ export default {
       img {
         position: absolute;
         right: 20px;
-        top: 13px;
+        top: 20px;
       }
     }
   }

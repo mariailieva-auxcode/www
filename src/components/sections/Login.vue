@@ -11,15 +11,26 @@
         v-model="password"
       />
       <div class="col-12 checkbox custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="termsAndConditions" />
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="termsAndConditions"
+          v-model="checkbox"
+        />
         <label class="custom-control-label" for="termsAndConditions">Remember me</label>
         <label class="green">Forgot password?</label>
       </div>
-      <button @click="loginUser()" class="login">Log in</button>
+      <button
+        class="login"
+        :disabled="!LoginAllowed"
+        :style="{'cursor':LoginAllowed ? 'pointer':'not-allowed'}"
+        @click="loginUser()"
+      >Log in</button>
     </div>
   </div>
 </template>
 <script>
+import { EMAIL_REGEX } from "../../helpers/email-regex.helper";
 export default {
   data() {
     return {
@@ -28,14 +39,28 @@ export default {
       showPassword: false,
       checkbox: false,
       active: false,
+      reg: EMAIL_REGEX,
     };
   },
-  methods: {
-    loginUser() {
-      this.$emit("login", { email: this.email, password: this.password });
+  computed: {
+    LoginAllowed() {
+      console.log(this.EmailCheck);
+      if (!this.email || !this.password) return false;
+      if (!this.checkbox) return false;
+      if (!this.EmailCheck) return false;
+      return true;
     },
-    logout() {
-      delete localStorage.token;
+    EmailCheck() {
+      if (this.reg.test(this.email)) return true;
+      return false;
+    },
+    methods: {
+      loginUser() {
+        this.$emit("login", { email: this.email, password: this.password });
+      },
+      logout() {
+        delete localStorage.token;
+      },
     },
   },
 };
@@ -64,7 +89,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     .login {
-      margin: 30px 0 16px;
+      margin: 15px 0 16px;
       background: #55b364;
       border-radius: 10px;
       color: #ffffff;
