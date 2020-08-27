@@ -3,7 +3,7 @@
 ## Guide
 0. Have Visual Studio Code (optional)
 1. Install [node.js](https://nodejs.org)
-2. Install typescript: open up terminal and run this command `run npm install -g typescript`
+2. Install typescript: open up terminal and run this command `npm install -g typescript`
 
 You can run the code in two different ways:
 
