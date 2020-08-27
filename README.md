@@ -16,8 +16,9 @@ You can run the code in two different ways:
 ![DEBUG CONSOLE](https://github.com/greenatlas/models/blob/master/docs/screenshots/debug-console.png)
 Note: Sometimes VS Code glitches out and doesn't display anything in the console, so it's a good idea to add breakpoints next to `console.log` statements. To do so click in the space to the right of the line you want to add a breakpoint to and a red cicle should appear. If you want to remove it just click on the circle again.
 ![Insert Breakpoint](https://github.com/greenatlas/models/blob/master/docs/screenshots/insert-breakpoint.png)
-Then when you press the `Launch Program` button the execution will stop and wait at the line at which the breakpoint is. Then press the `Continue` button on the top right (the first one, looks like a play button). Then your statement should be displayed in the `DEBUG CONSOLE` bellow.
+Then when you press the `Launch Program` button the execution will stop and wait at the line at which the breakpoint is. Then press the `Continue` button on the top right (the first one, looks like a play button).
 ![Continue Breakpoint](https://github.com/greenatlas/models/blob/master/docs/screenshots/continue-breakpoint.png)
+Then your statement should be displayed in the `DEBUG CONSOLE` bellow.
 
 #### Run using terminal
 This method always displays the result.
