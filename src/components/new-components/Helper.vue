@@ -5,12 +5,10 @@
         <h1>{{title}}</h1>
         <h3>{{description}}</h3>
       </div>
-      <div class="row">
-        <div class="col-12 info-helper" v-for="help of explanations.explanations" :key="help.image">
-          <div class="row">
-            <img :src="help.image" />
-            <p>{{help.information}}</p>
-          </div>
+      <div class="col-12 info-helper" v-for="help of explanations.explanations" :key="help.image">
+        <div class="row">
+          <img class="col-2" :src="help.image" />
+          <h2 class="col-10">{{help.information}}</h2>
         </div>
       </div>
     </div>
@@ -53,7 +51,30 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
-.info-helper {
-  width: 50%;
+.helper {
+  h3 {
+    margin: 30px 0 60px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    opacity: 0.6;
+    margin: 15px auto;
+    h2 {
+      text-align: left;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    img {
+      width: 45px;
+    }
+    &:hover {
+      opacity: 1;
+      h2 {
+        margin-left: -10px;
+      }
+    }
+  }
 }
 </style>

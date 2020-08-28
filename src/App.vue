@@ -67,6 +67,14 @@ export default {
   color: #2c3e50;
   background-color: #fafbff;
   font-family: $font__IBM;
+  .header-content img.lazy-image-main {
+    position: unset;
+  }
+  .background-image {
+    div.lazy-background-image {
+      height: 60vh;
+    }
+  }
 }
 
 body.no-scroll {

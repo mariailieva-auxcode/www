@@ -6,10 +6,12 @@
         <h3>{{description}}</h3>
       </div>
       <div class="row">
-        <div class="col-3 info-energy-card" v-for="cards of card.card" :key="cards.image">
-          <img :src="cards.image" />
-          <h2>{{cards.label}}</h2>
-          <p>{{cards.information}}</p>
+        <div class="col-4 info-energy-card" v-for="cards of card.card" :key="cards.image">
+          <div class="style-card">
+            <img :src="cards.image" />
+            <h2>{{cards.label}}</h2>
+            <p>{{cards.information}}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -52,14 +54,28 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
+.renewable-energy {
+  h1 {
+    text-align: center;
+  }
+  h3 {
+    margin: 30px 0 80px;
+  }
+}
 .row {
   display: flex;
   justify-content: space-between;
   .info-energy-card {
-    box-shadow: 0px 6px 30px #1d226f0d;
-    border-radius: 40px;
-    background-color: #ffffff;
-    padding: 55px 25px;
+    .style-card {
+      border-radius: 40px;
+      padding: 55px 25px;
+      margin-bottom: 20px;
+      height: 360px;
+      overflow: hidden;
+      h2 {
+        margin: 25px 0;
+      }
+    }
   }
 }
 </style>

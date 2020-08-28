@@ -4,7 +4,7 @@
       <div class="col-12">
         <h1>{{title}}</h1>
       </div>
-      <div class="row">
+      <div class="row style-card">
         <div class="col-6">
           <h2>{{leftHeaderText}}</h2>
           <h3>{{leftDescription}}</h3>
@@ -22,7 +22,7 @@
 import story from "js-yaml-loader!../../../content/nl/general/story.yaml";
 import storyEn from "js-yaml-loader!../../../content/en/general/story.yaml";
 export default {
-  name: "Renewable Energy",
+  name: "Our Story",
   data() {
     return {
       title: "",
@@ -58,4 +58,16 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
+.story {
+  h1 {
+    margin-bottom: 45px;
+  }
+  .style-card {
+    padding: 65px 90px;
+    h2 {
+      text-align: left;
+      margin-bottom: 45px;
+    }
+  }
+}
 </style>

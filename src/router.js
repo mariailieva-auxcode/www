@@ -18,55 +18,55 @@ Vue.use(Router);
 export default new Router({
     mode: 'history',
     routes: [{
-            path: "/:lang",
-            name: "MainPage",
-            component: MainPage
-        },
-        {
-            path: "/:lang/site-owner",
-            name: "SiteOwner",
-            component: SiteOwner
-        },
-        {
-            path: "/:lang/site-owner/questionnaire",
-            component: SOquestionnaire
-        },
-        {
-            path: "/:lang/project-developer",
-            name: "ProjectDeveloper",
-            component: ProjectDeveloper
-        },
-        {
-            path: "/:lang/project-developer/questionnaire",
-            component: PDquestionnaire
-        },
-        {
-            path: "/:lang/table",
-            component: Table
-        },
-        {
-            path: "/:lang/privacy-policy",
-            component: PrivacyPolicy
-        },
-        {
-            path: "/:lang/resize",
-            component: ResizingBoxes
-        },
-        {
-            path: "/:lang/news",
-            component: NewsPage
-        },
-        {
-            path: "/:lang/specialists",
-            component: Specialists
-        },
-        {
-            path: "/:lang/specialists/questionnaire",
-            component: SpecialistsQuestionnaire
-        },
-        {
-            path: "/:lang/assets",
-            component: Assets
-        },
+        path: "/:lang",
+        name: "MainPage",
+        component: MainPage
+    },
+    {
+        path: "/:lang/site-owner",
+        name: "SiteOwner",
+        component: SiteOwner
+    },
+    {
+        path: "/:lang/questionnaire",
+        component: SOquestionnaire
+    },
+    {
+        path: "/:lang/project-developer",
+        name: "ProjectDeveloper",
+        component: ProjectDeveloper
+    },
+    {
+        path: "/:lang/project-developer/questionnaire",
+        component: PDquestionnaire
+    },
+    {
+        path: "/:lang/table",
+        component: Table
+    },
+    {
+        path: "/:lang/privacy-policy",
+        component: PrivacyPolicy
+    },
+    {
+        path: "/:lang/resize",
+        component: ResizingBoxes
+    },
+    {
+        path: "/:lang/news",
+        component: NewsPage
+    },
+    {
+        path: "/:lang/specialists",
+        component: Specialists
+    },
+    {
+        path: "/:lang/specialists/questionnaire",
+        component: SpecialistsQuestionnaire
+    },
+    {
+        path: "/:lang/assets",
+        component: Assets
+    },
     ]
 })

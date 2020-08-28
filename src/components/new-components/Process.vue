@@ -51,4 +51,17 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
+.process {
+  h1 {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .info-steps {
+    opacity: 0.5;
+    &:hover {
+      margin-top: -25px;
+      opacity: 1;
+    }
+  }
+}
 </style>

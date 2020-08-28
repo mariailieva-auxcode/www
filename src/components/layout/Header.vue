@@ -17,33 +17,15 @@
       <Authorization v-if="showAuth" @close="onAuthorizationClose($event)"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
-        <!-- <lazy-img :src="image" :blur="30" /> -->
-        <img :src="image" />
-        <!-- <h3 class="col-sm-12 col-12">{{description}}</h3>
-        <router-link :to="`/${$router.history.current.params.lang}/site-owner`">
-          <button class="button-choice">
-            <p>
-              <img src="/assets/site-owner-header-icon.svg" />
-              {{button1}}
-            </p>
-          </button>
-        </router-link>
-        <router-link :to="`/${$router.history.current.params.lang}/specialists`">
-          <button class="button-choice mobile">
-            <p>
-              <img src="/assets/specialist-header-icon.svg" />
-              {{button2}}
-            </p>
-          </button>
-        </router-link>
-        <router-link :to="`/${$router.history.current.params.lang}/project-developer`">
-          <button class="button-choice mobile">
-            <p>
-              <img src="/assets/project-dev-header-icon.svg" />
-              {{button3}}
-            </p>
-          </button>
-        </router-link>-->
+        <lazy-img :src="image" :blur="30" />
+        <div>
+          <router-link :to="`/${$router.history.current.params.lang}/questionnaire`">
+            <button class="start-buttons">
+              {{button}}
+              <img src="/assets/arrow-right-white.png" />
+            </button>
+          </router-link>
+        </div>
       </div>
     </div>
   </lazy-background>
@@ -63,9 +45,7 @@ export default {
     return {
       title: "",
       description: "",
-      button1: "",
-      button2: "",
-      button3: "",
+      button: "",
       backgroundImage: "",
       image: "",
       showAuth: false,
@@ -91,9 +71,7 @@ export default {
       let data = this.lang === "en" ? headerEn : header;
       this.title = data.title;
       this.description = data.description;
-      this.button1 = data.button1;
-      this.button2 = data.button2;
-      this.button3 = data.button3;
+      this.button = data.button;
       this.image = data.image;
       this.backgroundImage = data["background-image"];
     },
@@ -111,13 +89,14 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/main.scss";
+@import "../../assets/styles/newmain.scss";
 @import "../../assets/styles/components/header.scss";
-// .background-image {
-//   height: 60vh;
-// }
 .header {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
+  .header-overlay {
+    height: 60vh;
+  }
   .login-buttons {
     position: absolute;
     top: 20px;
@@ -141,33 +120,13 @@ export default {
       align-items: baseline;
     }
   }
-}
-
-.header-content {
-  h1 {
-    font-weight: 700;
-    font-size: 50px;
-    width: 720px;
-  }
-  .lazy-image {
-    .lazy-image-main {
-      position: relative;
-    }
-  }
-  h3 {
-    font-family: $font__Lato;
-    font-weight: 400;
-    font-size: 25px;
-    width: 660px;
-    margin: 0 auto;
-  }
-  .button-choice {
-    p {
-      font-size: 14px;
-      font-weight: 700;
-      img {
-        margin-right: 12px;
-      }
+  div.header-content {
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      color: #ffffff;
+      margin-top: 100px;
+      margin-bottom: 50px;
     }
   }
 }

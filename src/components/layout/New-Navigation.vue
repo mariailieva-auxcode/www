@@ -133,7 +133,7 @@ export default {
       padding: 10px 0;
       color: white;
       opacity: 0.6;
-      &.router-link-active {
+      &.router-link-exact-active {
         opacity: 1;
       }
     }

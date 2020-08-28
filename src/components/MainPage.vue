@@ -7,8 +7,10 @@
       <Process :lang="lang"></Process>
       <OurStory :lang="lang"></OurStory>
       <Team :lang="lang"></Team>
-      <Articles :lang="lang"></Articles>
+      <Resources :lang="lang"></Resources>
       <Partners :lang="lang"></Partners>
+      <FAQ :lang="lang"></FAQ>
+      <GetStarted></GetStarted>
       <!-- <News1 :lang="lang"></News1>
       <News :lang="lang" :isPreview="true"></News>-->
       <!-- <Matchmaking :match="match"></Matchmaking> -->
@@ -29,8 +31,10 @@ import Helper from "./new-components/Helper";
 import Process from "./new-components/Process";
 import OurStory from "./new-components/OurStory";
 import Team from "./new-components/Team";
-import Articles from "./new-components/Articles";
+import Resources from "./new-components/Resources";
 import Partners from "./new-components/Partners";
+import FAQ from "./new-components/FAQ";
+import GetStarted from "./new-components/GetStarted";
 // import News1 from "./news/News1";
 // import News from "./news/News.vue";
 // import Matchmaking from "./sections/Matchmaking.vue";
@@ -56,8 +60,10 @@ export default {
     Process,
     OurStory,
     Team,
-    Articles,
+    Resources,
     Partners,
+    FAQ,
+    GetStarted,
     // News1,
     // News,
     // Matchmaking,

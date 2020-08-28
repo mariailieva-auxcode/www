@@ -1,14 +1,26 @@
-title: Articles
+title: Resources
+title-label: Articles
 articles:
   - image: /assets/first-image.png
     label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
     description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: READ THE POST
+    link: Read The Post
   - image: /assets/second-image.png
     label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
     description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: READ THE POST
+    link: Read The Post
   - image: /assets/third-image.png
     label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
     description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: READ THE POST
+    link: Read The Post
+links-title: Useful Links
+links:
+  - label: Title of useful link
+    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
+    link: www.herewehavelinofpost.com
+  - label: Title of useful link
+    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
+    link: www.herewehavelinofpost.com
+  - label: Title of useful link
+    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
+    link: www.herewehavelinofpost.com

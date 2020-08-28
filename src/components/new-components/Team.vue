@@ -4,19 +4,21 @@
       <div class="col-12">
         <h1>{{title}}</h1>
       </div>
-      <div class="row">
+      <div class="row team-content">
         <div class="col-4">
-          <p>Smart.</p>
-          <p>Profesional.</p>
-          <p>Motivated.</p>
+          <h1>Smart.</h1>
+          <h1 class="different-color">Profesional.</h1>
+          <h1>Motivated.</h1>
         </div>
-        <div class="col-4 info-team" v-for="member of team.team" :key="member.image">
-          <img :src="member.image" />
-          <h2>{{member.name}}</h2>
-          <p>{{member.information}}</p>
-          <div class="row">
-            <img src="/assets/envelope.svg" />
-            <img src="/assets/linkedin.svg" />
+        <div class="col-4 team-info-card" v-for="member of team.team" :key="member.image">
+          <div class="style-card">
+            <img class="member-image" :src="member.image" />
+            <h2>{{member.name}}</h2>
+            <p>{{member.information}}</p>
+            <div class="row links">
+              <img src="/assets/envelope.svg" />
+              <img src="/assets/linkedin.svg" />
+            </div>
           </div>
         </div>
       </div>
@@ -58,4 +60,39 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
+.team {
+  .team-content {
+    display: flex;
+    align-items: center;
+    margin-top: 65px;
+    h1 {
+      font-size: 45px;
+      margin: 0;
+      color: #26272e;
+      &.different-color {
+        margin: 15px 0;
+        color: #5694e8;
+      }
+    }
+    .team-info-card {
+      > .style-card {
+        margin-bottom: 45px;
+        padding: 50px 25px 30px;
+      }
+      .member-image {
+        max-width: 200px;
+        max-height: 200px;
+        width: 100%;
+      }
+      h2 {
+        color: #65687e;
+        margin: 10px 0 15px;
+      }
+      .links {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
 </style>
