@@ -19,7 +19,7 @@
 import helper from "js-yaml-loader!../../../content/nl/general/helper.yaml";
 import helperEn from "js-yaml-loader!../../../content/en/general/helper.yaml";
 export default {
-  name: "Renewable Energy",
+  name: "Helper",
   data() {
     return {
       explanations: {},

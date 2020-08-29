@@ -58,8 +58,24 @@ p {
     color: #FFFFFF;
     padding: 20px 90px;
     outline: none;
+    font-weight: 700;
 
     img {
         margin-left: 20px;
+    }
+}
+
+.footer {
+    background-color: none;
+
+    .logo-image {
+        width: 136px;
+        height: 115px;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: 500;
+        color: #9597AC;
     }
 }

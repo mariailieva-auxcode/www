@@ -36,7 +36,7 @@
 <script>
 // import Navigation from "./components/layout/Navigation.vue";
 import NewNavigation from "./components/layout/New-Navigation";
-import Footer from "./components/layout/Footer.vue";
+import Footer from "./components/layout/New-Footer.vue";
 import CookieLaw from "vue-cookie-law";
 
 export default {
@@ -58,6 +58,7 @@ export default {
 <style lang="scss">
 @import "./assets/styles/main.scss";
 @import "./assets/styles/mobile-mode.scss";
+@import "./assets/styles/lazy-images.scss";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -67,14 +68,6 @@ export default {
   color: #2c3e50;
   background-color: #fafbff;
   font-family: $font__IBM;
-  .header-content img.lazy-image-main {
-    position: unset;
-  }
-  .background-image {
-    div.lazy-background-image {
-      height: 60vh;
-    }
-  }
 }
 
 body.no-scroll {
@@ -84,16 +77,6 @@ body {
   overflow-y: overlay;
   overflow-x: hidden;
 }
-// .content {
-//   width: calc(100vw - 100px);
-//   float: right;
-// }
-
-// @media only screen and (min-width: 769px) {
-//   .content {
-//     width: calc(100vw - 115px);
-//   }
-// }
 
 .Cookie--bottom {
   left: 100px !important;

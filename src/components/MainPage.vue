@@ -10,7 +10,7 @@
       <Resources :lang="lang"></Resources>
       <Partners :lang="lang"></Partners>
       <FAQ :lang="lang"></FAQ>
-      <GetStarted></GetStarted>
+      <GetStarted :lang="lang"></GetStarted>
       <!-- <News1 :lang="lang"></News1>
       <News :lang="lang" :isPreview="true"></News>-->
       <!-- <Matchmaking :match="match"></Matchmaking> -->
