@@ -1,6 +1,37 @@
 <template>
-  <div class="faq">
-    <h1>{{title}}</h1>
+  <div class="container">
+    <div class="faq">
+      <div>
+        <h1>{{title}}</h1>
+      </div>
+      <div v-for="faq of questions.questions" :key="faq">
+        <button @click="faq.opened = !faq.opened">
+          <div class="row style-card">
+            <div class="green-plus">
+              <div class="green-plus-bottom-line" :class="{'accordion' : faq.opened}"></div>
+              <div class="green-plus-right-line"></div>
+            </div>
+            <h2>{{faq.questionName}}</h2>
+          </div>
+        </button>
+        <div v-if="faq.questions && faq.questions.length > 0">
+          <div v-for="subQ of faq.questions" :key="subQ">
+            <button
+              @click="subQ.opened = !subQ.opened"
+              class="secondary-question"
+              :class="{'accordion': faq.opened}"
+            >
+              <div>
+                <div class="green-plus-bottom-line" :class="{'accordion2nd' : subQ.opened}"></div>
+                <div class="green-plus-right-line"></div>
+                <h2>{{subQ.subquestion}}</h2>
+                <p :class="{'accordion2nd' : !subQ.opened}">{{subQ.answer}}</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,6 +43,9 @@ export default {
   data() {
     return {
       title: "",
+      questions: {},
+      accordion: false,
+      accordion2nd: false,
     };
   },
   props: {
@@ -29,6 +63,18 @@ export default {
     init() {
       let data = this.lang === "en" ? faqEn : faq;
       this.title = data.title;
+      this.questions = data;
+      this.addOpenedProperty();
+    },
+    addOpenedProperty() {
+      this.questions.questions = this.questions.questions.map((question) => ({
+        ...question,
+        opened: false,
+        questions: (question.questions || []).map((subQ) => ({
+          ...subQ,
+          opened: false,
+        })),
+      }));
     },
   },
 };
@@ -37,7 +83,75 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
 .faq {
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  width: 90%;
+  & > div h1 {
+    margin-bottom: 45px;
+  }
+  button {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: unset;
+    padding: 0;
+  }
+  .green-plus,
+  .secondary-question {
+    position: relative;
+    margin-left: 25px;
+    .green-plus-bottom-line {
+      position: absolute;
+      left: 9px;
+      width: 3px;
+      border-bottom: 21px solid #55b364;
+      border-radius: 10px;
+      &.accordion {
+        display: none;
+      }
+    }
+    .green-plus-right-line {
+      position: absolute;
+      top: 9px;
+      border-right: 21px solid #55b364;
+      border-radius: 10px;
+      height: 3px;
+    }
+  }
+  .style-card {
+    border-radius: 10px;
+    text-align: left;
+    padding: 25px 0 20px;
+    margin-bottom: 10px;
+    h2 {
+      margin-left: 35px;
+    }
+  }
+  .secondary-question {
+    background-color: unset;
+    display: none;
+    border-radius: 10px;
+    text-align: left;
+    padding: 25px 0 20px 25px;
+    margin-bottom: 10px;
+    box-shadow: 0px 6px 30px #1d226f0d;
+
+    h2 {
+      margin-left: 35px;
+    }
+    p {
+      margin-left: 36px;
+    }
+    &.accordion {
+      display: inline-block;
+      width: 95%;
+      background-color: white;
+    }
+    .accordion2nd {
+      display: none;
+    }
+    & > div {
+      position: relative;
+    }
+  }
 }
 </style>
