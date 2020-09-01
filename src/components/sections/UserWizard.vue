@@ -386,7 +386,7 @@ export default {
         .then((data) => (console.log(data), this.siteOwner.push(data.data)));
     },
     getCompanies() {
-      axios.get(`site-owner`).then((data) => {
+      axios.get(`siteOwner`).then((data) => {
         this.companies = data.data.data;
         this.filteredCompanies = this.companies;
         this.submit();
