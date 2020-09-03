@@ -71,9 +71,6 @@ export default {
     }
     &:hover {
       opacity: 1;
-      h2 {
-        margin-left: -10px;
-      }
     }
   }
 }
