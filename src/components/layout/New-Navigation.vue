@@ -119,12 +119,16 @@ export default {
           margin: 0;
           color: white;
           opacity: 0.6;
+          font-weight: 700;
+          font-size: 12px;
         }
       }
     }
   }
   .scroll-links {
+    margin-top: 75px;
     position: fixed;
+    font-weight: 700;
     margin-left: 30px;
     display: flex;
     flex-direction: column;
@@ -133,6 +137,7 @@ export default {
       padding: 10px 0;
       color: white;
       opacity: 0.6;
+      font-size: 14px;
       &.router-link-exact-active {
         opacity: 1;
       }

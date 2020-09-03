@@ -119,6 +119,11 @@ export default {
       height: 46px;
       align-items: baseline;
     }
+    p {
+      font-size: 14px;
+      color: white;
+      font-weight: 700;
+    }
   }
   div.header-content {
     h1 {
@@ -127,6 +132,7 @@ export default {
       color: #ffffff;
       margin-top: 100px;
       margin-bottom: 50px;
+      font-weight: 900;
     }
   }
 }
