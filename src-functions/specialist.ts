@@ -1,4 +1,4 @@
-import { RESPONSE_HEADERS } from './api/constants/response-headers.constant';
+import { RESPONSE_HEADERS } from './api/constants/responseHeaders';
 import faunadb from 'faunadb'
 const q = faunadb.query;
 

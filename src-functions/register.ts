@@ -1,4 +1,4 @@
-import { RESPONSE_HEADERS } from './api/constants/response-headers.constant';
+import { RESPONSE_HEADERS } from './api/constants/responseHeaders';
 import faunadb from 'faunadb'
 import passwordHash from 'password-hash';
 import { User } from './api/interfaces/user.interface';
