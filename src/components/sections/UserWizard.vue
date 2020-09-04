@@ -43,7 +43,7 @@
                   <div class="input-group">
                     <input id="postal" v-model="postCode" type="text" required />
                     <span class="highlight"></span>
-                    <label>Postal Code</label>
+                    <label class="postal-style">Postal Code</label>
                   </div>
                   <div class="input-group">
                     <input id="street" v-model="streetNumber" type="text" required />
@@ -596,10 +596,16 @@ export default {
       margin: 0;
     }
     &.form-size {
-      justify-content: space-between;
+      justify-content: center;
     }
     .size {
       position: relative;
+      margin-right: 15px;
+      h6 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #9597ac;
+      }
       p {
         color: #55b364;
         font-family: $font__IBM;
@@ -610,7 +616,7 @@ export default {
       }
       input {
         height: 45px;
-        width: 300px;
+        width: 230px;
       }
     }
     input {
@@ -879,6 +885,7 @@ export default {
   outline: none;
   margin-right: 25px;
   color: #9597ac;
+  font-weight: 700;
   img {
     margin-right: 8px;
   }

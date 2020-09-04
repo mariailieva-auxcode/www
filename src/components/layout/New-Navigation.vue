@@ -2,7 +2,9 @@
   <div class="new-navigation">
     <div class="row ml">
       <div class="col-6 logo">
-        <img :src="logo" />
+        <router-link :to="`/${$router.history.current.params.lang}`">
+          <img :src="logo" />
+        </router-link>
       </div>
       <div class="col-6 language">
         <router-link :to="getURL('en')">

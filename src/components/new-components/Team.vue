@@ -16,7 +16,7 @@
             <h2>{{member.name}}</h2>
             <p>{{member.information}}</p>
             <div class="row links">
-              <img src="/assets/envelope.svg" />
+              <img class="first-link" src="/assets/envelope.svg" />
               <img src="/assets/linkedin.svg" />
             </div>
           </div>
@@ -69,9 +69,10 @@ export default {
       font-size: 45px;
       margin: 0;
       color: #26272e;
+      text-align: left;
       &.different-color {
         margin: 15px 0;
-        color: #5694e8;
+        color: #55b364;
       }
     }
     .team-info-card {
@@ -91,6 +92,9 @@ export default {
       .links {
         display: flex;
         justify-content: center;
+        .first-link {
+          margin-right: 15px;
+        }
       }
     }
   }
