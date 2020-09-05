@@ -24,7 +24,7 @@
 import process from "js-yaml-loader!../../../content/nl/general/process.yaml";
 import processEn from "js-yaml-loader!../../../content/en/general/process.yaml";
 export default {
-  name: "Renewable Energy",
+  name: "Process",
   data() {
     return {
       steps: {},

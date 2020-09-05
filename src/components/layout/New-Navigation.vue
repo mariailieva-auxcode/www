@@ -23,17 +23,49 @@
         </router-link>
       </div>
     </div>
-    <div class="scroll-links">
+    <div class="scroll-links test">
       <router-link
-        :to="`/${$router.history.current.params.lang}`"
+        :to="`/${lang}`"
         v-scroll-to="'#header'"
-      >{{firstComponent}}</router-link>
-      <router-link to="#renewable-energy" v-scroll-to="'#renewable-energy'">{{secondComponent}}</router-link>
-      <router-link to="#helper" v-scroll-to="'#helper'">{{thirdComponent}}</router-link>
-      <router-link to="#process" v-scroll-to="'#process'">{{fourthComponent}}</router-link>
-      <router-link to="#our-story" v-scroll-to="'#our-story'">{{fifthComponent}}</router-link>
-      <router-link to="#team" v-scroll-to="'#team'">{{sixthComponent}}</router-link>
-      <router-link to="#partners" v-scroll-to="'#partners'">{{seventhComponent}}</router-link>
+        id="header"
+        :class="{'inverted': areInverted[0]}"
+      >{{components[0]}}</router-link>
+      <router-link
+        to="#renewable-energy"
+        v-scroll-to="'#renewable-energy'"
+        id="renewable-energy"
+        :class="{'inverted': areInverted[1]}"
+      >{{components[1]}}</router-link>
+      <router-link
+        to="#helper"
+        v-scroll-to="'#helper'"
+        id="helper"
+        :class="{'inverted': areInverted[2]}"
+      >{{components[2]}}</router-link>
+      <router-link
+        to="#process"
+        v-scroll-to="'#process'"
+        id="process"
+        :class="{'inverted': areInverted[3]}"
+      >{{components[3]}}</router-link>
+      <router-link
+        to="#our-story"
+        v-scroll-to="'#our-story'"
+        id="our-story"
+        :class="{'inverted': areInverted[4]}"
+      >{{components[4]}}</router-link>
+      <router-link
+        to="#team"
+        v-scroll-to="'#team'"
+        id="team"
+        :class="{'inverted': areInverted[5]}"
+      >{{components[5]}}</router-link>
+      <router-link
+        to="#partners"
+        v-scroll-to="'#partners'"
+        id="partners"
+        :class="{'inverted': areInverted[6]}"
+      >{{components[6]}}</router-link>
     </div>
     <div class="ml-responsive">
       <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
@@ -76,18 +108,22 @@ export default {
       logo: "",
       nlLang: "",
       enLang: "",
-      firstComponent: "",
-      secondComponent: "",
-      thirdComponent: "",
-      fourthComponent: "",
-      fifthComponent: "",
-      sixthComponent: "",
-      seventhComponent: "",
-      burgerMenuMLActive: false,
+      components: [],
+      areInverted: [false, false, false, false, false, false, false],
+      headerImageHeight: undefined,
+      headerImageCompare: 479,
+      linkPoints: [395, 350, 315, 270, 225, 180, 135], // 479
+      // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
     };
   },
   props: {
     lang: String,
+  },
+  created() {
+    this.headerImageHeight = window.innerHeight * 0.6;
+
+    this.checkScroll();
+    window.onscroll = () => this.checkScroll();
   },
   mounted() {
     this.init();
@@ -99,24 +135,40 @@ export default {
   },
   methods: {
     init() {
-      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? navigationEn : navigation;
       this.logo = data.logo;
       this.nlLang = data["nl-lang"];
       this.enLang = data["en-lang"];
-      this.firstComponent = data["first-component"];
-      this.secondComponent = data["second-component"];
-      this.thirdComponent = data["third-component"];
-      this.fourthComponent = data["fourth-component"];
-      this.fifthComponent = data["fifth-component"];
-      this.sixthComponent = data["sixth-component"];
-      this.seventhComponent = data["seventh-component"];
+      this.components = [
+        data["first-component"],
+        data["second-component"],
+        data["third-component"],
+        data["fourth-component"],
+        data["fifth-component"],
+        data["sixth-component"],
+        data["seventh-component"],
+      ];
     },
     getURL(prevLanguage) {
       return this.currentPage.replace(
         prevLanguage,
         prevLanguage == "nl" ? "en" : "nl"
       );
+    },
+    checkScroll() {
+      this.linkPoints.forEach((el, i) => {
+        el = this.headerImageHeight - this.headerImageCompare + el;
+        if (this.getScrollPosition() > el) {
+          this.areInverted[i] = true;
+        } else {
+          this.areInverted[i] = false;
+        }
+      });
+
+      this.$forceUpdate();
+    },
+    getScrollPosition() {
+      return pageYOffset;
     },
   },
 };
@@ -164,9 +216,13 @@ export default {
       padding: 10px 0;
       color: white;
       opacity: 0.6;
+      outline: none;
       font-size: 14px;
       &.router-link-exact-active {
         opacity: 1;
+      }
+      &.inverted {
+        color: black;
       }
     }
   }

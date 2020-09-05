@@ -34,7 +34,7 @@
 import team from "js-yaml-loader!../../../content/nl/general/new-team.yaml";
 import teamEn from "js-yaml-loader!../../../content/en/general/new-team.yaml";
 export default {
-  name: "Our Team",
+  name: "OurTeam",
   data() {
     return {
       team: {},

@@ -22,7 +22,7 @@
 import story from "js-yaml-loader!../../../content/nl/general/story.yaml";
 import storyEn from "js-yaml-loader!../../../content/en/general/story.yaml";
 export default {
-  name: "Our Story",
+  name: "OurStory",
   data() {
     return {
       title: "",
