@@ -6,7 +6,7 @@
     :blur="30"
   >
     <div slot="content" class="header" id="header">
-      <div class="header-overlay"></div>
+      <div class="header-overlay" id="header-overlay"></div>
       <div class="row login-buttons">
         <button v-if="hidden" @click="showUploadFile = true">Upload File</button>
         <p>Already having an account?</p>

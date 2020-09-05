@@ -22,7 +22,7 @@
 import energy from "js-yaml-loader!../../../content/nl/general/renewable-energy.yaml";
 import energyEn from "js-yaml-loader!../../../content/en/general/renewable-energy.yaml";
 export default {
-  name: "Renewable Energy",
+  name: "RenewableEnergy",
   data() {
     return {
       card: {},
