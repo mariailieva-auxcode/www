@@ -4,9 +4,17 @@
       <div class="col-12">
         <h1 class="title">{{title}}</h1>
         <h1 class="title-label">{{label}}</h1>
+        <div class="only-for-mobile">
+          <h5 class="col-6">Articles</h5>
+          <h5 class="col-6">Links</h5>
+        </div>
       </div>
       <div class="row">
-        <div class="col-4 info-steps" v-for="card of articles.articles" :key="card.image">
+        <div
+          class="col-12 col-sm-12 col-md-6 col-xl-4 info-steps"
+          v-for="card of articles.articles"
+          :key="card.image"
+        >
           <img class="articles-image" :src="card.image" />
           <h3>{{card.label}}</h3>
           <p>{{card.description}}</p>
@@ -18,7 +26,11 @@
       </div>
       <h1 class="col-12 title-label">{{linksTitle}}</h1>
       <div class="row">
-        <div class="col-4 info-links" v-for="link of links.links" :key="link.label">
+        <div
+          class="col-12 col-sm-12 col-ml-6 col-xl-4 info-links"
+          v-for="link of links.links"
+          :key="link.label"
+        >
           <div class="style-card">
             <h3>{{link.label}}</h3>
             <p>{{link.description}}</p>
@@ -72,6 +84,9 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
 .resources {
+  .only-for-mobile {
+    display: none;
+  }
   .title {
     color: #26272e;
   }

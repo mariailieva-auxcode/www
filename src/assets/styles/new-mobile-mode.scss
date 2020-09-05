@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+$font__Lato: 'Lato',
+sans-serif;
+
+@media only screen and (max-width: 768px) {
+    div.container {
+        margin: 0 !important;
+        width: 100% !important;
+
+        & h1 {
+            font-size: 25px;
+            margin-top: 55px;
+        }
+    }
+
+
+
+    div.renewable-energy {
+        div.second-energy-card {
+            display: none;
+        }
+
+        div.link-style {
+            .style-card {
+                margin-bottom: 45px;
+            }
+        }
+    }
+
+    div.helper {
+        display: none;
+    }
+
+    div.process {
+        opacity: 1;
+
+        div.info-steps {
+            opacity: 1 !important;
+
+            .information {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            &:hover {
+                margin-top: unset !important;
+            }
+        }
+
+        img {
+            display: none;
+        }
+
+
+    }
+
+    div.our-story {
+        .story {
+            .style-card {
+                padding: 35px 20px;
+            }
+        }
+    }
+
+    div.resources {
+
+        .info-steps,
+        .info-links {
+            margin-bottom: 45px;
+        }
+
+        .title-label {
+            display: none;
+
+        }
+
+        div.only-for-mobile {
+            display: flex !important;
+            flex-direction: row;
+            margin-top: 35px;
+            margin-bottom: 45px;
+
+            h5 {
+                font-family: $font__Lato;
+                font-weight: 900;
+                color: #65687E;
+            }
+        }
+    }
+
+    div.partners {
+        div.info-partners {
+            div.style-card {
+                width: 100%;
+                max-width: 100% !important;
+                padding: 64px 20px !important;
+            }
+        }
+    }
+
+    .navigation {
+        .new-navigation {
+            display: flex;
+
+            .ml {
+                margin-top: 0;
+
+                .language {
+                    display: none;
+                }
+            }
+
+            height: 55px;
+            width: 100%;
+
+            .scroll-links {
+                display: none;
+            }
+
+            .burger-menu {
+                .row {
+                    margin-left: 20px;
+
+                    .home-logo,
+                    .news-logo,
+                    .owner-logo.mobile,
+                    .specialist-logo.mobile,
+                    .project-logo.mobile {
+                        display: flex;
+                        justify-content: flex-start;
+                        padding: 0;
+                        margin-top: 0;
+
+                        .green-line {
+                            width: 5px;
+                            border-bottom: 30px solid #55b364;
+                            margin-left: 25px;
+                            margin-top: 5px;
+                        }
+
+                        button {
+                            flex-wrap: nowrap;
+                            margin-top: 10px;
+                            width: 200px;
+
+                            >.row {
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            p {
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+
+                    .owner-logo {
+                        display: none;
+                    }
+                }
+            }
+
+            .ml-responsive {
+                margin: auto 40px auto 0;
+                display: block;
+
+                .ml-mobile {
+                    .flag {
+                        margin-right: 5px;
+                    }
+                }
+
+                .burger-menu-ml {
+                    border-radius: 5px;
+                    border: none;
+                    box-shadow: 0 3px 15px rgba(149, 151, 172, .3);
+                    padding: 7px;
+                    top: 50px;
+                    right: 20px;
+                }
+
+                &.active {
+                    display: flex;
+                }
+
+                .language-display {
+                    width: unset !important;
+                    display: flex;
+                    flex-direction: column;
+
+                    a {
+                        text-decoration: none;
+
+                        button {
+                            margin: 0;
+                            padding: 0;
+                            cursor: pointer;
+                            border: none;
+                            background-color: white;
+                            outline: none;
+
+                            p {
+                                font-size: 12px;
+                                margin: 0;
+                                color: #9597ac;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,15 +1,15 @@
 <template>
-  <div class="container" id="our-story">
+  <div class="container our-story" id="our-story">
     <div class="story">
       <div class="col-12">
         <h1>{{title}}</h1>
       </div>
       <div class="row style-card">
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
           <h2>{{leftHeaderText}}</h2>
           <h3>{{leftDescription}}</h3>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
           <h2>{{rightHeaderText}}</h2>
           <h3>{{rightDescription}}</h3>
         </div>

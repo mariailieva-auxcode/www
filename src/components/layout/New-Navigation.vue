@@ -35,6 +35,29 @@
       <router-link to="#team" v-scroll-to="'#team'">{{sixthComponent}}</router-link>
       <router-link to="#partners" v-scroll-to="'#partners'">{{seventhComponent}}</router-link>
     </div>
+    <div class="ml-responsive">
+      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
+        <img
+          class="flag"
+          :src="currentPage.includes('/en') ? '/assets/united-kingdom.svg' : '/assets/netherlands.svg'"
+        />
+        <img src="/assets/angle-down.svg" />
+      </div>
+      <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
+        <div class="row language-display mobile">
+          <router-link :to="getURL('en')">
+            <button @click="burgerMenuMLActive= false">
+              <p class="nl">NL</p>
+            </button>
+          </router-link>
+          <router-link :to="getURL('nl')">
+            <button @click="burgerMenuMLActive= false">
+              <p class="en">EN</p>
+            </button>
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -60,6 +83,7 @@ export default {
       fifthComponent: "",
       sixthComponent: "",
       seventhComponent: "",
+      burgerMenuMLActive: false,
     };
   },
   props: {
@@ -99,6 +123,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/styles/new-mobile-mode.scss";
 .new-navigation {
   background: none;
   width: 170px;
@@ -142,6 +167,27 @@ export default {
       font-size: 14px;
       &.router-link-exact-active {
         opacity: 1;
+      }
+    }
+  }
+  .ml-responsive {
+    display: none;
+    .burger-menu-ml {
+      height: auto;
+      display: none;
+      position: fixed;
+      right: 20px;
+      width: 55px;
+      background-color: white;
+      &.active {
+        display: block;
+      }
+      @media screen and (min-width: 769px) {
+        left: 27px;
+        bottom: 10px;
+      }
+      .language-display {
+        width: 120px;
       }
     }
   }

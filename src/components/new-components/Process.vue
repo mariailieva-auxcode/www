@@ -1,15 +1,19 @@
 <template>
-  <div class="container" id="process">
+  <div class="container process" id="process">
     <div class="process">
       <div class="col-12">
         <h1>{{title}}</h1>
         <img :src="headerImage" />
       </div>
       <div class="row">
-        <div class="col-4 info-steps" v-for="step of steps.steps" :key="step.label">
+        <div
+          class="col-12 col-sm-12 col-md-6 col-xl-4 info-steps"
+          v-for="step of steps.steps"
+          :key="step.label"
+        >
           <p class="background-numbers">{{step.number}}</p>
           <h2>{{step.label}}</h2>
-          <p>{{step.information}}</p>
+          <p class="information">{{step.information}}</p>
         </div>
       </div>
     </div>

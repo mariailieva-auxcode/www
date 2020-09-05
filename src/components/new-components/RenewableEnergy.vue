@@ -5,7 +5,7 @@
         <h1>{{title}}</h1>
       </div>
       <div class="row">
-        <div class="col-4 first-energy-card link-style">
+        <div class="col-12 col-sm-12 col-md-6 col-xl-4 first-energy-card link-style">
           <div class="style-card">
             <h2>{{firstCardLabel}}</h2>
             <p>{{firstCardInformation}}</p>
@@ -15,7 +15,7 @@
             </a>
           </div>
         </div>
-        <div class="col-4 second-energy-card">
+        <div class="col-12 col-sm-12 col-md-6 col-xl-4 second-energy-card">
           <h1>
             {{middleCardDefault}}
             <h1 class="different-color">{{middleCardGreen}}</h1>
@@ -23,7 +23,7 @@
           </h1>
         </div>
         <div
-          class="col-4 info-energy-card link-style"
+          class="col-12 col-sm-12 col-md-6 col-xl-4 info-energy-card link-style"
           v-for="cards of card.card"
           :key="cards.image"
         >
@@ -87,6 +87,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/styles/new-mobile-mode.scss";
 @import "../../assets/styles/newmain.scss";
 .renewable-energy {
   .link-style {

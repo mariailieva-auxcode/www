@@ -1,13 +1,13 @@
 <template>
   <div class="menu">
-    <div class="col-12 logo">
+    <!-- <div class="col-12 logo">
       <img
         class="mobile"
         src="/assets/mobile-navigation.svg"
         @click="burgerMenuActive = !burgerMenuActive"
       />
       <img src="/assets/logo.svg" />
-    </div>
+    </div>-->
     <div class="burger-menu" :class="{'active': burgerMenuActive}">
       <div class="row">
         <div class="col-12 home-logo">
@@ -95,7 +95,7 @@
         </div>
       </div>
     </div>
-    <div class="row nav-buttons">
+    <!-- <div class="row nav-buttons">
       <div class="row">
         <div class="col-12 home-logo">
           <router-link :to="`/${$router.history.current.params.lang}`">
@@ -138,14 +138,14 @@
           </button>
         </router-link>
       </div>
-    </div>
+    </div>-->
     <!-- <svg-icon
       class="custom"
       icon="/assets/siteowner-navigation-icon.svg"
       @click="activeSvg = true"
       :class="{'color' :activeSvg}"
     ></svg-icon>-->
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12 specialist-logo">
         <router-link :to="`/${$router.history.current.params.lang}/specialists`">
           <div
@@ -176,8 +176,8 @@
           </button>
         </router-link>
       </div>
-    </div>
-    <div class="ml">
+    </div>-->
+    <!-- <div class="ml">
       <div class="row language-display">
         <router-link :to="getURL('en')">
           <button>
@@ -196,7 +196,7 @@
           </button>
         </router-link>
       </div>
-    </div>
+    </div>-->
 
     <div class="ml-responsive">
       <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">

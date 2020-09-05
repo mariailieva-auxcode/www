@@ -5,12 +5,16 @@
         <h1>{{title}}</h1>
       </div>
       <div class="row team-content">
-        <div class="col-4">
+        <div class="col-4 team-labels">
           <h1>Smart.</h1>
           <h1 class="different-color">Profesional.</h1>
           <h1>Motivated.</h1>
         </div>
-        <div class="col-4 team-info-card" v-for="member of team.team" :key="member.image">
+        <div
+          class="col-12 col-sm-12 col-md-6 col-xl-4 team-info-card"
+          v-for="member of team.team"
+          :key="member.image"
+        >
           <div class="style-card">
             <img class="member-image" :src="member.image" />
             <h2>{{member.name}}</h2>
@@ -73,6 +77,11 @@ export default {
       &.different-color {
         margin: 15px 0;
         color: #55b364;
+      }
+    }
+    @media only screen and (max-width: 1200px) {
+      .team-labels {
+        display: none;
       }
     }
     .team-info-card {
