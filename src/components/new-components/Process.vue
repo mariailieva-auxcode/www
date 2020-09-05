@@ -7,6 +7,7 @@
       </div>
       <div class="row">
         <div class="col-4 info-steps" v-for="step of steps.steps" :key="step.label">
+          <p class="background-numbers">{{step.number}}</p>
           <h2>{{step.label}}</h2>
           <p>{{step.information}}</p>
         </div>
@@ -57,10 +58,22 @@ export default {
     margin-bottom: 60px;
   }
   .info-steps {
+    position: relative;
     opacity: 0.5;
+    margin-top: 30px;
     &:hover {
-      margin-top: -25px;
+      margin-top: 5px;
       opacity: 1;
+    }
+    .background-numbers {
+      position: absolute;
+      font-size: 200px;
+      top: -93px;
+      z-index: 1;
+      left: -10px;
+      opacity: 0.05;
+      color: #65687e;
+      font-weight: 700;
     }
   }
 }

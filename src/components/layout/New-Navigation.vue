@@ -2,7 +2,9 @@
   <div class="new-navigation">
     <div class="row ml">
       <div class="col-6 logo">
-        <img :src="logo" />
+        <router-link :to="`/${$router.history.current.params.lang}`">
+          <img :src="logo" />
+        </router-link>
       </div>
       <div class="col-6 language">
         <router-link :to="getURL('en')">
@@ -57,7 +59,7 @@ export default {
       areInverted: [false, false, false, false, false, false, false],
       headerImageHeight: undefined,
       headerImageCompare: 479,
-      linkPoints: [380, 335, 290, 245, 200, 155, 110] // 479
+      linkPoints: [395, 350, 315, 270, 225, 180, 135] // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
     };
   },
@@ -142,12 +144,16 @@ export default {
           margin: 0;
           color: white;
           opacity: 0.6;
+          font-weight: 700;
+          font-size: 12px;
         }
       }
     }
   }
   .scroll-links {
+    margin-top: 75px;
     position: fixed;
+    font-weight: 700;
     margin-left: 30px;
     display: flex;
     flex-direction: column;
@@ -157,6 +163,7 @@ export default {
       color: white;
       opacity: 0.6;
       outline: none;
+      font-size: 14px;
       &.router-link-exact-active {
         opacity: 1;
       }

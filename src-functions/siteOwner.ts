@@ -1,4 +1,4 @@
-import { RESPONSE_HEADERS } from './api/constants/response-headers.constant';
+import { RESPONSE_HEADERS } from './api/constants/responseHeaders';
 import faunadb from 'faunadb'
 const q = faunadb.query;
 
@@ -39,21 +39,21 @@ export async function handler(event, _) {
             return client.query(q.Map(
                 q.Paginate(q.Documents(q.Collection('projectDev'))),
                 q.Lambda(x => q.Get(x))
-                )).then((response) => {
-                    console.log("success", JSON.stringify(response));
-                    return {
-                        statusCode: 200,
-                        body: JSON.stringify(response),
-                        headers: RESPONSE_HEADERS
-                    }
-                }).catch((error) => {
-                    console.log("error", error);
-                    return {
-                        statusCode: 400,
-                        body: JSON.stringify(error),
-                        headers: RESPONSE_HEADERS
-                    }
-                })
+            )).then((response) => {
+                console.log("success", JSON.stringify(response));
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify(response),
+                    headers: RESPONSE_HEADERS
+                }
+            }).catch((error) => {
+                console.log("error", error);
+                return {
+                    statusCode: 400,
+                    body: JSON.stringify(error),
+                    headers: RESPONSE_HEADERS
+                }
+            })
         }
         else {
             return {

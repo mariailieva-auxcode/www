@@ -67,13 +67,11 @@ export default {
       font-weight: 500;
     }
     img {
-      width: 45px;
+      max-width: 45px;
+      padding: 0;
     }
     &:hover {
       opacity: 1;
-      h2 {
-        margin-left: -10px;
-      }
     }
   }
 }

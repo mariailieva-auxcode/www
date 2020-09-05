@@ -1,4 +1,4 @@
-import { RESPONSE_HEADERS } from "./api/constants/response-headers.constant";
+import { RESPONSE_HEADERS } from "./api/constants/responseHeaders";
 import AssetsService from "./data/services/assets.service"
 
 export async function handler(event, _) {

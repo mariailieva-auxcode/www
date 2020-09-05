@@ -20,6 +20,10 @@ input {
 .input-group {
     position: relative;
 
+    .postal-style {
+        left: 13px;
+    }
+
     input {
         font-size: 18px;
         padding: 10px 10px 10px 5px;
@@ -41,7 +45,7 @@ input {
         position: absolute;
         pointer-events: none;
         left: 5px;
-        top: 10px;
+        top: 12px;
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;
         -webkit-transition: 0.2s ease all;

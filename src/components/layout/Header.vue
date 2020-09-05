@@ -95,7 +95,7 @@ export default {
   height: 100%;
   width: 100vw;
   .header-overlay {
-    height: 60vh;
+    height: 70vh;
   }
   .login-buttons {
     position: absolute;
@@ -119,6 +119,11 @@ export default {
       height: 46px;
       align-items: baseline;
     }
+    p {
+      font-size: 14px;
+      color: white;
+      font-weight: 700;
+    }
   }
   div.header-content {
     h1 {
@@ -127,6 +132,9 @@ export default {
       color: #ffffff;
       margin-top: 100px;
       margin-bottom: 50px;
+      font-weight: 900;
+      padding: 0;
+      max-width: 850px;
     }
   }
 }

@@ -65,8 +65,11 @@ export default {
   .style-card {
     padding: 65px 90px;
     h2 {
+      font-family: $font__Lato;
+      font-weight: 900;
       text-align: left;
       margin-bottom: 45px;
+      font-size: 25px;
     }
   }
 }

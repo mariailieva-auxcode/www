@@ -6,7 +6,10 @@
       <lazy-img class="img" :src="welcomeIcon" :blur="30" />
     </div>
     <div class="user-wizard">
-      <div class="row questions-header" v-if="step !== 6">
+      <div class="row questions-header">
+        <router-link :to="`/${$router.history.current.params.lang}`">
+          <p class="site">Enter a Site</p>
+        </router-link>
         <p>{{headerCardText}}</p>
       </div>
       <div class="user-questions">
@@ -22,94 +25,25 @@
             </div>
           </div>
         </div>
-        <div class="step" v-if="step === 2">
-          <div class="container second-step">
-            <div class="row">
-              <div class="col-12">
-                <h2>{{firstQuestion}}</h2>
-                <div class="solar-and-wind">
-                  <button
-                    class="solar"
-                    :class="{'active': solar}"
-                    @click="solar =!solar;  filterCompanies()"
-                  >
-                    <img src="/assets/solar.svg" />Solar
-                  </button>
-                  <button
-                    class="wind"
-                    :class="{'active': wind}"
-                    @click="wind =!wind; filterCompanies()"
-                  >
-                    <img src="/assets/wind.svg" />Wind
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="step" v-if="step === 3">
-          <div class="container">
-            <h2>{{secondQuestion}}</h2>
-            <div class="row">
-              <div class="col-12 roof-land-water">
-                <button
-                  class="solar"
-                  :class="{'active': roof}"
-                  @click="roof =!roof; filterCompanies()"
-                >
-                  <img src="/assets/roof.svg" />Roof
-                </button>
-                <button
-                  class="wind"
-                  :class="{'active': land}"
-                  @click="land =!land; filterCompanies()"
-                >
-                  <img src="/assets/land.svg" />Land
-                </button>
-                <button
-                  class="wind"
-                  :class="{'active': water}"
-                  @click="water =!water; filterCompanies()"
-                >
-                  <img src="/assets/water.svg" />Water
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="step" v-if="step === 4">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <h2 for="size">{{thirdQuestion}}</h2>
-                <div class="form-inputs form-inline">
-                  <div class="size">
-                    <input
-                      id="phoneNumber"
-                      placeholder="0"
-                      type="number"
-                      v-model.number="size"
-                      @input="filterCompanies"
-                    />
-                    <p>sq.m.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="step map" v-if="step === 5">
+        <div class="step map" v-if="step === 2">
           <div class="container">
             <div class="row">
               <div class="col-12 col-sm-12 col-md-12 col-xl-6">
                 <div class="col-12">
-                  <h2>{{fourthQuestion}}</h2>
+                  <div class="information-icon map">
+                    <h2>{{firstQuestion}}</h2>
+                    <div class="hovered">
+                      <img src="/assets/information-green-icon.svg" />
+                      <p>{{infoIcon}}</p>
+                    </div>
+                  </div>
+                  <p>Enter your postal code and street number or click on the map</p>
                 </div>
                 <div class="form-inputs form-inline">
                   <div class="input-group">
                     <input id="postal" v-model="postCode" type="text" required />
                     <span class="highlight"></span>
-                    <label>Postal Code</label>
+                    <label class="postal-style">Postal Code</label>
                   </div>
                   <div class="input-group">
                     <input id="street" v-model="streetNumber" type="text" required />
@@ -134,13 +68,175 @@
             </div>
           </div>
         </div>
-        <div class="step step-6" v-if="step === 6">
+        <div class="step" v-if="step === 3">
+          <div class="container">
+            <div class="information-icon">
+              <h2>{{secondQuestion}}</h2>
+              <div class="hovered">
+                <img src="/assets/information-green-icon.svg" />
+                <p>{{infoIcon2}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 roof-land-water">
+                <button
+                  class="owner"
+                  :class="{'active': owner}"
+                  @click="owner =!owner; filterCompanies()"
+                >Owner</button>
+                <button
+                  class="legal"
+                  :class="{'active': legal}"
+                  @click="legal =!legal; filterCompanies()"
+                >Legal representative</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step" v-if="step === 4">
+          <div class="container">
+            <div class="information-icon">
+              <h2>{{thirdQuestion}}</h2>
+              <div class="hovered">
+                <img src="/assets/information-green-icon.svg" />
+                <p>{{infoIcon3}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 roof-land-water">
+                <button
+                  class="roof"
+                  :class="{'active': roof}"
+                  @click="roof =!roof; filterCompanies()"
+                >
+                  <img src="/assets/roof.svg" />Roof
+                </button>
+                <button
+                  class="land"
+                  :class="{'active': land}"
+                  @click="land =!land; filterCompanies()"
+                >
+                  <img src="/assets/land.svg" />Land
+                </button>
+                <button
+                  class="water"
+                  :class="{'active': water}"
+                  @click="water =!water; filterCompanies()"
+                >
+                  <img src="/assets/water.svg" />Water
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step" v-if="step === 5">
           <div class="container">
             <div class="row">
               <div class="col-12">
-                <h2>{{completeLabel}}</h2>
+                <div class="information-icon">
+                  <h2 for="size">{{fourthQuestion}}</h2>
+                  <div class="hovered">
+                    <img src="/assets/information-green-icon.svg" />
+                    <p>{{infoIcon4}}</p>
+                  </div>
+                </div>
+                <div class="form-inputs form-inline form-size">
+                  <div class="size" v-if="roof">
+                    <h6>Roof</h6>
+                    <input
+                      id="phoneNumber"
+                      placeholder="0"
+                      type="number"
+                      v-model.number="roofSize"
+                      @input="filterCompanies"
+                    />
+                    <p>sq.m.</p>
+                  </div>
+                  <div class="size" v-if="land">
+                    <h6>Land</h6>
+                    <input
+                      id="phoneNumber"
+                      placeholder="0"
+                      type="number"
+                      v-model.number="landSize"
+                      @input="filterCompanies"
+                    />
+                    <p>sq.m.</p>
+                  </div>
+                  <div class="size" v-if="water">
+                    <h6>Water</h6>
+                    <input
+                      id="phoneNumber"
+                      placeholder="0"
+                      type="number"
+                      v-model.number="waterSize"
+                      @input="filterCompanies"
+                    />
+                    <p>sq.m.</p>
+                  </div>
+                </div>
               </div>
-              <div class="col-6">
+            </div>
+          </div>
+        </div>
+        <div class="step" v-if="step === 6">
+          <div class="container second-step">
+            <div class="row">
+              <div class="col-12">
+                <div class="information-icon">
+                  <h2>{{fifthQuestion}}</h2>
+                  <div class="hovered">
+                    <img src="/assets/information-green-icon.svg" />
+                    <p>{{infoIcon5}}</p>
+                  </div>
+                </div>
+
+                <div class="solar-and-wind">
+                  <button
+                    class="solar"
+                    :class="{'active': solar}"
+                    @click="solar =!solar;  filterCompanies()"
+                  >
+                    <img src="/assets/solar.svg" />Solar
+                  </button>
+                  <button
+                    class="wind"
+                    :class="{'active': wind}"
+                    @click="wind =!wind; filterCompanies()"
+                  >
+                    <img src="/assets/wind.svg" />Wind
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step step-6" v-if="step === 7">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="information-icon">
+                  <h2>{{sixthQuestion}}</h2>
+                  <div class="hovered">
+                    <img src="/assets/information-green-icon.svg" />
+                    <p>{{infoIcon6}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 solar-and-wind">
+                <button
+                  class="hydrogen"
+                  :class="{'active': hydrogen}"
+                  @click="hydrogen =!hydrogen;"
+                >Green hydrogen</button>
+                <button
+                  class="batteries"
+                  :class="{'active': batteries}"
+                  @click="batteries =!batteries;"
+                >Batteries</button>
+                <button class="WKO" :class="{'active': WKO}" @click="WKO =!WKO;">Large scale WKO</button>
+              </div>
+              <!-- <div class="col-6">
                 <div class="form-inputs">
                   <div class="complete">
                     <div class="input-group">
@@ -172,23 +268,29 @@
                   >{{secondButton}}</button>
                   <p>{{secondDescription}}</p>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
       </div>
       <div class="buttons">
         <div class="row" v-if="step === 2">
-          <p>1 of 4</p>
+          <p>1 of 6</p>
         </div>
         <div class="row" v-if="step === 3">
-          <p>2 of 4</p>
+          <p>2 of 6</p>
         </div>
         <div class="row" v-if="step === 4">
-          <p>3 of 4</p>
+          <p>3 of 6</p>
         </div>
         <div class="row" v-if="step === 5">
-          <p>4 of 4</p>
+          <p>4 of 6</p>
+        </div>
+        <div class="row" v-if="step === 6">
+          <p>5 of 6</p>
+        </div>
+        <div class="row" v-if="step === 7">
+          <p>6 of 6</p>
         </div>
         <div class="row">
           <a
@@ -220,11 +322,19 @@
             <div class="green-line4"></div>
             <div class="other-line4"></div>
           </div>
+          <div class="percent-line" v-if="step === 6">
+            <div class="green-line5"></div>
+            <div class="other-line5"></div>
+          </div>
+          <div class="percent-line" v-if="step === 7">
+            <div class="green-line6"></div>
+            <div class="other-line6"></div>
+          </div>
           <a
             class="next-button"
             @click="nextStep()"
             :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
-            v-if="step !== 5 && step !== 1 && step !== 6 "
+            v-if="step !== 1 && step !== 7 "
           >
             <p>Continue</p>
             <img src="/assets/arrow-right-green.svg" />
@@ -232,9 +342,9 @@
 
           <a
             class="next-button"
-            @click="nextStep()"
+            @click="signUp()"
             :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
-            v-else-if="step === 5"
+            v-else-if="step === 7"
           >
             <p>Finish</p>
             <img src="/assets/arrow-right-green.svg" />
@@ -265,6 +375,14 @@ export default {
       secondQuestion: "",
       thirdQuestion: "",
       fourthQuestion: "",
+      fifthQuestion: "",
+      sixthQuestion: "",
+      infoIcon: "",
+      infoIcon2: "",
+      infoIcon3: "",
+      infoIcon4: "",
+      infoIcon5: "",
+      infoIcon6: "",
       completeLabel: "",
       firstButton: "",
       firstDescription: "",
@@ -273,17 +391,24 @@ export default {
       powerType: [],
       postCode: "",
       streetNumber: "",
-      size: undefined,
+      roofSize: undefined,
+      landSize: undefined,
+      waterSize: undefined,
       name: "",
       companyName: "",
       phoneNumber: "",
       material: [],
       step: 1,
+      owner: false,
+      legal: false,
       solar: false,
       wind: false,
       roof: false,
       land: false,
       water: false,
+      hydrogen: false,
+      batteries: false,
+      WKO: false,
       showAuth: false,
     };
   },
@@ -308,7 +433,13 @@ export default {
           land: this.land,
           water: this.water,
         },
-        size: this.size,
+        relationship: {
+          owner: this.owner,
+          legal: this.legal,
+        },
+        roofSize: this.roofSize,
+        landSize: this.landSize,
+        waterSize: this.waterSize,
         postCode: this.postCode,
         streetNumber: this.streetNumber,
         companyName: this.companyName,
@@ -317,19 +448,22 @@ export default {
       };
     },
     isNextAllowed() {
-      if (this.step == 2 && !this.wind && !this.solar) return false;
-      if (this.step == 3 && !this.roof && !this.water && !this.land)
+      if (this.step == 6 && !this.wind && !this.solar) return false;
+      if (this.step == 3 && !this.owner && !this.legal) return false;
+      if (this.step == 4 && !this.roof && !this.water && !this.land)
         return false;
-      if (this.step == 4 && !this.size) return false;
-      if (
-        (this.step == 5 && !this.postCode) ||
-        (this.step == 5 && !this.streetNumber)
-      )
+      if (this.step == 5 && !this.roofSize && !this.landSize && !this.waterSize)
         return false;
       if (
-        this.step == 6 &&
-        (!this.companyName || !this.name || !this.phoneNumber)
+        (this.step == 2 && !this.postCode) ||
+        (this.step == 2 && !this.streetNumber)
       )
+        return false;
+      if (this.step == 7 && !this.hydrogen && !this.batteries && !this.WKO)
+        // if (
+        //   this.step == 7 &&
+        //   (!this.companyName || !this.name || !this.phoneNumber)
+        // )
         return false;
       return true;
     },
@@ -347,11 +481,19 @@ export default {
       this.secondQuestion = data["second-question"];
       this.thirdQuestion = data["third-question"];
       this.fourthQuestion = data["fourth-question"];
+      this.fifthQuestion = data["fifth-question"];
+      this.sixthQuestion = data["sixth-question"];
       this.completeLabel = data["complete-label"];
       this.firstButton = data["first-button"];
       this.firstDescription = data["first-description"];
       this.secondButton = data["second-button"];
       this.secondDescription = data["second-description"];
+      this.infoIcon = data["info-icon-step-1"];
+      this.infoIcon2 = data["info-icon-step-2"];
+      this.infoIcon3 = data["info-icon-step-3"];
+      this.infoIcon4 = data["info-icon-step-4"];
+      this.infoIcon5 = data["info-icon-step-5"];
+      this.infoIcon6 = data["info-icon-step-6"];
       this.submit();
     },
     filterCompanies() {
@@ -405,6 +547,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import "../../assets/styles/components/questionnaire.scss";
 @import "../../assets/styles/questionnaire-mobile.scss";
 @import "../../assets/styles/main.scss";
 .so-questionnaire {
@@ -452,19 +595,28 @@ export default {
       -webkit-appearance: none;
       margin: 0;
     }
+    &.form-size {
+      justify-content: center;
+    }
     .size {
       position: relative;
+      margin-right: 15px;
+      h6 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #9597ac;
+      }
       p {
         color: #55b364;
         font-family: $font__IBM;
         font-weight: 700;
         position: absolute;
         right: 10px;
-        top: 10px;
+        top: 35px;
       }
       input {
         height: 45px;
-        width: 300px;
+        width: 230px;
       }
     }
     input {
@@ -496,16 +648,17 @@ export default {
     }
   }
   .header {
-    margin-top: 45px;
+    padding-top: 50px;
     margin-bottom: 50px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 
     p {
       font-family: $font__IBM;
       font-weight: 700;
       font-size: 40px;
       color: #26272e;
+      margin: 0;
     }
     .img {
       height: 47.5px;
@@ -520,12 +673,23 @@ export default {
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    background-color: white;
     .questions-header {
-      color: #55b364;
-      font-family: $font__IBM;
-      font-weight: 500;
-      font-size: 14px;
+      position: relative;
+      width: 100%;
       margin: 10px auto 60px;
+      .site {
+        position: absolute;
+        font-size: 12px;
+        left: 35px;
+      }
+      p {
+        margin: 0 auto;
+        color: #55b364;
+        font-family: $font__IBM;
+        font-weight: 500;
+        font-size: 14px;
+      }
     }
     .step {
       display: flex;
@@ -536,6 +700,10 @@ export default {
         align-items: center;
         margin-bottom: 20px;
         .row {
+          .col-12 > p {
+            font-size: 12px;
+            font-weight: 400;
+          }
           .map-codes {
             display: flex;
             flex-direction: column;
@@ -567,7 +735,9 @@ export default {
         font-weight: 700;
         font-size: 25px;
         color: #65687e;
-        margin-bottom: 50px;
+      }
+      p {
+        margin-bottom: 20px;
       }
       #powerType {
         display: flex;
@@ -618,36 +788,56 @@ export default {
       .percent-line {
         display: flex;
         .green1-line {
-          border-right: 90px solid #55b364;
+          border-right: 60px solid #55b364;
           height: 10px;
           border-radius: 10px 0 0 10px;
         }
         .other-line {
-          border-right: 270px solid #e6e7f4;
+          border-right: 300px solid #e6e7f4;
           height: 10px;
           border-radius: 0 10px 10px 0;
         }
         .green-line2 {
-          border-right: 180px solid #55b364;
+          border-right: 120px solid #55b364;
           height: 10px;
           border-radius: 10px 0 0 10px;
         }
         .other-line2 {
-          border-right: 180px solid #e6e7f4;
+          border-right: 240px solid #e6e7f4;
           height: 10px;
           border-radius: 0 10px 10px 0;
         }
         .green-line3 {
-          border-right: 270px solid #55b364;
+          border-right: 180px solid #55b364;
           height: 10px;
           border-radius: 10px 0 0 10px;
         }
         .other-line3 {
-          border-right: 90px solid #e6e7f4;
+          border-right: 180px solid #e6e7f4;
           height: 10px;
           border-radius: 0 10px 10px 0;
         }
         .green-line4 {
+          border-right: 240px solid #55b364;
+          height: 10px;
+          border-radius: 10px 0 0 10px;
+        }
+        .other-line4 {
+          border-right: 120px solid #e6e7f4;
+          height: 10px;
+          border-radius: 0 10px 10px 0;
+        }
+        .green-line5 {
+          border-right: 300px solid #55b364;
+          height: 10px;
+          border-radius: 10px 0 0 10px;
+        }
+        .other-line5 {
+          border-right: 60px solid #e6e7f4;
+          height: 10px;
+          border-radius: 0 10px 10px 0;
+        }
+        .green-line6 {
           border-right: 360px solid #55b364;
           height: 10px;
           border-radius: 10px;
@@ -678,7 +868,15 @@ export default {
   justify-content: center;
 }
 .solar,
-.wind {
+.roof,
+.land,
+.water,
+.wind,
+.legal,
+.owner,
+.hydrogen,
+.batteries,
+.WKO {
   width: 150px;
   height: 50px;
   border-radius: 10px;
@@ -687,6 +885,7 @@ export default {
   outline: none;
   margin-right: 25px;
   color: #9597ac;
+  font-weight: 700;
   img {
     margin-right: 8px;
   }
@@ -694,5 +893,8 @@ export default {
     border: 2px solid #55b364;
     color: #65687e;
   }
+}
+.legal {
+  width: 185px;
 }
 </style>

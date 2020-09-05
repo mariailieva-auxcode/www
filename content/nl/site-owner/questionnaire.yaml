@@ -4,11 +4,13 @@ welcome-label: Here we have text that explains how we can help you find the best
 start-button: Start
 
 ## Questions
-header-card-text: COMPLETE ONBOARDING
-first-question: What type of renewable energy are you interested in?
-second-question: What type of site do you have?
-third-question: What is the size of the site?
-fourth-question: Where is located?
+header-card-text: GREENATLAS MATCHMAKING PROCESS
+first-question: Where is located? 
+second-question: What is your relationship to the site?
+third-question: What type of site do you have?
+fourth-question: What is the size of the site?
+fifth-question: What type of renewable energy are you interested in?
+sixth-question: Are you interested in any of these emerging technologies?
 
 ##Last card
 complete-label: One final step to continue!
@@ -22,3 +24,11 @@ company-name: Comany Name
 energy-type: Energy Type
 material-type: Material Type
 size: Size
+
+##Information icons
+info-icon-step-1: You onboard properties one by one. If one property becomes one or more projects and if more properties remain separate projects or become one or less projects are complex questions which will be answered by the project developers in each particular case during the study phase. If you want to know even more, check our well written FAQs.
+info-icon-step-2: n/a
+info-icon-step-3: n/a
+info-icon-step-4: n/a
+info-icon-step-5: n/a
+info-icon-step-6: n/a

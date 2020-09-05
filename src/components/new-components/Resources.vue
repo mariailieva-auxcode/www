@@ -76,6 +76,7 @@ export default {
     color: #26272e;
   }
   .title-label {
+    text-align: left;
     margin: 50px 0 20px;
     color: #26272e;
     font-size: 30px;
