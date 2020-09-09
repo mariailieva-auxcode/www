@@ -1,15 +1,30 @@
 <template>
   <div class="container" id="resources">
     <div class="resources">
-      <div class="col-12">
-        <h1 class="title">{{title}}</h1>
-        <h1 class="title-label">{{label}}</h1>
+      <div class="col-12 labels">
+        <div>
+          <h1 class="title">{{title}}</h1>
+        </div>
+        <div class="changed-buttons">
+          <button @click="choise = 'articles'">
+            <h1 class="title-label" :class="{'articles' : choise == 'articles'}">{{label}}</h1>
+            <div class="green-line" :class="{'articles' : choise == 'articles'}"></div>
+          </button>
+          <button @click="choise = 'links'">
+            <h1 class="title-label" :class="{'links' : choise == 'links'}">Useful Links</h1>
+            <div class="green-line" :class="{'links' : choise == 'links'}"></div>
+          </button>
+          <button @click="choise = 'block'">
+            <h1 class="title-label" :class="{'block' : choise == 'block'}">Blog</h1>
+            <div class="green-line" :class="{'block' : choise == 'block'}"></div>
+          </button>
+        </div>
         <div class="only-for-mobile">
           <h5 class="col-6">Articles</h5>
           <h5 class="col-6">Links</h5>
         </div>
       </div>
-      <div class="row">
+      <div class="row articles" v-if="choise == 'articles'">
         <div
           class="col-12 col-sm-12 col-md-6 col-xl-4 info-steps"
           v-for="card of articles.articles"
@@ -24,8 +39,9 @@
           </div>
         </div>
       </div>
-      <h1 class="col-12 title-label">{{linksTitle}}</h1>
-      <div class="row">
+
+      <!-- <h1 class="col-12 title-label">{{linksTitle}}</h1> -->
+      <div class="row links" v-if="choise == 'links'">
         <div
           class="col-12 col-sm-12 col-ml-6 col-xl-4 info-links"
           v-for="link of links.links"
@@ -37,6 +53,9 @@
             <a class="style-links">{{link.link}}</a>
           </div>
         </div>
+      </div>
+      <div class="row block" v-if="choise == 'block'">
+        <p>Coming soon!</p>
       </div>
     </div>
   </div>
@@ -54,6 +73,7 @@ export default {
       title: "",
       label: "",
       linksTitle: "",
+      choise: "articles",
     };
   },
   props: {
@@ -84,17 +104,50 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/newmain.scss";
 .resources {
+  .labels {
+    .changed-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
   .only-for-mobile {
     display: none;
   }
   .title {
     color: #26272e;
   }
-  .title-label {
-    text-align: left;
-    margin: 50px 0 20px;
-    color: #26272e;
-    font-size: 30px;
+  button {
+    border: none;
+    background-color: unset;
+    outline: none;
+    margin: 50px 17px 75px;
+    position: relative;
+    width: 115px;
+    padding: 0;
+    .title-label {
+      text-align: center;
+      color: #9597ac;
+      font-size: 20px;
+      margin-top: 0;
+      &.articles,
+      &.links,
+      &.block {
+        color: #26272e;
+      }
+    }
+    .green-line {
+      position: absolute;
+      height: 4px;
+      border-right: 115px solid #55b364;
+      margin-bottom: 60px;
+      display: none;
+      &.articles,
+      &.links,
+      &.block {
+        display: block;
+      }
+    }
   }
   .info-steps {
     text-align: left;
@@ -124,6 +177,16 @@ export default {
         font-weight: 400;
       }
     }
+  }
+  > .row.block {
+    border-radius: 25px;
+    background-color: white;
+    width: 600px;
+    height: 200px;
+    box-shadow: 0px 3px 10px #00000014;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
