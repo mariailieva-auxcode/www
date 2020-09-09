@@ -12,14 +12,14 @@
         >
           <div class="odd-partner style-card" v-if="index%2 == 1">
             <div class="row">
-              <p class="col-8">{{partner.description}}</p>
-              <img class="col-4" :src="partner.image" />
+              <p class="col-xl-8 col-sm-8 col-12">{{partner.description}}</p>
+              <img class="col-xl-4 col-sm-4 col-12" :src="partner.image" />
             </div>
           </div>
           <div class="even-partner style-card" v-if="index%2 == 0">
             <div class="row">
-              <img class="col-4" :src="partner.image" />
-              <p class="col-8">{{partner.description}}</p>
+              <img class="col-xl-4 col-sm-4 col-12" :src="partner.image" />
+              <p class="col-xl-8 col-sm-8 col-12">{{partner.description}}</p>
             </div>
           </div>
         </div>

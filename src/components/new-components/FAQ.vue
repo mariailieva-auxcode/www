@@ -98,7 +98,6 @@ export default {
   .green-plus,
   .secondary-question {
     position: relative;
-    margin-left: 25px;
     .green-plus-bottom-line {
       position: absolute;
       left: 9px;
@@ -122,6 +121,7 @@ export default {
     text-align: left;
     padding: 25px 0 20px;
     margin-bottom: 10px;
+    padding-left: 25px;
     h2 {
       margin-left: 35px;
     }

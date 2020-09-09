@@ -24,6 +24,7 @@ sans-serif;
         div.link-style {
             .style-card {
                 margin-bottom: 45px;
+                width: 100%;
             }
         }
     }
@@ -37,6 +38,7 @@ sans-serif;
 
         div.info-steps {
             opacity: 1 !important;
+            margin-bottom: 100px;
 
             .information {
                 width: 80%;
@@ -44,7 +46,7 @@ sans-serif;
             }
 
             &:hover {
-                margin-top: unset !important;
+                margin-top: 30px !important;
             }
         }
 
@@ -64,6 +66,12 @@ sans-serif;
     }
 
     div.resources {
+        .row>.info-steps {
+            img.articles-image {
+                max-width: unset;
+                max-height: unset;
+            }
+        }
 
         .info-steps,
         .info-links {
@@ -95,6 +103,42 @@ sans-serif;
                 width: 100%;
                 max-width: 100% !important;
                 padding: 64px 20px !important;
+            }
+
+            div.even-partner>.row {
+                flex-direction: column;
+
+                img {
+                    padding: 0 75px 40px 75px;
+                }
+            }
+
+            div.odd-partner>.row {
+                flex-direction: column-reverse;
+
+                img {
+                    padding: 0 48px 40px 48px;
+                }
+            }
+        }
+    }
+
+    div.footer {
+        padding-bottom: 25px;
+
+        div.container>.row {
+            width: 50%;
+        }
+
+        div.footer-logo {
+            display: none;
+        }
+
+        div.footer-logo-mobile {
+            display: block !important;
+
+            .logo-image {
+                margin-top: 50px;
             }
         }
     }

@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-xl-3 col-md-4 col-12 footer-link">
+        <div class="col-sm-12 col-xl-3 col-md-4 col-12 footer-logo">
           <img src="/assets/logo.svg" class="logo-image" />
         </div>
         <div class="col-sm-12 col-xl-3 col-12 links-positioning">
@@ -16,7 +16,7 @@
             <p class="footer-title privacy-policy">{{footer.titles['third-link']}}</p>
           </router-link>
         </div>
-        <div class="col-sm-6 col-xl-3 col-md-4 col-12 row-info">
+        <div class="col-sm-12 col-xl-3 col-md-4 col-12 row-info">
           <h3 class="footer-title">{{footer.titles.contact}}</h3>
           <a :href="`mailto:${contact}`" v-for="contact of footer.contacts" :key="contact">
             <p class="font">
@@ -25,7 +25,7 @@
             </p>
           </a>
         </div>
-        <div class="col-sm-6 col-xl-3 col-md-4 col-12 row-info">
+        <div class="col-sm-12 col-xl-3 col-md-4 col-12 row-info">
           <h3 class="footer-title">{{footer.titles.social}}</h3>
           <a :href="footer.linkedin.link" target="_blank">
             <p class="font-linkedin">
@@ -33,6 +33,9 @@
               {{footer.linkedin.name}}
             </p>
           </a>
+        </div>
+        <div class="col-sm-12 col-xl-3 col-md-4 col-12 footer-logo-mobile">
+          <img src="/assets/logo.svg" class="logo-image" />
         </div>
       </div>
     </div>
@@ -76,6 +79,9 @@ export default {
   .container {
     width: 100%;
     padding: 0;
+    .footer-logo-mobile {
+      display: none;
+    }
     .links-positioning,
     .row-info {
       text-align: left;
