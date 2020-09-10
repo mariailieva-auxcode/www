@@ -4,7 +4,9 @@ const q = faunadb.query;
 
 export async function handler(event, _) {
     try {
+        console.log('event')
         console.log(event);
+        console.log(process.env)
         if (event.httpMethod == "POST") {
             /* configure faunaDB Client with our secret */
             console.log("CONNECTING TO DB")
@@ -35,9 +37,8 @@ export async function handler(event, _) {
             const client = new faunadb.Client({
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
-            console.log(RESPONSE_HEADERS)
             return client.query(q.Map(
-                q.Paginate(q.Documents(q.Collection('projectDev'))),
+                q.Paginate(q.Documents(q.Collection('siteOwner'))),
                 q.Lambda(x => q.Get(x))
             )).then((response) => {
                 console.log("success", JSON.stringify(response));

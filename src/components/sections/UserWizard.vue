@@ -519,7 +519,7 @@ export default {
     },
     siteOwner() {
       axios
-        .post("/siteOwner", {
+        .post("/.netlify/functions/siteOwner", {
           companyName: this.companyName,
           size: this.size,
           energy: this.energy,
@@ -528,7 +528,7 @@ export default {
         .then((data) => (console.log(data), this.siteOwner.push(data.data)));
     },
     getCompanies() {
-      axios.get(`/siteOwner`).then((data) => {
+      axios.get(`/.netlify/functions/siteOwner`).then((data) => {
         this.companies = data.data.data;
         this.filteredCompanies = this.companies;
         this.submit();
