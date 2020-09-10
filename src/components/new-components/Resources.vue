@@ -6,23 +6,29 @@
           <h1 class="title">{{title}}</h1>
         </div>
         <div class="changed-buttons">
-          <button @click="choise = 'articles'">
+          <button class="button-labels" @click="choise = 'articles'">
             <h1 class="title-label" :class="{'articles' : choise == 'articles'}">{{label}}</h1>
             <div class="green-line" :class="{'articles' : choise == 'articles'}"></div>
           </button>
-          <button @click="choise = 'links'">
+          <button class="button-labels" @click="choise = 'links'">
             <h1 class="title-label" :class="{'links' : choise == 'links'}">Useful Links</h1>
             <div class="green-line" :class="{'links' : choise == 'links'}"></div>
           </button>
-          <button @click="choise = 'block'">
+          <button class="button-labels" @click="choise = 'block'">
             <h1 class="title-label" :class="{'block' : choise == 'block'}">Blog</h1>
             <div class="green-line" :class="{'block' : choise == 'block'}"></div>
           </button>
         </div>
-        <div class="only-for-mobile">
+        <div class="all-sections-button">
+          <button>
+            <p>See All</p>
+            <img src="/assets/arrow-right-blue.svg" />
+          </button>
+        </div>
+        <!-- <div class="only-for-mobile">
           <h5 class="col-6">Articles</h5>
           <h5 class="col-6">Links</h5>
-        </div>
+        </div>-->
       </div>
       <div class="row articles" v-if="choise == 'articles'">
         <div
@@ -110,18 +116,36 @@ export default {
       flex-direction: row;
       justify-content: center;
     }
-  }
-  .only-for-mobile {
-    display: none;
+    .all-sections-button {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+      button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: unset;
+        outline: none;
+        p {
+          margin-right: 15px;
+          margin-bottom: 0;
+          color: #5694e8;
+          font-size: 14px;
+          font-weight: 700;
+        }
+      }
+    }
   }
   .title {
     color: #26272e;
   }
-  button {
+  .button-labels {
     border: none;
     background-color: unset;
     outline: none;
-    margin: 50px 17px 75px;
+    margin: 50px 17px 35px;
     position: relative;
     width: 115px;
     padding: 0;
