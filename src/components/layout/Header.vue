@@ -4,10 +4,11 @@
     :src="backgroundImage"
     placeholder="https://placeholder.pics/svg/1300x800"
     :blur="30"
+    :class="{'background-slot' : showAuth == true}"
   >
     <div slot="content" class="header" id="header">
       <div class="header-overlay" id="header-overlay"></div>
-      <div class="row login-buttons">
+      <div class="row login-buttons" :class="{'unclicked-login-button' : showAuth == true}">
         <button v-if="hidden" @click="showUploadFile = true">Upload File</button>
         <p>Already having an account?</p>
         <button @click="showAuth = true" v-if="!isLogged">Log in</button>
@@ -106,6 +107,7 @@ export default {
     color: #ffffff;
     font-size: 14px;
     font-weight: 700;
+    z-index: 12;
     button {
       background-color: transparent;
       border: 2px solid #ffffff;
@@ -118,6 +120,7 @@ export default {
       width: 148px;
       height: 46px;
       align-items: baseline;
+      outline: none;
     }
     p {
       font-size: 14px;

@@ -77,6 +77,14 @@ body.no-scroll {
 body {
   overflow-y: overlay;
   overflow-x: hidden;
+  .background-slot {
+    .lazy-background-slot {
+      z-index: 2;
+    }
+  }
+  .unclicked-login-button {
+    z-index: -1 !important;
+  }
 }
 
 .Cookie--bottom {
