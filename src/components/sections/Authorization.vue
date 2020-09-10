@@ -95,7 +95,7 @@ export default {
     position: fixed;
     border-radius: 15px;
     background-color: white;
-    top: 60px;
+    top: 35px;
     left: 130px;
     width: calc(100vw - 260px);
     height: 90vh;
