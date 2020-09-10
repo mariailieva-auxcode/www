@@ -54,17 +54,21 @@ export default {
 .helper {
   h3 {
     margin: 30px 0 60px;
+    text-align: center;
   }
   .row {
     display: flex;
     align-items: center;
     width: 50%;
     opacity: 0.6;
-    margin: 15px auto;
+    margin: 20px auto;
     h2 {
       text-align: left;
       font-size: 18px;
       font-weight: 500;
+      line-height: 23px;
+      padding: 0;
+      margin-left: 28px;
     }
     img {
       max-width: 45px;
