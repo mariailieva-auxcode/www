@@ -15,7 +15,7 @@
           </div>
         </button>
         <div v-if="faq.questions && faq.questions.length > 0">
-          <div v-for="subQ of faq.questions" :key="subQ">
+          <div class="sub-question" v-for="subQ of faq.questions" :key="subQ">
             <button
               @click="subQ.opened = !subQ.opened"
               class="secondary-question"
@@ -152,6 +152,10 @@ export default {
     & > div {
       position: relative;
     }
+  }
+  .sub-question {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 </style>
