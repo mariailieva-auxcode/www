@@ -65,7 +65,7 @@ sans-serif;
         }
     }
 
-    div.resources {
+    div.knowledge {
         .row>.info-steps {
             img.articles-image {
                 max-width: unset;
@@ -77,9 +77,39 @@ sans-serif;
         .info-links {
             margin-bottom: 45px;
         }
+
+        >.row.blog {
+            max-width: 100%;
+            margin-bottom: 45px;
+        }
+
+        .labels {
+            .changed-buttons {
+                button.button-labels {
+                    width: 70px;
+
+                    .green-line {
+                        border-right: 70px solid #55b364;
+                    }
+                }
+            }
+
+            div.all-sections-button {
+                display: none;
+            }
+        }
+
+        button.mobile-see-all-button {
+            display: block;
+            margin: 0 auto;
+        }
     }
 
     div.partners {
+        >.col-12>h1 {
+            margin: 100px auto 30px;
+        }
+
         div.info-partners {
             div.style-card {
                 width: 100%;

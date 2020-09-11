@@ -7,7 +7,7 @@
       <Process :lang="lang"></Process>
       <OurStory :lang="lang"></OurStory>
       <Team :lang="lang"></Team>
-      <Resources :lang="lang"></Resources>
+      <Knowledge :lang="lang"></Knowledge>
       <Partners :lang="lang"></Partners>
       <FAQ :lang="lang"></FAQ>
       <GetStarted :lang="lang"></GetStarted>
@@ -31,7 +31,7 @@ import Helper from "./new-components/Helper";
 import Process from "./new-components/Process";
 import OurStory from "./new-components/OurStory";
 import Team from "./new-components/Team";
-import Resources from "./new-components/Resources";
+import Knowledge from "./new-components/Knowledge";
 import Partners from "./new-components/Partners";
 import FAQ from "./new-components/FAQ";
 import GetStarted from "./new-components/GetStarted";
@@ -60,7 +60,7 @@ export default {
     Process,
     OurStory,
     Team,
-    Resources,
+    Knowledge,
     Partners,
     FAQ,
     GetStarted,
