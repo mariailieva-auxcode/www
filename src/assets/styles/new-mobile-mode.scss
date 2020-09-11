@@ -14,7 +14,17 @@ sans-serif;
         }
     }
 
+    div.header {
+        .login-buttons {
+            display: none;
+        }
 
+        div.header-content {
+            h1 {
+                margin-top: 50px !important;
+            }
+        }
+    }
 
     div.renewable-energy {
         div.second-energy-card {
@@ -158,6 +168,8 @@ sans-serif;
     .navigation {
         .new-navigation {
             display: flex;
+            position: fixed;
+            background-color: white;
 
             .ml {
                 margin-top: 0;
@@ -218,49 +230,34 @@ sans-serif;
             }
 
             .ml-responsive {
-                margin: auto 40px auto 0;
+                position: absolute;
+                width: 100%;
                 display: block;
 
-                .ml-mobile {
-                    .flag {
-                        margin-right: 5px;
-                    }
+                .show-navigation-button {
+                    position: absolute;
+                    left: 20px;
+                    top: 13px;
+                    padding: 0;
                 }
 
-                .burger-menu-ml {
-                    border-radius: 5px;
-                    border: none;
-                    box-shadow: 0 3px 15px rgba(149, 151, 172, .3);
-                    padding: 7px;
-                    top: 50px;
-                    right: 20px;
-                }
-
-                &.active {
-                    display: flex;
-                }
-
-                .language-display {
-                    width: unset !important;
-                    display: flex;
-                    flex-direction: column;
-
-                    a {
-                        text-decoration: none;
+                .navigation-mobile-mode {
+                    .login {
+                        p {
+                            font-weight: 700;
+                            color: #65687E;
+                            font-size: 14px;
+                            margin: 25px 0 10px;
+                        }
 
                         button {
-                            margin: 0;
-                            padding: 0;
-                            cursor: pointer;
-                            border: none;
-                            background-color: white;
-                            outline: none;
-
-                            p {
-                                font-size: 12px;
-                                margin: 0;
-                                color: #9597ac;
-                            }
+                            font-size: 14px;
+                            font-weight: 700;
+                            width: 90%;
+                            height: 46px;
+                            border: 2px solid #55B364;
+                            border-radius: 10px;
+                            color: #55B364
                         }
                     }
                 }

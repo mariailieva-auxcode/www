@@ -25,66 +25,124 @@
     </div>
     <div class="scroll-links test">
       <router-link
-        :to="`/${lang}`"
+        :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#header'"
-        id="header"
         :class="{'inverted': areInverted[0]}"
       >{{components[0]}}</router-link>
       <router-link
         to="#renewable-energy"
         v-scroll-to="'#renewable-energy'"
-        id="renewable-energy"
         :class="{'inverted': areInverted[1]}"
       >{{components[1]}}</router-link>
       <router-link
         to="#helper"
         v-scroll-to="'#helper'"
-        id="helper"
         :class="{'inverted': areInverted[2]}"
       >{{components[2]}}</router-link>
       <router-link
         to="#process"
         v-scroll-to="'#process'"
-        id="process"
         :class="{'inverted': areInverted[3]}"
       >{{components[3]}}</router-link>
       <router-link
         to="#our-story"
         v-scroll-to="'#our-story'"
-        id="our-story"
         :class="{'inverted': areInverted[4]}"
       >{{components[4]}}</router-link>
       <router-link
         to="#team"
         v-scroll-to="'#team'"
-        id="team"
         :class="{'inverted': areInverted[5]}"
       >{{components[5]}}</router-link>
       <router-link
         to="#partners"
         v-scroll-to="'#partners'"
-        id="partners"
         :class="{'inverted': areInverted[6]}"
       >{{components[6]}}</router-link>
     </div>
+
+    <!-- mobile !-->
     <div class="ml-responsive">
-      <div class="ml-mobile" @click="burgerMenuMLActive =!burgerMenuMLActive">
-        <img
-          class="flag"
-          :src="currentPage.includes('/en') ? '/assets/united-kingdom.svg' : '/assets/netherlands.svg'"
-        />
-        <img src="/assets/angle-down.svg" />
-      </div>
-      <div class="burger-menu-ml" :class="{'active': burgerMenuMLActive}">
-        <div class="row language-display mobile">
+      <button class="show-navigation-button" @click="showNavigation = !showNavigation">
+        <div v-if="!showNavigation">
+          <img src="/assets/mobile-navigation.svg" />
+        </div>
+        <div v-if="showNavigation">
+          <img src="/assets/close.svg" />
+        </div>
+      </button>
+      <div class="navigation-mobile-mode" :class="{'burger-navigation' : showNavigation == true}">
+        <router-link :to="`/${$router.history.current.params.lang}`">
+          <img :src="logo" />
+        </router-link>
+        <div class="login">
+          <p>Already having an account?</p>
+          <button>Log in</button>
+        </div>
+        <div class="mobile-navigation">
+          <button @click="showNavigation=false">
+            <router-link
+              :to="`/${$router.history.current.params.lang}`"
+              v-scroll-to="'#header'"
+              :class="{'inverted': areInverted[0]}"
+            >{{components[0]}}</router-link>
+          </button>
+          <button @click="showNavigation=false">
+            <router-link
+              to="#renewable-energy"
+              v-scroll-to="'#renewable-energy'"
+              :class="{'inverted': areInverted[1]}"
+            >{{components[1]}}</router-link>
+          </button>
+          <button @click="showNavigation=false">
+            <router-link
+              to="#helper"
+              v-scroll-to="'#helper'"
+              :class="{'inverted': areInverted[2]}"
+            >{{components[2]}}</router-link>
+          </button>
+          <button @click="showNavigation=false">
+            <router-link
+              to="#process"
+              v-scroll-to="'#process'"
+              :class="{'inverted': areInverted[3]}"
+            >{{components[3]}}</router-link>
+          </button>
+          <button @click="showNavigation=false">
+            <router-link
+              to="#our-story"
+              v-scroll-to="'#our-story'"
+              :class="{'inverted': areInverted[4]}"
+            >{{components[4]}}</router-link>
+          </button>
+          <button @click="showNavigation=false">
+            <router-link
+              to="#team"
+              v-scroll-to="'#team'"
+              :class="{'inverted': areInverted[5]}"
+            >{{components[5]}}</router-link>
+          </button>
+          <button @click="showNavigation=false">
+            <router-link
+              to="#partners"
+              v-scroll-to="'#partners'"
+              :class="{'inverted': areInverted[6]}"
+            >{{components[6]}}</router-link>
+          </button>
+        </div>
+        <div class="ml-mobile">
           <router-link :to="getURL('en')">
-            <button @click="burgerMenuMLActive= false">
-              <p class="nl">NL</p>
+            <button @click="showNavigation=false">
+              <div class="row">
+                <p>{{nlLang}}</p>
+              </div>
             </button>
           </router-link>
           <router-link :to="getURL('nl')">
-            <button @click="burgerMenuMLActive= false">
-              <p class="en">EN</p>
+            <button @click="showNavigation=false">
+              <div class="row">
+                <p class="en">{{enLang}}</p>
+              </div>
             </button>
           </router-link>
         </div>
@@ -108,6 +166,7 @@ export default {
       logo: "",
       nlLang: "",
       enLang: "",
+      showNavigation: false,
       components: [],
       areInverted: [false, false, false, false, false, false, false],
       headerImageHeight: undefined,
@@ -115,9 +174,6 @@ export default {
       linkPoints: [395, 350, 315, 270, 225, 180, 135], // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
     };
-  },
-  props: {
-    lang: String,
   },
   created() {
     this.headerImageHeight = window.innerHeight * 0.6;
@@ -135,6 +191,7 @@ export default {
   },
   methods: {
     init() {
+      this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? navigationEn : navigation;
       this.logo = data.logo;
       this.nlLang = data["nl-lang"];
@@ -176,6 +233,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/new-mobile-mode.scss";
+@import "../../assets/styles/mobile-modes/components/navigation-mobile.scss";
 .new-navigation {
   background: none;
   width: 170px;
@@ -223,27 +281,6 @@ export default {
       }
       &.inverted {
         color: black;
-      }
-    }
-  }
-  .ml-responsive {
-    display: none;
-    .burger-menu-ml {
-      height: auto;
-      display: none;
-      position: fixed;
-      right: 20px;
-      width: 55px;
-      background-color: white;
-      &.active {
-        display: block;
-      }
-      @media screen and (min-width: 769px) {
-        left: 27px;
-        bottom: 10px;
-      }
-      .language-display {
-        width: 120px;
       }
     }
   }
