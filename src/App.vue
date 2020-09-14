@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div class="navigation">
+    <!-- <div class="navigation">
       <NewNavigation></NewNavigation>
-      <!-- <Navigation></Navigation> -->
-    </div>
+      <Navigation></Navigation>
+    </div>-->
     <div class="content">
       <router-view></router-view>
       <Footer></Footer>
@@ -35,7 +35,7 @@
 
 <script>
 // import Navigation from "./components/layout/Navigation.vue";
-import NewNavigation from "./components/layout/New-Navigation";
+// import NewNavigation from "./components/layout/New-Navigation";
 import Footer from "./components/layout/New-Footer.vue";
 import CookieLaw from "vue-cookie-law";
 
@@ -43,7 +43,7 @@ export default {
   name: "App",
   components: {
     // Navigation,
-    NewNavigation,
+    // NewNavigation,
     Footer,
     CookieLaw,
   },

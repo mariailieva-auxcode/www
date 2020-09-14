@@ -1,5 +1,6 @@
 <template>
   <div class="background-color">
+    <NewNavigation :notInverted="true"></NewNavigation>
     <div class="so-questionnaire">
       <UserWizard @change="onFilter($event)"></UserWizard>
       <TableWizard :companies="filteredCompanies"></TableWizard>
@@ -8,10 +9,12 @@
 </template>
 
 <script>
+import NewNavigation from "../New-Navigation";
 import UserWizard from "../../sections/UserWizard";
 import TableWizard from "../../sections/TableWizard";
 export default {
   components: {
+    NewNavigation,
     UserWizard,
     TableWizard,
   },

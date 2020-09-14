@@ -35,6 +35,8 @@
             button {
                 text-align: left;
                 margin-bottom: 20px;
+                position: relative;
+                margin-left: 30px;
 
                 a {
                     padding: 0;
@@ -43,8 +45,22 @@
                     color: #65687e;
                     opacity: 0.6;
 
+                    .active-green-line {
+                        position: absolute;
+                        border-right: 23px solid #55b364;
+                        border-radius: 35px;
+                        height: 5px;
+                        display: none;
+                        left: -30px;
+                        top: 13px;
+                    }
+
                     &.router-link-exact-active {
                         opacity: 1;
+
+                        .active-green-line {
+                            display: block;
+                        }
                     }
 
                     &:hover {
@@ -66,11 +82,27 @@
 
                 &.router-link-exact-active {
                     opacity: 1;
+
+                    .active-green-line {
+                        display: block;
+                    }
                 }
 
                 button {
                     padding: 0;
                     margin-bottom: 10px;
+                    position: relative;
+                    margin-left: 30px;
+
+                    .active-green-line {
+                        position: absolute;
+                        border-right: 23px solid #55b364;
+                        border-radius: 35px;
+                        height: 5px;
+                        display: none;
+                        left: -30px;
+                        top: 13px;
+                    }
 
                     p {
                         margin: 0;
@@ -79,6 +111,24 @@
                         color: #65687e;
                     }
                 }
+            }
+        }
+    }
+}
+
+.new-navigation {
+    .scroll-links {
+        .active-green-line {
+            border-right: 18px solid #55b364;
+            height: 3px;
+        }
+
+        a {
+            .active-green-line {
+                position: absolute;
+                display: none;
+                left: -30px;
+                top: 19px;
             }
         }
     }

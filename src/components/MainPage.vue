@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="font">
+      <NewNavigation></NewNavigation>
       <Header :lang="lang"></Header>
       <RenewableEnergy :lang="lang"></RenewableEnergy>
       <Helper :lang="lang"></Helper>
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import NewNavigation from "./layout/New-Navigation";
 import Header from "./layout/Header";
 import RenewableEnergy from "./new-components/RenewableEnergy";
 import Helper from "./new-components/Helper";
@@ -54,6 +56,7 @@ import GetStarted from "./new-components/GetStarted";
 
 export default {
   components: {
+    NewNavigation,
     Header,
     RenewableEnergy,
     Helper,
@@ -103,6 +106,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../assets/styles/main.scss";
+@import "../assets/styles/new-mobile-mode.scss";
 .font {
   font-family: $font__IBM;
   font-weight: 500;

@@ -1,5 +1,5 @@
 <template>
-  <div class="new-navigation">
+  <div class="new-navigation" :class="{'not-inverted' : notInverted}">
     <div class="row ml">
       <div class="col-6 logo">
         <router-link :to="`/${$router.history.current.params.lang}`">
@@ -28,37 +28,38 @@
         :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#header'"
         :class="{'inverted': areInverted[0]}"
-      >{{components[0]}}</router-link>
+      >
+        <div class="active-green-line"></div>
+        {{components[0]}}
+      </router-link>
       <router-link
         to="#renewable-energy"
         v-scroll-to="'#renewable-energy'"
         :class="{'inverted': areInverted[1]}"
-      >{{components[1]}}</router-link>
-      <router-link
-        to="#helper"
-        v-scroll-to="'#helper'"
-        :class="{'inverted': areInverted[2]}"
-      >{{components[2]}}</router-link>
-      <router-link
-        to="#process"
-        v-scroll-to="'#process'"
-        :class="{'inverted': areInverted[3]}"
-      >{{components[3]}}</router-link>
-      <router-link
-        to="#our-story"
-        v-scroll-to="'#our-story'"
-        :class="{'inverted': areInverted[4]}"
-      >{{components[4]}}</router-link>
-      <router-link
-        to="#team"
-        v-scroll-to="'#team'"
-        :class="{'inverted': areInverted[5]}"
-      >{{components[5]}}</router-link>
-      <router-link
-        to="#partners"
-        v-scroll-to="'#partners'"
-        :class="{'inverted': areInverted[6]}"
-      >{{components[6]}}</router-link>
+      >
+        <div class="active-green-line"></div>
+        {{components[1]}}
+      </router-link>
+      <router-link to="#helper" v-scroll-to="'#helper'" :class="{'inverted': areInverted[2]}">
+        <div class="active-green-line"></div>
+        {{components[2]}}
+      </router-link>
+      <router-link to="#process" v-scroll-to="'#process'" :class="{'inverted': areInverted[3]}">
+        <div class="active-green-line"></div>
+        {{components[3]}}
+      </router-link>
+      <router-link to="#our-story" v-scroll-to="'#our-story'" :class="{'inverted': areInverted[4]}">
+        <div class="active-green-line"></div>
+        {{components[4]}}
+      </router-link>
+      <router-link to="#team" v-scroll-to="'#team'" :class="{'inverted': areInverted[5]}">
+        <div class="active-green-line"></div>
+        {{components[5]}}
+      </router-link>
+      <router-link to="#FAQ" v-scroll-to="'#FAQ'" :class="{'inverted': areInverted[6]}">
+        <div class="active-green-line"></div>
+        {{components[6]}}
+      </router-link>
     </div>
 
     <!-- mobile !-->
@@ -85,54 +86,64 @@
               :to="`/${$router.history.current.params.lang}`"
               v-scroll-to="'#header'"
               :class="{'inverted': areInverted[0]}"
-            >{{components[0]}}</router-link>
+            >
+              <div class="active-green-line"></div>
+              {{components[0]}}
+            </router-link>
           </button>
           <button @click="showNavigation=false">
             <router-link
               to="#renewable-energy"
               v-scroll-to="'#renewable-energy'"
               :class="{'inverted': areInverted[1]}"
-            >{{components[1]}}</router-link>
+            >
+              <div class="active-green-line"></div>
+              {{components[1]}}
+            </router-link>
           </button>
           <button @click="showNavigation=false">
-            <router-link
-              to="#helper"
-              v-scroll-to="'#helper'"
-              :class="{'inverted': areInverted[2]}"
-            >{{components[2]}}</router-link>
+            <router-link to="#helper" v-scroll-to="'#helper'" :class="{'inverted': areInverted[2]}">
+              <div class="active-green-line"></div>
+              {{components[2]}}
+            </router-link>
           </button>
           <button @click="showNavigation=false">
             <router-link
               to="#process"
               v-scroll-to="'#process'"
               :class="{'inverted': areInverted[3]}"
-            >{{components[3]}}</router-link>
+            >
+              <div class="active-green-line"></div>
+              {{components[3]}}
+            </router-link>
           </button>
           <button @click="showNavigation=false">
             <router-link
               to="#our-story"
               v-scroll-to="'#our-story'"
               :class="{'inverted': areInverted[4]}"
-            >{{components[4]}}</router-link>
+            >
+              <div class="active-green-line"></div>
+              {{components[4]}}
+            </router-link>
           </button>
           <button @click="showNavigation=false">
-            <router-link
-              to="#team"
-              v-scroll-to="'#team'"
-              :class="{'inverted': areInverted[5]}"
-            >{{components[5]}}</router-link>
+            <router-link to="#team" v-scroll-to="'#team'" :class="{'inverted': areInverted[5]}">
+              <div class="active-green-line"></div>
+              {{components[5]}}
+            </router-link>
           </button>
           <button @click="showNavigation=false">
-            <router-link
-              to="#partners"
-              v-scroll-to="'#partners'"
-              :class="{'inverted': areInverted[6]}"
-            >{{components[6]}}</router-link>
+            <router-link to="#FAQ" v-scroll-to="'#FAQ'" :class="{'inverted': areInverted[6]}">
+              <div class="active-green-line"></div>
+              {{components[6]}}
+            </router-link>
           </button>
         </div>
         <div class="ml-mobile">
           <router-link :to="getURL('en')">
             <button @click="showNavigation=false">
+              <div class="active-green-line"></div>
               <div class="row">
                 <p>{{nlLang}}</p>
               </div>
@@ -140,6 +151,7 @@
           </router-link>
           <router-link :to="getURL('nl')">
             <button @click="showNavigation=false">
+              <div class="active-green-line"></div>
               <div class="row">
                 <p class="en">{{enLang}}</p>
               </div>
@@ -174,6 +186,9 @@ export default {
       linkPoints: [395, 350, 315, 270, 225, 180, 135], // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
     };
+  },
+  props: {
+    notInverted: { type: Boolean, default: false },
   },
   created() {
     this.headerImageHeight = window.innerHeight * 0.6;
@@ -240,6 +255,21 @@ export default {
   height: 100vh;
   z-index: 2;
   position: absolute;
+  &.not-inverted {
+    .scroll-links {
+      a {
+        color: #65687e;
+      }
+    }
+
+    div.language {
+      button {
+        p {
+          color: #65687e;
+        }
+      }
+    }
+  }
   .ml {
     display: flex;
     align-items: center;
@@ -266,21 +296,25 @@ export default {
     margin-top: 75px;
     position: fixed;
     font-weight: 700;
-    margin-left: 30px;
+    margin-left: 55px;
     display: flex;
     flex-direction: column;
     text-align: left;
     a {
       padding: 10px 0;
+      position: relative;
       color: white;
       opacity: 0.6;
       outline: none;
       font-size: 14px;
       &.router-link-exact-active {
         opacity: 1;
+        .active-green-line {
+          display: block;
+        }
       }
       &.inverted {
-        color: black;
+        color: #65687e;
       }
     }
   }
