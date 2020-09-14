@@ -46,7 +46,7 @@ export default {
     LoginAllowed() {
       console.log(this.EmailCheck);
       if (!this.email || !this.password) return false;
-      if (!this.checkbox) return false;
+      // if (!this.checkbox) return false;
       if (!this.EmailCheck) return false;
       return true;
     },
