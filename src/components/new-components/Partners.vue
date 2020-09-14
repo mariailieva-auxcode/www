@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="partners">
+  <div class="container">
     <div class="partners">
       <div class="col-12">
         <h1>{{title}}</h1>

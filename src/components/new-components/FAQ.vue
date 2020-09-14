@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="FAQ">
     <div class="faq">
       <div>
         <h1>{{title}}</h1>
