@@ -65,15 +65,19 @@ export default {
   },
   methods: {
     register(credentials) {
-      axios.post("register", { ...credentials, ...this.data }).then((_) => {
-        this.$emit("close", _);
-      });
+      axios
+        .post("/.netlify/functions/register", { ...credentials, ...this.data })
+        .then((_) => {
+          this.$emit("close", _);
+        });
     },
     login(credentials) {
-      axios.post("login", { ...credentials, ...this.data }).then((data) => {
-        localStorage.token = data.data.token;
-        this.$emit("close", data.data.token);
-      });
+      axios
+        .post("/.netlify/functions/login", { ...credentials, ...this.data })
+        .then((data) => {
+          localStorage.token = data.data.token;
+          this.$emit("close", data.data.token);
+        });
     },
   },
 };

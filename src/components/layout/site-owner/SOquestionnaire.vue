@@ -27,7 +27,6 @@ export default {
   methods: {
     onFilter(filteredCompanies) {
       this.filteredCompanies = filteredCompanies;
-      console.log(this.filteredCompanies);
     },
   },
 };
@@ -39,6 +38,8 @@ export default {
 .so-questionnaire {
   width: 80%;
   margin: 0 auto;
+  max-width: 980px;
+  width: 100%;
   .container {
     max-width: 992px;
   }

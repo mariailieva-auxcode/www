@@ -74,7 +74,6 @@ export default {
   },
   created() {
     this.init();
-    console.log(this.companies);
   },
   watch: {
     $route() {

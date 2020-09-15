@@ -1,0 +1,450 @@
+.so-questionnaire {
+    width: 80%;
+    margin: 0 auto;
+
+    .container {
+        max-width: 992px;
+    }
+
+    .step-6 {
+        .container {
+            max-width: 768px;
+        }
+    }
+
+    .account {
+        max-width: 420px;
+        align-items: center;
+
+        p {
+            font: 12px;
+            color: #9597ac;
+        }
+
+        button {
+            outline: none;
+            border: 1px solid #55b364;
+            border-radius: 10px;
+            width: 305px;
+            height: 46px;
+            font-size: 14px;
+            font-family: $font__IBM;
+            font-weight: 700;
+        }
+
+        .white {
+            background-color: transparent;
+            color: #55b364;
+        }
+
+        .green {
+            background-color: #55b364;
+            color: #ffffff;
+        }
+    }
+
+    .form-inputs {
+        justify-content: center;
+        margin: auto;
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &.form-size {
+            justify-content: center;
+        }
+
+        .size {
+            position: relative;
+            margin-right: 15px;
+
+            h6 {
+                font-size: 14px;
+                font-weight: 700;
+                color: #9597ac;
+            }
+
+            p {
+                color: #55b364;
+                font-family: $font__IBM;
+                font-weight: 700;
+                position: absolute;
+                right: 10px;
+                top: 35px;
+            }
+
+            input {
+                height: 45px;
+                width: 230px;
+            }
+        }
+
+        input {
+            outline: none;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid #d3d5e3;
+            padding-left: 20px;
+            font-size: 14px;
+            font-family: $font__IBM;
+            font-weight: 500;
+            height: 45px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            color: #26272e;
+
+            &:focus {
+                border: 1px solid #55b364;
+            }
+        }
+
+        .complete {
+            flex-direction: column;
+
+            input {
+                width: 305px;
+            }
+        }
+
+        #postal {
+            margin-right: 25px;
+        }
+    }
+
+    .header {
+        padding-top: 50px;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+
+        p {
+            font-family: $font__IBM;
+            font-weight: 700;
+            font-size: 40px;
+            color: #26272e;
+            margin: 0;
+        }
+
+        .img {
+            height: 47.5px;
+            margin-left: 25px;
+        }
+    }
+
+    .user-wizard {
+        margin-bottom: 25px;
+        min-height: 490px;
+        height: auto;
+        box-shadow: 0px 6px 30px #1d226f0d;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+
+        .questions-header {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+            margin: 10px auto 35px;
+
+            .progressive-bar {
+                margin: 0 auto;
+                display: flex;
+                position: relative;
+
+                .back-button {
+                    position: absolute;
+                    left: -270px;
+                    display: flex;
+                    bottom: 0;
+                    cursor: pointer;
+
+                    p {
+                        font-weight: 700;
+                        font-size: 14px;
+                        color: #9597AC;
+                        margin-left: 10px;
+                    }
+                }
+
+                .success-bar {
+                    border-right: 120px solid #55b364;
+                    height: 6px;
+                    border-radius: 20px 0px 0px 20px;
+                }
+
+                .unsuccess-bar {
+                    border-right: 240px solid #e6e7f4;
+                    border-radius: 0 20px 20px 0;
+                    height: 6px;
+                }
+
+                .success-bar-2 {
+                    border-right: 240px solid #55b364;
+                    height: 6px;
+                    border-radius: 20px 0px 0px 20px;
+                }
+
+                .unsuccess-bar-2 {
+                    border-right: 120px solid #e6e7f4;
+                    border-radius: 0 20px 20px 0;
+                    height: 6px;
+                }
+            }
+
+            .site {
+                position: absolute;
+                font-size: 12px;
+                left: 35px;
+            }
+
+            p {
+                margin: 0 auto;
+                color: #55b364;
+                font-family: $font__IBM;
+                font-weight: 500;
+                font-size: 12px;
+
+                &.header-card-text {
+                    font-weight: 700;
+                    color: #ffffff;
+                    padding: 8px 40px;
+                    border-radius: 10px;
+                    background-color: #55b364;
+                }
+
+                &.progressive-label {
+                    color: #d3d5e3;
+                    font-weight: 700;
+                    font-size: 14px;
+                    margin: 15px 0;
+                }
+            }
+        }
+
+        .step {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            &.map {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+
+                .row {
+                    .col-12>p {
+                        font-size: 12px;
+                        font-weight: 400;
+                    }
+
+                    .map-codes {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            h2 {
+                font-family: $font__IBM;
+                font-weight: 700;
+                font-size: 25px;
+                color: #65687e;
+            }
+
+            p {
+                margin-bottom: 20px;
+            }
+
+            #powerType {
+                display: flex;
+                align-items: center;
+            }
+
+            .choice {
+                margin: 0;
+                margin-right: 20px;
+                margin-left: 5px;
+            }
+        }
+
+        .buttons>.row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                color: #d3d5e3;
+                font-family: $font__IBM;
+                font-weight: 700;
+                font-size: 14px;
+                margin: 0;
+            }
+        }
+
+        .buttons {
+            margin-top: auto;
+            margin-bottom: 30px;
+
+            >.row {
+                position: relative;
+            }
+
+            .next-button {
+                display: flex;
+                margin-left: auto;
+                margin-right: 45px;
+                height: 35px;
+                outline: none;
+                cursor: pointer;
+
+                img {
+                    margin-left: 12px;
+                }
+
+                p {
+                    color: #55b364;
+                    font-family: $font__IBM;
+                    font-weight: 700;
+                    font-size: 14px;
+                    margin: auto;
+                }
+            }
+
+            .percent-line {
+                display: flex;
+
+                .green1-line {
+                    border-right: 60px solid #55b364;
+                    height: 10px;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                .other-line {
+                    border-right: 300px solid #e6e7f4;
+                    height: 10px;
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .green-line2 {
+                    border-right: 120px solid #55b364;
+                    height: 10px;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                .other-line2 {
+                    border-right: 240px solid #e6e7f4;
+                    height: 10px;
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .green-line3 {
+                    border-right: 180px solid #55b364;
+                    height: 10px;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                .other-line3 {
+                    border-right: 180px solid #e6e7f4;
+                    height: 10px;
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .green-line4 {
+                    border-right: 240px solid #55b364;
+                    height: 10px;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                .other-line4 {
+                    border-right: 120px solid #e6e7f4;
+                    height: 10px;
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .green-line5 {
+                    border-right: 300px solid #55b364;
+                    height: 10px;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                .other-line5 {
+                    border-right: 60px solid #e6e7f4;
+                    height: 10px;
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .green-line6 {
+                    border-right: 360px solid #55b364;
+                    height: 10px;
+                    border-radius: 10px;
+                }
+            }
+
+            .back-button {
+                display: flex;
+                margin-right: auto;
+                margin-left: 55px;
+                outline: none;
+                cursor: pointer;
+
+                img {
+                    margin-right: 12px;
+                }
+
+                p {
+                    color: #9597ac;
+                    font-family: $font__IBM;
+                    font-weight: 700;
+                    font-size: 14px;
+                    margin: auto;
+                }
+            }
+        }
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.solar,
+.roof,
+.land,
+.water,
+.wind,
+.legal,
+.owner,
+.hydrogen,
+.batteries,
+.WKO {
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #d3d5e3;
+    background-color: white;
+    outline: none;
+    margin-right: 25px;
+    color: #9597ac;
+    font-weight: 700;
+
+    img {
+        margin-right: 8px;
+    }
+
+    &.active {
+        border: 2px solid #55b364;
+        color: #65687e;
+    }
+}
+
+.legal {
+    width: 185px;
+}
