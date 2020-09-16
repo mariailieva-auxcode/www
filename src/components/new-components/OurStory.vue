@@ -5,13 +5,9 @@
         <h1>{{title}}</h1>
       </div>
       <div class="row style-card">
-        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+        <div class="col-12">
           <h2>{{leftHeaderText}}</h2>
           <h3>{{leftDescription}}</h3>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
-          <h2>{{rightHeaderText}}</h2>
-          <h3>{{rightDescription}}</h3>
         </div>
       </div>
     </div>
@@ -63,13 +59,17 @@ export default {
     margin-bottom: 45px;
   }
   .style-card {
-    padding: 65px 90px;
+    padding: 85px 205px;
     h2 {
       font-family: $font__Lato;
       font-weight: 900;
-      text-align: left;
-      margin-bottom: 45px;
+      text-align: center;
+      margin-bottom: 30px;
       font-size: 25px;
+      color: #65687e;
+    }
+    h3 {
+      text-align: center;
     }
   }
 }
