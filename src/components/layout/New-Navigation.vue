@@ -183,7 +183,7 @@ export default {
       areInverted: [false, false, false, false, false, false, false],
       headerImageHeight: undefined,
       headerImageCompare: 479,
-      linkPoints: [395, 350, 315, 270, 225, 180, 135], // 479
+      linkPoints: [580, 540, 500, 460, 420, 380, 340], // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
     };
   },

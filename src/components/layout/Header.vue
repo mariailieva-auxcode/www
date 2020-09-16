@@ -18,7 +18,7 @@
       <Authorization v-if="showAuth" @close="onAuthorizationClose($event)"></Authorization>
       <div class="header-content">
         <h1 class="col-sm-12 col-12">{{title}}</h1>
-        <lazy-img :src="image" :blur="30" />
+        <!-- <lazy-img :src="image" :blur="30" /> -->
         <div>
           <router-link :to="`/${$router.history.current.params.lang}/questionnaire`">
             <button class="start-buttons">
@@ -96,7 +96,7 @@ export default {
   height: 100%;
   width: 100vw;
   .header-overlay {
-    height: 507px;
+    height: 100vh;
   }
   .login-buttons {
     position: absolute;
@@ -133,8 +133,8 @@ export default {
       text-align: center;
       font-size: 40px;
       color: #ffffff;
-      margin-top: 100px;
-      margin-bottom: 50px;
+      margin-top: 260px;
+      margin-bottom: 40px;
       font-weight: 900;
       padding: 0;
       max-width: 850px;
