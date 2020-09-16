@@ -17,13 +17,13 @@ export async function handler(event, _) {
             })
 
             console.log(event)
-            let body: User = JSON.parse(event.body)
+            const body: User = JSON.parse(event.body)
             return client.query(q.Map(
                 q.Paginate(q.Documents(q.Collection('users'))),
                 q.Lambda(x => q.Get(x))
             ))
                 .then((response: any) => {
-                    let user = response.data.find((user: any) => user.data.email == body.email &&
+                    const user = response.data.find((user: any) => user.data.email == body.email &&
                         passwordHash.verify(body.password, user.data.password))
                     if (user) {
                         // if (passwordHash.verify(body.password, user.data.password)) {

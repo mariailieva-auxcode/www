@@ -54,13 +54,13 @@ export default {
       if (this.reg.test(this.email)) return true;
       return false;
     },
-    methods: {
-      loginUser() {
-        this.$emit("login", { email: this.email, password: this.password });
-      },
-      logout() {
-        delete localStorage.token;
-      },
+  },
+  methods: {
+    loginUser() {
+      this.$emit("login", { email: this.email, password: this.password });
+    },
+    logout() {
+      delete localStorage.token;
     },
   },
 };
