@@ -19,7 +19,7 @@
         <button @click="nextStep()">
           <span>Start Here</span>
         </button>
-        <h5>5 minutes</h5>
+        <h5 class="time-info-description">5 minutes</h5>
       </div>
     </div>
     <div class="onboarding-card">
@@ -40,6 +40,10 @@
             class="col-11"
           >Learn about the earnings potential and possibilities of your site based on your information</h5>
         </div>
+        <button class="create-account">
+          <span>Create Account</span>
+        </button>
+        <h5 class="time-info-description">5 minutes</h5>
       </div>
     </div>
     <div class="onboarding-card">
@@ -66,6 +70,9 @@
             class="col-11"
           >If you have more than one site, you can add it in your registered profile section</h5>
         </div>
+        <button class="create-account">
+          <span>Match</span>
+        </button>
       </div>
     </div>
   </div>
@@ -96,12 +103,13 @@ div.so-questionnaire {
         .onboarding-card {
           max-width: 275px;
           width: 100%;
-          height: 340px;
+          height: 420px !important;
           .first-step {
             border: 2px solid #55b364;
             border-radius: 10px;
             padding: 25px 25px 15px;
             height: 100%;
+            position: relative;
             &.disabled {
               border: 2px solid #d3d5e3;
             }
@@ -135,9 +143,6 @@ div.so-questionnaire {
                   }
                 }
               }
-              &.last-description {
-                margin: 15px 0 55px;
-              }
               h5 {
                 text-align: left;
                 margin: 0;
@@ -148,15 +153,21 @@ div.so-questionnaire {
                   margin-right: 10px;
                 }
               }
+              &.last-description {
+                margin-top: 15px;
+              }
             }
             button {
+              position: absolute;
+              bottom: 35px;
+              left: 34px;
+              margin: 0 !important;
               border-radius: 10px;
               width: 205px;
               height: 45px;
               background-color: #55b364;
               outline: none;
               border: none;
-              margin-bottom: 8px;
               span {
                 font-family: $font__IBM;
                 font-weight: 700;
@@ -164,6 +175,16 @@ div.so-questionnaire {
                 color: white;
                 margin: auto;
               }
+              &.create-account {
+                cursor: default;
+                background-color: #d3d5e3;
+              }
+            }
+            .time-info-description {
+              position: absolute;
+              bottom: 15px;
+              left: 111px;
+              margin: 0;
             }
           }
         }

@@ -1,6 +1,6 @@
 <template>
   <div class="step start-onboarding">
-    <div class="onboarding-card">
+    <div class="finish-onboarding-card">
       <div class="col-12 first-step disabled">
         <div class="row top-description">
           <img class="col-2" src="/assets/address.svg" />
@@ -20,9 +20,10 @@
             class="col-11"
           >The list of project developers below is adjusted according to your answers</h5>
         </div>
+        <h5 class="time-info-description first-card">Continue to Create Account to save your data.</h5>
       </div>
     </div>
-    <div class="onboarding-card">
+    <div class="finish-onboarding-card">
       <div class="col-12 first-step">
         <div class="row top-description">
           <img class="col-2" src="/assets/profile-green.svg" />
@@ -43,10 +44,10 @@
         <button @click="signUp()">
           <span>Create Account</span>
         </button>
-        <h5>5 minutes</h5>
+        <h5 class="time-info-description">5 minutes</h5>
       </div>
     </div>
-    <div class="onboarding-card">
+    <div class="finish-onboarding-card">
       <div class="col-12 first-step disabled">
         <div class="row top-description">
           <img class="col-2" src="/assets/trust-gray.svg" />
@@ -97,10 +98,11 @@ div.so-questionnaire {
       &.start-onboarding {
         flex-direction: row;
         justify-content: space-evenly;
-        .onboarding-card {
+        .finish-onboarding-card {
           max-width: 275px;
           width: 100%;
           height: 340px;
+          position: relative;
           .first-step {
             border: 2px solid #55b364;
             border-radius: 10px;
@@ -170,12 +172,26 @@ div.so-questionnaire {
               outline: none;
               border: none;
               margin-bottom: 8px;
+              position: absolute;
+              bottom: 35px;
+              left: 34px;
               span {
                 font-family: $font__IBM;
                 font-weight: 700;
                 font-size: 14px;
                 color: white;
                 margin: auto;
+              }
+            }
+            .time-info-description {
+              position: absolute;
+              bottom: 15px;
+              left: 111px;
+              margin: 0;
+              &.first-card {
+                bottom: 25px;
+                left: 25px;
+                right: 25px;
               }
             }
           }

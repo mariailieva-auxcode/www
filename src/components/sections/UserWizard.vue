@@ -7,8 +7,8 @@
     </div>
     <div class="user-wizard">
       <div class="row questions-header">
-        <router-link :to="`/${$router.history.current.params.lang}`" v-if="step !==1 && step !==8">
-          <p class="site">Enter a Site</p>
+        <router-link :to="`/${$router.history.current.params.lang}`" v-if="step !==8">
+          <p class="site">1.Enter a Site</p>
         </router-link>
         <p class="header-card-text">{{headerCardText}}</p>
         <p v-if="step === 1" class="progressive-label">1 of 3</p>

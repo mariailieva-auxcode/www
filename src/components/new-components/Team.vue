@@ -20,6 +20,14 @@
             </div>
           </div>
         </div>
+        <div class="col-xl-4 team-info-card">
+          <div class="style-card">
+            <img class="member-image" src="/assets/team-you.png" />
+            <h2>You?</h2>
+            <p>We are always looking for smart, passionate individuals hungry to make a difference and speed up the energy transition. If you think you have what it takes get in touch with us!</p>
+            <button>Contact us</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -83,6 +91,20 @@ export default {
       > .style-card {
         margin-bottom: 45px;
         padding: 50px 25px 30px;
+        min-height: 550px;
+        height: 100%;
+
+        button {
+          padding: 14px 69px;
+          margin-top: 20px;
+          background-color: #55b364;
+          border-radius: 10px;
+          border: none;
+          outline: none;
+          color: white;
+          font-weight: 500;
+          font-size: 14px;
+        }
       }
       .member-image {
         max-width: 200px;
