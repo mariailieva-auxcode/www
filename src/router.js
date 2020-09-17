@@ -12,6 +12,7 @@ import Specialists from './components/Specialists'
 import PDquestionnaire from './components/layout/project-developer/PDquestionnaire'
 import SpecialistsQuestionnaire from './components/layout/specialists/SpecialistsQuestionnaire'
 import SOquestionnaire from './components/layout/site-owner/SOquestionnaire'
+import Profile from './components/new-components/Profile'
 
 Vue.use(Router);
 
@@ -67,6 +68,10 @@ export default new Router({
     {
         path: "/:lang/assets",
         component: Assets
+    },
+    {
+        path: "/:lang/profile",
+        component: Profile
     },
     ]
 })

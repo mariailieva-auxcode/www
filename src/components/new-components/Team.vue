@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-4 team-info-card">
+        <div class="col-12 col-sm-12 col-md-6 col-xl-4 team-info-card">
           <div class="style-card">
             <img class="member-image" src="/assets/team-you.png" />
             <h2>You?</h2>

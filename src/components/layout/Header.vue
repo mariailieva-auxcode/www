@@ -78,7 +78,10 @@ export default {
     },
     onAuthorizationClose(isLogged) {
       this.showAuth = false;
-      if (isLogged) this.isLogged = true;
+      if (isLogged) {
+        this.isLogged = true;
+        this.$router.push(`${this.lang}/profile`);
+      }
     },
     logout() {
       delete localStorage.token;
