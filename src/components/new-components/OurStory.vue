@@ -6,8 +6,8 @@
       </div>
       <div class="row style-card">
         <div class="col-12">
-          <h2>{{leftHeaderText}}</h2>
-          <h3>{{leftDescription}}</h3>
+          <h2>{{headerText}}</h2>
+          <h3>{{description}}</h3>
         </div>
       </div>
     </div>
@@ -22,10 +22,8 @@ export default {
   data() {
     return {
       title: "",
-      leftHeaderText: "",
-      leftDescription: "",
-      rightHeaderText: "",
-      rightDescription: "",
+      headerText: "",
+      description: "",
     };
   },
   props: {
@@ -43,10 +41,8 @@ export default {
     init() {
       let data = this.lang === "en" ? storyEn : story;
       this.title = data.title;
-      this.leftHeaderText = data["left-header-text"];
-      this.leftDescription = data["left-description"];
-      this.rightHeaderText = data["right-header-text"];
-      this.rightDescription = data["right-description"];
+      this.headerText = data["header-text"];
+      this.description = data["description"];
     },
   },
 };
