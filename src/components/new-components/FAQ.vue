@@ -4,7 +4,7 @@
       <div>
         <h1>{{title}}</h1>
       </div>
-      <div v-for="faq of questions.questions" :key="faq">
+      <div v-for="(faq, i) of questions.questions" :key="i">
         <button @click="faq.opened = !faq.opened">
           <div class="row style-card">
             <div class="green-plus">
@@ -15,7 +15,7 @@
           </div>
         </button>
         <div v-if="faq.questions && faq.questions.length > 0">
-          <div class="sub-question" v-for="subQ of faq.questions" :key="subQ">
+          <div class="sub-question" v-for="(subQ, i) of faq.questions" :key="i">
             <button
               @click="subQ.opened = !subQ.opened"
               class="secondary-question"

@@ -78,7 +78,7 @@
 
 <script>
 export default {
-  name: "Step 1",
+  name: "Final-step",
   methods: {
     signUp() {
       this.$emit("signUp");

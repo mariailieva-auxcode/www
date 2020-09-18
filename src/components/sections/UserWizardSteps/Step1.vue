@@ -80,7 +80,7 @@
 
 <script>
 export default {
-  name: "Step 1",
+  name: "Step-1",
   methods: {
     nextStep() {
       this.$emit("nextStep");
