@@ -1,24 +1,41 @@
 <template>
   <div class="profile">
     <button class="logout-button" @click="logout()">Logout</button>
-    <div style="width: 100%">
-      <iframe
-        id="iframe-map"
-        width="100%"
-        height="700px"
-        frameborder="0"
-        scrolling="no"
-        marginheight="0"
-        marginwidth="0"
-        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Amsterdam+(GreenAtlas)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-      ></iframe>
-    </div>
+    <LeafMap></LeafMap>
+    <!-- <div v-bind:style="{ width: width + 'px', height: height + 'px'}">
+      <VueDragResize
+        class="freeArea"
+        :isActive="true"
+        :w="getWidth()"
+        :h="getHeight()"
+        v-on:resizing="resize"
+        v-on:dragging="resize"
+      >
+        <p class="top">{{width}}m</p>
+        <p class="left">{{height}}m</p>
+        <p class="center">{{(width * height).toFixed(2)}}m2</p>
+      </VueDragResize>
+    </div>-->
   </div>
 </template>
 
 <script>
+import LeafMap from "../builder/LeafMap";
+// import VueDragResize from "vue-drag-resize";
 export default {
   name: "Profile",
+  components: {
+    LeafMap,
+  },
+  // data() {
+  //   return {
+  //     width: 20,
+  //     height: 20,
+  //     top: 0,
+  //     left: 0,
+  //     squareMeters: 400,
+  //   };
+  // },
   mounted() {
     this.init();
     setTimeout(() => {
@@ -40,6 +57,24 @@ export default {
       delete localStorage.token;
       this.$router.replace(`/${this.lang}`);
     },
+    // resize(newRect) {
+    //   this.width = newRect.width / 10;
+    //   this.height = newRect.height / 10;
+    //   this.squareMeters = this.width * this.height;
+    //   this.top = newRect.top;
+    //   this.left = newRect.left;
+    // },
+    // getWidth() {
+    //   return parseFloat(this.width || 0) * 10;
+    // },
+    // getHeight() {
+    //   return parseFloat(this.height || 0) * 10;
+    // },
+    // resizeArea() {
+    //   const size = Math.sqrt(parseFloat(this.squareMeters || 0));
+    //   this.width = size.toFixed(2);
+    //   this.height = size.toFixed(2);
+    // },
   },
 };
 </script>
@@ -51,6 +86,7 @@ export default {
     position: absolute;
     top: 0;
     right: 20px;
+    z-index: 401;
     background-color: transparent;
     border: 2px solid black;
     border-radius: 10px;
