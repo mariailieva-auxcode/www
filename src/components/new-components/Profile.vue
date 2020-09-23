@@ -1,7 +1,13 @@
 <template>
   <div class="profile">
     <button class="logout-button" @click="logout()">Logout</button>
-    <LeafMap></LeafMap>
+    <button class="change" @click="changeLayers = !changeLayers" v-if="!changeLayers">
+      <img src="/assets/layer-map.png" />
+    </button>
+    <button class="change" @click="changeLayers = !changeLayers" v-if="changeLayers">
+      <img src="/assets/layer-satellite.png" />
+    </button>
+    <LeafMap :changeLayers="changeLayers"></LeafMap>
     <!-- <div v-bind:style="{ width: width + 'px', height: height + 'px'}">
       <VueDragResize
         class="freeArea"
@@ -36,6 +42,11 @@ export default {
   //     squareMeters: 400,
   //   };
   // },
+  data() {
+    return {
+      changeLayers: true,
+    };
+  },
   mounted() {
     this.init();
     setTimeout(() => {
@@ -98,6 +109,19 @@ export default {
     height: 46px;
     align-items: baseline;
     outline: none;
+  }
+  .change {
+    z-index: 401;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    border: none;
+    outline: none;
+    background: unset;
+    img {
+      border: 2px solid white;
+      border-radius: 10px;
+    }
   }
 }
 </style>
