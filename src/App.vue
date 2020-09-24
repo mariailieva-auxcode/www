@@ -6,7 +6,7 @@
     </div>-->
     <div class="content">
       <router-view></router-view>
-      <Footer></Footer>
+      <!-- <Footer></Footer> -->
     </div>
 
     <!-- TODO (Milen) create cookie.yaml for the texts -->
@@ -36,7 +36,7 @@
 <script>
 // import Navigation from "./components/layout/Navigation.vue";
 // import NewNavigation from "./components/layout/New-Navigation";
-import Footer from "./components/layout/New-Footer.vue";
+// import Footer from "./components/layout/New-Footer.vue";
 import CookieLaw from "vue-cookie-law";
 
 export default {
@@ -44,7 +44,7 @@ export default {
   components: {
     // Navigation,
     // NewNavigation,
-    Footer,
+    // Footer,
     CookieLaw,
   },
   mounted() {

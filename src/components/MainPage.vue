@@ -12,6 +12,7 @@
       <Partners :lang="lang"></Partners>
       <FAQ :lang="lang"></FAQ>
       <GetStarted :lang="lang"></GetStarted>
+      <Footer :lang="lang"></Footer>
       <!-- <News1 :lang="lang"></News1>
       <News :lang="lang" :isPreview="true"></News>-->
       <!-- <Matchmaking :match="match"></Matchmaking> -->
@@ -37,6 +38,7 @@ import Knowledge from "./new-components/Knowledge";
 import Partners from "./new-components/Partners";
 import FAQ from "./new-components/FAQ";
 import GetStarted from "./new-components/GetStarted";
+import Footer from "./layout/New-Footer.vue";
 // import News1 from "./news/News1";
 // import News from "./news/News.vue";
 // import Matchmaking from "./sections/Matchmaking.vue";
@@ -67,6 +69,7 @@ export default {
     Partners,
     FAQ,
     GetStarted,
+    Footer,
     // News1,
     // News,
     // Matchmaking,
