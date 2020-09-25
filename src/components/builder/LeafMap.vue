@@ -1,25 +1,42 @@
 <template>
-  <div style="height: 100vh; width: 100vw;">
+  <div style="height: 100vh; width: 100vw">
     <l-map
       ref="map"
       :zoom="zoom"
       :center="center"
-      :options="{attributionControl: false}"
+      :options="{ attributionControl: false }"
       @update:zoom="zoomUpdated"
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
     >
-      <l-tile-layer :url="url" :attribution="attribution" v-if="changeLayers"></l-tile-layer>
-      <l-control-attribution position="bottomright" prefix="A custom prefix"></l-control-attribution>
-      <l-tile-layer :url="url2" :attribution="attribution2" v-if="!changeLayers"></l-tile-layer>
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+        v-if="changeLayers"
+      ></l-tile-layer>
+      <l-control-attribution
+        position="bottomright"
+        prefix="A custom prefix"
+      ></l-control-attribution>
+      <l-tile-layer
+        :url="url2"
+        :attribution="attribution2"
+        v-if="!changeLayers"
+      ></l-tile-layer>
       <l-draw-toolbar position="topleft"></l-draw-toolbar>
+      <l-control-scale position="bottomleft"></l-control-scale>
     </l-map>
   </div>
 </template>
 
 <script>
 import L from "leaflet";
-import { LMap, LTileLayer, LControlAttribution } from "vue2-leaflet";
+import {
+  LMap,
+  LTileLayer,
+  LControlAttribution,
+  LControlScale,
+} from "vue2-leaflet";
 import LDrawToolbar from "vue2-leaflet-draw-toolbar";
 export default {
   name: "LeafMap",
@@ -28,6 +45,7 @@ export default {
     LTileLayer,
     LControlAttribution,
     LDrawToolbar,
+    LControlScale,
     // LMarker,
   },
   props: {

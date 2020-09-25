@@ -1,59 +1,87 @@
 <template>
   <div class="profile">
     <button class="logout-button" @click="logout()">Logout</button>
-    <button class="change" @click="changeLayers = !changeLayers" v-if="!changeLayers">
+    <button
+      class="change"
+      @click="changeLayers = !changeLayers"
+      v-if="!changeLayers"
+    >
       <img src="/assets/layer-map.png" />
     </button>
-    <button class="change" @click="changeLayers = !changeLayers" v-if="changeLayers">
+    <button
+      class="change"
+      @click="changeLayers = !changeLayers"
+      v-if="changeLayers"
+    >
       <img src="/assets/layer-satellite.png" />
     </button>
     <LeafMap :changeLayers="changeLayers"></LeafMap>
-    <!-- <div v-bind:style="{ width: width + 'px', height: height + 'px'}">
+    <ResizingBoxes></ResizingBoxes>
+    <div
+      v-bind:style="{
+        width: width + 'px',
+        height: height + 'px',
+        top: top + 'px',
+        left: left + 'px',
+      }"
+    >
       <VueDragResize
         class="freeArea"
         :isActive="true"
         :w="getWidth()"
         :h="getHeight()"
+        :x="getLeft()"
+        :y="getTop()"
         v-on:resizing="resize"
         v-on:dragging="resize"
       >
-        <p class="top">{{width}}m</p>
-        <p class="left">{{height}}m</p>
-        <p class="center">{{(width * height).toFixed(2)}}m2</p>
+        <!-- <p class="top">{{ width }}m</p>
+        <p class="left">{{ height }}m</p>
+        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
       </VueDragResize>
-    </div>-->
+    </div>
+    <!-- <div
+      v-bind:style="{
+        width: width + 'px',
+        height: height + 'px',
+      }"
+    >
+      <VueDragResize
+        class="freeArea"
+        :isActive="true"
+        :w="getWidth2()"
+        :h="getHeight2()"
+        v-on:resizing="resize"
+        v-on:dragging="resize"
+      >
+      </VueDragResize>
+    </div> -->
   </div>
 </template>
 
 <script>
 import LeafMap from "../builder/LeafMap";
-// import VueDragResize from "vue-drag-resize";
+import ResizingBoxes from "../builder/ResizingBoxes";
+import VueDragResize from "vue-drag-resize";
 export default {
   name: "Profile",
   components: {
     LeafMap,
+    VueDragResize,
+    ResizingBoxes,
   },
-  // data() {
-  //   return {
-  //     width: 20,
-  //     height: 20,
-  //     top: 0,
-  //     left: 0,
-  //     squareMeters: 400,
-  //   };
-  // },
   data() {
     return {
       changeLayers: true,
+      width: 20,
+      height: 50,
+      top: 3,
+      left: 10,
+      squareMeters: 400,
     };
   },
   mounted() {
     this.init();
-    setTimeout(() => {
-      console.log(document.getElementsByClassName("place-card"));
-      document.getElementsByClassName("place-card")[0].style.visibility =
-        "hidden";
-    }, 10000);
   },
   watch: {
     lang() {
@@ -68,19 +96,25 @@ export default {
       delete localStorage.token;
       this.$router.replace(`/${this.lang}`);
     },
-    // resize(newRect) {
-    //   this.width = newRect.width / 10;
-    //   this.height = newRect.height / 10;
-    //   this.squareMeters = this.width * this.height;
-    //   this.top = newRect.top;
-    //   this.left = newRect.left;
-    // },
-    // getWidth() {
-    //   return parseFloat(this.width || 0) * 10;
-    // },
-    // getHeight() {
-    //   return parseFloat(this.height || 0) * 10;
-    // },
+    resize(newRect) {
+      this.width = newRect.width / 10;
+      this.height = newRect.height / 10;
+      this.squareMeters = this.width * this.height;
+      this.top = newRect.top / 10;
+      this.left = newRect.left / 10;
+    },
+    getWidth() {
+      return parseFloat(this.width || 0) * 10;
+    },
+    getHeight() {
+      return parseFloat(this.height || 0) * 10;
+    },
+    getLeft() {
+      return parseFloat(this.left || 0) * 10;
+    },
+    getTop() {
+      return parseFloat(this.top || 0) * 10;
+    },
     // resizeArea() {
     //   const size = Math.sqrt(parseFloat(this.squareMeters || 0));
     //   this.width = size.toFixed(2);
@@ -93,6 +127,7 @@ export default {
 <style lang="scss">
 .profile {
   height: 100vh;
+  overflow-y: hidden;
   .logout-button {
     position: absolute;
     top: 0;
@@ -123,5 +158,13 @@ export default {
       border-radius: 10px;
     }
   }
+  .freeArea {
+    z-index: 401 !important;
+    background-color: white;
+    border-radius: 15px;
+  }
+  // .leaflet-control-scale-line:not(:first-child) {
+  //   display: none;
+  // }
 }
 </style>

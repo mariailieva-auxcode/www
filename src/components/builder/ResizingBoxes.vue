@@ -1,24 +1,33 @@
 <template>
   <div>
-    <router-link :to="`/news?lang=${$router.history.current.params.lang}`">Go to News</router-link>
+    <!-- <router-link :to="`/news?lang=${$router.history.current.params.lang}`">Go to News</router-link>
     <div>
       <router-link :to="`/table?lang=${$router.history.current.params.lang}`">Go to Table</router-link>
-    </div>
-    <div v-bind:style="{ width: width + 'px', height: height + 'px'}">
+    </div> -->
+    <div
+      v-bind:style="{
+        width: width + 'px',
+        height: height + 'px',
+        top: top + 'px',
+        left: left + 'px',
+      }"
+    >
       <VueDragResize
         class="freeArea"
         :isActive="true"
         :w="getWidth()"
         :h="getHeight()"
+        :x="getLeft()"
+        :y="getTop()"
         v-on:resizing="resize"
         v-on:dragging="resize"
       >
-        <p class="top">{{width}}m</p>
-        <p class="left">{{height}}m</p>
-        <p class="center">{{(width * height).toFixed(2)}}m2</p>
+        <!-- <p class="top">{{ width }}m</p>
+        <p class="left">{{ height }}m</p>
+        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
       </VueDragResize>
     </div>
-    <div class="numberImput">
+    <!-- <div class="numberImput">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">Top Meters</span>
@@ -45,7 +54,7 @@
           @input="resizeArea"
         />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -53,15 +62,15 @@
 import VueDragResize from "vue-drag-resize";
 export default {
   components: {
-    VueDragResize
+    VueDragResize,
   },
   data() {
     return {
       width: 20,
       height: 20,
-      top: 0,
-      left: 0,
-      squareMeters: 400
+      top: 30,
+      left: 100,
+      squareMeters: 400,
     };
   },
 
@@ -70,8 +79,8 @@ export default {
       this.width = newRect.width / 10;
       this.height = newRect.height / 10;
       this.squareMeters = this.width * this.height;
-      this.top = newRect.top;
-      this.left = newRect.left;
+      this.top = newRect.top / 10;
+      this.left = newRect.left / 10;
     },
     getWidth() {
       return parseFloat(this.width || 0) * 10;
@@ -79,18 +88,24 @@ export default {
     getHeight() {
       return parseFloat(this.height || 0) * 10;
     },
+    getLeft() {
+      return parseFloat(this.left || 0) * 10;
+    },
+    getTop() {
+      return parseFloat(this.top || 0) * 10;
+    },
     resizeArea() {
       const size = Math.sqrt(parseFloat(this.squareMeters || 0));
       this.width = size.toFixed(2);
       this.height = size.toFixed(2);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 div.freeArea {
-  background-color: #00ff00;
+  background-color: white;
 }
 p.top {
   text-align: top;
