@@ -3,15 +3,9 @@ import faunadb from 'faunadb'
 import passwordHash from 'password-hash';
 import { User } from './api/interfaces/user.interface';
 import { SiteOwner } from './api/interfaces/site-owner.interface';
-import { Site } from '../common/models/site.model';
-
 
 const q = faunadb.query;
 
-export function getSite(): Site {
-
-    return new Site({})
-}
 export async function handler(event, _) {
     try {
         if (event.httpMethod == "POST") {
@@ -20,7 +14,6 @@ export async function handler(event, _) {
             const client = new faunadb.Client({
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
-            let site = new Site()
             const data: User | SiteOwner = JSON.parse(event.body);
             console.log(1)
 
