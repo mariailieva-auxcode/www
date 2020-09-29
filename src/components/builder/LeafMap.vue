@@ -5,6 +5,8 @@
       :zoom="zoom"
       :center="center"
       :options="{ attributionControl: false }"
+      @draw:created="drawCreated"
+      @draw:edited="drawEdited"
       @update:zoom="zoomUpdated"
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
@@ -16,7 +18,7 @@
       ></l-tile-layer>
       <l-control-attribution
         position="bottomright"
-        prefix="A custom prefix"
+        prefix=""
       ></l-control-attribution>
       <l-tile-layer
         :url="url2"
@@ -26,6 +28,12 @@
       <l-draw-toolbar position="topleft"></l-draw-toolbar>
       <l-control-scale position="bottomleft"></l-control-scale>
     </l-map>
+    <div class="coordinates">
+      Coordinates:
+      <span v-for="(coordinate, i) of coordinates" :key="i"
+        >lat:{{ coordinate.lat }} lng:{{ coordinate.lng }}</span
+      >
+    </div>
   </div>
 </template>
 
@@ -38,6 +46,7 @@ import {
   LControlScale,
 } from "vue2-leaflet";
 import LDrawToolbar from "vue2-leaflet-draw-toolbar";
+import axios from "../../axios";
 export default {
   name: "LeafMap",
   components: {
@@ -46,7 +55,6 @@ export default {
     LControlAttribution,
     LDrawToolbar,
     LControlScale,
-    // LMarker,
   },
   props: {
     changeLayers: { default: false, type: Boolean },
@@ -54,13 +62,14 @@ export default {
   data() {
     return {
       zoom: 10,
+      coordinates: [],
       bounds: null,
       center: L.latLng(52.3628434, 4.8443875),
       url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
       url2:
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
       attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        '&copy; Openstreetmap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       // marker: L.latLng(52.35479, 4.76387),
       attribution2:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
@@ -70,8 +79,24 @@ export default {
     zoomUpdated(zoom) {
       this.zoom = zoom;
     },
+    drawCreated(data) {
+      if (!data || !data.layer || !data.layer._latlngs) return;
+      this.coordinates = data.layer._latlngs[0];
+      axios.post("/.netlify/functions/coordinates", {
+        coordinates: this.coordinates,
+      });
+    },
     centerUpdated(center) {
       this.center = center;
+    },
+    drawEdited(data) {
+      Object.values(data.layers._layers).forEach((layer) => {
+        // this.coordinates = layer._latlngs[0];
+        axios.put("/.netlify/functions/coordinates", {
+          oldCoordinates: this.coordinates,
+          coordinates: layer._latlngs[0],
+        });
+      });
     },
     boundsUpdated(bounds) {
       this.bounds = bounds;
@@ -81,4 +106,13 @@ export default {
 </script>
 
 <style lang="scss">
+.coordinates {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  bottom: 50px;
+  right: 50px;
+  z-index: 401 !important;
+}
 </style>

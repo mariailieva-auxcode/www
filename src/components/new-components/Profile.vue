@@ -27,6 +27,7 @@
     >
       <VueDragResize
         class="freeArea"
+        :class="active ? 'active' : 'inactive'"
         :isActive="true"
         :w="getWidth()"
         :h="getHeight()"
@@ -78,6 +79,7 @@ export default {
       top: 3,
       left: 10,
       squareMeters: 400,
+      active: false,
     };
   },
   mounted() {
@@ -162,6 +164,25 @@ export default {
     z-index: 401 !important;
     background-color: white;
     border-radius: 15px;
+    .inactive .vdr-stick {
+      display: none;
+    }
+    .vdr.active:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      outline: 1px dashed #d6d6d6;
+    }
+    .vdr-stick {
+      position: absolute;
+      font-size: 1px;
+      background: #ffffff;
+      border: 1px solid #6c6c6c;
+      box-shadow: 0 0 2px #bbb;
+    }
   }
   // .leaflet-control-scale-line:not(:first-child) {
   //   display: none;
