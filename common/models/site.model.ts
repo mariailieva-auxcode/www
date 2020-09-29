@@ -5,6 +5,7 @@ import { Owner } from "./owner.model";
  * Site is one Leaflet polygon
  */
 export class Site {
+    coordinates: {};
     owners: Owner | Array<Owner>;
 
     /**
