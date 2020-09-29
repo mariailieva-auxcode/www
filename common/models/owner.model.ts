@@ -1,6 +1,7 @@
-import { Site } from "./site.model";
-
 export class Owner {
-    sites: Site | Array<Site>;
-    
+    id: string; // primary key (random)
+    // ...
+    constructor(id: string){
+        this.id = id
+    }
 }

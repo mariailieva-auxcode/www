@@ -6,6 +6,11 @@ export async function handler(event, _) {
     try {
         if (event.httpMethod == "POST") {
             /* configure faunaDB Client with our secret */
+            let ownerId = event.data.ownerId;// from frontend
+            let site = {
+                ownerId,
+                coordinates
+            }
             console.log("CONNECTING TO DB")
             const client = new faunadb.Client({
                 secret: process.env.VUE_APP_FAUNA_SECRET
@@ -14,7 +19,7 @@ export async function handler(event, _) {
             console.log(event)
             const data = JSON.parse(event.body)
 
-            return client.query(q.Create(q.Collection('coordinates'), { data }))
+            return client.query(q.Create(q.Collection('coordinates'), { data: site }))
                 .then((response) => {
                     console.log('success', response)
                     return {

@@ -1,0 +1,4 @@
+1. Create a owner
+2. Create a user with ownerId
+...
+3. Create a site with ownerId(from user).

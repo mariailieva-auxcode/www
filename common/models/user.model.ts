@@ -1,5 +1,8 @@
 export class User {
-    email: string;
+    email: string; // primary key
     password: string;
-    ownerId: string; // connection with Owner model
+    ownerId: string; // foreign key
+    constructor(email: string, password: string, ownerId: string){
+///...
+    }
 }

@@ -5,8 +5,9 @@ import { Owner } from "./owner.model";
  * Site is one Leaflet polygon
  */
 export class Site {
+    id: string; // primary key (random)
     coordinates: {};
-    owners: Owner | Array<Owner>;
+    ownerIds: Array<string>; // foreign key
 
     /**
      * @returns a new object
@@ -14,7 +15,5 @@ export class Site {
      * @param1 partial data object
      */
     constructor(data: Partial<Site>) {
-
-        this.owners = data.owners;
     }
 }
