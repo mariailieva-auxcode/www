@@ -14,7 +14,6 @@ export async function handler(event, _) {
             const client = new faunadb.Client({
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
-
             const data: User | SiteOwner = JSON.parse(event.body);
             console.log(1)
 
