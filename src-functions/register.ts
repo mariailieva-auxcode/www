@@ -4,19 +4,26 @@ import passwordHash from 'password-hash';
 import { SiteOwner } from './api/interfaces/site-owner.interface';
 import { Owner } from '../common/models/owner.model';
 import { User } from '../common/models/user.model';
+import { uuid } from 'uuidv4';
 
 const q = faunadb.query;
 
 export async function handler(event, _) {
     try {
         if (event.httpMethod == "POST") {
+            const client = new faunadb.Client({
+                secret: process.env.VUE_APP_FAUNA_SECRET
+            })
+            const data: User | SiteOwner = JSON.parse(event.body);
+
+            data.password = passwordHash.generate(data.password);
             /* configure faunaDB Client with our secret */
-            let email = event.data.email; // from frontend
-            let password = event.data.password;// from frontend
+            let email = data.email;
+            let password = data.password;
 
             let ownerId = uuid() // uuidv4
             let owner = new Owner(ownerId)
-            
+
             await client.query(q.Create(q.Collection('owners'), {
                 data: owner
             }))
@@ -24,24 +31,12 @@ export async function handler(event, _) {
             await client.query(q.Create(q.Collection('users'), {
                 data: user
             }))
-            // console.log("CONNECTING TO DB")
-            // const client = new faunadb.Client({
-            //     secret: process.env.VUE_APP_FAUNA_SECRET
-            // })
-            // const data: User | SiteOwner = JSON.parse(event.body);
-            // console.log(1)
-
-            // data.password = passwordHash.generate(data.password);
-            // console.log(data)
-            // let response = await client.query(q.Create(q.Collection('users'), {
-            //     data
-            // }))
-            // console.log(response)
-            // return {
-            //     statusCode: 200,
-            //     body: JSON.stringify(response),
-            //     headers: RESPONSE_HEADERS
-            // }
+            delete data.password;
+            return {
+                statusCode: 200,
+                body: JSON.stringify(data),
+                headers: RESPONSE_HEADERS
+            }
         } else {
             return {
                 statusCode: 204,

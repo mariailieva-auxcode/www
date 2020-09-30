@@ -28,6 +28,7 @@ export async function handler(event, _) {
                     if (user) {
                         // if (passwordHash.verify(body.password, user.data.password)) {
                         const token = jwt.sign(user.data, 'secret');
+                        delete user.data.password;
                         return {
                             statusCode: 200,
                             headers: RESPONSE_HEADERS,

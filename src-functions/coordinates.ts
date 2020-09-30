@@ -6,8 +6,10 @@ export async function handler(event, _) {
     try {
         if (event.httpMethod == "POST") {
             /* configure faunaDB Client with our secret */
-            let ownerId = event.data.ownerId;// from frontend
-            let site = {
+            const data = JSON.parse(event.body)
+            const ownerId = data.ownerId;// from frontend
+            const coordinates = data.coordinates
+            const site = {
                 ownerId,
                 coordinates
             }
@@ -17,7 +19,6 @@ export async function handler(event, _) {
             })
 
             console.log(event)
-            const data = JSON.parse(event.body)
 
             return client.query(q.Create(q.Collection('coordinates'), { data: site }))
                 .then((response) => {
@@ -46,7 +47,7 @@ export async function handler(event, _) {
             const data = JSON.parse(event.body)
 
             return client.query(q.Update(q.Ref(q.Collection('coordinates'), '<id-of-the-document>'),
-            { data: data.coordinates } ) )
+                { data: data.coordinates }))
 
                 .then((response) => {
                     console.log('success', response)

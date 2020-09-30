@@ -83,6 +83,7 @@ export default {
       if (!data || !data.layer || !data.layer._latlngs) return;
       this.coordinates = data.layer._latlngs[0];
       axios.post("/.netlify/functions/coordinates", {
+        ownerId: JSON.parse(localStorage.loggedUser).ownerId,
         coordinates: this.coordinates,
       });
     },

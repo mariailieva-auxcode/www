@@ -14,13 +14,13 @@
           <div class="SignUp">
             <SignUp v-if="!isLogin" @sign-up="register($event)"></SignUp>
           </div>
-          <button v-if="isLogin" @click="isLogin=false" class="switch">
+          <button v-if="isLogin" @click="isLogin = false" class="switch">
             <p>
               Don’t have an account?
               <span class="yellow-line">Sign up</span>
             </p>
           </button>
-          <button v-if="!isLogin" @click="isLogin=true" class="switch">
+          <button v-if="!isLogin" @click="isLogin = true" class="switch">
             <p>
               <span class="yellow-line">Log in</span>
               instead
@@ -76,6 +76,7 @@ export default {
         .post("/.netlify/functions/login", { ...credentials, ...this.data })
         .then((data) => {
           localStorage.token = data.data.token;
+          localStorage.loggedUser = JSON.stringify(data.data);
           this.$emit("close", data.data.token);
         });
     },
