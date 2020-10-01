@@ -37,6 +37,32 @@ export async function handler(event, _) {
                     }
                 })
         }
+        else if (event.httpMethod == "GET") {
+            const client = new faunadb.Client({
+                secret: process.env.VUE_APP_FAUNA_SECRET
+            })
+            const ownerId = event.queryStringParameters.ownerId
+            return client.query(q.Map(
+                q.Paginate(
+                    q.Match(q.Index("coordinates_by_ownerId"), ownerId)
+                ),
+                q.Lambda(x => q.Get(x))
+            )).then((response) => {
+                console.log("success", JSON.stringify(response));
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify(response),
+                    headers: RESPONSE_HEADERS
+                }
+            }).catch((error) => {
+                console.log("error", error);
+                return {
+                    statusCode: 400,
+                    body: JSON.stringify(error),
+                    headers: RESPONSE_HEADERS
+                }
+            })
+        }
         else if (event.httpMethod == "PUT") {
             console.log("CONNECTING TO DB")
             const client = new faunadb.Client({

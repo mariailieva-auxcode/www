@@ -1,6 +1,7 @@
 <template>
   <div style="height: 100vh; width: 100vw">
-    <l-map
+    <editable-map
+      editable
       ref="map"
       :zoom="zoom"
       :center="center"
@@ -26,8 +27,20 @@
         v-if="!changeLayers"
       ></l-tile-layer>
       <l-draw-toolbar position="topleft"></l-draw-toolbar>
+      <!-- <l-polygon
+        v-for="(site, i) of coordinates"
+        :key="i"
+        :lat-lngs="site.coordinates"
+      ></l-polygon> -->
+      <editable-polygon
+        v-for="(site, i) of coordinates"
+        :key="i"
+        @click="editMode[site.coordinates] = !editMode[site.coordinates]"
+        :editable="editMode[site.coordinates]"
+        :lat-lngs="site.coordinates"
+      />
       <l-control-scale position="bottomleft"></l-control-scale>
-    </l-map>
+    </editable-map>
     <div class="coordinates">
       Coordinates:
       <span v-for="(coordinate, i) of coordinates" :key="i"
@@ -39,22 +52,19 @@
 
 <script>
 import L from "leaflet";
-import {
-  LMap,
-  LTileLayer,
-  LControlAttribution,
-  LControlScale,
-} from "vue2-leaflet";
+import { LTileLayer, LControlAttribution, LControlScale } from "vue2-leaflet";
 import LDrawToolbar from "vue2-leaflet-draw-toolbar";
+import { EditableMap, EditablePolygon } from "vue2-leaflet-editable";
 import axios from "../../axios";
 export default {
   name: "LeafMap",
   components: {
-    LMap,
     LTileLayer,
     LControlAttribution,
     LDrawToolbar,
     LControlScale,
+    EditablePolygon,
+    EditableMap,
   },
   props: {
     changeLayers: { default: false, type: Boolean },
@@ -64,6 +74,9 @@ export default {
       zoom: 10,
       coordinates: [],
       bounds: null,
+      editMode: {
+        polygon: false,
+      },
       center: L.latLng(52.3628434, 4.8443875),
       url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
       url2:
@@ -75,6 +88,9 @@ export default {
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
     };
   },
+  created() {
+    this.Drawers();
+  },
   methods: {
     zoomUpdated(zoom) {
       this.zoom = zoom;
@@ -84,7 +100,7 @@ export default {
       this.coordinates = data.layer._latlngs[0];
       axios.post("/.netlify/functions/coordinates", {
         ownerId: JSON.parse(localStorage.loggedUser).ownerId,
-        coordinates: this.coordinates,
+        coordinates: this.coordinates.map((site) => [site.lat, site.lng]),
       });
     },
     centerUpdated(center) {
@@ -98,6 +114,17 @@ export default {
           coordinates: layer._latlngs[0],
         });
       });
+    },
+    Drawers() {
+      const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
+      axios
+        .get(`/.netlify/functions/coordinates?ownerId=${ownerId}`)
+        .then((data) => {
+          this.coordinates = data.data.data.map((site) => ({
+            ref: site.ref,
+            ...site.data,
+          }));
+        });
     },
     boundsUpdated(bounds) {
       this.bounds = bounds;
