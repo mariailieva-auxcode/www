@@ -7,7 +7,6 @@
       :center="center"
       :options="{ attributionControl: false }"
       @draw:created="drawCreated"
-      @draw:edited="drawEdited"
       @update:zoom="zoomUpdated"
       @update:center="centerUpdated"
       @update:bounds="boundsUpdated"
@@ -35,19 +34,19 @@
       <editable-polygon
         v-for="(site, i) of coordinates"
         :key="i"
-        @click="editPolygon(site)"
+        @click="editPolygon(site, $event)"
         :editable="editMode[site.ref['@ref'].id]"
         :lat-lngs="site.coordinates"
         :ref="site.ref['@ref'].id"
       />
       <l-control-scale position="bottomleft"></l-control-scale>
     </editable-map>
-    <div class="coordinates">
+    <!-- <div class="coordinates">
       Coordinates:
       <span v-for="(coordinate, i) of coordinates" :key="i"
         >lat:{{ coordinate.lat }} lng:{{ coordinate.lng }}</span
       >
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -96,13 +95,17 @@ export default {
     zoomUpdated(zoom) {
       this.zoom = zoom;
     },
-    editPolygon(site) {
+    editPolygon(site, event) {
       const polygonId = site.ref["@ref"].id;
       this.editMode[polygonId] = !this.editMode[polygonId];
       const polygonEdit = this.$refs[polygonId][0];
       polygonEdit.toggleEdit();
 
       if (!this.editMode[polygonId]) {
+        site.coordinates = event.target._latlngs[0].map((coordinate) => [
+          coordinate.lat,
+          coordinate.lng,
+        ]);
         this.finishEditPolygon(site);
       }
     },
@@ -129,15 +132,6 @@ export default {
     },
     centerUpdated(center) {
       this.center = center;
-    },
-    drawEdited(data) {
-      Object.values(data.layers._layers).forEach((layer) => {
-        // this.coordinates = layer._latlngs[0];
-        axios.put("/.netlify/functions/coordinates", {
-          oldCoordinates: this.coordinates,
-          coordinates: layer._latlngs[0],
-        });
-      });
     },
     Drawers() {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;

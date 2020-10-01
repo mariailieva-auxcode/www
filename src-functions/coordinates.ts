@@ -68,11 +68,8 @@ export async function handler(event, _) {
             const client = new faunadb.Client({
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
-
-            console.log(event)
             const data = JSON.parse(event.body)
-
-            return client.query(q.Update(q.Ref(q.Collection('coordinates'), data.data.ref['@ref'].id), { data: data.data }))
+            return client.query(q.Update(q.Ref(q.Collection('coordinates'), data.data.ref['@ref'].id), { data: { coordinates: data.data.coordinates } }))
                 .then((response) => {
                     console.log('success', response)
                     return {
