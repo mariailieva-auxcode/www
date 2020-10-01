@@ -1,7 +1,7 @@
 <template>
   <div style="height: 100vh; width: 100vw">
     <editable-map
-      editable
+      :editable="true"
       ref="map"
       :zoom="zoom"
       :center="center"
@@ -35,9 +35,10 @@
       <editable-polygon
         v-for="(site, i) of coordinates"
         :key="i"
-        @click="editMode[site.coordinates] = !editMode[site.coordinates]"
-        :editable="editMode[site.coordinates]"
+        @click="editPolygon(site)"
+        :editable="editMode[site.ref['@ref'].id]"
         :lat-lngs="site.coordinates"
+        :ref="site.ref['@ref'].id"
       />
       <l-control-scale position="bottomleft"></l-control-scale>
     </editable-map>
@@ -95,13 +96,36 @@ export default {
     zoomUpdated(zoom) {
       this.zoom = zoom;
     },
+    editPolygon(site) {
+      const polygonId = site.ref["@ref"].id;
+      this.editMode[polygonId] = !this.editMode[polygonId];
+      const polygonEdit = this.$refs[polygonId][0];
+      polygonEdit.toggleEdit();
+
+      if (!this.editMode[polygonId]) {
+        this.finishEditPolygon(site);
+      }
+    },
+    finishEditPolygon(site) {
+      axios.put("/.netlify/functions/coordinates", { data: site });
+    },
     drawCreated(data) {
       if (!data || !data.layer || !data.layer._latlngs) return;
-      this.coordinates = data.layer._latlngs[0];
-      axios.post("/.netlify/functions/coordinates", {
-        ownerId: JSON.parse(localStorage.loggedUser).ownerId,
-        coordinates: this.coordinates.map((site) => [site.lat, site.lng]),
-      });
+      const coordinates = data.layer._latlngs[0].map((site) => [
+        site.lat,
+        site.lng,
+      ]);
+      axios
+        .post("/.netlify/functions/coordinates", {
+          ownerId: JSON.parse(localStorage.loggedUser).ownerId,
+          coordinates,
+        })
+        .then((data) => {
+          this.coordinates.push({
+            ref: data.ref,
+            ...data.data,
+          });
+        });
     },
     centerUpdated(center) {
       this.center = center;
