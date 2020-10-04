@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "functions": "netlify-lambda serve src-functions --config ./webpack.functions.js",
-    "build": "netlify-lambda build src-functions --config ./webpack.functions.js && vue-cli-service build && react-scripts build",
+    "build": "netlify-lambda build src-functions --config ./webpack.functions.js && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "postinstall": "netlify-lambda install src-functions"
   },
