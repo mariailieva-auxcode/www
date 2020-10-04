@@ -6,8 +6,17 @@
     "serve": "vue-cli-service serve",
     "functions": "netlify-lambda serve src-functions --config ./webpack.functions.js",
     "build": "netlify-lambda build src-functions --config ./webpack.functions.js && vue-cli-service build",
+    "serve:fx": "netlify-lambda serve src-functions --config ./webpack.functions.js",
     "lint": "vue-cli-service lint",
     "postinstall": "netlify-lambda install src-functions"
+  },
+  "proxy": {
+    "/.netlify/functions": {
+      "target": "http://localhost:9000",
+      "pathRewrite": {
+        "^/\\.netlify/functions": ""
+      }
+    }
   },
   "dependencies": {
     "axios": "^0.19.2",
