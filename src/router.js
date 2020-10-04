@@ -71,7 +71,11 @@ export default new Router({
     },
     {
         path: "/:lang/profile",
-        component: Profile
+        component: Profile,
+        beforeEnter: (to, from, next) => {
+            if (!localStorage.token) next("");
+            else next();
+        }
     },
     ]
 })

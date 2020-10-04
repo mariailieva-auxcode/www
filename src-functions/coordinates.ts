@@ -7,11 +7,13 @@ export async function handler(event, _) {
         if (event.httpMethod == "POST") {
             /* configure faunaDB Client with our secret */
             const data = JSON.parse(event.body)
-            const ownerId = data.ownerId;// from frontend
+            const ownerId = data.ownerId;
             const coordinates = data.coordinates
+            const type = data.type;
             const site = {
                 ownerId,
-                coordinates
+                coordinates,
+                type
             }
             console.log("CONNECTING TO DB")
             const client = new faunadb.Client({

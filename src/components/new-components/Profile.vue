@@ -3,19 +3,19 @@
     <button class="logout-button" @click="logout()">Logout</button>
     <button
       class="change"
-      @click="changeLayers = !changeLayers"
-      v-if="!changeLayers"
+      @click="isSatteliteView = !isSatteliteView"
+      v-if="isSatteliteView"
     >
       <img src="/assets/layer-map.png" />
     </button>
     <button
       class="change"
-      @click="changeLayers = !changeLayers"
-      v-if="changeLayers"
+      @click="isSatteliteView = !isSatteliteView"
+      v-if="!isSatteliteView"
     >
       <img src="/assets/layer-satellite.png" />
     </button>
-    <LeafMap :changeLayers="changeLayers"></LeafMap>
+    <LeafMap :isSatteliteView="isSatteliteView"></LeafMap>
     <ResizingBoxes></ResizingBoxes>
     <div
       v-bind:style="{
@@ -73,7 +73,7 @@ export default {
   },
   data() {
     return {
-      changeLayers: true,
+      isSatteliteView: false,
       width: 20,
       height: 50,
       top: 3,

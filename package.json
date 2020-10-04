@@ -5,11 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "functions": "netlify-lambda serve src-functions --config ./webpack.functions.js",
-    "build": "netlify-lambda build src-functions --config ./webpack.functions.js && vue-cli-service build",
+    "build": "netlify-lambda build src-functions --config ./webpack.functions.js && vue-cli-service build && react-scripts build",
     "lint": "vue-cli-service lint",
     "postinstall": "netlify-lambda install src-functions"
   },
   "dependencies": {
+    "@geoman-io/leaflet-geoman-free": "^2.7.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
@@ -33,9 +34,7 @@
     "vue-lazy-image-loading": "^1.2.1",
     "vue-router": "^3.3.2",
     "vue-scrollto": "^2.18.2",
-    "vue2-leaflet": "^2.5.2",
-    "vue2-leaflet-draw-toolbar": "^0.1.1",
-    "vue2-leaflet-editable": "^0.4.0"
+    "vue2-leaflet": "^2.5.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.4",

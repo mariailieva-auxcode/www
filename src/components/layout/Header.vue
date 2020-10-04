@@ -4,25 +4,35 @@
     :src="backgroundImage"
     placeholder="https://placeholder.pics/svg/1300x800"
     :blur="30"
-    :class="{'background-slot' : showAuth == true}"
+    :class="{ 'background-slot': showAuth == true }"
   >
     <div slot="content" class="header" id="header">
       <div class="header-overlay" id="header-overlay"></div>
-      <div class="row login-buttons" :class="{'unclicked-login-button' : showAuth == true}">
-        <button v-if="hidden" @click="showUploadFile = true">Upload File</button>
+      <div
+        class="row login-buttons"
+        :class="{ 'unclicked-login-button': showAuth == true }"
+      >
+        <button v-if="hidden" @click="showUploadFile = true">
+          Upload File
+        </button>
         <p>Already having an account?</p>
         <button @click="showAuth = true" v-if="!isLogged">Log in</button>
         <button v-if="isLogged" @click="logout()">Logout</button>
       </div>
-      <Assets v-if="showUploadFile" @close="showUploadFile=false"></Assets>
-      <Authorization v-if="showAuth" @close="onAuthorizationClose($event)"></Authorization>
+      <Assets v-if="showUploadFile" @close="showUploadFile = false"></Assets>
+      <Authorization
+        v-if="showAuth"
+        @close="onAuthorizationClose($event)"
+      ></Authorization>
       <div class="header-content">
-        <h1 class="col-sm-12 col-12">{{title}}</h1>
+        <h1 class="col-sm-12 col-12">{{ title }}</h1>
         <!-- <lazy-img :src="image" :blur="30" /> -->
         <div>
-          <router-link :to="`/${$router.history.current.params.lang}/questionnaire`">
+          <router-link
+            :to="`/${$router.history.current.params.lang}/questionnaire`"
+          >
             <button class="start-buttons">
-              {{button}}
+              {{ button }}
               <img src="/assets/arrow-right-white.png" />
             </button>
           </router-link>
@@ -75,6 +85,7 @@ export default {
       this.button = data.button;
       this.image = data.image;
       this.backgroundImage = data["background-image"];
+      this.isLogged = !!localStorage.token;
     },
     onAuthorizationClose(isLogged) {
       this.showAuth = false;
@@ -85,6 +96,7 @@ export default {
     },
     logout() {
       delete localStorage.token;
+      delete localStorage.loggedUser;
       this.isLogged = false;
     },
   },
