@@ -35,8 +35,9 @@ export default {
         center: this.center,
         zoom: this.zoom,
       });
-
       this.map.on("pm:create", this.addSite);
+
+      L.control.scale().addTo(this.map);
 
       this.grayView = L.tileLayer(this.url, {
         attribution: this.attribution,
@@ -53,6 +54,7 @@ export default {
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
       if (!ownerId) return;
+      newSite.layer.on("pm:update", this.updateSite);
 
       const type = newSite.shape.toLowerCase();
       const coordinates = newSite.layer._latlngs[0].map((coordinate) => [
@@ -83,15 +85,40 @@ export default {
           const sites = response.data.data;
           let lastSite;
           sites.forEach((site) => {
-            if (site.data.type == "polygon")
+            if (site.data.type == "polygon") {
               lastSite = L.polygon(site.data.coordinates, {
                 color: site.data.color || "#3388ff",
               }).addTo(this.map);
+              lastSite.options.id = site.ref["@ref"].id;
+              lastSite.on("pm:update", this.updateSite);
+              lastSite.on("pm:remove", this.deleteSite);
+            }
           });
 
           this.map.fitBounds(lastSite.getBounds());
-          console.log(sites);
         });
+    },
+    updateSite(updatedSite) {
+      const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
+      if (updatedSite.shape.toLowerCase() == "polygon") {
+        const data = {
+          color: updatedSite.layer.options.color || "#3388ff",
+          id: updatedSite.layer.options.id,
+          coordinates: updatedSite.layer._latlngs[0].map((site) => [
+            site.lat,
+            site.lng,
+          ]),
+          ownerId,
+        };
+        axios.put("/.netlify/functions/coordinates", { data });
+      }
+    },
+    deleteSite(e) {
+      const remove = confirm("Do you really want to delete that polygon ?");
+      if (remove)
+        axios.delete(
+          `/.netlify/functions/coordinates?id=${e.layer.options.id}`
+        );
     },
   },
   watch: {

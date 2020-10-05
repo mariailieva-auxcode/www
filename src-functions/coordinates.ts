@@ -71,7 +71,32 @@ export async function handler(event, _) {
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
             const data = JSON.parse(event.body)
-            return client.query(q.Update(q.Ref(q.Collection('coordinates'), data.data.ref['@ref'].id), { data: { coordinates: data.data.coordinates } }))
+            const refId = data.data.id
+            const polygon = { color: data.data.color, coordinates: data.data.coordinates, ownerId: data.data.ownerId }
+            return client.query(q.Update(q.Ref(q.Collection('coordinates'), refId), { data: polygon }))
+                .then((response) => {
+                    console.log('success', response)
+                    return {
+                        statusCode: 200,
+                        body: JSON.stringify(response),
+                        headers: RESPONSE_HEADERS
+                    }
+                }).catch((error) => {
+                    console.log('error', error)
+                    return {
+                        statusCode: 400,
+                        body: JSON.stringify(error),
+                        headers: RESPONSE_HEADERS
+                    }
+                })
+        }
+        else if (event.httpMethod == "DELETE") {
+            console.log("CONNECTING TO DB")
+            const client = new faunadb.Client({
+                secret: process.env.VUE_APP_FAUNA_SECRET
+            })
+            const id = event.queryStringParameters.id
+            return client.query(q.Delete(q.Ref(q.Collection('coordinates'), id)))
                 .then((response) => {
                     console.log('success', response)
                     return {
