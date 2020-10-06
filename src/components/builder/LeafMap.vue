@@ -92,26 +92,18 @@ export default {
               lastSite.options.id = site.ref["@ref"].id;
               lastSite.on("pm:update", this.updateSite);
               lastSite.on("pm:remove", this.deleteSite);
+              lastSite.on("click", this.test);
             }
           });
 
           this.map.fitBounds(lastSite.getBounds());
         });
     },
-    updateSite(updatedSite) {
-      const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
-      if (updatedSite.shape.toLowerCase() == "polygon") {
-        const data = {
-          color: updatedSite.layer.options.color || "#3388ff",
-          id: updatedSite.layer.options.id,
-          coordinates: updatedSite.layer._latlngs[0].map((site) => [
-            site.lat,
-            site.lng,
-          ]),
-          ownerId,
-        };
-        axios.put("/.netlify/functions/coordinates", { data });
-      }
+    test(e) {
+      var popup = L.popup();
+      popup.setLatLng(e.latlng);
+      popup.setContent("Choose color (in progress)");
+      popup.openOn(this.map);
     },
     deleteSite(e) {
       const remove = confirm("Do you really want to delete that polygon ?");
