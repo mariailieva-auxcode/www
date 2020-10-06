@@ -1,4 +1,5 @@
 import faunadb from 'faunadb'
+import * as turf from '@turf/turf'
 
 import { RESPONSE_HEADERS } from './api/constants/responseHeaders'
 
@@ -55,10 +56,40 @@ exports.handler = async (event, context, callback) => {
     const possibleRegionCodes =
       possibleRegions.data.map(i => i.data.Code)
 
+    const polygonsQuery =
+      q.Map(
+        possibleRegionCodes,
+        q.Lambda("Code", q.Get(q.Match(q.Index("fulldataByCode"), q.Var("Code"))))
+      )
+
+    const polygonMatchesRaw: [any] =
+      await client.query(polygonsQuery)
+
+    const polygonMatches =
+      polygonMatchesRaw.map(i => i.data)
+
+    const myPoint =
+      turf.point([lat, lon])
+
+    const match =
+      []
+
+    for (let i = 0; i < polygonMatches.length; i++) {
+      if (turf.booleanPointInPolygon(myPoint, polygonMatches[i])) {
+        match.push(polygonMatches[i].properties.Code)
+        break
+      }
+    }
+
+    const result =
+      match.length > 0
+        ? { match: true, Code: match[0] }
+        : { match: false }
+
 
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify(possibleRegionCodes)
+      body: JSON.stringify(result)
     })
   } catch (error) {
     return callback(null, {
