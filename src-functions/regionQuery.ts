@@ -74,14 +74,17 @@ exports.handler = async (event, context, callback) => {
 
     for (let i = 0; i < polygonMatches.length; i++) {
       if (turf.booleanPointInPolygon(myPoint, polygonMatches[i])) {
-        match.push(polygonMatches[i].properties.Code)
+        match.push({
+          Code: polygonMatches[i].properties.Code,
+          Name: polygonMatches[i].properties.Gemeentenaam,
+        })
         break
       }
     }
 
     const result =
       match.length > 0
-        ? { match: true, Code: match[0] }
+        ? { match: true, ...match[0] }
         : { match: false }
 
 
