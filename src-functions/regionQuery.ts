@@ -5,8 +5,6 @@ import { RESPONSE_HEADERS } from './api/constants/responseHeaders'
 
 const q = faunadb.query
 
-
-
 exports.handler = async (event, context, callback) => {
 
   const lat = event.queryStringParameters.lat
