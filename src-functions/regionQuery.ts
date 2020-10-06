@@ -24,32 +24,30 @@ exports.handler = async (event, context, callback) => {
   })
   try {
 
-    // 4.884901 52.373535
-    const regionQuery = q.Map(
-      q.Paginate(
-        q.Intersection(
-          q.Join(
-            q.Range(q.Match(q.Index("regionNorth")), [+lon], []),
-            q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
-          ),
-          q.Join(
-            q.Range(q.Match(q.Index("regionSouth")), [], [+lon]),
-            q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
-          ),
-          q.Join(
-            q.Range(q.Match(q.Index("regionEast")), [+lat], []),
-            q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
-          ),
-          q.Join(
-            q.Range(q.Match(q.Index("regionWest")), [], [+lat]),
-            q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
-          ),
-        )
-      ),
-      q.Lambda('ref', q.Get(q.Var('ref')))
-    )
-
-    console.log(`lat: ${lat}, lon: ${lon}`)
+    const regionQuery =
+      q.Map(
+        q.Paginate(
+          q.Intersection(
+            q.Join(
+              q.Range(q.Match(q.Index("regionNorth")), [+lon], []),
+              q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
+            ),
+            q.Join(
+              q.Range(q.Match(q.Index("regionSouth")), [], [+lon]),
+              q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
+            ),
+            q.Join(
+              q.Range(q.Match(q.Index("regionEast")), [+lat], []),
+              q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
+            ),
+            q.Join(
+              q.Range(q.Match(q.Index("regionWest")), [], [+lat]),
+              q.Lambda(["value", "ref"], q.Match(q.Index("justRef"), q.Var("ref")))
+            ),
+          )
+        ),
+        q.Lambda('ref', q.Get(q.Var('ref')))
+      )
 
     const possibleRegions: any =
       await client.query(regionQuery)
