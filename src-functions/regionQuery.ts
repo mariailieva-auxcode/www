@@ -82,10 +82,26 @@ exports.handler = async (event, context, callback) => {
       }
     }
 
-    const result =
+    let result =
       match.length > 0
         ? { match: true, ...match[0] }
         : { match: false }
+
+    if (result.match) {
+      const RESQuery =
+        q.Map(
+          q.Paginate((q.Match(q.Index("RESByCode"), result.Code))),
+          q.Lambda('ref', q.Get(q.Var('ref')))
+        )
+
+      const resData: any =
+        await client.query(RESQuery)
+
+      result = {
+        ...result,
+        RES_region: resData.data[0].data.RESRegion,
+      }
+    }
 
 
     return callback(null, {
