@@ -57,6 +57,7 @@ export default {
       newSite.layer.on("pm:update", this.updateSite);
 
       const type = newSite.shape.toLowerCase();
+      console.log(newSite);
       const coordinates = newSite.layer._latlngs[0].map((coordinate) => [
         coordinate.lat,
         coordinate.lng,
@@ -92,18 +93,52 @@ export default {
               lastSite.options.id = site.ref["@ref"].id;
               lastSite.on("pm:update", this.updateSite);
               lastSite.on("pm:remove", this.deleteSite);
-              lastSite.on("click", this.test);
+              lastSite.on("click", (e) => this.test(e, lastSite));
             }
           });
 
           this.map.fitBounds(lastSite.getBounds());
         });
     },
-    test(e) {
+    test(e, site) {
       var popup = L.popup();
+      let template =
+        "<button id=submit-color-change class=red-button type=button>red</button> <button id=submit-color-change class=green-button type=button>green</button> <button id=submit-color-change class=blue-button type=button>blue</button>";
       popup.setLatLng(e.latlng);
-      popup.setContent("Choose color (in progress)");
+      popup.setContent(template);
       popup.openOn(this.map);
+
+      let submitButtons = document.querySelectorAll("#submit-color-change");
+      submitButtons.forEach((button) =>
+        button.addEventListener("click", (ev) => {
+          let color;
+          if (ev.target.className.includes("red-button")) color = "#F00";
+          else if (ev.target.className.includes("green-button")) color = "#0F0";
+          else if (ev.target.className.includes("blue-button"))
+            color = "#3388ff";
+          site.options.color = color;
+          this.map.removeLayer(site);
+          this.map.addLayer(site);
+          this.map.closePopup();
+          this.updateSite({ layer: site, shape: "polygon" });
+          console.log(this.updateSite());
+        })
+      );
+    },
+    updateSite(updatedSite) {
+      const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
+      if (updatedSite.shape.toLowerCase() == "polygon") {
+        const data = {
+          color: updatedSite.layer.options.color || "#3388ff",
+          id: updatedSite.layer.options.id,
+          coordinates: updatedSite.layer._latlngs[0].map((site) => [
+            site.lat,
+            site.lng,
+          ]),
+          ownerId,
+        };
+        axios.put("/.netlify/functions/coordinates", { data });
+      }
     },
     deleteSite(e) {
       const remove = confirm("Do you really want to delete that polygon ?");
@@ -123,4 +158,27 @@ export default {
 </script>
 
 <style lang="scss">
+#map {
+  .leaflet-map-pane {
+    .leaflet-popup-pane {
+      .leaflet-popup {
+        .leaflet-popup-content-wrapper {
+          .leaflet-popup-content {
+            button {
+              &.red-button {
+                background-color: red;
+              }
+              &.green-button {
+                background-color: green;
+              }
+              &.blue-button {
+                background-color: blue;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </style>
