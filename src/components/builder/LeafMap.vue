@@ -57,7 +57,6 @@ export default {
       newSite.layer.on("pm:update", this.updateSite);
 
       const type = newSite.shape.toLowerCase();
-      console.log(newSite);
       const coordinates = newSite.layer._latlngs[0].map((coordinate) => [
         coordinate.lat,
         coordinate.lng,
@@ -90,18 +89,20 @@ export default {
               lastSite = L.polygon(site.data.coordinates, {
                 color: site.data.color || "#3388ff",
               }).addTo(this.map);
+              let id = lastSite._leaflet_id;
               lastSite.options.id = site.ref["@ref"].id;
               lastSite.on("pm:update", this.updateSite);
               lastSite.on("pm:remove", this.deleteSite);
-              lastSite.on("click", (e) => this.test(e, lastSite));
+              lastSite.on("click", (e) => this.test(e, id));
             }
           });
 
           this.map.fitBounds(lastSite.getBounds());
         });
     },
-    test(e, site) {
+    test(e, id) {
       var popup = L.popup();
+      const site = this.map._layers[id];
       let template =
         "<button id=submit-color-change class=red-button type=button>red</button> <button id=submit-color-change class=green-button type=button>green</button> <button id=submit-color-change class=blue-button type=button>blue</button>";
       popup.setLatLng(e.latlng);
@@ -121,7 +122,6 @@ export default {
           this.map.addLayer(site);
           this.map.closePopup();
           this.updateSite({ layer: site, shape: "polygon" });
-          console.log(this.updateSite());
         })
       );
     },
