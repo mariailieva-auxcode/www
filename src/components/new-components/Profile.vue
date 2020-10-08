@@ -15,7 +15,10 @@
     >
       <img src="/assets/layer-satellite.png" />
     </button>
-    <LeafMap :isSatteliteView="isSatteliteView"></LeafMap>
+    <LeafMap
+      :isSatteliteView="isSatteliteView"
+      :getPolygonColor="getPolygonColor"
+    ></LeafMap>
     <ResizingBoxes></ResizingBoxes>
     <div
       v-bind:style="{
@@ -26,8 +29,8 @@
       }"
     >
       <VueDragResize
-        class="freeArea"
-        :class="active ? 'active' : 'inactive'"
+        class="freeArea left-box"
+        :class="active ? 'isActive' : 'inactive'"
         :isActive="true"
         :w="getWidth()"
         :h="getHeight()"
@@ -74,6 +77,7 @@ export default {
   data() {
     return {
       isSatteliteView: false,
+      getPolygonColor: false,
       width: 20,
       height: 50,
       top: 3,
@@ -164,10 +168,14 @@ export default {
     z-index: 401 !important;
     background-color: white;
     border-radius: 15px;
+    &.left-box {
+      background-color: #3388ff;
+      opacity: 0.4;
+    }
     .inactive .vdr-stick {
       display: none;
     }
-    .vdr.active:before {
+    .vdr.isActive:before {
       content: "";
       width: 100%;
       height: 100%;
