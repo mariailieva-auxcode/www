@@ -15,10 +15,7 @@
     >
       <img src="/assets/layer-satellite.png" />
     </button>
-    <LeafMap
-      :isSatteliteView="isSatteliteView"
-      :getPolygonColor="getPolygonColor"
-    ></LeafMap>
+    <LeafMap :isSatteliteView="isSatteliteView"></LeafMap>
     <ResizingBoxes></ResizingBoxes>
     <div
       v-bind:style="{
@@ -77,7 +74,6 @@ export default {
   data() {
     return {
       isSatteliteView: false,
-      getPolygonColor: false,
       width: 20,
       height: 50,
       top: 3,
@@ -109,6 +105,7 @@ export default {
       this.top = newRect.top / 10;
       this.left = newRect.left / 10;
     },
+
     getWidth() {
       return parseFloat(this.width || 0) * 10;
     },

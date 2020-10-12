@@ -14,7 +14,6 @@ export default {
   },
   props: {
     isSatteliteView: { type: Boolean },
-    getPolygonColor: { type: Boolean },
   },
   data() {
     return {
@@ -86,7 +85,6 @@ export default {
         .then((response) => {
           const sites = response.data.data;
           let lastSite;
-          this.clickEvent;
           sites.forEach((site) => {
             if (site.data.type == "polygon") {
               lastSite = L.polygon(site.data.coordinates, {
@@ -97,7 +95,6 @@ export default {
               lastSite.on("pm:update", this.updateSite);
               lastSite.on("pm:remove", this.deleteSite);
               lastSite.on("click", (e) => this.popupMenu(e, id));
-              this.clickEvent = lastSite._events.click;
             }
           });
 
@@ -146,6 +143,7 @@ export default {
     },
     deleteSite(e) {
       const remove = confirm("Do you really want to delete that polygon ?");
+      this.map.closePopup();
       if (remove)
         axios.delete(
           `/.netlify/functions/coordinates?id=${e.layer.options.id}`
@@ -157,7 +155,6 @@ export default {
       this.map.removeLayer(isSattelite ? this.grayView : this.satteliteView);
       this.map.addLayer(isSattelite ? this.satteliteView : this.grayView);
     },
-    getPolygonColor() {},
   },
 };
 </script>
