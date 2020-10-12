@@ -15,9 +15,13 @@
     >
       <img src="/assets/layer-satellite.png" />
     </button>
-    <LeafMap :isSatteliteView="isSatteliteView"></LeafMap>
+    <LeafMap
+      :isSatteliteView="isSatteliteView"
+      @changedBoxColor="boxBackgroundColor($event)"
+    ></LeafMap>
     <ResizingBoxes></ResizingBoxes>
     <div
+      class="input-box"
       v-bind:style="{
         width: width + 'px',
         height: height + 'px',
@@ -26,9 +30,8 @@
       }"
     >
       <VueDragResize
-        class="freeArea left-box"
-        :class="active ? 'isActive' : 'inactive'"
-        :isActive="true"
+        class="freeArea input-box"
+        :class="freeAreaColorClass"
         :w="getWidth()"
         :h="getHeight()"
         :x="getLeft()"
@@ -41,22 +44,6 @@
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
       </VueDragResize>
     </div>
-    <!-- <div
-      v-bind:style="{
-        width: width + 'px',
-        height: height + 'px',
-      }"
-    >
-      <VueDragResize
-        class="freeArea"
-        :isActive="true"
-        :w="getWidth2()"
-        :h="getHeight2()"
-        v-on:resizing="resize"
-        v-on:dragging="resize"
-      >
-      </VueDragResize>
-    </div> -->
   </div>
 </template>
 
@@ -79,7 +66,7 @@ export default {
       top: 3,
       left: 10,
       squareMeters: 400,
-      active: false,
+      freeAreaColorClass: "",
     };
   },
   mounted() {
@@ -93,6 +80,15 @@ export default {
   methods: {
     init() {
       this.lang = this.$router.history.current.params.lang;
+    },
+    boxBackgroundColor(color) {
+      if (color == "#F00") {
+        this.freeAreaColorClass = "red-background";
+      } else if (color == "#0F0") {
+        this.freeAreaColorClass = "green-background";
+      } else if (color == "#3388ff") {
+        this.freeAreaColorClass = "blue-background";
+      }
     },
     logout() {
       delete localStorage.token;
@@ -118,11 +114,6 @@ export default {
     getTop() {
       return parseFloat(this.top || 0) * 10;
     },
-    // resizeArea() {
-    //   const size = Math.sqrt(parseFloat(this.squareMeters || 0));
-    //   this.width = size.toFixed(2);
-    //   this.height = size.toFixed(2);
-    // },
   },
 };
 </script>
@@ -163,34 +154,20 @@ export default {
   }
   .freeArea {
     z-index: 401 !important;
-    background-color: white;
     border-radius: 15px;
-    &.left-box {
+    opacity: 0.4;
+    &.input-box {
       background-color: #3388ff;
-      opacity: 0.4;
     }
-    .inactive .vdr-stick {
-      display: none;
+    &.blue-background {
+      background-color: #3388ff;
     }
-    .vdr.isActive:before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      outline: 1px dashed #d6d6d6;
+    &.red-background {
+      background-color: red;
     }
-    .vdr-stick {
-      position: absolute;
-      font-size: 1px;
-      background: #ffffff;
-      border: 1px solid #6c6c6c;
-      box-shadow: 0 0 2px #bbb;
+    &.green-background {
+      background-color: green;
     }
   }
-  // .leaflet-control-scale-line:not(:first-child) {
-  //   display: none;
-  // }
 }
 </style>

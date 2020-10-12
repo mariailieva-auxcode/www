@@ -109,6 +109,7 @@ export default {
       popup.setLatLng(e.latlng);
       popup.setContent(template);
       popup.openOn(this.map);
+      this.$emit("changedBoxColor", site.options.color);
 
       let submitButtons = document.querySelectorAll("#submit-color-change");
       submitButtons.forEach((button) =>
