@@ -26,8 +26,8 @@
       }"
     >
       <VueDragResize
-        class="freeArea"
-        :class="active ? 'active' : 'inactive'"
+        class="freeArea left-box"
+        :class="active ? 'isActive' : 'inactive'"
         :isActive="true"
         :w="getWidth()"
         :h="getHeight()"
@@ -105,6 +105,7 @@ export default {
       this.top = newRect.top / 10;
       this.left = newRect.left / 10;
     },
+
     getWidth() {
       return parseFloat(this.width || 0) * 10;
     },
@@ -164,10 +165,14 @@ export default {
     z-index: 401 !important;
     background-color: white;
     border-radius: 15px;
+    &.left-box {
+      background-color: #3388ff;
+      opacity: 0.4;
+    }
     .inactive .vdr-stick {
       display: none;
     }
-    .vdr.active:before {
+    .vdr.isActive:before {
       content: "";
       width: 100%;
       height: 100%;

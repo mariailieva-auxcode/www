@@ -73,6 +73,7 @@ export default {
       this.map.pm.addControls({
         position: "topleft",
         drawCircle: false,
+        dragMode: false,
       });
     },
     getAndRenderPolygons() {
@@ -93,15 +94,15 @@ export default {
               lastSite.options.id = site.ref["@ref"].id;
               lastSite.on("pm:update", this.updateSite);
               lastSite.on("pm:remove", this.deleteSite);
-              lastSite.on("click", (e) => this.test(e, id));
+              lastSite.on("click", (e) => this.popupMenu(e, id));
             }
           });
 
           this.map.fitBounds(lastSite.getBounds());
         });
     },
-    test(e, id) {
-      var popup = L.popup();
+    popupMenu(e, id) {
+      let popup = L.popup();
       const site = this.map._layers[id];
       let template =
         "<button id=submit-color-change class=red-button type=button>red</button> <button id=submit-color-change class=green-button type=button>green</button> <button id=submit-color-change class=blue-button type=button>blue</button>";
@@ -142,6 +143,7 @@ export default {
     },
     deleteSite(e) {
       const remove = confirm("Do you really want to delete that polygon ?");
+      this.map.closePopup();
       if (remove)
         axios.delete(
           `/.netlify/functions/coordinates?id=${e.layer.options.id}`
@@ -172,7 +174,7 @@ export default {
                 background-color: green;
               }
               &.blue-button {
-                background-color: blue;
+                background-color: #3388ff;
               }
             }
           }
