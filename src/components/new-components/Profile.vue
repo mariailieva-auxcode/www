@@ -15,9 +15,35 @@
     >
       <img src="/assets/layer-satellite.png" />
     </button>
-    <LeafMap :isSatteliteView="isSatteliteView"></LeafMap>
-    <ResizingBoxes></ResizingBoxes>
+    <LeafMap
+      :isSatteliteView="isSatteliteView"
+      @changedBoxColor="boxBackgroundColor($event)"
+    ></LeafMap>
     <div
+      v-bind:style="{
+        width: width2 + 'px',
+        height: height2 + 'px',
+        top: top2 + 'px',
+        left: left2 + 'px',
+      }"
+    >
+      <VueDragResize
+        class="freeArea input-box"
+        :class="freeAreaColorClass"
+        :w="getWidth2()"
+        :h="getHeight2()"
+        :x="getLeft2()"
+        :y="getTop2()"
+        v-on:resizing="resize2"
+        v-on:dragging="resize2"
+      >
+        <!-- <p class="top">{{ width }}m</p>
+        <p class="left">{{ height }}m</p>
+        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
+      </VueDragResize>
+    </div>
+    <div
+      class="input-box"
       v-bind:style="{
         width: width + 'px',
         height: height + 'px',
@@ -26,9 +52,8 @@
       }"
     >
       <VueDragResize
-        class="freeArea left-box"
-        :class="active ? 'isActive' : 'inactive'"
-        :isActive="true"
+        class="freeArea input-box"
+        :class="freeAreaColorClass"
         :w="getWidth()"
         :h="getHeight()"
         :x="getLeft()"
@@ -41,35 +66,17 @@
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
       </VueDragResize>
     </div>
-    <!-- <div
-      v-bind:style="{
-        width: width + 'px',
-        height: height + 'px',
-      }"
-    >
-      <VueDragResize
-        class="freeArea"
-        :isActive="true"
-        :w="getWidth2()"
-        :h="getHeight2()"
-        v-on:resizing="resize"
-        v-on:dragging="resize"
-      >
-      </VueDragResize>
-    </div> -->
   </div>
 </template>
 
 <script>
 import LeafMap from "../builder/LeafMap";
-import ResizingBoxes from "../builder/ResizingBoxes";
 import VueDragResize from "vue-drag-resize";
 export default {
   name: "Profile",
   components: {
     LeafMap,
     VueDragResize,
-    ResizingBoxes,
   },
   data() {
     return {
@@ -78,8 +85,12 @@ export default {
       height: 50,
       top: 3,
       left: 10,
+      width2: 20,
+      height2: 20,
+      top2: 30,
+      left2: 100,
       squareMeters: 400,
-      active: false,
+      freeAreaColorClass: "",
     };
   },
   mounted() {
@@ -94,6 +105,15 @@ export default {
     init() {
       this.lang = this.$router.history.current.params.lang;
     },
+    boxBackgroundColor(color) {
+      if (color == "#F00") {
+        this.freeAreaColorClass = "red-background";
+      } else if (color == "#0F0") {
+        this.freeAreaColorClass = "green-background";
+      } else if (color == "#3388ff") {
+        this.freeAreaColorClass = "blue-background";
+      }
+    },
     logout() {
       delete localStorage.token;
       this.$router.replace(`/${this.lang}`);
@@ -104,6 +124,12 @@ export default {
       this.squareMeters = this.width * this.height;
       this.top = newRect.top / 10;
       this.left = newRect.left / 10;
+    },
+    resize2(newRect) {
+      this.width2 = newRect.width / 10;
+      this.height2 = newRect.height / 10;
+      this.top2 = newRect.top / 10;
+      this.left2 = newRect.left / 10;
     },
 
     getWidth() {
@@ -118,11 +144,19 @@ export default {
     getTop() {
       return parseFloat(this.top || 0) * 10;
     },
-    // resizeArea() {
-    //   const size = Math.sqrt(parseFloat(this.squareMeters || 0));
-    //   this.width = size.toFixed(2);
-    //   this.height = size.toFixed(2);
-    // },
+
+    getWidth2() {
+      return parseFloat(this.width2 || 0) * 10;
+    },
+    getHeight2() {
+      return parseFloat(this.height2 || 0) * 10;
+    },
+    getLeft2() {
+      return parseFloat(this.left2 || 0) * 10;
+    },
+    getTop2() {
+      return parseFloat(this.top2 || 0) * 10;
+    },
   },
 };
 </script>
@@ -163,34 +197,20 @@ export default {
   }
   .freeArea {
     z-index: 401 !important;
-    background-color: white;
     border-radius: 15px;
-    &.left-box {
+    opacity: 0.4;
+    &.input-box {
       background-color: #3388ff;
-      opacity: 0.4;
     }
-    .inactive .vdr-stick {
-      display: none;
+    &.blue-background {
+      background-color: #3388ff;
     }
-    .vdr.isActive:before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      outline: 1px dashed #d6d6d6;
+    &.red-background {
+      background-color: red;
     }
-    .vdr-stick {
-      position: absolute;
-      font-size: 1px;
-      background: #ffffff;
-      border: 1px solid #6c6c6c;
-      box-shadow: 0 0 2px #bbb;
+    &.green-background {
+      background-color: green;
     }
   }
-  // .leaflet-control-scale-line:not(:first-child) {
-  //   display: none;
-  // }
 }
 </style>

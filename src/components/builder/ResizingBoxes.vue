@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- <router-link :to="`/news?lang=${$router.history.current.params.lang}`">Go to News</router-link>
-    <div>
-      <router-link :to="`/table?lang=${$router.history.current.params.lang}`">Go to Table</router-link>
-    </div> -->
     <div
       v-bind:style="{
         width: width + 'px',
@@ -13,8 +9,7 @@
       }"
     >
       <VueDragResize
-        class="freeArea"
-        :isActive="true"
+        class="freeArea output-box"
         :w="getWidth()"
         :h="getHeight()"
         :x="getLeft()"
@@ -27,34 +22,6 @@
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
       </VueDragResize>
     </div>
-    <!-- <div class="numberImput">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Top Meters</span>
-        </div>
-        <input type="number" class="form-control" aria-label="Area" v-model="width" />
-      </div>
-
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Left Meters</span>
-        </div>
-        <input type="number" class="form-control" aria-label="Area" v-model="height" />
-      </div>
-
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Square Meters</span>
-        </div>
-        <input
-          type="number"
-          class="form-control"
-          aria-label="Area"
-          v-model="squareMeters"
-          @input="resizeArea"
-        />
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -103,9 +70,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 div.freeArea {
-  background-color: white;
+  &.output-box {
+    background-color: white;
+    opacity: 1;
+  }
 }
 p.top {
   text-align: top;
