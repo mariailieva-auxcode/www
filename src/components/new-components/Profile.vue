@@ -19,7 +19,29 @@
       :isSatteliteView="isSatteliteView"
       @changedBoxColor="boxBackgroundColor($event)"
     ></LeafMap>
-    <ResizingBoxes></ResizingBoxes>
+    <div
+      v-bind:style="{
+        width: width2 + 'px',
+        height: height2 + 'px',
+        top: top2 + 'px',
+        left: left2 + 'px',
+      }"
+    >
+      <VueDragResize
+        class="freeArea input-box"
+        :class="freeAreaColorClass"
+        :w="getWidth2()"
+        :h="getHeight2()"
+        :x="getLeft2()"
+        :y="getTop2()"
+        v-on:resizing="resize2"
+        v-on:dragging="resize2"
+      >
+        <!-- <p class="top">{{ width }}m</p>
+        <p class="left">{{ height }}m</p>
+        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
+      </VueDragResize>
+    </div>
     <div
       class="input-box"
       v-bind:style="{
@@ -49,14 +71,12 @@
 
 <script>
 import LeafMap from "../builder/LeafMap";
-import ResizingBoxes from "../builder/ResizingBoxes";
 import VueDragResize from "vue-drag-resize";
 export default {
   name: "Profile",
   components: {
     LeafMap,
     VueDragResize,
-    ResizingBoxes,
   },
   data() {
     return {
@@ -65,6 +85,10 @@ export default {
       height: 50,
       top: 3,
       left: 10,
+      width2: 20,
+      height2: 20,
+      top2: 30,
+      left2: 100,
       squareMeters: 400,
       freeAreaColorClass: "",
     };
@@ -101,6 +125,12 @@ export default {
       this.top = newRect.top / 10;
       this.left = newRect.left / 10;
     },
+    resize2(newRect) {
+      this.width2 = newRect.width / 10;
+      this.height2 = newRect.height / 10;
+      this.top2 = newRect.top / 10;
+      this.left2 = newRect.left / 10;
+    },
 
     getWidth() {
       return parseFloat(this.width || 0) * 10;
@@ -113,6 +143,19 @@ export default {
     },
     getTop() {
       return parseFloat(this.top || 0) * 10;
+    },
+
+    getWidth2() {
+      return parseFloat(this.width2 || 0) * 10;
+    },
+    getHeight2() {
+      return parseFloat(this.height2 || 0) * 10;
+    },
+    getLeft2() {
+      return parseFloat(this.left2 || 0) * 10;
+    },
+    getTop2() {
+      return parseFloat(this.top2 || 0) * 10;
     },
   },
 };
