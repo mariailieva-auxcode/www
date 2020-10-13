@@ -83,6 +83,7 @@ export default {
       axios
         .get(`/.netlify/functions/coordinates?ownerId=${ownerId}`)
         .then((response) => {
+          console.log(this.map);
           const sites = response.data.data;
           let lastSite;
           sites.forEach((site) => {
@@ -120,6 +121,7 @@ export default {
           else if (ev.target.className.includes("blue-button"))
             color = "#3388ff";
           site.options.color = color;
+          this.$emit("changedBoxColor", color);
           this.map.removeLayer(site);
           this.map.addLayer(site);
           this.map.closePopup();
