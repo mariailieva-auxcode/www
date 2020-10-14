@@ -61,6 +61,13 @@
         v-on:resizing="resize"
         v-on:dragging="resize"
       >
+        <button
+          class="owner"
+          :class="{ active: owner }"
+          @click="owner = !owner"
+        >
+          Toggle
+        </button>
         <!-- <p class="top">{{ width }}m</p>
         <p class="left">{{ height }}m</p>
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
@@ -91,6 +98,7 @@ export default {
       left2: 100,
       squareMeters: 400,
       freeAreaColorClass: "",
+      owner: false,
     };
   },
   mounted() {
@@ -198,7 +206,7 @@ export default {
   .freeArea {
     z-index: 401 !important;
     border-radius: 15px;
-    opacity: 0.4;
+    padding-right: 30px;
     &.input-box {
       background-color: #3388ff;
     }
@@ -211,6 +219,32 @@ export default {
     &.green-background {
       background-color: green;
     }
+    .active::before {
+      content: none;
+    }
+    .owner {
+      // max-width: 150px;
+      width: 100%;
+      max-height: 50px;
+      border-radius: 10px;
+      border: 2px solid #d3d5e3;
+      background-color: white;
+      outline: none;
+      margin-left: 15px;
+      color: #9597ac;
+      font-weight: 700;
+      margin-top: 20px;
+
+      &.active {
+        border: 2px solid #55b364;
+        color: #65687e;
+      }
+    }
+  }
+}
+#app {
+  .vdr.active:before {
+    content: none;
   }
 }
 </style>
