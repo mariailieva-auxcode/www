@@ -54,7 +54,6 @@ export default {
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
       if (!ownerId) return;
-      newSite.layer.on("pm:update", this.updateSite);
 
       const type = newSite.shape.toLowerCase();
       const coordinates = newSite.layer._latlngs[0].map((coordinate) => [
@@ -62,11 +61,21 @@ export default {
         coordinate.lng,
       ]);
       if (type == "polygon") {
-        axios.post(`/.netlify/functions/coordinates`, {
-          ownerId,
-          coordinates,
-          type,
-        });
+        axios
+          .post(`/.netlify/functions/coordinates`, {
+            ownerId,
+            coordinates,
+            type,
+          })
+          .then((data) => {
+            let shapeId = data.data.ref["@ref"].id;
+            let id = newSite.layer._leaflet_id;
+
+            newSite.layer.options.id = shapeId;
+            newSite.layer.on("pm:update", this.updateSite);
+            newSite.layer.on("pm:remove", this.deleteSite);
+            newSite.layer.on("click", (e) => this.popupMenu(e, id));
+          });
       }
     },
     addDrawControls() {
@@ -83,7 +92,6 @@ export default {
       axios
         .get(`/.netlify/functions/coordinates?ownerId=${ownerId}`)
         .then((response) => {
-          console.log(this.map);
           const sites = response.data.data;
           let lastSite;
           sites.forEach((site) => {
@@ -151,6 +159,9 @@ export default {
         axios.delete(
           `/.netlify/functions/coordinates?id=${e.layer.options.id}`
         );
+      else {
+        this.map.pm.disableGlobalRemovalMode();
+      }
     },
   },
   watch: {
