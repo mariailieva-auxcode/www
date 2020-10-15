@@ -1,0 +1,32 @@
+[
+    {
+      "wind_speed": 0,
+      "MaximumBase": 0.056,
+      "BaseEnergyPrice_GridDelivery": 0.029,
+      "ProvisionalCorrection_GridDelivery": 0.043
+    },
+    {
+      "wind_speed": 6.75,
+      "MaximumBase": 0.052,
+      "BaseEnergyPrice_GridDelivery": 0.029,
+      "ProvisionalCorrection_GridDelivery": 0.043
+    },
+    {
+      "wind_speed": 7,
+      "MaximumBase": 0.048,
+      "BaseEnergyPrice_GridDelivery": 0.029,
+      "ProvisionalCorrection_GridDelivery": 0.043
+    },
+    {
+      "wind_speed": 7.5,
+      "MaximumBase": 0.045,
+      "BaseEnergyPrice_GridDelivery": 0.029,
+      "ProvisionalCorrection_GridDelivery": 0.043
+    },
+    {
+      "wind_speed": 8,
+      "MaximumBase": 0.042,
+      "BaseEnergyPrice_GridDelivery": 0.029,
+      "ProvisionalCorrection_GridDelivery": 0.043
+    }
+  ]
