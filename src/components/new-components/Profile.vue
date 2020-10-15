@@ -37,6 +37,16 @@
         v-on:resizing="resize2"
         v-on:dragging="resize2"
       >
+        <p>You will earn</p>
+        <p class="values">€{{ cash }}</p>
+        <p class="mounth">Per month</p>
+        <p>You will produce</p>
+        <p class="values">{{ production }}kw/h</p>
+        <p class="mounth">Per month</p>
+        <p>You will save</p>
+        <p class="values">{{ preventedCO }}kgCO2</p>
+        <p class="mounth">Per month</p>
+
         <!-- <p class="top">{{ width }}m</p>
         <p class="left">{{ height }}m</p>
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
@@ -61,13 +71,45 @@
         v-on:resizing="resize"
         v-on:dragging="resize"
       >
-        <button
-          class="owner"
-          :class="{ active: owner }"
-          @click="owner = !owner"
-        >
-          Toggle
-        </button>
+        <p>What type of site do you have?</p>
+        <p>(You can select more than one)</p>
+        <div class="toggles">
+          <button
+            class="owner"
+            :class="{ active: owner }"
+            @click="owner = !owner"
+          >
+            <img src="/assets/roof.svg" />Roof
+          </button>
+          <button class="owner" :class="{ active: land }" @click="land = !land">
+            <img src="/assets/land.svg" />Land
+          </button>
+          <button
+            class="owner"
+            :class="{ active: water }"
+            @click="water = !water"
+          >
+            <img src="/assets/water.svg" />Water
+          </button>
+        </div>
+        <p>What type of energy do you want?</p>
+        <p>(You can select both)</p>
+        <div class="toggles">
+          <button
+            class="owner"
+            :class="{ active: solar }"
+            @click="solar = !solar"
+          >
+            <img src="/assets/solar.svg" />Solar
+          </button>
+          <button class="owner" :class="{ active: wind }" @click="wind = !wind">
+            <img src="/assets/wind.svg" />Wind
+          </button>
+        </div>
+        <p>What is the size of the site?</p>
+        <div class="size">
+          <input id="sqM" placeholder="0" type="text" />
+        </div>
         <!-- <p class="top">{{ width }}m</p>
         <p class="left">{{ height }}m</p>
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
@@ -88,17 +130,25 @@ export default {
   data() {
     return {
       isSatteliteView: false,
-      width: 20,
+      width: 30,
       height: 50,
       top: 3,
       left: 10,
-      width2: 20,
-      height2: 20,
-      top2: 30,
+      width2: 30,
+      height2: 50,
+      top2: 10,
       left2: 100,
       squareMeters: 400,
       freeAreaColorClass: "",
       owner: false,
+      land: false,
+      water: false,
+      solar: false,
+      wind: false,
+      sqM: "",
+      cash: 0,
+      production: 0,
+      preventedCO: 0,
     };
   },
   mounted() {
@@ -206,39 +256,66 @@ export default {
   .freeArea {
     z-index: 401 !important;
     border-radius: 15px;
-    padding-right: 30px;
     &.input-box {
-      background-color: #3388ff;
+      background-color: white;
+      p {
+        text-align: center;
+        color: black;
+        margin: 0;
+        &.mounth {
+          color: #65687e;
+        }
+      }
+      .values {
+        font-size: 30px;
+        color: #55b364;
+      }
     }
-    &.blue-background {
-      background-color: #3388ff;
-    }
-    &.red-background {
-      background-color: red;
-    }
-    &.green-background {
-      background-color: green;
-    }
+    // &.blue-background {
+    //   background-color: #3388ff;
+    // }
+    // &.red-background {
+    //   background-color: red;
+    // }
+    // &.green-background {
+    //   background-color: green;
+    // }
     .active::before {
       content: none;
     }
-    .owner {
-      // max-width: 150px;
-      width: 100%;
-      max-height: 50px;
-      border-radius: 10px;
-      border: 2px solid #d3d5e3;
-      background-color: white;
-      outline: none;
-      margin-left: 15px;
-      color: #9597ac;
-      font-weight: 700;
-      margin-top: 20px;
+    .toggles {
+      padding-right: 30px;
+      .owner {
+        // max-width: 150px;
+        width: 100%;
+        max-height: 50px;
+        border-radius: 10px;
+        border: 2px solid #d3d5e3;
+        background-color: white;
+        outline: none;
+        color: #9597ac;
+        font-weight: 700;
+        margin-top: 20px;
+        margin-left: 15px;
 
-      &.active {
-        border: 2px solid #55b364;
-        color: #65687e;
+        &.active {
+          border: 2px solid #55b364;
+          color: #65687e;
+        }
       }
+    }
+    .size {
+      padding-right: 30px;
+      input {
+        width: 100%;
+        margin-left: 15px;
+      }
+      // p {
+      //   position: absolute;
+      //   right: 30px;
+      //   top: 10px;
+      //   color: black;
+      // }
     }
   }
 }
