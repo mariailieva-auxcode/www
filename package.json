@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build-models": "cd src-functions/models && tsc -p .",
+    "wind-model": "npm run build-models && cd src-functions/models && node out/windResult.js",
     "serve": "vue-cli-service serve",
     "functions": "netlify-lambda serve src-functions --config ./webpack.functions.js",
     "build": "netlify-lambda build src-functions --config ./webpack.functions.js && vue-cli-service build",
@@ -34,7 +36,9 @@
     "vue-lazy-image-loading": "^1.2.1",
     "vue-router": "^3.3.2",
     "vue-scrollto": "^2.18.2",
-    "vue2-leaflet": "^2.5.2"
+    "vue2-leaflet": "^2.5.2",
+    "distributions-weibull-pdf": "0.0.0",
+    "gamma": "^1.0.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.10.4",
