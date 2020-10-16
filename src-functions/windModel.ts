@@ -26,8 +26,13 @@ const userInputs = {
 
 export async function handler(event, _) {
     try {
-        let number = event.queryStringParameters.number
-        let capacity = event.queryStringParameters.capacity
+        let number = event.queryStringParameters.number;
+        let capacity = event.queryStringParameters.capacity;
+        let latitude = event.queryStringParameters.latitude;
+        let longitude = event.queryStringParameters.longitude;
+        let landArea = event.queryStringParameters.landArea
+        let landLength = Math.sqrt(landArea);
+        let landWidth = Math.sqrt(landArea);
         console.log(`cap: ${capacity}`)
 
         if (!number)
@@ -40,9 +45,9 @@ export async function handler(event, _) {
         else
             capacity = +capacity
 
-        console.log({...userInputs, number, capacity })
+        console.log({ ...userInputs, number, capacity, latitude, longitude, landLength, landWidth })
 
-        const result = getWindModelResults({...userInputs, number, capacity })
+        const result = getWindModelResults({ ...userInputs, number, capacity, latitude, longitude, landLength, landWidth })
 
         return {
             statusCode: 200,

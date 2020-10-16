@@ -18,6 +18,7 @@
     <LeafMap
       :isSatteliteView="isSatteliteView"
       @changedBoxColor="boxBackgroundColor($event)"
+      @changedSavingCalc="changeSavingCalc($event)"
     ></LeafMap>
     <div
       v-bind:style="{
@@ -106,10 +107,10 @@
             <img src="/assets/wind.svg" />Wind
           </button>
         </div>
-        <p>What is the size of the site?</p>
+        <!-- <p>What is the size of the site?</p>
         <div class="size">
-          <input id="sqM" placeholder="0" type="text" />
-        </div>
+          <input id="sqM" placeholder="0" type="number" />
+        </div> -->
         <!-- <p class="top">{{ width }}m</p>
         <p class="left">{{ height }}m</p>
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
@@ -162,6 +163,11 @@ export default {
   methods: {
     init() {
       this.lang = this.$router.history.current.params.lang;
+    },
+    changeSavingCalc(newData) {
+      this.cash = newData.totalNetRevenue.toFixed(2);
+      this.production = newData.annualEnergy.toFixed(2);
+      this.preventedCO = newData.CO2Saved.toFixed(2);
     },
     boxBackgroundColor(color) {
       if (color == "#F00") {
@@ -309,6 +315,10 @@ export default {
       input {
         width: 100%;
         margin-left: 15px;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
       }
       // p {
       //   position: absolute;

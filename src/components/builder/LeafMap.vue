@@ -6,6 +6,7 @@
 import L from "leaflet";
 import "@geoman-io/leaflet-geoman-free";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
+import * as turf from "@turf/turf";
 import axios from "../../axios";
 export default {
   name: "LeafMap",
@@ -113,6 +114,18 @@ export default {
     popupMenu(e, id) {
       let popup = L.popup();
       const site = this.map._layers[id];
+
+      let area = turf.area(site.toGeoJSON());
+      let center = site.getCenter();
+
+      axios
+        .get(
+          `/.netlify/functions/windModel?latitude=${center.lat}&longitude=${center.lng}&landArea=${area}`
+        )
+        .then((data) => {
+          this.$emit("changedSavingCalc", data.data);
+        });
+
       let template =
         "<button id=submit-color-change class=red-button type=button>red</button> <button id=submit-color-change class=green-button type=button>green</button> <button id=submit-color-change class=blue-button type=button>blue</button>";
       popup.setLatLng(e.latlng);
