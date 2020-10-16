@@ -25,9 +25,24 @@ const userInputs = {
 }
 
 export async function handler(event, _) {
-    // try {
+    try {
+        let number = event.queryStringParameters.number
+        let capacity = event.queryStringParameters.capacity
+        console.log(`cap: ${capacity}`)
 
-        const result = getWindModelResults(userInputs);
+        if (!number)
+            number = 1
+        else
+            number = +number
+
+        if (!capacity)
+            capacity = 5000
+        else
+            capacity = +capacity
+
+        console.log({...userInputs, number, capacity })
+
+        const result = getWindModelResults({...userInputs, number, capacity })
 
         return {
             statusCode: 200,
@@ -36,10 +51,10 @@ export async function handler(event, _) {
         }
 
 
-    // } catch (error) {
-    //     return {
-    //         statusCode: 500,
-    //         body: JSON.stringify({ status: `err: ${error}` }),
-    //     };
-    // }
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ status: `err: ${error}` }),
+        };
+    }
 };
