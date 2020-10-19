@@ -72,6 +72,8 @@
         v-on:resizing="resize"
         v-on:dragging="resize"
         @activated="onActivated()"
+        :isDraggable = "false"
+        :isResizable = "false"
       >
         <p>What type of site do you have?</p>
         <p>(You can select more than one)</p>
@@ -110,7 +112,10 @@
         </div>
         <div class="size">
           <p>What is the size of the site?</p>
-          <input id="sqM" placeholder="0 sq.m" type="number" ref="input" />
+          <input id="sqM" placeholder="0 sq.m" type="number" ref="input" 
+          onkeydown="javascript: return event.keyCode === 8 ||
+event.keyCode === 46 || event.keyCode === 17 || event.keyCode === 65 || event.keyCode === 37 || event.keyCode === 39  
+|| event.keyCode === 16 ? true : !isNaN(Number(event.key))"/>
         </div>
         <!-- <p class="top">{{ width }}m</p>
         <p class="left">{{ height }}m</p>
