@@ -71,6 +71,7 @@
         :y="getTop()"
         v-on:resizing="resize"
         v-on:dragging="resize"
+        @activated="onActivated()"
       >
         <p>What type of site do you have?</p>
         <p>(You can select more than one)</p>
@@ -107,10 +108,10 @@
             <img src="/assets/wind.svg" />Wind
           </button>
         </div>
-        <!-- <p>What is the size of the site?</p>
         <div class="size">
-          <input id="sqM" placeholder="0" type="number" />
-        </div> -->
+          <p>What is the size of the site?</p>
+          <input id="sqM" placeholder="0 sq.m" type="number" ref="input" />
+        </div>
         <!-- <p class="top">{{ width }}m</p>
         <p class="left">{{ height }}m</p>
         <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
@@ -163,6 +164,9 @@ export default {
   methods: {
     init() {
       this.lang = this.$router.history.current.params.lang;
+    },
+    onActivated() {
+      this.$refs["input"].focus();
     },
     changeSavingCalc(newData) {
       this.cash = newData.totalNetRevenue.toFixed(2);
