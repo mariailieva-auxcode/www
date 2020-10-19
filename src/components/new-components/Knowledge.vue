@@ -3,20 +3,29 @@
     <div class="knowledge">
       <div class="col-12 labels">
         <div>
-          <h1 class="title">{{title}}</h1>
+          <h1 class="title">{{ title }}</h1>
         </div>
         <div class="changed-buttons">
           <button class="button-labels" @click="choise = 'articles'">
-            <h1 class="title-label" :class="{'articles' : choise == 'articles'}">{{label}}</h1>
-            <div class="green-line" :class="{'articles' : choise == 'articles'}"></div>
+            <h1 class="title-label" :class="{ articles: choise == 'articles' }">
+              {{ label }}
+            </h1>
+            <div
+              class="green-line"
+              :class="{ articles: choise == 'articles' }"
+            ></div>
           </button>
           <button class="button-labels" @click="choise = 'links'">
-            <h1 class="title-label" :class="{'links' : choise == 'links'}">Useful Links</h1>
-            <div class="green-line" :class="{'links' : choise == 'links'}"></div>
+            <h1 class="title-label" :class="{ links: choise == 'links' }">
+              Useful Links
+            </h1>
+            <div class="green-line" :class="{ links: choise == 'links' }"></div>
           </button>
           <button class="button-labels" @click="choise = 'blog'">
-            <h1 class="title-label" :class="{'blog' : choise == 'blog'}">Blog</h1>
-            <div class="green-line" :class="{'blog' : choise == 'blog'}"></div>
+            <h1 class="title-label" :class="{ blog: choise == 'blog' }">
+              Blog
+            </h1>
+            <div class="green-line" :class="{ blog: choise == 'blog' }"></div>
           </button>
         </div>
         <div class="all-sections-button">
@@ -29,15 +38,17 @@
       <div class="row articles" v-if="choise == 'articles'">
         <div
           class="col-12 col-sm-12 col-md-6 col-xl-4 info-steps"
-          v-for="card of articles.articles"
-          :key="card.image"
+          v-for="(card, index) of articles.articles"
+          :key="index"
         >
           <div class="style-card">
             <img class="articles-image" :src="card.image" />
-            <h3>{{card.label}}</h3>
-            <p>{{card.description}}</p>
+            <h3>{{ card.label }}</h3>
+            <p>{{ card.description }}</p>
             <div class="row">
-              <router-link :to="`/${$router.history.current.params.lang}`">{{card.link}}</router-link>
+              <router-link :to="`/${$router.history.current.params.lang}`">{{
+                card.link
+              }}</router-link>
               <img src="/assets/arrow-right-blue.svg" />
             </div>
           </div>
@@ -46,13 +57,13 @@
       <div class="row links" v-if="choise == 'links'">
         <div
           class="col-12 col-sm-12 col-ml-6 col-xl-4 info-links"
-          v-for="link of links.links"
-          :key="link.label"
+          v-for="(link, i) of links.links"
+          :key="i"
         >
           <div class="style-card">
-            <h3>{{link.label}}</h3>
-            <p>{{link.description}}</p>
-            <a class="style-links">{{link.link}}</a>
+            <h3>{{ link.label }}</h3>
+            <p>{{ link.description }}</p>
+            <a class="style-links">{{ link.link }}</a>
           </div>
         </div>
       </div>
