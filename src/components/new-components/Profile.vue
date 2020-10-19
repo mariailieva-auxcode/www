@@ -19,6 +19,7 @@
       :isSatteliteView="isSatteliteView"
       @changedBoxColor="boxBackgroundColor($event)"
       @changedSavingCalc="changeSavingCalc($event)"
+      @getPolygonArea="PolygonAreaOutput($event)"
     ></LeafMap>
     <div
       v-bind:style="{
@@ -29,6 +30,7 @@
       }"
     >
       <VueDragResize
+        :isResizable="false"
         class="freeArea input-box"
         :class="freeAreaColorClass"
         :w="getWidth2()"
@@ -69,6 +71,8 @@
         :h="getHeight()"
         :x="getLeft()"
         :y="getTop()"
+        :minw="300"
+        :minh="470"
         v-on:resizing="resize"
         v-on:dragging="resize"
         @activated="onActivated()"
@@ -110,7 +114,14 @@
         </div>
         <div class="size">
           <p>What is the size of the site?</p>
-          <input id="sqM" placeholder="0 sq.m" type="number" ref="input" />
+          <input
+            id="sqM"
+            placeholder="0 sq.m"
+            type="number"
+            v-model="polygonArea"
+            ref="input"
+          />
+          <!-- <p>show{{ polygonArea }}</p> -->
         </div>
         <!-- <p class="top">{{ width }}m</p>
         <p class="left">{{ height }}m</p>
@@ -132,12 +143,12 @@ export default {
   data() {
     return {
       isSatteliteView: false,
-      width: 30,
-      height: 50,
+      width: 37,
+      height: 57.5,
       top: 3,
       left: 10,
       width2: 30,
-      height2: 50,
+      height2: 53,
       top2: 10,
       left2: 100,
       squareMeters: 400,
@@ -151,6 +162,7 @@ export default {
       cash: 0,
       production: 0,
       preventedCO: 0,
+      polygonArea: "",
     };
   },
   mounted() {
@@ -167,6 +179,9 @@ export default {
     },
     onActivated() {
       this.$refs["input"].focus();
+    },
+    PolygonAreaOutput(e) {
+      this.polygonArea = e.toFixed(2);
     },
     changeSavingCalc(newData) {
       this.cash = newData.totalNetRevenue.toFixed(2);
