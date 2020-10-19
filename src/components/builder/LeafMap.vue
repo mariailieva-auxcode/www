@@ -6,6 +6,7 @@
 import L from "leaflet";
 import "@geoman-io/leaflet-geoman-free";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
+import * as turf from "@turf/turf";
 import axios from "../../axios";
 export default {
   name: "LeafMap",
@@ -54,7 +55,6 @@ export default {
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
       if (!ownerId) return;
-      newSite.layer.on("pm:update", this.updateSite);
 
       const type = newSite.shape.toLowerCase();
       const coordinates = newSite.layer._latlngs[0].map((coordinate) => [
@@ -62,11 +62,21 @@ export default {
         coordinate.lng,
       ]);
       if (type == "polygon") {
-        axios.post(`/.netlify/functions/coordinates`, {
-          ownerId,
-          coordinates,
-          type,
-        });
+        axios
+          .post(`/.netlify/functions/coordinates`, {
+            ownerId,
+            coordinates,
+            type,
+          })
+          .then((data) => {
+            let shapeId = data.data.ref["@ref"].id;
+            let id = newSite.layer._leaflet_id;
+
+            newSite.layer.options.id = shapeId;
+            newSite.layer.on("pm:update", this.updateSite);
+            newSite.layer.on("pm:remove", this.deleteSite);
+            newSite.layer.on("click", (e) => this.popupMenu(e, id));
+          });
       }
     },
     addDrawControls() {
@@ -104,6 +114,18 @@ export default {
     popupMenu(e, id) {
       let popup = L.popup();
       const site = this.map._layers[id];
+
+      let area = turf.area(site.toGeoJSON());
+      let center = site.getCenter();
+
+      axios
+        .get(
+          `/.netlify/functions/windModel?latitude=${center.lat}&longitude=${center.lng}&landArea=${area}`
+        )
+        .then((data) => {
+          this.$emit("changedSavingCalc", data.data);
+        });
+
       let template =
         "<button id=submit-color-change class=red-button type=button>red</button> <button id=submit-color-change class=green-button type=button>green</button> <button id=submit-color-change class=blue-button type=button>blue</button>";
       popup.setLatLng(e.latlng);
@@ -120,6 +142,7 @@ export default {
           else if (ev.target.className.includes("blue-button"))
             color = "#3388ff";
           site.options.color = color;
+          this.$emit("changedBoxColor", color);
           this.map.removeLayer(site);
           this.map.addLayer(site);
           this.map.closePopup();
@@ -149,6 +172,9 @@ export default {
         axios.delete(
           `/.netlify/functions/coordinates?id=${e.layer.options.id}`
         );
+      else {
+        this.map.pm.disableGlobalRemovalMode();
+      }
     },
   },
   watch: {

@@ -1,16 +1,24 @@
 <template>
   <div>
     <div class="header">
-      <Authorization v-if="showAuth" @close="close()" :isLogin="false" :data="siteOwnerData"></Authorization>
-      <p>{{welcomeText}}</p>
+      <Authorization
+        v-if="showAuth"
+        @close="close()"
+        :isLogin="false"
+        :data="siteOwnerData"
+      ></Authorization>
+      <p>{{ welcomeText }}</p>
       <lazy-img class="img" :src="welcomeIcon" :blur="30" />
     </div>
     <div class="user-wizard">
       <div class="row questions-header">
-        <router-link :to="`/${$router.history.current.params.lang}`" v-if="step !==8">
+        <router-link
+          :to="`/${$router.history.current.params.lang}`"
+          v-if="step !== 8"
+        >
           <p class="site">1.Enter a Site</p>
         </router-link>
-        <p class="header-card-text">{{headerCardText}}</p>
+        <p class="header-card-text">{{ headerCardText }}</p>
         <p v-if="step === 1" class="progressive-label">1 of 3</p>
         <div v-if="step === 1" class="progressive-bar">
           <div class="success-bar"></div>
@@ -34,22 +42,34 @@
               <div class="col-12 col-sm-12 col-md-12 col-xl-6">
                 <div class="col-12">
                   <div class="information-icon map">
-                    <h2>{{firstQuestion}}</h2>
+                    <h2>{{ firstQuestion }}</h2>
                     <div class="hovered">
                       <img src="/assets/information-green-icon.svg" />
-                      <p>{{infoIcon}}</p>
+                      <p>{{ infoIcon }}</p>
                     </div>
                   </div>
-                  <p>Enter your postal code and street number or click on the map</p>
+                  <p>
+                    Enter your postal code and street number or click on the map
+                  </p>
                 </div>
                 <div class="form-inputs form-inline">
                   <div class="input-group">
-                    <input id="postal" v-model="postCode" type="text" required />
+                    <input
+                      id="postal"
+                      v-model="postCode"
+                      type="text"
+                      required
+                    />
                     <span class="highlight"></span>
                     <label class="postal-style">Postal Code</label>
                   </div>
                   <div class="input-group">
-                    <input id="street" v-model="streetNumber" type="text" required />
+                    <input
+                      id="street"
+                      v-model="streetNumber"
+                      type="text"
+                      required
+                    />
                     <span class="highlight"></span>
                     <label>Street Number</label>
                   </div>
@@ -74,24 +94,34 @@
         <div class="step" v-if="step === 3">
           <div class="container">
             <div class="information-icon">
-              <h2>{{secondQuestion}}</h2>
+              <h2>{{ secondQuestion }}</h2>
               <div class="hovered">
                 <img src="/assets/information-green-icon.svg" />
-                <p>{{infoIcon2}}</p>
+                <p>{{ infoIcon2 }}</p>
               </div>
             </div>
             <div class="row">
               <div class="col-12 roof-land-water">
                 <button
                   class="owner"
-                  :class="{'active': owner}"
-                  @click="owner =!owner; filterCompanies()"
-                >Owner</button>
+                  :class="{ active: owner }"
+                  @click="
+                    owner = !owner;
+                    filterCompanies();
+                  "
+                >
+                  Owner
+                </button>
                 <button
                   class="legal"
-                  :class="{'active': legal}"
-                  @click="legal =!legal; filterCompanies()"
-                >Legal representative</button>
+                  :class="{ active: legal }"
+                  @click="
+                    legal = !legal;
+                    filterCompanies();
+                  "
+                >
+                  Legal representative
+                </button>
               </div>
             </div>
           </div>
@@ -99,32 +129,41 @@
         <div class="step" v-if="step === 4">
           <div class="container">
             <div class="information-icon">
-              <h2>{{thirdQuestion}}</h2>
+              <h2>{{ thirdQuestion }}</h2>
               <div class="hovered">
                 <img src="/assets/information-green-icon.svg" />
-                <p>{{infoIcon3}}</p>
+                <p>{{ infoIcon3 }}</p>
               </div>
             </div>
             <div class="row">
               <div class="col-12 roof-land-water">
                 <button
                   class="roof"
-                  :class="{'active': roof}"
-                  @click="roof =!roof; filterCompanies()"
+                  :class="{ active: roof }"
+                  @click="
+                    roof = !roof;
+                    filterCompanies();
+                  "
                 >
                   <img src="/assets/roof.svg" />Roof
                 </button>
                 <button
                   class="land"
-                  :class="{'active': land}"
-                  @click="land =!land; filterCompanies()"
+                  :class="{ active: land }"
+                  @click="
+                    land = !land;
+                    filterCompanies();
+                  "
                 >
                   <img src="/assets/land.svg" />Land
                 </button>
                 <button
                   class="water"
-                  :class="{'active': water}"
-                  @click="water =!water; filterCompanies()"
+                  :class="{ active: water }"
+                  @click="
+                    water = !water;
+                    filterCompanies();
+                  "
                 >
                   <img src="/assets/water.svg" />Water
                 </button>
@@ -137,10 +176,10 @@
             <div class="row">
               <div class="col-12">
                 <div class="information-icon">
-                  <h2 for="size">{{fourthQuestion}}</h2>
+                  <h2 for="size">{{ fourthQuestion }}</h2>
                   <div class="hovered">
                     <img src="/assets/information-green-icon.svg" />
-                    <p>{{infoIcon4}}</p>
+                    <p>{{ infoIcon4 }}</p>
                   </div>
                 </div>
                 <div class="form-inputs form-inline form-size">
@@ -187,25 +226,31 @@
             <div class="row">
               <div class="col-12">
                 <div class="information-icon">
-                  <h2>{{fifthQuestion}}</h2>
+                  <h2>{{ fifthQuestion }}</h2>
                   <div class="hovered">
                     <img src="/assets/information-green-icon.svg" />
-                    <p>{{infoIcon5}}</p>
+                    <p>{{ infoIcon5 }}</p>
                   </div>
                 </div>
 
                 <div class="solar-and-wind">
                   <button
                     class="solar"
-                    :class="{'active': solar}"
-                    @click="solar =!solar;  filterCompanies()"
+                    :class="{ active: solar }"
+                    @click="
+                      solar = !solar;
+                      filterCompanies();
+                    "
                   >
                     <img src="/assets/solar.svg" />Solar
                   </button>
                   <button
                     class="wind"
-                    :class="{'active': wind}"
-                    @click="wind =!wind; filterCompanies()"
+                    :class="{ active: wind }"
+                    @click="
+                      wind = !wind;
+                      filterCompanies();
+                    "
                   >
                     <img src="/assets/wind.svg" />Wind
                   </button>
@@ -219,25 +264,35 @@
             <div class="row">
               <div class="col-12">
                 <div class="information-icon">
-                  <h2>{{sixthQuestion}}</h2>
+                  <h2>{{ sixthQuestion }}</h2>
                   <div class="hovered">
                     <img src="/assets/information-green-icon.svg" />
-                    <p>{{infoIcon6}}</p>
+                    <p>{{ infoIcon6 }}</p>
                   </div>
                 </div>
               </div>
               <div class="col-12 solar-and-wind">
                 <button
                   class="hydrogen"
-                  :class="{'active': hydrogen}"
-                  @click="hydrogen =!hydrogen;"
-                >Green hydrogen</button>
+                  :class="{ active: hydrogen }"
+                  @click="hydrogen = !hydrogen"
+                >
+                  Green hydrogen
+                </button>
                 <button
                   class="batteries"
-                  :class="{'active': batteries}"
-                  @click="batteries =!batteries;"
-                >Batteries</button>
-                <button class="WKO" :class="{'active': WKO}" @click="WKO =!WKO;">Large scale WKO</button>
+                  :class="{ active: batteries }"
+                  @click="batteries = !batteries"
+                >
+                  Batteries
+                </button>
+                <button
+                  class="WKO"
+                  :class="{ active: WKO }"
+                  @click="WKO = !WKO"
+                >
+                  Large scale WKO
+                </button>
               </div>
             </div>
           </div>
@@ -268,7 +323,7 @@
             class="back-button"
             :class="step == 2 ? 'invisible' : ''"
             @click="step--"
-            v-if="step !== 1 && step !==6 && step !==8"
+            v-if="step !== 1 && step !== 6 && step !== 8"
           >
             <img src="/assets/arrow-left-white.svg" />
             <p>Back</p>
@@ -304,8 +359,8 @@
           <a
             class="next-button"
             @click="nextStep()"
-            :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
-            v-if="step !== 1 && step !== 7 && step !==8"
+            :style="{ cursor: isNextAllowed ? 'pointer' : 'not-allowed' }"
+            v-if="step !== 1 && step !== 7 && step !== 8"
           >
             <p>Continue</p>
             <img src="/assets/arrow-right-green.svg" />
@@ -314,7 +369,7 @@
           <a
             class="next-button"
             @click="nextStep()"
-            :style="{'cursor':isNextAllowed ? 'pointer':'not-allowed'}"
+            :style="{ cursor: isNextAllowed ? 'pointer' : 'not-allowed' }"
             v-else-if="step === 7"
           >
             <p>Finish</p>

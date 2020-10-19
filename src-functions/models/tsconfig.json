@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "out",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+  },
+  "include": ["models/*", "functions/*", "*.ts", "models/wind/windArchetypes.ts", "functions/wind/calculateGridCosts.ts"],
+}

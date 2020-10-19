@@ -1,0 +1,18 @@
+{
+    "category1" : {
+        "description" : "Solar ≥ 15 kWp en < 1 MWp",
+        "MaximumBaseAmount" : 0.08,
+        "BaseEnergyPriceGridDelivery": 0.029,
+        "BaseEnergyPriceOwnUse": 0.06,
+        "ProvisionalCorrectionAmountGridDelivery": 0.047,
+        "ProvisionalCorrectionAmountOwnConsumption": 0.078
+    },
+    "category2" : {
+        "description" : "Solar non-building-integrated systems ≥ 1 MWp",
+        "MaximumBaseAmount" : 0.074,
+        "BaseEnergyPriceGridDelivery": 0.029,
+        "BaseEnergyPriceOwnUse": 0.051,
+        "ProvisionalCorrectionAmountGridDelivery": 0.047,
+        "ProvisionalCorrectionAmountOwnConsumption": 0.069
+    }
+}
