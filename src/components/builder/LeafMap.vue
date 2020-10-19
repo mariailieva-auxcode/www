@@ -51,6 +51,7 @@ export default {
 
       this.addDrawControls();
       this.getAndRenderPolygons();
+      this.disableRepeat();
     },
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
@@ -86,6 +87,7 @@ export default {
         dragMode: false,
       });
     },
+    
     getAndRenderPolygons() {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
       if (!ownerId) return;
@@ -104,6 +106,7 @@ export default {
               lastSite.options.id = site.ref["@ref"].id;
               lastSite.on("pm:update", this.updateSite);
               lastSite.on("pm:remove", this.deleteSite);
+              lastSite.on("pm:create", this.disableRepeat);
               lastSite.on("click", (e) => this.popupMenu(e, id));
             }
           });
@@ -131,7 +134,6 @@ export default {
       popup.setLatLng(e.latlng);
       popup.setContent(template);
       popup.openOn(this.map);
-      this.$emit("changedBoxColor", site.options.color);
 
       let submitButtons = document.querySelectorAll("#submit-color-change");
       submitButtons.forEach((button) =>
@@ -168,12 +170,13 @@ export default {
     deleteSite(e) {
       const remove = confirm("Do you really want to delete that polygon ?");
       this.map.closePopup();
-      if (remove)
+      if (remove){
         axios.delete(
-          `/.netlify/functions/coordinates?id=${e.layer.options.id}`
+          `/.netlify/functions/coordinates?id=${e.layer.options.id}`         
         );
-      else {
         this.map.pm.disableGlobalRemovalMode();
+      } else {        
+        this.map.pm.disableGlobalRemovalMode(); 
       }
     },
   },
