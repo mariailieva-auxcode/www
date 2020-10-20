@@ -117,6 +117,7 @@ export default {
       const site = this.map._layers[id];
 
       let area = turf.area(site.toGeoJSON());
+      this.$emit("getPolygonArea", area);
       let center = site.getCenter();
 
       axios

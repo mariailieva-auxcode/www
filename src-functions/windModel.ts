@@ -30,7 +30,7 @@ export async function handler(event, _) {
         let capacity = event.queryStringParameters.capacity;
         let latitude = event.queryStringParameters.latitude;
         let longitude = event.queryStringParameters.longitude;
-        let landArea = event.queryStringParameters.landArea
+        let landArea = event.queryStringParameters.landArea;
         let landLength = Math.sqrt(landArea);
         let landWidth = Math.sqrt(landArea);
         console.log(`cap: ${capacity}`)
@@ -41,7 +41,7 @@ export async function handler(event, _) {
             number = +number
 
         if (!capacity)
-            capacity = 5000
+            capacity = 5000 + Number(landArea)
         else
             capacity = +capacity
 
