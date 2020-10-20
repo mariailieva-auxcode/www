@@ -51,7 +51,6 @@ export default {
 
       this.addDrawControls();
       this.getAndRenderPolygons();
-      this.disableRepeat();
     },
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
@@ -106,7 +105,6 @@ export default {
               lastSite.options.id = site.ref["@ref"].id;
               lastSite.on("pm:update", this.updateSite);
               lastSite.on("pm:remove", this.deleteSite);
-              lastSite.on("pm:create", this.disableRepeat);
               lastSite.on("click", (e) => this.popupMenu(e, id));
             }
           });
@@ -125,6 +123,7 @@ export default {
         .get(
           `/.netlify/functions/windModel?latitude=${center.lat}&longitude=${center.lng}&landArea=${area}`
         )
+
         .then((data) => {
           this.$emit("changedSavingCalc", data.data);
         });
