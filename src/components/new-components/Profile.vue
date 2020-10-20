@@ -22,6 +22,7 @@
       @getPolygonArea="PolygonAreaOutput($event)"
     ></LeafMap>
     <div
+      class="output-box"
       v-bind:style="{
         width: width2 + 'px',
         height: height2 + 'px',
@@ -31,7 +32,7 @@
     >
       <VueDragResize
         :isResizable="false"
-        class="freeArea input-box"
+        class="freeArea output-box"
         :class="freeAreaColorClass"
         :w="getWidth2()"
         :h="getHeight2()"
@@ -40,19 +41,30 @@
         v-on:resizing="resize2"
         v-on:dragging="resize2"
       >
-        <p>You will earn</p>
-        <p class="values">€{{ cash }}</p>
-        <p class="mounth">Per month</p>
-        <p>You will produce</p>
-        <p class="values">{{ production }}kw/h</p>
-        <p class="mounth">Per month</p>
-        <p>You will save</p>
-        <p class="values">{{ preventedCO }}kgCO2</p>
-        <p class="mounth">Per month</p>
-
-        <!-- <p class="top">{{ width }}m</p>
-        <p class="left">{{ height }}m</p>
-        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
+        <div class="row header-input-box">
+          <div class="col-6 left-header">Advantages</div>
+          <div class="col-6 right-header">
+            <div class="minimize"></div>
+            <img src="/assets/close.svg" />
+          </div>
+        </div>
+        <div class="output-data">
+          <div class="cash">
+            <p class="description">You will earn</p>
+            <p class="values">€ {{ cash }}</p>
+            <h6 class="mounth">Per month</h6>
+          </div>
+          <div class="production">
+            <p class="description">You will produce</p>
+            <p class="values">{{ production }} kw/h</p>
+            <h6 class="mounth">Per month</h6>
+          </div>
+          <div class="preventCO">
+            <p class="description">You will save</p>
+            <p class="values">{{ preventedCO }} kgCO2</p>
+            <h6 class="mounth">Per month</h6>
+          </div>
+        </div>
       </VueDragResize>
     </div>
     <div
@@ -65,6 +77,7 @@
       }"
     >
       <VueDragResize
+        :isResizable="false"
         class="freeArea input-box"
         :class="freeAreaColorClass"
         :w="getWidth()"
@@ -77,55 +90,67 @@
         v-on:dragging="resize"
         @activated="onActivated()"
       >
-        <p>What type of site do you have?</p>
-        <p>(You can select more than one)</p>
-        <div class="toggles">
-          <button
-            class="owner"
-            :class="{ active: owner }"
-            @click="owner = !owner"
-          >
-            <img src="/assets/roof.svg" />Roof
-          </button>
-          <button class="owner" :class="{ active: land }" @click="land = !land">
-            <img src="/assets/land.svg" />Land
-          </button>
-          <button
-            class="owner"
-            :class="{ active: water }"
-            @click="water = !water"
-          >
-            <img src="/assets/water.svg" />Water
-          </button>
+        <div class="row header-input-box">
+          <div class="col-6 left-header">Site Information</div>
+          <div class="col-6 right-header">
+            <div class="minimize"></div>
+            <img src="/assets/close.svg" />
+          </div>
         </div>
-        <p>What type of energy do you want?</p>
-        <p>(You can select both)</p>
-        <div class="toggles">
-          <button
-            class="owner"
-            :class="{ active: solar }"
-            @click="solar = !solar"
-          >
-            <img src="/assets/solar.svg" />Solar
-          </button>
-          <button class="owner" :class="{ active: wind }" @click="wind = !wind">
-            <img src="/assets/wind.svg" />Wind
-          </button>
+        <div>
+          <p>What type of site do you have?</p>
+          <div class="toggles">
+            <button
+              class="owner"
+              :class="{ active: owner }"
+              @click="(owner = !owner), (land = false), (water = false)"
+            >
+              <img src="/assets/roof.svg" />Roof
+            </button>
+            <button
+              class="owner"
+              :class="{ active: land }"
+              @click="(land = !land), (owner = false), (water = false)"
+            >
+              <img src="/assets/land.svg" />Land
+            </button>
+            <button
+              class="owner"
+              :class="{ active: water }"
+              @click="(water = !water), (owner = false), (land = false)"
+            >
+              <img src="/assets/water.svg" />Water
+            </button>
+          </div>
+          <p>What type of energy do you want?</p>
+          <h6>(You can select both)</h6>
+          <div class="toggles">
+            <button
+              class="owner"
+              :class="{ active: solar }"
+              @click="solar = !solar"
+            >
+              <img src="/assets/solar.svg" />Solar
+            </button>
+            <button
+              class="owner"
+              :class="{ active: wind }"
+              @click="wind = !wind"
+            >
+              <img src="/assets/wind.svg" />Wind
+            </button>
+          </div>
+          <div class="size">
+            <p>What is the size of the site?</p>
+            <input ref="input" placeholder="0 sq.m" type="number" />
+            <input
+              id="sqM"
+              placeholder="0 sq.m"
+              type="number"
+              v-model="polygonArea"
+            />
+          </div>
         </div>
-        <div class="size">
-          <p>What is the size of the site?</p>
-          <input
-            id="sqM"
-            placeholder="0 sq.m"
-            type="number"
-            v-model="polygonArea"
-            ref="input"
-          />
-          <!-- <p>show{{ polygonArea }}</p> -->
-        </div>
-        <!-- <p class="top">{{ width }}m</p>
-        <p class="left">{{ height }}m</p>
-        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
       </VueDragResize>
     </div>
   </div>
@@ -144,11 +169,11 @@ export default {
     return {
       isSatteliteView: false,
       width: 37,
-      height: 57.5,
+      height: 63,
       top: 3,
       left: 10,
-      width2: 30,
-      height2: 53,
+      width2: 38,
+      height2: 55,
       top2: 10,
       left2: 100,
       squareMeters: 400,
@@ -245,112 +270,5 @@ export default {
 </script>
 
 <style lang="scss">
-.profile {
-  height: 100vh;
-  overflow-y: hidden;
-  .logout-button {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    z-index: 401;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-size: 14px;
-    justify-content: center;
-    color: black;
-    font-weight: 700;
-    width: 148px;
-    height: 46px;
-    align-items: baseline;
-    outline: none;
-  }
-  .change {
-    z-index: 401;
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    border: none;
-    outline: none;
-    background: unset;
-    img {
-      border: 2px solid white;
-      border-radius: 10px;
-    }
-  }
-  .freeArea {
-    z-index: 401 !important;
-    border-radius: 15px;
-    &.input-box {
-      background-color: white;
-      p {
-        text-align: center;
-        color: black;
-        margin: 0;
-        &.mounth {
-          color: #65687e;
-        }
-      }
-      .values {
-        font-size: 30px;
-        color: #55b364;
-      }
-    }
-    // &.blue-background {
-    //   background-color: #3388ff;
-    // }
-    // &.red-background {
-    //   background-color: red;
-    // }
-    // &.green-background {
-    //   background-color: green;
-    // }
-    .active::before {
-      content: none;
-    }
-    .toggles {
-      padding-right: 30px;
-      .owner {
-        // max-width: 150px;
-        width: 100%;
-        max-height: 50px;
-        border-radius: 10px;
-        border: 2px solid #d3d5e3;
-        background-color: white;
-        outline: none;
-        color: #9597ac;
-        font-weight: 700;
-        margin-top: 20px;
-        margin-left: 15px;
-
-        &.active {
-          border: 2px solid #55b364;
-          color: #65687e;
-        }
-      }
-    }
-    .size {
-      padding-right: 30px;
-      input {
-        width: 100%;
-        margin-left: 15px;
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-        }
-      }
-      // p {
-      //   position: absolute;
-      //   right: 30px;
-      //   top: 10px;
-      //   color: black;
-      // }
-    }
-  }
-}
-#app {
-  .vdr.active:before {
-    content: none;
-  }
-}
+@import "profile-style.scss";
 </style>
