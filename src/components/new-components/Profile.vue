@@ -51,12 +51,12 @@
         <div class="output-data">
           <div class="cash">
             <p class="description">You will earn</p>
-            <p class="values">€ {{ cash }}</p>
+            <p class="values">{{ cash }} €</p>
             <h6 class="mounth">Per month</h6>
           </div>
           <div class="production">
             <p class="description">You will produce</p>
-            <p class="values">{{ production }} kw/h</p>
+            <p class="values">{{ production }} kW/h</p>
             <h6 class="mounth">Per month</h6>
           </div>
           <div class="preventCO">
@@ -209,9 +209,16 @@ export default {
       this.polygonArea = e.toFixed(2);
     },
     changeSavingCalc(newData) {
-      this.cash = newData.totalNetRevenue.toFixed(2);
-      this.production = newData.annualEnergy.toFixed(2);
-      this.preventedCO = newData.CO2Saved.toFixed(2);
+      this.cash = newData.totalNetRevenue
+        .toFixed(0)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      this.production = newData.annualEnergy
+        .toFixed(0)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      this.preventedCO = newData.CO2Saved.toFixed(0).replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        ","
+      );
     },
     boxBackgroundColor(color) {
       if (color == "#F00") {
