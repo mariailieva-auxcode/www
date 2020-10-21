@@ -127,10 +127,10 @@ export default {
           this.$emit("changedSavingCalc", data.data);
         });
 
-      let template =
-        "<button id=submit-color-change class=red-button type=button>red</button> <button id=submit-color-change class=green-button type=button>green</button> <button id=submit-color-change class=blue-button type=button>blue</button>";
+      // let template =
+      //   "<button id=submit-color-change class=red-button type=button>red</button> <button id=submit-color-change class=green-button type=button>green</button> <button id=submit-color-change class=blue-button type=button>blue</button>";
       popup.setLatLng(e.latlng);
-      popup.setContent(template);
+      // popup.setContent(template);
       popup.openOn(this.map);
       this.$emit("changedBoxColor", site.options.color);
 
