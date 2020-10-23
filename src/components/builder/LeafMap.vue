@@ -57,10 +57,15 @@ export default {
       if (!ownerId) return;
 
       const type = newSite.shape.toLowerCase();
-      const coordinates = newSite.layer._latlngs[0].map((coordinate) => [
+      let coordinates = newSite.layer._latlngs[0].map((coordinate) => [
         coordinate.lat,
         coordinate.lng,
       ]);
+      coordinates = coordinates.map((cord) => JSON.stringify(cord));
+      coordinates = coordinates.filter((cord, index) => {
+        return coordinates.indexOf(cord) == index;
+      });
+      coordinates = coordinates.map((cord) => JSON.parse(cord));
       if (type == "polygon") {
         axios
           .post(`/.netlify/functions/coordinates`, {
@@ -132,7 +137,7 @@ export default {
       popup.setLatLng(e.latlng);
       // popup.setContent(template);
       popup.openOn(this.map);
-      this.$emit("changedBoxColor", site.options.color);
+      // this.$emit("changedBoxColor", site.options.color);
 
       let submitButtons = document.querySelectorAll("#submit-color-change");
       submitButtons.forEach((button) =>
@@ -143,7 +148,7 @@ export default {
           else if (ev.target.className.includes("blue-button"))
             color = "#3388ff";
           site.options.color = color;
-          this.$emit("changedBoxColor", color);
+          // this.$emit("changedBoxColor", color);
           this.map.removeLayer(site);
           this.map.addLayer(site);
           this.map.closePopup();
