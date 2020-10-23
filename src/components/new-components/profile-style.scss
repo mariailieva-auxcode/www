@@ -63,10 +63,18 @@
                 .right-header {
                     justify-content: flex-end;
 
-                    .minimize {
-                        margin-right: 10px;
-                        height: 2px;
-                        border-right: 16px solid #9597ac;
+                    button {
+                        background-color: white;
+                        border: none;
+                        height: 20px;
+
+                        .minimize {
+                            cursor: pointer;
+                            margin-right: 10px;
+                            height: 2px;
+                            border-right: 16px solid #9597ac;
+
+                        }
                     }
                 }
 
@@ -100,6 +108,15 @@
         }
 
         &.output-box {
+
+            &.active {
+                z-index: 404 !important;
+            }
+
+            &.inactive {
+                z-index: 401 !important;
+            }
+
             .output-data {
                 margin: 0 22px;
 
@@ -110,7 +127,8 @@
                 }
 
                 .cash,
-                .production {
+                .production,
+                .preventCO {
                     h6 {
                         margin-bottom: 27px;
                     }
@@ -184,6 +202,10 @@
                 &::-webkit-outer-spin-button,
                 &::-webkit-inner-spin-button {
                     -webkit-appearance: none;
+                }
+
+                &.last-input {
+                    margin-bottom: 30px;
                 }
             }
         }

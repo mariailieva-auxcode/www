@@ -17,38 +17,33 @@
     </button>
     <LeafMap
       :isSatteliteView="isSatteliteView"
-      @changedBoxColor="boxBackgroundColor($event)"
       @changedSavingCalc="changeSavingCalc($event)"
       @getPolygonArea="PolygonAreaOutput($event)"
     ></LeafMap>
-    <div
-      class="output-box"
-      v-bind:style="{
-        width: width2 + 'px',
-        height: height2 + 'px',
-        top: top2 + 'px',
-        left: left2 + 'px',
-      }"
-    >
+    <div class="output-box">
       <VueDragResize
-        :isResizable="false"
+        @clicked="toggleActivated('output')"
+        :class="activatedOutputBox ? 'active' : 'inactive'"
         class="freeArea output-box"
-        :class="freeAreaColorClass"
-        :w="getWidth2()"
-        :h="getHeight2()"
-        :x="getLeft2()"
-        :y="getTop2()"
-        v-on:resizing="resize2"
-        v-on:dragging="resize2"
+        v-bind:style="height2"
+        :isResizable="false"
+        :w="width2"
+        :x="left2"
+        :y="top2"
       >
         <div class="row header-input-box">
           <div class="col-6 left-header">Advantages</div>
           <div class="col-6 right-header">
-            <div class="minimize"></div>
+            <button @click="minimizeOutputBox = !minimizeOutputBox">
+              <div class="minimize"></div>
+            </button>
             <img src="/assets/close.svg" />
           </div>
         </div>
-        <div class="output-data">
+        <div
+          class="output-data"
+          :class="{ minimized: minimizeOutputBox == true }"
+        >
           <div class="cash">
             <p class="description">You will earn</p>
             <p class="values">{{ cash }} €</p>
@@ -67,37 +62,28 @@
         </div>
       </VueDragResize>
     </div>
-    <div
-      class="input-box"
-      v-bind:style="{
-        width: width + 'px',
-        height: height + 'px',
-        top: top + 'px',
-        left: left + 'px',
-      }"
-    >
+    <div class="input-box">
       <VueDragResize
+        v-bind:style="height"
+        :class="activatedInputBox ? 'active' : 'inactive'"
         :isResizable="false"
         class="freeArea input-box"
-        :class="freeAreaColorClass"
-        :w="getWidth()"
-        :h="getHeight()"
-        :x="getLeft()"
-        :y="getTop()"
-        :minw="300"
-        :minh="470"
-        v-on:resizing="resize"
-        v-on:dragging="resize"
+        :w="width"
+        :x="left"
+        :y="top"
         @activated="onActivated()"
+        @clicked="toggleActivated('input')"
       >
         <div class="row header-input-box">
           <div class="col-6 left-header">Site Information</div>
           <div class="col-6 right-header">
-            <div class="minimize"></div>
+            <button @click="minimizeInputBox = !minimizeInputBox">
+              <div class="minimize"></div>
+            </button>
             <img src="/assets/close.svg" />
           </div>
         </div>
-        <div>
+        <div :class="{ minimized: minimizeInputBox == true }">
           <p>What type of site do you have?</p>
           <div class="toggles">
             <button
@@ -145,6 +131,7 @@
             <input ref="input" placeholder="0 sq.m" type="number" />
             <input
               id="sqM"
+              class="last-input"
               placeholder="0 sq.m"
               type="number"
               v-model="polygonArea"
@@ -168,16 +155,20 @@ export default {
   data() {
     return {
       isSatteliteView: false,
-      width: 37,
-      height: 63,
-      top: 3,
-      left: 10,
-      width2: 38,
-      height2: 55,
-      top2: 10,
-      left2: 100,
-      squareMeters: 400,
-      freeAreaColorClass: "",
+      width: Number(370),
+      height: {
+        minimizeInputBox: false,
+        height: Number(53),
+      },
+      top: Number(30),
+      left: Number(100),
+      width2: Number(380),
+      height2: {
+        minimizeOutputBox: false,
+        height: Number(53),
+      },
+      top2: Number(100),
+      left2: Number(1000),
       owner: false,
       land: false,
       water: false,
@@ -188,6 +179,10 @@ export default {
       production: 0,
       preventedCO: 0,
       polygonArea: "",
+      minimizeInputBox: false,
+      minimizeOutputBox: false,
+      activatedInputBox: false,
+      activatedOutputBox: false,
     };
   },
   mounted() {
@@ -205,6 +200,15 @@ export default {
     onActivated() {
       this.$refs["input"].focus();
     },
+    toggleActivated(e) {
+      if (e == "input") {
+        this.activatedInputBox = true;
+        this.activatedOutputBox = false;
+      } else if (e == "output") {
+        this.activatedOutputBox = true;
+        this.activatedInputBox = false;
+      }
+    },
     PolygonAreaOutput(e) {
       this.polygonArea = e.toFixed(2);
     },
@@ -220,57 +224,9 @@ export default {
         ","
       );
     },
-    boxBackgroundColor(color) {
-      if (color == "#F00") {
-        this.freeAreaColorClass = "red-background";
-      } else if (color == "#0F0") {
-        this.freeAreaColorClass = "green-background";
-      } else if (color == "#3388ff") {
-        this.freeAreaColorClass = "blue-background";
-      }
-    },
     logout() {
       delete localStorage.token;
       this.$router.replace(`/${this.lang}`);
-    },
-    resize(newRect) {
-      this.width = newRect.width / 10;
-      this.height = newRect.height / 10;
-      this.squareMeters = this.width * this.height;
-      this.top = newRect.top / 10;
-      this.left = newRect.left / 10;
-    },
-    resize2(newRect) {
-      this.width2 = newRect.width / 10;
-      this.height2 = newRect.height / 10;
-      this.top2 = newRect.top / 10;
-      this.left2 = newRect.left / 10;
-    },
-
-    getWidth() {
-      return parseFloat(this.width || 0) * 10;
-    },
-    getHeight() {
-      return parseFloat(this.height || 0) * 10;
-    },
-    getLeft() {
-      return parseFloat(this.left || 0) * 10;
-    },
-    getTop() {
-      return parseFloat(this.top || 0) * 10;
-    },
-
-    getWidth2() {
-      return parseFloat(this.width2 || 0) * 10;
-    },
-    getHeight2() {
-      return parseFloat(this.height2 || 0) * 10;
-    },
-    getLeft2() {
-      return parseFloat(this.left2 || 0) * 10;
-    },
-    getTop2() {
-      return parseFloat(this.top2 || 0) * 10;
     },
   },
 };
@@ -278,4 +234,7 @@ export default {
 
 <style lang="scss">
 @import "profile-style.scss";
+.minimized {
+  display: none;
+}
 </style>

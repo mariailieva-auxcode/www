@@ -8,7 +8,7 @@ import { Archetype } from './models/models/wind/Archetypes';
 // const q = faunadb.query;
 
 const userInputs = {
-    capacity: 5000,
+    capacity: 300,
     number: 1,
     latitude: 36.667,
     longitude: -4.483,
@@ -41,7 +41,7 @@ export async function handler(event, _) {
             number = +number
 
         if (!capacity)
-            capacity = 5000 + Number(landArea)
+            capacity = 300 + Number(landArea)
         else
             capacity = +capacity
 
