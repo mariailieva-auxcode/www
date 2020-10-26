@@ -4,7 +4,7 @@
 
     .logout-button {
         position: absolute;
-        top: 0;
+        top: 35px;
         right: 20px;
         z-index: 401;
         background-color: transparent;
@@ -68,14 +68,6 @@
                         background-color: white;
                         border: none;
                         height: 20px;
-
-                        .minimize {
-                            cursor: pointer;
-                            margin-right: 10px;
-                            height: 2px;
-                            border-right: 16px solid #9597ac;
-
-                        }
                     }
                 }
 
