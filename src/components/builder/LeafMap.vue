@@ -218,5 +218,12 @@ export default {
       }
     }
   }
+  .leaflet-control-zoom {
+    &.leaflet-bar {
+      &.leaflet-control {
+        margin-top: 35px;
+      }
+    }
+  }
 }
 </style>
