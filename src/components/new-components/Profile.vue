@@ -1,5 +1,12 @@
 <template>
   <div class="profile">
+    <div class="steps">
+      <p>Step 1</p>
+      <p>Step 2</p>
+      <p>Step 3</p>
+      <p>Step 4</p>
+      <p>Step 5</p>
+    </div>
     <button class="logout-button" @click="logout()">Logout</button>
     <button
       class="change"
@@ -31,13 +38,16 @@
         :x="left2"
         :y="top2"
       >
-        <div class="row header-input-box">
+        <div
+          class="row header-input-box"
+          @dblclick="minimizeOutputBox = !minimizeOutputBox"
+        >
           <div class="col-6 left-header">Advantages</div>
           <div class="col-6 right-header">
             <button @click="minimizeOutputBox = !minimizeOutputBox">
-              <div class="minimize"></div>
+              <div v-if="!minimizeOutputBox">▼</div>
+              <div v-if="minimizeOutputBox">▲</div>
             </button>
-            <img src="/assets/close.svg" />
           </div>
         </div>
         <div
@@ -64,7 +74,9 @@
     </div>
     <div class="additional-questions">
       <VueDragResize
-        v-if="wind == true"
+        @clicked="toggleActivated('description')"
+        :class="activatedDescriptionBox ? 'active' : 'inactive'"
+        v-if="wind == true || solar == true"
         class="freeArea output-box test-box"
         v-bind:style="height3"
         :isResizable="false"
@@ -87,13 +99,16 @@
         @activated="onActivated()"
         @clicked="toggleActivated('input')"
       >
-        <div class="row header-input-box">
+        <div
+          class="row header-input-box"
+          @dblclick="minimizeInputBox = !minimizeInputBox"
+        >
           <div class="col-6 left-header">Site Information</div>
           <div class="col-6 right-header">
             <button @click="minimizeInputBox = !minimizeInputBox">
-              <div class="minimize"></div>
+              <div v-if="!minimizeInputBox">▼</div>
+              <div v-if="minimizeInputBox">▲</div>
             </button>
-            <img src="/assets/close.svg" />
           </div>
         </div>
         <div :class="{ minimized: minimizeInputBox == true }">
@@ -130,7 +145,6 @@
               @click="solar = !solar"
             >
               <img src="/assets/solar.svg" />Solar
-              <div class="popup"></div>
             </button>
             <button
               class="wind"
@@ -201,6 +215,7 @@ export default {
       minimizeOutputBox: false,
       activatedInputBox: false,
       activatedOutputBox: false,
+      activatedDescriptionBox: false,
     };
   },
   mounted() {
@@ -222,8 +237,14 @@ export default {
       if (e == "input") {
         this.activatedInputBox = true;
         this.activatedOutputBox = false;
+        this.activatedDescriptionBox = false;
       } else if (e == "output") {
         this.activatedOutputBox = true;
+        this.activatedInputBox = false;
+        this.activatedDescriptionBox = false;
+      } else if (e == "description") {
+        this.activatedDescriptionBox = true;
+        this.activatedOutputBox = false;
         this.activatedInputBox = false;
       }
     },
@@ -244,6 +265,7 @@ export default {
     },
     logout() {
       delete localStorage.token;
+      delete localStorage.loggedUser;
       this.$router.replace(`/${this.lang}`);
     },
   },
@@ -255,25 +277,19 @@ export default {
 .minimized {
   display: none;
 }
-.popup {
-  display: none;
-  width: 200px;
-  height: 300px;
-  background-color: white;
-  border-radius: 10px;
-  border: 3px solid green;
-  position: absolute;
-  right: -150px;
-  top: 200px;
-}
-.solar {
-  &.active {
-    div.popup {
-      display: block;
-    }
-  }
-}
 .test-box {
   border: 3px solid green;
+}
+.steps {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  z-index: 401;
+  p {
+    margin: 0 30px;
+  }
 }
 </style>
