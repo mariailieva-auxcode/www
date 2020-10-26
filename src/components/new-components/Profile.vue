@@ -62,6 +62,19 @@
         </div>
       </VueDragResize>
     </div>
+    <div class="additional-questions">
+      <VueDragResize
+        v-if="wind == true"
+        class="freeArea output-box test-box"
+        v-bind:style="height3"
+        :isResizable="false"
+        :h="height3"
+        :w="width3"
+        :x="left3"
+        :y="top3"
+      >
+      </VueDragResize>
+    </div>
     <div class="input-box">
       <VueDragResize
         v-bind:style="height"
@@ -170,6 +183,10 @@ export default {
       },
       top2: Number(100),
       left2: Number(1000),
+      width3: Number(300),
+      height3: Number(300),
+      top3: Number(300),
+      left3: Number(500),
       roof: false,
       land: false,
       water: false,
@@ -255,5 +272,8 @@ export default {
       display: block;
     }
   }
+}
+.test-box {
+  border: 3px solid green;
 }
 </style>
