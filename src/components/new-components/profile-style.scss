@@ -1,0 +1,224 @@
+.profile {
+    height: 100vh;
+    overflow-y: hidden;
+
+    .logout-button {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        z-index: 401;
+        background-color: transparent;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-size: 14px;
+        justify-content: center;
+        color: black;
+        font-weight: 700;
+        width: 148px;
+        height: 46px;
+        align-items: baseline;
+        outline: none;
+    }
+
+    .change {
+        z-index: 401;
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        border: none;
+        outline: none;
+        background: unset;
+
+        img {
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+    }
+
+    .freeArea {
+        z-index: 401 !important;
+        border-radius: 15px;
+
+        &.input-box,
+        &.output-box {
+            box-shadow: 0px 6px 30px #1D226F0D;
+            background-color: white;
+            font-weight: 700;
+
+            .header-input-box {
+                padding: 14px 0;
+                border-bottom: 1px solid #eaebf4;
+                margin: 0 22px;
+
+                .right-header,
+                .left-header {
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .left-header {
+                    color: #55b364;
+                }
+
+                .right-header {
+                    justify-content: flex-end;
+
+                    button {
+                        background-color: white;
+                        border: none;
+                        height: 20px;
+
+                        .minimize {
+                            cursor: pointer;
+                            margin-right: 10px;
+                            height: 2px;
+                            border-right: 16px solid #9597ac;
+
+                        }
+                    }
+                }
+
+                p {
+                    font-weight: 700;
+                }
+            }
+
+            p {
+                text-align: center;
+                color: black;
+                margin: 0;
+                font-weight: 700;
+            }
+
+            h6 {
+                font-weight: 400;
+                font-size: 14px;
+                color: #65687e;
+            }
+        }
+
+        &.input-box {
+            p {
+                margin-top: 20px;
+            }
+
+            h6 {
+                margin: 5px 0 0;
+            }
+        }
+
+        &.output-box {
+
+            &.active {
+                z-index: 404 !important;
+            }
+
+            &.inactive {
+                z-index: 401 !important;
+            }
+
+            .output-data {
+                margin: 0 22px;
+
+                .production {
+                    padding-top: 27px;
+                    border-top: 1px solid #eaebf4;
+                    border-bottom: 1px solid #eaebf4;
+                }
+
+                .cash,
+                .production,
+                .preventCO {
+                    h6 {
+                        margin-bottom: 27px;
+                    }
+                }
+
+                .preventCO,
+                .cash {
+                    .description {
+                        margin-top: 27px;
+                    }
+                }
+
+                .values {
+                    font-size: 30px;
+                    color: #55b364;
+                    margin: 10px 0;
+                }
+
+                p {
+                    &.mounth {
+                        color: #65687e;
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        // &.blue-background {
+        //   background-color: #3388ff;
+        // }
+        // &.red-background {
+        //   background-color: red;
+        // }
+        // &.green-background {
+        //   background-color: green;
+        // }
+        .toggles {
+            padding-right: 30px;
+
+            .roof,
+            .land,
+            .water,
+            .solar,
+            .wind {
+                width: 255px;
+                height: 45px;
+                border-radius: 10px;
+                border: 2px solid #d3d5e3;
+                background-color: white;
+                outline: none;
+                color: #9597ac;
+                font-weight: 700;
+                margin-top: 10px;
+                margin-left: 15px;
+
+                img {
+                    margin-right: 8px;
+                }
+
+                &.active {
+                    border: 2px solid #55b364;
+                    color: #65687e;
+                }
+            }
+        }
+
+        .size {
+            padding-right: 30px;
+
+            input {
+                width: 100%;
+                margin-left: 15px;
+                margin-top: 10px;
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+
+                &.last-input {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}
+
+#app {
+    .vdr.active:before {
+        content: none;
+    }
+}

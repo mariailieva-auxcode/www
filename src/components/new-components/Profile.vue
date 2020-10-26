@@ -17,121 +17,141 @@
     </button>
     <LeafMap
       :isSatteliteView="isSatteliteView"
-      @changedBoxColor="boxBackgroundColor($event)"
       @changedSavingCalc="changeSavingCalc($event)"
       @getPolygonArea="PolygonAreaOutput($event)"
     ></LeafMap>
-    <div
-      v-bind:style="{
-        width: width2 + 'px',
-        height: height2 + 'px',
-        top: top2 + 'px',
-        left: left2 + 'px',
-      }"
-    >
+    <div class="output-box">
       <VueDragResize
+        @clicked="toggleActivated('output')"
+        :class="activatedOutputBox ? 'active' : 'inactive'"
+        class="freeArea output-box"
+        v-bind:style="height2"
         :isResizable="false"
-        class="freeArea input-box"
-        :class="freeAreaColorClass"
-        :w="getWidth2()"
-        :h="getHeight2()"
-        :x="getLeft2()"
-        :y="getTop2()"
-        v-on:resizing="resize2"
-        v-on:dragging="resize2"
+        :w="width2"
+        :x="left2"
+        :y="top2"
       >
-        <p>You will earn</p>
-        <p class="values">€{{ cash }}</p>
-        <p class="mounth">Per month</p>
-        <p>You will produce</p>
-        <p class="values">{{ production }}kw/h</p>
-        <p class="mounth">Per month</p>
-        <p>You will save</p>
-        <p class="values">{{ preventedCO }}kgCO2</p>
-        <p class="mounth">Per month</p>
-
-        <!-- <p class="top">{{ width }}m</p>
-        <p class="left">{{ height }}m</p>
-        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
+        <div class="row header-input-box">
+          <div class="col-6 left-header">Advantages</div>
+          <div class="col-6 right-header">
+            <button @click="minimizeOutputBox = !minimizeOutputBox">
+              <div class="minimize"></div>
+            </button>
+            <img src="/assets/close.svg" />
+          </div>
+        </div>
+        <div
+          class="output-data"
+          :class="{ minimized: minimizeOutputBox == true }"
+        >
+          <div class="cash">
+            <p class="description">You will earn</p>
+            <p class="values">{{ cash }} €</p>
+            <h6 class="mounth">Per month</h6>
+          </div>
+          <div class="production">
+            <p class="description">You will produce</p>
+            <p class="values">{{ production }} kW/h</p>
+            <h6 class="mounth">Per month</h6>
+          </div>
+          <div class="preventCO">
+            <p class="description">You will save</p>
+            <p class="values">{{ preventedCO }} kgCO2</p>
+            <h6 class="mounth">Per month</h6>
+          </div>
+        </div>
       </VueDragResize>
     </div>
-    <div
-      class="input-box"
-      v-bind:style="{
-        width: width + 'px',
-        height: height + 'px',
-        top: top + 'px',
-        left: left + 'px',
-      }"
-    >
+    <div class="additional-questions">
       <VueDragResize
-        class="freeArea input-box"
-        :class="freeAreaColorClass"
-        :w="getWidth()"
-        :h="getHeight()"
-        :x="getLeft()"
-        :y="getTop()"
-        :minw="300"
-        :minh="470"
-        v-on:resizing="resize"
-        v-on:dragging="resize"
-        @activated="onActivated()"
-        :isDraggable = "false"
-        :isResizable = "false"
+        v-if="wind == true"
+        class="freeArea output-box test-box"
+        v-bind:style="height3"
+        :isResizable="false"
+        :h="height3"
+        :w="width3"
+        :x="left3"
+        :y="top3"
       >
-        <p>What type of site do you have?</p>
-        <p>(You can select more than one)</p>
-        <div class="toggles">
-          <button
-            class="owner"
-            :class="{ active: owner }"
-            @click="owner = !owner"
-          >
-            <img src="/assets/roof.svg" />Roof
-          </button>
-          <button class="owner" :class="{ active: land }" @click="land = !land">
-            <img src="/assets/land.svg" />Land
-          </button>
-          <button
-            class="owner"
-            :class="{ active: water }"
-            @click="water = !water"
-          >
-            <img src="/assets/water.svg" />Water
-          </button>
+      </VueDragResize>
+    </div>
+    <div class="input-box">
+      <VueDragResize
+        v-bind:style="height"
+        :class="activatedInputBox ? 'active' : 'inactive'"
+        :isResizable="false"
+        class="freeArea input-box"
+        :w="width"
+        :x="left"
+        :y="top"
+        @activated="onActivated()"
+        @clicked="toggleActivated('input')"
+      >
+        <div class="row header-input-box">
+          <div class="col-6 left-header">Site Information</div>
+          <div class="col-6 right-header">
+            <button @click="minimizeInputBox = !minimizeInputBox">
+              <div class="minimize"></div>
+            </button>
+            <img src="/assets/close.svg" />
+          </div>
         </div>
-        <p>What type of energy do you want?</p>
-        <p>(You can select both)</p>
-        <div class="toggles">
-          <button
-            class="owner"
-            :class="{ active: solar }"
-            @click="solar = !solar"
-          >
-            <img src="/assets/solar.svg" />Solar
-          </button>
-          <button class="owner" :class="{ active: wind }" @click="wind = !wind">
-            <img src="/assets/wind.svg" />Wind
-          </button>
+        <div :class="{ minimized: minimizeInputBox == true }">
+          <p>What type of site do you have?</p>
+          <div class="toggles">
+            <button
+              class="roof"
+              :class="{ active: roof }"
+              @click="(roof = !roof), (land = false), (water = false)"
+            >
+              <img src="/assets/roof.svg" />Roof
+            </button>
+            <button
+              class="land"
+              :class="{ active: land }"
+              @click="(land = !land), (roof = false), (water = false)"
+            >
+              <img src="/assets/land.svg" />Land
+            </button>
+            <button
+              class="water"
+              :class="{ active: water }"
+              @click="(water = !water), (roof = false), (land = false)"
+            >
+              <img src="/assets/water.svg" />Water
+            </button>
+          </div>
+          <p>What type of energy do you want?</p>
+          <h6>(You can select both)</h6>
+          <div class="toggles">
+            <button
+              class="solar"
+              :class="{ active: solar }"
+              @click="solar = !solar"
+            >
+              <img src="/assets/solar.svg" />Solar
+              <div class="popup"></div>
+            </button>
+            <button
+              class="wind"
+              :class="{ active: wind }"
+              @click="wind = !wind"
+            >
+              <img src="/assets/wind.svg" />Wind
+            </button>
+          </div>
+          <div class="size">
+            <p>What is the size of the site?</p>
+            <input ref="input" placeholder="0 sq.m" type="number" />
+            <input
+              id="sqM"
+              class="last-input"
+              placeholder="0 sq.m"
+              type="number"
+              v-model="polygonArea"
+            />
+          </div>
         </div>
-        <div class="size">
-          <p>What is the size of the site?</p>
-          <input
-            id="sqM"
-            placeholder="0 sq.m"
-            type="number"
-            v-model="polygonArea"
-            ref="input"
-            onkeydown="javascript: return event.keyCode === 8 ||
-            event.keyCode === 46 || event.keyCode === 17 || event.keyCode === 65 || 
-            event.keyCode === 37 || event.keyCode === 39 || event.keyCode === 16
-            ? true : !isNaN(Number(event.key))"
-          />
-          <!-- <p>show{{ polygonArea }}</p> -->
-        </div>
-        <!-- <p class="top">{{ width }}m</p>
-        <p class="left">{{ height }}m</p>
-        <p class="center">{{ (width * height).toFixed(2) }}m2</p> -->
       </VueDragResize>
     </div>
   </div>
@@ -149,17 +169,25 @@ export default {
   data() {
     return {
       isSatteliteView: false,
-      width: 37,
-      height: 57.5,
-      top: 3,
-      left: 10,
-      width2: 30,
-      height2: 53,
-      top2: 10,
-      left2: 100,
-      squareMeters: 400,
-      freeAreaColorClass: "",
-      owner: false,
+      width: Number(370),
+      height: {
+        minimizeInputBox: false,
+        height: Number(53),
+      },
+      top: Number(30),
+      left: Number(100),
+      width2: Number(380),
+      height2: {
+        minimizeOutputBox: false,
+        height: Number(53),
+      },
+      top2: Number(100),
+      left2: Number(1000),
+      width3: Number(300),
+      height3: Number(300),
+      top3: Number(300),
+      left3: Number(500),
+      roof: false,
       land: false,
       water: false,
       solar: false,
@@ -169,6 +197,10 @@ export default {
       production: 0,
       preventedCO: 0,
       polygonArea: "",
+      minimizeInputBox: false,
+      minimizeOutputBox: false,
+      activatedInputBox: false,
+      activatedOutputBox: false,
     };
   },
   mounted() {
@@ -186,177 +218,62 @@ export default {
     onActivated() {
       this.$refs["input"].focus();
     },
+    toggleActivated(e) {
+      if (e == "input") {
+        this.activatedInputBox = true;
+        this.activatedOutputBox = false;
+      } else if (e == "output") {
+        this.activatedOutputBox = true;
+        this.activatedInputBox = false;
+      }
+    },
     PolygonAreaOutput(e) {
       this.polygonArea = e.toFixed(2);
     },
     changeSavingCalc(newData) {
-      this.cash = newData.totalNetRevenue.toFixed(2);
-      this.production = newData.annualEnergy.toFixed(2);
-      this.preventedCO = newData.CO2Saved.toFixed(2);
-    },
-    boxBackgroundColor(color) {
-      if (color == "#F00") {
-        this.freeAreaColorClass = "red-background";
-      } else if (color == "#0F0") {
-        this.freeAreaColorClass = "green-background";
-      } else if (color == "#3388ff") {
-        this.freeAreaColorClass = "blue-background";
-      }
+      this.cash = newData.totalNetRevenue
+        .toFixed(0)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      this.production = newData.annualEnergy
+        .toFixed(0)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      this.preventedCO = newData.CO2Saved.toFixed(0).replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        ","
+      );
     },
     logout() {
       delete localStorage.token;
       this.$router.replace(`/${this.lang}`);
-    },
-    resize(newRect) {
-      this.width = newRect.width / 10;
-      this.height = newRect.height / 10;
-      this.squareMeters = this.width * this.height;
-      this.top = newRect.top / 10;
-      this.left = newRect.left / 10;
-    },
-    resize2(newRect) {
-      this.width2 = newRect.width / 10;
-      this.height2 = newRect.height / 10;
-      this.top2 = newRect.top / 10;
-      this.left2 = newRect.left / 10;
-    },
-
-    getWidth() {
-      return parseFloat(this.width || 0) * 10;
-    },
-    getHeight() {
-      return parseFloat(this.height || 0) * 10;
-    },
-    getLeft() {
-      return parseFloat(this.left || 0) * 10;
-    },
-    getTop() {
-      return parseFloat(this.top || 0) * 10;
-    },
-
-    getWidth2() {
-      return parseFloat(this.width2 || 0) * 10;
-    },
-    getHeight2() {
-      return parseFloat(this.height2 || 0) * 10;
-    },
-    getLeft2() {
-      return parseFloat(this.left2 || 0) * 10;
-    },
-    getTop2() {
-      return parseFloat(this.top2 || 0) * 10;
     },
   },
 };
 </script>
 
 <style lang="scss">
-.profile {
-  height: 100vh;
-  overflow-y: hidden;
-  .logout-button {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    z-index: 401;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-size: 14px;
-    justify-content: center;
-    color: black;
-    font-weight: 700;
-    width: 148px;
-    height: 46px;
-    align-items: baseline;
-    outline: none;
-  }
-  .change {
-    z-index: 401;
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    border: none;
-    outline: none;
-    background: unset;
-    img {
-      border: 2px solid white;
-      border-radius: 10px;
-    }
-  }
-  .freeArea {
-    z-index: 401 !important;
-    border-radius: 15px;
-    &.input-box {
-      background-color: white;
-      p {
-        text-align: center;
-        color: black;
-        margin: 0;
-        &.mounth {
-          color: #65687e;
-        }
-      }
-      .values {
-        font-size: 30px;
-        color: #55b364;
-      }
-    }
-    // &.blue-background {
-    //   background-color: #3388ff;
-    // }
-    // &.red-background {
-    //   background-color: red;
-    // }
-    // &.green-background {
-    //   background-color: green;
-    // }
-    .active::before {
-      content: none;
-    }
-    .toggles {
-      padding-right: 30px;
-      .owner {
-        // max-width: 150px;
-        width: 100%;
-        max-height: 50px;
-        border-radius: 10px;
-        border: 2px solid #d3d5e3;
-        background-color: white;
-        outline: none;
-        color: #9597ac;
-        font-weight: 700;
-        margin-top: 20px;
-        margin-left: 15px;
-
-        &.active {
-          border: 2px solid #55b364;
-          color: #65687e;
-        }
-      }
-    }
-    .size {
-      padding-right: 30px;
-      input {
-        width: 100%;
-        margin-left: 15px;
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-        }
-      }
-      // p {
-      //   position: absolute;
-      //   right: 30px;
-      //   top: 10px;
-      //   color: black;
-      // }
+@import "profile-style.scss";
+.minimized {
+  display: none;
+}
+.popup {
+  display: none;
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px solid green;
+  position: absolute;
+  right: -150px;
+  top: 200px;
+}
+.solar {
+  &.active {
+    div.popup {
+      display: block;
     }
   }
 }
-#app {
-  .vdr.active:before {
-    content: none;
-  }
+.test-box {
+  border: 3px solid green;
 }
 </style>
