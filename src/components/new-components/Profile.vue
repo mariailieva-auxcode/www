@@ -77,7 +77,7 @@
         @clicked="toggleActivated('description')"
         :class="activatedDescriptionBox ? 'active' : 'inactive'"
         v-if="wind == true || solar == true"
-        class="freeArea output-box test-box"
+        class="freeArea output-box description-box"
         v-bind:style="height3"
         :isResizable="false"
         :h="height3"
@@ -85,6 +85,17 @@
         :x="left3"
         :y="top3"
       >
+        <p>Agriculture</p>
+        <div class="style">
+          <label>Diary</label>
+          <input type="radio" name="radio" />
+          <label>Livestrock</label>
+          <input type="radio" name="radio" />
+          <label>Crops</label>
+          <input type="radio" name="radio" />
+          <label>Hortery</label>
+          <input type="radio" name="radio" />
+        </div>
       </VueDragResize>
     </div>
     <div class="input-box">
@@ -274,22 +285,4 @@ export default {
 
 <style lang="scss">
 @import "profile-style.scss";
-.minimized {
-  display: none;
-}
-.test-box {
-  border: 3px solid green;
-}
-.steps {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 30px;
-  background-color: white;
-  z-index: 401;
-  p {
-    margin: 0 30px;
-  }
-}
 </style>
