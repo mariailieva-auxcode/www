@@ -169,7 +169,11 @@
         .toggles {
             padding-right: 30px;
 
-            .owner {
+            .roof,
+            .land,
+            .water,
+            .solar,
+            .wind {
                 width: 255px;
                 height: 45px;
                 border-radius: 10px;

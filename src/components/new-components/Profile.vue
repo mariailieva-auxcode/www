@@ -87,23 +87,23 @@
           <p>What type of site do you have?</p>
           <div class="toggles">
             <button
-              class="owner"
-              :class="{ active: owner }"
-              @click="(owner = !owner), (land = false), (water = false)"
+              class="roof"
+              :class="{ active: roof }"
+              @click="(roof = !roof), (land = false), (water = false)"
             >
               <img src="/assets/roof.svg" />Roof
             </button>
             <button
-              class="owner"
+              class="land"
               :class="{ active: land }"
-              @click="(land = !land), (owner = false), (water = false)"
+              @click="(land = !land), (roof = false), (water = false)"
             >
               <img src="/assets/land.svg" />Land
             </button>
             <button
-              class="owner"
+              class="water"
               :class="{ active: water }"
-              @click="(water = !water), (owner = false), (land = false)"
+              @click="(water = !water), (roof = false), (land = false)"
             >
               <img src="/assets/water.svg" />Water
             </button>
@@ -112,14 +112,15 @@
           <h6>(You can select both)</h6>
           <div class="toggles">
             <button
-              class="owner"
+              class="solar"
               :class="{ active: solar }"
               @click="solar = !solar"
             >
               <img src="/assets/solar.svg" />Solar
+              <div class="popup"></div>
             </button>
             <button
-              class="owner"
+              class="wind"
               :class="{ active: wind }"
               @click="wind = !wind"
             >
@@ -169,7 +170,7 @@ export default {
       },
       top2: Number(100),
       left2: Number(1000),
-      owner: false,
+      roof: false,
       land: false,
       water: false,
       solar: false,
@@ -236,5 +237,23 @@ export default {
 @import "profile-style.scss";
 .minimized {
   display: none;
+}
+.popup {
+  display: none;
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px solid green;
+  position: absolute;
+  right: -150px;
+  top: 200px;
+}
+.solar {
+  &.active {
+    div.popup {
+      display: block;
+    }
+  }
 }
 </style>
