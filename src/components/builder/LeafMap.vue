@@ -66,6 +66,10 @@ export default {
         return coordinates.indexOf(cord) == index;
       });
       coordinates = coordinates.map((cord) => JSON.parse(cord));
+      newSite.layer._latlngs[0] = coordinates.map((cord) => ({
+        lat: cord[0],
+        lng: cord[1],
+      }));
       if (type == "polygon") {
         axios
           .post(`/.netlify/functions/coordinates`, {
@@ -112,7 +116,7 @@ export default {
               lastSite.on("click", (e) => this.popupMenu(e, id));
             }
           });
-
+          if (!lastSite) return;
           this.map.fitBounds(lastSite.getBounds());
         });
     },
