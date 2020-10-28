@@ -67,8 +67,8 @@ export default {
     register(credentials) {
       axios
         .post("/.netlify/functions/register", { ...credentials, ...this.data })
-        .then((_) => {
-          this.$emit("close", _);
+        .then(() => {
+          this.login(credentials);
         });
     },
     login(credentials) {
