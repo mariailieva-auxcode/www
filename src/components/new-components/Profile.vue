@@ -1,6 +1,7 @@
 <template>
   <div class="profile">
     <div class="steps">
+      <img src="/assets/logo.svg" />
       <p :class="finishedStep ? 'finished' : 'unfinished'">Step 1</p>
       <p :class="finishedStep2 ? 'finished' : 'unfinished'">Step 2</p>
       <p>Step 3</p>
@@ -89,6 +90,7 @@
           @nextStep="steps++"
           @close="(land = false), (roof = false), (water = false)"
           @stepsColor="finishedStep = !finishedStep"
+          :lang="lang"
         ></ProfileOnboarding>
       </VueDragResize>
     </div>
@@ -197,6 +199,7 @@ export default {
   },
   data() {
     return {
+      lang: "",
       isSatteliteView: false,
       width: Number(370),
       height: {
@@ -292,9 +295,4 @@ export default {
 
 <style lang="scss">
 @import "profile-style.scss";
-.steps {
-  .finished {
-    background-color: #7fff00;
-  }
-}
 </style>

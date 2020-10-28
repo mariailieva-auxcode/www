@@ -1,0 +1,55 @@
+firstStep:
+  - title: Agriculture
+  - choices:
+    - choice: Diary
+    - choice: Livestrock
+    - choice: Crops
+    - choice: Hortery
+
+secondStep:
+  - title: Public
+  - choices:
+    - choice: Infrastructure along roads, rails, verges, tunnels
+    - choice: rooftop public real estate
+    - choice: refuse dumps
+    - choice: parking lots
+    - choice: transportation sites
+    - choice: other
+
+thirdStep:
+  - title: Residential
+  - choices:
+    - choice: housing cooperations
+    - choice: private owners
+    - choice: real estate owners project development housing
+    - choice: alternative livings (campsite, recreational etc.)
+
+fourthStep:
+  - title: Commercial
+  - choices:
+    - choice: Shopping
+    - choice: Business district
+    - choice: Offices
+    - choice: Distribution centers
+
+fifthStep:
+  - title: Industrial zones
+  - choices:
+    - choice: light industrial (innovation, food, microchips etc.)
+    - choice: heavy industrial zone (bulk, resources, mining)
+    - choice: Seaports Airports
+
+sixthStep:
+  - title: Nature
+  - choices:
+    - choice: Foresty
+    - choice: Ecological zones
+    - choice: Natural protected zones
+    - choice: recreational zones
+
+seventhStep:
+  - title: Water
+  - choices:
+    - choice: Lakes
+    - choice: greenhouse basins
+    - choice: Rivers
