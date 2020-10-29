@@ -1,8 +1,9 @@
 <template>
   <div class="profile">
     <div class="steps">
-      <p>Step 1</p>
-      <p>Step 2</p>
+      <img src="/assets/logo.svg" />
+      <p :class="finishedStep ? 'finished' : 'unfinished'">Step 1</p>
+      <p :class="finishedStep2 ? 'finished' : 'unfinished'">Step 2</p>
       <p>Step 3</p>
       <p>Step 4</p>
       <p>Step 5</p>
@@ -76,8 +77,8 @@
       <VueDragResize
         @clicked="toggleActivated('description')"
         :class="activatedDescriptionBox ? 'active' : 'inactive'"
-        v-if="wind == true || solar == true"
-        class="freeArea output-box test-box"
+        v-if="roof == true || land == true || water == true"
+        class="freeArea output-box description-box"
         v-bind:style="height3"
         :isResizable="false"
         :h="height3"
@@ -85,6 +86,12 @@
         :x="left3"
         :y="top3"
       >
+        <ProfileOnboarding
+          @nextStep="steps++"
+          @close="(land = false), (roof = false), (water = false)"
+          @stepsColor="finishedStep = !finishedStep"
+          :lang="lang"
+        ></ProfileOnboarding>
       </VueDragResize>
     </div>
     <div class="input-box">
@@ -112,47 +119,55 @@
           </div>
         </div>
         <div :class="{ minimized: minimizeInputBox == true }">
-          <p>What type of site do you have?</p>
-          <div class="toggles">
-            <button
-              class="roof"
-              :class="{ active: roof }"
-              @click="(roof = !roof), (land = false), (water = false)"
-            >
-              <img src="/assets/roof.svg" />Roof
-            </button>
-            <button
-              class="land"
-              :class="{ active: land }"
-              @click="(land = !land), (roof = false), (water = false)"
-            >
-              <img src="/assets/land.svg" />Land
-            </button>
-            <button
-              class="water"
-              :class="{ active: water }"
-              @click="(water = !water), (roof = false), (land = false)"
-            >
-              <img src="/assets/water.svg" />Water
-            </button>
+          <div v-if="steps === 1">
+            <p>What type of site do you have?</p>
+            <div class="toggles">
+              <button
+                class="roof"
+                :class="{ active: roof }"
+                @click="(roof = !roof), (land = false), (water = false)"
+              >
+                <img src="/assets/roof.svg" />Roof
+              </button>
+              <button
+                class="land"
+                :class="{ active: land }"
+                @click="(land = !land), (roof = false), (water = false)"
+              >
+                <img src="/assets/land.svg" />Land
+              </button>
+              <button
+                class="water"
+                :class="{ active: water }"
+                @click="(water = !water), (roof = false), (land = false)"
+              >
+                <img src="/assets/water.svg" />Water
+              </button>
+            </div>
           </div>
-          <p>What type of energy do you want?</p>
-          <h6>(You can select both)</h6>
-          <div class="toggles">
-            <button
-              class="solar"
-              :class="{ active: solar }"
-              @click="solar = !solar"
-            >
-              <img src="/assets/solar.svg" />Solar
-            </button>
-            <button
-              class="wind"
-              :class="{ active: wind }"
-              @click="wind = !wind"
-            >
-              <img src="/assets/wind.svg" />Wind
-            </button>
+          <div v-if="steps === 2">
+            <p>What type of energy do you want?</p>
+            <h6>(You can select both)</h6>
+            <div class="toggles">
+              <button
+                class="solar"
+                :class="{ active: solar }"
+                @click="
+                  (solar = !solar), steps++, (finishedStep2 = !finishedStep2)
+                "
+              >
+                <img src="/assets/solar.svg" />Solar
+              </button>
+              <button
+                class="wind"
+                :class="{ active: wind }"
+                @click="
+                  (wind = !wind), steps++, (finishedStep2 = !finishedStep2)
+                "
+              >
+                <img src="/assets/wind.svg" />Wind
+              </button>
+            </div>
           </div>
           <div class="size">
             <p>What is the size of the site?</p>
@@ -174,21 +189,24 @@
 <script>
 import LeafMap from "../builder/LeafMap";
 import VueDragResize from "vue-drag-resize";
+import ProfileOnboarding from "./ProfileOnboarding";
 export default {
   name: "Profile",
   components: {
     LeafMap,
     VueDragResize,
+    ProfileOnboarding,
   },
   data() {
     return {
+      lang: "",
       isSatteliteView: false,
       width: Number(370),
       height: {
         minimizeInputBox: false,
         height: Number(53),
       },
-      top: Number(30),
+      top: Number(40),
       left: Number(100),
       width2: Number(380),
       height2: {
@@ -198,8 +216,8 @@ export default {
       top2: Number(100),
       left2: Number(1000),
       width3: Number(300),
-      height3: Number(300),
-      top3: Number(300),
+      height3: Number(400),
+      top3: Number(100),
       left3: Number(500),
       roof: false,
       land: false,
@@ -216,6 +234,9 @@ export default {
       activatedInputBox: false,
       activatedOutputBox: false,
       activatedDescriptionBox: false,
+      steps: 1,
+      finishedStep: "",
+      finishedStep2: "",
     };
   },
   mounted() {
@@ -274,22 +295,4 @@ export default {
 
 <style lang="scss">
 @import "profile-style.scss";
-.minimized {
-  display: none;
-}
-.test-box {
-  border: 3px solid green;
-}
-.steps {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 30px;
-  background-color: white;
-  z-index: 401;
-  p {
-    margin: 0 30px;
-  }
-}
 </style>
