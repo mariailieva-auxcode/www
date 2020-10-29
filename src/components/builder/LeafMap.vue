@@ -59,9 +59,12 @@ export default {
         let lastCadaster;
         cadasters.forEach((cadaster) => {
           let id = `${cadaster.data.properties.sectie}-${cadaster.data.properties.perceelnummer}-${cadaster.data.properties.waarde}`;
-          lastCadaster = L.polygon(cadaster.data.geometry.coordinates[0], {
-            color: "purple",
-          }).addTo(this.map);
+          lastCadaster = L.polygon(
+            cadaster.data.geometry.coordinates[0].map((cord) => cord.reverse()),
+            {
+              color: "purple",
+            }
+          ).addTo(this.map);
           lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
         });
         this.map.fitBounds(lastCadaster.getBounds());
