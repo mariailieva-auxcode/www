@@ -51,6 +51,28 @@ export default {
 
       this.addDrawControls();
       this.getAndRenderPolygons();
+      this.getCadasters();
+    },
+    getCadasters() {
+      axios.get(`/.netlify/functions/perceels`).then((response) => {
+        let cadasters = response.data.data;
+        let lastCadaster;
+        cadasters.forEach((cadaster) => {
+          let id = `${cadaster.data.properties.sectie}-${cadaster.data.properties.perceelnummer}-${cadaster.data.properties.waarde}`;
+          lastCadaster = L.polygon(cadaster.data.geometry.coordinates[0], {
+            color: "purple",
+          }).addTo(this.map);
+          lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
+        });
+        this.map.fitBounds(lastCadaster.getBounds());
+      });
+    },
+    cadasterPopup(e, id) {
+      let popup = L.popup();
+      let template = id;
+      popup.setLatLng(e.latlng);
+      popup.setContent(template);
+      popup.openOn(this.map);
     },
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
@@ -117,7 +139,7 @@ export default {
             }
           });
           if (!lastSite) return;
-          this.map.fitBounds(lastSite.getBounds());
+          // this.map.fitBounds(lastSite.getBounds());
         });
     },
     popupMenu(e, id) {
