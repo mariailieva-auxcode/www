@@ -10,13 +10,15 @@
         height: 35px;
         background-color: white;
         z-index: 401;
-
         p {
             margin: 0 30px;
         }
 
         .finished {
             background-color: #7fff00;
+        }
+        .unfinished{
+            background-color: #f7ee75;
         }
     }
 
@@ -208,6 +210,8 @@
             .water,
             .solar,
             .wind,
+            .isOwner,
+            .isDev,
             .step1choice1 {
                 width: 255px;
                 height: 45px;
