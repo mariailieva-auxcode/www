@@ -28,6 +28,7 @@ export default {
       // marker: L.latLng(52.35479, 4.76387),
       attribution2:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+      maxZoom: 20,
     };
   },
   methods: {
@@ -42,9 +43,11 @@ export default {
 
       this.grayView = L.tileLayer(this.url, {
         attribution: this.attribution,
+        maxZoom: this.maxZoom,
       });
       this.satteliteView = L.tileLayer(this.url2, {
         attribution: this.attribution2,
+        maxZoom: this.maxZoom,
       });
 
       this.grayView.addTo(this.map);
@@ -58,7 +61,7 @@ export default {
         let cadasters = response.data.data;
         let lastCadaster;
         cadasters.forEach((cadaster) => {
-          let id = `${cadaster.data.properties.sectie}-${cadaster.data.properties.perceelnummer}-${cadaster.data.properties.waarde}`;
+          let id = `${cadaster.data.properties.sectie}-${cadaster.data.properties.perceelnummer}-${cadaster.data.properties["kadastraleAanduiding|TypeKadastraleAanduiding|aKRKadastraleGemeenteCode|AKRKadastraleGemeenteCode|waarde"]}`;
           lastCadaster = L.polygon(
             cadaster.data.geometry.coordinates[0].map((cord) => cord.reverse()),
             {
