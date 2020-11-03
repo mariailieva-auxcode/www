@@ -13,6 +13,7 @@ import PDquestionnaire from './components/layout/project-developer/PDquestionnai
 import SpecialistsQuestionnaire from './components/layout/specialists/SpecialistsQuestionnaire'
 import SOquestionnaire from './components/layout/site-owner/SOquestionnaire'
 import Profile from './components/new-components/Profile'
+import ProfileLogin from './components/new-components/ProfileLogin'
 
 Vue.use(Router);
 
@@ -68,6 +69,10 @@ export default new Router({
     {
         path: "/:lang/assets",
         component: Assets
+    },
+    {
+        path: "/:lang/profilelogin",
+        component: ProfileLogin
     },
     {
         path: "/:lang/profile",

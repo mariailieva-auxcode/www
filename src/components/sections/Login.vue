@@ -1,5 +1,5 @@
 <template>
-  <div class="components col-12">
+  <div class="components col-12 freeArea">
     <img class="logo" src="/assets/logo.svg" />
     <p class="header">Log In to greenatlas.earth</p>
     <div class="inputs">
@@ -82,6 +82,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 0;
+  z-index: 19999999;
   .logo {
     width: 92px;
     height: 78px;
