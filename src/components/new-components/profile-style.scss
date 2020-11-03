@@ -2,6 +2,24 @@
     height: 100vh;
     overflow-y: hidden;
 
+    .map-layer-popup {
+        position: absolute;
+        z-index: 401;
+        left: 0;
+        top: 400px;
+
+        &.active {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            border-radius: 0 10px 10px 0;
+        }
+
+        button {
+            display: flex;
+        }
+    }
+
     .steps {
         position: absolute;
         display: flex;

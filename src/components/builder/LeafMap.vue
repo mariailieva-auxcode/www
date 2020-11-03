@@ -15,6 +15,7 @@ export default {
   },
   props: {
     isSatteliteView: { type: Boolean },
+    showCadasters: { type: Boolean },
   },
   data() {
     return {
@@ -29,6 +30,7 @@ export default {
       attribution2:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
       maxZoom: 20,
+      minZoom: "",
     };
   },
   methods: {
@@ -36,6 +38,7 @@ export default {
       this.map = L.map("map", {
         center: this.center,
         zoom: this.zoom,
+        minZoom: this.minZoom,
       });
       this.map.on("pm:create", this.addSite);
 
@@ -54,7 +57,6 @@ export default {
 
       this.addDrawControls();
       this.getAndRenderPolygons();
-      this.getCadasters();
     },
     getCadasters() {
       axios.get(`/.netlify/functions/perceels`).then((response) => {
@@ -68,16 +70,17 @@ export default {
               color: "purple",
             }
           ).addTo(this.map);
+          lastCadaster.options.isCadaster = true;
           lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
         });
+        if (!lastCadaster) return;
         this.map.fitBounds(lastCadaster.getBounds());
       });
     },
     cadasterPopup(e, id) {
       let popup = L.popup();
-      let template = id;
       popup.setLatLng(e.latlng);
-      popup.setContent(template);
+      popup.setContent(id);
       popup.openOn(this.map);
     },
     addSite(newSite) {
@@ -145,7 +148,7 @@ export default {
             }
           });
           if (!lastSite) return;
-          // this.map.fitBounds(lastSite.getBounds());
+          this.map.fitBounds(lastSite.getBounds());
         });
     },
     popupMenu(e, id) {
@@ -219,6 +222,17 @@ export default {
     isSatteliteView(isSattelite) {
       this.map.removeLayer(isSattelite ? this.grayView : this.satteliteView);
       this.map.addLayer(isSattelite ? this.satteliteView : this.grayView);
+    },
+    showCadasters(showCadasters) {
+      if (showCadasters) {
+        this.getCadasters();
+        this.map.options.minZoom = 20;
+      } else {
+        (this.map.options.minZoom = ""),
+          Object.values(this.map._layers).forEach((layer) => {
+            if (layer.options.isCadaster) layer.remove();
+          });
+      }
     },
   },
 };

@@ -9,6 +9,20 @@
       <p>Step 5</p>
     </div>
     <button class="logout-button" @click="logout()">Logout</button>
+    <div
+      class="map-layer-popup"
+      :class="renderLayerPopup ? 'active' : 'nonactive'"
+    >
+      <button
+        class="popup-render"
+        @click="renderLayerPopup = !renderLayerPopup"
+      >
+        Click
+      </button>
+      <div v-if="renderLayerPopup == true">
+        <button @click="showCadasters = !showCadasters">Kadaster</button>
+      </div>
+    </div>
     <button
       class="change"
       @click="isSatteliteView = !isSatteliteView"
@@ -25,6 +39,7 @@
     </button>
     <LeafMap
       :isSatteliteView="isSatteliteView"
+      :showCadasters="showCadasters"
       @changedSavingCalc="changeSavingCalc($event)"
       @getPolygonArea="PolygonAreaOutput($event)"
     ></LeafMap>
@@ -237,6 +252,8 @@ export default {
       steps: 1,
       finishedStep: "",
       finishedStep2: "",
+      renderLayerPopup: false,
+      showCadasters: false,
     };
   },
   mounted() {
