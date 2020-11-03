@@ -57,25 +57,15 @@ export default {
   .bottom{
     z-index: 1;
   }
-  .marginBot{
-    margin-bottom: 15px;
-    margin-bottom: 15px;
-  }
   .disabled {
       pointer-events:none;
   }
-  .leaflet-top {
-    display: none;
-  }
-  .leaflet-left{
+  .leaflet-top, .leaflet-left, .col-1 {
     display: none;
   }
   .blur{
     filter: blur(8px);
     height: 100%;
-  }
-  .col-1{
-    display: none;
   }
 }
 </style>
