@@ -15,10 +15,13 @@
         }
 
         .finished {
-            background-color: #7fff00;
+            background-color: #7fff00 !important;
         }
-        .unfinished{
+        .inProgress{
             background-color: #f7ee75;
+        }
+        .default{
+            background-color:  #ffffff;
         }
     }
 

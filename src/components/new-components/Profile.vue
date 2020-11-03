@@ -1,11 +1,11 @@
 <template>
   <div class="profile">
     <div class="steps">
-      <img src="/assets/logo.svg" />
-      <p :class="finishedStep ? 'finished' : 'unfinished'">Step 1</p>
-      <p :class="finishedStep2 ? 'finished' : 'unfinished'">Step 2</p>
-      <p :class="finishedStep3 ? 'finished' : 'unfinished'">Step 3</p>
-      <p :class="finishedStep4 ? 'finished' : 'unfinished'">Step 4</p>
+      <img src="/assets/logo.svg">
+      <p :class="finishedStep ?  'finished' : 'inProgress'">Step 1</p>
+      <p :class="finishedStep2 ? 'finished' : 'inProgress'">Step 2</p>
+      <p :class="finishedStep3 ? 'finished' : 'inProgress'">Step 3</p>
+      <p :class="finishedStep4 ? 'finished' : 'inProgress'">Step 4</p>
       <p>Step 5</p>
     </div>
     <button class="logout-button" @click="logout()">Logout</button>

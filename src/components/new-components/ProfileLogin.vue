@@ -21,27 +21,33 @@ export default {
   components: {
     Authorization,
     LeafMap,
-  },
+  }, 
   data() {
     return {
-      lang: "",
-      isSatteliteView: false,
       showAuth: true,
       isLogged: false,
     };
   },
+  props: {
+    lang: String,
+  },
+  mounted() {
+    this.init();
+  },  
   watch: {
     lang() {
       this.init();
-      this.isLogged = !!localStorage.token;
     },
   },
   methods: {
+    init() {
+      this.lang = this.$router.history.current.params.lang;
+    },
     onAuthorizationClose(isLogged) {
       this.showAuth = false;
       if (isLogged) {
         this.isLogged = true;
-        this.$router.push(`${this.lang}/profile`);
+        this.$router.replace(`/${this.lang}/profile`);
       }
      },
     },
