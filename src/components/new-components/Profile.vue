@@ -2,10 +2,23 @@
   <div class="profile">
     <div class="steps">
       <img src="/assets/logo.svg">
-      <p :class="finishedStep ?  'finished' : 'inProgress'">Step 1</p>
+      <p v-if="finishedStep == 0" class="default">Step 1</p>
+      <p v-if="finishedStep == 1" class="inProgress">Step 1</p>
+      <p v-if="finishedStep == 2" class="finished">Step 1</p>
+      <p v-if="finishedStep2 == 0" class="default">Step 2</p>
+      <p v-if="finishedStep2 == 1" class="inProgress">Step 2</p>
+      <p v-if="finishedStep2 == 2" class="finished">Step 2</p>
+      <p v-if="finishedStep3 == 0" class="default">Step 3</p>
+      <p v-if="finishedStep3 == 1" class="inProgress">Step 3</p>
+      <p v-if="finishedStep3 == 2" class="finished">Step 3</p>
+      <p v-if="finishedStep4 == 0" class="default">Step 4</p>
+      <p v-if="finishedStep4 == 1" class="inProgress">Step 4</p>
+      <p v-if="finishedStep4 == 2" class="finished">Step 4</p>
+      
+      <!-- <p :class="finishedStep ?  'finished' : 'inProgress'">Step 1</p>
       <p :class="finishedStep2 ? 'finished' : 'inProgress'">Step 2</p>
       <p :class="finishedStep3 ? 'finished' : 'inProgress'">Step 3</p>
-      <p :class="finishedStep4 ? 'finished' : 'inProgress'">Step 4</p>
+      <p :class="finishedStep4 ? 'finished' : 'inProgress'">Step 4</p> -->
       <p>Step 5</p>
     </div>
     <button class="logout-button" @click="logout()">Logout</button>
@@ -89,7 +102,7 @@
         <ProfileOnboarding
           @nextStep="steps++"
           @close="(land = false), (roof = false), (water = false)"
-          @stepsColor="finishedStep = !finishedStep"
+          @stepsColor="finishedStep++, finishedStep2++"
           :lang="lang"
         ></ProfileOnboarding>
       </VueDragResize>
@@ -153,7 +166,7 @@
                 class="solar"
                 :class="{ active: solar }"
                 @click="
-                  (solar = !solar), steps++, (finishedStep2 = !finishedStep2)
+                  (solar = !solar), steps++, (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/solar.svg" />Solar
@@ -162,7 +175,7 @@
                 class="wind"
                 :class="{ active: wind }"
                 @click="
-                  (wind = !wind), steps++, (finishedStep2 = !finishedStep2)
+                  (wind = !wind), steps++, (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/wind.svg" />Wind
@@ -182,7 +195,7 @@
             <div class="toggles hovered">  
               <button class="isOwner"
               :class="{ active: isOwner }"
-               @click="(isOwner = !isOwner), steps++, (finishedStep3 = !finishedStep3), (isDev = false)">
+               @click="(isOwner = !isOwner), steps++, (finishedStep3++, finishedStep4++), (isDev = false)">
               Owner
               </button>
               <p>If you are site owner please proceed to the next step.</p>
@@ -283,10 +296,10 @@ export default {
       activatedOutputBox: false,
       activatedDescriptionBox: false,
       steps: 1,
-      finishedStep: "",
-      finishedStep2: "",
-      finishedStep3: "",
-      finishedStep4: "",
+      finishedStep: "1",
+      finishedStep2: "0",
+      finishedStep3: "0",
+      finishedStep4: "0",
     };
   },
   mounted() {
