@@ -2,10 +2,23 @@
   <div class="profile">
     <div class="steps">
       <img src="/assets/logo.svg" />
-      <p :class="finishedStep ? 'finished' : 'unfinished'">Step 1</p>
-      <p :class="finishedStep2 ? 'finished' : 'unfinished'">Step 2</p>
-      <p>Step 3</p>
-      <p>Step 4</p>
+      <p v-if="finishedStep == 0" class="default">Step 1</p>
+      <p v-if="finishedStep == 1" class="inProgress">Step 1</p>
+      <p v-if="finishedStep == 2" class="finished">Step 1</p>
+      <p v-if="finishedStep2 == 0" class="default">Step 2</p>
+      <p v-if="finishedStep2 == 1" class="inProgress">Step 2</p>
+      <p v-if="finishedStep2 == 2" class="finished">Step 2</p>
+      <p v-if="finishedStep3 == 0" class="default">Step 3</p>
+      <p v-if="finishedStep3 == 1" class="inProgress">Step 3</p>
+      <p v-if="finishedStep3 == 2" class="finished">Step 3</p>
+      <p v-if="finishedStep4 == 0" class="default">Step 4</p>
+      <p v-if="finishedStep4 == 1" class="inProgress">Step 4</p>
+      <p v-if="finishedStep4 == 2" class="finished">Step 4</p>
+
+      <!-- <p :class="finishedStep ?  'finished' : 'inProgress'">Step 1</p>
+      <p :class="finishedStep2 ? 'finished' : 'inProgress'">Step 2</p>
+      <p :class="finishedStep3 ? 'finished' : 'inProgress'">Step 3</p>
+      <p :class="finishedStep4 ? 'finished' : 'inProgress'">Step 4</p> -->
       <p>Step 5</p>
     </div>
     <button class="logout-button" @click="logout()">Logout</button>
@@ -104,7 +117,7 @@
         <ProfileOnboarding
           @nextStep="steps++"
           @close="(land = false), (roof = false), (water = false)"
-          @stepsColor="finishedStep = !finishedStep"
+          @stepsColor="finishedStep++, finishedStep2++"
           :lang="lang"
         ></ProfileOnboarding>
       </VueDragResize>
@@ -168,7 +181,7 @@
                 class="solar"
                 :class="{ active: solar }"
                 @click="
-                  (solar = !solar), steps++, (finishedStep2 = !finishedStep2)
+                  (solar = !solar), steps++, (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/solar.svg" />Solar
@@ -177,13 +190,74 @@
                 class="wind"
                 :class="{ active: wind }"
                 @click="
-                  (wind = !wind), steps++, (finishedStep2 = !finishedStep2)
+                  (wind = !wind), steps++, (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/wind.svg" />Wind
               </button>
             </div>
+            <p>What is your goal</p>
+            <div class="checkboxes">
+              <input class="checkboxSize" type="checkbox" value="produce" />
+              <label> Produce </label>
+              <input class="checkboxSize" type="checkbox" value="sell" />
+              <label> Sell </label>
+            </div>
           </div>
+          <!-- --------------------------------------------------------------------------------------------------- -->
+          <div v-if="steps === 3">
+            <label>Are you ...?</label>
+            <div class="toggles hovered">
+              <button
+                class="isOwner"
+                :class="{ active: isOwner }"
+                @click="
+                  (isOwner = !isOwner),
+                    steps++,
+                    (finishedStep3++, finishedStep4++),
+                    (isDev = false)
+                "
+              >
+                Owner
+              </button>
+              <p>If you are site owner please proceed to the next step.</p>
+            </div>
+            <div class="toggles hovered">
+              <a :href="`mailto:${' '}`">
+                <button class="isDev" :class="{ active: isDev }">
+                  Developer
+                </button>
+                <p>
+                  If you are project developer please contact the site owner via
+                  email.
+                </p>
+              </a>
+            </div>
+          </div>
+          <!-- START --------------------------------------------------------------------------------------------------- -->
+          <div v-if="steps === 4">
+            <label>Do you sell the land and/or water?</label>
+            <div class="scroll-links marginBot">
+              <p1>*Description*</p1>
+              <router-link
+                :to="`/${$router.history.current.params.lang}`"
+                :v-scroll-to="'#FAQ'"
+              >
+                <div class="active-green-line">Got questions?</div>
+              </router-link>
+            </div>
+            <label>Do you rent the land and/or water?</label>
+            <div class="scroll-links marginBot">
+              <p1>*Description*</p1>
+              <router-link
+                :to="`/${$router.history.current.params.lang}`"
+                v-scroll-to="'#FAQ'"
+              >
+                <div class="active-green-line">Got questions?</div>
+              </router-link>
+            </div>
+          </div>
+          <!-- ------------------------------------------------------------------------------------------------------- -->
           <div class="size">
             <p>What is the size of the site?</p>
             <input ref="input" placeholder="0 sq.m" type="number" />
@@ -239,6 +313,8 @@ export default {
       water: false,
       solar: false,
       wind: false,
+      isOwner: false,
+      isDev: false,
       sqM: "",
       cash: 0,
       production: 0,
@@ -250,10 +326,12 @@ export default {
       activatedOutputBox: false,
       activatedDescriptionBox: false,
       steps: 1,
-      finishedStep: "",
-      finishedStep2: "",
       renderLayerPopup: false,
       showCadasters: false,
+      finishedStep: "1",
+      finishedStep2: "0",
+      finishedStep3: "0",
+      finishedStep4: "0",
     };
   },
   mounted() {
@@ -312,4 +390,73 @@ export default {
 
 <style lang="scss">
 @import "profile-style.scss";
+.checkboxes {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+}
+.checkboxSize {
+  width: 50px;
+  height: 30px;
+}
+.hovered {
+  p {
+    display: none;
+    position: absolute;
+    top: 30px;
+    z-index: 2;
+    width: 375px;
+    left: 270px;
+    padding: 15px;
+    background-color: white;
+    opacity: 0.9;
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: left;
+    box-shadow: 0px 0px 30px #65687e33;
+  }
+  &:hover {
+    p {
+      display: block;
+    }
+  }
+}
+.new-navigation {
+  background: none;
+  width: 170px;
+  height: 100vh;
+  z-index: 2;
+  position: absolute;
+  .scroll-links {
+    margin-top: 75px;
+    position: fixed;
+    font-weight: 700;
+    margin-left: 55px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    a {
+      padding: 10px 0;
+      position: relative;
+      color: white;
+      opacity: 0.6;
+      outline: none;
+      font-size: 14px;
+      &.router-link-exact-active {
+        opacity: 1;
+        .active-green-line {
+          display: block;
+        }
+      }
+      &.inverted {
+        color: #65687e;
+      }
+    }
+  }
+}
+.marginBot {
+  margin-bottom: 15px;
+  margin-bottom: 15px;
+}
 </style>

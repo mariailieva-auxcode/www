@@ -126,6 +126,7 @@ export default {
         dragMode: false,
       });
     },
+    
     getAndRenderPolygons() {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
       if (!ownerId) return;
@@ -163,6 +164,7 @@ export default {
         .get(
           `/.netlify/functions/windModel?latitude=${center.lat}&longitude=${center.lng}&landArea=${area}`
         )
+
         .then((data) => {
           this.$emit("changedSavingCalc", data.data);
         });
@@ -209,12 +211,13 @@ export default {
     deleteSite(e) {
       const remove = confirm("Do you really want to delete that polygon ?");
       this.map.closePopup();
-      if (remove)
+      if (remove){
         axios.delete(
-          `/.netlify/functions/coordinates?id=${e.layer.options.id}`
+          `/.netlify/functions/coordinates?id=${e.layer.options.id}`         
         );
-      else {
         this.map.pm.disableGlobalRemovalMode();
+      } else {        
+        this.map.pm.disableGlobalRemovalMode(); 
       }
     },
   },

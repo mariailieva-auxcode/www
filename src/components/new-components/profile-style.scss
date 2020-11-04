@@ -28,13 +28,18 @@
         height: 35px;
         background-color: white;
         z-index: 401;
-
         p {
             margin: 0 30px;
         }
 
         .finished {
-            background-color: #7fff00;
+            background-color: #7fff00 !important;
+        }
+        .inProgress{
+            background-color: #f7ee75;
+        }
+        .default{
+            background-color:  #ffffff;
         }
     }
 
@@ -226,6 +231,8 @@
             .water,
             .solar,
             .wind,
+            .isOwner,
+            .isDev,
             .step1choice1 {
                 width: 255px;
                 height: 45px;

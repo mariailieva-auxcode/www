@@ -29,10 +29,19 @@
         <!-- <lazy-img :src="image" :blur="30" /> -->
         <div>
           <router-link
-            :to="`/${$router.history.current.params.lang}/questionnaire`"
-          >
+            :to="`/${$router.history.current.params.lang}/profile`"
+          v-if="isLogged">
             <button class="start-buttons">
               {{ button }}
+              <img src="/assets/arrow-right-white.png" />
+            </button>
+          </router-link>
+          <router-link
+            :to="`/${$router.history.current.params.lang}/profilelogin`" 
+          v-if="!isLogged">
+            <button class="start-buttons"
+            @click="showAuth = true">
+               {{ button }}
               <img src="/assets/arrow-right-white.png" />
             </button>
           </router-link>
