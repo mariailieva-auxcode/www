@@ -30,7 +30,7 @@ export default {
       attribution2:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
       maxZoom: 20,
-      minZoom: "",
+      displayedCadasters: false,
     };
   },
   methods: {
@@ -38,10 +38,13 @@ export default {
       this.map = L.map("map", {
         center: this.center,
         zoom: this.zoom,
-        minZoom: this.minZoom,
       });
+      // this.map.on("moveend", () => {
+      //   let bounds = this.map.getBounds();
+      //   console.log(bounds);
+      // });
       this.map.on("pm:create", this.addSite);
-
+      this.map.on("zoom", this.onZoomChange);
       L.control.scale().addTo(this.map);
 
       this.grayView = L.tileLayer(this.url, {
@@ -61,20 +64,13 @@ export default {
     getCadasters() {
       axios.get(`/.netlify/functions/perceels`).then((response) => {
         let cadasters = response.data.data;
-        let lastCadaster;
         cadasters.forEach((cadaster) => {
-          let id = `${cadaster.data.properties.sectie}-${cadaster.data.properties.perceelnummer}-${cadaster.data.properties["kadastraleAanduiding|TypeKadastraleAanduiding|aKRKadastraleGemeenteCode|AKRKadastraleGemeenteCode|waarde"]}`;
-          lastCadaster = L.polygon(
-            cadaster.data.geometry.coordinates[0].map((cord) => cord.reverse()),
-            {
-              color: "purple",
-            }
-          ).addTo(this.map);
-          lastCadaster.options.isCadaster = true;
-          lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
+          cadaster.data.geometry.coordinates[0] = cadaster.data.geometry.coordinates[0].map(
+            (cord) => cord.reverse()
+          );
         });
-        if (!lastCadaster) return;
-        this.map.fitBounds(lastCadaster.getBounds());
+        this.cadasters = cadasters;
+        this.displayCadasters();
       });
     },
     cadasterPopup(e, id) {
@@ -82,6 +78,11 @@ export default {
       popup.setLatLng(e.latlng);
       popup.setContent(id);
       popup.openOn(this.map);
+    },
+    onZoomChange() {
+      if (!this.cadasters) return;
+
+      this.toggleCadasters(this.showCadasters);
     },
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
@@ -220,6 +221,37 @@ export default {
         this.map.pm.disableGlobalRemovalMode();
       }
     },
+    displayCadasters() {
+      if (this.map._zoom < 19 || !this.cadasters || this.displayedCadasters)
+        return;
+      let lastCadaster;
+      this.cadasters.forEach((cadaster) => {
+        let id = `${cadaster.data.properties.sectie}-${cadaster.data.properties.perceelnummer}-${cadaster.data.properties["kadastraleAanduiding|TypeKadastraleAanduiding|aKRKadastraleGemeenteCode|AKRKadastraleGemeenteCode|waarde"]}`;
+        const latLngs = cadaster.data.geometry.coordinates[0];
+        lastCadaster = L.polygon(latLngs, {
+          color: "purple",
+        });
+
+        lastCadaster.addTo(this.map);
+        lastCadaster.options.isCadaster = true;
+        lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
+      });
+      this.displayedCadasters = true;
+    },
+    toggleCadasters(showCadasters) {
+      if (!this.cadasters && showCadasters) this.getCadasters();
+      else {
+        if (showCadasters && this.map._zoom >= 19) this.displayCadasters();
+        else {
+          Object.values(this.map._layers).forEach((layer) => {
+            if (layer.options.isCadaster) {
+              this.map.removeLayer(layer);
+              this.displayedCadasters = false;
+            }
+          });
+        }
+      }
+    },
   },
   watch: {
     isSatteliteView(isSattelite) {
@@ -227,15 +259,7 @@ export default {
       this.map.addLayer(isSattelite ? this.satteliteView : this.grayView);
     },
     showCadasters(showCadasters) {
-      if (showCadasters) {
-        this.getCadasters();
-        this.map.options.minZoom = 20;
-      } else {
-        (this.map.options.minZoom = ""),
-          Object.values(this.map._layers).forEach((layer) => {
-            if (layer.options.isCadaster) layer.remove();
-          });
-      }
+      this.toggleCadasters(showCadasters);
     },
   },
 };
