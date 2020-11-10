@@ -93,6 +93,9 @@ export default {
         position: "topleft",
         drawCircle: false,
         dragMode: false,
+        drawRectangle: false,
+        drawCircleMarker: false,
+        cutPolygon: false,
       });
     },
     
@@ -200,8 +203,51 @@ export default {
 </script>
 
 <style lang="scss">
-#map {
+#map {  
+  .leaflet-left .leaflet-control{
+    margin-left: 0;
+  }
+  .leaflet-top .leaflet-control{
+    margin-top: 0;
+  }
+  .leaflet-top{
+    &.leaflet-left{
+      height: auto;
+    position: absolute;
+    background-color: white;
+    top: 160px;
+    border-radius: 0 10px 10px 0;
+    border-top: 10px solid white;
+    border: 3px solid white;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+  }
+  .leaflet-bar {
+    // border-radius: 0;
+    a{
+      margin-bottom: 10px;
+    }
+  }
+  .leaflet-bar a, .leaflet-bar{
+    border-bottom: 0;
+  } 
+  .leaflet-control-layers, .leaflet-bar{
+    border: 0;
+  }
+  // .leaflet-bar a:first-child {
+  //   border-top-right-radius: 15px;
+  // }
+  // .leaflet-bar .button-container:last-child .leaflet-buttons-control-button{
+  //   border-bottom-right-radius: 15px !important;
+  // }
+  .leaflet-pm-edit{
+    border-radius: 0 10px 10px 0 !important;
+  }
   .leaflet-map-pane {
+
     .leaflet-popup-pane {
       .leaflet-popup {
         .leaflet-popup-content-wrapper {
@@ -225,7 +271,9 @@ export default {
   .leaflet-control-zoom {
     &.leaflet-bar {
       &.leaflet-control {
-        margin-top: 35px;
+        .leaflet-control-zoom-in{
+          margin-top: 10px;
+        }
       }
     }
   }
