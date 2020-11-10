@@ -11,7 +11,15 @@
       <Knowledge :lang="lang"></Knowledge>
       <Partners :lang="lang"></Partners>
       <FAQ :lang="lang"></FAQ>
-      <GetStarted :lang="lang"></GetStarted>
+      <GetStarted
+        v-if="env.VUE_APP_SITE_MODE == 'digital'"
+        :lang="lang"
+      ></GetStarted>
+      <Calendly
+        class="bottom-calendly"
+        :lang="lang"
+        v-if="env.VUE_APP_SITE_MODE == 'analogue'"
+      ></Calendly>
       <Footer :lang="lang"></Footer>
       <!-- <News1 :lang="lang"></News1>
       <News :lang="lang" :isPreview="true"></News>-->
@@ -38,6 +46,7 @@ import Knowledge from "./new-components/Knowledge";
 import Partners from "./new-components/Partners";
 import FAQ from "./new-components/FAQ";
 import GetStarted from "./new-components/GetStarted";
+import Calendly from "./new-components/Calendly";
 import Footer from "./layout/New-Footer.vue";
 // import News1 from "./news/News1";
 // import News from "./news/News.vue";
@@ -69,6 +78,7 @@ export default {
     Partners,
     FAQ,
     GetStarted,
+    Calendly,
     Footer,
     // News1,
     // News,
@@ -86,6 +96,7 @@ export default {
       // database: {},
       // tools: {},
       lang: "",
+      env: {},
     };
   },
   watch: {
@@ -95,6 +106,7 @@ export default {
   },
   created() {
     this.init();
+    this.env = process.env;
   },
   methods: {
     init() {

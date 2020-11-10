@@ -15,8 +15,15 @@
         <button v-if="hidden" @click="showUploadFile = true">
           Upload File
         </button>
-        <p>Already having an account?</p>
-        <button @click="showAuth = true" v-if="!isLogged">Log in</button>
+        <p v-if="env.VUE_APP_SITE_MODE == 'digital'">
+          Already having an account?
+        </p>
+        <button
+          @click="showAuth = true"
+          v-if="!isLogged && env.VUE_APP_SITE_MODE == 'digital'"
+        >
+          Log in
+        </button>
         <button v-if="isLogged" @click="logout()">Logout</button>
       </div>
       <Assets v-if="showUploadFile" @close="showUploadFile = false"></Assets>
@@ -39,13 +46,17 @@
           </router-link>
           <router-link
             :to="`/${$router.history.current.params.lang}/profilelogin`"
-            v-if="!isLogged"
+            v-if="!isLogged && env.VUE_APP_SITE_MODE == 'digital'"
           >
             <button class="start-buttons" @click="showAuth = true">
               {{ button }}
               <img src="/assets/arrow-right-white.png" />
             </button>
           </router-link>
+          <Calendly
+            :lang="lang"
+            v-if="env.VUE_APP_SITE_MODE == 'analogue'"
+          ></Calendly>
         </div>
       </div>
     </div>
@@ -55,12 +66,14 @@
 <script>
 import Authorization from "../sections/Authorization";
 import Assets from "../Assets";
+import Calendly from "../new-components/Calendly";
 import header from "js-yaml-loader!../../../content/nl/general/header.yaml";
 import headerEn from "js-yaml-loader!../../../content/en/general/header.yaml";
 export default {
   components: {
     Authorization,
     Assets,
+    Calendly,
   },
   data() {
     return {
@@ -73,6 +86,7 @@ export default {
       showUploadFile: false,
       isLogged: false,
       hidden: false,
+      env: {},
     };
   },
   props: {
@@ -80,6 +94,7 @@ export default {
   },
   mounted() {
     this.init();
+    this.env = process.env;
   },
   watch: {
     lang() {
