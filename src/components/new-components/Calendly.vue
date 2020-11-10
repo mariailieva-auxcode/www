@@ -4,6 +4,7 @@
       {{ title }}
     </p>
     <div class="calendly-contact">
+      <img class="icon" src="/assets/calendly.svg" />
       <p>{{ contact }}</p>
       <a :href="url"
         ><button><img src="/assets/arrow-right-white.png" /></button
@@ -88,7 +89,7 @@ export default {
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     background-color: white;
     width: 370px;
@@ -96,6 +97,13 @@ export default {
     margin: 0 auto;
     border-radius: 10px;
     margin-bottom: 20px;
+    img {
+      &.icon {
+        width: 28px;
+        margin-right: 25px;
+        margin-left: 35px;
+      }
+    }
     p {
       margin: 0;
       color: #9597ac;
