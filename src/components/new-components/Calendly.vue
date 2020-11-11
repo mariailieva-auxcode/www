@@ -1,17 +1,19 @@
 <template>
   <div class="calendly">
     <p class="title">
-      {{ title }}
+      {{ calendly.title }}
     </p>
     <div class="calendly-contact">
-      <img class="icon" src="/assets/calendly.svg" />
-      <p>{{ contact }}</p>
-      <a :href="url"
-        ><button><img src="/assets/arrow-right-white.png" /></button
-      ></a>
+      <a :href="calendly.url" target="_blank">
+        <img class="icon" src="/assets/calendly.svg" />
+        <p>{{ calendly.contact }}</p>
+        <div class="green-button-arrow">
+          <img src="/assets/arrow-right-white.png" />
+        </div>
+      </a>
     </div>
     <p class="description">
-      {{ description }}
+      {{ calendly.description }}
     </p>
   </div>
 </template>
@@ -23,10 +25,7 @@ export default {
   name: "Calendly",
   data() {
     return {
-      title: "",
-      contact: "",
-      url: "",
-      description: "",
+      calendly: {},
     };
   },
   props: {
@@ -44,10 +43,7 @@ export default {
     init() {
       this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? calendlyEn : calendly;
-      this.title = data["calendly-title"];
-      this.contact = data["calendly-contact"];
-      this.url = data["calendly-url"];
-      this.description = data["calendly-description"];
+      this.calendly = data.calendly;
     },
   },
 };
@@ -83,13 +79,18 @@ export default {
     }
     .calendly-contact {
       box-shadow: 0px 6px 30px #1d226f1a;
+      width: 370px;
+      margin: auto;
+      border-radius: 10px;
     }
   }
-  .calendly-contact {
+  .calendly-contact > a {
+    &:hover {
+      text-decoration: none;
+    }
     position: relative;
     display: flex;
     flex-direction: row;
-    // justify-content: center;
     align-items: center;
     background-color: white;
     width: 370px;
@@ -109,18 +110,19 @@ export default {
       color: #9597ac;
       font-size: 14px;
     }
-    a {
+    .green-button-arrow {
+      justify-content: center;
+      align-items: center;
+      display: flex;
       position: absolute;
       right: -1px;
-      button {
-        border-radius: 10px;
-        background-color: #55b364;
-        box-shadow: 0px 6px 30px #33333326;
-        width: 93px;
-        height: 60px;
-        border: none;
-        outline: none;
-      }
+      border-radius: 10px;
+      background-color: #55b364;
+      box-shadow: 0px 6px 30px #33333326;
+      width: 93px;
+      height: 60px;
+      border: none;
+      outline: none;
     }
   }
 }
