@@ -60,7 +60,7 @@ export default {
       this.getAndRenderPolygons();
     },
     getCadasters() {
-      if (!this.showCadasters || this.map._zoom < 18) return;
+      if (!this.showCadasters || this.map._zoom < 20) return;
 
       const bounds = this.map.getBounds();
       const NORTH = bounds._northEast.lat;
@@ -234,7 +234,7 @@ export default {
       }
     },
     displayCadasters() {
-      if (this.map._zoom < 18) return;
+      if (this.map._zoom < 20) return;
       let lastCadaster;
       this.cadasters.forEach((cadaster) => {
         if (cadaster.rendered) return;
@@ -251,7 +251,7 @@ export default {
       });
     },
     toggleCadasters(showCadasters) {
-      if (showCadasters && this.map._zoom >= 18) this.displayCadasters();
+      if (showCadasters && this.map._zoom >= 20) this.displayCadasters();
       else {
         Object.values(this.map._layers).forEach((layer) => {
           if (layer.options.isCadaster) {
