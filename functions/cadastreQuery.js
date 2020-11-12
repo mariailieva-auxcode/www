@@ -46,7 +46,7 @@ exports.handler = async (event, context, callback) => {
   const radius
   = turf
   . distance(NW, SE, { units: 'kilometers' })
-  / 1000
+  * 1000
   / 2
 
   const center
@@ -73,7 +73,7 @@ exports.handler = async (event, context, callback) => {
       . find(
          {
            polygon:
-             { $near :
+             { $nearSphere :
                 {
                   $geometry: {
                       type: "Point",
