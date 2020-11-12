@@ -31,6 +31,7 @@ export default {
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
       maxZoom: 20,
       displayedCadasters: false,
+      cadasters: [],
     };
   },
   methods: {
@@ -39,10 +40,7 @@ export default {
         center: this.center,
         zoom: this.zoom,
       });
-      // this.map.on("moveend", () => {
-      //   let bounds = this.map.getBounds();
-      //   console.log(bounds);
-      // });
+      this.map.on("moveend", this.getCadasters);
       this.map.on("pm:create", this.addSite);
       this.map.on("zoom", this.onZoomChange);
       L.control.scale().addTo(this.map);
@@ -62,16 +60,30 @@ export default {
       this.getAndRenderPolygons();
     },
     getCadasters() {
-      axios.get(`/.netlify/functions/perceels`).then((response) => {
-        let cadasters = response.data.data;
-        cadasters.forEach((cadaster) => {
-          cadaster.data.geometry.coordinates[0] = cadaster.data.geometry.coordinates[0].map(
-            (cord) => cord.reverse()
+      if (!this.showCadasters || this.map._zoom < 18) return;
+
+      const bounds = this.map.getBounds();
+      const NORTH = bounds._northEast.lat;
+      const EAST = bounds._northEast.lng;
+      const SOUTH = bounds._southWest.lat;
+      const WEST = bounds._southWest.lng;
+
+      axios
+        .get(
+          `/.netlify/functions/cadastreQueryBox?north=${NORTH}&east=${EAST}&south=${SOUTH}&west=${WEST}`
+        )
+        .then((response) => {
+          const cadasters = response.data;
+          cadasters.forEach((cadaster) => {
+            cadaster.polygon.coordinates[0].forEach((cord) => cord.reverse());
+          });
+          this.cadasters = [...this.cadasters, ...cadasters];
+          this.cadasters = this.cadasters.filter(
+            (cada, index) =>
+              this.cadasters.findIndex((cad) => cad._id == cada._id) == index
           );
+          this.displayCadasters();
         });
-        this.cadasters = cadasters;
-        this.displayCadasters();
-      });
     },
     cadasterPopup(e, id) {
       let popup = L.popup();
@@ -222,34 +234,31 @@ export default {
       }
     },
     displayCadasters() {
-      if (this.map._zoom < 19 || !this.cadasters || this.displayedCadasters)
-        return;
+      if (this.map._zoom < 18) return;
       let lastCadaster;
       this.cadasters.forEach((cadaster) => {
-        let id = `${cadaster.data.properties.sectie}-${cadaster.data.properties.perceelnummer}-${cadaster.data.properties["kadastraleAanduiding|TypeKadastraleAanduiding|aKRKadastraleGemeenteCode|AKRKadastraleGemeenteCode|waarde"]}`;
-        const latLngs = cadaster.data.geometry.coordinates[0];
+        if (cadaster.rendered) return;
+        let id = cadaster.id;
+        const latLngs = cadaster.polygon.coordinates[0];
         lastCadaster = L.polygon(latLngs, {
           color: "purple",
         });
 
         lastCadaster.addTo(this.map);
         lastCadaster.options.isCadaster = true;
+        cadaster.rendered = true;
         lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
       });
-      this.displayedCadasters = true;
     },
     toggleCadasters(showCadasters) {
-      if (!this.cadasters && showCadasters) this.getCadasters();
+      if (showCadasters && this.map._zoom >= 18) this.displayCadasters();
       else {
-        if (showCadasters && this.map._zoom >= 19) this.displayCadasters();
-        else {
-          Object.values(this.map._layers).forEach((layer) => {
-            if (layer.options.isCadaster) {
-              this.map.removeLayer(layer);
-              this.displayedCadasters = false;
-            }
-          });
-        }
+        Object.values(this.map._layers).forEach((layer) => {
+          if (layer.options.isCadaster) {
+            this.map.removeLayer(layer);
+            this.cadasters.forEach((cad) => (cad.rendered = false));
+          }
+        });
       }
     },
   },
@@ -259,6 +268,7 @@ export default {
       this.map.addLayer(isSattelite ? this.satteliteView : this.grayView);
     },
     showCadasters(showCadasters) {
+      if (showCadasters) this.getCadasters();
       this.toggleCadasters(showCadasters);
     },
   },

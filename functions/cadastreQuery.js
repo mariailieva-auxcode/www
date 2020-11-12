@@ -1,9 +1,9 @@
 require('dotenv').config()
 
 const RESPONSE_HEADERS = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
 }
 
 const turf = require('@turf/turf')
@@ -26,8 +26,8 @@ exports.handler = async (event, context, callback) => {
   //convert to number
   const NORTH = +event.queryStringParameters.north
   const SOUTH = +event.queryStringParameters.south
-  const EAST  = +event.queryStringParameters.east
-  const WEST  = +event.queryStringParameters.west
+  const EAST = +event.queryStringParameters.east
+  const WEST = +event.queryStringParameters.west
 
   if (!NORTH || !SOUTH || !EAST || !WEST) {
     return {
@@ -39,8 +39,8 @@ exports.handler = async (event, context, callback) => {
     }
   }
 
-  const NW = turf.point([ WEST, NORTH ])
-  const SE = turf.point([ EAST, SOUTH ])
+  const NW = turf.point([WEST, NORTH])
+  const SE = turf.point([EAST, SOUTH])
 
   // in metres
   const radius
@@ -51,19 +51,19 @@ exports.handler = async (event, context, callback) => {
 
   const center
     = turf
-    . center(turf.featureCollection([NW, SE]))
-    . geometry
-    . coordinates
+      .center(turf.featureCollection([NW, SE]))
+      .geometry
+      .coordinates
 
   try {
-    
+
 
     const client
       = new MongoClient(
         url,
         { useNewUrlParser: true, useUnifiedTopology: true }
       );
-    
+
     await client.connect()
 
     const cursor
@@ -93,12 +93,14 @@ exports.handler = async (event, context, callback) => {
 
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify(result)
+      body: JSON.stringify(result),
+      headers: RESPONSE_HEADERS
     })
   } catch (error) {
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify({ error })
+      body: JSON.stringify({ error }),
+      headers: RESPONSE_HEADERS
     })
   }
 }
