@@ -3,6 +3,7 @@ node_modules
 /dist
 /functions/*.js
 !functions/cadastreQuery.js
+!functions/cadastreQueryBox.js
 # local env files
 .env.local
 .env.*.local
