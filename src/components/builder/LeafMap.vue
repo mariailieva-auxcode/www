@@ -70,7 +70,7 @@ export default {
 
       axios
         .get(
-          `/.netlify/functions/cadastreQueryBox?north=${NORTH}&east=${EAST}&south=${SOUTH}&west=${WEST}`
+          `/.netlify/functions/cadastreQuery?north=${NORTH}&east=${EAST}&south=${SOUTH}&west=${WEST}`
         )
         .then((response) => {
           const cadasters = response.data;
