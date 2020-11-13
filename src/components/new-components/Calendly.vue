@@ -69,6 +69,7 @@ export default {
       color: black;
       &.title {
         font-size: 25px;
+        font-weight: 700;
       }
       &.description {
         font-size: 12px;
