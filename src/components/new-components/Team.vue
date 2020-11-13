@@ -2,7 +2,7 @@
   <div class="container" id="team">
     <div class="team">
       <div class="col-12">
-        <h1>{{title}}</h1>
+        <h1>{{ title }}</h1>
       </div>
       <div class="row team-content">
         <div
@@ -12,11 +12,15 @@
         >
           <div class="style-card">
             <img class="member-image" :src="member.image" />
-            <h2>{{member.name}}</h2>
-            <p>{{member.information}}</p>
+            <h2>{{ member.name }}</h2>
+            <p>{{ member.information }}</p>
             <div class="row links">
-              <img class="first-link" src="/assets/envelope.svg" />
-              <img src="/assets/linkedin.svg" />
+              <a :href="`mailto:${member.email}`"
+                ><img class="first-link" src="/assets/envelope.svg" />
+              </a>
+              <a :href="member.linkedin" target="_blank"
+                ><img src="/assets/linkedin.svg"
+              /></a>
             </div>
           </div>
         </div>
@@ -24,7 +28,11 @@
           <div class="style-card">
             <img class="member-image" src="/assets/team-you.png" />
             <h2>You?</h2>
-            <p>We are always looking for smart, passionate individuals hungry to make a difference and speed up the energy transition. If you think you have what it takes get in touch with us!</p>
+            <p>
+              We are always looking for smart, passionate individuals hungry to
+              make a difference and speed up the energy transition. If you think
+              you have what it takes get in touch with us!
+            </p>
             <button>Contact us</button>
           </div>
         </div>
