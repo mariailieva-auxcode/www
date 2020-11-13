@@ -33,3 +33,8 @@ links:
   - label: Title of useful link
     description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.
     link: www.herewehavelinofpost.com
+blog: 
+  - image: /assets/blog.svg
+    title: Coming soon!
+    description: We are collection useful information related to renewable energy which we believe will be in help for everyone interested the topic. 
+  
