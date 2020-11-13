@@ -1,5 +1,5 @@
 <template>
-  <div class="new-navigation" :class="{'not-inverted' : notInverted}">
+  <div class="new-navigation" :class="{ 'not-inverted': notInverted }">
     <div class="row ml">
       <div class="col-6 logo">
         <router-link :to="`/${$router.history.current.params.lang}`">
@@ -10,14 +10,14 @@
         <router-link :to="getURL('en')">
           <button>
             <div class="row">
-              <p>{{nlLang}}</p>
+              <p>{{ nlLang }}</p>
             </div>
           </button>
         </router-link>
         <router-link :to="getURL('nl')">
           <button>
             <div class="row">
-              <p class="en">{{enLang}}</p>
+              <p class="en">{{ enLang }}</p>
             </div>
           </button>
         </router-link>
@@ -27,44 +27,67 @@
       <router-link
         :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#header'"
-        :class="{'inverted': areInverted[0]}"
+        :class="{ inverted: areInverted[0] }"
       >
         <div class="active-green-line"></div>
-        {{components[0]}}
+        {{ components[0] }}
       </router-link>
       <router-link
         to="#renewable-energy"
         v-scroll-to="'#renewable-energy'"
-        :class="{'inverted': areInverted[1]}"
+        :class="{ inverted: areInverted[1] }"
       >
         <div class="active-green-line"></div>
-        {{components[1]}}
+        {{ components[1] }}
       </router-link>
-      <router-link to="#helper" v-scroll-to="'#helper'" :class="{'inverted': areInverted[2]}">
+      <router-link
+        to="#helper"
+        v-scroll-to="'#helper'"
+        :class="{ inverted: areInverted[2] }"
+      >
         <div class="active-green-line"></div>
-        {{components[2]}}
+        {{ components[2] }}
       </router-link>
-      <router-link to="#process" v-scroll-to="'#process'" :class="{'inverted': areInverted[3]}">
+      <router-link
+        to="#process"
+        v-scroll-to="'#process'"
+        :class="{ inverted: areInverted[3] }"
+      >
         <div class="active-green-line"></div>
-        {{components[3]}}
+        {{ components[3] }}
       </router-link>
-      <router-link to="#our-story" v-scroll-to="'#our-story'" :class="{'inverted': areInverted[4]}">
+      <router-link
+        to="#our-story"
+        v-scroll-to="'#our-story'"
+        :class="{ inverted: areInverted[4] }"
+      >
         <div class="active-green-line"></div>
-        {{components[4]}}
+        {{ components[4] }}
       </router-link>
-      <router-link to="#team" v-scroll-to="'#team'" :class="{'inverted': areInverted[5]}">
+      <router-link
+        to="#team"
+        v-scroll-to="'#team'"
+        :class="{ inverted: areInverted[5] }"
+      >
         <div class="active-green-line"></div>
-        {{components[5]}}
+        {{ components[5] }}
       </router-link>
-      <router-link to="#FAQ" v-scroll-to="'#FAQ'" :class="{'inverted': areInverted[6]}">
+      <router-link
+        to="#FAQ"
+        v-scroll-to="'#FAQ'"
+        :class="{ inverted: areInverted[6] }"
+      >
         <div class="active-green-line"></div>
-        {{components[6]}}
+        {{ components[6] }}
       </router-link>
     </div>
 
     <!-- mobile !-->
     <div class="ml-responsive">
-      <button class="show-navigation-button" @click="showNavigation = !showNavigation">
+      <button
+        class="show-navigation-button"
+        @click="showNavigation = !showNavigation"
+      >
         <div v-if="!showNavigation">
           <img src="/assets/mobile-navigation.svg" />
         </div>
@@ -72,88 +95,103 @@
           <img src="/assets/close.svg" />
         </div>
       </button>
-      <div class="navigation-mobile-mode" :class="{'burger-navigation' : showNavigation == true}">
+      <div
+        class="navigation-mobile-mode"
+        :class="{ 'burger-navigation': showNavigation == true }"
+      >
         <router-link :to="`/${$router.history.current.params.lang}`">
           <img :src="logo" />
         </router-link>
-        <div class="login">
+        <div v-if="env.VUE_APP_SITE_MODE == 'digital'" class="login">
           <p>Already having an account?</p>
           <button>Log in</button>
         </div>
         <div class="mobile-navigation">
-          <button @click="showNavigation=false">
+          <button @click="showNavigation = false">
             <router-link
               :to="`/${$router.history.current.params.lang}`"
               v-scroll-to="'#header'"
-              :class="{'inverted': areInverted[0]}"
+              :class="{ inverted: areInverted[0] }"
             >
               <div class="active-green-line"></div>
-              {{components[0]}}
+              {{ components[0] }}
             </router-link>
           </button>
-          <button @click="showNavigation=false">
+          <button @click="showNavigation = false">
             <router-link
               to="#renewable-energy"
               v-scroll-to="'#renewable-energy'"
-              :class="{'inverted': areInverted[1]}"
+              :class="{ inverted: areInverted[1] }"
             >
               <div class="active-green-line"></div>
-              {{components[1]}}
+              {{ components[1] }}
             </router-link>
           </button>
-          <button @click="showNavigation=false">
-            <router-link to="#helper" v-scroll-to="'#helper'" :class="{'inverted': areInverted[2]}">
+          <button @click="showNavigation = false">
+            <router-link
+              to="#helper"
+              v-scroll-to="'#helper'"
+              :class="{ inverted: areInverted[2] }"
+            >
               <div class="active-green-line"></div>
-              {{components[2]}}
+              {{ components[2] }}
             </router-link>
           </button>
-          <button @click="showNavigation=false">
+          <button @click="showNavigation = false">
             <router-link
               to="#process"
               v-scroll-to="'#process'"
-              :class="{'inverted': areInverted[3]}"
+              :class="{ inverted: areInverted[3] }"
             >
               <div class="active-green-line"></div>
-              {{components[3]}}
+              {{ components[3] }}
             </router-link>
           </button>
-          <button @click="showNavigation=false">
+          <button @click="showNavigation = false">
             <router-link
               to="#our-story"
               v-scroll-to="'#our-story'"
-              :class="{'inverted': areInverted[4]}"
+              :class="{ inverted: areInverted[4] }"
             >
               <div class="active-green-line"></div>
-              {{components[4]}}
+              {{ components[4] }}
             </router-link>
           </button>
-          <button @click="showNavigation=false">
-            <router-link to="#team" v-scroll-to="'#team'" :class="{'inverted': areInverted[5]}">
+          <button @click="showNavigation = false">
+            <router-link
+              to="#team"
+              v-scroll-to="'#team'"
+              :class="{ inverted: areInverted[5] }"
+            >
               <div class="active-green-line"></div>
-              {{components[5]}}
+              {{ components[5] }}
             </router-link>
           </button>
-          <button @click="showNavigation=false">
-            <router-link to="#FAQ" v-scroll-to="'#FAQ'" :class="{'inverted': areInverted[6]}">
+          <button @click="showNavigation = false">
+            <router-link
+              to="#FAQ"
+              v-scroll-to="'#FAQ'"
+              :class="{ inverted: areInverted[6] }"
+            >
               <div class="active-green-line"></div>
-              {{components[6]}}
+              {{ components[6] }}
             </router-link>
           </button>
         </div>
         <div class="ml-mobile">
           <router-link :to="getURL('en')">
-            <button @click="showNavigation=false">
+            <button @click="showNavigation = false">
               <div class="active-green-line"></div>
               <div class="row">
-                <p>{{nlLang}}</p>
+                <p>{{ nlLang }}</p>
               </div>
             </button>
           </router-link>
           <router-link :to="getURL('nl')">
-            <button @click="showNavigation=false">
+            <button @click="showNavigation = false">
               <div class="active-green-line"></div>
               <div class="row">
-                <p class="en">{{enLang}}</p>
+                <p class="en">{{ enLang }}</p>
               </div>
             </button>
           </router-link>
@@ -185,6 +223,7 @@ export default {
       headerImageCompare: 479,
       linkPoints: [580, 540, 500, 460, 420, 380, 340], // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
+      env: {},
     };
   },
   props: {
@@ -198,6 +237,7 @@ export default {
   },
   mounted() {
     this.init();
+    this.env = process.env;
   },
   watch: {
     lang() {
