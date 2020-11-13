@@ -1,145 +1,33 @@
 <template>
-  <div class="profile-onboarding">
-    <div v-if="step === 1">
-      <div v-for="(question, index) of firstStep.firstStep" :key="index">
-        <p>{{ question.title }}</p>
+  <div class="profile-onboarding" v-if="data.steps && data.steps[step]">
+        <p>{{ data.steps[step].title }}</p>
         <div class="style">
-          <div class="toggles">
-            <button
-              @click="step++"
-              v-for="(test, i) of question.choices"
+          <div v-if="step !== 6" class="toggles">
+            <button             
+              v-for="(choice, i) of data.steps[step].choices"
               :key="i"
+              :class="{ active: choice.key == answers[step] }"
+              @click="(toggle(choice.key), step++)"
               class="step1choice1 style"
             >
-              {{ test.choice }}
+              {{ choice.text }}
+            </button>
+          </div>
+          <div class="toggles" v-if="step === 6">
+              <button             
+              v-for="(choice, i) of data.steps[step].choices"
+              :key="i"
+              :class="{ active: choice.key == answers[step] }"
+              @click="nextStep()"
+              class="step1choice1 style"
+            >
+            {{ choice.text }}
             </button>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-
-    <div v-if="step === 2">
-      <div v-for="(question, index) of secondStep.secondStep" :key="index">
-        <p>{{ question.title }}</p>
-        <div class="style">
-          <div class="toggles">
-            <button
-              @click="step++"
-              v-for="(test, i) of question.choices"
-              :key="i"
-              class="step1choice1 style"
-            >
-              {{ test.choice }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-
-    <div v-if="step === 3">
-      <div v-for="(question, index) of thirdStep.thirdStep" :key="index">
-        <p>{{ question.title }}</p>
-        <div class="style">
-          <div class="toggles">
-            <button
-              @click="step++"
-              v-for="(test, i) of question.choices"
-              :key="i"
-              class="step1choice1 style"
-            >
-              {{ test.choice }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-
-    <div v-if="step === 4">
-      <div v-for="(question, index) of fourthStep.fourthStep" :key="index">
-        <p>{{ question.title }}</p>
-        <div class="style">
-          <div class="toggles">
-            <button
-              @click="step++"
-              v-for="(test, i) of question.choices"
-              :key="i"
-              class="step1choice1 style"
-            >
-              {{ test.choice }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 5 -->
-
-    <div v-if="step === 5">
-      <div v-for="(question, index) of fifthStep.fifthStep" :key="index">
-        <p>{{ question.title }}</p>
-        <div class="style">
-          <div class="toggles">
-            <button
-              @click="step++"
-              v-for="(test, i) of question.choices"
-              :key="i"
-              class="step1choice1 style"
-            >
-              {{ test.choice }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 6 -->
-
-    <div v-if="step === 6">
-      <div v-for="(question, index) of sixthStep.sixthStep" :key="index">
-        <p>{{ question.title }}</p>
-        <div class="style">
-          <div class="toggles">
-            <button
-              @click="step++"
-              v-for="(test, i) of question.choices"
-              :key="i"
-              class="step1choice1 style"
-            >
-              {{ test.choice }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Step 7 -->
-
-    <div v-if="step === 7">
-      <div v-for="(question, index) of seventhStep.seventhStep" :key="index">
-        <p>{{ question.title }}</p>
-        <div class="style">
-          <div class="toggles">
-            <button
-              v-for="(test, i) of question.choices"
-              :key="i"
-              class="step1choice1 style"
-            >
-              {{ test.choice }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div>
-      <button v-if="step !== 1" @click="step--">back</button>
-      <button v-if="step === 7" @click="nextStep()">Next Step</button>
+      <button v-if="step !== 0" @click="step--">back</button>
+      <button v-if="step === 6" @click="nextStep()">Next Step</button>
     </div>
   </div>
 </template>
@@ -150,14 +38,9 @@ import questionnaire from "js-yaml-loader!../../../content/nl/site-owner/profile
 export default {
   data() {
     return {
-      step: 1,
-      firstStep: {},
-      secondStep: {},
-      thirdStep: {},
-      fourthStep: {},
-      fifthStep: {},
-      sixthStep: {},
-      seventhStep: {},
+      step: 0,
+      data: {steps:{}},
+      answers: [],
     };
   },
   props: {
@@ -172,15 +55,12 @@ export default {
     },
   },
   methods: {
+    toggle(key){
+      this.answers[this.step] = key
+    },
     init() {
-      let data = this.lang === "en" ? questionnaireEn : questionnaire;
-      this.firstStep = data;
-      this.secondStep = data;
-      this.thirdStep = data;
-      this.fourthStep = data;
-      this.fifthStep = data;
-      this.sixthStep = data;
-      this.seventhStep = data;
+      this.data = this.lang === "en" ? questionnaireEn : questionnaire;
+      console.log(this.data)
     },
     nextStep() {
       this.$emit("nextStep");

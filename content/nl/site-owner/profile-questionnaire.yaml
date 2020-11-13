@@ -1,55 +1,78 @@
-firstStep:
+steps:
   - title: Agriculture
-  - choices:
-    - choice: Diary
-    - choice: Livestrock
-    - choice: Crops
-    - choice: Hortery
+    choices:
+      - key: agr_diary  
+        text: Diary 
+      - key: agr_livestock
+        text: Livestrock 
+      - key: agr_crops
+        text: Crops 
+      - key: agr_hortery
+        text: Hortery
 
-secondStep:
   - title: Public
-  - choices:
-    - choice: Infrastructure along roads, rails, verges, tunnels
-    - choice: rooftop public real estate
-    - choice: refuse dumps
-    - choice: parking lots
-    - choice: transportation sites
-    - choice: other
+    choices:
+      - key: pbl_infrstr
+        text: Infrastructure along roads, rails, verges, tunnels
+      - key: pbl_rooftop 
+        text: rooftop public real estate
+      - key: pbl_dumps
+        text: refuse dumps
+      - key: pbl_parlots
+        text: parking lots
+      - key: pbl_transpsites
+        text: transportation sites
+      - key: pbl_other
+        text: other
 
-thirdStep:
+
   - title: Residential
-  - choices:
-    - choice: housing cooperations
-    - choice: private owners
-    - choice: real estate owners project development housing
-    - choice: alternative livings (campsite, recreational etc.)
+    choices:
+      - key: res_cooperation
+        text: housing cooperations
+      - key: res_private_owner
+        text: private owners
+      - key: res_estate_owner
+        text: real estate owners project development housing
+      - key: res_alternatives
+        text: alternative livings (campsite, recreational etc.)
 
-fourthStep:
   - title: Commercial
-  - choices:
-    - choice: Shopping
-    - choice: Business district
-    - choice: Offices
-    - choice: Distribution centers
+    choices:
+      - key: com_shopping
+        text: Shopping
+      - key: com_business_distr
+        text: Business district
+      - key: com_offices
+        text: Offices
+      - key:  com_dist_centers
+        text: Distribution centers
 
-fifthStep:
   - title: Industrial zones
-  - choices:
-    - choice: light industrial (innovation, food, microchips etc.)
-    - choice: heavy industrial zone (bulk, resources, mining)
-    - choice: Seaports Airports
+    choices:
+      - key: indz_light_ind
+        text: light industrial (innovation, food, microchips etc.)
+      - key: indz_heavy_ind
+        text: heavy industrial zone (bulk, resources, mining)
+      - key: indz_ports
+        text: Seaports Airports
 
-sixthStep:
   - title: Nature
-  - choices:
-    - choice: Foresty
-    - choice: Ecological zones
-    - choice: Natural protected zones
-    - choice: recreational zones
+    choices:
+      - key: nat_foresty
+        text: Foresty
+      - key: nat_eco_zones
+        text: Ecological zones
+      - key: nat_prot_zones
+        text: Natural protected zones
+      - key: nat_rec_zones
+        text: recreational zones
 
-seventhStep:
   - title: Water
-  - choices:
-    - choice: Lakes
-    - choice: greenhouse basins
-    - choice: Rivers
+    choices:
+      - key: water_lakes
+        text: Lakes
+      - key: water_gh_basins
+        text: Greenhouse basins
+      - key: water_rivers
+        text: Rivers
