@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content/nl/general/new-partners.yaml";
-import partnersEn from "js-yaml-loader!../../../content/en/general/new-partners.yaml";
+import partners from "@content/nl/general/new-partners.yaml";
+import partnersEn from "@content/en/general/new-partners.yaml";
 export default {
   name: "Partners",
   data() {
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .partners {
   h1 {
     margin-bottom: 50px;

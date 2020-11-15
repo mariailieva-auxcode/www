@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import story from "js-yaml-loader!../../../content/nl/general/story.yaml";
-import storyEn from "js-yaml-loader!../../../content/en/general/story.yaml";
+import story from "@content/nl/general/story.yaml";
+import storyEn from "@content/en/general/story.yaml";
 export default {
   name: "OurStory",
   data() {
     return {
       title: "",
-      headerText: "",
+      headerText: "", 
       description: "",
     };
   },
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .story {
   h1 {
     margin-bottom: 45px;

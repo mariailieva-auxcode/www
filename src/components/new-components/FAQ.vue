@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import faq from "js-yaml-loader!../../../content/nl/general/faq.yaml";
-import faqEn from "js-yaml-loader!../../../content/en/general/faq.yaml";
+import faq from "@content/nl/general/faq.yaml";
+import faqEn from "@content/en/general/faq.yaml";
 export default {
   name: "FAQ",
   data() {
@@ -81,7 +81,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .faq {
   margin: 0 auto;
   width: 90%;

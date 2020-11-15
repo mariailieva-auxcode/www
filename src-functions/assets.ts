@@ -9,7 +9,7 @@ export async function handler(event, _) {
             let body = JSON.parse(event.body)
             assetsService.uploadFile(body.file, body.filename); // put the base64 file as parameter + filename
             return {
-                statusCode: 200,
+                statusCode: 200, // (TODO: m1) put the status codes under api/enums/status-codes.ts as enum and give a proper name to every one of them
                 body: JSON.stringify({}),
                 headers: RESPONSE_HEADERS
             }

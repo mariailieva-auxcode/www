@@ -90,10 +90,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../assets/styles/components/questionnaire.scss";
-@import "../../../assets/styles/questionnaire-mobile.scss";
-@import "../../../assets/styles/main.scss";
-@import "../../../assets/styles/newmain.scss";
+@import "@styles/components/questionnaire.scss";
+@import "@styles/questionnaire-mobile.scss";
+@import "@styles/main.scss";
+@import "@styles/newmain.scss";
 div.so-questionnaire {
   .user-wizard {
     div.step {

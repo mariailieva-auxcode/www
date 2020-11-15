@@ -16,7 +16,7 @@
 
 <script>
 import L from "leaflet";
-import Authorization from "../sections/Authorization";
+import Authorization from "@components/sections/Authorization";
 export default {
   name: "ProfileLogin",
   components: {

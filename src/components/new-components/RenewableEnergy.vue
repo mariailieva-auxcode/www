@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import energy from "js-yaml-loader!../../../content/nl/general/renewable-energy.yaml";
-import energyEn from "js-yaml-loader!../../../content/en/general/renewable-energy.yaml";
+import energy from "@content/nl/general/renewable-energy.yaml";
+import energyEn from "@content/en/general/renewable-energy.yaml";
 export default {
   name: "RenewableEnergy",
   data() {
@@ -87,8 +87,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/new-mobile-mode.scss";
-@import "../../assets/styles/newmain.scss";
+@import "@styles/new-mobile-mode.scss";
+@import "@styles/newmain.scss";
 .renewable-energy {
   .link-style {
     .link {

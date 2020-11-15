@@ -276,9 +276,9 @@
 </template>
 
 <script>
-import LeafMap from "../builder/LeafMap";
+import LeafMap from "@components/builder/LeafMap";
 import VueDragResize from "vue-drag-resize";
-import ProfileOnboarding from "./ProfileOnboarding";
+import ProfileOnboarding from "@components/new-components/ProfileOnboarding";
 export default {
   name: "Profile",
   components: {

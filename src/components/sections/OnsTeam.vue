@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content/nl/general/team.yaml";
-import teamEn from "js-yaml-loader!../../../content/en/general/team.yaml";
-import Title from "../layout/Title";
+import team from "@content/nl/general/team.yaml";
+import teamEn from "@content/en/general/team.yaml";
+import Title from "@components/layout/Title";
 export default {
   components: {
     Title,
@@ -82,7 +82,7 @@ export default {
 
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .team {
   max-width: 80%;
   margin-bottom: 150px;

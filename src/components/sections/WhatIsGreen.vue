@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import whatIsNl from "js-yaml-loader!../../../content/nl/general/whatis.yaml";
-import whatIsEn from "js-yaml-loader!../../../content/en/general/whatis.yaml";
-import Title from "../layout/Title";
+import whatIsNl from "@content/nl/general/whatis.yaml";
+import whatIsEn from "@content/en/general/whatis.yaml";
+import Title from "@components/layout/Title";
 export default {
   name: "WhatIsGreen",
   components: {
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .what-is-green-phone {
   display: flex;
   align-items: center;

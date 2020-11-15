@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content/nl/general/new-team.yaml";
-import teamEn from "js-yaml-loader!../../../content/en/general/new-team.yaml";
+import team from "@content/nl/general/new-team.yaml";
+import teamEn from "@content/en/general/new-team.yaml";
 export default {
   name: "OurTeam",
   data() {
@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .team {
   .team-content {
     display: flex;

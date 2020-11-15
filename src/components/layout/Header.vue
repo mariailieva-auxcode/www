@@ -64,11 +64,11 @@
 </template>
 
 <script>
-import Authorization from "../sections/Authorization";
-import Assets from "../Assets";
-import Calendly from "../new-components/Calendly";
-import header from "js-yaml-loader!../../../content/nl/general/header.yaml";
-import headerEn from "js-yaml-loader!../../../content/en/general/header.yaml";
+import Authorization from "@components/sections/Authorization";
+import Assets from "@components/Assets";
+import Calendly from "@components/new-components/Calendly";
+import header from "@content/nl/general/header.yaml";
+import headerEn from "@content/en/general/header.yaml";
 export default {
   components: {
     Authorization,
@@ -129,9 +129,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
-@import "../../assets/styles/newmain.scss";
-@import "../../assets/styles/components/header.scss";
+@import "@styles/main.scss";
+@import "@styles/newmain.scss";
+@import "@styles/components/header.scss";
 .header {
   height: 100%;
   width: 100vw;
