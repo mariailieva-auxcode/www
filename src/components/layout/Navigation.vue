@@ -225,8 +225,8 @@
 </template>
 
 <script>
-import navigation from "js-yaml-loader!../../../content/nl/navigation.yaml";
-import navigationEn from "js-yaml-loader!../../../content/en/navigation.yaml";
+import navigation from "@content/nl/navigation.yaml";
+import navigationEn from "@content/en/navigation.yaml";
 
 export default {
   name: "Navigation",
@@ -282,7 +282,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .menu {
   background: white;
   position: fixed;

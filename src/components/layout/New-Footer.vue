@@ -44,8 +44,8 @@
 
 
 <script>
-import footerNl from "js-yaml-loader!../../../content/nl/footer.yaml";
-import footerEn from "js-yaml-loader!../../../content/en/footer.yaml";
+import footerNl from "@content/nl/footer.yaml";
+import footerEn from "@content/en/footer.yaml";
 export default {
   name: "Footer",
   data() {
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .footer {
   padding-bottom: 60px;
   .container {

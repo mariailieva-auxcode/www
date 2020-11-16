@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import questionnaire from "js-yaml-loader!../../../../content/nl/project-developer/questionnaire.yaml";
-import questionnaireEn from "js-yaml-loader!../../../../content/en/project-developer/questionnaire.yaml";
-import axios from "../../../axios";
+import questionnaire from "@content/nl/project-developer/questionnaire.yaml";
+import questionnaireEn from "@content/en/project-developer/questionnaire.yaml";
+import axios from "@axios";
 export default {
   data() {
     return {

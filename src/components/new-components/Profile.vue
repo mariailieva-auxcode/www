@@ -296,10 +296,10 @@
 </template>
 
 <script>
-import LeafMap from "../builder/LeafMap";
+import LeafMap from "@components/builder/LeafMap";
 import VueDragResize from "vue-drag-resize";
-import ProfileOnboarding from "./ProfileOnboarding";
-import axios from "axios";
+import ProfileOnboarding from "@components/new-components/ProfileOnboarding";
+import axios from "@axios";
 export default {
   name: "Profile",
   components: {

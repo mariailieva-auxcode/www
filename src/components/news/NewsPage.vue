@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import HeaderNews from "../layout/news/HeaderNews";
-import News from "./News";
+import HeaderNews from "@components/layout/news/HeaderNews";
+import News from "@components/news/News";
 export default {
   name: "News Page",
   components: {

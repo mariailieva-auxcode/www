@@ -61,12 +61,12 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content/nl/news.yaml";
-import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
-import Search from "./Search";
-import MainNews from "./MainNews";
-import SecondaryNews from "./SecondaryNews";
-import Title from "../layout/Title";
+import info from "@content/nl/news.yaml";
+import infoEn from "@content/en/news.yaml";
+import Search from "@components/news/Search";
+import MainNews from "@components/news/MainNews";
+import SecondaryNews from "@components/news/SecondaryNews";
+import Title from "@components/layout/Title";
 
 export default {
   name: "News",
@@ -222,7 +222,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 div.container {
   padding-right: 0;
   padding-left: 0;

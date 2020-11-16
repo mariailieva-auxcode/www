@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import calendly from "js-yaml-loader!../../../content/nl/general/header.yaml";
-import calendlyEn from "js-yaml-loader!../../../content/en/general/header.yaml";
+import calendly from "@content/nl/general/header.yaml";
+import calendlyEn from "@content/en/general/header.yaml";
 export default {
   name: "Calendly",
   data() {

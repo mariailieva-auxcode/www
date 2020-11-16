@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import headerNews from "js-yaml-loader!../../../../content/nl/news.yaml";
-import headerNewsEn from "js-yaml-loader!../../../../content/en/news.yaml";
+import headerNews from "@content/nl/news.yaml";
+import headerNewsEn from "@content/en/news.yaml";
 export default {
   name: "NewsHeader",
   data() {
@@ -49,8 +49,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../assets/styles/main.scss";
-@import "../../../assets/styles/components/header.scss";
+@import "@styles/main.scss";
+@import "@styles/components/header.scss";
 .news-header {
   .header-content {
     color: white;

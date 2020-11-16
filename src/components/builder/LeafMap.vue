@@ -7,7 +7,7 @@ import L from "leaflet";
 import "@geoman-io/leaflet-geoman-free";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 import * as turf from "@turf/turf";
-import axios from "../../axios";
+import axios from "@axios";
 export default {
   name: "LeafMap",
   mounted() {
