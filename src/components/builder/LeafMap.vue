@@ -19,8 +19,6 @@ export default {
   },
   data() {
     return {
-      zoom: 10,
-      center: [52.3628434, 4.8443875],
       url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
       url2:
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
@@ -34,13 +32,22 @@ export default {
       cadasters: [],
     };
   },
+  created() {
+    const loggedUser = JSON.parse(localStorage.loggedUser);
+
+    this.zoom = loggedUser.zoomLevel;
+    this.center = loggedUser.mapCoordinates;
+  },
   methods: {
     createMap() {
       this.map = L.map("map", {
         center: this.center,
         zoom: this.zoom,
       });
-      this.map.on("moveend", this.getCadasters);
+      this.map.on("moveend", (e) => {
+        this.getCadasters();
+        this.triggerZoomAndCoordinates(e);
+      });
       this.map.on("pm:create", this.addSite);
       this.map.on("zoom", this.onZoomChange);
       L.control.scale().addTo(this.map);
@@ -162,7 +169,7 @@ export default {
             }
           });
           if (!lastSite) return;
-          this.map.fitBounds(lastSite.getBounds());
+          // this.map.fitBounds(lastSite.getBounds());
         });
     },
     popupMenu(e, id) {
@@ -260,6 +267,13 @@ export default {
           }
         });
       }
+    },
+    triggerZoomAndCoordinates() {
+      const userInfo = {
+        mapCoordinates: [this.map.getCenter().lat, this.map.getCenter().lng],
+        zoomLevel: this.map._zoom,
+      };
+      this.$emit("updateUserStatus", userInfo);
     },
   },
   watch: {
