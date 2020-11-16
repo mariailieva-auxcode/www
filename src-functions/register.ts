@@ -14,7 +14,7 @@ export async function handler(event, _) {
             const client = new faunadb.Client({
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
-            const data: User | SiteOwner = JSON.parse(event.body);
+            const data: (User | SiteOwner) & { password: string } = JSON.parse(event.body);
 
             data.password = passwordHash.generate(data.password);
             /* configure faunaDB Client with our secret */
@@ -27,14 +27,13 @@ export async function handler(event, _) {
             await client.query(q.Create(q.Collection('owners'), {
                 data: owner
             }))
-            let user = new User(email, password, ownerId)
+            let user = new User({ email, ownerId })
             await client.query(q.Create(q.Collection('users'), {
-                data: user
+                data: { ...user, password }
             }))
-            delete data.password;
             return {
                 statusCode: 200,
-                body: JSON.stringify(data),
+                body: JSON.stringify(user),
                 headers: RESPONSE_HEADERS
             }
         } else {
