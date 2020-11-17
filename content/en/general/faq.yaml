@@ -5,10 +5,8 @@ questions:
     questions:
     - subquestion: Why should I build solar and/or wind?
       answer: There are several benefits to using your property you’re not currently using for building a renewable energy project. Firstly, it can provide a steady stream of income for up to 25 years. Most renewable energy developers choose to maintain the renewable energy project on your property at their expense and if you opt for complete unburdening there will be no hassle for you once the system has been built. This way, you can generate money from your otherwise unprofitable land or unused roof space. If you choose to build a solar farm, they don’t emit any pollution or make any noise so there will be no problems for you or your neighbours.
-    - subquestion:
-    
-In addition, renewable energy projects like these are one of the key steps to fighting climate change and bringing about the energy transition. You can play your part by opting to use your land to help build one. They can help you support your local economy by creating jobs.
-
+    - subquestion: Some Question
+      answer: In addition, renewable energy projects like these are one of the key steps to fighting climate change and bringing about the energy transition. You can play your part by opting to use your land to help build one. They can help you support your local economy by creating jobs.
   - questionName: Renewable energy projects
   - questionName: Your Site
   - questionName: Working with project developers
