@@ -1,6 +1,8 @@
 title: Frequently Asked Questions (FAQ)
   - questionName: Begrippen
 questions:
+    - subquestion:
+      answer:
   - questionName: Algemen vragen
     questions:
     - subquestion: Waarom zou ik een zon- of windproject bouwen?
@@ -45,23 +47,23 @@ questions:
     answer: Solar panels and wind turbines are very unlikely to cause damage to your site. Once operational, solar farms and wind turbines do not produce or use any hazardous materials or chemicals that could harm your site. During construction, the impacts on the land will be minimal and mostly temporary (aside from the wind turbine foundations). Most impacts here come from the construction equipment and vehicles.    
   - questionName: Werken met projectontwikkelaars 
     questions: 
-    - subquestion: How is profit made for both me and the project developer?
+    - subquestion: Hoe wordt winst gegenereerd voor u en de projectontwikkelaar? 
       answer: Most project developers have a long-term vision, allowing them to create a business model that works in the interests of both parties. After all, the relationships between site owners and developers have to last up to 25 years. Site owners therefore receive many benefits: social, financial and promotional. 
-    - subquestion: What if I want to own the renewable energy project myself?
+    - subquestion: Wat als ik eigenaar wil worden van het energie project?
       answer: Some project developers also up their services for those who want to develop and invest in their own project on their land. This could involve subsidy applications, landscape studies, advice on financing and installation/construction. It is still possible to find these developers through Green Atlas by selecting the ‘partial unburdening’ option.
-    - subquestion: What if the solar developer runs into financial problems and can’t finish the project?
+    - subquestion: Wat als de projectontwikkelaar in financiele problemen komt? 
       answer: This is a very rare occurrence. However, if a developer can’t finish construction then a contract with the developer, usually backed by a major financial institution, will cover the expense of restoring your site to its original state.
-    - subquestion: Who is involved in the management of a project?
+    - subquestion: Wie is betrokken tijdens het beheer en uitvoering van het zonne-energie project?
       answer: Solar farms require very little maintenance so there is no need for permanent on-site personnel. Often the project developers will install monitoring systems on your project to allow the maintenance team to monitor it remotely. In addition, a general maintenance check will usually be carried out once a year.
-    - subquestion: What happens when the contract ends?
+    - subquestion: Wat gebeurd er als de contractduur afgelopen is? 
       answer: When the contract between you and the developer has ended, there are two options. You can extend the contract for another period of time and continue using the services of the developer. Or, you can choose to take over responsibility for the renewable energy system. In both cases, you can still enjoy the full benefits of having renewable energy on your site. 
-  - questionName: How to registrate and log in
+  - questionName: Hoe registreer en log ik in?
     questions:
-    - subquestion: How do I registrate
+    - subquestion: Hoe registreer ik een account?
     answer:
-    - subquestion: How do I login
+    - subquestion: Hoe log ik in?
     answer:
-  - questionName: User Manual
+  - questionName: Gebruikers handleiding
     questions:
     - subquestion: 
     answer:
