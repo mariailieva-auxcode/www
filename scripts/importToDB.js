@@ -15,9 +15,9 @@ async function go(len) {
     console.log(`im at ${i}th possition`)
     try {
       await client.query(
-        		  q.Create(
-        				q.Collection("region_fulldata"), { data: regdata[i]  }
-        			)
+            q.Create(
+             q.Collection("region_fulldata"), { data: regdata[i]  }
+            )
       )
     } catch (err) {
       console.log(`OPPS: ${err}`)
