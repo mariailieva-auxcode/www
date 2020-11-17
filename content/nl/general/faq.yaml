@@ -1,6 +1,7 @@
 title: Frequently Asked Questions (FAQ)
-  - questionName: Begrippen
 questions:
+  - questionName: Begrippen
+    questions:
     - subquestion:
       answer:
   - questionName: Algemen vragen
@@ -17,34 +18,34 @@ questions:
       answer: Green Atlas’ services are 100% free for all site owners, including the match-making service and our available database. Our income comes from the “finder’s fee” solar developers provide for every new site that is matched through Green Atlas. Because of this, we are constantly working hard for you to make the process as easy as possible.
   - questionName: Wind en zonne-energie projecten
     questions:
-     - subquestion: Hoelang duren wind en zonne-energie projecten? 
-       answer: Most renewable energy projects last around 25 years. For solar farms, this is usually more, sometimes up to 30 years. For wind turbines, the lifetime is often between 20-25 years.
-     - subquestion: Hoe lang duurt het om wind en zonne projecten te bouwen? 
-       answer: This depends a lot on the size of the renewable energy project. Larger solar parks usually take between 12-16 weeks to build. However, much of this is legal aspects, such as waiting for the permits, and the final connection to the grid. Physically constructing a solar park can take as little as 3 weeks if everything runs smoothly. For wind turbines however, the physical construction process can take 2 or 3 months. A lot of time is needed to set the foundations of the wind turbine, resulting in a longer construction time.
-     - subquestion: Hoeveel zonnepanelen en/of windturbines passen er op mijn land? 
-       answer: A good rule of thumb is that approximately 4 solar panels can be installed per 9 m² flat roof. One solar panel is about 1.6m2 but also there needs to be space in between the panels to avoid shading. The orientation of the panel relative to the roof can also affect this number as well. For wind turbines, the answer isn't so much a question of how much area your wind turbine needs but of how far away your wind turbine should be from other obstacles. In this case, it is usually best to install your wind turbine at least 150 meters away from any obstacles nearby, including buildings and trees.
-     - subquestion: Hoe subsidieert de overheid hernieuwbare energie?
-       answer: The construction of renewable energy projects involves high initial costs. Because of this, the generation of renewable energy is subsidized by the government through the SDE + subsidy. The SDE + subsidy aims that by 2022, 14% of all energy used in the Netherlands will be generated sustainably. In 2018, just 7.4% of its energy came from these sources, significantly below many other countries in Europe. As wind and solar technologies become more efficient and are used on a larger scale, the costs of installing new projects are decreasing. As with other major energy projects, the initial costs are greater than the government can afford. That is why individuals and companies are encouraged to make these investments. However, the government chooses to provide incentives through the netting scheme for small consumers with solar panels and the SDE + subsidy for large solar and wind parks. These schemes ensure that project owners receive a good price for the electricity they generate, reducing the risk for investors and allowing developers to make constant returns. 
-     - subquestion: Hoe kan ik mijn eigen geproduceerde energie gebruiken/consumeren? 
-       answer: Depending on the size of the renewable energy project, it is possible for you to consume some of the energy you produce before sending it to the grid. This is especially attractive for solar systems built on rooftops. The SDE+ subsidy will even pay you some additional revenue for consuming the electricity yourself if you have a solar system.
-     - subquestion: Zijn wind- en zonneprojecten veilig? 
-       answer: Without a doubt. All project developers are dedicated to ensuring the project developed on your land obeys all government regulations and standards. Renewable energy technologies are designed to be safe for anyone who interacts with them. There is no need to worry.
-     - subquestion: Wat is een  kWp en MWh? 
-       answer: kWp is the abbreviation for kilowatt peak (1,000 watt peak). This is the maximum power that a solar panel or a system can produce. MWh is the abbreviation for Mega watt-hour. This is 1,000 x 1 kilowatt-hour (kWh).    
+    - subquestion: Hoelang duren wind en zonne-energie projecten? 
+      answer: Most renewable energy projects last around 25 years. For solar farms, this is usually more, sometimes up to 30 years. For wind turbines, the lifetime is often between 20-25 years.
+    - subquestion: Hoe lang duurt het om wind en zonne projecten te bouwen? 
+      answer: This depends a lot on the size of the renewable energy project. Larger solar parks usually take between 12-16 weeks to build. However, much of this is legal aspects, such as waiting for the permits, and the final connection to the grid. Physically constructing a solar park can take as little as 3 weeks if everything runs smoothly. For wind turbines however, the physical construction process can take 2 or 3 months. A lot of time is needed to set the foundations of the wind turbine, resulting in a longer construction time.
+    - subquestion: Hoeveel zonnepanelen en/of windturbines passen er op mijn land? 
+      answer: A good rule of thumb is that approximately 4 solar panels can be installed per 9 m² flat roof. One solar panel is about 1.6m2 but also there needs to be space in between the panels to avoid shading. The orientation of the panel relative to the roof can also affect this number as well. For wind turbines, the answer isn't so much a question of how much area your wind turbine needs but of how far away your wind turbine should be from other obstacles. In this case, it is usually best to install your wind turbine at least 150 meters away from any obstacles nearby, including buildings and trees.
+    - subquestion: Hoe subsidieert de overheid hernieuwbare energie?
+      answer: The construction of renewable energy projects involves high initial costs. Because of this, the generation of renewable energy is subsidized by the government through the SDE + subsidy. The SDE + subsidy aims that by 2022, 14% of all energy used in the Netherlands will be generated sustainably. In 2018, just 7.4% of its energy came from these sources, significantly below many other countries in Europe. As wind and solar technologies become more efficient and are used on a larger scale, the costs of installing new projects are decreasing. As with other major energy projects, the initial costs are greater than the government can afford. That is why individuals and companies are encouraged to make these investments. However, the government chooses to provide incentives through the netting scheme for small consumers with solar panels and the SDE + subsidy for large solar and wind parks. These schemes ensure that project owners receive a good price for the electricity they generate, reducing the risk for investors and allowing developers to make constant returns. 
+    - subquestion: Hoe kan ik mijn eigen geproduceerde energie gebruiken/consumeren? 
+      answer: Depending on the size of the renewable energy project, it is possible for you to consume some of the energy you produce before sending it to the grid. This is especially attractive for solar systems built on rooftops. The SDE+ subsidy will even pay you some additional revenue for consuming the electricity yourself if you have a solar system.
+    - subquestion: Zijn wind- en zonneprojecten veilig? 
+      answer: Without a doubt. All project developers are dedicated to ensuring the project developed on your land obeys all government regulations and standards. Renewable energy technologies are designed to be safe for anyone who interacts with them. There is no need to worry.
+    - subquestion: Wat is een  kWp en MWh? 
+      answer: kWp is the abbreviation for kilowatt peak (1,000 watt peak). This is the maximum power that a solar panel or a system can produce. MWh is the abbreviation for Mega watt-hour. This is 1,000 x 1 kilowatt-hour (kWh).    
   - questionName: Uw Land
     questions:
     - subquestion: Wat is het meest geschikte land voor zonneparken? 
-    answer: The ideal land to build a solar farm is land that can no longer be used for agricultural use. It should also be close to a road, to allow the construction team to reach the land easily, and close to the grid. Building excess cabling and grid connections can add a lot of extra costs to the project and is not attractive to developers.
+      answer: The ideal land to build a solar farm is land that can no longer be used for agricultural use. It should also be close to a road, to allow the construction team to reach the land easily, and close to the grid. Building excess cabling and grid connections can add a lot of extra costs to the project and is not attractive to developers.
     - subquestion: Wat is het meest geschikte dak voor zonnepanelen installaties? 
-    answer: Most roofs are suitable for building solar parks, as long as it is large enough for the developer’s needs. It should be strong enough to hold a large amount of weight and not be too shaded (for example by other buildings). 
+      answer: Most roofs are suitable for building solar parks, as long as it is large enough for the developer’s needs. It should be strong enough to hold a large amount of weight and not be too shaded (for example by other buildings). 
     - subquestion: Wat is het meest geschikte gebied voor windturbines? 
-    answer: Luckily, you don’t need an entire field to build a wind turbine. Your land can be used for anything else as long as there is enough space between the wind turbine and any other obstacles. Ideally, the land should be close to a grid connection to minimise additional grid costs.  
-     - subquestion: Wat is het verschil tussen leasing en verkopen van mijn land/dak voor hernieuwbare energie?
-    answer: When you lease your site, whether this be land or roof, this means you still have ownership of the site but the project developers will take control of the development process. This means you will receive a continuous, annual income from the developer for the use of your land. If you choose to sell your land, however, then the site will no longer be legally yours and it cannot be returned at the end of the project lifetime.
-     - subquestion: Hoeveel geld kan ik verdienen door mijn land en/of dak te verhuren? 
-    answer: This depends on your location, land in Flevoland is much more expensive than in Groningen for example. 
-     - subquestion: Kan ik schade krijgen als ik wind en/of zonne energie installeer op mijn land? 
-    answer: Solar panels and wind turbines are very unlikely to cause damage to your site. Once operational, solar farms and wind turbines do not produce or use any hazardous materials or chemicals that could harm your site. During construction, the impacts on the land will be minimal and mostly temporary (aside from the wind turbine foundations). Most impacts here come from the construction equipment and vehicles.    
+      answer: Luckily, you don’t need an entire field to build a wind turbine. Your land can be used for anything else as long as there is enough space between the wind turbine and any other obstacles. Ideally, the land should be close to a grid connection to minimise additional grid costs.  
+    - subquestion: Wat is het verschil tussen leasing en verkopen van mijn land/dak voor hernieuwbare energie?
+      answer: When you lease your site, whether this be land or roof, this means you still have ownership of the site but the project developers will take control of the development process. This means you will receive a continuous, annual income from the developer for the use of your land. If you choose to sell your land, however, then the site will no longer be legally yours and it cannot be returned at the end of the project lifetime.
+    - subquestion: Hoeveel geld kan ik verdienen door mijn land en/of dak te verhuren? 
+      answer: This depends on your location, land in Flevoland is much more expensive than in Groningen for example. 
+    - subquestion: Kan ik schade krijgen als ik wind en/of zonne energie installeer op mijn land? 
+      answer: Solar panels and wind turbines are very unlikely to cause damage to your site. Once operational, solar farms and wind turbines do not produce or use any hazardous materials or chemicals that could harm your site. During construction, the impacts on the land will be minimal and mostly temporary (aside from the wind turbine foundations). Most impacts here come from the construction equipment and vehicles.    
   - questionName: Werken met projectontwikkelaars 
     questions: 
     - subquestion: Hoe wordt winst gegenereerd voor u en de projectontwikkelaar? 
@@ -60,26 +61,26 @@ questions:
   - questionName: Hoe registreer en log ik in?
     questions:
     - subquestion: Hoe registreer ik een account?
-    answer:
+      answer:
     - subquestion: Hoe log ik in?
-    answer:
+      answer:
   - questionName: Gebruikers handleiding
-    questions:
+      questions:
     - subquestion: 
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
     
