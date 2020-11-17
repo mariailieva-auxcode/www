@@ -1,6 +1,6 @@
 title: Frequently Asked Questions (FAQ)
-questions:
   - questionName: Definitions
+questions:
   - questionName: General Questions
     questions:
     - subquestion: Why should I build solar and/or wind?
@@ -28,21 +28,57 @@ questions:
      - subquestion: Are renewable energy projects safe?
        answer: Without a doubt. All project developers are dedicated to ensuring the project developed on your land obeys all government regulations and standards. Renewable energy technologies are designed to be safe for anyone who interacts with them. There is no need to worry.
      - subquestion: What is a kWp and MWh? 
-       answer: kWp is the abbreviation for kilowatt peak (1,000 watt peak). This is the maximum power that a solar panel or a system can produce. MWh is the abbreviation for Mega watt-hour. This is 1,000 x 1 kilowatt-hour (kWh). 
-       
+       answer: kWp is the abbreviation for kilowatt peak (1,000 watt peak). This is the maximum power that a solar panel or a system can produce. MWh is the abbreviation for Mega watt-hour. This is 1,000 x 1 kilowatt-hour (kWh).    
   - questionName: Your Site
     questions:
-    - subquestion:
-    answer:
+    - subquestion: What is ideal land for a solar farm?
+    answer: The ideal land to build a solar farm is land that can no longer be used for agricultural use. It should also be close to a road, to allow the construction team to reach the land easily, and close to the grid. Building excess cabling and grid connections can add a lot of extra costs to the project and is not attractive to developers.
+    - subquestion: What is the ideal roof for a solar system?
+    answer: Most roofs are suitable for building solar parks, as long as it is large enough for the developer’s needs. It should be strong enough to hold a large amount of weight and not be too shaded (for example by other buildings). 
+    - subquestion: What is the ideal area for developing wind?
+    answer: Luckily, you don’t need an entire field to build a wind turbine. Your land can be used for anything else as long as there is enough space between the wind turbine and any other obstacles. Ideally, the land should be close to a grid connection to minimise additional grid costs.  
+     - subquestion: What is the difference for me between leasing and selling my land/roof?
+    answer: When you lease your site, whether this be land or roof, this means you still have ownership of the site but the project developers will take control of the development process. This means you will receive a continuous, annual income from the developer for the use of your land. If you choose to sell your land, however, then the site will no longer be legally yours and it cannot be returned at the end of the project lifetime.
+     - subquestion: How much money can I make from leasing my land?
+    answer: This depends on your location, land in Flevoland is much more expensive than in Groningen for example. 
+     - subquestion: Will my land be affected by building solar and/or wind?
+    answer: Solar panels and wind turbines are very unlikely to cause damage to your site. Once operational, solar farms and wind turbines do not produce or use any hazardous materials or chemicals that could harm your site. During construction, the impacts on the land will be minimal and mostly temporary (aside from the wind turbine foundations). Most impacts here come from the construction equipment and vehicles.    
   - questionName: Working with project developers
     questions: 
     - subquestion: How is profit made for both me and the project developer?
-      answer: n/a
+      answer: Most project developers have a long-term vision, allowing them to create a business model that works in the interests of both parties. After all, the relationships between site owners and developers have to last up to 25 years. Site owners therefore receive many benefits: social, financial and promotional. 
     - subquestion: What if I want to own the renewable energy project myself?
       answer: Some project developers also up their services for those who want to develop and invest in their own project on their land. This could involve subsidy applications, landscape studies, advice on financing and installation/construction. It is still possible to find these developers through Green Atlas by selecting the ‘partial unburdening’ option.
     - subquestion: What if the solar developer runs into financial problems and can’t finish the project?
-      answer: n/a
+      answer: This is a very rare occurrence. However, if a developer can’t finish construction then a contract with the developer, usually backed by a major financial institution, will cover the expense of restoring your site to its original state.
     - subquestion: Who is involved in the management of a project?
-      answer: n/a
+      answer: Solar farms require very little maintenance so there is no need for permanent on-site personnel. Often the project developers will install monitoring systems on your project to allow the maintenance team to monitor it remotely. In addition, a general maintenance check will usually be carried out once a year.
     - subquestion: What happens when the contract ends?
-      answer: n/a
+      answer: When the contract between you and the developer has ended, there are two options. You can extend the contract for another period of time and continue using the services of the developer. Or, you can choose to take over responsibility for the renewable energy system. In both cases, you can still enjoy the full benefits of having renewable energy on your site. 
+  - questionName: How to registrate and log in
+    questions:
+    - subquestion: How do I registrate
+    answer:
+    - subquestion: How do I login
+    answer:
+  - questionName: User Manual
+    questions:
+    - subquestion: 
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    
