@@ -74,12 +74,12 @@ questions:
       answer:
   - questionName: Gebruikers handleiding
     questions:
-    - subquestion: 
-      answer:
-    - subquestion:
-      answer:
-    - subquestion:
-      answer:
+    - subquestion: 1
+      answer: 2
+    - subquestion: 3
+      answer: 4
+    - subquestion: 5
+      answer: 6
     - subquestion:
       answer:
     - subquestion:
