@@ -1,3 +1,4 @@
+// (TODO: m1)This file should be moved to assets/components/ folder 
 .profile {
     height: 100vh;
     overflow-y: hidden;
@@ -17,6 +18,10 @@
 
         button {
             display: flex;
+
+            &.cadaster-active {
+                background-color: green;
+            }
         }
     }
 
@@ -28,6 +33,7 @@
         height: 35px;
         background-color: white;
         z-index: 401;
+
         p {
             margin: 0 30px;
         }
@@ -35,11 +41,13 @@
         .finished {
             background-color: #7fff00 !important;
         }
-        .inProgress{
+
+        .inProgress {
             background-color: #f7ee75;
         }
-        .default{
-            background-color:  #ffffff;
+
+        .default {
+            background-color: #ffffff;
         }
     }
 

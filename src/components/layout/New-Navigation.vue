@@ -202,8 +202,8 @@
 </template>
 
 <script>
-import navigation from "js-yaml-loader!../../../content/nl/general/navigation.yaml";
-import navigationEn from "js-yaml-loader!../../../content/en/general/navigation.yaml";
+import navigation from "@content/nl/general/navigation.yaml";
+import navigationEn from "@content/en/general/navigation.yaml";
 export default {
   name: "NewNavigation",
   computed: {
@@ -287,8 +287,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/new-mobile-mode.scss";
-@import "../../assets/styles/mobile-modes/components/navigation-mobile.scss";
+@import "@styles/new-mobile-mode.scss";
+@import "@styles/mobile-modes/components/navigation-mobile.scss";
 .new-navigation {
   background: none;
   width: 170px;

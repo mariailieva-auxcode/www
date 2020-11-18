@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import footerNl from "js-yaml-loader!../../../content/nl/footer.yaml";
-import footerEn from "js-yaml-loader!../../../content/en/footer.yaml";
+import footerNl from "@content/nl/footer.yaml";
+import footerEn from "@content/en/footer.yaml";
 export default {
   name: "Footer",
   data() {
@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .footer {
   margin-top: 50px;
   background-color: #26272e;

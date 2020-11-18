@@ -33,7 +33,12 @@
         Click
       </button>
       <div v-if="renderLayerPopup == true">
-        <button @click="showCadasters = !showCadasters">Kadaster</button>
+        <button
+          @click="showCadasters = !showCadasters"
+          :class="showCadasters ? 'cadaster-active' : 'cadaster-disactive'"
+        >
+          Kadaster
+        </button>
       </div>
     </div>
     <button
@@ -55,25 +60,33 @@
       :showCadasters="showCadasters"
       @changedSavingCalc="changeSavingCalc($event)"
       @getPolygonArea="PolygonAreaOutput($event)"
+      @updateUserStatus="updateUserStatus($event)"
     ></LeafMap>
     <div class="output-box">
       <VueDragResize
         @clicked="toggleActivated('output')"
         :class="activatedOutputBox ? 'active' : 'inactive'"
         class="freeArea output-box"
-        v-bind:style="height2"
         :isResizable="false"
         :w="width2"
         :x="left2"
         :y="top2"
+        :style="{ height: 'unset' }"
+        @dragstop="
+          top2 = $event.top;
+          left2 = $event.left;
+          updateUserStatus();
+        "
       >
-        <div
-          class="row header-input-box"
-          @dblclick="minimizeOutputBox = !minimizeOutputBox"
-        >
+        <div class="row header-input-box">
           <div class="col-6 left-header">Advantages</div>
           <div class="col-6 right-header">
-            <button @click="minimizeOutputBox = !minimizeOutputBox">
+            <button
+              @click="
+                minimizeOutputBox = !minimizeOutputBox;
+                updateUserStatus();
+              "
+            >
               <div v-if="!minimizeOutputBox">▼</div>
               <div v-if="minimizeOutputBox">▲</div>
             </button>
@@ -124,23 +137,30 @@
     </div>
     <div class="input-box">
       <VueDragResize
-        v-bind:style="height"
         :class="activatedInputBox ? 'active' : 'inactive'"
         :isResizable="false"
         class="freeArea input-box"
         :w="width"
         :x="left"
         :y="top"
+        :style="{ height: 'unset' }"
         @activated="onActivated()"
         @clicked="toggleActivated('input')"
+        @dragstop="
+          top = $event.top;
+          left = $event.left;
+          updateUserStatus();
+        "
       >
-        <div
-          class="row header-input-box"
-          @dblclick="minimizeInputBox = !minimizeInputBox"
-        >
+        <div class="row header-input-box">
           <div class="col-6 left-header">Site Information</div>
           <div class="col-6 right-header">
-            <button @click="minimizeInputBox = !minimizeInputBox">
+            <button
+              @click="
+                minimizeInputBox = !minimizeInputBox;
+                updateUserStatus();
+              "
+            >
               <div v-if="!minimizeInputBox">▼</div>
               <div v-if="minimizeInputBox">▲</div>
             </button>
@@ -276,9 +296,10 @@
 </template>
 
 <script>
-import LeafMap from "../builder/LeafMap";
+import LeafMap from "@components/builder/LeafMap";
 import VueDragResize from "vue-drag-resize";
-import ProfileOnboarding from "./ProfileOnboarding";
+import ProfileOnboarding from "@components/new-components/ProfileOnboarding";
+import axios from "@axios";
 export default {
   name: "Profile",
   components: {
@@ -291,19 +312,7 @@ export default {
       lang: "",
       isSatteliteView: false,
       width: Number(370),
-      height: {
-        minimizeInputBox: false,
-        height: Number(53),
-      },
-      top: Number(40),
-      left: Number(100),
       width2: Number(380),
-      height2: {
-        minimizeOutputBox: false,
-        height: Number(53),
-      },
-      top2: Number(100),
-      left2: Number(1000),
       width3: Number(300),
       height3: Number(400),
       top3: Number(100),
@@ -320,8 +329,8 @@ export default {
       production: 0,
       preventedCO: 0,
       polygonArea: "",
-      minimizeInputBox: false,
-      minimizeOutputBox: false,
+      minimizeInputBox: undefined,
+      minimizeOutputBox: undefined,
       activatedInputBox: false,
       activatedOutputBox: false,
       activatedDescriptionBox: false,
@@ -334,6 +343,16 @@ export default {
       finishedStep4: "0",
     };
   },
+  created() {
+    const loggedUser = JSON.parse(localStorage.loggedUser);
+
+    this.top = loggedUser.siteBoxCoordinates.top;
+    this.left = loggedUser.siteBoxCoordinates.left;
+    this.top2 = loggedUser.resultBoxCoordinates.top;
+    this.left2 = loggedUser.resultBoxCoordinates.left;
+    this.minimizeInputBox = !loggedUser.siteBoxCoordinates.active;
+    this.minimizeOutputBox = !loggedUser.resultBoxCoordinates.active;
+  },
   mounted() {
     this.init();
   },
@@ -345,6 +364,33 @@ export default {
   methods: {
     init() {
       this.lang = this.$router.history.current.params.lang;
+    },
+    updateUserStatus(mapInfo) {
+      const loggedUser = JSON.parse(localStorage.loggedUser);
+
+      loggedUser.resultBoxCoordinates = {
+        top: this.top2,
+        left: this.left2,
+        active: !this.minimizeOutputBox,
+      };
+      loggedUser.siteBoxCoordinates = {
+        top: this.top,
+        left: this.left,
+        active: !this.minimizeInputBox,
+      };
+      if (mapInfo) {
+        loggedUser.mapCoordinates = mapInfo.mapCoordinates;
+        loggedUser.zoomLevel = mapInfo.zoomLevel;
+      }
+
+      delete loggedUser.token;
+
+      axios.put("/.netlify/functions/userInfo", loggedUser).then(({ data }) => {
+        localStorage.loggedUser = JSON.stringify({
+          ...data.data,
+          token: localStorage.token,
+        });
+      });
     },
     onActivated() {
       this.$refs["input"].focus();

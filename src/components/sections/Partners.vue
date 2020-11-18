@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content/nl/general/partners.yaml";
-import partnersEn from "js-yaml-loader!../../../content/en/general/partners.yaml";
-import Title from "../layout/Title";
+import partners from "@content/nl/general/partners.yaml";
+import partnersEn from "@content/en/general/partners.yaml";
+import Title from "@components/layout/Title";
 export default {
   name: "Partners",
   components: {
@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .partners-title {
   margin-left: 20%;
 }

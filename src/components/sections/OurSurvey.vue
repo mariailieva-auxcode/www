@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import survey from "js-yaml-loader!../../../content/nl/general/survey.yaml";
-import surveyEn from "js-yaml-loader!../../../content/en/general/survey.yaml";
-import Title from "../layout/Title";
+import survey from "@content/nl/general/survey.yaml";
+import surveyEn from "@content/en/general/survey.yaml";
+import Title from "@components/layout/Title";
 export default {
   name: "Survey",
   components: {
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .survey {
   margin-top: 160px;
 }

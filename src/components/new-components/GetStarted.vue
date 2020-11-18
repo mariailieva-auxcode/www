@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import getStarted from "js-yaml-loader!../../../content/nl/general/get-started.yaml";
-import getStartedEn from "js-yaml-loader!../../../content/en/general/get-started.yaml";
+import getStarted from "@content/nl/general/get-started.yaml";
+import getStartedEn from "@content/en/general/get-started.yaml";
 export default {
   name: "GetStarted",
   data() {
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .get-started {
   margin-bottom: 150px;
   h1 {

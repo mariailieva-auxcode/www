@@ -57,8 +57,8 @@
   </div>
 </template>
 <script>
-import questionnaire from "js-yaml-loader!../../../content/nl/site-owner/questionnaire.yaml";
-import questionnaireEn from "js-yaml-loader!../../../content/en/site-owner/questionnaire.yaml";
+import questionnaire from "@content/nl/site-owner/questionnaire.yaml";
+import questionnaireEn from "@content/en/site-owner/questionnaire.yaml";
 export default {
   data() {
     return {
@@ -94,8 +94,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/questionnaire-mobile.scss";
-@import "../../assets/styles/main.scss";
+@import "@styles/questionnaire-mobile.scss";
+@import "@styles/main.scss";
 .table-wizard {
   box-shadow: 0px 6px 30px #1d226f0d;
   padding: 15px 45px 30px;

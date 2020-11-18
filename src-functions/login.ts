@@ -1,8 +1,8 @@
 import { RESPONSE_HEADERS } from './api/constants/responseHeaders';
 import faunadb from 'faunadb'
 import passwordHash from 'password-hash';
-import { User } from './api/interfaces/user.interface';
 import jwt from 'jsonwebtoken';
+import { User } from '../common/models/user.model';
 
 const q = faunadb.query;
 
@@ -16,8 +16,7 @@ export async function handler(event, _) {
                 secret: process.env.VUE_APP_FAUNA_SECRET
             })
 
-            console.log(event)
-            const body: User = JSON.parse(event.body)
+            const body: User & { password: string } = JSON.parse(event.body)
             return client.query(q.Map(
                 q.Paginate(q.Documents(q.Collection('users'))),
                 q.Lambda(x => q.Get(x))
@@ -28,11 +27,11 @@ export async function handler(event, _) {
                     if (user) {
                         // if (passwordHash.verify(body.password, user.data.password)) {
                         const token = jwt.sign(user.data, 'secret');
-                        delete user.data.password;
+                        const loggedUser = new User(user.data);
                         return {
                             statusCode: 200,
                             headers: RESPONSE_HEADERS,
-                            body: JSON.stringify({ ...user.data, token }),
+                            body: JSON.stringify({ ...loggedUser, token }),
                         }
                     } else {
                         return {

@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import process from "js-yaml-loader!../../../content/nl/general/process.yaml";
-import processEn from "js-yaml-loader!../../../content/en/general/process.yaml";
+import process from "@content/nl/general/process.yaml";
+import processEn from "@content/en/general/process.yaml";
 export default {
   name: "Process",
   data() {
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .process {
   .comming-soon {
     position: relative;

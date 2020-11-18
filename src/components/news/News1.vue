@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import info from "js-yaml-loader!../../../content/nl/news.yaml";
-import infoEn from "js-yaml-loader!../../../content/en/news.yaml";
-import Title from "../layout/Title";
+import info from "@content/nl/news.yaml";
+import infoEn from "@content/en/news.yaml";
+import Title from "@components/layout/Title";
 export default {
   components: {
     Title,
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .container-fluid {
   margin-bottom: 75px;
   .news-text {

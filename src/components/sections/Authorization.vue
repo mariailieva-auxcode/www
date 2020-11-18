@@ -37,9 +37,9 @@
   </div>
 </template>
 <script>
-import Login from "../sections/Login";
-import SignUp from "../sections/SignUp";
-import axios from "../../axios";
+import Login from "@components/sections/Login";
+import SignUp from "@components/sections/SignUp";
+import axios from "@axios";
 export default {
   components: {
     Login,
@@ -84,7 +84,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .authorization {
   .modal-overlay {
     background: #000000 0% 0% no-repeat padding-box;

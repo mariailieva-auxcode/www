@@ -83,8 +83,8 @@
 </template>
 
 <script>
-import articles from "js-yaml-loader!../../../content/nl/general/knowledge.yaml";
-import articlesEn from "js-yaml-loader!../../../content/en/general/knowledge.yaml";
+import articles from "@content/nl/general/knowledge.yaml";
+import articlesEn from "@content/en/general/knowledge.yaml";
 export default {
   name: "Knowledge",
   data() {
@@ -125,7 +125,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
-@import "../../assets/styles/components/knowledge-center.scss";
-@import "../../assets/styles/new-mobile-mode.scss";
+@import "@styles/newmain.scss";
+@import "@styles/components/knowledge-center.scss";
+@import "@styles/new-mobile-mode.scss";
 </style>

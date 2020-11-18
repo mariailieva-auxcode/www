@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import NewNavigation from "../New-Navigation";
-import UserWizard from "../../sections/UserWizard";
-import TableWizard from "../../sections/TableWizard";
+import NewNavigation from "@components/layout/New-Navigation";
+import UserWizard from "@components/sections/UserWizard";
+import TableWizard from "@components/sections/TableWizard";
 export default {
   components: {
     NewNavigation,
@@ -33,8 +33,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../assets/styles/questionnaire-mobile.scss";
-@import "../../../assets/styles/main.scss";
+@import "@styles/questionnaire-mobile.scss";
+@import "@styles/main.scss";
 .so-questionnaire {
   width: 80%;
   margin: 0 auto;

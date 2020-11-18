@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Table from './components/builder/Table'
-import MainPage from "./components/MainPage.vue"
-import Assets from "./components/Assets.vue"
-import ResizingBoxes from "./components/builder/ResizingBoxes.vue"
-import NewsPage from './components/news/NewsPage.vue'
-import PrivacyPolicy from './components/PrivacyPolicy.vue'
-import SiteOwner from './components/SiteOwner.vue'
-import ProjectDeveloper from './components/ProjectDeveloper.vue'
-import Specialists from './components/Specialists'
-import PDquestionnaire from './components/layout/project-developer/PDquestionnaire'
-import SpecialistsQuestionnaire from './components/layout/specialists/SpecialistsQuestionnaire'
-import SOquestionnaire from './components/layout/site-owner/SOquestionnaire'
-import Profile from './components/new-components/Profile'
-import ProfileLogin from './components/new-components/ProfileLogin'
+import Table from '@components/builder/Table'
+import MainPage from "@components/MainPage.vue"
+import Assets from "@components/Assets.vue"
+import ResizingBoxes from "@components/builder/ResizingBoxes.vue"
+import NewsPage from '@components/news/NewsPage.vue'
+import PrivacyPolicy from '@components/PrivacyPolicy.vue'
+import SiteOwner from '@components/SiteOwner.vue'
+import ProjectDeveloper from '@components/ProjectDeveloper.vue'
+import Specialists from '@components/Specialists'
+import PDquestionnaire from '@components/layout/project-developer/PDquestionnaire'
+import SpecialistsQuestionnaire from '@components/layout/specialists/SpecialistsQuestionnaire'
+import SOquestionnaire from '@components/layout/site-owner/SOquestionnaire'
+import Profile from '@components/new-components/Profile'
+import ProfileLogin from '@components/new-components/ProfileLogin'
 
 Vue.use(Router);
 
