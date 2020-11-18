@@ -3,13 +3,13 @@ questions:
   - questionName: Definitions
     questions:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
     - subquestion:
-    answer:
+      answer:
   - questionName: General Questions
     questions:
     - subquestion: Why should I build solar and/or wind?
