@@ -1,6 +1,15 @@
 title: Frequently Asked Questions (FAQ)
 questions:
   - questionName: Definitions
+    questions:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
   - questionName: General Questions
     questions:
     - subquestion: Why should I build solar and/or wind?
