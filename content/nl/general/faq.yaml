@@ -3,7 +3,15 @@ questions:
   - questionName: Begrippen
     questions: 
     - subquestion: belanghebbenden
-      answer: belanghebbenden hebben direct of indirect een belang in uw project. Belanghebbenden zijn o.m. specialisten en/of projectontwikkelaars die uw energie project kunnen realiseren, maar ook omwonenden en/of naaste landeigenaren die willen deelnemen in uw project of mogelijk hinder ervaren. Deze belanghebbenden bepalen deels het succes van het project. 
+      answer: belanghebbenden hebben direct of indirect een belang in uw project. Belanghebbenden zijn o.m. specialisten en/of projectontwikkelaars die uw energie project kunnen realiseren, maar ook omwonenden en/of naaste landeigenaren die willen deelnemen in uw project of mogelijk hinder ervaren. Deze belanghebbenden bepalen deels het succes van het project.
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
+    - subquestion:
+    answer:
   - questionName: Algemen vragen
     questions:
     - subquestion: Waarom zou ik een zon- of windproject bouwen?
