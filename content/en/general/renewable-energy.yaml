@@ -1,20 +1,17 @@
 title: Why produce renewable energy on your site?
-first-card-label: Generate passive income
-first-card-information: By leasing out your under- or unutilized land, water-site or large rooftop to a project developer you can generate stable, passive income for up to 25 years, without up-front investment and negligible involvement. This can range from several hundred euros a month to tens of thousands depending on the size of your location
-first-card-link: Read more
-middle-card-default-text: Connecting the
-middle-card-green-text: energy
-middle-card-after-green-text: transition.
 card:
-  - label: Own, or co-own your own project
-    information: You can choose to set up your own renewable energy installation from scratch or partner with project developers who offer the possibility to become a co-owner of a wind- or solar project on your site. Either as a direct partner or as part of a collective of other site-owners or members of your community. Becoming a co-owner means that - like buying a house - you stand to benefit from future performance such as rising electricity prices and investor appetite but also share some of the costs and risk. Becoming a co-owner also typically allows you to have more of a say in how the project is developed and managed.
-    link: Read more
-  - label: Reduce your CO2 footprint
-    information: The renewable energy that you produce and consume on your site directly cuts CO2 from the atmosphere by replacing electricity generated from carbon-intensive fossil fuels like gas and coal. By generating electricity beyond your own consumption needs you are cutting the CO2 footprint of other businesses and households in the Netherlands too!
-    link: Read more
-  - label: Save on your energy bills
-    information: If you are a business owner and have significant energy costs becoming an independent energy producer will almost certainly save you money and protect against future price rises. The pay-back time of solar panels on a large rooftop or small wind turbine is typically 5 to 7 years. After that you consume your own free renewable electricity for another 10 to 20 years typically worth tens of thousands of Euros without having to worry about rising energy prices
-    link: Read more
-  - label: Speed up the energy transition
-    information: Each new renewable energy project is an integral building block towards reducing our dependence on fossil fuels and protecting our environment against the hazards of climate change. By becoming an independent clean energy producer you are taking a leading role in the energy transition and setting a positive example for your friends, community and network
-    link: Read more
+  - top-box-label: Generate passive income
+    top-box-information: By leasing out your under- or unutilized land, water-site or large rooftop to a project developer you can generate stable, passive income for up to 25 years, without up-front investment and negligible involvement. This can range from several hundred euros a month to tens of thousands depending on the size of your location
+    bottom-box-label: Reduce your CO2 footprint
+    bottom-box-information: The renewable energy that you produce and consume on your site directly cuts CO2 from the atmosphere by replacing electricity generated from carbon-intensive fossil fuels like gas and coal. By generating electricity beyond your own consumption needs you are cutting the CO2 footprint of other businesses and households in the Netherlands too!
+  - first-row: Connecting 
+    second-row: the
+    second-row-green: energy
+    third-row: transition.
+    bottom-box-label: Save on your energy bills
+    bottom-box-information: If you are a business owner and have significant energy costs becoming an independent energy producer will almost certainly save you money and protect against future price rises. The pay-back time of solar panels on a large rooftop or small wind turbine is typically 5 to 7 years. After that you consume your own free renewable electricity for another 10 to 20 years typically worth tens of thousands of Euros without having to worry about rising energy prices
+  - top-box-label: Own, or co-own your own project
+    top-box-information: You can choose to set up your own renewable energy installation from scratch or partner with project developers who offer the possibility to become a co-owner of a wind- or solar project on your site. Either as a direct partner or as part of a collective of other site-owners or members of your community. Becoming a co-owner means that - like buying a house - you stand to benefit from future performance such as rising electricity prices and investor appetite but also share some of the costs and risk. Becoming a co-owner also typically allows you to have more of a say in how the project is developed and managed.
+    bottom-box-label: Speed up the energy transition
+    bottom-box-information: Each new renewable energy project is an integral building block towards reducing our dependence on fossil fuels and protecting our environment against the hazards of climate change. By becoming an independent clean energy producer you are taking a leading role in the energy transition and setting a positive example for your friends, community and network
+ 
