@@ -6,10 +6,10 @@ questions:
       answer: belanghebbenden hebben direct of indirect een belang in uw project. Belanghebbenden zijn o.m. specialisten en/of projectontwikkelaars die uw energie project kunnen realiseren, maar ook omwonenden en/of naaste landeigenaren die willen deelnemen in uw project of mogelijk hinder ervaren. Deze belanghebbenden bepalen deels het succes van het project.
     - subquestion: projectontwikkelaar
     answer: Een projectontwikkelaar helpt u mee uw wind of zonne project te realiseren. Een projectontwikkelaar kan u vanaf begin (initiatie) tot het einde van de levensduur (afschrijving installatie) begeleiden. U kunt ook een gedeelte van het proces zelf realiseren, waarbij de project ontwikkelaar alleen de installatie voor u installeert.
-    - subquestion:
-    answer:
-    - subquestion:
-    answer:
+    - subquestion: energie producent
+    answer: Een bedrijf of huishouden dat energie produceert en teruglevert aan het energienet. Als u of uw bedrijf energie produceert en teruglevert aan het energienet, moet u daar energiebelasting over betalen. 
+    - subquestion: energie prosument
+    answer: Een prosument is een verbruiker die zelf energie produceert met een installatie van een vermogen van maximum 10kW. Bijvoorbeeld via zonnepanelen, wind-of waterkrachtinstallaties of warmtekrachtkoppeling. Sinds 2015 moeten eigenaars van zonnepanelen een netvergoeding of zogenaamde prosumententarief betalen aan de netbeheerder, indien zij gebruik maken van het distributienet. De netvergoeding moet enkel worden betaald indien deze 'prosumenten' (of producerende consumenten) beschikken over een terugdraaiende teller en een installatie van maximaal 10 kW.
     - subquestion:
     answer:
   - questionName: Algemen vragen
