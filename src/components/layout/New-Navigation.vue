@@ -29,7 +29,6 @@
         v-scroll-to="'#header'"
         :class="{
           inverted: areInverted[0],
-          'router-link-exact-active': activatedLink == 0,
         }"
       >
         <div class="active-green-line"></div>
@@ -40,7 +39,6 @@
         v-scroll-to="'#renewable-energy'"
         :class="{
           inverted: areInverted[1],
-          'router-link-exact-active': activatedLink == 1,
         }"
       >
         <div class="active-green-line"></div>
@@ -51,7 +49,6 @@
         v-scroll-to="'#helper'"
         :class="{
           inverted: areInverted[2],
-          'router-link-exact-active': activatedLink == 2,
         }"
       >
         <div class="active-green-line"></div>
@@ -62,7 +59,6 @@
         v-scroll-to="'#process'"
         :class="{
           inverted: areInverted[3],
-          'router-link-exact-active': activatedLink == 3,
         }"
       >
         <div class="active-green-line"></div>
@@ -73,7 +69,6 @@
         v-scroll-to="'#our-story'"
         :class="{
           inverted: areInverted[4],
-          'router-link-exact-active': activatedLink == 4,
         }"
       >
         <div class="active-green-line"></div>
@@ -84,7 +79,6 @@
         v-scroll-to="'#team'"
         :class="{
           inverted: areInverted[5],
-          'router-link-exact-active': activatedLink == 5,
         }"
       >
         <div class="active-green-line"></div>
@@ -95,7 +89,6 @@
         v-scroll-to="'#FAQ'"
         :class="{
           inverted: areInverted[6],
-          'router-link-exact-active': activatedLink == 6,
         }"
       >
         <div class="active-green-line"></div>
@@ -244,8 +237,8 @@ export default {
       headerImageCompare: 479,
       linkPoints: [580, 540, 500, 460, 420, 380, 340], // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
-      activatedLink: 0,
-      sectionElements: [],
+      // activatedLink: 0,
+      // sectionElements: [],
       env: {},
     };
   },
@@ -290,17 +283,17 @@ export default {
         prevLanguage == "nl" ? "en" : "nl"
       );
     },
-    selectorElements() {
-      this.sectionElements = [
-        document.querySelector("div#header"),
-        document.querySelector("div#renewable-energy"),
-        document.querySelector("div#helper"),
-        document.querySelector("div#process"),
-        document.querySelector("div#our-story"),
-        document.querySelector("div#team"),
-        document.querySelector("div#FAQ"),
-      ];
-    },
+    // selectorElements() {
+    //   this.sectionElements = [
+    //     document.querySelector("div#header"),
+    //     document.querySelector("div#renewable-energy"),
+    //     document.querySelector("div#helper"),
+    //     document.querySelector("div#process"),
+    //     document.querySelector("div#our-story"),
+    //     document.querySelector("div#team"),
+    //     document.querySelector("div#FAQ"),
+    //   ];
+    // },
     checkScroll() {
       this.linkPoints.forEach((el, i) => {
         el = this.headerImageHeight - this.headerImageCompare + el;
@@ -310,8 +303,8 @@ export default {
           this.areInverted[i] = false;
         }
       });
-      if (this.sectionElements.length == 0 || !this.sectionElements[0])
-        this.selectorElements();
+      // if (this.sectionElements.length == 0 || !this.sectionElements[0])
+      //   this.selectorElements();
 
       // let query = document.querySelectorAll(".router-link-exact-active");
       // if (query.length > 1) {
@@ -320,10 +313,10 @@ export default {
       //   );
       // }
 
-      this.sectionElements.forEach((element, i) => {
-        if (element?.offsetTop - 100 <= this.getScrollPosition())
-          this.activatedLink = i;
-      });
+      // this.sectionElements.forEach((element, i) => {
+      //   if (element?.offsetTop - 100 <= this.getScrollPosition())
+      //     this.activatedLink = i;
+      // });
 
       this.$forceUpdate();
     },
