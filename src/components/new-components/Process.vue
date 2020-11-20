@@ -16,9 +16,9 @@
           </div>
         </div>
         <div class="macbook-image">
-          <img v-if="hover" :src="firstImage" />
-          <img v-if="hover2" :src="secondImage" />
-          <img v-if="hover3" :src="thirdImage" />
+          <lazy-img class="img" :blur="30" v-if="hover" :src="firstImage" />
+          <lazy-img class="img" :blur="30" v-if="hover2" :src="secondImage" />
+          <lazy-img class="img" :blur="30" v-if="hover3" :src="thirdImage" />
         </div>
       </div>
       <div class="row">
@@ -148,7 +148,7 @@ export default {
     }
   }
   .macbook-image {
-    > .macbook-image > img {
+    > .macbook-image .img {
       width: 745px;
       height: 510px;
     }
