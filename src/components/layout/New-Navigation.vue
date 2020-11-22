@@ -314,7 +314,7 @@ export default {
         this.selectorElements();
 
       this.sectionElements.forEach((element, i) => {
-        if (element?.offsetTop - 100 <= this.getScrollPosition()) {
+        if (element?.offsetTop - 110 <= this.getScrollPosition()) {
           this.activatedLink = i;
         }
       });
