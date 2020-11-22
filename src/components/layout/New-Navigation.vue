@@ -29,66 +29,73 @@
         v-scroll-to="'#header'"
         :class="{
           inverted: areInverted[0],
+          'router-link-exact-active active': activatedLink == 0,
         }"
       >
         <div class="active-green-line"></div>
         {{ components[0] }}
       </router-link>
       <router-link
-        to="#renewable-energy"
+        :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#renewable-energy'"
         :class="{
           inverted: areInverted[1],
+          'router-link-exact-active active': activatedLink == 1,
         }"
       >
         <div class="active-green-line"></div>
         {{ components[1] }}
       </router-link>
       <router-link
-        to="#helper"
+        :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#helper'"
         :class="{
           inverted: areInverted[2],
+          'router-link-exact-active active': activatedLink == 2,
         }"
       >
         <div class="active-green-line"></div>
         {{ components[2] }}
       </router-link>
       <router-link
-        to="#process"
+        :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#process'"
         :class="{
           inverted: areInverted[3],
+          'router-link-exact-active active': activatedLink == 3,
         }"
       >
         <div class="active-green-line"></div>
         {{ components[3] }}
       </router-link>
       <router-link
-        to="#our-story"
+        :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#our-story'"
         :class="{
           inverted: areInverted[4],
+          'router-link-exact-active active': activatedLink == 4,
         }"
       >
         <div class="active-green-line"></div>
         {{ components[4] }}
       </router-link>
       <router-link
-        to="#team"
+        :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#team'"
         :class="{
           inverted: areInverted[5],
+          'router-link-exact-active active': activatedLink == 5,
         }"
       >
         <div class="active-green-line"></div>
         {{ components[5] }}
       </router-link>
       <router-link
-        to="#FAQ"
+        :to="`/${$router.history.current.params.lang}`"
         v-scroll-to="'#FAQ'"
         :class="{
           inverted: areInverted[6],
+          'router-link-exact-active active': activatedLink == 6,
         }"
       >
         <div class="active-green-line"></div>
@@ -237,8 +244,8 @@ export default {
       headerImageCompare: 479,
       linkPoints: [580, 540, 500, 460, 420, 380, 340], // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
-      // activatedLink: 0,
-      // sectionElements: [],
+      activatedLink: 0,
+      sectionElements: [],
       env: {},
     };
   },
@@ -283,17 +290,17 @@ export default {
         prevLanguage == "nl" ? "en" : "nl"
       );
     },
-    // selectorElements() {
-    //   this.sectionElements = [
-    //     document.querySelector("div#header"),
-    //     document.querySelector("div#renewable-energy"),
-    //     document.querySelector("div#helper"),
-    //     document.querySelector("div#process"),
-    //     document.querySelector("div#our-story"),
-    //     document.querySelector("div#team"),
-    //     document.querySelector("div#FAQ"),
-    //   ];
-    // },
+    selectorElements() {
+      this.sectionElements = [
+        document.querySelector("div#header"),
+        document.querySelector("div#renewable-energy"),
+        document.querySelector("div#helper"),
+        document.querySelector("div#process"),
+        document.querySelector("div#our-story"),
+        document.querySelector("div#team"),
+        document.querySelector("div#FAQ"),
+      ];
+    },
     checkScroll() {
       this.linkPoints.forEach((el, i) => {
         el = this.headerImageHeight - this.headerImageCompare + el;
@@ -303,20 +310,14 @@ export default {
           this.areInverted[i] = false;
         }
       });
-      // if (this.sectionElements.length == 0 || !this.sectionElements[0])
-      //   this.selectorElements();
+      if (this.sectionElements.length == 0 || !this.sectionElements[0])
+        this.selectorElements();
 
-      // let query = document.querySelectorAll(".router-link-exact-active");
-      // if (query.length > 1) {
-      //   query.forEach((element) =>
-      //     element.classList.remove("router-link-exact-active")
-      //   );
-      // }
-
-      // this.sectionElements.forEach((element, i) => {
-      //   if (element?.offsetTop - 100 <= this.getScrollPosition())
-      //     this.activatedLink = i;
-      // });
+      this.sectionElements.forEach((element, i) => {
+        if (element?.offsetTop - 100 <= this.getScrollPosition()) {
+          this.activatedLink = i;
+        }
+      });
 
       this.$forceUpdate();
     },
@@ -347,6 +348,7 @@ export default {
       button {
         p {
           color: #65687e;
+          opacity: 1;
         }
       }
     }
@@ -355,9 +357,18 @@ export default {
     display: flex;
     align-items: center;
     margin-top: 20px;
-    .language {
-      .router-link-exact-active > button > div.row > p {
+    .logo {
+      a {
         opacity: 1;
+      }
+    }
+    .language {
+      opacity: 1;
+      a {
+        opacity: 0.6;
+        &.router-link-active {
+          opacity: 1;
+        }
       }
       button {
         border: none;
@@ -366,7 +377,7 @@ export default {
         p {
           margin: 0;
           color: white;
-          opacity: 0.6;
+          opacity: 1;
           font-weight: 700;
           font-size: 12px;
         }
@@ -388,15 +399,24 @@ export default {
       opacity: 0.6;
       outline: none;
       font-size: 14px;
-      &.router-link-exact-active {
+      &.router-link-exact-active.active {
         opacity: 1;
         .active-green-line {
           display: block;
         }
       }
+      .active-green-line {
+        display: none;
+      }
       &.inverted {
         color: #65687e;
+        .active-green-line {
+          display: none;
+        }
       }
+    }
+    &.router-link-exact-active.router-link-active.inverted {
+      opacity: 0.6 !important;
     }
   }
 }

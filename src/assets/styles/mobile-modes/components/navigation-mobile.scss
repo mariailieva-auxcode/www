@@ -56,7 +56,7 @@
                     }
 
                     &.router-link-exact-active {
-                        opacity: 1;
+                        // opacity: 1;
 
                         .active-green-line {
                             display: block;
@@ -80,8 +80,8 @@
             a {
                 opacity: 0.5;
 
-                &.router-link-exact-active {
-                    opacity: 1;
+                &.router-link-exact-active.active {
+                    // opacity: 1;
 
                     .active-green-line {
                         display: block;
@@ -123,12 +123,34 @@
             height: 3px;
         }
 
-        a {
+        a.active {
             .active-green-line {
                 position: absolute;
                 display: none;
                 left: -30px;
                 top: 19px;
+            }
+        }
+    }
+
+    a {
+        &.router-link-exact-active.router-link-active {
+            opacity: 0.6;
+
+            &.active {
+                opacity: 1;
+            }
+
+            .active-green-line {
+                display: none;
+            }
+        }
+
+        &.router-link-exact-active.router-link-active.inverted {
+            opacity: 0.6 !important;
+
+            &.router-link-exact-active.active {
+                opacity: 1 !important;
             }
         }
     }
