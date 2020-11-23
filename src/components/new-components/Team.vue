@@ -2,7 +2,7 @@
   <div class="container" id="team">
     <div class="team">
       <div class="col-12">
-        <h1>{{title}}</h1>
+        <h1>{{ title }}</h1>
       </div>
       <div class="row team-content">
         <div
@@ -12,11 +12,15 @@
         >
           <div class="style-card">
             <img class="member-image" :src="member.image" />
-            <h2>{{member.name}}</h2>
-            <p>{{member.information}}</p>
+            <h2>{{ member.name }}</h2>
+            <p>{{ member.information }}</p>
             <div class="row links">
-              <img class="first-link" src="/assets/envelope.svg" />
-              <img src="/assets/linkedin.svg" />
+              <a :href="`mailto:${member.email}`"
+                ><img class="first-link" src="/assets/envelope.svg" />
+              </a>
+              <a :href="member.linkedin" target="_blank"
+                ><img src="/assets/linkedin.svg"
+              /></a>
             </div>
           </div>
         </div>
@@ -24,7 +28,11 @@
           <div class="style-card">
             <img class="member-image" src="/assets/team-you.png" />
             <h2>You?</h2>
-            <p>We are always looking for smart, passionate individuals hungry to make a difference and speed up the energy transition. If you think you have what it takes get in touch with us!</p>
+            <p>
+              We are always looking for smart, passionate individuals hungry to
+              make a difference and speed up the energy transition. If you think
+              you have what it takes get in touch with us!
+            </p>
             <button>Contact us</button>
           </div>
         </div>
@@ -34,8 +42,8 @@
 </template>
 
 <script>
-import team from "js-yaml-loader!../../../content/nl/general/new-team.yaml";
-import teamEn from "js-yaml-loader!../../../content/en/general/new-team.yaml";
+import team from "@content/nl/general/new-team.yaml";
+import teamEn from "@content/en/general/new-team.yaml";
 export default {
   name: "OurTeam",
   data() {
@@ -66,7 +74,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .team {
   .team-content {
     display: flex;
@@ -82,17 +90,32 @@ export default {
         color: #55b364;
       }
     }
+    @media only screen and (min-width: 2000px) {
+      > .team-info-card {
+        height: 640px !important;
+        > .style-card {
+          padding: 50px 40px 30px !important;
+        }
+      }
+    }
     @media only screen and (max-width: 1200px) {
       .team-labels {
         display: none;
       }
     }
     .team-info-card {
+      height: 710px;
+      margin-bottom: 45px;
       > .style-card {
-        margin-bottom: 45px;
+        display: flex;
+        flex-direction: column;
         padding: 50px 25px 30px;
         min-height: 550px;
         height: 100%;
+
+        img {
+          margin: 0 auto;
+        }
 
         button {
           padding: 14px 69px;
@@ -112,14 +135,20 @@ export default {
         width: 100%;
       }
       h2 {
-        margin: 10px 0 15px;
+        margin: 15px 0 15px;
       }
       .links {
         display: flex;
         justify-content: center;
+        margin-bottom: 0;
         .first-link {
           margin-right: 15px;
         }
+      }
+    }
+    @media only screen and (max-width: 375px) {
+      .team-info-card {
+        height: 800px;
       }
     }
   }

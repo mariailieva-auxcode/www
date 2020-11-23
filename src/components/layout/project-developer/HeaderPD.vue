@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../../content/nl/project-developer/header.yaml";
-import headerEn from "js-yaml-loader!../../../../content/en/project-developer/header.yaml";
+import header from "@content/nl/project-developer/header.yaml";
+import headerEn from "@content/en/project-developer/header.yaml";
 export default {
   data() {
     return {
@@ -62,8 +62,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../assets/styles/main.scss";
-@import "../../../assets/styles/components/header.scss";
+@import "@styles/main.scss";
+@import "@styles/components/header.scss";
 
 .header {
   font-family: $font__IBM;

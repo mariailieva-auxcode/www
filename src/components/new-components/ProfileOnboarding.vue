@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import questionnaireEn from "js-yaml-loader!../../../content/en/site-owner/profile-questionnaire.yaml";
-import questionnaire from "js-yaml-loader!../../../content/nl/site-owner/profile-questionnaire.yaml";
+import questionnaireEn from "@content/en/site-owner/profile-questionnaire.yaml";
+import questionnaire from "@content/nl/site-owner/profile-questionnaire.yaml";
 import axios from '../../axios';
 export default {
   data() {

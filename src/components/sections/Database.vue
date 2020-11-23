@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Title from "../layout/Title";
+import Title from "@components/layout/Title";
 export default {
   name: "Database",
   components: {
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 .database {
   .row {
     max-width: 80%;

@@ -6,29 +6,29 @@
             justify-content: center;
         }
 
-        .all-sections-button {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
+        // .all-sections-button {
+        //     display: flex;
+        //     justify-content: flex-end;
+        //     margin-bottom: 20px;
 
-            button {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                border: none;
-                background: unset;
-                outline: none;
+        //     button {
+        //         display: flex;
+        //         flex-direction: row;
+        //         align-items: center;
+        //         justify-content: center;
+        //         border: none;
+        //         background: unset;
+        //         outline: none;
 
-                p {
-                    margin-right: 15px;
-                    margin-bottom: 0;
-                    color: #5694e8;
-                    font-size: 14px;
-                    font-weight: 700;
-                }
-            }
-        }
+        //         p {
+        //             margin-right: 15px;
+        //             margin-bottom: 0;
+        //             color: #5694e8;
+        //             font-size: 14px;
+        //             font-weight: 700;
+        //         }
+        //     }
+        // }
     }
 
     .title {
@@ -78,7 +78,6 @@
 
         .style-card {
             .articles-image {
-                max-width: 330px;
                 max-height: 224px;
                 width: 100%;
             }
@@ -148,26 +147,34 @@
             margin-bottom: 0;
             font-weight: 700;
             font-size: 22px;
+            color: #26272E;
+
+            &.description {
+                font-size: 16px;
+                color: #9597AC;
+                max-width: 580px;
+                font-weight: 500;
+            }
         }
     }
 
-    .mobile-see-all-button {
-        display: none;
-        background-color: transparent;
-        border: 2px solid #5694e8;
-        border-radius: 10px;
-        margin-left: 20px;
-        font-size: 14px;
-        justify-content: center;
-        color: #5694e8;
-        font-weight: 700;
-        width: 155px;
-        height: 46px;
-        align-items: baseline;
-        outline: none;
+    // .mobile-see-all-button {
+    //     display: none;
+    //     background-color: transparent;
+    //     border: 2px solid #5694e8;
+    //     border-radius: 10px;
+    //     margin-left: 20px;
+    //     font-size: 14px;
+    //     justify-content: center;
+    //     color: #5694e8;
+    //     font-weight: 700;
+    //     width: 155px;
+    //     height: 46px;
+    //     align-items: baseline;
+    //     outline: none;
 
-        img {
-            margin-left: 15px;
-        }
-    }
+    //     img {
+    //         margin-left: 15px;
+    //     }
+    // }
 }

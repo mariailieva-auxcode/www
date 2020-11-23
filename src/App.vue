@@ -34,9 +34,9 @@
 </template>
 
 <script>
-// import Navigation from "./components/layout/Navigation.vue";
-// import NewNavigation from "./components/layout/New-Navigation";
-// import Footer from "./components/layout/New-Footer.vue";
+// import Navigation from "@components/layout/Navigation.vue";
+// import NewNavigation from "@components/layout/New-Navigation";
+// import Footer from "@components/layout/New-Footer.vue";
 import CookieLaw from "vue-cookie-law";
 
 export default {
@@ -56,10 +56,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./assets/styles/main.scss";
-@import "./assets/styles/mobile-mode.scss";
-@import "./assets/styles/lazy-images.scss";
-@import "./assets/styles/new-mobile-mode.scss";
+@import "@styles/main.scss";
+@import "@styles/mobile-mode.scss";
+@import "@styles/lazy-images.scss";
+@import "@styles/new-mobile-mode.scss";
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

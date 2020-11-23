@@ -10,8 +10,8 @@
 
 <script>
 import marked from "marked";
-import gdpr from "raw-loader!../../content/nl/gdpr.md";
-import gdprEn from "raw-loader!../../content/en/gdpr.md";
+import gdpr from "@content/nl/gdpr.md";
+import gdprEn from "@content/en/gdpr.md";
 export default {
   name: "PrivacyPolicy",
 
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/main.scss";
+@import "@styles/main.scss";
 .container {
   text-align: left;
   margin-top: 90px;

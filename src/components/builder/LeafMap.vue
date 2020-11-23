@@ -7,7 +7,7 @@ import L from "leaflet";
 import "@geoman-io/leaflet-geoman-free";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 import * as turf from "@turf/turf";
-import axios from "../../axios";
+import axios from "@axios";
 export default {
   name: "LeafMap",
   mounted() {
@@ -15,11 +15,10 @@ export default {
   },
   props: {
     isSatteliteView: { type: Boolean },
+    showCadasters: { type: Boolean },
   },
   data() {
     return {
-      zoom: 10,
-      center: [52.3628434, 4.8443875],
       url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
       url2:
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
@@ -28,7 +27,16 @@ export default {
       // marker: L.latLng(52.35479, 4.76387),
       attribution2:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+      maxZoom: 20,
+      displayedCadasters: false,
+      cadasters: [],
     };
+  },
+  created() {
+    const loggedUser = JSON.parse(localStorage.loggedUser);
+
+    this.zoom = loggedUser.zoomLevel;
+    this.center = loggedUser.mapCoordinates;
   },
   methods: {
     createMap() {
@@ -36,21 +44,64 @@ export default {
         center: this.center,
         zoom: this.zoom,
       });
+      this.map.on("moveend", (e) => {
+        this.getCadasters();
+        this.triggerZoomAndCoordinates(e);
+      });
       this.map.on("pm:create", this.addSite);
-
+      this.map.on("zoom", this.onZoomChange);
       L.control.scale().addTo(this.map);
 
       this.grayView = L.tileLayer(this.url, {
         attribution: this.attribution,
+        maxZoom: this.maxZoom,
       });
       this.satteliteView = L.tileLayer(this.url2, {
         attribution: this.attribution2,
+        maxZoom: this.maxZoom,
       });
 
       this.grayView.addTo(this.map);
 
       this.addDrawControls();
       this.getAndRenderPolygons();
+    },
+    getCadasters() {
+      if (!this.showCadasters || this.map._zoom < 20) return;
+
+      const bounds = this.map.getBounds();
+      const NORTH = bounds._northEast.lat;
+      const EAST = bounds._northEast.lng;
+      const SOUTH = bounds._southWest.lat;
+      const WEST = bounds._southWest.lng;
+
+      axios
+        .get(
+          `/.netlify/functions/cadastreQuery?north=${NORTH}&east=${EAST}&south=${SOUTH}&west=${WEST}`
+        )
+        .then((response) => {
+          const cadasters = response.data;
+          cadasters.forEach((cadaster) => {
+            cadaster.polygon.coordinates[0].forEach((cord) => cord.reverse());
+          });
+          this.cadasters = [...this.cadasters, ...cadasters];
+          this.cadasters = this.cadasters.filter(
+            (cada, index) =>
+              this.cadasters.findIndex((cad) => cad._id == cada._id) == index
+          );
+          this.displayCadasters();
+        });
+    },
+    cadasterPopup(e, id) {
+      let popup = L.popup();
+      popup.setLatLng(e.latlng);
+      popup.setContent(id);
+      popup.openOn(this.map);
+    },
+    onZoomChange() {
+      if (!this.cadasters) return;
+
+      this.toggleCadasters(this.showCadasters);
     },
     addSite(newSite) {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
@@ -98,7 +149,7 @@ export default {
         cutPolygon: false,
       });
     },
-    
+
     getAndRenderPolygons() {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
       if (!ownerId) return;
@@ -121,7 +172,7 @@ export default {
             }
           });
           if (!lastSite) return;
-          this.map.fitBounds(lastSite.getBounds());
+          // this.map.fitBounds(lastSite.getBounds());
         });
     },
     popupMenu(e, id) {
@@ -183,20 +234,59 @@ export default {
     deleteSite(e) {
       const remove = confirm("Do you really want to delete that polygon ?");
       this.map.closePopup();
-      if (remove){
+      if (remove) {
         axios.delete(
-          `/.netlify/functions/coordinates?id=${e.layer.options.id}`         
+          `/.netlify/functions/coordinates?id=${e.layer.options.id}`
         );
         this.map.pm.disableGlobalRemovalMode();
-      } else {        
-        this.map.pm.disableGlobalRemovalMode(); 
+      } else {
+        this.map.pm.disableGlobalRemovalMode();
       }
+    },
+    displayCadasters() {
+      if (this.map._zoom < 20) return;
+      let lastCadaster;
+      this.cadasters.forEach((cadaster) => {
+        if (cadaster.rendered) return;
+        let id = cadaster.id;
+        const latLngs = cadaster.polygon.coordinates[0];
+        lastCadaster = L.polygon(latLngs, {
+          color: "purple",
+        });
+
+        lastCadaster.addTo(this.map);
+        lastCadaster.options.isCadaster = true;
+        cadaster.rendered = true;
+        lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
+      });
+    },
+    toggleCadasters(showCadasters) {
+      if (showCadasters && this.map._zoom >= 20) this.displayCadasters();
+      else {
+        Object.values(this.map._layers).forEach((layer) => {
+          if (layer.options.isCadaster) {
+            this.map.removeLayer(layer);
+            this.cadasters.forEach((cad) => (cad.rendered = false));
+          }
+        });
+      }
+    },
+    triggerZoomAndCoordinates() {
+      const userInfo = {
+        mapCoordinates: [this.map.getCenter().lat, this.map.getCenter().lng],
+        zoomLevel: this.map._zoom,
+      };
+      this.$emit("updateUserStatus", userInfo);
     },
   },
   watch: {
     isSatteliteView(isSattelite) {
       this.map.removeLayer(isSattelite ? this.grayView : this.satteliteView);
       this.map.addLayer(isSattelite ? this.satteliteView : this.grayView);
+    },
+    showCadasters(showCadasters) {
+      if (showCadasters) this.getCadasters();
+      this.toggleCadasters(showCadasters);
     },
   },
 };

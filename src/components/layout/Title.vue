@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/main.scss";
+@import "@styles/main.scss";
 div {
   position: relative;
   h1 {

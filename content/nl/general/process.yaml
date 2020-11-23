@@ -1,12 +1,20 @@
-title: The Process in 3 Steps
-header-image: /assets/macbook-pro.png
-steps: 
-  - label: Tell Us About Your Land
-    information: Enter your property by answering our online form. It will take less then 10 minutes. There is no cost or obligation to you.
+title: Het proces in 3 stappen
+introductory-title: Binnenkort live
+introductory-description: Dit platform is in ontwikkeling en gaat binnenkort live. 
+contact-text: Neem contact met ons op voor meer informatie.
+contact-link: /
+first-step-image: /assets/macbook-pro-clay.png 
+second-step-image: /assets/macbook-pro-clay2.png
+third-step-image: /assets/macbook-pro-clay3.png
+firstStep: 
+  - label: Maak uw profiel aan
+    information: Registreer en krijg direct toegang tot onze tool. Er zijn geen kosten en verplichtingen verbonden. 
     number: 1
-  - label: Sign Up
-    information: Enter your personal information by signing up. There is no cost or obligation to you. You have now permission to search into our exclusive database.
+secondStep:
+  - label: Vul uw locatie in
+    information: Vul uw locatie(s) in, teken uw beoogde project locatie en vertel over uw beoogde doelstellingen
     number: 2
-  - label: Match
-    information: Based on your profile and property possibilities, green atlas will give you an exclusive selection with the best matches for project developers and or specialists working in the renewable energy market.
+thirdStep:
+  - label: Ontvang matches en start uw energie project
+    information: Op basis van uw profiel ontvangt u van greenatlas.earth een lijst met de meest passende partners voor uw project, geselecteerd uit onze database van meer dan 100 partijen in Nederland
     number: 3

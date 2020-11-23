@@ -12,19 +12,19 @@
 </template>
 
 <script>
-import HeaderSpecialists from "./layout/specialists/HeaderSpecialists";
-import News1 from "./news/News1";
-import News from "./news/News.vue";
-import Matchmaking from "./sections/Matchmaking.vue";
-import Database from "./sections/Database.vue";
-import Tools from "./sections/Tools.vue";
+import HeaderSpecialists from "@components/layout/specialists/HeaderSpecialists";
+import News1 from "@components/news/News1";
+import News from "@components/news/News.vue";
+import Matchmaking from "@components/sections/Matchmaking.vue";
+import Database from "@components/sections/Database.vue";
+import Tools from "@components/sections/Tools.vue";
 
-import matchmaking from "js-yaml-loader!../../content/nl/specialists/matchmaking.yaml";
-import tools from "js-yaml-loader!../../content/nl/specialists/tools.yaml";
-import database from "js-yaml-loader!../../content/nl/specialists/database.yaml";
-import matchmakingEn from "js-yaml-loader!../../content/en/specialists/matchmaking.yaml";
-import toolsEn from "js-yaml-loader!../../content/en/specialists/tools.yaml";
-import databaseEn from "js-yaml-loader!../../content/en/specialists/database.yaml";
+import matchmaking from "@content/nl/specialists/matchmaking.yaml";
+import tools from "@content/nl/specialists/tools.yaml";
+import database from "@content/nl/specialists/database.yaml";
+import matchmakingEn from "@content/en/specialists/matchmaking.yaml";
+import toolsEn from "@content/en/specialists/tools.yaml";
+import databaseEn from "@content/en/specialists/database.yaml";
 
 export default {
   components: {
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles/main.scss";
+@import "@styles/main.scss";
 .font {
   font-family: $font__IBM;
   font-weight: 500;

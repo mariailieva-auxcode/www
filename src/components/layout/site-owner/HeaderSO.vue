@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import header from "js-yaml-loader!../../../../content/nl/site-owner/header.yaml";
-import headerEn from "js-yaml-loader!../../../../content/en/site-owner/header.yaml";
+import header from "@content/nl/site-owner/header.yaml";
+import headerEn from "@content/en/site-owner/header.yaml";
 export default {
   data() {
     return {
@@ -60,8 +60,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../assets/styles/main.scss";
-@import "../../../assets/styles/components/header.scss";
+@import "@styles/main.scss";
+@import "@styles/components/header.scss";
 
 .header {
   p.news-tag {

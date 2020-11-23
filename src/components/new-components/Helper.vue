@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import helper from "js-yaml-loader!../../../content/nl/general/helper.yaml";
-import helperEn from "js-yaml-loader!../../../content/en/general/helper.yaml";
+import helper from "@content/nl/general/helper.yaml";
+import helperEn from "@content/en/general/helper.yaml";
 export default {
   name: "Helper",
   data() {
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .helper {
   h3 {
     margin: 30px 0 60px;

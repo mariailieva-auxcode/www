@@ -15,8 +15,15 @@
         <button v-if="hidden" @click="showUploadFile = true">
           Upload File
         </button>
-        <p>Already having an account?</p>
-        <button @click="showAuth = true" v-if="!isLogged">Log in</button>
+        <p v-if="env.VUE_APP_SITE_MODE == 'digital'">
+          Already having an account?
+        </p>
+        <button
+          @click="showAuth = true"
+          v-if="!isLogged && env.VUE_APP_SITE_MODE == 'digital'"
+        >
+          Log in
+        </button>
         <button v-if="isLogged" @click="logout()">Logout</button>
       </div>
       <Assets v-if="showUploadFile" @close="showUploadFile = false"></Assets>
@@ -30,21 +37,26 @@
         <div>
           <router-link
             :to="`/${$router.history.current.params.lang}/profile`"
-          v-if="isLogged">
+            v-if="isLogged"
+          >
             <button class="start-buttons">
               {{ button }}
               <img src="/assets/arrow-right-white.png" />
             </button>
           </router-link>
           <router-link
-            :to="`/${$router.history.current.params.lang}/profilelogin`" 
-          v-if="!isLogged">
-            <button class="start-buttons"
-            @click="showAuth = true">
-               {{ button }}
+            :to="`/${$router.history.current.params.lang}/profilelogin`"
+            v-if="!isLogged && env.VUE_APP_SITE_MODE == 'digital'"
+          >
+            <button class="start-buttons" @click="showAuth = true">
+              {{ button }}
               <img src="/assets/arrow-right-white.png" />
             </button>
           </router-link>
+          <Calendly
+            :lang="lang"
+            v-if="env.VUE_APP_SITE_MODE == 'analogue'"
+          ></Calendly>
         </div>
       </div>
     </div>
@@ -52,14 +64,16 @@
 </template>
 
 <script>
-import Authorization from "../sections/Authorization";
-import Assets from "../Assets";
-import header from "js-yaml-loader!../../../content/nl/general/header.yaml";
-import headerEn from "js-yaml-loader!../../../content/en/general/header.yaml";
+import Authorization from "@components/sections/Authorization";
+import Assets from "@components/Assets";
+import Calendly from "@components/new-components/Calendly";
+import header from "@content/nl/general/header.yaml";
+import headerEn from "@content/en/general/header.yaml";
 export default {
   components: {
     Authorization,
     Assets,
+    Calendly,
   },
   data() {
     return {
@@ -72,6 +86,7 @@ export default {
       showUploadFile: false,
       isLogged: false,
       hidden: false,
+      env: {},
     };
   },
   props: {
@@ -79,6 +94,7 @@ export default {
   },
   mounted() {
     this.init();
+    this.env = process.env;
   },
   watch: {
     lang() {
@@ -113,9 +129,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/main.scss";
-@import "../../assets/styles/newmain.scss";
-@import "../../assets/styles/components/header.scss";
+@import "@styles/main.scss";
+@import "@styles/newmain.scss";
+@import "@styles/components/header.scss";
 .header {
   height: 100%;
   width: 100vw;

@@ -39,7 +39,7 @@
   </div>
 </template>
 <script>
-import { EMAIL_REGEX } from "../../helpers/email-regex.helper";
+import { EMAIL_REGEX } from "@helpers/email-regex.helper";
 export default {
   data() {
     return {
@@ -76,8 +76,8 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../../assets/styles/main.scss";
-@import "../../assets/styles/components/_inputs.scss";
+@import "@styles/main.scss";
+@import "@styles/components/_inputs.scss";
 .components {
   display: flex;
   flex-direction: column;

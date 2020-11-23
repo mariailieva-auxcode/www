@@ -381,12 +381,12 @@
   </div>
 </template>
 <script>
-import Authorization from "../sections/Authorization";
-import Step1 from "./UserWizardSteps/Step1";
-import FinalStep from "./UserWizardSteps/FinalStep";
-import questionnaire from "js-yaml-loader!../../../content/nl/site-owner/questionnaire.yaml";
-import questionnaireEn from "js-yaml-loader!../../../content/en/site-owner/questionnaire.yaml";
-import axios from "../../axios";
+import Authorization from "@components/sections/Authorization";
+import Step1 from "@components/sections/UserWizardSteps/Step1";
+import FinalStep from "@components/sections/UserWizardSteps/FinalStep";
+import questionnaire from "@content/nl/site-owner/questionnaire.yaml";
+import questionnaireEn from "@content/en/site-owner/questionnaire.yaml";
+import axios from "@axios";
 export default {
   components: {
     Authorization,
@@ -575,9 +575,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import "../../assets/styles/components/questionnaire.scss";
-@import "../../assets/styles/questionnaire-mobile.scss";
-@import "../../assets/styles/main.scss";
-@import "../../assets/styles/newmain.scss";
-@import "../../assets/styles/components/user-wizard.scss";
+@import "@styles/components/questionnaire.scss";
+@import "@styles/questionnaire-mobile.scss";
+@import "@styles/main.scss";
+@import "@styles/newmain.scss";
+@import "@styles/components/user-wizard.scss";
 </style>

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="partners">
       <div class="col-12">
-        <h1>{{title}}</h1>
+        <h1>{{ title }}</h1>
       </div>
       <div class="row">
         <div
@@ -10,16 +10,16 @@
           v-for="(partner, index) of partners.partners"
           :key="partner.image"
         >
-          <div class="odd-partner style-card" v-if="index%2 == 1">
+          <div class="odd-partner style-card" v-if="index % 2 == 1">
             <div class="row">
-              <p class="col-xl-8 col-sm-8 col-12">{{partner.description}}</p>
+              <p class="col-xl-8 col-sm-8 col-12">{{ partner.description }}</p>
               <img class="col-xl-4 col-sm-4 col-12" :src="partner.image" />
             </div>
           </div>
-          <div class="even-partner style-card" v-if="index%2 == 0">
+          <div class="even-partner style-card" v-if="index % 2 == 0">
             <div class="row">
               <img class="col-xl-4 col-sm-4 col-12" :src="partner.image" />
-              <p class="col-xl-8 col-sm-8 col-12">{{partner.description}}</p>
+              <p class="col-xl-8 col-sm-8 col-12">{{ partner.description }}</p>
             </div>
           </div>
         </div>
@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import partners from "js-yaml-loader!../../../content/nl/general/new-partners.yaml";
-import partnersEn from "js-yaml-loader!../../../content/en/general/new-partners.yaml";
+import partners from "@content/nl/general/new-partners.yaml";
+import partnersEn from "@content/en/general/new-partners.yaml";
 export default {
   name: "Partners",
   data() {
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
+@import "@styles/newmain.scss";
 .partners {
   h1 {
     margin-bottom: 50px;
@@ -72,6 +72,9 @@ export default {
       padding: 50px;
       display: flex;
       align-items: center;
+      p {
+        text-align: left;
+      }
     }
     .odd-partner {
       max-width: 80%;

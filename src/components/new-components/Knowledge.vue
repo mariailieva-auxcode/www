@@ -28,12 +28,12 @@
             <div class="green-line" :class="{ blog: choise == 'blog' }"></div>
           </button>
         </div>
-        <div class="all-sections-button">
+        <!-- <div class="all-sections-button">
           <button>
             <p>See All</p>
             <img src="/assets/arrow-right-blue.svg" />
           </button>
-        </div>
+        </div> -->
       </div>
       <div class="row articles" v-if="choise == 'articles'">
         <div
@@ -68,20 +68,23 @@
         </div>
       </div>
       <div class="row blog" v-if="choise == 'blog'">
-        <img src="/assets/blog.svg" />
-        <p>Coming soon!</p>
+        <div v-for="(blog, i) of blog.blog" :key="i">
+          <img :src="blog.image" />
+          <p>{{ blog.title }}</p>
+          <p class="description">{{ blog.description }}</p>
+        </div>
       </div>
-      <button class="mobile-see-all-button">
+      <!-- <button class="mobile-see-all-button">
         See all
         <img src="/assets/arrow-right-blue.svg" />
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
 
 <script>
-import articles from "js-yaml-loader!../../../content/nl/general/knowledge.yaml";
-import articlesEn from "js-yaml-loader!../../../content/en/general/knowledge.yaml";
+import articles from "@content/nl/general/knowledge.yaml";
+import articlesEn from "@content/en/general/knowledge.yaml";
 export default {
   name: "Knowledge",
   data() {
@@ -92,6 +95,7 @@ export default {
       label: "",
       linksTitle: "",
       choise: "articles",
+      blog: {},
     };
   },
   props: {
@@ -110,6 +114,7 @@ export default {
       this.lang = this.$router.history.current.params.lang;
       let data = this.lang === "en" ? articlesEn : articles;
       this.articles = data;
+      this.blog = data;
       this.links = data;
       this.title = data.title;
       this.label = data["title-label"];
@@ -120,7 +125,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/newmain.scss";
-@import "../../assets/styles/components/knowledge-center.scss";
-@import "../../assets/styles/new-mobile-mode.scss";
+@import "@styles/newmain.scss";
+@import "@styles/components/knowledge-center.scss";
+@import "@styles/new-mobile-mode.scss";
 </style>

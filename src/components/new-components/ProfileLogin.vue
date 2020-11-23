@@ -1,39 +1,40 @@
 <template>
   <div class="profilelogin">
+    <div
+      id="map"
+      style="height: 100vh; width: 100vw"
+      class="bottom disabled blur"
+    ></div>
 
-    <LeafMap class="bottom disabled blur"
-    ></LeafMap>   
-
-    <Authorization class="top"
-        v-if="showAuth"
-        @close="onAuthorizationClose($event)"
-      ></Authorization>
-      
+    <Authorization
+      class="top"
+      v-if="showAuth"
+      @close="onAuthorizationClose($event)"
+    ></Authorization>
   </div>
-
 </template>
 
 <script>
-import LeafMap from "../builder/LeafMap";
-import Authorization from "../sections/Authorization"
+import L from "leaflet";
+import Authorization from "@components/sections/Authorization";
 export default {
   name: "ProfileLogin",
   components: {
     Authorization,
-    LeafMap,
-  }, 
+  },
   data() {
     return {
       showAuth: true,
       isLogged: false,
+      zoom: 10,
+      center: [52.3628434, 4.8443875],
+      url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
     };
-  },
-  props: {
-    lang: String,
   },
   mounted() {
     this.init();
-  },  
+    this.createMap();
+  },
   watch: {
     lang() {
       this.init();
@@ -43,34 +44,46 @@ export default {
     init() {
       this.lang = this.$router.history.current.params.lang;
     },
+    createMap() {
+      this.map = L.map("map", {
+        center: this.center,
+        zoom: this.zoom,
+      });
+      this.link = L.tileLayer(this.url);
+      this.link.addTo(this.map);
+    },
     onAuthorizationClose(isLogged) {
       this.showAuth = false;
       if (isLogged) {
         this.isLogged = true;
         this.$router.replace(`/${this.lang}/profile`);
       }
-     },
     },
+  },
 };
 </script>
 
 <style lang="scss">
 @import "profile-style.scss";
-.profilelogin{
-  .top{
+.profilelogin {
+  .top {
     z-index: 400;
   }
-  .bottom{
+  .bottom {
     z-index: 1;
   }
   .disabled {
-      pointer-events:none;
+    pointer-events: none;
   }
-  .leaflet-top, .leaflet-left, .col-1 {
+  .leaflet-top,
+  .leaflet-left,
+  .leaflet-bottom,
+  .leaflet-right,
+  .col-1 {
     display: none;
   }
-  .blur{
-    filter: blur(8px);
+  .blur {
+    filter: blur(3px);
     height: 100%;
   }
 }
