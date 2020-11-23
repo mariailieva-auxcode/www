@@ -8,7 +8,7 @@ second-step-image: /assets/macbook-pro-clay2.png
 third-step-image: /assets/macbook-pro-clay3.png
 firstStep:
   - label: Sign Up
-    information: Enter your personal information by signing up. There is no cost or obligation to you. You have now permission to search into our exclusive database.
+    information: Register and get immediate access to our tool. There are no costs or obligations to you.
     number: 1
 secondStep: 
   - label: Tell Us About Your Land
