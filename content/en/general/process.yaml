@@ -7,14 +7,14 @@ first-step-image: /assets/macbook-pro-clay.png
 second-step-image: /assets/macbook-pro-clay2.png
 third-step-image: /assets/macbook-pro-clay3.png
 firstStep:
-  - label: Tell Us About Your Land
-    information: Enter your property by answering our online form. It will take less then 10 minutes. There is no cost or obligation to you.
-    number: 1
-secondStep: 
   - label: Sign Up
     information: Enter your personal information by signing up. There is no cost or obligation to you. You have now permission to search into our exclusive database.
+    number: 1
+secondStep: 
+  - label: Tell Us About Your Land
+    information: Enter your property, draw your boundaries and tell us about your goals.
     number: 2
 thirdStep: 
-  - label: Match
-    information: Based on your profile and property possibilities, green atlas will give you an exclusive selection with the best matches for project developers and or specialists working in the renewable energy market.
+  - label: Match and Start Your Engery Project
+    information: greenatlas.earth will provide you with a list of the most relevant partners for your project, selected from our database containing more than a hundred companies in the Netherlands.
     number: 3
