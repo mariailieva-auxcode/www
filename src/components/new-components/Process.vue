@@ -1,27 +1,29 @@
 <template>
-  <div class="container process" id="process">
+  <div class="process" id="process">
     <div class="process">
       <div class="col-12 macbook-image">
         <h1>{{ title }}</h1>
         <div class="col-12 comming-soon">
-          <img
-            class="col-xl-2 col-sm-12 col-md-2"
-            src="/assets/megaphone.svg"
-          />
-          <div class="col-xl-10 col-sm-12 col-md-10 labels">
-            <h3>{{ label }}</h3>
-            <p>
-              {{ description }}<a :href="link">{{ contactText }}</a>
-            </p>
+          <div>
+            <img
+              class="col-xl-2 col-sm-12 col-md-2"
+              src="/assets/megaphone.svg"
+            />
+            <div class="col-xl-10 col-sm-12 col-md-10 labels">
+              <h3>{{ label }}</h3>
+              <p>
+                {{ description }}<a :href="link">{{ contactText }}</a>
+              </p>
+            </div>
           </div>
         </div>
-        <div class="macbook-image">
-          <lazy-img class="img" :blur="30" v-if="hover" :src="firstImage" />
-          <lazy-img class="img" :blur="30" v-if="hover2" :src="secondImage" />
-          <lazy-img class="img" :blur="30" v-if="hover3" :src="thirdImage" />
+        <div class="macbook-image container">
+          <lazy-img class="img" :blur="30" v-show="hover" :src="firstImage" />
+          <lazy-img class="img" :blur="30" v-show="hover2" :src="secondImage" />
+          <lazy-img class="img" :blur="30" v-show="hover3" :src="thirdImage" />
         </div>
       </div>
-      <div class="row">
+      <div class="row container">
         <div
           class="col-12 col-sm-12 col-md-6 col-xl-4 info-steps margin-fixing"
           v-for="step of firstStep.firstStep"
@@ -117,37 +119,44 @@ export default {
 @import "@styles/newmain.scss";
 .process {
   .comming-soon {
-    position: relative;
-    width: 680px;
-    margin: 0 auto 100px auto;
+    background-color: white;
+    width: 100%;
+    margin: 0 auto 60px auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    img {
-      position: absolute;
-      left: 0;
-    }
-    .labels {
-      flex-direction: column;
-      h3 {
-        font-family: $font__Lato;
-        font-weight: 900;
-        text-align: center;
-        color: black;
-        font-size: 22px;
+    > div {
+      position: relative;
+      width: 680px;
+      padding: 50px 0;
+      img {
+        position: absolute;
+        left: 0;
       }
-      p {
-        font-size: 18px;
-        max-width: 450px;
+      .labels {
+        flex-direction: column;
         margin: 0 auto;
-        a {
-          margin-left: 5px;
+        h3 {
+          font-family: $font__Lato;
+          font-weight: 900;
+          text-align: center;
+          color: black;
+          font-size: 22px;
+        }
+        p {
+          font-size: 18px;
+          max-width: 450px;
+          margin: 0 auto;
+          a {
+            margin-left: 5px;
+          }
         }
       }
     }
   }
   .macbook-image {
+    padding: 0;
     > .macbook-image .img {
       width: 745px;
       height: 510px;
@@ -155,28 +164,31 @@ export default {
   }
   h1 {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
-  .info-steps {
-    position: relative;
-    opacity: 0.5;
-    margin-top: 30px;
-    &:hover {
-      margin-top: 5px;
-      opacity: 1;
-    }
-    &.margin-fixing:hover {
-      padding-bottom: 25px;
-    }
-    .background-numbers {
-      position: absolute;
-      font-size: 200px;
-      top: -93px;
-      z-index: 1;
-      left: -10px;
-      opacity: 0.05;
-      color: #65687e;
-      font-weight: 700;
+  .row {
+    display: flex;
+    .info-steps {
+      position: relative;
+      opacity: 0.5;
+      margin-top: 30px;
+      &:hover {
+        margin-top: 5px;
+        opacity: 1;
+      }
+      &.margin-fixing:hover {
+        padding-bottom: 25px;
+      }
+      .background-numbers {
+        position: absolute;
+        font-size: 200px;
+        top: -93px;
+        z-index: 1;
+        left: -10px;
+        opacity: 0.05;
+        color: #65687e;
+        font-weight: 700;
+      }
     }
   }
 }

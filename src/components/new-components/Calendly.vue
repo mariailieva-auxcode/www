@@ -65,6 +65,8 @@ export default {
   &.bottom-calendly {
     margin-bottom: 100px;
     margin-top: 150px;
+    background-color: white;
+    padding: 55px 0 30px;
     p {
       color: black;
       &.title {

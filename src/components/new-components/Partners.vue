@@ -79,10 +79,20 @@ export default {
     .odd-partner {
       max-width: 80%;
       float: right;
+      height: 225px;
+      .row {
+        display: flex;
+        align-items: center;
+      }
     }
     .even-partner {
       max-width: 80%;
       float: left;
+      height: 225px;
+      .row {
+        display: flex;
+        align-items: center;
+      }
     }
   }
 }
