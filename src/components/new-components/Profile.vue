@@ -14,7 +14,7 @@
       <p v-if="finishedStep4 == 0" class="default">Step 4</p>
       <p v-if="finishedStep4 == 1" class="inProgress">Step 4</p>
       <p v-if="finishedStep4 == 2" class="finished">Step 4</p>
-      
+
       <!-- <p :class="finishedStep ?  'finished' : 'inProgress'">Step 1</p>
       <p :class="finishedStep2 ? 'finished' : 'inProgress'">Step 2</p>
       <p :class="finishedStep3 ? 'finished' : 'inProgress'">Step 3</p>
@@ -138,21 +138,40 @@
               <button
                 class="roof"
                 :class="{ active: roof }"
-                @click="(roof = !roof), (land = false), (water = false)"
+                @click="
+                  (roof = !roof),
+                    (land = false),
+                    (water = false),
+                    (siteType = 'roof'),
+                    siteOwnerQ1(),
+                    test()
+                "
               >
                 <img src="/assets/roof.svg" />Roof
               </button>
               <button
                 class="land"
                 :class="{ active: land }"
-                @click="(land = !land), (roof = false), (water = false)"
+                @click="
+                  (land = !land),
+                    (roof = false),
+                    (water = false),
+                    (siteType = 'land'),
+                    siteOwnerQ1()
+                "
               >
                 <img src="/assets/land.svg" />Land
               </button>
               <button
                 class="water"
                 :class="{ active: water }"
-                @click="(water = !water), (roof = false), (land = false)"
+                @click="
+                  (water = !water),
+                    (roof = false),
+                    (land = false),
+                    (siteType = 'water'),
+                    siteOwnerQ1()
+                "
               >
                 <img src="/assets/water.svg" />Water
               </button>
@@ -166,7 +185,10 @@
                 class="solar"
                 :class="{ active: solar }"
                 @click="
-                  (solar = !solar), steps++, (finishedStep2++, finishedStep3++)
+                  (solar = !solar),
+                    (energyType = solar),
+                    steps++,
+                    (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/solar.svg" />Solar
@@ -175,7 +197,10 @@
                 class="wind"
                 :class="{ active: wind }"
                 @click="
-                  (wind = !wind), steps++, (finishedStep2++, finishedStep3++)
+                  (wind = !wind),
+                    (energyType = wind),
+                    steps++,
+                    (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/wind.svg" />Wind
@@ -183,31 +208,50 @@
             </div>
             <p>What is your goal</p>
             <div class="checkboxes">
-              <input class="checkboxSize" type="checkbox" value="produce">
+              <input
+                class="checkboxSize"
+                type="checkbox"
+                value="produce"
+                @click="produce = !produce"
+              />
               <label> Produce </label>
-              <input class="checkboxSize" type="checkbox" value="sell">
+              <input
+                class="checkboxSize"
+                type="checkbox"
+                value="sell"
+                @click="sell = !sell"
+              />
               <label> Sell </label>
             </div>
           </div>
           <!-- --------------------------------------------------------------------------------------------------- -->
           <div v-if="steps === 3">
             <label>Are you ...?</label>
-            <div class="toggles hovered">  
-              <button class="isOwner"
-              :class="{ active: isOwner }"
-               @click="(isOwner = !isOwner), steps++, (finishedStep3++, finishedStep4++), (isDev = false)">
-              Owner
+            <div class="toggles hovered">
+              <button
+                class="isOwner"
+                :class="{ active: isOwner }"
+                @click="
+                  (isOwner = !isOwner),
+                    steps++,
+                    (finishedStep3++, finishedStep4++),
+                    (isDev = false)
+                "
+              >
+                Owner
               </button>
               <p>If you are site owner please proceed to the next step.</p>
-            </div> 
+            </div>
             <div class="toggles hovered">
-            <a :href="`mailto:${' '}`">
-              <button class="isDev"
-              :class="{ active: isDev }">
-              Developer
-              </button>
-              <p>If you are project developer please contact the site owner via email.</p>
-            </a>
+              <a :href="`mailto:${' '}`">
+                <button class="isDev" :class="{ active: isDev }">
+                  Developer
+                </button>
+                <p>
+                  If you are project developer please contact the site owner via
+                  email.
+                </p>
+              </a>
             </div>
           </div>
           <!-- START --------------------------------------------------------------------------------------------------- -->
@@ -215,16 +259,22 @@
             <label>Do you sell the land and/or water?</label>
             <div class="scroll-links marginBot">
               <p1>*Description*</p1>
-              <router-link :to="`/${$router.history.current.params.lang}`" :v-scroll-to="'#FAQ'">
+              <router-link
+                :to="`/${$router.history.current.params.lang}`"
+                :v-scroll-to="'#FAQ'"
+              >
                 <div class="active-green-line">Got questions?</div>
-                </router-link>
+              </router-link>
             </div>
             <label>Do you rent the land and/or water?</label>
             <div class="scroll-links marginBot">
               <p1>*Description*</p1>
-                <router-link :to="`/${$router.history.current.params.lang}`" v-scroll-to="'#FAQ'">
-                  <div class="active-green-line">Got questions?</div>
-                </router-link>
+              <router-link
+                :to="`/${$router.history.current.params.lang}`"
+                v-scroll-to="'#FAQ'"
+              >
+                <div class="active-green-line">Got questions?</div>
+              </router-link>
             </div>
           </div>
           <!-- ------------------------------------------------------------------------------------------------------- -->
@@ -249,6 +299,7 @@
 import LeafMap from "../builder/LeafMap";
 import VueDragResize from "vue-drag-resize";
 import ProfileOnboarding from "./ProfileOnboarding";
+import axios from "../../axios";
 export default {
   name: "Profile",
   components: {
@@ -283,8 +334,13 @@ export default {
       water: false,
       solar: false,
       wind: false,
+      produce: false,
+      sell: false,
       isOwner: false,
       isDev: false,
+      siteType: "",
+      energyType: "",
+
       sqM: "",
       cash: 0,
       production: 0,
@@ -311,6 +367,33 @@ export default {
     },
   },
   methods: {
+    siteOwnerQ1() {
+      const ownerId = JSON.parse(localStorage.loggedUser).ownerId
+      axios.post("/.netlify/functions/siteOwner", {
+        ownerId,
+        siteType: this.siteType,
+        answers: []
+      })
+      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+      .then((e) => console.log(e))
+    },
+    test(e) {
+      console.log(e);
+    },
+    siteOwnerQ2() {
+      axios.post("/.netlify/functions/siteOwner", {
+        siteEnergy: this.siteEnergy,
+        produce: this.produce,
+        sell: this.sell,
+      });
+      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+    },
+    siteOwnerQ3() {
+      axios.post("/.netlify/functions/siteOwner", {
+        isOwner: this.isOwner,
+      });
+      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+    },
     init() {
       this.lang = this.$router.history.current.params.lang;
     },
@@ -369,26 +452,26 @@ export default {
   height: 30px;
 }
 .hovered{
-   p {
-                display: none;
-                position: absolute;
-                top: 30px;
-                z-index: 2;
-                width: 375px;
-                left: 270px;
-                padding: 15px;
-                background-color: white;
-                opacity: 0.9;
-                border-radius: 10px;
-                font-size: 12px;
-                text-align: left;
-                box-shadow: 0px 0px 30px #65687e33;
-            }
-            &:hover {
-                p {
-                    display: block;
-                }
-            }
+  p {
+    display: none;
+    position: absolute;
+    top: 30px;
+    z-index: 2;
+    width: 375px;
+    left: 270px;
+    padding: 15px;
+    background-color: white;
+    opacity: 0.9;
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: left;
+    box-shadow: 0px 0px 30px #65687e33;
+  }
+  &:hover {
+    p {
+      display: block;
+    }
+  }
 }
 .new-navigation {
   background: none;

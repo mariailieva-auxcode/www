@@ -7,7 +7,7 @@
               v-for="(choice, i) of data.steps[step].choices"
               :key="i"
               :class="{ active: choice.key == answers[step] }"
-              @click="(toggle(choice.key), step++)"
+              @click="(toggle(choice.key), step++, questionnaire(choice.key))"
               class="step1choice1 style"
             >
               {{ choice.text }}
@@ -18,7 +18,7 @@
               v-for="(choice, i) of data.steps[step].choices"
               :key="i"
               :class="{ active: choice.key == answers[step] }"
-              @click="nextStep()"
+              @click="toggle(choice.key), nextStep(), questionnaire(choice.key)"
               class="step1choice1 style"
             >
             {{ choice.text }}
@@ -35,6 +35,7 @@
 <script>
 import questionnaireEn from "js-yaml-loader!../../../content/en/site-owner/profile-questionnaire.yaml";
 import questionnaire from "js-yaml-loader!../../../content/nl/site-owner/profile-questionnaire.yaml";
+import axios from '../../axios';
 export default {
   data() {
     return {
@@ -60,7 +61,13 @@ export default {
     },
     init() {
       this.data = this.lang === "en" ? questionnaireEn : questionnaire;
-      console.log(this.data)
+    },
+    questionnaire(variable){
+      let test = this.answers;
+      const data = {
+           answers: test
+        };
+      axios.put("/.netlify/functions/siteOwner", { data }).then (console.log(variable))
     },
     nextStep() {
       this.$emit("nextStep");
