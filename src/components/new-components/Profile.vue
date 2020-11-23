@@ -32,13 +32,57 @@
       >
         Click
       </button>
-      <div v-if="renderLayerPopup == true">
-        <button
-          @click="showCadasters = !showCadasters"
-          :class="showCadasters ? 'cadaster-active' : 'cadaster-disactive'"
-        >
-          Kadaster
-        </button>
+      <div class="one" v-if="renderLayerPopup == true">
+        <div class="test top">
+          <div class="circles pink"></div>
+          <button
+            class="areaButtons"
+          >
+            <p>Provinces</p>
+          </button>
+        </div>
+        <div class="test">
+        <div class="circles orange"></div>
+          <button
+            class="areaButtons"
+          >
+            <p>Munisipallities</p>
+          </button>
+        </div>
+        <div class="test">
+        <div class="circles lightblue"></div>
+          <button
+            class="areaButtons"
+          >
+            <p>RES Regions</p>
+          </button>
+        </div>
+        <div class="test">
+        <div class="circles darkblue"></div>
+          <button
+            class="areaButtons"
+            @click="showCadasters = !showCadasters"
+            :class="showCadasters ? 'cadaster-active' : 'cadaster-disactive'"
+          >
+            <p>Kadaster</p>
+          </button>
+        </div>
+        <div class="test">
+        <div class="circles red"></div>
+          <button
+            class="areaButtons"
+          >
+            <p>Grids</p>
+          </button>
+        </div>
+        <div class="test">
+        <div class="circles green"></div>
+          <button
+            class="areaButtons"
+          >
+            <p>Prohibited areas</p>
+          </button>
+        </div>
       </div>
     </div>
     <button
@@ -393,14 +437,15 @@ export default {
   },
   methods: {
     siteOwnerQ1() {
-      const ownerId = JSON.parse(localStorage.loggedUser).ownerId
-      axios.post("/.netlify/functions/siteOwner", {
-        ownerId,
-        siteType: this.siteType,
-        answers: []
-      })
-      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
-      .then((e) => console.log(e))
+      const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
+      axios
+        .post("/.netlify/functions/siteOwner", {
+          ownerId,
+          siteType: this.siteType,
+          answers: [],
+        })
+        // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+        .then((e) => console.log(e));
     },
     test(e) {
       console.log(e);
