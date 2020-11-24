@@ -1,6 +1,6 @@
 <template>
   <div class="container our-story" id="our-story">
-    <div class="story">
+    <div class="story container">
       <div class="col-12">
         <h1>{{ title }}</h1>
       </div>
@@ -56,7 +56,7 @@ export default {
 <style scoped lang="scss">
 @import "@styles/newmain.scss";
 .story {
-  width: 875px;
+  max-width: 875px;
   margin: 0 auto;
   h1 {
     margin-bottom: 45px;
@@ -73,6 +73,13 @@ export default {
     }
     h3 {
       text-align: center;
+    }
+  }
+}
+@media only screen and (min-width: 767px) and (max-width: 1200px) {
+  .story {
+    .style-card {
+      padding: 85px 50px;
     }
   }
 }
