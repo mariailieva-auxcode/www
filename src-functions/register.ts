@@ -5,6 +5,7 @@ import { SiteOwner } from './api/interfaces/site-owner.interface';
 import { Owner } from '../common/models/owner.model';
 import { User } from '../common/models/user.model';
 import { uuid } from 'uuidv4';
+import { StatusCode } from './api/enums/status-codes.enum';
 
 const q = faunadb.query;
 
@@ -32,20 +33,20 @@ export async function handler(event, _) {
                 data: { ...user, password }
             }))
             return {
-                statusCode: 200,
+                statusCode: StatusCode.Success,
                 body: JSON.stringify(user),
                 headers: RESPONSE_HEADERS
             }
         } else {
             return {
-                statusCode: 204,
+                statusCode: StatusCode.NoContent,
                 body: JSON.stringify({}),
                 headers: RESPONSE_HEADERS
             }
         }
     } catch (error) {
         return {
-            statusCode: 500,
+            statusCode: StatusCode.FAIL,
             body: JSON.stringify({
                 status: `error`
             }),

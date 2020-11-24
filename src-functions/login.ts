@@ -3,6 +3,7 @@ import faunadb from 'faunadb'
 import passwordHash from 'password-hash';
 import jwt from 'jsonwebtoken';
 import { User } from '../common/models/user.model';
+import { StatusCode } from './api/enums/status-codes.enum';
 
 const q = faunadb.query;
 
@@ -29,13 +30,13 @@ export async function handler(event, _) {
                         const token = jwt.sign(user.data, 'secret');
                         const loggedUser = new User(user.data);
                         return {
-                            statusCode: 200,
+                            statusCode: StatusCode.Success,
                             headers: RESPONSE_HEADERS,
                             body: JSON.stringify({ ...loggedUser, token }),
                         }
                     } else {
                         return {
-                            statusCode: 400,
+                            statusCode: StatusCode.BadRequest,
                             body: "Wrong username or password",
                             headers: RESPONSE_HEADERS
                         }
@@ -44,7 +45,7 @@ export async function handler(event, _) {
                 }).catch((error) => {
                     console.log('error', error)
                     return {
-                        statusCode: 400,
+                        statusCode: StatusCode.BadRequest,
                         body: JSON.stringify(error),
                         headers: RESPONSE_HEADERS
                     }
@@ -52,14 +53,14 @@ export async function handler(event, _) {
         }
         else {
             return {
-                statusCode: 204,
+                statusCode: StatusCode.NoContent,
                 body: JSON.stringify({}),
                 headers: RESPONSE_HEADERS
             }
         }
     } catch (error) {
         return {
-            statusCode: 500,
+            statusCode: StatusCode.FAIL,
             body: JSON.stringify({ status: `error` }),
         };
     }

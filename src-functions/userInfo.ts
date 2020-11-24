@@ -1,5 +1,6 @@
 import { RESPONSE_HEADERS } from './api/constants/responseHeaders';
 import faunadb from 'faunadb'
+import { StatusCode } from './api/enums/status-codes.enum';
 const q = faunadb.query;
 
 export async function handler(event, _) {
@@ -19,40 +20,21 @@ export async function handler(event, _) {
                 { data }
             )).then((response) => {
                 return {
-                    statusCode: 200,
+                    statusCode: StatusCode.Success,
                     body: JSON.stringify(response),
                     headers: RESPONSE_HEADERS
                 }
             }).catch(error => {
                 return {
-                    statusCode: 400,
+                    statusCode: StatusCode.BadRequest,
                     body: JSON.stringify(error),
                     headers: RESPONSE_HEADERS
                 }
             })
-
-            // const refId = data.data.id
-            // const polygon = { color: data.data.color, coordinates: data.data.coordinates, ownerId: data.data.ownerId }
-            // return client.query(q.Update(q.Ref(q.Collection('coordinates'), refId), { data: polygon }))
-            //     .then((response) => {
-            //         console.log('success', response)
-            //         return {
-            //             statusCode: 200,
-            //             body: JSON.stringify(response),
-            //             headers: RESPONSE_HEADERS
-            //         }
-            //     }).catch((error) => {
-            //         console.log('error', error)
-            //         return {
-            //             statusCode: 400,
-            //             body: JSON.stringify(error),
-            //             headers: RESPONSE_HEADERS
-            //         }
-            //     })
         }
     } catch (error) {
         return {
-            statusCode: 500,
+            statusCode: StatusCode.FAIL,
             body: JSON.stringify({ status: `error` }),
         }
     }
