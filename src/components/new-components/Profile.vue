@@ -30,35 +30,37 @@
         class="popup-render"
         @click="renderLayerPopup = !renderLayerPopup"
       >
-        Click
+        <div class="drop-layers">
+          <img class="first-image" src="/assets/layers.svg" />
+          <div v-if="!renderLayerPopup">
+            <img class="last-image" src="/assets/caret-down.svg" />
+          </div>
+        </div>
+        <div v-if="renderLayerPopup">
+          <img class="last-image" src="/assets/caret-up.svg" />
+        </div>
       </button>
       <div class="one" v-if="renderLayerPopup == true">
         <div class="test top">
           <div class="circles pink"></div>
-          <button
-            class="areaButtons"
-          >
+          <button class="areaButtons">
             <p>Provinces</p>
           </button>
         </div>
         <div class="test">
-        <div class="circles orange"></div>
-          <button
-            class="areaButtons"
-          >
+          <div class="circles orange"></div>
+          <button class="areaButtons">
             <p>Munisipallities</p>
           </button>
         </div>
         <div class="test">
-        <div class="circles lightblue"></div>
-          <button
-            class="areaButtons"
-          >
+          <div class="circles lightblue"></div>
+          <button class="areaButtons">
             <p>RES Regions</p>
           </button>
         </div>
         <div class="test">
-        <div class="circles darkblue"></div>
+          <div class="circles darkblue"></div>
           <button
             class="areaButtons"
             @click="showCadasters = !showCadasters"
@@ -68,18 +70,14 @@
           </button>
         </div>
         <div class="test">
-        <div class="circles red"></div>
-          <button
-            class="areaButtons"
-          >
+          <div class="circles red"></div>
+          <button class="areaButtons">
             <p>Grids</p>
           </button>
         </div>
         <div class="test">
-        <div class="circles green"></div>
-          <button
-            class="areaButtons"
-          >
+          <div class="circles green"></div>
+          <button class="areaButtons">
             <p>Prohibited areas</p>
           </button>
         </div>
@@ -105,6 +103,7 @@
       @changedSavingCalc="changeSavingCalc($event)"
       @getPolygonArea="PolygonAreaOutput($event)"
       @updateUserStatus="updateUserStatus($event)"
+      @getPolygonId="getId($event)"
     ></LeafMap>
     <div class="output-box">
       <VueDragResize
@@ -174,6 +173,7 @@
         <ProfileOnboarding
           @nextStep="steps++"
           @close="(land = false), (roof = false), (water = false)"
+          @answersData="updateAnswers($event)"
           @stepsColor="finishedStep++, finishedStep2++"
           :lang="lang"
         ></ProfileOnboarding>
@@ -222,8 +222,7 @@
                     (land = false),
                     (water = false),
                     (siteType = 'roof'),
-                    siteOwnerQ1(),
-                    test()
+                    siteOwnerQ1()
                 "
               >
                 <img src="/assets/roof.svg" />Roof
@@ -436,19 +435,27 @@ export default {
     },
   },
   methods: {
+    getId(polygonId) {
+      console.log(polygonId);
+    },
+    updateAnswers(savedAnswers) {
+      console.log(savedAnswers);
+      // const data  = {
+      //   answers: savedAnswers,
+      //   id: this.id,
+      // }
+      // axios.put("/.netlify/functions/siteOwner", { data })
+    },
+
     siteOwnerQ1() {
       const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
-      axios
-        .post("/.netlify/functions/siteOwner", {
-          ownerId,
-          siteType: this.siteType,
-          answers: [],
-        })
-        // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
-        .then((e) => console.log(e));
-    },
-    test(e) {
-      console.log(e);
+      axios.post("/.netlify/functions/siteOwner", {
+        ownerId,
+        siteType: this.siteType,
+        answers: [],
+      });
+      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+      // .then((e) => console.log(e));
     },
     siteOwnerQ2() {
       axios.post("/.netlify/functions/siteOwner", {
@@ -463,6 +470,9 @@ export default {
         isOwner: this.isOwner,
       });
       // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+    },
+    siteAnswers() {
+      // axios.put("/.netlify/functions/siteOwner", { data })
     },
     init() {
       this.lang = this.$router.history.current.params.lang;
