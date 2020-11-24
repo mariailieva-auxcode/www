@@ -4,7 +4,7 @@ introductory-description: The platform is under construction and will go live so
 contact-text: Contact us.
 contact-link: /
 first-step-image: /assets/macbook-pro-clay.png 
-second-step-image: /assets/macbook-pro-clay2.png
+second-step-image: /assets/step-2.png
 third-step-image: /assets/macbook-pro-clay3.png
 firstStep:
   - label: Sign Up
