@@ -2,16 +2,19 @@
   <div class="container" id="FAQ">
     <div class="faq">
       <div>
-        <h1>{{title}}</h1>
+        <h1>{{ title }}</h1>
       </div>
       <div v-for="(faq, i) of questions.questions" :key="i">
         <button @click="faq.opened = !faq.opened">
           <div class="row style-card">
             <div class="green-plus">
-              <div class="green-plus-bottom-line" :class="{'accordion' : faq.opened}"></div>
+              <div
+                class="green-plus-bottom-line"
+                :class="{ accordion: faq.opened }"
+              ></div>
               <div class="green-plus-right-line"></div>
             </div>
-            <h2>{{faq.questionName}}</h2>
+            <h2>{{ faq.questionName }}</h2>
           </div>
         </button>
         <div v-if="faq.questions && faq.questions.length > 0">
@@ -19,13 +22,16 @@
             <button
               @click="subQ.opened = !subQ.opened"
               class="secondary-question"
-              :class="{'accordion': faq.opened}"
+              :class="{ accordion: faq.opened }"
             >
               <div>
-                <div class="green-plus-bottom-line" :class="{'accordion2nd' : subQ.opened}"></div>
+                <div
+                  class="green-plus-bottom-line"
+                  :class="{ accordion2nd: subQ.opened }"
+                ></div>
                 <div class="green-plus-right-line"></div>
-                <h2>{{subQ.subquestion}}</h2>
-                <p :class="{'accordion2nd' : !subQ.opened}">{{subQ.answer}}</p>
+                <h2>{{ subQ.subquestion }}</h2>
+                <p :class="{ accordion2nd: !subQ.opened }">{{ subQ.answer }}</p>
               </div>
             </button>
           </div>
@@ -140,6 +146,7 @@ export default {
     }
     p {
       margin-left: 36px;
+      margin-right: 25px;
     }
     &.accordion {
       display: inline-block;
