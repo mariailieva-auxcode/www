@@ -1,17 +1,14 @@
 title: Waarom hernieuwbare energie genereren op uw land?
+first-card-label: Genereer stabiele inkomsten
+first-card-information: Produceer energie en genereer inkomsten met het verhuren of verkopen van ongebruikte grond, water en/of uw dak. Als duurzame energieproducent kunt u voor ten minste 25 jaar een stabiel inkomen generen als uw dak, land of waterplaats voldoet aan de SDE+ richtlijn. De grootte van de inkomsten zijn o.m. afhankelijk van het aantal m2 van uw land, water en/of dak. Uw dak is groter dan 2000m2, uw stuk grond groter dan 1 hectare 10,000m2
+image: /assets/renewable-energy-image.png
 card:
-  - top-box-label: Genereer stabiele inkomsten
-    top-box-information: Produceer energie en genereer inkomsten met het verhuren of verkopen van ongebruikte grond, water en/of uw dak. Als duurzame energieproducent kunt u voor ten minste 25 jaar een stabiel inkomen generen als uw dak, land of waterplaats voldoet aan de SDE+ richtlijn. De grootte van de inkomsten zijn o.m. afhankelijk van het aantal m2 van uw land, water en/of dak. Uw dak is groter dan 2000m2, uw stuk grond groter dan 1 hectare 10,000m2
-    bottom-box-label: Verminder en saldeer uw CO2 footprint
-    bottom-box-information: De hernieuwbare energie die u produceert en/of consumeert draagt direct bij aan de vermindering van CO2 in de atmosfeer. U wekt energie uit zon of wind op en voorkomt daarmee elektriciteitsopwekking uit kolen of gas.
-  - first-row: Connecting 
-    second-row: the
-    second-row-green: energy
-    third-row: transition.
-    bottom-box-label: Bespaar op uw energie rekening
-    bottom-box-information: U kunt als  prosument aanzienlijk kosten besparen op uw energierekening als u zelf duurzame energie opwekt en gebruikt voor eigen consumptie. U beschermt uzelf tevens tegen toekomstige oplopende energieprijzen. De terugverdientijd van zonnepanelen op grote daken en kleine windturbines liggen gemiddeld tussen de 5 en 7 jaar. Daarna kunt u bijna kosteloos gebruik maken van uw eigen opgewekte duurzame energie.
-  - top-box-label: Creëer uw eigen project of werk samen met partners
-    top-box-information: U kunt uw eigen duurzame energie installatie realiseren - alleen of samen met projectontwikkelaars, andere landeigenaren, belanghebbenden en energiecoöperaties. U kunt ook mede eigenaar worden van uw wind- en zonne project.
-    bottom-box-label: Maak deel uit van de energietransitie
-    bottom-box-information: Elk nieuw wind- en zonne project is een integraal bouwblok naar het verminderen van de afhankelijkheid van fossiele brandstoffen. Daarmee draagt u bij aan de bescherming van ons milieu en vermindert u de risico’s van klimaatverandering. Als producent of prosument van schone energie neemt u een leidende rol in de energietransitie en stelt een positief voorbeeld naar vrienden, gemeenschap en uw netwerk.
- 
+  - label: Creëer uw eigen project of werk samen met partners
+    information: U kunt uw eigen duurzame energie installatie realiseren - alleen of samen met projectontwikkelaars, andere landeigenaren, belanghebbenden en energiecoöperaties. U kunt ook mede eigenaar worden van uw wind- en zonne project.
+  - label: Verminder en saldeer uw CO2 footprint
+    information: De hernieuwbare energie die u produceert en/of consumeert draagt direct bij aan de vermindering van CO2 in de atmosfeer. U wekt energie uit zon of wind op en voorkomt daarmee elektriciteitsopwekking uit kolen of gas.
+  - label: Bespaar op uw energie rekening
+    information: U kunt als prosument aanzienlijk kosten besparen op uw energierekening als u zelf duurzame energie opwekt en gebruikt voor eigen consumptie. U beschermt uzelf tevens tegen toekomstige oplopende energieprijzen. De terugverdientijd van zonnepanelen op grote daken en kleine windturbines liggen gemiddeld tussen de 5 en 7 jaar. Daarna kunt u bijna kosteloos gebruik maken van uw eigen opgewekte duurzame energie.
+  - label: Maak deel uit van de energietransitie
+    information: Elk nieuw wind- en zonne project is een integraal bouwblok naar het verminderen van de afhankelijkheid van fossiele brandstoffen. Daarmee draagt u bij aan de bescherming van ons milieu en vermindert u de risico’s van klimaatverandering. Als producent of prosument van schone energie neemt u een leidende rol in de energietransitie en stelt een positief voorbeeld naar vrienden, gemeenschap en uw netwerk.
+    
