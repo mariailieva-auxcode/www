@@ -3,6 +3,7 @@ import { getWindModelResults } from './models/out/windModelFunction';
 
 // import { UserInputs } from './models/models/wind/UserInputs';
 import { Archetype } from './models/models/wind/Archetypes';
+import { StatusCode } from './api/enums/status-codes.enum';
 // import faunadb from 'faunadb'
 
 // const q = faunadb.query;
@@ -50,7 +51,7 @@ export async function handler(event, _) {
         const result = getWindModelResults({ ...userInputs, number, capacity, latitude, longitude, landLength, landWidth })
 
         return {
-            statusCode: 200,
+            statusCode: StatusCode.Success,
             headers: RESPONSE_HEADERS,
             body: JSON.stringify(result),
         }
@@ -58,7 +59,7 @@ export async function handler(event, _) {
 
     } catch (error) {
         return {
-            statusCode: 500,
+            statusCode: StatusCode.FAIL,
             body: JSON.stringify({ status: `err: ${error}` }),
         };
     }

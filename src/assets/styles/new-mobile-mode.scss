@@ -21,6 +21,14 @@ sans-serif;
     }
 
     div.renewable-energy {
+        .row {
+            .image {
+                img {
+                    height: unset;
+                }
+            }
+        }
+
         div.second-energy-card {
             display: none;
         }

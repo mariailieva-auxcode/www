@@ -16,14 +16,14 @@ export async function handler(event, _) {
             }
         } else {
             return {
-                statusCode: 204,
+                statusCode: StatusCode.NoContent,
                 body: JSON.stringify({}),
                 headers: RESPONSE_HEADERS
             }
         }
     } catch (error) {
         return {
-            statusCode: 500,
+            statusCode: StatusCode.FAIL,
             body: JSON.stringify({
                 status: `error`
             }),
