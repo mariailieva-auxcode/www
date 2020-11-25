@@ -91,16 +91,16 @@ exports.handler = async (event, context, callback) => {
 
     await client.close()
 
-    return callback(null, {
+    return {
       statusCode: 200,
       body: JSON.stringify(result),
       headers: RESPONSE_HEADERS
-    })
+    }
   } catch (error) {
-    return callback(null, {
+    return {
       statusCode: 200,
       body: JSON.stringify({ error }),
       headers: RESPONSE_HEADERS
-    })
+    }
   }
 }
