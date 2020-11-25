@@ -6,6 +6,7 @@ node_modules
 !functions/cadastreQueryBox.js
 !functions/municipalityQuery.js
 !functions/resRegionQuery.js
+!functions/provinceQuery.js
 # local env files
 .env.local
 .env.*.local
