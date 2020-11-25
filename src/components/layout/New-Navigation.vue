@@ -244,9 +244,13 @@ export default {
       headerImageCompare: 479,
       linkPoints: [580, 540, 500, 460, 420, 380, 340], // 479
       // linkPoints: [380, 335, 290, 245, 200, 155, 280] // 648
+      linkPoints2: [730, 690, 650, 610, 570, 530, 490],
+      linkPoints3: [660, 620, 580, 540, 500, 460, 420],
       activatedLink: 0,
       sectionElements: [],
       env: {},
+      fullHDHeight: Number(1080),
+      HdHeight: Number(900),
     };
   },
   props: {
@@ -310,6 +314,31 @@ export default {
           this.areInverted[i] = false;
         }
       });
+
+      let fullHdResolution = window.innerHeight;
+      if (fullHdResolution === this.fullHDHeight) {
+        this.linkPoints2.forEach((el, i) => {
+          el = this.headerImageHeight - this.headerImageCompare + el;
+          if (this.getScrollPosition() > el) {
+            this.areInverted[i] = true;
+          } else {
+            this.areInverted[i] = false;
+          }
+        });
+      }
+
+      let HdResolution = window.innerHeight;
+      if (HdResolution === this.HdHeight) {
+        this.linkPoints3.forEach((el, i) => {
+          el = this.headerImageHeight - this.headerImageCompare + el;
+          if (this.getScrollPosition() > el) {
+            this.areInverted[i] = true;
+          } else {
+            this.areInverted[i] = false;
+          }
+        });
+      }
+
       if (this.sectionElements.length == 0 || !this.sectionElements[0])
         this.selectorElements();
 
