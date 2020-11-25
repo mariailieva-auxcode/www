@@ -104,7 +104,7 @@ export default {
     }
     @media only screen and (min-width: 2000px) {
       > .team-info-card {
-        height: 640px !important;
+        height: 570px !important;
         > .style-card {
           padding: 50px 40px 30px !important;
         }
@@ -116,7 +116,7 @@ export default {
       }
     }
     .team-info-card {
-      height: 710px;
+      height: 615px;
       margin-bottom: 45px;
       > .style-card {
         display: flex;
@@ -160,7 +160,7 @@ export default {
     }
     @media only screen and (max-width: 375px) {
       .team-info-card {
-        height: 800px;
+        height: 700px;
       }
     }
   }
