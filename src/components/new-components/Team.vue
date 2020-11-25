@@ -25,15 +25,25 @@
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-xl-4 team-info-card">
-          <div class="style-card">
+          <div
+            v-for="(contact, i) of contact.contact"
+            :key="i"
+            class="style-card"
+          >
             <img class="member-image" src="/assets/team-you.png" />
-            <h2>You?</h2>
+            <h2>{{ contact.label }}</h2>
             <p>
-              We are always looking for smart, passionate individuals hungry to
-              make a difference and speed up the energy transition. If you think
-              you have what it takes get in touch with us!
+              {{ contact.information }}
             </p>
-            <button>Contact us</button>
+            <a
+              v-for="(button, i) of contact.button"
+              :key="i"
+              :href="`mailto:${button.link}`"
+            >
+              <button>
+                {{ button.text }}
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -42,13 +52,14 @@
 </template>
 
 <script>
-import team from "@content/nl/general/new-team.yaml";
-import teamEn from "@content/en/general/new-team.yaml";
+import team from "@content/nl/general/team.yaml";
+import teamEn from "@content/en/general/team.yaml";
 export default {
   name: "OurTeam",
   data() {
     return {
       team: {},
+      contact: {},
       title: "",
     };
   },
@@ -67,6 +78,7 @@ export default {
     init() {
       let data = this.lang === "en" ? teamEn : team;
       this.team = data;
+      this.contact = data;
       this.title = data.title;
     },
   },
