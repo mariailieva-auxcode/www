@@ -1,32 +1,33 @@
-subTitle: Ons Team
-title: Ons Team
-button: Bezoek LinkedIn profiel
+title: The Team
 team:
-- name: Jaap van Dijk
-  picture: /assets/foto Jaap van Dijk.png
-  phonePicture: /assets/jaap-van-dijk-phone.png
-  about: 'Jaap is medeoprichter van greenatlas.earth en gepassioneerd door de energietransitie als cruciale pijler in de strijd tegen klimaatverandering. Zijn missie is om de energietransitie in Europa te versnellen door de manier te verbeteren waarop nieuwe locaties voor projecten voor hernieuwbare energie worden verzekerd en ontwikkeld. Zijn visie is dat vraag en aanbod transparanter, efficiënter en inclusiever met elkaar wordt verbonden.'
-  email: jaap@greenatlas.earth
-  linkedIn: https://www.linkedin.com/in/jaap-v-dijk/
-- name: T.E. Shaw
-  picture: /assets/foto-Thomas-Shaw.png
-  phonePicture: /assets/thomas-shaw-phone.png
-  about: 'Thomas is mede-oprichter van greenatlas.earth en gepassioneerd door technologische ontwikkelingen en innovatieve ideeën. Hij steekt zijn tijd en energie graag in het ondersteunen van startende ondernemers, ontwikkeling van jong talent en ideeën die de wereld beter maken.'  email: teshaw@greenatlas.earth
-  linkedIn: https://www.linkedin.com/in/dahoum/
-- name: Mirthe van Gelder
-  picture: /assets/Foto-mirthe-van-Gelder.png
-  phonePicture: /assets/mirthe-van-gelder.png
-  about: 'Mirthe coördineert de communicatie en marketing van greenatlas.earth en streeft naar een meer coöperatieve samenleving door maatschappelijk verantwoord ondernemen. Ze haalt energie uit het verbinden van mensen door effectieve communicatie, evenementenorganisatie en educatie.'  email: mirthe@greenatlas.earth
-  linkedIn: https://www.linkedin.com/in/mirthevangelder/
-- name: Megan Atkins
-  picture: /assets/foto megan.png
-  phonePicture: /assets/megan-phone.png
-  about: 'Megan leidt de ontwikkeling van het energiemodel greenatlas.earth; een belangrijk hulpmiddel dat perceel-eigenaren helpt het waardepotentieel van hun locatie te begrijpen. Ze is gepassioneerd over het toepassen van haar kwantitatieve en praktische vaardigheden in de strijd tegen de klimaatcrisis!'
-  email: megan@greenatlas.earth
-  linkedIn: https://www.linkedin.com/in/megan-atkins-35a001132/
-- name: Niels Bosman
-  picture: /assets/foto niels.jpg
-  phonePicture: /assets/foto niels.jpg
-  about: 'Niels heeft expertise in wetgeving en restricties en richt zich op de sociale en politieke impact van wind en zon op land en dak. Hij is geïnteresseerd in de platformeconomie en vastgoed en heeft ervaring met verschillende energieprojecten in Noord-Nederland.'
-  email: niels@greenatlas.earth
-  linkedIn: https://www.linkedin.com/in/nielsbosman/
+  - image: /assets/Jaap-van-Dijk.png
+    name: Jaap van Dijk
+    information: 'Jaap is medeoprichter van greenatlas.earth en gepassioneerd door de energietransitie als cruciale pijler in de strijd tegen klimaatverandering. Zijn missie is om de energietransitie in Europa te versnellen door de manier te verbeteren waarop nieuwe locaties voor projecten voor hernieuwbare energie worden verzekerd en ontwikkeld. Zijn visie is dat vraag en aanbod transparanter, efficiënter en inclusiever met elkaar wordt verbonden.'
+    email: jaap@greenatlas.earth
+    linkedin: https://www.linkedin.com/in/jaap-v-dijk/
+  - image: /assets/Thomas-Shaw.png
+    name: Thomas Shaw
+    information: 'Thomas is mede-oprichter van greenatlas.earth en gepassioneerd door technologische ontwikkelingen en innovatieve ideeën. Hij steekt zijn tijd en energie graag in het ondersteunen van startende ondernemers, ontwikkeling van jong talent en ideeën die de wereld beter maken.'
+    email: t.e.shaw@greenatlas.earth
+    linkedin: 
+  - image: /assets/megan.png
+    name: Megan Atkins
+    information: 'Megan leidt de ontwikkeling van het energiemodel greenatlas.earth; een belangrijk hulpmiddel dat perceel-eigenaren helpt het waardepotentieel van hun locatie te begrijpen. Ze is gepassioneerd over het toepassen van haar kwantitatieve en praktische vaardigheden in de strijd tegen de klimaatcrisis!'
+    email: megan@greenatlas.earth
+    linkedin: https://www.linkedin.com/in/megan-atkins-35a001132/
+  - image: /assets/Bosman-Niels.png
+    name: Bosman Niels
+    information: 'Niels heeft expertise in wetgeving en restricties en richt zich op de sociale en politieke impact van wind en zon op land en dak. Hij is geïnteresseerd in de platformeconomie en vastgoed en heeft ervaring met verschillende energieprojecten in Noord-Nederland.'
+    email: niels@greenatlas.earth
+    linkedin: https://www.linkedin.com/in/nielsbosman/
+  - image: /assets/Mirthe-van-gelder-new-photo.png
+    name: Mirthe van Gelder
+    information: 'Mirthe coördineert de communicatie en marketing van greenatlas.earth en streeft naar een meer coöperatieve samenleving door maatschappelijk verantwoord ondernemen. Ze haalt energie uit het verbinden van mensen door effectieve communicatie, evenementenorganisatie en educatie.'
+    email: mirthe@greenatlas.earth
+    linkedin: https://www.linkedin.com/in/mirthevangelder/
+contact:
+  - label: You?
+    information: We are always looking for smart, passionate individuals hungry to make a difference and speed up the energy transition. If you think you have what it takes get in touch with us!
+    button:
+      - text: Contact us
+        link: jaap@greenatlas.earth
