@@ -30,15 +30,57 @@
         class="popup-render"
         @click="renderLayerPopup = !renderLayerPopup"
       >
-        Click
+        <div class="drop-layers">
+          <img class="first-image" src="/assets/layers.svg" />
+          <div v-if="!renderLayerPopup">
+            <img class="last-image" src="/assets/caret-down.svg" />
+          </div>
+        </div>
+        <div v-if="renderLayerPopup">
+          <img class="last-image" src="/assets/caret-up.svg" />
+        </div>
       </button>
-      <div v-if="renderLayerPopup == true">
-        <button
-          @click="showCadasters = !showCadasters"
-          :class="showCadasters ? 'cadaster-active' : 'cadaster-disactive'"
-        >
-          Kadaster
-        </button>
+      <div class="one" v-if="renderLayerPopup == true">
+        <div class="test top">
+          <div class="circles pink"></div>
+          <button class="areaButtons">
+            <p>Provinces</p>
+          </button>
+        </div>
+        <div class="test">
+          <div class="circles orange"></div>
+          <button class="areaButtons">
+            <p>Munisipallities</p>
+          </button>
+        </div>
+        <div class="test">
+          <div class="circles lightblue"></div>
+          <button class="areaButtons">
+            <p>RES Regions</p>
+          </button>
+        </div>
+        <div class="test">
+          <div class="circles darkblue"></div>
+          <button
+            class="areaButtons"
+            @click="showCadasters = !showCadasters"
+            :class="showCadasters ? 'cadaster-active' : 'cadaster-disactive'"
+          >
+            <p>Kadaster</p>
+          </button>
+        </div>
+        <div class="test">
+          <div class="circles red"></div>
+          <button class="areaButtons">
+            <p>Grids</p>
+          </button>
+        </div>
+        <div class="test">
+          <div class="circles green"></div>
+          <button class="areaButtons">
+            <p>Prohibited areas</p>
+          </button>
+        </div>
       </div>
     </div>
     <button
@@ -61,6 +103,7 @@
       @changedSavingCalc="changeSavingCalc($event)"
       @getPolygonArea="PolygonAreaOutput($event)"
       @updateUserStatus="updateUserStatus($event)"
+      @getPolygonId="getId($event)"
     ></LeafMap>
     <div class="output-box">
       <VueDragResize
@@ -130,6 +173,7 @@
         <ProfileOnboarding
           @nextStep="steps++"
           @close="(land = false), (roof = false), (water = false)"
+          @answersData="updateAnswers($event)"
           @stepsColor="finishedStep++, finishedStep2++"
           :lang="lang"
         ></ProfileOnboarding>
@@ -173,21 +217,39 @@
               <button
                 class="roof"
                 :class="{ active: roof }"
-                @click="(roof = !roof), (land = false), (water = false)"
+                @click="
+                  (roof = !roof),
+                    (land = false),
+                    (water = false),
+                    (siteType = 'roof'),
+                    siteOwnerQ1()
+                "
               >
                 <img src="/assets/roof.svg" />Roof
               </button>
               <button
                 class="land"
                 :class="{ active: land }"
-                @click="(land = !land), (roof = false), (water = false)"
+                @click="
+                  (land = !land),
+                    (roof = false),
+                    (water = false),
+                    (siteType = 'land'),
+                    siteOwnerQ1()
+                "
               >
                 <img src="/assets/land.svg" />Land
               </button>
               <button
                 class="water"
                 :class="{ active: water }"
-                @click="(water = !water), (roof = false), (land = false)"
+                @click="
+                  (water = !water),
+                    (roof = false),
+                    (land = false),
+                    (siteType = 'water'),
+                    siteOwnerQ1()
+                "
               >
                 <img src="/assets/water.svg" />Water
               </button>
@@ -201,7 +263,10 @@
                 class="solar"
                 :class="{ active: solar }"
                 @click="
-                  (solar = !solar), steps++, (finishedStep2++, finishedStep3++)
+                  (solar = !solar),
+                    (energyType = solar),
+                    steps++,
+                    (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/solar.svg" />Solar
@@ -210,7 +275,10 @@
                 class="wind"
                 :class="{ active: wind }"
                 @click="
-                  (wind = !wind), steps++, (finishedStep2++, finishedStep3++)
+                  (wind = !wind),
+                    (energyType = wind),
+                    steps++,
+                    (finishedStep2++, finishedStep3++)
                 "
               >
                 <img src="/assets/wind.svg" />Wind
@@ -322,8 +390,13 @@ export default {
       water: false,
       solar: false,
       wind: false,
+      produce: false,
+      sell: false,
       isOwner: false,
       isDev: false,
+      siteType: "",
+      energyType: "",
+
       sqM: "",
       cash: 0,
       production: 0,
@@ -362,6 +435,45 @@ export default {
     },
   },
   methods: {
+    getId(polygonId) {
+      console.log(polygonId);
+    },
+    updateAnswers(savedAnswers) {
+      console.log(savedAnswers);
+      // const data  = {
+      //   answers: savedAnswers,
+      //   id: this.id,
+      // }
+      // axios.put("/.netlify/functions/siteOwner", { data })
+    },
+
+    siteOwnerQ1() {
+      const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
+      axios.post("/.netlify/functions/siteOwner", {
+        ownerId,
+        siteType: this.siteType,
+        answers: [],
+      });
+      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+      // .then((e) => console.log(e));
+    },
+    siteOwnerQ2() {
+      axios.post("/.netlify/functions/siteOwner", {
+        siteEnergy: this.siteEnergy,
+        produce: this.produce,
+        sell: this.sell,
+      });
+      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+    },
+    siteOwnerQ3() {
+      axios.post("/.netlify/functions/siteOwner", {
+        isOwner: this.isOwner,
+      });
+      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+    },
+    siteAnswers() {
+      // axios.put("/.netlify/functions/siteOwner", { data })
+    },
     init() {
       this.lang = this.$router.history.current.params.lang;
     },

@@ -54,6 +54,31 @@ export async function handler(event, _) {
                 }
             })
         }
+        else if (event.httpMethod == "PUT") {
+            console.log("CONNECTING TO DB")
+            const client = new faunadb.Client({
+                secret: process.env.VUE_APP_FAUNA_SECRET
+            })
+            const data = JSON.parse(event.body)
+            const refId = data.data.id
+            const answers = { answers: data.data.answers}
+            return client.query(q.Update(q.Ref(q.Collection('siteOwner'), '282982681281561093'), { data: answers }))
+                .then((response) => {
+                    console.log('success', response)
+                    return {
+                        statusCode: 200,
+                        body: JSON.stringify(response),
+                        headers: RESPONSE_HEADERS
+                    }
+                }).catch((error) => {
+                    console.log('error', error)
+                    return {
+                        statusCode: 400,
+                        body: JSON.stringify(error),
+                        headers: RESPONSE_HEADERS,
+                    }
+                })
+        }
         else {
             return {
                 statusCode: StatusCode.NoContent,
