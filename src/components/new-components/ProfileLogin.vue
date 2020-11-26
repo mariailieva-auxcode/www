@@ -26,9 +26,9 @@ export default {
     return {
       showAuth: true,
       isLogged: false,
-      zoom: 10,
-      center: [52.3628434, 4.8443875],
-      url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+      zoom: 20,
+      center: [51.926779, 4.4930619],
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
     };
   },
   mounted() {
@@ -75,15 +75,15 @@ export default {
   .disabled {
     pointer-events: none;
   }
-  .leaflet-top,
+  .leaflet-top.leaflet-left,
   .leaflet-left,
   .leaflet-bottom,
   .leaflet-right,
   .col-1 {
-    display: none;
+    display: none !important;
   }
   .blur {
-    filter: blur(3px);
+    filter: blur(1px);
     height: 100%;
   }
 }
