@@ -51,7 +51,7 @@ exports.handler = async (event, _context, _callback) => {
         .find({
           polygon: {
             $nearSphere: {
-              $geometry: { type: "Point", coordinates: [lat, lon] },
+              $geometry: { type: "Point", coordinates: [lon, lat] },
               $minDistance: 0,
               $maxDistance: 0
             }
