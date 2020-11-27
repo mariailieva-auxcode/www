@@ -3,9 +3,9 @@ introductory-title: Coming Soon!
 introductory-description: The platform is under construction and will go live soon. For more information
 contact-text: Contact us.
 contact-link: /
-first-step-image: /assets/macbook-pro-clay.png 
-second-step-image: /assets/step-2.png
-third-step-image: /assets/macbook-pro-clay3.png
+first-step-image: /assets/Step-1-en.png 
+second-step-image: /assets/step-2-en.png
+third-step-image: /assets/step-3-en.png
 firstStep:
   - label: Sign Up
     information: Register and get immediate access to our tool. There are no costs or obligations to you.
