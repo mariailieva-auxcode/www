@@ -16,6 +16,9 @@ export default {
   props: {
     isSatteliteView: { type: Boolean },
     showCadasters: { type: Boolean },
+    showMunicipality: { type: Boolean },
+    showResRegions: { type: Boolean },
+    showProvinces: { type: Boolean },
   },
   data() {
     return {
@@ -47,6 +50,9 @@ export default {
       this.map.on("moveend", (e) => {
         this.getCadasters();
         this.triggerZoomAndCoordinates(e);
+        this.getProvinces();
+        this.getMunicipality();
+        this.getResRegions();
       });
       this.map.on("pm:create", this.addSite);
       this.map.on("zoom", this.onZoomChange);
@@ -65,6 +71,52 @@ export default {
 
       this.addDrawControls();
       this.getAndRenderPolygons();
+    },
+    getProvinces() {
+      if (!this.showProvinces) return;
+
+      const lat = this.map.getCenter().lat;
+      const lon = this.map.getCenter().lng;
+      axios
+        .get(`/.netlify/functions/municipalityQuery?lat=${lat}&lon=${lon}`)
+        .then((response) => {
+          let municipality = response.data[0].Code;
+          axios
+            .get(`/.netlify/functions/provinceQuery?code=${municipality}`)
+            .then((provinces) => {
+              let province = provinces.data[0];
+              this.$emit("ProvinceData", province);
+            });
+        });
+    },
+    getMunicipality() {
+      if (!this.showMunicipality) return;
+
+      const lat = this.map.getCenter().lat;
+      const lon = this.map.getCenter().lng;
+      axios
+        .get(`/.netlify/functions/municipalityQuery?lat=${lat}&lon=${lon}`)
+        .then((response) => {
+          let municipality = response.data[0];
+          this.$emit("MunicipalityData", municipality);
+        });
+    },
+    getResRegions() {
+      if (!this.showResRegions) return;
+
+      const lat = this.map.getCenter().lat;
+      const lon = this.map.getCenter().lng;
+      axios
+        .get(`/.netlify/functions/municipalityQuery?lat=${lat}&lon=${lon}`)
+        .then((response) => {
+          let municipality = response.data[0].Code;
+          axios
+            .get(`/.netlify/functions/resRegionQuery?code=${municipality}`)
+            .then((region) => {
+              let resRegion = region.data[0];
+              this.$emit("ResRegionData", resRegion);
+            });
+        });
     },
     getCadasters() {
       if (!this.showCadasters || this.map._zoom < 20) return;
@@ -181,7 +233,7 @@ export default {
 
       let area = turf.area(site.toGeoJSON());
       this.$emit("getPolygonArea", area);
-      this.$emit("getPolygonId", site.options.id)
+      this.$emit("getPolygonId", site.options.id);
       let center = site.getCenter();
 
       axios
@@ -294,38 +346,40 @@ export default {
 </script>
 
 <style lang="scss">
-#map {  
-  .leaflet-left .leaflet-control{
+#map {
+  .leaflet-left .leaflet-control {
     margin-left: 0;
   }
-  .leaflet-top .leaflet-control{
+  .leaflet-top .leaflet-control {
     margin-top: 0;
   }
-  .leaflet-top{
-    &.leaflet-left{
+  .leaflet-top {
+    &.leaflet-left {
       height: auto;
-    position: absolute;
-    background-color: white;
-    top: 160px;
-    border-radius: 0 10px 10px 0;
-    border-top: 10px solid white;
-    border: 3px solid white;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+      position: absolute;
+      background-color: white;
+      top: 160px;
+      border-radius: 0 10px 10px 0;
+      border-top: 10px solid white;
+      border: 3px solid white;
+      width: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
   .leaflet-bar {
     // border-radius: 0;
-    a{
+    a {
       margin-bottom: 10px;
     }
   }
-  .leaflet-bar a, .leaflet-bar{
+  .leaflet-bar a,
+  .leaflet-bar {
     border-bottom: 0;
-  } 
-  .leaflet-control-layers, .leaflet-bar{
+  }
+  .leaflet-control-layers,
+  .leaflet-bar {
     border: 0;
   }
   // .leaflet-bar a:first-child {
@@ -334,11 +388,10 @@ export default {
   // .leaflet-bar .button-container:last-child .leaflet-buttons-control-button{
   //   border-bottom-right-radius: 15px !important;
   // }
-  .leaflet-pm-edit{
+  .leaflet-pm-edit {
     border-radius: 0 10px 10px 0 !important;
   }
   .leaflet-map-pane {
-
     .leaflet-popup-pane {
       .leaflet-popup {
         .leaflet-popup-content-wrapper {
@@ -362,7 +415,7 @@ export default {
   .leaflet-control-zoom {
     &.leaflet-bar {
       &.leaflet-control {
-        .leaflet-control-zoom-in{
+        .leaflet-control-zoom-in {
           margin-top: 10px;
         }
       }

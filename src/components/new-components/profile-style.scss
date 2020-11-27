@@ -2,62 +2,75 @@
 .profile {
     height: 100vh;
     overflow-y: hidden;
-    .one{
+
+    .one {
         display: flex;
         flex-direction: column;
-    .test{
-        display: flex;
-        align-items: center;
-        margin: 0 0 15px 15px;
-        &.top{
-            margin-top: 10px;
+
+        .test {
+            display: flex;
+            align-items: center;
+            margin: 0 0 15px 15px;
+
+            &.top {
+                margin-top: 10px;
+            }
+
+            .circles {
+                border-radius: 50%;
+                border: 2px solid white;
+                width: 13px;
+                height: 13px;
+                box-shadow: 0px 6px 15px #1D226F1A;
+                z-index: 1200;
+
+                &.pink {
+                    background-color: #D679B6;
+                }
+
+                &.orange {
+                    background-color: #FEBB4E
+                }
+
+                &.lightblue {
+                    background-color: #5694E8
+                }
+
+                &.darkblue {
+                    background-color: #1A229B
+                }
+
+                &.red {
+                    background-color: #D84949
+                }
+
+                &.green {
+                    background-color: #55B364
+                }
+            }
         }
-    .circles{
-        border-radius: 50%;
-        border: 2px solid white;
-        width: 13px;
-        height: 13px;
-        box-shadow: 0px 6px 15px #1D226F1A;
-        z-index: 1200;
-        &.pink{
-            background-color: #D679B6;
+
+        .areaButtons {
+            background-color: white;
+            border: none;
+            height: 18px;
+            font-weight: 500;
+            outline: none;
+
+            p {
+                font-size: 14px;
+                color: #65687E;
+            }
         }
-        &.orange{
-            background-color: #FEBB4E
-        }
-        &.lightblue{
-            background-color: #5694E8
-        }
-        &.darkblue{
-            background-color: #1A229B
-        }
-        &.red{
-            background-color: #D84949
-        }
-        &.green{
-            background-color: #55B364
-        }
-    }    
     }
-    .areaButtons{
-        background-color: white;
-        border: none;
-        height: 18px;
-        font-weight: 500;
-        outline: none;
-        p{
-            font-size: 14px;
-            color: #65687E;
-        }
-    }
-}
 
     .map-layer-popup {
         position: absolute;
         z-index: 1001;
         left: 0;
         top: 50px;
-        .popup-render{
+
+        .popup-render {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -68,6 +81,7 @@
             height: 45px;
             border-radius: 0 10px 10px 0;
         }
+
         &.active {
             width: 155px;
             height: 250px;
@@ -76,17 +90,79 @@
             border-radius: 0 10px 10px 0;
         }
 
-        button { 
+        button {
             display: flex;
-            .first-image{
+
+            .first-image {
                 margin-top: 5px;
             }
-            .last-image{
+
+            .last-image {
                 margin-bottom: 5px;
             }
+
             &.cadaster-active {
-                background-color: green;
+                background-color: #7CFC00;
             }
+
+            div.result-table-province {
+                position: absolute;
+                left: 170px;
+                top: 0px;
+                width: 250px;
+                height: auto;
+                min-height: 50px;
+                border-radius: 20px;
+                background-color: white;
+
+                p {
+                    margin: 0;
+                    text-align: left;
+                    margin-left: 20px;
+                }
+            }
+
+            div.result-table-municipality {
+                position: absolute;
+                left: 170px;
+                top: 60px;
+                width: auto;
+                min-width: 250px;
+                height: auto;
+                min-height: 50px;
+                border-radius: 20px;
+                background-color: white;
+
+                p {
+                    margin: 0;
+                    text-align: left;
+                    margin-left: 20px;
+                }
+            }
+
+            div.result-table-region {
+                position: absolute;
+                left: 170px;
+                top: 120px;
+                min-width: 250px;
+                width: auto;
+                min-height: 50px;
+                height: auto;
+                border-radius: 20px;
+                background-color: white;
+
+                p {
+                    margin: 0;
+                    text-align: left;
+                    margin-left: 20px;
+                }
+            }
+
+            div.non-result {
+                display: none;
+            }
+
+
         }
     }
 

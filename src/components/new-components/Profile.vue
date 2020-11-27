@@ -43,20 +43,50 @@
       <div class="one" v-if="renderLayerPopup == true">
         <div class="test top">
           <div class="circles pink"></div>
-          <button class="areaButtons">
+          <button
+            @click="showProvinces = !showProvinces"
+            :class="showProvinces ? 'cadaster-active' : 'cadaster-disactive'"
+            class="areaButtons"
+          >
             <p>Provinces</p>
+            <div
+              :class="showProvinces ? 'result-table-province' : 'non-result'"
+            >
+              <p>Province: {{ provinceName }}</p>
+              <p>Code: {{ provinceCode }}</p>
+            </div>
           </button>
         </div>
         <div class="test">
           <div class="circles orange"></div>
-          <button class="areaButtons">
+          <button
+            @click="showMunicipality = !showMunicipality"
+            :class="showMunicipality ? 'cadaster-active' : 'cadaster-disactive'"
+            class="areaButtons"
+          >
             <p>Munisipallities</p>
+            <div
+              :class="
+                showMunicipality ? 'result-table-municipality' : 'non-result'
+              "
+            >
+              <p>Municipality: {{ municipalityName }}</p>
+              <p>Code: {{ municipalityCode }}</p>
+            </div>
           </button>
         </div>
         <div class="test">
           <div class="circles lightblue"></div>
-          <button class="areaButtons">
+          <button
+            @click="showResRegions = !showResRegions"
+            :class="showResRegions ? 'cadaster-active' : 'cadaster-disactive'"
+            class="areaButtons"
+          >
             <p>RES Regions</p>
+            <div :class="showResRegions ? 'result-table-region' : 'non-result'">
+              <p>RES Region: {{ regionName }}</p>
+              <p>Code: {{ regionCode }}</p>
+            </div>
           </button>
         </div>
         <div class="test">
@@ -100,10 +130,16 @@
     <LeafMap
       :isSatteliteView="isSatteliteView"
       :showCadasters="showCadasters"
+      :showMunicipality="showMunicipality"
+      :showResRegions="showResRegions"
+      :showProvinces="showProvinces"
       @changedSavingCalc="changeSavingCalc($event)"
       @getPolygonArea="PolygonAreaOutput($event)"
       @updateUserStatus="updateUserStatus($event)"
       @getPolygonId="getId($event)"
+      @ProvinceData="ProvinceData($event)"
+      @MunicipalityData="MunicipalityData($event)"
+      @ResRegionData="ResRegionData($event)"
     ></LeafMap>
     <div class="output-box">
       <VueDragResize
@@ -410,10 +446,20 @@ export default {
       steps: 1,
       renderLayerPopup: false,
       showCadasters: false,
+      showResRegions: false,
+      showMunicipality: false,
+      showProvinces: false,
+      showProvincesResult: false,
       finishedStep: "1",
       finishedStep2: "0",
       finishedStep3: "0",
       finishedStep4: "0",
+      provinceName: "",
+      provinceCode: "",
+      municipalityName: "",
+      municipalityCode: "",
+      regionName: "",
+      regionCode: "",
     };
   },
   created() {
@@ -524,6 +570,18 @@ export default {
     },
     PolygonAreaOutput(e) {
       this.polygonArea = e.toFixed(2);
+    },
+    ProvinceData(province) {
+      this.provinceName = province.ProvinceName;
+      this.provinceCode = province.ProvinceCode;
+    },
+    MunicipalityData(municipality) {
+      this.municipalityName = municipality.Name;
+      this.municipalityCode = municipality.Code;
+    },
+    ResRegionData(region) {
+      this.regionName = region.RESRegion;
+      this.regionCode = region.Code;
     },
     changeSavingCalc(newData) {
       this.cash = newData.totalNetRevenue
