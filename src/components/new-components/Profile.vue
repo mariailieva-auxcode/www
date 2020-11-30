@@ -41,25 +41,25 @@
         </div>
       </button>
       <div class="one" v-if="renderLayerPopup == true">
-        <div class="test top">
+        <div class="designAlignment top">
           <div class="circles pink"></div>
           <button class="areaButtons">
             <p>Provinces</p>
           </button>
         </div>
-        <div class="test">
+        <div class="designAlignment">
           <div class="circles orange"></div>
           <button class="areaButtons">
             <p>Munisipallities</p>
           </button>
         </div>
-        <div class="test">
+        <div class="designAlignment">
           <div class="circles lightblue"></div>
           <button class="areaButtons">
             <p>RES Regions</p>
           </button>
         </div>
-        <div class="test">
+        <div class="designAlignment">
           <div class="circles darkblue"></div>
           <button
             class="areaButtons"
@@ -69,13 +69,13 @@
             <p>Kadaster</p>
           </button>
         </div>
-        <div class="test">
+        <div class="designAlignment">
           <div class="circles red"></div>
           <button class="areaButtons">
             <p>Grids</p>
           </button>
         </div>
-        <div class="test">
+        <div class="designAlignment">
           <div class="circles green"></div>
           <button class="areaButtons">
             <p>Prohibited areas</p>
@@ -118,7 +118,6 @@
         @dragstop="
           top2 = $event.top;
           left2 = $event.left;
-          updateUserStatus();
         "
       >
         <div class="row header-input-box">
@@ -127,7 +126,6 @@
             <button
               @click="
                 minimizeOutputBox = !minimizeOutputBox;
-                updateUserStatus();
               "
             >
               <div v-if="!minimizeOutputBox">▼</div>
@@ -193,7 +191,6 @@
         @dragstop="
           top = $event.top;
           left = $event.left;
-          updateUserStatus();
         "
       >
         <div class="row header-input-box">
@@ -202,7 +199,6 @@
             <button
               @click="
                 minimizeInputBox = !minimizeInputBox;
-                updateUserStatus();
               "
             >
               <div v-if="!minimizeInputBox">▼</div>
@@ -264,9 +260,10 @@
                 :class="{ active: solar }"
                 @click="
                   (solar = !solar),
-                    (energyType = solar),
+                    (energyType = `solar`),
                     steps++,
-                    (finishedStep2++, finishedStep3++)
+                    (finishedStep2++, finishedStep3++),
+                    siteOwnerQ2()
                 "
               >
                 <img src="/assets/solar.svg" />Solar
@@ -276,9 +273,10 @@
                 :class="{ active: wind }"
                 @click="
                   (wind = !wind),
-                    (energyType = wind),
+                    (energyType = `wind`),
                     steps++,
-                    (finishedStep2++, finishedStep3++)
+                    (finishedStep2++, finishedStep3++),
+                    siteOwnerQ2()
                 "
               >
                 <img src="/assets/wind.svg" />Wind
@@ -286,9 +284,9 @@
             </div>
             <p>What is your goal</p>
             <div class="checkboxes">
-              <input class="checkboxSize" type="checkbox" value="produce" />
+              <input class="checkboxSize" type="checkbox" value="produce" @click="produce = !produce" />
               <label> Produce </label>
-              <input class="checkboxSize" type="checkbox" value="sell" />
+              <input class="checkboxSize" type="checkbox" value="sell" @click="sell = !sell" />
               <label> Sell </label>
             </div>
           </div>
@@ -300,10 +298,10 @@
                 class="isOwner"
                 :class="{ active: isOwner }"
                 @click="
-                  (isOwner = !isOwner),
+                  (isOwner = true),
                     steps++,
                     (finishedStep3++, finishedStep4++),
-                    (isDev = false)
+                    siteOwnerQ3()
                 "
               >
                 Owner
@@ -312,7 +310,10 @@
             </div>
             <div class="toggles hovered">
               <a :href="`mailto:${' '}`">
-                <button class="isDev" :class="{ active: isDev }">
+                <button class="isDev" :class="{ active: isDev }"
+                 @click="
+                    siteOwnerQ3()
+                 ">
                   Developer
                 </button>
                 <p>
@@ -326,7 +327,7 @@
           <div v-if="steps === 4">
             <label>Do you sell the land and/or water?</label>
             <div class="scroll-links marginBot">
-              <p1>*Description*</p1>
+              <p>*Description*</p>
               <router-link
                 :to="`/${$router.history.current.params.lang}`"
                 :v-scroll-to="'#FAQ'"
@@ -336,7 +337,7 @@
             </div>
             <label>Do you rent the land and/or water?</label>
             <div class="scroll-links marginBot">
-              <p1>*Description*</p1>
+              <p>*Description*</p>
               <router-link
                 :to="`/${$router.history.current.params.lang}`"
                 v-scroll-to="'#FAQ'"
@@ -402,6 +403,7 @@ export default {
       production: 0,
       preventedCO: 0,
       polygonArea: "",
+      polygonRefId: "",
       minimizeInputBox: undefined,
       minimizeOutputBox: undefined,
       activatedInputBox: false,
@@ -435,44 +437,40 @@ export default {
     },
   },
   methods: {
-    getId(polygonId) {
-      console.log(polygonId);
+    getId(e = this.polygonRefId) {
+      this.polygonRefId = e;
+      console.log(e)
     },
     updateAnswers(savedAnswers) {
-      console.log(savedAnswers);
-      // const data  = {
-      //   answers: savedAnswers,
-      //   id: this.id,
-      // }
-      // axios.put("/.netlify/functions/siteOwner", { data })
+      const data = {
+        answers: savedAnswers,
+        id: this.polygonRefId
+      }
+      axios.put("/.netlify/functions/coordinates", { data });
     },
 
     siteOwnerQ1() {
-      const ownerId = JSON.parse(localStorage.loggedUser).ownerId;
-      axios.post("/.netlify/functions/siteOwner", {
-        ownerId,
+      const data = {
         siteType: this.siteType,
-        answers: [],
-      });
-      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
-      // .then((e) => console.log(e));
+        id: this.polygonRefId,
+      }
+      axios.put("/.netlify/functions/coordinates", { data });
     },
     siteOwnerQ2() {
-      axios.post("/.netlify/functions/siteOwner", {
-        siteEnergy: this.siteEnergy,
+      const data = {  
+        siteEnergy: this.energyType,
         produce: this.produce,
         sell: this.sell,
-      });
-      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
+        id: this.polygonRefId
+      }
+      axios.put("/.netlify/functions/coordinates", { data });
     },
     siteOwnerQ3() {
-      axios.post("/.netlify/functions/siteOwner", {
+      const data = {
         isOwner: this.isOwner,
-      });
-      // .then((data) => (console.log(data), this.siteOwner.push(data.data)));
-    },
-    siteAnswers() {
-      // axios.put("/.netlify/functions/siteOwner", { data })
+        id: this.polygonRefId
+      }
+      axios.put("/.netlify/functions/coordinates", { data });
     },
     init() {
       this.lang = this.$router.history.current.params.lang;

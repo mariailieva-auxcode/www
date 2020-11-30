@@ -44,9 +44,9 @@ export default {
         center: this.center,
         zoom: this.zoom,
       });
-      this.map.on("moveend", (e) => {
+      this.map.on("moveend", () => {
         this.getCadasters();
-        this.triggerZoomAndCoordinates(e);
+        // this.triggerZoomAndCoordinates(e);
       });
       this.map.on("pm:create", this.addSite);
       this.map.on("zoom", this.onZoomChange);
@@ -178,12 +178,12 @@ export default {
     popupMenu(e, id) {
       let popup = L.popup();
       const site = this.map._layers[id];
-
+      let polygonRefId = site.options.id
       let area = turf.area(site.toGeoJSON());
       this.$emit("getPolygonArea", area);
-      this.$emit("getPolygonId", site.options.id)
-      let center = site.getCenter();
+      this.$emit("getPolygonId", polygonRefId)
 
+      let center = site.getCenter();
       axios
         .get(
           `/.netlify/functions/windModel?latitude=${center.lat}&longitude=${center.lng}&landArea=${area}`

@@ -72,7 +72,10 @@ export async function handler(event, _) {
             })
             const data = JSON.parse(event.body)
             const refId = data.data.id
-            const polygon = { color: data.data.color, coordinates: data.data.coordinates, ownerId: data.data.ownerId }
+
+            const polygon = { color: data.data.color, coordinates: data.data.coordinates, ownerId: data.data.ownerId,
+            siteType: data.data.siteType, answers: data.data.answers, siteEnergy: data.data.siteEnergy, produce: data.data.produce, sell: data.data.sell, isOwner: data.data.isOwner}
+
             return client.query(q.Update(q.Ref(q.Collection('coordinates'), refId), { data: polygon }))
                 .then((response) => {
                     console.log('success', response)
