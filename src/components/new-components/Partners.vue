@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import partners from "@content/nl/general/new-partners.yaml";
-import partnersEn from "@content/en/general/new-partners.yaml";
+import partners from "@content/nl/general/partners.yaml";
+import partnersEn from "@content/en/general/partners.yaml";
 export default {
   name: "Partners",
   data() {
