@@ -3,9 +3,9 @@ introductory-title: Binnenkort live
 introductory-description: Dit platform is in ontwikkeling en gaat binnenkort live. 
 contact-text: Neem contact met ons op voor meer informatie.
 contact-link: /
-first-step-image: /assets/macbook-pro-clay.png 
-second-step-image: /assets/macbook-pro-clay2.png
-third-step-image: /assets/macbook-pro-clay3.png
+first-step-image: /assets/step-1-nl.png 
+second-step-image: /assets/step-2-nl.png
+third-step-image: /assets/step-3-nl.png
 firstStep: 
   - label: Maak uw profiel aan
     information: Registreer en krijg direct toegang tot onze tool. Er zijn geen kosten en verplichtingen verbonden. 

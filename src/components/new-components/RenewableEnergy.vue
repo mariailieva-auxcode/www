@@ -74,6 +74,8 @@ export default {
 @import "@styles/newmain.scss";
 .renewable-energy {
   .link-style {
+    padding-left: 20px;
+    padding-right: 20px;
     .link {
       font-size: 14px;
       color: #5694e8;
@@ -113,11 +115,13 @@ export default {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 1050px;
+  max-width: 1100px;
   .image {
     img {
       width: 320px;
       height: 530px;
+      border-radius: 20px;
+      box-shadow: 0px 6px 30px #1d226f0d;
     }
   }
   .info-energy-card,
@@ -128,7 +132,7 @@ export default {
       justify-content: flex-start;
       border-radius: 40px;
       width: 330px;
-      margin-bottom: 20px;
+      margin-bottom: 38px;
       height: 530px;
       padding: 30px;
       overflow: hidden;

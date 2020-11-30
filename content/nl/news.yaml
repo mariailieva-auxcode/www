@@ -112,3 +112,14 @@ news:
     -  specialist
     categories: 
     -  Marktontwikkeling
+    
+-   url:  https://www.netbeheernederland.nl/nieuws/netbeheerders-en-zonsector-slaan-handen-ineen-1414
+    description: 'netbeheerders en zonsector slaan handen ineen'
+    expiry: 2020-11-020 
+    group: 
+      -  site owner
+      -  project developer
+      -  specialist
+    categories: 
+      -  Marktontwikkeling
+  
