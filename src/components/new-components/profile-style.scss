@@ -163,10 +163,10 @@
     }
 
 
-    .freeArea {
+
+    .freeArea {    
         z-index: 401 !important;
         border-radius: 15px;
-
         &.input-box,
         &.output-box {
             box-shadow: 0px 6px 30px #1D226F0D;
@@ -280,7 +280,26 @@
                 }
             }
         }
+        p.click-blocker{ 
 
+            background-color: black;
+            color:white;
+            height: 395px;
+            width: 370px;
+            position: absolute;
+            display: flex;
+            align-items: center;           
+            justify-content: center; 
+            opacity: 0.6;
+            margin: 0;
+            border-radius: 0 0 15px 15px;
+            top: 53px;
+            
+            &.active {
+            display: none;
+            }
+        }
+        
         // &.blue-background {
         //   background-color: #3388ff;
         // }
@@ -296,6 +315,7 @@
             button {
                 &.style {
                     margin-left: 20px;
+                    z-index: 110;
                 }
             }
 

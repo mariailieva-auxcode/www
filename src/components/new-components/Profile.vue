@@ -104,6 +104,7 @@
       @getPolygonArea="PolygonAreaOutput($event)"
       @updateUserStatus="updateUserStatus($event)"
       @getPolygonId="getId($event)"
+      @updateInputBox="updatedInputBox($event)"
     ></LeafMap>
     <div class="output-box">
       <VueDragResize
@@ -207,7 +208,15 @@
           </div>
         </div>
         <div :class="{ minimized: minimizeInputBox == true }">
-          <div v-if="steps === 1">
+         <div>
+          <div v-if="steps === 1"
+          class = "lowerindex">
+          <p 
+          :class="isPolygonClicked ? 'active' : 'nonactive'" 
+          class="click-blocker"
+          >
+          Before you proceed, first select a polygon
+          </p>
             <p>What type of site do you have?</p>
             <div class="toggles">
               <button
@@ -358,6 +367,7 @@
               v-model="polygonArea"
             />
           </div>
+          </div>
         </div>
       </VueDragResize>
     </div>
@@ -416,6 +426,7 @@ export default {
       finishedStep2: "0",
       finishedStep3: "0",
       finishedStep4: "0",
+      isPolygonClicked: false,
     };
   },
   created() {
@@ -439,7 +450,6 @@ export default {
   methods: {
     getId(e = this.polygonRefId) {
       this.polygonRefId = e;
-      console.log(e)
     },
     updateAnswers(savedAnswers) {
       const data = {
@@ -501,6 +511,9 @@ export default {
           token: localStorage.token,
         });
       });
+    },
+    updatedInputBox(e = this.isPolygonClicked){
+      this.isPolygonClicked = e
     },
     onActivated() {
       this.$refs["input"].focus();

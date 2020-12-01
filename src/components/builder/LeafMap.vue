@@ -30,6 +30,7 @@ export default {
       maxZoom: 20,
       displayedCadasters: false,
       cadasters: [],
+      isPolygonClicked: false,
     };
   },
   created() {
@@ -180,9 +181,10 @@ export default {
       const site = this.map._layers[id];
       let polygonRefId = site.options.id
       let area = turf.area(site.toGeoJSON());
+      this.isPolygonClicked = true
       this.$emit("getPolygonArea", area);
-      this.$emit("getPolygonId", polygonRefId)
-
+      this.$emit("getPolygonId", polygonRefId);
+      this.$emit("updateInputBox", this.isPolygonClicked);
       let center = site.getCenter();
       axios
         .get(
