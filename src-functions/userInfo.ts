@@ -32,6 +32,12 @@ export async function handler(event, _) {
                 }
             })
         }
+        return {
+            statusCode: StatusCode.Success,
+            headers: RESPONSE_HEADERS,
+            body: "enable cors"
+        }
+
     } catch (error) {
         return {
             statusCode: StatusCode.FAIL,

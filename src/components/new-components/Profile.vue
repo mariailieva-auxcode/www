@@ -100,6 +100,16 @@
           </button>
         </div>
         <div class="test">
+          <div class="circles darkblue"></div>
+          <button
+            class="areaButtons"
+            @click="showSearchArea = !showSearchArea"
+            :class="showSearchArea ? 'cadaster-active' : 'cadaster-disactive'"
+          >
+            <p>Search Area</p>
+          </button>
+        </div>
+        <div class="test">
           <div class="circles red"></div>
           <button class="areaButtons">
             <p>Grids</p>
@@ -130,6 +140,7 @@
     <LeafMap
       :isSatteliteView="isSatteliteView"
       :showCadasters="showCadasters"
+      :showSearchArea="showSearchArea"
       :showMunicipality="showMunicipality"
       :showResRegions="showResRegions"
       :showProvinces="showProvinces"
@@ -446,6 +457,7 @@ export default {
       steps: 1,
       renderLayerPopup: false,
       showCadasters: false,
+      showSearchArea: false,
       showResRegions: false,
       showMunicipality: false,
       showProvinces: false,

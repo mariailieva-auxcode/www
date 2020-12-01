@@ -16,6 +16,7 @@ export default {
   props: {
     isSatteliteView: { type: Boolean },
     showCadasters: { type: Boolean },
+    showSearchArea: { type: Boolean },
     showMunicipality: { type: Boolean },
     showResRegions: { type: Boolean },
     showProvinces: { type: Boolean },
@@ -23,6 +24,7 @@ export default {
   data() {
     return {
       url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+      // url2: "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}",
       url2:
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
       attribution:
@@ -31,8 +33,8 @@ export default {
       attribution2:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
       maxZoom: 20,
-      displayedCadasters: false,
       cadasters: [],
+      searchArea: [],
     };
   },
   created() {
@@ -116,6 +118,30 @@ export default {
               let resRegion = region.data[0];
               this.$emit("ResRegionData", resRegion);
             });
+        });
+    },
+    getSearchArea() {
+      const bounds = this.map.getBounds();
+      const NORTH = bounds._northEast.lat;
+      const EAST = bounds._northEast.lng;
+      const SOUTH = bounds._southWest.lat;
+      const WEST = bounds._southWest.lng;
+
+      axios
+        .get(
+          `/.netlify/functions/searchAreaQuery?north=${NORTH}&east=${EAST}&south=${SOUTH}&west=${WEST}`
+        )
+        .then((response) => {
+          const searchArea = response.data;
+          searchArea.forEach((area) => {
+            area.geometry.coordinates[0].forEach((cord) => cord.reverse());
+          });
+          this.searchArea = [...this.searchArea, ...searchArea];
+          this.searchArea = this.searchArea.filter(
+            (cada, index) =>
+              this.searchArea.findIndex((cad) => cad._id == cada._id) == index
+          );
+          this.displayAreas();
         });
     },
     getCadasters() {
@@ -296,6 +322,22 @@ export default {
         this.map.pm.disableGlobalRemovalMode();
       }
     },
+    displayAreas() {
+      let lastArea;
+
+      this.searchArea.forEach((area) => {
+        if (area.rendered) return;
+
+        const latlngs = area.geometry.coordinates[0];
+        lastArea = L.polygon(latlngs, {
+          color: "black",
+          pmIgnore: true,
+        });
+        lastArea.addTo(this.map);
+        lastArea.options.isArea = true;
+        area.rendered = true;
+      });
+    },
     displayCadasters() {
       if (this.map._zoom < 20) return;
       let lastCadaster;
@@ -305,6 +347,7 @@ export default {
         const latLngs = cadaster.polygon.coordinates[0];
         lastCadaster = L.polygon(latLngs, {
           color: "purple",
+          pmIgnore: true,
         });
 
         lastCadaster.addTo(this.map);
@@ -312,6 +355,17 @@ export default {
         cadaster.rendered = true;
         lastCadaster.on("click", (e) => this.cadasterPopup(e, id));
       });
+    },
+    toggleSearchArea(showSearchArea) {
+      if (showSearchArea) this.displayAreas();
+      else {
+        Object.values(this.map._layers).forEach((e) => {
+          if (e.options.isArea) {
+            this.map.removeLayer(e);
+            this.searchArea.forEach((area) => (area.rendered = false));
+          }
+        });
+      }
     },
     toggleCadasters(showCadasters) {
       if (showCadasters && this.map._zoom >= 20) this.displayCadasters();
@@ -340,6 +394,10 @@ export default {
     showCadasters(showCadasters) {
       if (showCadasters) this.getCadasters();
       this.toggleCadasters(showCadasters);
+    },
+    showSearchArea(showSearchArea) {
+      if (showSearchArea) this.getSearchArea();
+      this.toggleSearchArea(showSearchArea);
     },
   },
 };
