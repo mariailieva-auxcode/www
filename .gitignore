@@ -8,6 +8,7 @@ node_modules
 !functions/resRegionQuery.js
 !functions/provinceQuery.js
 !functions/searchAreaQuery.js
+!functions/provinceGeoQuery.js
 # local env files
 .env.local
 .env.*.local
