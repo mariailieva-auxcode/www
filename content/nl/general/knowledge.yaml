@@ -2,17 +2,17 @@ title: Knowledge center
 title-label: Articles
 articles:
   - image: /assets/first-image.png
-    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
-    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: Read The Post
+    label: 'PBL: dalende elektriciteitsprijs van grote invloed op correctiebedragen SDE++'
+    description: 'Het Planbureau voor de Leefomgeving (PBL) heeft in opdracht van het ministerie van Economische Zaken en Klimaat de voorlopige correctiebedragen van de subsidieregeling SDE++ voor het jaar 2021 bekendgemaakt.'
+    link: https://solarmagazine.nl/nieuws-zonne-energie/i22920/pbl-dalende-elektriciteitsprijs-van-grote-invloed-op-correctiebedragen-sde
   - image: /assets/second-image.png
-    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
-    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: Read The Post
+    label: 'Zwoep, zwoep, zwoep, doen de windmolens. Boer Ad kan het niet meer aanhoren'
+    description: 'Het RIVM doet sinds kort onderzoek naar geluidsoverlast door windmolens. Akkerbouwer Ad Haverkamp weet wat die kan betekenen. Naast zijn boerderij werd het grootste windmolenpark van Nederland gebouwd.'
+    link: https://www.volkskrant.nl/nieuws-achtergrond/zwoep-zwoep-zwoep-doen-de-windmolens-boer-ad-kan-het-niet-meer-aanhoren~b9dae14a/
   - image: /assets/third-image.png
-    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
-    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: Read The Post
+    label: Boeren aan de slag met energieknelpunten
+    description: 'De agrarische sector kan een cruciale rol spelen in de energietransitie, met name vanwege de ruimte om hernieuwbare energie te produceren. Voorlopers in de sector lopen echter tegen knelpunten aan. Een groep akkerbouwers en veehouders gaat hier actief mee aan de slag.'
+    link: https://www.boerenbusiness.nl/energie/artikel/10890241/boeren-aan-de-slag-met-energieknelpunten
 links-title: Useful Links
 links:
   - label: Title of useful link
@@ -35,6 +35,6 @@ links:
     link: www.herewehavelinofpost.com
 blog: 
   - image: /assets/blog.svg
-    title: Coming soon!
-    description: We are collection useful information related to renewable energy which we believe will be in help for everyone interested the topic. 
+    title: Binnenkort online!
+    description: Lees, comment, deel. Word deel van Europa's nieuwe duurzame energie community!
   
