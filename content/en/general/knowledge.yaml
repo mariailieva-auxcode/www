@@ -2,11 +2,11 @@ title: Knowledge center
 title-label: Articles
 articles:
   - image: /assets/first-image.png
-    label: SDE++ call for investments in renewable energy production
-    description:
-    link: https://www.subsidiefocus.com/news/sde-call-for-investments-in-renewable-energy-production
+    label: Netherlands’ largest utility says grid constraints preventing connection of solar projects are increasing
+    description: 'Dutch utility Liander has published a new list congested areas in the provinces of Flevoland, Friesland, Gelderland, Noord-Holland, and Zuid-Holland. The company said that developers of solar parks who are still waiting for grid connection may have to wait longer for additional grid capacity.'
+    link: https://www.pv-magazine.com/2020/01/10/netherlands-largest-utility-says-grid-constraints-preventing-connection-of-solar-projects/
   - image: /assets/second-image.png
-    label:The moral case for the European Green Deal
+    label: The moral case for the European Green Deal
     description: Western Europe and the UK spent centuries burning vast amounts of coal
     link: https://www.politico.eu/article/european-green-deal-policy-guide-exporting-climate-change-trade-cop26-methane/
   - image: /assets/third-image.png
