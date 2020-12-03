@@ -145,7 +145,7 @@ export default {
         });
     },
     getCadasters() {
-      if (!this.showCadasters || this.map._zoom < 20) return;
+      if (!this.showCadasters) return;
 
       const bounds = this.map.getBounds();
       const NORTH = bounds._northEast.lat;
@@ -339,7 +339,7 @@ export default {
       });
     },
     displayCadasters() {
-      if (this.map._zoom < 20) return;
+      // if (this.map._zoom < 20) return;
       let lastCadaster;
       this.cadasters.forEach((cadaster) => {
         if (cadaster.rendered) return;
@@ -368,7 +368,7 @@ export default {
       }
     },
     toggleCadasters(showCadasters) {
-      if (showCadasters && this.map._zoom >= 20) this.displayCadasters();
+      if (showCadasters) this.displayCadasters();
       else {
         Object.values(this.map._layers).forEach((layer) => {
           if (layer.options.isCadaster) {
