@@ -1,11 +1,10 @@
-title: How we help you?
-description: 'Our mission is to accelerate the energy transition by creating a more efficient and transparent market by:'
+title: How we help you
+description: 
 explanations:
   - image: /assets/medal.svg
-    information: Generating transparent, reliable and independent data.
-  - image: /assets/trust-2.svg
-    information: Creating the best matches between site owners, project developers and specialists based on their specific profiles and objectives
+    information: Our quick-scan tool provides you with free, reliable and independent information about the possibilities of your site
+    information: From our database of over 100 companies we match your site and profile with a selection of the most suitable partners to help you plan, finance and execute your project. 
   - image: /assets/contract.svg
-    information: Digitizing and streamlining complex steps to finish and manage your energy project
+    information: Receive a proposal with no strings attached from one of your selected parnters or simply ask a question. We are here to help you understand your options!
   - image: /assets/setup.svg
-    information: Making digital tools available for landowners to learn about undiscovered revenues and opportunities.
+    information: Our platform uses advanced geospatial mapping technology and an energy model co-developed by TU Delft to deliver precise insights about your site
