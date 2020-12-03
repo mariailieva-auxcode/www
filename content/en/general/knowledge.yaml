@@ -2,17 +2,17 @@ title: Knowledge center
 title-label: Articles
 articles:
   - image: /assets/first-image.png
-    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
-    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: Read The Post
+    label: SDE++ call for investments in renewable energy production
+    description:
+    link: https://www.subsidiefocus.com/news/sde-call-for-investments-in-renewable-energy-production
   - image: /assets/second-image.png
-    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
-    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: Read The Post
+    label:The moral case for the European Green Deal
+    description: Western Europe and the UK spent centuries burning vast amounts of coal
+    link: https://www.politico.eu/article/european-green-deal-policy-guide-exporting-climate-change-trade-cop26-methane/
   - image: /assets/third-image.png
-    label: Lorem Ipsum Dolor sit Amet, Consetetur Sadipscing elitr sed Diam Nonumy
-    description: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
-    link: Read The Post
+    label: Largest Dutch offshore wind farm commissioned
+    description: The largest offshore wind farm in the Netherlands, and second worldwide, is ready owner Ørsted announced
+    link: https://windenergie-magazine.nl/largest-dutch-offshore-wind-farm-commissioned/
 links-title: Useful Links
 links:
   - label: Title of useful link
@@ -36,5 +36,5 @@ links:
 blog: 
   - image: /assets/blog.svg
     title: Coming soon!
-    description: We are collection useful information related to renewable energy which we believe will be in help for everyone interested the topic. 
+    description: Read, comment, share. Become a part of Europe's new renewable energy community!
   
