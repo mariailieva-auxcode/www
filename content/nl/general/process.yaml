@@ -8,11 +8,11 @@ second-step-image: /assets/step-2-nl.png
 third-step-image: /assets/step-3-nl.png
 firstStep: 
   - label: Maak uw profiel aan
-    information: Registreer en krijg direct toegang tot onze tool. Er zijn geen kosten en verplichtingen verbonden. 
+    information: Registreer en krijg direct toegang tot onze tool. Er zijn geen kosten en verplichtingen verbonden 
     number: 1
 secondStep:
   - label: Vul uw locatie in
-    information: Vul uw locatie(s) in, teken uw beoogde project locatie en vertel over uw beoogde doelstellingen
+    information: Vul uw locatie(s) in, teken uw beoogde project en vertel ons over uw doelstellingen
     number: 2
 thirdStep:
   - label: Ontvang matches en start uw energie project
