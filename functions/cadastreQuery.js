@@ -80,7 +80,9 @@ exports.handler = async (event, context, callback) => {
                       coordinates: center
                   },
                   $minDistance: 0,
-                  $maxDistance: radius
+                  $maxDistance: radius < 150
+                                ? radius
+                                : 150
                 }
              }
          }
