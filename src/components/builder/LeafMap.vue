@@ -23,12 +23,12 @@ export default {
   },
   data() {
     return {
-      url: "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       // url2: "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}",
       url2:
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
       attribution:
-        '&copy; Openstreetmap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       // marker: L.latLng(52.35479, 4.76387),
       attribution2:
         "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
@@ -339,11 +339,11 @@ export default {
       });
     },
     displayCadasters() {
-      // if (this.map._zoom < 20) return;
       let lastCadaster;
       this.cadasters.forEach((cadaster) => {
         if (cadaster.rendered) return;
-        let id = cadaster.id;
+        let [a, b, c] = cadaster.id.split("-");
+        let id = `${c}-${a}-${b}`;
         const latLngs = cadaster.polygon.coordinates[0];
         lastCadaster = L.polygon(latLngs, {
           color: "purple",
