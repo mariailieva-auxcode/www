@@ -4,7 +4,12 @@
       <img class="logo" src="/assets/logo.svg" />
       <p class="header">Sign up for greenatlas.earth</p>
       <div class="inputs">
-        <input type="email" id="email" placeholder="Email address " v-model="email" />
+        <input
+          type="email"
+          id="email"
+          placeholder="Email address "
+          v-model="email"
+        />
         <div class="row">
           <div class="input-with-eye">
             <input
@@ -25,9 +30,11 @@
         </div>
         <div class="col-12" v-if="!isError">
           <ul>
-            <li :class="{'valid' : isLongEnough}">At least 6 symbols</li>
-            <li :class="{'valid' : hasNumber}">Numeric character (0-9)</li>
-            <li :class="{'valid' : hasLowerCase && hasUpperCase}">Uppercase and lowercase letter</li>
+            <li :class="{ valid: isLongEnough }">At least 6 symbols</li>
+            <li :class="{ valid: hasNumber }">Numeric character (0-9)</li>
+            <li :class="{ valid: hasLowerCase && hasUpperCase }">
+              Uppercase and lowercase letter
+            </li>
           </ul>
         </div>
         <div class="password-error-icon">
@@ -37,7 +44,7 @@
               name="password"
               placeholder="Confirm Password"
               v-model="confirmPassword"
-              :class="{'error': isError}"
+              :class="{ error: isError }"
             />
           </div>
           <div v-if="isError" class="confirm">
@@ -65,8 +72,10 @@
           class="sign-up"
           @click="signUp()"
           :disabled="!signupAllow"
-          :style="{'cursor':signupAllow ? 'pointer':'not-allowed'}"
-        >Sign up</button>
+          :style="{ cursor: signupAllow ? 'pointer' : 'not-allowed' }"
+        >
+          Sign up
+        </button>
       </div>
     </div>
   </div>

@@ -10,6 +10,7 @@
       class="top"
       v-if="showAuth"
       @close="onAuthorizationClose($event)"
+      :onHeader="onProfileLogin"
     ></Authorization>
   </div>
 </template>
@@ -28,7 +29,9 @@ export default {
       isLogged: false,
       zoom: 20,
       center: [51.926779, 4.4930619],
-      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      url:
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      onProfileLogin: false,
     };
   },
   mounted() {
@@ -85,6 +88,40 @@ export default {
   .blur {
     filter: blur(1px);
     height: 100%;
+  }
+  .authorization {
+    .modal {
+      top: 50%;
+      left: 50%;
+      width: 530px;
+      height: 624px;
+      margin-left: -265px;
+      margin-top: -312px;
+      .image {
+        display: none;
+      }
+      .Login {
+        display: flex;
+        .components {
+          img.logo {
+            margin: 0 auto;
+          }
+          p {
+            font-size: 30px;
+          }
+        }
+      }
+      .SignUp {
+        .components {
+          img.logo {
+            margin: auto;
+          }
+          p {
+            font-size: 30px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

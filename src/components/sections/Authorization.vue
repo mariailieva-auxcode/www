@@ -7,7 +7,7 @@
           <img src="/assets/login-image.png" />
           <p>Connecting renewable energy!</p>
         </div>
-        <div class="col-6">
+        <div :class="onHeader ? 'col-6' : 'col-12'" class="form">
           <div class="Login">
             <Login v-if="isLogin" @login="login($event)"></Login>
           </div>
@@ -62,6 +62,12 @@ export default {
     isLogin: { type: Boolean, default: true },
     data: { type: Object },
     userType: { type: Number },
+    onHeader: { type: Boolean, default: true },
+  },
+  watch: {
+    onHeader() {
+      this.isOnHeader();
+    },
   },
   methods: {
     register(credentials) {
@@ -70,6 +76,9 @@ export default {
         .then(() => {
           this.login(credentials);
         });
+    },
+    isOnHeader(e) {
+      this.onHeader = e;
     },
     login(credentials) {
       axios
@@ -105,7 +114,10 @@ export default {
     width: calc(100vw - 260px);
     height: 90vh;
     z-index: 11;
-    .col-6 {
+    .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       button.switch {
         border: none;
         background-color: transparent;
