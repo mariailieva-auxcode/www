@@ -101,7 +101,7 @@
       :isSatteliteView="isSatteliteView"
       :showCadasters="showCadasters"
       @changedSavingCalc="changeSavingCalc($event)"
-      @getPolygonArea="PolygonAreaOutput($event)"
+      @getPolygonArea="polygonAreaOutput($event)"
       @updateUserStatus="updateUserStatus($event)"
       @getPolygonId="getId($event)"
       @updateInputBox="updatedInputBox($event)"
@@ -269,10 +269,7 @@
                 :class="{ active: solar }"
                 @click="
                   (solar = !solar),
-                    (energyType = `solar`),
-                    steps++,
-                    (finishedStep2++, finishedStep3++),
-                    siteOwnerQ2()
+                    (energyType = `solar`)
                 "
               >
                 <img src="/assets/solar.svg" />Solar
@@ -281,11 +278,7 @@
                 class="wind"
                 :class="{ active: wind }"
                 @click="
-                  (wind = !wind),
-                    (energyType = `wind`),
-                    steps++,
-                    (finishedStep2++, finishedStep3++),
-                    siteOwnerQ2()
+                    (wind = !wind)                  
                 "
               >
                 <img src="/assets/wind.svg" />Wind
@@ -297,6 +290,14 @@
               <label> Produce </label>
               <input class="checkboxSize" type="checkbox" value="sell" @click="sell = !sell" />
               <label> Sell </label>
+              <button class="continue-steps" 
+              @click="
+              (finishedStep2++, finishedStep3++),
+              siteOwnerQ2()
+              steps++
+              "> 
+              Continue 
+              </button>
             </div>
           </div>
           <!-- --------------------------------------------------------------------------------------------------- -->
@@ -338,7 +339,7 @@
             <div class="scroll-links marginBot">
               <p>*Description*</p>
               <router-link
-                :to="`/${$router.history.current.params.lang}`"
+                :to="`/${$router.history.current.params.lang},`"
                 :v-scroll-to="'#FAQ'"
               >
                 <div class="active-green-line">Got questions?</div>
@@ -358,7 +359,13 @@
           <!-- ------------------------------------------------------------------------------------------------------- -->
           <div class="size">
             <p>What is the size of the site?</p>
-            <input ref="input" placeholder="0 sq.m" type="number" />
+            <input                
+              ref="input" 
+              placeholder="0 sq.m" 
+              type="number" 
+              v-model="actualSize"
+              @keyup="sendActualSize()"
+            />
             <input
               id="sqM"
               class="last-input"
@@ -406,13 +413,13 @@ export default {
       isOwner: false,
       isDev: false,
       siteType: "",
-      energyType: "",
-
+      energyType: "", 
       sqM: "",
       cash: 0,
       production: 0,
       preventedCO: 0,
-      polygonArea: "",
+      polygonArea: "", 
+      actualSize: "0",
       polygonRefId: "",
       minimizeInputBox: undefined,
       minimizeOutputBox: undefined,
@@ -458,7 +465,14 @@ export default {
       }
       axios.put("/.netlify/functions/coordinates", { data });
     },
-
+    sendActualSize(){
+      console.log(this.actualSize)
+      const data = {
+        actualSize: this.actualSize,
+        id: this.polygonRefId,
+      }
+       axios.put("/.netlify/functions/coordinates", { data });
+    },
     siteOwnerQ1() {
       const data = {
         siteType: this.siteType,
@@ -468,7 +482,8 @@ export default {
     },
     siteOwnerQ2() {
       const data = {  
-        siteEnergy: this.energyType,
+        windEnergy: this.wind,
+        solarEnergy: this.solar,
         produce: this.produce,
         sell: this.sell,
         id: this.polygonRefId
@@ -533,7 +548,7 @@ export default {
         this.activatedInputBox = false;
       }
     },
-    PolygonAreaOutput(e) {
+    polygonAreaOutput(e) {
       this.polygonArea = e.toFixed(2);
     },
     changeSavingCalc(newData) {
@@ -561,9 +576,15 @@ export default {
 @import "profile-style.scss";
 .checkboxes {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  .continue-steps{
+    background-color: white;
+    border-radius: 50%;
+    outline: none;
+    margin-left: 15px
+  }
 }
 .checkboxSize {
   width: 50px;

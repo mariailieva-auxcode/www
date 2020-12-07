@@ -158,6 +158,10 @@ export default {
       axios
         .get(`/.netlify/functions/coordinates?ownerId=${ownerId}`)
         .then((response) => {
+          
+          // const sizes = response.data.data; Това console-log-ва всички ръчно въведени размери на полигони
+          // sizes.forEach((size)=>console.log(size.data.actualSize))
+          
           const sites = response.data.data;
           let lastSite;
           sites.forEach((site) => {
@@ -181,16 +185,26 @@ export default {
       const site = this.map._layers[id];
       let polygonRefId = site.options.id
       let area = turf.area(site.toGeoJSON());
+      let data = {
+        currentSize: area.toFixed(2),
+        id: polygonRefId,
+        }
       this.isPolygonClicked = true
       this.$emit("getPolygonArea", area);
       this.$emit("getPolygonId", polygonRefId);
       this.$emit("updateInputBox", this.isPolygonClicked);
       let center = site.getCenter();
       axios
+        .put(
+          "/.netlify/functions/coordinates", { 
+            data,            
+            });
+      axios
         .get(
           `/.netlify/functions/windModel?latitude=${center.lat}&longitude=${center.lng}&landArea=${area}`
         )
-
+      axios
+        .get(`/.netlify/functions/coordinates`)
         .then((data) => {
           this.$emit("changedSavingCalc", data.data);
         });
@@ -255,6 +269,7 @@ export default {
         const latLngs = cadaster.polygon.coordinates[0];
         lastCadaster = L.polygon(latLngs, {
           color: "purple",
+          pmIgnore: true,
         });
 
         lastCadaster.addTo(this.map);

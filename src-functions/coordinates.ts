@@ -74,7 +74,8 @@ export async function handler(event, _) {
             const refId = data.data.id
 
             const polygon = { color: data.data.color, coordinates: data.data.coordinates, ownerId: data.data.ownerId,
-            siteType: data.data.siteType, answers: data.data.answers, siteEnergy: data.data.siteEnergy, produce: data.data.produce, sell: data.data.sell, isOwner: data.data.isOwner}
+            siteType: data.data.siteType, answers: data.data.answers, windEnergy: data.data.windEnergy, solarEnergy: data.data.solarEnergy, produce: data.data.produce, sell: data.data.sell, isOwner: data.data.isOwner,
+            currentSize: data.data.currentSize, actualSize: data.data.actualSize}
 
             return client.query(q.Update(q.Ref(q.Collection('coordinates'), refId), { data: polygon }))
                 .then((response) => {
